@@ -15,8 +15,9 @@ Creates or updates ImmutabilityPolicy of a Storage blob containers
 ### AccountName (Default)
 ```
 Set-AzRmStorageContainerImmutabilityPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -ContainerName <String> [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ContainerName <String> [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWriteAll <Boolean>]
+ [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendAccountName
@@ -29,8 +30,8 @@ Set-AzRmStorageContainerImmutabilityPolicy [-ResourceGroupName] <String> [-Stora
 ### AccountObject
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -ContainerName <String> -StorageAccount <PSStorageAccount>
- [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWriteAll <Boolean>] [-AllowProtectedAppendWrite <Boolean>]
+ [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendAccountObject
@@ -43,8 +44,8 @@ Set-AzRmStorageContainerImmutabilityPolicy -ContainerName <String> -StorageAccou
 ### ContainerObject
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -Container <PSContainer> [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AllowProtectedAppendWriteAll <Boolean>] [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendContainerObject
@@ -56,8 +57,8 @@ Set-AzRmStorageContainerImmutabilityPolicy -Container <PSContainer> -Immutabilit
 ### ImmutabilityPolicyObject
 ```
 Set-AzRmStorageContainerImmutabilityPolicy [-InputObject] <PSImmutabilityPolicy> [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllowProtectedAppendWriteAll <Boolean>] [-AllowProtectedAppendWrite <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendImmutabilityPolicyObject
@@ -93,10 +94,11 @@ PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceG
 PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -ImmutabilityPeriod 12
 PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -ImmutabilityPeriod 9 -Etag $policy.Etag
 PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -AllowProtectedAppendWrite $true
+PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -AllowProtectedAppendWrite $false -AllowProtectedAppendWriteAll $true
 ```
 
 This command updates ImmutabilityPolicy of a Storage blob container with Storage container object 3 times:
-First to ImmutabilityPeriod 12 days without etag, then to ImmutabilityPeriod 9 days with etag, finally enabled AllowProtectedAppendWrite.
+First to ImmutabilityPeriod 12 days without etag, then to ImmutabilityPeriod 9 days with etag, then enabled AllowProtectedAppendWrite, finally enabled AllowProtectedAppendWriteAll.
 
 ### Example 4: Extend ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object
 ```
@@ -109,8 +111,25 @@ This command extend ImmutabilityPolicy of a Storage blob container, with Immutab
 
 ### -AllowProtectedAppendWrite
 This property can only be changed for unlocked time-based retention policies. 
-With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. 
-Only new blocks can be added and any existing blocks cannot be modified or deleted.
+With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
+'-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AccountName, AccountObject, ContainerObject, ImmutabilityPolicyObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowProtectedAppendWriteAll
+This property can only be changed for unlocked policies. 
+When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
+This property cannot be changed with ExtendImmutabilityPolicy API. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.
 
 ```yaml
 Type: System.Boolean
@@ -330,7 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

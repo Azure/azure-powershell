@@ -14,12 +14,15 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -89,21 +92,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if(DeleteBackupData)
                         {
+                            #region Archived RPS 
                             // Fetch RecoveryPoints in Archive Tier, if yes throw warning and confirmation prompt
                             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(Item.Id);
                             string containerUri = HelperUtils.GetContainerUri(uriDict, Item.Id);
                             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, Item.Id);
 
+                            ODataQuery<ServiceClientModel.BMSRPQueryObject> queryFilter = null;
+                            if (string.Compare(Item.BackupManagementType.ToString(), BackupManagementType.AzureWorkload.ToString()) == 0)
+                            {
+                                var restorePointQueryType = "FullAndDifferential";
+
+                                string queryFilterString = QueryBuilder.Instance.GetQueryString(new ServiceClientModel.BMSRPQueryObject()
+                                {      
+                                    RestorePointQueryType = restorePointQueryType,
+                                    ExtendedInfo = true
+                                });
+                                queryFilter = new ODataQuery<ServiceClientModel.BMSRPQueryObject>();
+                                queryFilter.Filter = queryFilterString;
+                            }                            
+
                             var rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
                                containerUri,
                                protectedItemName,
-                               null,
+                               queryFilter,
                                vaultName: vaultName,
                                resourceGroupName: resourceGroupName);
-
-                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);
-                            recoveryPointList = RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, RecoveryPointTier.VaultArchive);
                             
+                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);                            
+                            recoveryPointList = RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, RecoveryPointTier.VaultArchive);
+
+                            #endregion
+
                             if (recoveryPointList.Count != 0)
                             {
                                 bool yesToAll = Force.IsPresent;

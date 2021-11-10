@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public object Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets resource etag
+        /// </summary>
+        /// <remarks>
+        /// A unique read-only string that changes whenever the resource is updated.
+        /// </remarks>
+        public string Etag { get; set; }
+
+        /// <summary>
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
@@ -242,5 +250,73 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// The fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
         /// </value>
         public string UnixPermission { get; set; }
+
+        /// <summary>
+        /// Gets or sets CloneProgress
+        /// </summary>
+        /// <value>
+        /// When a volume is being restored from another volume's snapshot, will show the percentage completion of this cloning process. When this value is empty/null there is no cloning process currently happening on this volume.
+        /// This value will update every 5 minutes during cloning.
+        /// </value>
+        public int? CloneProgress { get; set; }
+
+        /// <summary>
+        /// Gets or sets AvsDataStore
+        /// </summary>
+        /// <value>
+        /// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose (Enabled, Disabled)
+        /// </value>
+        public string AvsDataStore { get; set; }
+
+        /// <summary>
+        /// Gets or sets IsDefaultQuotaEnabled
+        /// </summary>
+        /// <value>
+        /// Specifies if default quota is enabled for the volume
+        /// </value>
+        public bool? IsDefaultQuotaEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets DefaultUserQuotaInKiBs
+        /// </summary>
+        /// <value>
+        /// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies
+        /// </value>
+        public long? DefaultUserQuotaInKiBs { get; set; }
+
+        /// <summary>
+        /// Gets or sets DefaultGroupQuotaInKiBs
+        /// </summary>
+        /// <value>
+        /// Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies
+        /// </value>
+        public long? DefaultGroupQuotaInKiBs { get; set; }
+
+        /// <summary>
+        /// Gets or sets NetworkFeatures
+        /// </summary>
+        /// <value>
+        /// Basic network, or Standard features available to the volume (Basic, Standard).
+        /// </value>
+        public string NetworkFeatures { get; set; }
+
+        /// <summary>
+        /// Gets or sets NetworkSiblingSetId
+        /// </summary>
+        /// <value>
+        /// Network Sibling Set ID for the group of volumes sharing networking resources example (9760acf5-4638-11e7-9bdb-020073ca3333).
+        /// </value>
+        public string NetworkSiblingSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets NetworkFeatures
+        /// </summary>
+        /// <value>
+        /// Provides storage to network proximity information for the volume (Default, T1, T2).
+        /// Default: Basic storage to network connectivity
+        /// T1: Standard T1 storage to network connectivity.
+        /// T2: Standard T2 storage to network connectivity.
+        /// </value>
+        public string StorageToNetworkProximity { get; set; }
     }
 }

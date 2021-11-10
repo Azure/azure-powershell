@@ -24,7 +24,7 @@ Get-AzDataShare -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShare** cmdlet gets information about data shares in an Azure data share accoount.
+The **Get-AzDataShare** cmdlet gets information about data shares in an Azure data share account.
 If you specify the name of a data share, this cmdlet gets information about that data share.
 If you do not specify a name, this cmdlet gets information about all of the data shares in an Azure data share account.
 

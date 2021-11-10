@@ -35,12 +35,13 @@ using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [SupportsSubscriptionId]
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
-
         private VaultManagementClient _keyVaultManagementClient;
         private DataServiceCredential _dataServiceCredential;
         public VaultManagementClient KeyVaultManagementClient

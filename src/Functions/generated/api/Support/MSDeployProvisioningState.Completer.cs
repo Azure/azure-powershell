@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "accepted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("accepted", "accepted", global::System.Management.Automation.CompletionResultType.ParameterValue, "accepted");
+                yield return new global::System.Management.Automation.CompletionResult("'accepted'", "accepted", global::System.Management.Automation.CompletionResultType.ParameterValue, "accepted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "running".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("running", "running", global::System.Management.Automation.CompletionResultType.ParameterValue, "running");
+                yield return new global::System.Management.Automation.CompletionResult("'running'", "running", global::System.Management.Automation.CompletionResultType.ParameterValue, "running");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("succeeded", "succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "succeeded");
+                yield return new global::System.Management.Automation.CompletionResult("'succeeded'", "succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "succeeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("failed", "failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "failed");
+                yield return new global::System.Management.Automation.CompletionResult("'failed'", "failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "canceled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("canceled", "canceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "canceled");
+                yield return new global::System.Management.Automation.CompletionResult("'canceled'", "canceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "canceled");
             }
         }
     }

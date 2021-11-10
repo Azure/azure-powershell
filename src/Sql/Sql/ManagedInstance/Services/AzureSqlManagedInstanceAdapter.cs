@@ -174,7 +174,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
-                KeyId = model.KeyId
+                KeyId = model.KeyId,
+                ZoneRedundant = model.ZoneRedundant
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -267,6 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             }
             managedInstance.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             managedInstance.KeyId = resp.KeyId;
+            managedInstance.ZoneRedundant = resp.ZoneRedundant;
 
             return managedInstance;
         }

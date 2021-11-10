@@ -18,15 +18,56 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.12.0
+* Upgraded Azure.Storage.Blobs to 12.10.0
+* Upgraded Azure.Storage.Files.Shares to 12.8.0
+* Upgraded Azure.Storage.Files.DataLake to 12.8.0
+* Upgraded Azure.Storage.Queues to 12.8.0
+* Supported upgrade storage account to enable HierarchicalNamespace
+    -  `Invoke-AzStorageAccountHierarchicalNamespaceUpgrade`
+    -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
+* Supported AccessTierInferred, Tags in blob inventory policy schema
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Supported create/update storage account with PublicNetworkAccess enabled/disabled 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage blob container with RootSquash
+    - `New-AzRmStorageContainer`
+    - `Update-AzRmStorageContainer`
+* Supported AllowProtectedAppendWriteAll in set container Immutability Policy, and add container LegalHold
+    - `Set-AzRmStorageContainerImmutabilityPolicy`
+    - `Add-AzRmStorageContainerLegalHold`
+
+## Version 3.11.0
+* Supported get/set blob tags on a specific blob
+    -  `Get-AzStorageBlobTag`
+    -  `Set-AzStorageBlobTag`
+* Supported create destination blob with specific blob tags while upload/copy Blob
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
+* Supported list blobs across containers with a blob tag filter sql expression
+    -  `Get-AzStorageBlobByTag`
+* Supported list blobs inside a container and include Blob Tags
+    -  `Get-AzStorageBlob`
+* Supported run blob operation with blob tag condition, and fail the cmdlet when blob tag condition not match
+    -  `Get-AzStorageBlob`
+    -  `Get-AzStorageBlobContent`
+    -  `Get-AzStorageBlobTag`
+    -  `Remove-AzStorageBlob`
+    -  `Set-AzStorageBlobContent`
+    -  `Set-AzStorageBlobTag`
+    -  `Start-AzStorageBlobCopy`
+    -  `Stop-AzStorageBlobCopy`
 * Generate blob sas token with new API version
     -  `New-AzStorageBlobSASToken` 
     -  `New-AzStorageContainerSASToken` 
     -  `New-AzStorageAccountSASToken`
-* Fixed blob copy failure with OAuth credentail when client and server has time difference [#15644]
+* Fixed blob copy failure with OAuth credential when client and server has time difference [#15644]
     -  `Copy-AzStorageBlob` 
-* Fixed remove datalakegen2 item fail with readonly SAS token
+* Fixed remove Data Lake Gen2 item fail with readonly SAS token
     -  `Remove-AzDataLakeGen2Item` 
-* Revised destination existing check in move datalakegen2 item
+* Revised destination existing check in move Data Lake Gen2 item
     -  `Move-AzDataLakeGen2Item` 
 
 ## Version 3.10.0

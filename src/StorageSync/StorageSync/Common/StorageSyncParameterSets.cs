@@ -76,5 +76,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The change detection resource identifier and path parameter set
         /// </summary>
         public const string ChangeDetectionResourceIdAndPathParameterSet = "ResourceIdAndPathParameterSet";
+
+        /// <summary>
+        /// The full share change detection string parameter set
+        /// </summary>
+        public const string ChangeDetectionFullShareStringParameterSet = "FullShareStringParameterSet";
+
+        /// <summary>
+        /// The full share change detection object parameter set
+        /// </summary>
+        public const string ChangeDetectionFullShareObjectParameterSet = "FullShareObjectParameterSet";
+
+        /// <summary>
+        /// The full share change detection resource identifier parameter set
+        /// </summary>
+        public const string ChangeDetectionFullShareResourceIdParameterSet = "FullShareResourceIdParameterSet";
     }
 }

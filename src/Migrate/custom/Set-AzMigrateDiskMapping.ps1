@@ -47,7 +47,7 @@ function Set-AzMigrateDiskMapping {
         }
 
         if ($DiskName -notmatch "^[^_\W][a-zA-Z0-9_\-\.]{0,79}(?<![-.])$") {
-             throw "The disk name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
+            throw "The disk name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
         }
 
         $DiskObject.TargetDiskName = $DiskName

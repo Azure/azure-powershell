@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <summary>SessionHost's domain trust relationship lost</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status DomainTrustRelationshipLost = @"DomainTrustRelationshipLost";
 
-        /// <summary>FSlogix is in an unhealthy state on the session host.</summary>
+        /// <summary>FSLogix is in an unhealthy state on the session host.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status FsLogixNotHealthy = @"FSLogixNotHealthy";
 
         /// <summary>

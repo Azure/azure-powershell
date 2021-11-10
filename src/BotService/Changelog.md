@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.2
+* Fixed issue where New-AzBotService fails to convert ApplicationSecret to plain text on Windows PowerShell [#16131]
+
+## Version 0.3.1
 * Fixed the issue that `New-AzBotService` will fail in WebApp mode. [#15608]
 
 ## Version 0.3.0

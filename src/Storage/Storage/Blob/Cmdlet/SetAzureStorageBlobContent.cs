@@ -147,6 +147,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         private Hashtable BlobMetadata = null;
 
+        [Parameter(HelpMessage = "Blob Tags", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag
+        {
+            get
+            {
+                return BlobTag;
+            }
+
+            set
+            {
+                BlobTag = value;
+            }
+        }
+        private Hashtable BlobTag = null;
+
         [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false)]
         public PremiumPageBlobTier PremiumPageBlobTier
         {
@@ -196,6 +212,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected override bool UseTrack2Sdk()
         {
+            if (this.BlobTag != null)
+            {
+                return true;
+            }
             if (!string.IsNullOrEmpty(EncryptionScope))
             {
                 return true;
@@ -458,6 +478,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         outputBlobClient = blobClient;
                         StorageTransferOptions trasnferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
                         BlobUploadOptions uploadOptions = new BlobUploadOptions();
+                        if (this.BlobTag != null)
+                        {
+                            uploadOptions.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                        }
                         uploadOptions.Metadata = metadata;
                         uploadOptions.HttpHeaders = blobHttpHeaders;
                         uploadOptions.Conditions = this.BlobRequestConditions;
@@ -484,6 +508,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             pageblobClient = GetTrack2PageBlobClient(blob, localChannel.StorageContext, options);
                             outputBlobClient = pageblobClient;
                             PageBlobCreateOptions createOptions = new PageBlobCreateOptions();
+                            if (this.BlobTag != null)
+                            {
+                                createOptions.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                            }
                             createOptions.Metadata = metadata;
                             createOptions.HttpHeaders = blobHttpHeaders;
                             createOptions.Conditions = this.PageBlobRequestConditions;
@@ -494,6 +522,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             appendblobClient = GetTrack2AppendBlobClient(blob, localChannel.StorageContext, options);
                             outputBlobClient = appendblobClient;
                             AppendBlobCreateOptions createOptions = new AppendBlobCreateOptions();
+                            if (this.BlobTag != null)
+                            {
+                                createOptions.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                            }
                             createOptions.Metadata = metadata;
                             createOptions.HttpHeaders = blobHttpHeaders;
                             createOptions.Conditions = this.AppendBlobRequestConditions;

@@ -6,14 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Extensions;
+    using System;
 
     /// <summary>Update an iSCSI Target.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDiskPoolIscsiTarget_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Description(@"Update an iSCSI Target.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Generated]
     public partial class UpdateAzDiskPoolIscsiTarget_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -85,10 +85,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>Backing field for <see cref="IscsiTargetUpdatePayloadBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetUpdate _iscsiTargetUpdatePayloadBody= new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetUpdate();
+        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdate _iscsiTargetUpdatePayloadBody= new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetUpdate();
 
         /// <summary>Payload for iSCSI Target update requests.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetUpdate IscsiTargetUpdatePayloadBody { get => this._iscsiTargetUpdatePayloadBody; set => this._iscsiTargetUpdatePayloadBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdate IscsiTargetUpdatePayloadBody { get => this._iscsiTargetUpdatePayloadBody; set => this._iscsiTargetUpdatePayloadBody = value; }
 
         /// <summary>List of LUNs to be exposed through iSCSI Target.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -99,8 +99,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         ReadOnly = false,
         Description = @"List of LUNs to be exposed through iSCSI Target.",
         SerializedName = @"luns",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiLun) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiLun[] Lun { get => IscsiTargetUpdatePayloadBody.Lun ?? null /* arrayOf */; set => IscsiTargetUpdatePayloadBody.Lun = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[] Lun { get => IscsiTargetUpdatePayloadBody.Lun ?? null /* arrayOf */; set => IscsiTargetUpdatePayloadBody.Lun = value; }
+
+        /// <summary>
+        /// Azure resource id. Indicates if this resource is managed by another Azure resource.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource id. Indicates if this resource is managed by another Azure resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource id. Indicates if this resource is managed by another Azure resource.",
+        SerializedName = @"managedBy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedBy { get => IscsiTargetUpdatePayloadBody.ManagedBy ?? null; set => IscsiTargetUpdatePayloadBody.ManagedBy = value; }
+
+        /// <summary>List of Azure resource ids that manage this resource.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Azure resource ids that manage this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Azure resource ids that manage this resource.",
+        SerializedName = @"managedByExtended",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ManagedByExtended { get => IscsiTargetUpdatePayloadBody.ManagedByExtended ?? null /* arrayOf */; set => IscsiTargetUpdatePayloadBody.ManagedByExtended = value; }
 
         /// <summary>
         /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -177,8 +202,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         ReadOnly = false,
         Description = @"Access Control List (ACL) for an iSCSI Target; defines LUN masking policy",
         SerializedName = @"staticAcls",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IAcl) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IAcl[] StaticAcls { get => IscsiTargetUpdatePayloadBody.StaticAcls ?? null /* arrayOf */; set => IscsiTargetUpdatePayloadBody.StaticAcls = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[] StaticAcl { get => IscsiTargetUpdatePayloadBody.StaticAcls ?? null /* arrayOf */; set => IscsiTargetUpdatePayloadBody.StaticAcls = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -203,24 +228,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -447,12 +472,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -469,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, DiskPoolName=DiskPoolName, Name=Name, body=IscsiTargetUpdatePayloadBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -487,12 +512,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget> response)
         {
             using( NoSynchronizationContext )
             {
@@ -504,7 +529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget
                 WriteObject((await response));
             }
         }

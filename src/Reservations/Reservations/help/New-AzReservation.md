@@ -31,7 +31,7 @@ PS C:\> New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a
 -BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
 ```
 
-After calculate price, customer could purcahse that RI provide by calculatePrice
+After calculate price, customer could purchase that RI provide by calculatePrice
 
 ## PARAMETERS
 

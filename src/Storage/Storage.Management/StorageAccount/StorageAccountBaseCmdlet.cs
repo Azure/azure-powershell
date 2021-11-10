@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageAccountRuleNounStr = StorageAccountNounStr + "NetworkRule";
         protected const string StorageAccountRuleSetNounStr = StorageAccountRuleNounStr + "Set";
         protected const string StorageAccountFailoverNounStr = StorageAccountNounStr + "Failover";
+        protected const string StorageAccountHierarchicalNamespaceUpgradeNounStr = StorageAccountNounStr + "HierarchicalNamespaceUpgrade";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";

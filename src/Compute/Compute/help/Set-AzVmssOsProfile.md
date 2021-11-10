@@ -79,8 +79,7 @@ Specifies the administrator account name to use for all the virtual machine inst
 **Minimum-length (Linux):** 1  character <br>
 **Max-length (Linux):** 64 characters <br>
 **Max-length (Windows):** 20 characters  <br>
-<li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).<br>
-<li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+<li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/devops/organizations/settings/naming-restrictions).
 
 ```yaml
 Type: System.String

@@ -380,6 +380,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.ManagedService:
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
+                    case "ClientAssertion":
                         token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint));
                         break;
                     default:
@@ -544,8 +545,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                         {
                             return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
                         }
-
-                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, promptAction);
+                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
                     }
 
                     return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
@@ -565,6 +565,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     return new ManagedServiceIdentityParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 case AzureAccount.AccountType.AccessToken:
                     return new AccessTokenParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
+                case "ClientAssertion":
+                    password = password ?? ConvertToSecureString(account.GetProperty("ClientAssertion"));
+                    return new ClientAssertionParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password);
                 default:
                     return null;
             }

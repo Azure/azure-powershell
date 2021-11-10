@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     try
                     {
-                        kvc = WebsitesClient.CreateCertificate(ResourceGroupName, CertName, certificate);
+                        kvc = WebsitesClient.CreateCertificate(ResourceGroupName, KeyVaultName +'-'+CertName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         }
                     }
                 }
-                WriteObject(kvc);
+                WriteObject(new PSCertificate(kvc));
             }
 
         }

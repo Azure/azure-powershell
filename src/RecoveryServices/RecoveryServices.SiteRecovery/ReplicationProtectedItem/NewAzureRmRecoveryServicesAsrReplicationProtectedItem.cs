@@ -411,6 +411,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVirtualMachineScaleSetId { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource ID of capacity reservation group to failover this virtual machine to.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the capacity reservation group Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the capacity reservation group Id to be used by the failover Vm in target recovery region.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryCapacityReservationGroupId { get; set; }
+
+        /// <summary>
         /// Gets or sets ID of the AvailabilitySet to recover the machine to in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
@@ -928,7 +936,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoverySubnetName = this.RecoveryAzureSubnetName,
                 RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
                 RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
-                RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId
+                RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
+                RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId
             };
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))
@@ -1081,7 +1090,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .CustomDetails;
             var processServer = fabricSpecificDetails
                 .ProcessServers
-                .Where(x => x.Name == this.ApplianceName)
+                .Where(x => x.Name.Equals(this.ApplianceName, StringComparison.OrdinalIgnoreCase))
                 .FirstOrDefault();
             if (processServer == null)
             {
@@ -1104,7 +1113,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var siteId = this.ProtectableItem.FabricSiteId;
             var runAsAccount =
                 this.FabricDiscoveryClient.GetAzureSiteRecoveryRunAsAccounts(siteId)
-                .Where(x => x.Properties.DisplayName == this.CredentialsToAccessVm)
+                .Where(x => x.Properties.DisplayName.Equals(
+                        this.CredentialsToAccessVm, StringComparison.OrdinalIgnoreCase ) &&
+                    x.Properties.ApplianceName.Equals(
+                        this.ApplianceName, StringComparison.OrdinalIgnoreCase))
                 .FirstOrDefault();
             if (runAsAccount == null)
             {
@@ -1112,6 +1124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.RunAsAccountNotFound,
                         this.CredentialsToAccessVm,
+                        this.ApplianceName,
                         siteId));
             }
 

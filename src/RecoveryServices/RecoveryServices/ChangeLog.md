@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for capacity reservation for Azure to Azure provider.
+
+## Version 4.8.0
+* Azure Backup fixed issues with StorageConfig
+* Azure Backup added NodesList and AutoProtectionPolicy to Get-AzRecoveryServicesBackupProtectableItem Cmdlets.
+* Azure Backup fixed GetItemsForContainerParamSet to support fetching the MAB backup item.
+* Azure Backup fixed Get-AzRecoveryServicesBackupContainer to support BackupManagementType MAB instead of MARS.
+* Added breaking change warning: `Get-AzRecoveryServicesBackupJob`, `Get-AzRecoveryServicesBackupContainer` and `Get-AzRecoveryServicesBackupProtectableItem` commands will only support `BackupManagementType MAB` instead of `MARS` alias, changes will take effect from upcoming breaking release.
+* Added support for ZRS disk type for Azure to Azure replication.
+* Added Availability zone information in replicated protected item response for Azure to Azure replication.
+
+## Version 4.7.0
+* Azure Site Recovery bug fixes for VMware to Azure Reprotect, Update policy and Disable scenarios.
+* Azure Backup added the support for UserAssigned MSI in RecoveryServices Vault.
+
+## Version 4.6.0
+* Azure Site Recovery multi appliance support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
+* Azure Backup fixed targetPhysicalPath issue with SQL CRR
+* Azure Backup fixed disable protection for SQL workload
+* Azure Backup resolved bug in setting CMK properties in latest release
+* Azure Backup removed special characters from register-azrecoveryservicesbackupcontainer command help text
 
 ## Version 4.5.0
 * Added MSI based restore for managed virtual machines.

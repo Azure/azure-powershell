@@ -19,8 +19,40 @@
 --->
 
 ## Upcoming Release
+* Added optional parameter `-IsSecuritySite` to the following cmdlet:
+    - `New-AzVpnSite`
+* Support for new Match Variables in WAF Exclusions
+* Onboard Virtual Network Encryption to Virtual Network Cmdlets
+* Added new cmdlets to support Per Rule Exclusions for Application Gateway WAF
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet`
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup`
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRule`
+    - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
+        - `New-AzApplicationGatewayFirewallPolicyExclusion`
+
+## Version 4.12.0
+* Support for Sku, ScaleUnits parameters of BastionHost resource.
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Onboard Azure Resource Manager to Private Link Common Cmdlets
+* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`
+* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
+    - `New-AzP2sVpnGateway`
+* Added new cmdlets for HubBgpConnection child resource of VirtualHub.
+    - `Get-AzVirtualHubBgpConnection`
+    - `New-AzVirtualHubBgpConnection`
+    - `Update-AzVirtualHubBgpConnection`
+    - `Remove-AzVirtualHubBgpConnection`
+* Onboard Azure HDInsight to Private Link Common Cmdlets
+
+## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
     - `New-AzLoadBalancerBackendAddressConfig`
+* Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
 
 ## Version 4.10.0
 * Added public ip address as an optional parameter to create route server

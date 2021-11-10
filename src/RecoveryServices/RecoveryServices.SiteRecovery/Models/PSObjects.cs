@@ -782,9 +782,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryPointHistoryInMinutes = (int)details.RecoveryPointHistoryInMinutes,
                         CrashConsistentFrequencyInMinutes =
                             (int)details.CrashConsistentFrequencyInMinutes,
-                        MultiVmSyncStatus = details.EnableMultiVmSync.Equals(Constants.True) ?
-                            Constants.Enable :
-                            Constants.Disable
+                        MultiVmSyncStatus = 
+                            details.EnableMultiVmSync.Equals(
+                                Constants.True, StringComparison.OrdinalIgnoreCase) ?
+                                Constants.Enable :
+                                Constants.Disable
                     };
 
                 this.ReplicationProviderSettings = replicationProviderSettings;
@@ -3533,6 +3535,92 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    ///     InMageRcm SDS discovered vm details.
+    /// </summary>
+    public class ASRInMageRcmDiscoveredProtectedVmDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRInMageRcmDiscoveredProtectedVmDetails" />
+        ///     class.
+        /// </summary>
+        public ASRInMageRcmDiscoveredProtectedVmDetails(InMageRcmDiscoveredProtectedVmDetails details)
+        {
+            this.VCenterId = details.VCenterId;
+            this.VCenterFqdn = details.VCenterFqdn;
+            this.IpAddresses = details.IpAddresses.ToList();
+            this.Datastores = details.Datastores.ToList();
+            this.PowerStatus = details.PowerStatus;
+            this.VmwareToolsStatus = details.VmwareToolsStatus;
+            this.VmFqdn = details.VmFqdn;
+            this.OsName = details.OsName;
+            this.IsDeleted = details.IsDeleted;
+            this.CreatedTimestamp = details.CreatedTimestamp;
+            this.UpdatedTimestamp = details.UpdatedTimestamp;
+            this.LastDiscoveryTimeInUtc = details.LastDiscoveryTimeInUtc;
+        }
+
+        /// <summary>
+        ///     Gets or sets the vCenter Id.
+        /// </summary>
+        public string VCenterId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the vCenter fqdn.
+        /// </summary>
+        public string VCenterFqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of IP addresses.
+        /// </summary>
+        public List<string> IpAddresses { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of datastores.
+        /// </summary>
+        public List<string> Datastores { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the power status.
+        /// </summary>
+        public string PowerStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VMware tools status.
+        /// </summary>
+        public string VmwareToolsStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fqdn of the vm.
+        /// </summary>
+        public string VmFqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the vm OS name.
+        /// </summary>
+        public string OsName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the SDS created timestamp.
+        /// </summary>
+        public DateTime? CreatedTimestamp { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the SDS updated timestamp.
+        /// </summary>
+        public DateTime? UpdatedTimestamp { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether the VM is deleted.
+        /// </summary>
+        public bool? IsDeleted { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last time when SDS information discovered in SRS.
+        /// </summary>
+        public DateTime? LastDiscoveryTimeInUtc { get; set; }
+    }
+
+    /// <summary>
     ///     InMageRcmFailback mobility agent details.
     /// </summary>
     public class ASRInMageRcmFailbackMobilityAgentDetails
@@ -3598,6 +3686,93 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets a value indicating whether agent is upgradeable or not.
         /// </summary>
         public string IsUpgradeable { get; set; }
+    }
+
+    /// <summary>
+    ///     InMageRcmFailback SDS discovered vm details.
+    /// </summary>
+    public class ASRInMageRcmFailbackDiscoveredProtectedVmDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the
+        ///     <see cref="ASRInMageRcmFailbackDiscoveredProtectedVmDetails" /> class.
+        /// </summary>
+        public ASRInMageRcmFailbackDiscoveredProtectedVmDetails(
+            InMageRcmFailbackDiscoveredProtectedVmDetails details)
+        {
+            this.VCenterId = details.VCenterId;
+            this.VCenterFqdn = details.VCenterFqdn;
+            this.IpAddresses = details.IpAddresses.ToList();
+            this.Datastores = details.Datastores.ToList();
+            this.PowerStatus = details.PowerStatus;
+            this.VmwareToolsStatus = details.VmwareToolsStatus;
+            this.VmFqdn = details.VmFqdn;
+            this.OsName = details.OsName;
+            this.IsDeleted = details.IsDeleted;
+            this.CreatedTimestamp = details.CreatedTimestamp;
+            this.UpdatedTimestamp = details.UpdatedTimestamp;
+            this.LastDiscoveryTimeInUtc = details.LastDiscoveryTimeInUtc;
+        }
+
+        /// <summary>
+        ///     Gets or sets the vCenter Id.
+        /// </summary>
+        public string VCenterId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the vCenter fqdn.
+        /// </summary>
+        public string VCenterFqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of IP addresses.
+        /// </summary>
+        public List<string> IpAddresses { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of datastores.
+        /// </summary>
+        public List<string> Datastores { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the power status.
+        /// </summary>
+        public string PowerStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VMware tools status.
+        /// </summary>
+        public string VmwareToolsStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fqdn of the vm.
+        /// </summary>
+        public string VmFqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the vm OS name.
+        /// </summary>
+        public string OsName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the SDS created timestamp.
+        /// </summary>
+        public DateTime? CreatedTimestamp { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the SDS updated timestamp.
+        /// </summary>
+        public DateTime? UpdatedTimestamp { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether the VM is deleted.
+        /// </summary>
+        public bool? IsDeleted { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last time when SDS information discovered in SRS.
+        /// </summary>
+        public DateTime? LastDiscoveryTimeInUtc { get; set; }
     }
 
     /// <summary>

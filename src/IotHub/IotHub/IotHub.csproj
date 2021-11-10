@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Devices" Version="1.22.0" />
     <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.27.0" />
-    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
   </ItemGroup>
 

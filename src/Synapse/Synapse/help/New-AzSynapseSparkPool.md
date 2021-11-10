@@ -16,7 +16,7 @@ Creates a Synapse Analytics Spark pool.
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
- [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,15 +24,15 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
- -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndEnableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
- [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,8 +40,8 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
- -SparkVersion <String> [-LibraryRequirementsFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,13 +65,20 @@ This command creates an Azure Synapse Analytics Spark pool with auto-scale enabl
 
 ### Example 3
 ```powershell
+PS C:\> New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small -SparkConfigFilePath "c:\sparkproperties.txt"
+```
+
+This command creates an Azure Synapse Analytics Spark pool  and upload a spark configuration file.
+
+### Example 4
+```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
 ```
 
 This command creates an Azure Synapse Analytics Spark pool through pipeline.
 
-### Example 4
+### Example 5
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -SparkVersion 2.4 -NodeSize Small
@@ -173,21 +180,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LibraryRequirementsFilePath
-Environment configuration file ("PIP freeze" output).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of Synapse Spark pool.
 
@@ -241,6 +233,21 @@ Resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndDisableAutoScaleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkConfigFilePath
+Spark pool properties configuration file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

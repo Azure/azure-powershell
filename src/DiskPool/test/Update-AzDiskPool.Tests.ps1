@@ -13,21 +13,21 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzDiskPool' {
     It 'UpdateExpanded' {
-        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
-        $diskPool.Disk.Count | Should -Be 1 
-
-        $disks = @()
-        $diskPool = Update-AzDiskPool -Name $env.diskPool1 -ResourceGroupName $env.resourceGroup -DiskId $disks 
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
         $diskPool.Disk.Count | Should -Be 0
+
+        $disks = @($env.diskId2)
+        $diskPool = Update-AzDiskPool -Name $env.diskPool5 -ResourceGroupName $env.resourceGroup -DiskId $disks 
+        $diskPool.Disk.Count | Should -Be 1
     }
     
     It 'UpdateViaIdentityExpanded' {
-        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
-        $diskPool.Disk.Count | Should -Be 0 
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
+        $diskPool.Disk.Count | Should -Be 1 
         
-        $disks = @()
-        $disks += @($env.diskId1)
+        $disks = @($env.diskId2)
+        $disks += @($env.diskId3)
         $diskPool = Update-AzDiskPool -InputObject $diskPool -DiskId $disks
-        $diskPool.Disk.Count | Should -Be 1
+        $diskPool.Disk.Count | Should -Be 2
     }
 }

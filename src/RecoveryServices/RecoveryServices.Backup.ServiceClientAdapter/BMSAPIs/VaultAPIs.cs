@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Azure Resource Storage response object.</returns>  
         public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
         {
-            return BmsAdapter.Client.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
+            return BmsAdapter.Client.BackupResourceStorageConfigsNonCRR.GetWithHttpMessagesAsync(
                 vaultName, resouceGroupName).Result.Body;
         }
 
@@ -82,7 +82,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return BmsAdapter.Client.BackupResourceEncryptionConfigs.UpdateWithHttpMessagesAsync(
                 vaultName, resouceGroupName, encryptionConfigResource).Result;
         }
-        
+
+        /// <summary>  
+        /// Method to Update Azure Recovery Services Vault Encryption Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="encryptionConfigResource">update encryption config</param>  
+        /// <returns>Azure Resource Encryption response object.</returns>  
+        public RestAzureNS.AzureOperationResponse UpdateVaultEncryption(string resouceGroupName, string vaultName,
+            BackupResourceEncryptionConfigResource encryptionConfigResource)
+        {
+            return BmsAdapter.Client.BackupResourceEncryptionConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resouceGroupName, encryptionConfigResource).Result;
+        }
+
         /// <summary>  
         /// Method to get Recovery Services Vault.
         /// </summary>  
@@ -96,6 +110,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             ARSVault vault = new ARSVault(response);
             return vault;
+        }
+
+        /// <summary>  
+        /// Method to create or update Recovery Services Vault.
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="patchVault">patch vault object to patch the recovery services Vault</param>
+        /// <returns>Azure Recovery Services Vault.</returns> 
+        public Vault UpdateRSVault(string resouceGroupName, string vaultName, PatchVault patchVault)
+        {
+            var response = RSAdapter.Client.Vaults.UpdateWithHttpMessagesAsync(resouceGroupName, vaultName, patchVault).Result;
+            return response.Body;
         }
 
         /// <summary>

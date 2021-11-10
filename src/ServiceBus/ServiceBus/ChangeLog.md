@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to `New-AzServiceBusNamespace` and `Set-AzServiceBusNamespace` 
+
 ## Version 1.5.0
 * Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
 

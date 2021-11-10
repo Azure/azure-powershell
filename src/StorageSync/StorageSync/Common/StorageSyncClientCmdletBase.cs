@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
         protected override void BeginProcessing()
         {
+            base.BeginProcessing();
             InitializeComponent();
         }
 

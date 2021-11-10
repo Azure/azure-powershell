@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
-        [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will repleace GroupName with GroupId to make it more clear.")]
+        [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will replace GroupName with GroupId to make it more clear.")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.ParentObject)]
