@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         }).Value;
                     result.AddRange(adObjects.Select(o => o.ToPSADObject()));
                 }
-                catch (CloudException ce) when (objectIds.Count == 1 && ce.Request.RequestUri.AbsolutePath.StartsWith("//"))
+                catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe) when (objectIds.Count == 1 && oe.Request.RequestUri.AbsolutePath.StartsWith("//"))
                 {
                     // absorb malformed string
                     // this is a quirk from how strings are formed when requesting an RA from an SP

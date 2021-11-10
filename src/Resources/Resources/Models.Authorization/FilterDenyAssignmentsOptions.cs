@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class FilterDenyAssignmentsOptions
     {
-        public Guid DenyAssignmentId { get; set; }
+        public string DenyAssignmentId { get; set; }
 
         public string DenyAssignmentName { get; set; }
 

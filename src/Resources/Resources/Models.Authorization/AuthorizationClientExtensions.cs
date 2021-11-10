@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         private const string AllPrincipals = "All Principals";
         private const string SystemDefined = "SystemDefined";
         public const string CustomRole = "CustomRole";
-        public const string AuthorizationDeniedException = "Authorization_RequestDenied";
         public const string DeletedObject = "Unknown";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
@@ -135,7 +134,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
             }
-            catch (CloudException ce) when (IsAuthorizationDeniedException(ce))
+            catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe) when (OdataHelper.IsAuthorizationDeniedException(oe))
             {
                 throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
             }
@@ -144,7 +143,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 var psda = new PSDenyAssignment()
                 {
-                    Id = da.Id.GuidFromFullyQualifiedId(),
+                    Id = da.Id,
                     DenyAssignmentName = da.DenyAssignmentName,
                     Description = da.Description,
                     Actions = new List<string>(da.Permissions.SelectMany(p => p.Actions)),
@@ -177,14 +176,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
             }
-            catch (CloudException ce) when (IsAuthorizationDeniedException(ce))
+            catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe) when (OdataHelper.IsAuthorizationDeniedException(oe))
             {
                 throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
             }
 
             var psda = new PSDenyAssignment()
             {
-                Id = assignment.Id.GuidFromFullyQualifiedId(),
+                Id = assignment.Id,
                 DenyAssignmentName = assignment.DenyAssignmentName,
                 Description = assignment.Description,
                 Actions = new List<string>(assignment.Permissions.SelectMany(p => p.Actions)),
@@ -245,7 +244,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
             }
-            catch (CloudException ce) when (IsAuthorizationDeniedException(ce))
+            catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe) when (OdataHelper.IsAuthorizationDeniedException(oe))
             {
                 throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
             }
@@ -305,7 +304,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         ConditionVersion = assignment.ConditionVersion,
                     });
                 }
-                else if (adObject is PSErrorHelperObject && ((PSErrorHelperObject)adObject).ErrorType == ErrorTypeEnum.MalformedQuery)
+                else if (adObject is PSErrorHelperObject errorHelperObject && errorHelperObject.ErrorType == ErrorTypeEnum.MalformedQuery)
                 {
                     // swallow the previously handled error
                     psAssignments.Add(new PSRoleAssignment()
@@ -314,7 +313,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        ObjectType = assignment.Type,
+                        // No idea about the object type in exception scenario
+                        // ObjectType = assignment.Type
                         Description = assignment.Description,
                         Condition = assignment.Condition,
                         ConditionVersion = assignment.ConditionVersion,
@@ -353,22 +353,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 Scope = AuthorizationHelper.GetSubscriptionScope(currentSubscriptionId),
                 ObjectType = classicAdministrator.Type ?? "User"
             };
-        }
-
-        private static string GuidFromFullyQualifiedId(this string Id)
-        {
-            return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
-        }
-
-        private static bool IsAuthorizationDeniedException(CloudException ce)
-        {
-            if (ce.Response != null && ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
-                ce.Error != null && ce.Error.Code != null && string.Equals(ce.Error.Code, AuthorizationDeniedException, StringComparison.OrdinalIgnoreCase))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

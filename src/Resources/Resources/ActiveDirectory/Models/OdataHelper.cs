@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Net;
 using System.Web;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -22,5 +24,19 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             return HttpUtility.UrlDecode(odataQuery.Filter);
         }
+
+        public static bool IsAuthorizationDeniedException(Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe)
+        {
+            if (oe.Response != null && oe.Response.StatusCode == HttpStatusCode.Forbidden &&
+                oe.Body.Error != null && oe.Body.Error.Code != null && string.Equals(oe.Body.Error.Code, AuthorizationDeniedException, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public const string AuthorizationDeniedException = "Authorization_RequestDenied";
+
     }
 }
