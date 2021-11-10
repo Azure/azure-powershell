@@ -47,6 +47,7 @@ function Test-TableCRUD
 		# get table that does not exist 
 		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound} 'NotFound'
 
+		# remove new WS that was used for the test
 		Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName -force
 	}
 	finally

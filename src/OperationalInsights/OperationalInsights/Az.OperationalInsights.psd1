@@ -125,6 +125,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Get-AzOperationalInsightsDeletedWorkspace', 
                'Restore-AzOperationalInsightsWorkspace',
                'Get-AzOperationalInsightsTable',
+               # 'Set-AzOperationalInsightsTable', curently disabled due to backend 
                'Get-AzOperationalInsightsOperation',
                'Get-AzOperationalInsightsDataExport',
                'New-AzOperationalInsightsDataExport',
