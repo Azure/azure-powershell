@@ -54,7 +54,7 @@ require:
 # lock the commit
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2021-08-27/kusto.json
-
+branch: 2995d5c7da8f7626449bff01d8a7d306df1e6e6d
 ```
 
 > Names
