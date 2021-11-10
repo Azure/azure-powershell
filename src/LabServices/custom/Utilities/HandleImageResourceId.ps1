@@ -7,10 +7,29 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.internal
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+#This script uses regex to confirm lab plan resource Id
+[Microsoft.Azure.PowerShell.Cmdlets.LabServices.DoNotExportAttribute()]
+param(
+    [Parameter()]
+    [System.String]
+    $ResourceId
+)
 
-$targetScript = (Join-Path -Path $PSScriptRoot -ChildPath "InterceptSurvey.ps1")
-& $targetScript "Az.Tools.Predictor-Preview4" 0
+& $PSScriptRoot\VerificationRegex.ps1
+
+if ($ResourceId -match $imageRegex){
+    return @{
+        "SubscriptionId" = $($Matches['subscriptionId'])
+        "ResourceGroupName" = $($Matches['resourceGroupName'])
+        "LabPlanName" = $($Matches['labPlanName'])
+        "ImageName" = $($Matches['imageName'])
+    }
+} else {
+    #Can't throw or error build will fail.
+  return $null
+}
+

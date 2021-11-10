@@ -27,7 +27,7 @@ The operation to create or update the VMSS VM run command.
 
 ## EXAMPLES
 
-### Example 1: Set RunCommand 
+### Example 1: Set RunCommand by name
 ```powershell
 PS C:\> Set-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
 
@@ -36,7 +36,7 @@ Location Name  Type
 eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
 ```
 
-Add RunCommand to an Instance of VMSS. 
+Add RunCommand to an Instance of VMSS.
 
 ## PARAMETERS
 
@@ -417,3 +417,4 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   - `Value <String>`: The run command parameter value.
 
 ## RELATED LINKS
+
