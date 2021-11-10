@@ -2973,4 +2973,9 @@ function Test-VirtualMachineScaleSetUserdata
         Assert-AreEqual $vmssvm2.UserData $userData3;
 
     }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
 }
