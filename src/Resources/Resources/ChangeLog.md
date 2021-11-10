@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 0.12.0
-* Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
+* Set `-IdentifierUris` as alias of `-IdentifierUri` in `New-AzADApplication` and changed it as optional parameter
 * Removed default DisplayName of ADServicePrincipal when it is not specified
 
 ## Version 0.11.0
