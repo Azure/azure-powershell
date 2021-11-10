@@ -256,18 +256,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     new PSADObject() { Id = assignment.PrincipalId };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ??
                     new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
-                if (adObject is PSADUser)
+                if (adObject is PSADUser user)
                 {
                     psAssignments.Add(new PSRoleAssignment()
                     {
                         RoleAssignmentId = assignment.Id,
-                        DisplayName = adObject.DisplayName,
+                        DisplayName = user.DisplayName,
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        SignInName = ((PSADUser)adObject).UserPrincipalName,
-                        ObjectId = adObject.Id,
-                        ObjectType = adObject.Type,
+                        SignInName = user.UserPrincipalName,
+                        ObjectId = user.Id,
+                        ObjectType = user.Type,
                         Description = assignment.Description,
                         Condition = assignment.Condition,
                         ConditionVersion = assignment.ConditionVersion,
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 DisplayName = classicAdministrator.EmailAddress,
                 SignInName = classicAdministrator.EmailAddress,
                 Scope = AuthorizationHelper.GetSubscriptionScope(currentSubscriptionId),
-                ObjectType = "User"
+                ObjectType = classicAdministrator.Type ?? "User"
             };
         }
 

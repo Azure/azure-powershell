@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-
+* [Breaking change] Migrate from AAD Graph to Microsoft Graph 
+* Removed breaking change warnings for AAD cmdlets
+  
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]
 * Added breaking change warnings for AAD cmdlets
