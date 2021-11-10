@@ -47,6 +47,7 @@ title: ContainerInstance
 subject-prefix: $(service-name)
 identity-correction-for-post: true
 nested-object-to-string: true
+resourcegroup-append: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -99,10 +100,9 @@ directive:
     set:
       default:
         description: Sets OSType equal Linux by default.
-        script: 'Linux'
-  # 1. IPAddressPort equals $Container.Port
-  # 2. IdentityUserAssignedIdentity <string[]> -> IdentityUserAssignedIdentity <HashTable>
-  # 3. Subnet <string> -> SubnetId <ContainerGroupSubnetId>
+        script: '"Linux"'
+  # 1. Set IPAddressPort equals $Container.Port
+  # 2. Set Location mandatory
   - where:
       verb: New
       subject: ContainerGroup
@@ -117,13 +117,10 @@ directive:
     set:
       default:
         script: '$host.UI.RawUI.WindowSize.Height'
-  # Command optional -> required
+  # Set parameter 'Command' required
   - where:
       verb: Invoke
       subject: Command
-    hide: true
-  - where:
-      verb: Restart
     hide: true
   # Alias long name: Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
   - where:

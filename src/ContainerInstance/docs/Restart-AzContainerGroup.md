@@ -1,57 +1,49 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/remove-azcontainergroup
+online version: https://docs.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup
 schema: 2.0.0
 ---
 
-# Remove-AzContainerGroup
+# Restart-AzContainerGroup
 
 ## SYNOPSIS
-Delete the specified container group in the specified subscription and resource group.
-The operation does not delete other resources provided by the user, such as volumes.
+Restarts all containers in a container group in place.
+If container image has updates, new image will be downloaded.
 
 ## SYNTAX
 
-### Delete (Default)
+### Restart (Default)
 ```
-Remove-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Restart-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### RestartViaIdentity
 ```
-Remove-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Restart-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete the specified container group in the specified subscription and resource group.
-The operation does not delete other resources provided by the user, such as volumes.
+Restarts all containers in a container group in place.
+If container image has updates, new image will be downloaded.
 
 ## EXAMPLES
 
-### Example 1: Remove a container group
+### Example 1: Restart all containers in a container group
 ```powershell
-PS C:\> Remove-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
-
-Location Name    Zone ResourceGroupName
--------- ----    ---- -----------------
-eastus   test-cg      test-rg
+PS C:\> Restart-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
 ```
 
-This command removes the specified container group.
+This command restarts all containers in a container group.
 
-### Example 2: Removes a container group by piping
+### Example 2: Restart all containers in a container group by piping
 ```powershell
-PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName bez-rg | Remove-AzContainerGroup
-
-Location Name    Zone ResourceGroupName
--------- ----    ---- -----------------
-eastus   test-cg      test-rg
+PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Restart-AzContainerGroup
 ```
 
-This command removes a container group by piping.
+This command restarts all containers in a container group by piping.
 
 ## PARAMETERS
 
@@ -91,7 +83,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: RestartViaIdentity
 Aliases:
 
 Required: True
@@ -106,7 +98,7 @@ The name of the container group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Restart
 Aliases: ContainerGroupName
 
 Required: True
@@ -151,7 +143,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Restart
 Aliases:
 
 Required: True
@@ -167,7 +159,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Restart
 Aliases:
 
 Required: False
@@ -217,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
+### System.Boolean
 
 ## NOTES
 

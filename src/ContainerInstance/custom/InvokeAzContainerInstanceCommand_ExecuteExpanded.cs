@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         {
             var containerExecResponse = response.ConfigureAwait(false).GetAwaiter().GetResult();
             socket = new System.Net.WebSockets.ClientWebSocket();
-            // Connect and send password
+            // Connect websocket
             socket.ConnectAsync(new System.Uri(containerExecResponse.WebSocketUri), _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
             socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(containerExecResponse.Password)), WebSocketMessageType.Text, true, _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
 
