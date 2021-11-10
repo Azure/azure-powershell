@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
-                    var servicePrincipal = GraphClient.ServicePrincipals.GetServicePrincipal(acsServicePrincipal.SpId);
+                    var servicePrincipal = GraphClient.ServicePrincipals.GetServicePrincipal(acsServicePrincipal.ObjectId);
                     spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
