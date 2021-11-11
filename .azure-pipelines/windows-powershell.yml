@@ -1,14 +1,25 @@
 variables:
   WindowsName: windows
   WindowsImage: VS2017-Win2016
-  TestFramework: netcoreapp2.2
+  TestFramework: netcoreapp2.1
   TestTarget: Test
   Configuration: Debug
+  DebugLocalBuildTasks: true
+  IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
+
+trigger: none
+
+pr:
+  branches:
+    include:
+      - '*'
+    exclude:
+      - Azs-tzl
 
 jobs:
 - job: Build
   displayName: Build
-  condition: succeeded()
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   pool:
     vmImage: ${{ variables.WindowsImage }}
 
@@ -25,7 +36,8 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: succeeded()
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
+  timeoutInMinutes: 90
   pool:
     vmImage: ${{ variables.WindowsImage }}
 
@@ -44,10 +56,26 @@ jobs:
     displayName: 'Download BinSkim'
     inputs:
       command: custom
-      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools'
+      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools -Version 1.7.0'
   - task: PowerShell@2
     displayName: 'Run BinSkim'
     inputs:
       targetType: filePath
       filePath: tools/SecurityTools/RunBinSkim.ps1
       pwsh: true
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
+  timeoutInMinutes: 180
+  pool:
+    vmImage: ${{ variables.WindowsImage }}
+
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: ${{ variables.WindowsName }}
+      testFramework: ${{ variables.TestFramework }}
+      testTarget: ${{ variables.TestTarget }}
+      configuration: ${{ variables.Configuration }}
