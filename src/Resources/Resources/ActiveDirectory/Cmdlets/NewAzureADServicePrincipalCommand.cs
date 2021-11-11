@@ -23,6 +23,8 @@ using System;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
+using System.Web;
+
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -58,8 +60,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyCredential,
             HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the application. If a display name is not provided, " +
-            "this value will default to 'azure-powershell-MM-dd-yyyy-HH-mm-ss', where the suffix is the time of application creation.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the service principal")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
@@ -208,15 +209,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (ApplicationId == Guid.Empty)
                 {
-                    string uri = "http://" + DisplayName.Trim().Replace(' ', '_');
-
                     // Create an application and get the applicationId
-                    CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
+                    CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters();
+                    
+                    if(this.IsParameterBound(c => c.DisplayName) && !string.IsNullOrEmpty(DisplayName))
                     {
-                        DisplayName = DisplayName,
-                        IdentifierUris = new[] { uri },
-                        HomePage = uri
-                    };
+                        appParameters.IdentifierUris = new string[] { };
+                        appParameters.DisplayName = DisplayName;
+                    }
 
                     if (ShouldProcess(target: appParameters.DisplayName, action: string.Format("Adding a new application for with display name '{0}'", appParameters.DisplayName)))
                     {
@@ -311,8 +311,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 WriteVerbose(string.Format("No display name provided - using the default display name of '{0}'", DisplayName));
             }
 
-            var identifierUri = "http://" + DisplayName;
-
             // Handle credentials
             if (!this.IsParameterBound(c => c.Password))
             {
@@ -334,8 +332,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
                 {
                     DisplayName = DisplayName,
-                    IdentifierUris = new[] { identifierUri },
-                    HomePage = identifierUri,
+                    HomePage = "http://" + HttpUtility.UrlEncode(DisplayName.Trim()),
                     PasswordCredentials = new PSADPasswordCredential[]
                     {
                         passwordCredential

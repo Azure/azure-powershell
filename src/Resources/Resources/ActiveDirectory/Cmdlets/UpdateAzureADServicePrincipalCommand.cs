@@ -16,8 +16,8 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     DisplayName = DisplayName,
                     Homepage = Homepage,
-                    IdentifierUris = IdentifierUri,
+                    IdentifierUris = (IdentifierUri == null) ? new string[] { } : IdentifierUri,
                     KeyCredentials = KeyCredential,
                     PasswordCredentials = PasswordCredential
                 };

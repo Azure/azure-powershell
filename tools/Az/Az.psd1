@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.10.0'
+ModuleVersion = '2.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -63,7 +63,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; RequiredVersion = '2.2.8'; },
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.6.0'; }, 
                @{ModuleName = 'Az.Network'; RequiredVersion = '1.2.2'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.11.0'; }, 
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.12.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.2'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '0.11.0'; })
 

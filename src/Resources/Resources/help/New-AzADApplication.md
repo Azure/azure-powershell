@@ -15,35 +15,35 @@ Creates a new azure active directory application.
 
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUri <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUri <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUri <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -PasswordCredentials <PSADPasswordCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUri <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUri <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ Creates a new azure active directory application.
 ### Example 1 - Create new AAD application.
 
 ```
-PS C:\> New-AzADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http://NewApplication"
+PS C:\> New-AzADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUri "http://NewApplication"
 ```
 
 Creates a new azure active directory application without any credentials.
@@ -65,7 +65,7 @@ Creates a new azure active directory application without any credentials.
 
 ```
 PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
+PS C:\> New-AzADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUri "http:
 //NewApplication" -Password $SecureStringPassword
 ```
 
@@ -166,7 +166,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IdentifierUris
+### -IdentifierUri
 The URIs that identify the application.
 
 ```yaml
@@ -174,7 +174,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
