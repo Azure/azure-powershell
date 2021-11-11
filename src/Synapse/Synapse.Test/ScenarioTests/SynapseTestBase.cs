@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null},
                 {"Microsoft.EventHub", null},
-                {"Microsoft.Ingishts", null}
+                {"Microsoft.Insights", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
