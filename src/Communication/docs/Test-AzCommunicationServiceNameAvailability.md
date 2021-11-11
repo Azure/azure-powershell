@@ -14,7 +14,7 @@ Checks that the CommunicationService name is valid and is not already in use.
 
 ### CheckExpanded (Default)
 ```
-Test-AzCommunicationServiceNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
+Test-AzCommunicationServiceNameAvailability -Name <String> [-SubscriptionId <String>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Test-AzCommunicationServiceNameAvailability -InputObject <ICommunicationIdentity
 ### CheckViaIdentityExpanded
 ```
 Test-AzCommunicationServiceNameAvailability -InputObject <ICommunicationIdentity> -Name <String>
- -Type <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Checks that the CommunicationService name is valid and is not already in use.
 
 ### Example 1: Checks if already in use resource name ContosoAcsResource1 is available
 ```powershell
-PS C:\> Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1 -Type Microsoft.Communication/CommunicationServices
+PS C:\> Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
 
 Message                               NameAvailable Reason
 -------                               ------------- ------
@@ -55,7 +55,7 @@ Verified that the CommunicationService name is valid and is not already in use.
 
 ### Example 2: Checks if new resource name ContosoAcsResource2 is available
 ```powershell
-PS C:\> Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2 -Type Microsoft.Communication/CommunicationServices
+PS C:\> Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
 
 Message                               NameAvailable Reason
 -------                               ------------- ------
@@ -153,9 +153,9 @@ Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: "Microsoft.Communication/CommunicationServices"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,10 +13,10 @@ while(-not $mockingPath) {
 
 Describe 'Test-AzCommunicationServiceNameAvailability' {
     It 'CheckExpanded' {
-        $nameAvailability = Test-AzCommunicationServiceNameAvailability -Name $env.resourceNameAvailable -Type Microsoft.Communication/CommunicationServices
+        $nameAvailability = Test-AzCommunicationServiceNameAvailability -Name $env.resourceNameAvailable
         $nameAvailability.NameAvailable | Should -BeTrue
 
-        $nameAvailability = Test-AzCommunicationServiceNameAvailability -Name $env.persistentResourceName -Type Microsoft.Communication/CommunicationServices
+        $nameAvailability = Test-AzCommunicationServiceNameAvailability -Name $env.persistentResourceName
         $nameAvailability.NameAvailable | Should -BeFalse
     }
 }

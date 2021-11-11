@@ -80,4 +80,13 @@ directive:
     set:
       verb: Set
       subject: ServiceNotificationHub
+  # Set a default value for Type parameter of Test-AzCommunicationServiceNameAvailability
+  - where:
+      verb: Test
+      subject: CommunicationServiceNameAvailability
+      parameter-name: Type
+    hide: true
+    set:
+      default:
+        script: '"Microsoft.Communication/CommunicationServices"'
 ```
