@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
+    - `Get-AzRmStorageShare`
 
 ## Version 3.12.0
 * Upgraded Azure.Storage.Blobs to 12.10.0
