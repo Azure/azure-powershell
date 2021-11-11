@@ -86,7 +86,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Possible values are: Empty, Attach, FromImage, Import, Copy, Restore, Upload, CopyStart")]
+        //todo: verify help message with API team
         public string CreateOption { get; set; }
 
         [Parameter(
@@ -161,14 +163,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "")]
+            HelpMessage = "Policy for controlling export on the disk.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "")]
+            HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
         public bool? AcceleratedNetwork { get; set; }
 
         protected override void ProcessRecord()

@@ -215,14 +215,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "")]
+            HelpMessage = "Policy for controlling export on the disk.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "")]
+            HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
         public bool? AcceleratedNetwork { get; set; }
 
         protected override void ProcessRecord()
