@@ -89,4 +89,10 @@ directive:
     set:
       default:
         script: '"Microsoft.Communication/CommunicationServices"'
+  # Remove unneeded parameter sets
+  - where:
+      verb: Test
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      subject: CommunicationServiceNameAvailability
+    remove: true
 ```

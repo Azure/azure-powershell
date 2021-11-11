@@ -12,29 +12,9 @@ Checks that the CommunicationService name is valid and is not already in use.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
 Test-AzCommunicationServiceNameAvailability -Name <String> [-SubscriptionId <String>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Check
-```
-Test-AzCommunicationServiceNameAvailability -NameAvailabilityParameter <INameAvailabilityParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzCommunicationServiceNameAvailability -InputObject <ICommunicationIdentity>
- -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzCommunicationServiceNameAvailability -InputObject <ICommunicationIdentity> -Name <String>
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,29 +61,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The CommunicationService name to validate.
 e.g."my-CommunicationService-name-here"
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,28 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NameAvailabilityParameter
-Data POST-ed to the nameAvailability action
-To construct, see NOTES section for NAMEAVAILABILITYPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailabilityParameters
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -150,7 +98,7 @@ Should be always "Microsoft.Communication/CommunicationServices".
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -196,10 +144,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailabilityParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
@@ -207,21 +151,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
-  - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-NAMEAVAILABILITYPARAMETER <INameAvailabilityParameters>: Data POST-ed to the nameAvailability action
-  - `Name <String>`: The CommunicationService name to validate. e.g."my-CommunicationService-name-here"
-  - `Type <String>`: The resource type. Should be always "Microsoft.Communication/CommunicationServices".
 
 ## RELATED LINKS
 
