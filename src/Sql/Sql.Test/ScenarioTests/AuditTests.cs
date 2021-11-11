@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ExtendedAuditOnServer");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnDatabase()
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditOnDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnServer()
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditOnServer");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestMSSupportAuditOnServer()
@@ -249,63 +249,63 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-MSSupportAuditOnServer");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnServer()
         {
             RunPowerShellTest("Test-RemoveAuditOnServer");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportRemoveAuditOnServer()
         {
             RunPowerShellTest("Test-MSSupportRemoveAuditOnServer");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnDatabase()
         {
             RunPowerShellTest("Test-RemoveAuditOnDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
         {
             RunPowerShellTest("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
             RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
-        [Fact]
+        [Fact(Skip = "description")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
