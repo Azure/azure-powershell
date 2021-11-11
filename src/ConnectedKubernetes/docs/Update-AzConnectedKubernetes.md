@@ -15,13 +15,14 @@ API to update certain properties of the connected cluster resource
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Property <IAny>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Property <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity> [-Property <IAny>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity> [-Property <Hashtable>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 Describes the connected cluster resource properties that can be updated during PATCH operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

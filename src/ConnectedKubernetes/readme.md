@@ -62,6 +62,16 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.ConnectedClusterPatch.properties.properties
+    transform: >-
+      return {
+          "type": "object",
+          "x-ms-client-flatten": true,
+          "additionalProperties": true,
+          "description": "Describes the connected cluster resource properties that can be updated during PATCH operation."
+      }
+      
   - where:
       subject: ^ConnectedCluster(.*)
     set:
