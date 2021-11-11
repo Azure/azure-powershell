@@ -9,13 +9,6 @@ variables:
 
 trigger: none
 
-pr:
-  branches:
-    include:
-      - '*'
-    exclude:
-      - Azs-tzl
-
 jobs:
 - job: Build
   displayName: Build
