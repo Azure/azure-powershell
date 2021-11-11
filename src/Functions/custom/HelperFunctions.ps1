@@ -1599,7 +1599,8 @@ function GetShareSuffix
         $Length = 8
     )
 
-    $letters = 'a'..'z'
+    # Create char array from 'a' to 'z'
+    $letters = 97..122 | ForEach-Object { [char]$_ }
     $numbers = 0..9
     $alphanumericLowerCase = $letters + $numbers
 
