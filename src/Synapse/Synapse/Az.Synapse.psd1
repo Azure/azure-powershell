@@ -304,12 +304,7 @@ PrivateData = @{
     - Added ''Get-AzSynapseSqlScript'' cmdlet
     - Added ''Remove-AzSynapseSqlScript'' cmdlet
     - Added ''Export-AzSynapseSqlScript'' cmdlet
-    - Added ''Set-AzSynapseSqlScript'' cmdlet
-* Added support for Synapse Spark Configuration
-    - Added ''Get-AzSynapseSparkConfiguration'' cmdlet
-	- Added ''New-AzSynapseSparkConfiguration'' cmdlet
-    - Added ''Export-AzSynapseSparkConfiguration'' cmdlet
-	- Added ''Remove-AzSynapseSparkConfiguration'' cmdlet'
+    - Added ''Set-AzSynapseSqlScript'' cmdlet'
 
         # Prerelease string of this module
         # Prerelease = ''
