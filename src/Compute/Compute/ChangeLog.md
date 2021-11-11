@@ -20,6 +20,18 @@
 
 -->
 ## Upcoming Release
+* Added `UserData` parameter to the following cmdlets:
+    - `Get-AzVm`
+    - `Get-AzVmss`
+    - `Get-AzVmssVm`
+    - `New-Azvm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzVmssVm`
+  When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
@@ -55,18 +67,6 @@
     - SinglePlacementGroup must be false. Throws an error if true. 
     - Networking Profile's API version is 2020-11-01 or later.
     - Networking Profile IP Configurations Primary property is set to true.
-* Added `UserData` parameter to the following cmdlets:
-    - `Get-AzVm`
-    - `Get-AzVmss`
-    - `Get-AzVmssVm`
-    - `New-Azvm`
-    - `New-AzVmConfig`
-    - `New-AzVmss`
-    - `New-AzVmssConfig`
-    - `Update-AzVm`
-    - `Update-AzVmss`
-    - `Update-AzVmssVm`
-  When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
 
 ## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0
