@@ -63,19 +63,3 @@ jobs:
       targetType: filePath
       filePath: tools/SecurityTools/RunBinSkim.ps1
       pwsh: true
-
-- job: Test
-  displayName: Test
-  dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
-  timeoutInMinutes: 180
-  pool:
-    vmImage: ${{ variables.WindowsImage }}
-
-  steps:
-  - template: util/test-steps.yml
-    parameters:
-      osName: ${{ variables.WindowsName }}
-      testFramework: ${{ variables.TestFramework }}
-      testTarget: ${{ variables.TestTarget }}
-      configuration: ${{ variables.Configuration }}
