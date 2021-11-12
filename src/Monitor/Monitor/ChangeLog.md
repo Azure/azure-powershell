@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added default parameter set `GetByResourceGroup` for the command `Get-AzAlertRule` [#16356]
 
 ## Version 2.7.0
 * Added parameter `ResourceGroupName` back for `Add-AzAutoscaleSetting` parameter set `AddAzureRmAutoscaleSettingUpdateParamGroup` and made it optional [#15491]
