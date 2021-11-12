@@ -101,12 +101,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
-        public bool? AcceleratedNetwork { get; set; }
-
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -125,9 +119,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Sku
             SnapshotSku vSku = null;
-
-            // SupportedCapabilities
-            SupportedCapabilities vSupportedCapabilities = null;
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
@@ -202,15 +193,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-            if (this.IsParameterBound(c => c.AcceleratedNetwork))
-            {
-                if (vSupportedCapabilities == null)
-                {
-                    vSupportedCapabilities = new SupportedCapabilities();
-                }
-                vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
-            }
-
             var vSnapshotUpdate = new PSSnapshotUpdate
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -220,7 +202,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 Sku = vSku,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
-                SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
             };
 

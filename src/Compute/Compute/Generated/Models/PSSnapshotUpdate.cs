@@ -37,12 +37,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         //
         // Summary:
-        //     Gets or sets list of supported capabilities (like Accelerated Networking) for
-        //     the image from which the source disk from the snapshot was originally created.
-        public SupportedCapabilities SupportedCapabilities { get; set; }
-
-        //
-        // Summary:
         //     Gets or sets possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
     }
