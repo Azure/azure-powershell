@@ -1,0 +1,80 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertRuleActionRuleId": {
+            "defaultValue": "alertRuleActionRuleId",
+            "type": "string"
+        },
+        "alertRuleActionRuleName": {
+            "defaultValue": "alertRuleActionRuleName",
+            "type": "string"
+        },
+        "alertRuleActionId": {
+            "defaultValue": "alertRuleActionId",
+            "type": "string"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        },
+        "logicAppResourceId":{
+            "defaultValue": "logicAppResourceId",
+            "type": "string"
+        },
+        "triggerUrl": {
+            "defaultValue": "triggerUrl",
+            "type": "string"
+        }
+    },
+    "variables": {
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('alertRuleActionRuleId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "apiVersion": "2021-03-01-preview",
+            "kind": "Scheduled",
+            "properties": {
+                "description": "[concat(parameters('alertRuleActionRuleName'), ' ', parameters('alertRuleActionRuleId'))]",
+                "displayName": "[parameters('alertRuleActionRuleName')]",
+                "enabled": true,
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "groupByEntities": [],
+                        "lookbackDuration": "PT5H",
+                        "MatchingMethod": "AllEntities",
+                        "reopenClosedIncident": false
+                    }
+                },
+                "query": "SecurityEvent\n| take 1",
+                "queryFrequency": "P1D",
+                "queryPeriod": "P1D",
+                "severity": "Informational",
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [ "Execution" ],
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0
+            }
+        },
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('alertRuleActionRuleId'), '/', parameters('alertRuleActionId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules/actions",
+            "apiVersion": "2021-03-01-preview",
+            "dependsOn": [
+               "[resourceId('Microsoft.OperationalInsights/workspaces/providers/alertRules', parameters('workspaceName'), 'Microsoft.SecurityInsights', parameters('alertRuleActionRuleId'))]"            ],
+            "properties": {
+                "logicAppResourceId": "[parameters('logicAppResourceId')]",
+                "triggerUri": "[parameters('triggerUrl')]"
+            }
+        }
+    ],
+    "outputs": {
+    }
+}

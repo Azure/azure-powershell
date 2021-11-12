@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "bookmarkName": {
+      "value": "UpdateViaIdbookmarkso0fma"
+    },
+    "bookmarkId": {
+      "value": "bd176a39-c7e5-4c5c-abe2-89feb2987a0a"
+    },
+    "workspaceName": {
+      "value": "asptestk9wyb8"
+    },
+    "queryStartTime": {
+      "Value": "2021-11-10T10:00:00.000Z"
+    },
+    "queryEndTime": {
+      "Value": "2021-11-11T10:00:00.000Z"
+    }
+  }
+}

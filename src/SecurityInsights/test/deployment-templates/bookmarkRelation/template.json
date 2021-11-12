@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "bookmarkRelationId": {
+            "defaultValue": "bookmarkRelationId",
+            "type": "string"
+        },
+        "bookmarkRelationBookmarkId": {
+            "defaultValue": "bookmarkRelationBookmarkId",
+            "type": "string"
+        },
+        "bookmarkRelationBookmarkName": {
+            "defaultValue": "bookmarkRelationBookmarkName",
+            "type": "string"
+        },
+        "queryStartTime": {
+            "defaultValue": "queryStartTime",
+            "type": "string"
+        },
+        "queryEndTime": {
+            "defaultValue": "queryEndTime",
+            "type": "string"
+        },
+        "bookmarkRelationIncidentId": {
+            "defaultValue": "bookmarkRelationIncidentId",
+            "type": "string"
+        },
+        "bookmarkRelationIncidentName": {
+            "defaultValue": "bookmarkRelationIncidentName",
+            "type": "string"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/incidents",
+            "apiVersion": "2021-04-01",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('bookmarkRelationIncidentId'))]",
+            "properties": {
+                "severity": "Informational",
+                "status": "New",
+                "title": "[parameters('bookmarkRelationIncidentName')]"
+            }
+        },
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('bookmarkRelationBookmarkId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/bookmarks",
+            "apiVersion": "2020-01-01",
+            "properties": {
+                "displayName": "[parameters('bookmarkRelationBookmarkName')]",
+                "labels": [ "asptest" ],
+                "notes": "Notes go here",
+                "query": "SecurityEvent\n| take 1",
+                "queryStartTime": "[parameters('queryStartTime')]",
+                "queryEndTime": "[parameters('queryEndTime')]",
+                "eventTime": "[parameters('queryEndTime')]"
+            }
+        },
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('bookmarkRelationBookmarkId'), '/', parameters('bookmarkRelationId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/bookmarks/relations",
+            "apiVersion": "2020-01-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/providers/bookmarks', parameters('workspaceName'), 'Microsoft.SecurityInsights', parameters('bookmarkRelationBookmarkId'))]",
+                "[resourceId('Microsoft.OperationalInsights/workspaces/providers/incidents', parameters('workspaceName'), 'Microsoft.SecurityInsights', parameters('bookmarkRelationIncidentId'))]"
+            ],
+            "properties": {
+                "relatedResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/providers/incidents', parameters('workspaceName'), 'Microsoft.SecurityInsights', parameters('bookmarkRelationIncidentId'))]"
+            }
+        }
+    ]
+}

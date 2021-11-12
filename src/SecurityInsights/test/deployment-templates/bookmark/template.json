@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "bookmarkName": {
+            "defaultValue": "bookmarkName",
+            "type": "String"
+        },
+        "bookmarkId": {
+            "defaultValue": "bookmarkId",
+            "type": "String"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        },
+        "queryStartTime": {
+            "defaultValue": "queryStartTime",
+            "type": "string"
+        },
+        "queryEndTime": {
+            "defaultValue": "queryEndTime",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('bookmarkId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/bookmarks",
+            "apiVersion": "2020-01-01",
+            "properties": {
+                "displayName": "[parameters('bookmarkName')]",
+                "labels": [ "asptest" ],
+                "notes": "Notes go here",
+                "query": "SecurityEvent\n| take 1",
+                "queryStartTime": "[parameters('queryStartTime')]",
+                "queryEndTime": "[parameters('queryEndTime')]",
+                "eventTime": "[parameters('queryEndTime')]"
+            }
+        }
+    ]
+}

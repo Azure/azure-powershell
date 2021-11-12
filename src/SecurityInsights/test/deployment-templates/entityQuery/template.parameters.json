@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "entityQueryActivityId": {
+      "value": "2ca00108-7433-4883-8f7f-dc7749f77b3c"
+    },
+    "workspaceName": {
+      "value": "asptestk9wyb8"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "incidentId": {
+      "value": "17558658-dbe8-41e2-b866-0fecd8f5b070"
+    },
+    "workspaceName": {
+      "value": "asptestk9wyb8"
+    }
+  }
+}
