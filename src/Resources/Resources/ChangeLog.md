@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Changed the Scope Property in New-AzRoleAssignment docs. 
+* Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
 
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]
