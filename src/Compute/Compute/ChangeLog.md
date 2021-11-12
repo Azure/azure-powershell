@@ -20,11 +20,15 @@
 
 -->
 ## Upcoming Release
-* Added parameters `PublicNetworkAccess` and `AcceleratedNetwork` to the following cmdlets:
+* Added string parameter `PublicNetworkAccess` to the following cmdlets:
     - `New-AzDiskConfig`
     - `New-AzDiskUpdateConfig`
     - `New-AzSnapshotConfig`
     - `New-AzSnapshotUpdateConfig`
+* Added boolean parameter `AcceleratedNetwork` to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSNapshotConfig`
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
