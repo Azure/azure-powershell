@@ -149,6 +149,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
+            if (!this.IsScheduleNameValid())
+            {
+                throw new ArgumentException(Resources.ScheduleNameInvlid);
+            }
+
             var schedule = new Models.Schedule
             {
                 Name = this.Name,
@@ -273,6 +278,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             };
 
             return newSchedule;
+        }
+
+        /// <summary>
+        /// The is schedule name valid.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool IsScheduleNameValid()
+        {
+            String pattern = "^[^\\r\\n\\f<>*%&:?.+/\\\\]{0,127}[^\\s\\r\\n\\f<>*%&:?.+/\\\\]$";
+		    return System.Text.RegularExpressions.Regex.IsMatch(this.Name, pattern);
         }
     }
 
