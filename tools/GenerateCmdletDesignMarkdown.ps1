@@ -3,11 +3,6 @@
 
 Generate cmdlet design markdown for the specified azure module.
 
-.DESCRIPTION
-
-Adds a file name extension to a supplied name.
-Takes any strings for the file name or extension.
-
 .EXAMPLE
 
 PS> GenerateCmdletDesignMarkdown.ps1 -Path 'azure-powershell\src\Databricks\docs' -OutPath 'azure-powershell\ModuleCmdletDesign' -OutputFileName 'Az.ApplicationInsights.Cmdlet.Design.md' -NounPriority 'AzDatabricksWorkspace','AzDatabricksVNetPeering'
@@ -49,7 +44,6 @@ if (!$PSBoundParameters.ContainsKey("OutPath")) {
     $OutPath = $Path
 }
 
-# Get resource name
 if (!$PSBoundParameters.ContainsKey("OutputFileName")) {
     $OutputFileName = 'Az.' + (Get-ChildItem -Path $Path -Filter 'Az.*.md' -ErrorAction Stop).Name.Split(".")[1] + 'Cmdlet.Design.md'
 }
