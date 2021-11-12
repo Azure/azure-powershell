@@ -22,6 +22,9 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
 {
@@ -39,6 +42,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// Gets or sets the Azure profile
         /// </summary>
         public IAzureContext Context { get; set; }
+
+        /// <summary>
+        /// A private instance of MicrosoftGraphClient
+        /// </summary>
+        private MicrosoftGraphClient _microsoftGraphClient;
 
         /// <summary>
         /// A private instance of ActiveDirectoryClient
@@ -65,6 +73,22 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             }
 
             set { this._activeDirectoryClient = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the Azure MicrosoftGraphClient instance
+        /// </summary>
+        public MicrosoftGraphClient MicrosoftGraphClient
+        {
+            get
+            {
+                if (_microsoftGraphClient == null)
+                {
+                    _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.Endpoint.Graph);
+                }
+                return _microsoftGraphClient;
+            }
+            set { _microsoftGraphClient = value; }
         }
 
         /// <summary>
@@ -166,10 +190,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             Guid tenantId = GetTenantId();
 
             // Check for a Azure Active Directory group. Recommended to always use group.
-            IEnumerable<PSADGroup> groupList = null;
-            PSADGroup group = null;
+            IEnumerable<MicrosoftGraphGroup> groupList = null;
+            MicrosoftGraphGroup group = null;
 
-            var filter = new ADObjectFilterOptions()
+            var filter = new MicrosoftObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -177,7 +201,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             };
 
             // Get a list of groups from Azure Active Directory
-            groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+            groupList = MicrosoftGraphClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
             if (groupList != null && groupList.Count() > 1)
             {
@@ -244,13 +268,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 return new ServerAzureADAdministrator()
                 {
                     Login = group.DisplayName,
-                    Sid = group.Id,
+                    Sid = new Guid(group.Id),
                     TenantId = tenantId
                 };
             }
 
             // No group or service principal was found. Check for a user
-            filter = new ADObjectFilterOptions()
+            filter = new MicrosoftObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -258,34 +282,34 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             };
 
             // Get a list of user from Azure Active Directory
-            var userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+            var userList = MicrosoftGraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
             // No user was found. Check if the display name is a UPN
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN
-                filter = new ADObjectFilterOptions()
+                filter = new MicrosoftObjectFilterOptions()
                 {
                     Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                     UPN = displayName,
                     Paging = true,
                 };
 
-                userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
+                userList = MicrosoftGraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
             // No user was found. Check if the display name is a guest user. 
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN
-                filter = new ADObjectFilterOptions()
+                filter = new MicrosoftObjectFilterOptions()
                 {
                     Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                     Mail = displayName,
                     Paging = true,
                 };
 
-                userList = ActiveDirectoryClient.FilterUsers(filter);
+                userList = MicrosoftGraphClient.FilterUsers(filter);
             }
 
             // No user was found
@@ -306,7 +330,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 return new ServerAzureADAdministrator()
                 {
                     Login = displayName,
-                    Sid = obj.Id,
+                    Sid = new Guid(obj.Id),
                     TenantId = tenantId
                 };
             }
