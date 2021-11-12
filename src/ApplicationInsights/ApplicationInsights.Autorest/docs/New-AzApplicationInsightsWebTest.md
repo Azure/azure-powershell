@@ -24,7 +24,7 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Loc
  [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreatePing
+### CreateClassic
 ```
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Configuration <String>] [-ContentMatch <String>] [-Description <String>]
@@ -49,9 +49,9 @@ PS C:\> New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name sta
 -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'standard-pwsh01' `
 -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
 
-Name            Location WebTestKind ResourceGroupName
-----            -------- ----------- -----------------
-standard-pwsh01 westus2  standard    azpwsh-rg-test
+Name            Location WebTestKind ResourceGroupName  Enabled
+----            -------- ----------- -----------------  -------
+standard-pwsh01 westus2  standard    azpwsh-rg-test     True
 ```
 
 This command creates or updates an standard kind of the Application Insights web test.
@@ -69,9 +69,9 @@ PS C:\> New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name
 -Kind 'ping' -RequestUrl 'https://cn.bing.com' -RequestParseDependent -RuleExpectedHttpStatusCode 200 `
 -ContentMatch "status"
 
-Name               Location WebTestKind ResourceGroupName
-----               -------- ----------- -----------------
-pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test
+Name               Location WebTestKind ResourceGroupName   Enabled
+----               -------- ----------- -----------------   -------
+pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True
 ```
 
 This command creates or updates an ping kind of the Application Insights web test.
@@ -101,9 +101,9 @@ PS C:\> New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name
     </ValidationRules> 
 </WebTest>"
 
-Name               Location WebTestKind ResourceGroupName
-----               -------- ----------- -----------------
-pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test
+Name               Location WebTestKind ResourceGroupName   Enabled
+----               -------- ----------- -----------------   -------
+pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True
 ```
 
 This command creates or updates an ping kind of the Application Insights web test with custom configuration.
@@ -115,7 +115,7 @@ The XML specification of a WebTest to run against an application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreatePing
+Parameter Sets: CreateClassic
 Aliases:
 
 Required: False

@@ -75,7 +75,7 @@ function New-AzApplicationInsightsWebTest {
         # Resource location
         ${Location},
     
-        [Parameter(ParameterSetName = "CreatePing")]
+        [Parameter(ParameterSetName = "CreateClassic")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String]
         # The XML specification of a WebTest to run against an application.

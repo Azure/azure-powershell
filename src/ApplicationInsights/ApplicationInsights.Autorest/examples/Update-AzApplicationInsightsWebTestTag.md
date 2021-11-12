@@ -3,9 +3,9 @@
 ```powershell
 PS C:\> Update-AzApplicationInsightsWebTestTag -ResourceGroupName azpwsh-rg-test -Name webtest01-lucasappinsights -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/lucasappinsights" = "Resource"}
 
-Location Name                       WebTestKind   ResourceGroupName
--------- ----                       -----------   -----------------
-westus2  webtest01-lucasappinsights standard      azpwsh-rg-test
+Location Name                       WebTestKind   ResourceGroupName   Enabled
+-------- ----                       -----------   -----------------   -------
+westus2  webtest01-lucasappinsights standard      azpwsh-rg-test      True
 ```
 
 This command updates Application Insights link of the Web test.
@@ -14,9 +14,9 @@ This command updates Application Insights link of the Web test.
 ```powershell
 PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -WebTestName webtest01-lucasappinsights | Update-AzApplicationInsightsWebTestTag -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"}
 
-Location Name                       WebTestKind   ResourceGroupName
--------- ----                       -----------   -----------------
-westus2  webtest01-lucasappinsights standard      azpwsh-rg-test
+Location Name                       WebTestKind   ResourceGroupName     Enabled
+-------- ----                       -----------   -----------------     -------
+westus2  webtest01-lucasappinsights standard      azpwsh-rg-test        True
 ```
 
 This command updates Application Insights link of the Web test by pipeline.

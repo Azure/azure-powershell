@@ -173,4 +173,5 @@ directive:
           - Name
           - Location
           - WebTestKind
+          - Enabled
 ```

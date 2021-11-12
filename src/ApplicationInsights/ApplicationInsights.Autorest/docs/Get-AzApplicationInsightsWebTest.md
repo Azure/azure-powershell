@@ -81,13 +81,13 @@ This command lists all Application Insights web tests under a resource group.
 ```powershell
 PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsName appinsights-portal01
 
-Name                                 Location WebTestKind ResourceGroupName
-----                                 -------- ----------- -----------------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
-basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test
-basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test
-standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test
-standard-pwsh01                      westus2  standard    azpwsh-rg-test
+Name                                 Location WebTestKind ResourceGroupName   Enabled
+----                                 -------- ----------- -----------------   -------
+bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test      True
+basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True  
+basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
+standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test      True
+standard-pwsh01                      westus2  standard    azpwsh-rg-test      True
 ```
 
 This command lists all Application Insights web tests under a specific Application Insights.
@@ -96,9 +96,9 @@ This command lists all Application Insights web tests under a specific Applicati
 ```powershell
 PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01
 
-Name            Location WebTestKind ResourceGroupName
-----            -------- ----------- -----------------
-standard-pwsh01 westus2  standard    azpwsh-rg-test
+Name            Location WebTestKind ResourceGroupName  Enabled
+----            -------- ----------- -----------------  -------
+standard-pwsh01 westus2  standard    azpwsh-rg-test     True
 ```
 
 This command gets a specific Application Insights web test definition.
@@ -114,9 +114,9 @@ PS C:\> New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name sta
 -RuleSslCheck -RuleSslCertRemainingLifetimeCheck 7 -RuleExpectedHttpStatusCode 200 `
 -Enabled -Frequency 300 -Timeout 120 -WebTestKind "standard" -RetryEnabled -GeoLocations $location01, $location02 ` |Get-AzApplicationInsightsWebTest
 
-Name                    Location WebTestKind ResourceGroupName
-----                    -------- ----------- -----------------
-standardwebtestpwsh03   westus2  standard    azpwsh-rg-test
+Name                    Location WebTestKind ResourceGroupName  Enabled
+----                    -------- ----------- -----------------  -------
+standardwebtestpwsh03   westus2  standard    azpwsh-rg-test     True
 ```
 
 This command gets a specific Application Insights web test definition by pipeline.
