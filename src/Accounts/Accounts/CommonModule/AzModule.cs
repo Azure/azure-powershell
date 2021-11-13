@@ -15,14 +15,12 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.CommonModule;
-using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -150,7 +148,6 @@ namespace Microsoft.Azure.Commands.Common
                     await OnCmdletEndProcessing(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
                 default:
-                    getEventData.Print(signal, cancellationToken, Events.Verbose, id);
                     break;
             }
         }
