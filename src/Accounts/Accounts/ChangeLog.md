@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added parameter `MSGraphAudience` for `Add-AzEnvironment` and `Set-AzEnvironment`.
 * Supported login hint
 * Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
 

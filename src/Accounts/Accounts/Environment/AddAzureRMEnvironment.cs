@@ -216,6 +216,10 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Specifies URI of the internet resource to fetch environments.")]
         public Uri Uri { get; set; }
 
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The audience for tokens authenticating with the MS Graph Endpoint.")]
+        [Alias("MSGraphEndpointResourceId", "MicrosoftGraphGraphResourceId")]
+        public string MSGraphAudience { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -268,6 +272,8 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Gallery, metadataEndpoints.GalleryEndpoint);
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Graph, metadataEndpoints.GraphEndpoint);
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
+                                    metadataEndpoints.GraphEndpoint);
+                                SetEndpointIfProvided(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
                                     metadataEndpoints.GraphEndpoint);
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
                                         AzureKeyVaultDnsSuffix ?? string.Format("vault.{0}", domain).ToLowerInvariant());
@@ -360,6 +366,8 @@ namespace Microsoft.Azure.Commands.Profile
                                    nameof(GraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
+                                   nameof(MSGraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
                                     nameof(BatchEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId,

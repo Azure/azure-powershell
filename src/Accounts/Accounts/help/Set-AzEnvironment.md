@@ -28,8 +28,8 @@ Set-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [-AzureAnalysisServicesEndpointResourceId <String>] [-AzureAttestationServiceEndpointSuffix <String>]
  [-AzureAttestationServiceEndpointResourceId <String>] [-AzureSynapseAnalyticsEndpointSuffix <String>]
  [-ContainerRegistryEndpointSuffix <String>] [-AzureSynapseAnalyticsEndpointResourceId <String>]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-MSGraphAudience] <String>] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ARMEndpoint
@@ -469,6 +469,21 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MSGraphAudience
+The audience for tokens authenticating with the MS Graph Endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases: MicrosoftGraphEndpointResourceId, MicrosoftGraphGraphResourceId
+
+Required: False
+Position: 23
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
