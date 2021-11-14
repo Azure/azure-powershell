@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             if (!this.IsScheduleNameValid())
             {
-                throw new ArgumentException(Resources.ScheduleNameInvlid);
+                throw new ArgumentException(Resources.ScheduleNameInvalid);
             }
 
             var schedule = new Models.Schedule
