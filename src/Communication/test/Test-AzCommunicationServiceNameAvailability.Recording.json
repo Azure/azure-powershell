@@ -1,0 +1,70 @@
+{
+  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20",
+      "Content": "{\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\",\r\n  \"name\": \"acsResource0rfyon\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "401f0a21-3486-4014-bc3e-acbaebd0c077" ],
+        "x-ms-correlation-request-id": [ "5cfd6c0f-420c-409c-a21d-d3859660eab7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T211923Z:5cfd6c0f-420c-409c-a21d-d3859660eab7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 28 Oct 2021 21:19:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}"
+    }
+  },
+  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20",
+      "Content": "{\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\",\r\n  \"name\": \"persistentResourceNameclkuy1\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "106" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3a9d92ac-e6c9-4a33-8940-b07bae2f9714" ],
+        "x-ms-correlation-request-id": [ "4556d248-cdd4-4dbf-ba61-193c8fa1145f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T211923Z:4556d248-cdd4-4dbf-ba61-193c8fa1145f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 28 Oct 2021 21:19:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "113" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Requested name is unavailable for the requested type\"}"
+    }
+  }
+}
