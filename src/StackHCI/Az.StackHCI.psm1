@@ -264,18 +264,6 @@ enum ImdsAttestationNodeStatus
     Expired;
     Error;
 }
-class AzStackHCIImdsStatus
-{
-    [string] $ComputerName
-    [ImdsAttestationNodeStatus] $Status
-    [System.Nullable[DateTime]] $Expiration
-    AzStackHCIImdsStatus([PSObject]$other)
-    {
-        $this.ComputerName = $other.ComputerName
-        $this.Status = $other.Status
-        $this.Expiration = $other.Expiration
-    }
-}
 
 $registerArcScript = {
     try
@@ -3819,9 +3807,13 @@ param(
 
                         $firewallRule = Invoke-Command @SessionParams -ScriptBlock { param($ruleName) Enable-NetFirewallRule -Name $ruleName } -ArgumentList $TemplateHostImdsParams["NetFirewallRuleName"] 
 
-                        $nodeAttestation = [AzStackHCIImdsStatus] (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
+                        $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
 
-                        $enableImdsOutputList.Add($nodeAttestation) | Out-Null
+                        $enableImdsOutput = New-Object -TypeName PSObject
+                        $enableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
+                        $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([ImdsAttestationNodeStatus]($nodeAttestation.Status))
+                        $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Expiration -Value ($nodeAttestation.Expiration)
+                        $enableImdsOutputList.Add($enableImdsOutput) | Out-Null
                     }
                     elseif ($WhatIfPreference.IsPresent)
                     {
@@ -4051,8 +4043,12 @@ param(
                     
                     Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList ([Guid]::Empty) | Out-Null
     
-                    $nodeAttestation = [AzStackHCIImdsStatus] (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
-                    $disableImdsOutputList.Add($nodeAttestation) | Out-Null
+                    $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
+                    $disableImdsOutput = New-Object -TypeName PSObject
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([ImdsAttestationNodeStatus]($nodeAttestation.Status))
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name Expiration -Value ($nodeAttestation.Expiration)
+                    $disableImdsOutputList.Add($disableImdsOutput) | Out-Null
     
                 }
                 catch 
