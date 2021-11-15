@@ -109,11 +109,10 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Supported for installing from a path of nuget package
+            ReleaseNotes = '* Supported installing from a path of nuget package
             * Supported installing Az sub modules using minimum required Az.Accounts version
             * Supported uninstalling by module name filter and whether in preview
             * Provided progress bar to show the cmdlet execution status
-            * Unsupported uninstalling by Az version
             * Optimized the performance of Az.Tools.Installer'
     
             # Prerelease string of this module
