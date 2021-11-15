@@ -25,6 +25,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
 {
@@ -48,32 +49,32 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         private MicrosoftGraphClient _microsoftGraphClient;
 
-        /// <summary>
-        /// A private instance of ActiveDirectoryClient
-        /// </summary>
-        private ActiveDirectoryClient _activeDirectoryClient;
+        // /// <summary>
+        // /// A private instance of ActiveDirectoryClient
+        // /// </summary>
+        // private ActiveDirectoryClient _activeDirectoryClient;
 
-        /// <summary>
-        /// Gets or sets the Azure ActiveDirectoryClient instance
-        /// </summary>
-        public ActiveDirectoryClient ActiveDirectoryClient
-        {
-            get
-            {
-                if (_activeDirectoryClient == null)
-                {
-                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
-                    if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
-                    {
-                        throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
-                    }
-                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
-                }
-                return this._activeDirectoryClient;
-            }
+        // /// <summary>
+        // /// Gets or sets the Azure ActiveDirectoryClient instance
+        // /// </summary>
+        // public ActiveDirectoryClient ActiveDirectoryClient
+        // {
+        //     get
+        //     {
+        //         if (_activeDirectoryClient == null)
+        //         {
+        //             _activeDirectoryClient = new ActiveDirectoryClient(Context);
+        //             if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+        //             {
+        //                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
+        //             }
+        //             _activeDirectoryClient = new ActiveDirectoryClient(Context);
+        //         }
+        //         return this._activeDirectoryClient;
+        //     }
 
-            set { this._activeDirectoryClient = value; }
-        }
+        //     set { this._activeDirectoryClient = value; }
+        // }
 
         /// <summary>
         /// Gets or sets the Azure MicrosoftGraphClient instance
@@ -221,19 +222,20 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             }
 
             // Lookup for serviceprincipals
-            ODataQuery<ServicePrincipal> odataQueryFilter;
+            ODataQuery<MicrosoftGraphServicePrincipal> odataQueryFilter;
 
             if ((objectId != null && objectId != Guid.Empty))
             {
                 var applicationIdString = objectId.ToString();
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphServicePrincipal>(a => a.AppId == applicationIdString);
             }
             else
             {
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphServicePrincipal>(a => a.DisplayName == displayName);
             }
 
-            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
+            // var servicePrincipalList = MicrosoftGraphClient.FilterServicePrincipals(odataQueryFilter);
+            var servicePrincipalList = MicrosoftGraphClient.FilterServicePrincipals(odataQueryFilter);
 
             if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
             {
@@ -243,7 +245,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
             {
                 // Only one user was found. Get the user display name and object id
-                PSADServicePrincipal app = servicePrincipalList.First();
+                MicrosoftGraphServicePrincipal app = servicePrincipalList.First();
 
                 if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
                 {
@@ -258,7 +260,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 return new ServerAzureADAdministrator()
                 {
                     Login = displayName,
-                    Sid = app.ApplicationId,
+                    Sid = new Guid(app.AppId),
                     TenantId = tenantId
                 };
             }
