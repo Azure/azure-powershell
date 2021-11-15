@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/add-aziothubmessageenrichment
+online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Add-AzIotHubMessageEnrichment [-ResourceId] <String> [-Key] <String> -Value <Str
 
 ## DESCRIPTION
 Add up to 10 message enrichments per IoT Hub. These are added as application properties to messages sent to chosen endpoint(s).
-To know more, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-message-enrichments-overview
+To know more, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ## EXAMPLES
 

@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> CustomDnsServers { get; set; }
 
+        [Ps1Xml(Label = "Enable RoutingPreferenceInternet", Target = ViewControl.Table)]
+        public bool? IsRoutingPreferenceInternet { get; set; }
+
         [JsonIgnore]
         public string VpnClientConnectionHealthText
         {

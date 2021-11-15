@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             {_vnetConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("vnetConfig"), out var __jsonVnetConfig) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.VirtualNetworkConfig.FromJson(__jsonVnetConfig) : VnetConfig;}
-            {_oSDiskSizeGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber>("osDiskSizeGB"), out var __jsonOSDiskSizeGb) ? (int?)__jsonOSDiskSizeGb : OSDiskSizeGb;}
             {_vMSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("vmSize"), out var __jsonVMSize) ? (string)__jsonVMSize : (string)VMSize;}
+            {_oSDiskSizeGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber>("osDiskSizeGB"), out var __jsonOSDiskSizeGb) ? (int?)__jsonOSDiskSizeGb : OSDiskSizeGb;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return container;
             }
             AddIf( null != this._vnetConfig ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._vnetConfig.ToJson(null,serializationMode) : null, "vnetConfig" ,container.Add );
-            AddIf( null != this._oSDiskSizeGb ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber((int)this._oSDiskSizeGb) : null, "osDiskSizeGB" ,container.Add );
             AddIf( null != (((object)this._vMSize)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._vMSize.ToString()) : null, "vmSize" ,container.Add );
+            AddIf( null != this._oSDiskSizeGb ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber((int)this._oSDiskSizeGb) : null, "osDiskSizeGB" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

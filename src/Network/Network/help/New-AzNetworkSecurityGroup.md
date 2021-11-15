@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecuritygroup
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
@@ -45,9 +45,9 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Na
     "NSG-FrontEnd" -SecurityRules $rule1,$rule2
 ```
 
-Step:1 Create a security rule allowing access from the Internet to port 3389.
-Step:2 Create a security rule allowing access from the Internet to port 80.
-Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
+Step:1 Create a security rule allowing access from the Internet to port 3389.<br>
+Step:2 Create a security rule allowing access from the Internet to port 80.<br>
+Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.<br>
 
 ## PARAMETERS
 

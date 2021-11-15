@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 95B54065-B6CC-4D10-A747-28CE3F412ABF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/disable-azoperationalinsightsiislogcollection
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightsiislogcollection
 schema: 2.0.0
 ---
 

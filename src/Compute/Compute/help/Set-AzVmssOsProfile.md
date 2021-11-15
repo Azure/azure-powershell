@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3E7B9EFA-8BC2-46EB-9AD7-43EAB7FF3891
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssosprofile
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmssosprofile
 schema: 2.0.0
 ---
 
@@ -16,11 +16,13 @@ Sets the VMSS operating system profile properties.
 ```
 Set-AzVmssOsProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-ComputerNamePrefix] <String>]
  [[-AdminUsername] <String>] [[-AdminPassword] <String>] [[-CustomData] <String>]
- [[-WindowsConfigurationProvisionVMAgent] <Boolean>] [[-WindowsConfigurationEnableAutomaticUpdate] <Boolean>]
- [[-TimeZone] <String>] [[-AdditionalUnattendContent] <AdditionalUnattendContent[]>]
- [[-Listener] <WinRMListener[]>] [[-LinuxConfigurationDisablePasswordAuthentication] <Boolean>]
- [[-PublicKey] <SshPublicKey[]>] [[-Secret] <VaultSecretGroup[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-WindowsConfigurationProvisionVMAgent] <Boolean>] [-LinuxConfigurationProvisionVMAgent <Boolean>]
+ [[-WindowsConfigurationEnableAutomaticUpdate] <Boolean>] [[-TimeZone] <String>]
+ [[-AdditionalUnattendContent] <AdditionalUnattendContent[]>] [[-Listener] <WinRMListener[]>]
+ [[-LinuxConfigurationDisablePasswordAuthentication] <Boolean>] [[-PublicKey] <SshPublicKey[]>]
+ [[-Secret] <VaultSecretGroup[]>] [-WindowsConfigurationPatchMode <String>]
+ [-LinuxConfigurationPatchMode <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,10 +32,11 @@ The **Set-AzVmssOsProfile** cmdlet sets the Virtual Machine Scale Set operating 
 
 ### Example 1: Set the operating system profile properties for a VMSS
 ```
-PS C:\> Set-AzVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
+PS C:\> $vmss = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg
+PS C:\> Set-AzVmssOSProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
 ```
 
-This command sets operating system profile properties for the virtual machines that belong to the VMSS named ContosoVMSS.
+This command sets operating system profile properties for the $vmss object.
 The command sets the computer name prefix for all the virtual machine instances in the VMSS to Test and supplies the administrator username and password.
 
 ## PARAMETERS
@@ -76,8 +79,7 @@ Specifies the administrator account name to use for all the virtual machine inst
 **Minimum-length (Linux):** 1  character <br>
 **Max-length (Linux):** 64 characters <br>
 **Max-length (Windows):** 20 characters  <br>
-<li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).<br>
-<li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+<li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/devops/organizations/settings/naming-restrictions).
 
 ```yaml
 Type: System.String
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 Specifies a base-64 encoded string of custom data.
 This is decoded to a binary array that is saved as a file on the virtual machine.
 The maximum length of the binary array is 65535 bytes. <br>
-For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](/azure/virtual-machines/linux/tutorial-automate-vm-deployment).
 
 ```yaml
 Type: System.String
@@ -150,6 +152,36 @@ Aliases:
 
 Required: False
 Position: 10
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LinuxConfigurationPatchMode
+Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LinuxConfigurationProvisionVMAgent
+Indicates whether virtual machine agent should be provisioned on the virtual machine. <br><br> When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -206,7 +238,7 @@ Accept wildcard characters: False
 
 ### -TimeZone
 Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
-Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String
@@ -246,6 +278,20 @@ Aliases:
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WindowsConfigurationPatchMode
+Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 81D55C43-C9A3-4DA7-A469-A3A7550FE9A4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork
 schema: 2.0.0
 ---
 
@@ -15,9 +15,11 @@ Creates a virtual network.
 
 ```
 New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
- [-DnsServer <String[]>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-Tag <Hashtable>]
- [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DnsServer <String[]>] [-FlowTimeout <Int32>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>]
+ [-EnableEncryption <String>] [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>]
+ [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>]
+ [-EdgeZone <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,6 +165,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+{{ Fill EdgeZone Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableDdosProtection
 A switch parameter which represents if DDoS protection is enabled or not.
 
@@ -175,6 +192,51 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryption
+Indicates if encryption is enabled on the virtual network. The value should be true to enable encryption on the virtual network, false to disable encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EncryptionEnforcementPolicy
+Set the Encryption EnforcementPolicy. The value should be allowUnencrypted to allow VMs without encryption capability inside an encrypted virtual network, or dropUnencrypted to disable any VM without encryption capability from being added into an encrypted virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FlowTimeout
+FlowTimeout enables connection tracking for intra-VM flows. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

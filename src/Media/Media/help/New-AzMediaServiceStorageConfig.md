@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 4D64CA4D-1066-4D3E-9317-60D37D9DE2BB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.media/new-azmediaservicestorageconfig
+online version: https://docs.microsoft.com/powershell/module/az.media/new-azmediaservicestorageconfig
 schema: 2.0.0
 ---
 

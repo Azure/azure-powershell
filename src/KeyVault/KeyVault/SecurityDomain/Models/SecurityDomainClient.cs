@@ -1,4 +1,6 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+﻿using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
@@ -13,6 +15,8 @@ using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
 using static Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
@@ -32,7 +36,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             _writeDebug = debugWriter;
         }
 
-        private const string _securityDomainPathFragment = "securitydomain";
+        private const string _securityDomain = "securitydomain";
+        private const string _apiVersion = "7.2-preview";
         private readonly DataServiceCredential _credentials;
         private readonly VaultUriHelper _uriHelper;
         private readonly JsonSerializerSettings _serializationSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
@@ -46,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// <param name="certificates">Certificates used to encrypt the security domain data</param>
         /// <param name="quorum">Specify how many keys are required to decrypt the data</param>
         /// <returns>Encrypted HSM security domain data in string</returns>
-        public string DownloadSecurityDomain(string hsmName, IEnumerable<X509Certificate2> certificates, int quorum)
+        public string DownloadSecurityDomain(string hsmName, IEnumerable<X509Certificate2> certificates, int quorum, CancellationToken cancellationToken)
         {
             var downloadRequest = new DownloadRequest
             {
@@ -59,32 +64,169 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 Formatting.None,
                 _serializationSettings);
 
-            var httpRequest = new HttpRequestMessage
+            var httpRequest = CreateRequest(HttpMethod.Post, hsmName, $"/{_securityDomain}/download", new StringContent(requestBody));
+            try
             {
-                Method = HttpMethod.Post,
-                RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
-                {
-                    Path = $"/{_securityDomainPathFragment}/download"
-                }.Uri,
-                Content = new StringContent(requestBody)
+                var securityDomain = JsonConvert.DeserializeObject<SecurityDomainWrapper>(PollAsyncOperation(httpRequest, cancellationToken));
+                ValidateDownloadSecurityDomainResponse(securityDomain);
+                return securityDomain.value;
+            } catch (Exception ex) {
+                _writeDebug($"Invalid security domain response: {ex.Message}");
+                throw new AzPSException(Resources.DownloadSecurityDomainFail, ErrorKind.ServiceError, ex);
+            }
+        }
+
+        /// <summary>
+        /// Create security domain HTTP request
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="hsmName"></param>
+        /// <param name="path">e.g. /securitydomain/download</param>
+        /// <param name="content">optional request body</param>
+        /// <returns></returns>
+        private HttpRequestMessage CreateRequest(HttpMethod method, string hsmName, string path, HttpContent content = null)
+        {
+            var uri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
+            {
+                Path = path,
+                Query = $"api-version={_apiVersion}"
+            }.Uri;
+
+            var request = new HttpRequestMessage(method, uri)
+            {
+                Content = content
             };
 
-            PrepareRequest(httpRequest);
-
-            var httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
-
-            if (httpResponseMessage.IsSuccessStatusCode)
+            // add content-type header
+            if (request.Content != null)
             {
-                string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-                var securityDomainWrapper = JsonConvert.DeserializeObject<SecurityDomainWrapper>(response);
-                ValidateDownloadSecurityDomainResponse(securityDomainWrapper);
-                return securityDomainWrapper.value;
+                request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            else
+
+            // add authorization header
+            try
             {
-                string response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-                _writeDebug($"Invalid security domain response: {response}");
-                throw new Exception(Resources.DownloadSecurityDomainFail);
+                var token = _credentials.GetAccessToken();
+                token.AuthorizeRequest((tokenType, tokenValue) =>
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSException(Resources.InvalidSubscriptionState, ErrorKind.InternalError, ex);
+            }
+
+            return request;
+        }
+
+        /// <summary>
+        /// Polls the async operation request, returns the content as string
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        private string PollAsyncOperation(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            HttpResponseMessage _response = null;
+            string firstResponseContent;
+            try
+            {
+                _writeDebug(GeneralUtilities.GetLog(request));
+                _response = HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false).GetAwaiter().GetResult();
+                _writeDebug(GeneralUtilities.GetLog(_response));
+
+                if (_response.StatusCode == System.Net.HttpStatusCode.OK) {
+                    // 200: sync operation
+                    return _response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+
+
+                // cache first response, and start polling until a terminal state
+                firstResponseContent = _response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+
+                var asyncOperation = string.Empty;
+                while (true)
+                {
+                    // get the delay before polling. (default to 30 seconds if not present)
+                    int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                    _writeDebug($"Delaying {delay} seconds before polling.");
+
+                    // start the delay timer (we'll await later...)
+                    var waiting = Task.Delay(delay * 1000, cancellationToken);
+
+                    // while we wait, let's grab the headers and get ready to poll.
+                    if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation")))
+                    {
+                        asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    }
+                    var _uri = asyncOperation;
+                    request = request.CloneAndDispose(new global::System.Uri(_uri), HttpMethod.Get);
+
+                    waiting.ConfigureAwait(false).GetAwaiter().GetResult();
+
+                    // check for cancellation
+                    if (cancellationToken.IsCancellationRequested) { return null; }
+
+                    // drop the old response
+                    _response?.Dispose();
+
+                    // make the polling call
+                    _writeDebug(GeneralUtilities.GetLog(request));
+                    _response = HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false).GetAwaiter().GetResult();
+                    _writeDebug(GeneralUtilities.GetLog(_response));
+
+                    // take a peek inside and see if it's done
+                    var error = false;
+                    string pollingResponseContent;
+                    try
+                    {
+                        pollingResponseContent = _response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                        var result = JsonConvert.DeserializeObject<PollingResult>(pollingResponseContent);
+                        if (result != null)
+                        {
+                            var state = result.Status;
+                            if (string.IsNullOrEmpty(state))
+                            {
+                                // the body doesn't contain any information that has the state of the LRO
+                                // we're going to just get out, and let the consumer have the result
+                                break;
+                            }
+
+                            switch (state?.ToString()?.ToLower())
+                            {
+                                case "failed":
+                                    error = true;
+                                    break;
+                                case "succeeded":
+                                case "success":
+                                    // we're done polling.
+                                    return firstResponseContent;
+                                default:
+                                    // need to keep polling!
+                                    continue;
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        // if we run into a problem peeking into the result,
+                        // we really don't want to do anything special.
+                    }
+
+                    if (error)
+                    {
+                        throw new Exception(firstResponseContent);
+                    }
+                }
+
+                return firstResponseContent;
+            }
+            finally
+            {
+                // finally statements
+                _response?.Dispose();
+                request?.Dispose();
             }
         }
 
@@ -94,32 +236,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             {
                 _writeDebug($"Invalid security domain response: {securityDomainWrapper.value}");
                 throw new Exception(Resources.DownloadSecurityDomainFail);
-            }
-        }
-
-        /// <summary>
-        /// Prepare common headers for the request.
-        /// Such as content-type and authorization.
-        /// </summary>
-        /// <param name="httpRequest"></param>
-        private void PrepareRequest(HttpRequestMessage httpRequest)
-        {
-            if (httpRequest.Content != null)
-            {
-                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-
-            try
-            {
-                var token = _credentials.GetAccessToken();
-                token.AuthorizeRequest((tokenType, tokenValue) =>
-                {
-                    httpRequest.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
-                });
-            }
-            catch (Exception ex)
-            {
-                throw new AuthenticationException(Resources.InvalidSubscriptionState, ex);
             }
         }
 
@@ -160,22 +276,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// </summary>
         /// <param name="hsmName"></param>
         /// <returns></returns>
-        public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName)
+        public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName, CancellationToken cancellationToken)
         {
             try
             {
-                var httpRequest = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Get,
-                    RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
-                    {
-                        Path = $"/{_securityDomainPathFragment}/upload"
-                    }.Uri,
-                };
+                var httpRequest = CreateRequest(HttpMethod.Get, hsmName, $"/{_securityDomain}/upload");
 
-                PrepareRequest(httpRequest);
-
-                HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
+                HttpResponseMessage httpResponseMessage = HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false).GetAwaiter().GetResult();
 
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
@@ -186,7 +293,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                     {
                         case "pem":
                             // Transitional, remove later
-                            return Utils.CertficateFromPem(key.TransferKey);
+                            return Utils.CertificateFromPem(key.TransferKey);
                         case "jwk":
                             // handle below
                             break;
@@ -196,7 +303,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
                     // The transfer key is a JWK, need to parse it, and return the cert
                     JWK jwk = JsonConvert.DeserializeObject<JWK>(key.TransferKey);
-                    return Utils.CertficateFromPem(jwk.GetX5cAsPem());
+                    return Utils.CertificateFromPem(jwk.GetX5cAsPem());
                 }
                 else
                 {
@@ -386,7 +493,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 JWE jwe_wrapped = new JWE();
                 jwe_wrapped.Encrypt(cert, master_key);
                 securityDomainRestoreData.WrappedKey.enc_key = jwe_wrapped.EncodeCompact();
-                securityDomainRestoreData.WrappedKey.x5t_256 = Base64UrlEncoder.Encode(Utils.Sha256Thumbprint(cert));
+                securityDomainRestoreData.WrappedKey.x5t_256 = Base64UrlHelper.Encode(Utils.Sha256Thumbprint(cert));
                 return securityDomainRestoreData;
             }
             catch (Exception ex)
@@ -401,7 +508,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// </summary>
         /// <param name="hsmName"></param>
         /// <param name="securityDomainData">Encrypted by exchange key</param>
-        public void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData)
+        public void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData, CancellationToken cancellationToken)
         {
             string securityDomain = JsonConvert.SerializeObject(new SecurityDomainWrapper
             {
@@ -410,31 +517,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
             try
             {
-                var httpRequest = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Post,
-                    RequestUri = new UriBuilder(_uriHelper.CreateManagedHsmUri(hsmName))
-                    {
-                        Path = $"/{_securityDomainPathFragment}/upload"
-                    }.Uri,
-                    Content = new StringContent(securityDomain)
-                };
-
-                PrepareRequest(httpRequest);
-
-                var httpResponseMessage = HttpClient.SendAsync(httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
-                var responseBody = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-                if (httpResponseMessage.IsSuccessStatusCode)
-                {
-                    if (string.IsNullOrEmpty(responseBody))
-                    {
-                        throw new Exception("Got empty response when restoring security domain.");
-                    }
-                }
-                else
-                {
-                    throw new Exception($"Got {httpResponseMessage.StatusCode}, {responseBody}");
-                }
+                var httpRequest = CreateRequest(HttpMethod.Post, hsmName, $"/{_securityDomain}/upload", new StringContent(securityDomain));
+                PollAsyncOperation(httpRequest, cancellationToken);
             }
             catch (Exception ex)
             {

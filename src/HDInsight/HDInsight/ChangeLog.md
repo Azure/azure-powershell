@@ -18,7 +18,24 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Add properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
+
+## Version 4.3.0
+* Support new azure monitor feature in HDInsight:
+    - Add cmdlet `Get-AzHDInsightAzureMonitor` to allow customer to get the Azure Monitor status of HDInsight cluster.
+    - Add cmdlet `Enable-AzHDInsightAzureMonitor` to allow customer to enable the Azure Monitor in HDInsight cluster.
+    - Add cmdlet `Disable-AzHDInsightAzureMonitor` to allow customer to disable the Azure Monitor in HDInsight cluster.
+
+
+## Version 4.2.1
+* Supported getting default vmsize from backend if customer does not provide the related parameters: `-WorkerNodeSize`, `-HeadNodeSize`, `-ZookeeperNodeSize`, `-EdgeNodeSize`, `-KafkaManagementNodeSize`.
+
+## Version 4.2.0
+* Added new parameter `-EnableComputeIsolation` and `-ComputeIsolationHostSku` to the cmdlet `New-AzHDInsightCluster` to support compute isolation feature
+* Added property `ComputeIsolationProperties` and `ConnectivityEndpoints` in the class AzureHDInsightCluster.
+
+
+## Version 4.1.1
+* Added properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
 
 ## Version 4.1.0
 

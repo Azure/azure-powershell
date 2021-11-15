@@ -38,22 +38,22 @@ Kind      Location Name                                        Type
 IotHub East US  testnewkustocluster/mykustodatabase/myiothubdc Microsoft.Kusto/Clusters/Databases/DataConnections
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IDataConnection>: Class representing an data connection.
-  Kind <Kind>: Kind of the endpoint for the data connection
+  Kind <DataConnectionKind>: Kind of the endpoint for the data connection
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustodataconnection
+https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -91,15 +91,15 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection]
     # Class representing an data connection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind])]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind]
     # Kind of the endpoint for the data connection
     ${Kind},
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperationstatus
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperationstatus
 schema: 2.0.0
 ---
 
@@ -82,8 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -104,7 +103,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IOperationStatus
 
 ## NOTES
 

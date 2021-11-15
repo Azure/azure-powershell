@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 368DD95E-EA25-4FC4-8171-CB7348FE480C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext
 schema: 2.0.0
 ---
 

@@ -271,7 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             //replace dirctionary
             Dictionary<string, string> replaceRules = new Dictionary<string, string>()
                 {
-                    {"/", "\\"}
+                    {"/", Path.DirectorySeparatorChar.ToString()}
                 };
 
             foreach (KeyValuePair<string, string> rule in replaceRules)

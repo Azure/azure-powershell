@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSet_ManagedDisks()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSet-ManagedDisks");
@@ -198,6 +205,27 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineScaleSetExtRollingUpgrade()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetExtRollingUpgrade");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSpotRestorePolicy()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotRestorePolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetFlexibleOModeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexibleOModeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzVmssRunCommand()
+        {
+            TestRunner.RunTestScript("Test-AddAndRemoveAzVmssRunCommand");
         }
     }
 }

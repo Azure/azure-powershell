@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             if (response != null)
             {
-                dataFactories.AddRange(response.Select(df => 
+                dataFactories.AddRange(response.Select(df =>
                                                         {
                                                             var parsedResourceId = new ResourceIdentifier(df.Id);
                                                             var ResourceGroupName = parsedResourceId.ResourceGroupName;
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
             else
             {
-                if(filterOptions.ResourceGroupName == null && filterOptions.DataFactoryName != null)
+                if (filterOptions.ResourceGroupName == null && filterOptions.DataFactoryName != null)
                 {
                     throw new Exception("ResourceGroupName name can't be null if factory name is not due to parameter sets. Should never reach this point");
                 }
@@ -137,9 +137,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         new Factory
                         {
                             Location = parameters.Location,
+                            PublicNetworkAccess = parameters.PublicNetworkAccess,
                             Tags = parameters.Tags?.ToDictionary(),
                             RepoConfiguration = parameters.RepoConfiguration,
-                            Identity = new FactoryIdentity(),
+                            Identity = parameters.FactoryIdentity,
+                            Encryption = parameters.EncryptionConfiguration,
                             GlobalParameters = parameters.GlobalParameters
                         }),
                     parameters.ResourceGroupName);
@@ -171,7 +173,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public PSDataFactory UpdatePSDataFactory(UpdatePSDataFactoryParameters parameters)
         {
-            var updateParams = new FactoryUpdateParameters(parameters.Tags?.ToDictionary());
+            var updateParams = new FactoryUpdateParameters(parameters.Tags?.ToDictionary(), publicNetworkAccess: parameters.PublicNetworkAccess);
             return new PSDataFactory(
                 this.DataFactoryManagementClient.Factories.Update(
                     parameters.ResourceGroupName,

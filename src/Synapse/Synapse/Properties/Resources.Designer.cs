@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add data flow package to debug session &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string AddDataFlowDebugSessionPackage {
+            get {
+                return ResourceManager.GetString("AddDataFlowDebugSessionPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden..
         /// </summary>
         internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
@@ -142,11 +151,29 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not upload the directory &apos;{0}&apos; to Synapse. If you want to upload directory, please use &quot;ls -File -Recurse | New-AzSynapseWorkspacePackage&quot;..
+        /// </summary>
+        internal static string CannotSendDirectory {
+            get {
+                return ResourceManager.GetString("CannotSendDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace &apos;{0}&apos;?.
         /// </summary>
         internal static string ComfirmToRemoveSqlActiveDirectoryAdministrator {
             get {
                 return ResourceManager.GetString("ComfirmToRemoveSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string ConfirmCaption {
+            get {
+                return ResourceManager.GetString("ConfirmCaption", resourceCulture);
             }
         }
         
@@ -269,6 +296,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new workspace key in resource group &apos;{0}&apos; under parent Workspace &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreatingSynapseWorkspaceKey {
+            get {
+                return ResourceManager.GetString("CreatingSynapseWorkspaceKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to retrieve information protection policy of tenant {0}..
         /// </summary>
         internal static string DataClassificationFailedToRetrieveInformationProtectionPolicy {
@@ -341,6 +377,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to encrypt the connection string of the linked service?.
+        /// </summary>
+        internal static string EncryptConfirm {
+            get {
+                return ResourceManager.GetString("EncryptConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encrypting the connection string..
+        /// </summary>
+        internal static string Encrypting {
+            get {
+                return ResourceManager.GetString("Encrypting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
         /// </summary>
         internal static string FailedToAddRoleAssignmentForStorageAccount {
@@ -382,6 +436,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FailedToDiscoverFirewallRuleByWorkspace {
             get {
                 return ResourceManager.GetString("FailedToDiscoverFirewallRuleByWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A workspace key with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; does not exist. Please use New-AzSynapseWorkspaceKey to create a workspace key with these properties..
+        /// </summary>
+        internal static string FailedToDiscoverKey {
+            get {
+                return ResourceManager.GetString("FailedToDiscoverKey", resourceCulture);
             }
         }
         
@@ -494,11 +557,29 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -PackageAction and -Package must be specified at the same time or neither of them should be..
+        /// </summary>
+        internal static string FailedToValidatePackageParameter {
+            get {
+                return ResourceManager.GetString("FailedToValidatePackageParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
         /// </summary>
         internal static string FilePathDoesNotExist {
             get {
                 return ResourceManager.GetString("FilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percent : {0}%..
+        /// </summary>
+        internal static string FileTransmitStatus {
+            get {
+                return ResourceManager.GetString("FileTransmitStatus", resourceCulture);
             }
         }
         
@@ -640,6 +721,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File name &apos;{0}&apos; is invalid..
+        /// </summary>
+        internal static string InvalidFileName {
+            get {
+                return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only self-hosted integration runtime can be shared..
         /// </summary>
         internal static string InvalidIntegrationRuntimeSharing {
@@ -694,6 +784,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoke debug command of debug session &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string InvokeDataFlowDebugSessionCommand {
+            get {
+                return ResourceManager.GetString("InvokeDataFlowDebugSessionCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoking Spark statement in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string InvokingSparkStatement {
@@ -703,11 +802,29 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified workspace key &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string KeyDoesNotExist {
+            get {
+                return ResourceManager.GetString("KeyDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status.
         /// </summary>
         internal static string LongRunningStatusError {
             get {
                 return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This workspace doesn&apos;t have managed virtual network settings.
+        /// </summary>
+        internal static string ManagedVirtualNetworkNotExist {
+            get {
+                return ResourceManager.GetString("ManagedVirtualNetworkNotExist", resourceCulture);
             }
         }
         
@@ -744,6 +861,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string NoSubscriptionInContext {
             get {
                 return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package name should be empty when uploading multiple packages..
+        /// </summary>
+        internal static string PackageNameShouldBeEmptyWhenUploading {
+            get {
+                return ResourceManager.GetString("PackageNameShouldBeEmptyWhenUploading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepare to upload workspace package..
+        /// </summary>
+        internal static string PrepareUploadingPackage {
+            get {
+                return ResourceManager.GetString("PrepareUploadingPackage", resourceCulture);
             }
         }
         
@@ -802,6 +937,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse managed private endpoint &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseManagedPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("RemoveSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove notebook &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseNotebook {
@@ -816,6 +960,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapsePipeline {
             get {
                 return ResourceManager.GetString("RemoveSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove spark configuration &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Spark job definition &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -856,6 +1018,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove trigger &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseTrigger {
@@ -879,6 +1050,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapseWorkspace {
             get {
                 return ResourceManager.GetString("RemoveSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove workspace package &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseWorkspacePackage {
+            get {
+                return ResourceManager.GetString("RemoveSynapseWorkspacePackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove workspace key &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveWorkspaceKey {
+            get {
+                return ResourceManager.GetString("RemoveWorkspaceKey", resourceCulture);
             }
         }
         
@@ -973,6 +1162,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseManagedPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("RemovingSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting notebook &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseNotebook {
@@ -1005,6 +1203,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseRoleAssignmentById {
             get {
                 return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting spark configuration &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSparkConfiguration {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSparkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -1045,6 +1261,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting Synapse SQL Script &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemovingSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseTrigger {
@@ -1072,6 +1297,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting workspace package &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseWorkspacePackage {
+            get {
+                return ResourceManager.GetString("RemovingSynapseWorkspacePackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing threat protection settings in workspace &apos;{0}&apos;..
         /// </summary>
         internal static string RemovingThreatProtectionSetting {
@@ -1095,6 +1329,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingWorkspaceAudit {
             get {
                 return ResourceManager.GetString("RemovingWorkspaceAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting workspace key &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemovingWorkspaceKey {
+            get {
+                return ResourceManager.GetString("RemovingWorkspaceKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rerunning trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string RerunSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("RerunSynapseTriggerRun", resourceCulture);
             }
         }
         
@@ -1158,6 +1410,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RoleDefinitionNameDoesNotExist {
             get {
                 return ResourceManager.GetString("RoleDefinitionNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe..
+        /// </summary>
+        internal static string ScanIdParameterIsRequired {
+            get {
+                return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
             }
         }
         
@@ -1234,6 +1495,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating or updating Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseManagedPrivateEndPoint {
+            get {
+                return ResourceManager.GetString("SettingSynapseManagedPrivateEndPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting notebook &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseNotebook {
@@ -1248,6 +1518,33 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSynapsePipeline {
             get {
                 return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Synapse spark configuration &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseSparkConfiguration {
+            get {
+                return ResourceManager.GetString("SettingSynapseSparkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("SettingSynapseSparkJobDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Synapse Sql Script &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string SettingSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("SettingSynapseSqlScript", resourceCulture);
             }
         }
         
@@ -1295,6 +1592,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StartingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string StartDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StartDataFlowDebugSession", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
@@ -1311,6 +1626,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StartingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StartingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stoping integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StopingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StopingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping data flow debug session &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopingSynapseDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StopingSynapseDataFlowDebugSession", resourceCulture);
             }
         }
         
@@ -1360,6 +1693,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stopping trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string StoppingSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("StoppingSynapseTriggerRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop data flow debug session &apos;{0}&apos; in workspace &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopSynapseDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StopSynapseDataFlowDebugSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage acount name is not provided..
         /// </summary>
         internal static string StorageAccountNameParameterException {
@@ -1396,7 +1747,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A Spark pool with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Set-AzSynapseSparkPool to update an existing Spark pool..
+        ///   Looks up a localized string similar to A Spark pool with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseSparkPool to update an existing Spark pool..
         /// </summary>
         internal static string SynapseSparkPoolExists {
             get {
@@ -1414,7 +1765,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A SQL pool with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Set-AzSynapseSqlPool to update an existing SQL pool..
+        ///   Looks up a localized string similar to A SQL pool with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseSqlPool to update an existing SQL pool..
         /// </summary>
         internal static string SynapseSqlPoolExists {
             get {
@@ -1423,7 +1774,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A workspace with name &apos;{0}&apos; in resource group &apos;{1}&apos; already exists. Please use Set-AzSynapseWorkspace to update an existing workspace..
+        ///   Looks up a localized string similar to A workspace with name &apos;{0}&apos; in resource group &apos;{1}&apos; already exists. Please use Update-AzSynapseWorkspace to update an existing workspace..
         /// </summary>
         internal static string SynapseWorkspaceExists {
             get {
@@ -1437,6 +1788,37 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SyncingIntegrationRuntimeNodeCredential {
             get {
                 return ResourceManager.GetString("SyncingIntegrationRuntimeNodeCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer Summary
+        ///--------------------------------
+        ///Total:  {0}.
+        ///Successful: {1}.
+        ///Failed: {2}..
+        /// </summary>
+        internal static string TransferSummary {
+            get {
+                return ResourceManager.GetString("TransferSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total: {0}. Successful: {1}. Failed: {2}. Active: {3}..
+        /// </summary>
+        internal static string TransmitActiveSummary {
+            get {
+                return ResourceManager.GetString("TransmitActiveSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} task status :.
+        /// </summary>
+        internal static string TransmitActivity {
+            get {
+                return ResourceManager.GetString("TransmitActivity", resourceCulture);
             }
         }
         
@@ -1464,6 +1846,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingIntegrationRuntimeNode {
             get {
                 return ResourceManager.GetString("UpdatingIntegrationRuntimeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating managed identity control permissions to SQL pools for pipeline integration on workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdatingManagedIdentity {
+            get {
+                return ResourceManager.GetString("UpdatingManagedIdentity", resourceCulture);
             }
         }
         
@@ -1540,11 +1931,38 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating workspace key &apos;{0}&apos; in resource group &apos;{1}&apos; under Workspace &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdatingWorkspaceKey {
+            get {
+                return ResourceManager.GetString("UpdatingWorkspaceKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upgrading integration runtime &apos;{0}&apos;..
         /// </summary>
         internal static string UpgradingIntegrationRuntime {
             get {
                 return ResourceManager.GetString("UpgradingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading package &apos;{0}&apos; to workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UploadingWorkspacePackage {
+            get {
+                return ResourceManager.GetString("UploadingWorkspacePackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload package &apos;{0}&apos;..
+        /// </summary>
+        internal static string UploadWorkspacePackageActivity {
+            get {
+                return ResourceManager.GetString("UploadWorkspacePackageActivity", resourceCulture);
             }
         }
         
@@ -1599,6 +2017,60 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string WorkspaceDoesNotExist {
             get {
                 return ResourceManager.GetString("WorkspaceDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not provided..
+        /// </summary>
+        internal static string WorkspaceGitRepoParameterException {
+            get {
+                return ResourceManager.GetString("WorkspaceGitRepoParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either -ItemType and -Item should appear together or neither of them should be..
+        /// </summary>
+        internal static string WorkspaceItemTypeAndItemNotAppearTogether {
+            get {
+                return ResourceManager.GetString("WorkspaceItemTypeAndItemNotAppearTogether", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A workspace key with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key..
+        /// </summary>
+        internal static string WorkspaceKeyExists {
+            get {
+                return ResourceManager.GetString("WorkspaceKeyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A workspace package with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string WorkspacePackageExists {
+            get {
+                return ResourceManager.GetString("WorkspacePackageExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found: {1}. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;.
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find role assignment under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentNotFound", resourceCulture);
             }
         }
     }

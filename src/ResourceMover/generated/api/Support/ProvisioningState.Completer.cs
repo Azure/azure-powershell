@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for ProvisioningState.</summary>
+    /// <summary>Defines the provisioning states.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningStateTypeConverter))]
     public partial struct ProvisioningState :
         System.Management.Automation.IArgumentCompleter

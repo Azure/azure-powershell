@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for AlertCriteria.</summary>
+    /// <summary>Criteria that triggered alert</summary>
     public partial class AlertCriteriaTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

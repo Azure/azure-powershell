@@ -1,0 +1,112 @@
+{
+  "Update-AzBotService+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12",
+      "Content": "{\r\n  \"kind\": \"bot\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "21" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000388a-0000-1800-0000-5fda0c4d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "28e26bb3-803d-4152-b312-bb2aa3dc96b4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "810980fd-cef3-4f87-a7dc-b7d949e45a34" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133201Z:810980fd-cef3-4f87-a7dc-b7d949e45a34" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:32:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny\",\"name\":\"BotService-v5kgny\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0000388a-0000-1800-0000-5fda0c4d0000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"\"},\"kind\":\"bot\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-v5kgny\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":\"https://BotService-v5kgny.azurewebsites.net/api/messages\",\"msaAppId\":\"72344727-89e6-400f-8a31-20dd2c40da2a\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":\"3.0\",\"configuredChannels\":[\"webchat\"],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":false,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":false,\"cmekKeyVaultUrl\":null,\"cmekEncryptionStatus\":\"Off\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzBotService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "d4fbb5ca-d78a-42d3-bdb5-fced212e210b" ],
+        "CommandName": [ "Get-AzBotService" ],
+        "FullCommandName": [ "Get-AzBotService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000388a-0000-1800-0000-5fda0c4d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "67269f97-26d6-4831-8d3c-20b85bac9c7a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "e55d1766-b6ab-40c5-97cb-e71cd80fab44" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133201Z:e55d1766-b6ab-40c5-97cb-e71cd80fab44" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:32:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny\",\"name\":\"BotService-v5kgny\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0000388a-0000-1800-0000-5fda0c4d0000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"\"},\"kind\":\"bot\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-v5kgny\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":\"https://BotService-v5kgny.azurewebsites.net/api/messages\",\"msaAppId\":\"72344727-89e6-400f-8a31-20dd2c40da2a\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":\"3.0\",\"configuredChannels\":[\"webchat\"],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":false,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":false,\"cmekKeyVaultUrl\":null,\"cmekEncryptionStatus\":\"Off\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzBotService+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12",
+      "Content": "{\r\n  \"kind\": \"sdk\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "21" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00003a8a-0000-1800-0000-5fda0c530000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "98a9bab1-23cc-43c6-9b63-71687952eced" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "592110d1-0ca0-463d-8692-65859802e71e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133204Z:592110d1-0ca0-463d-8692-65859802e71e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:32:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny\",\"name\":\"BotService-v5kgny\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"00003a8a-0000-1800-0000-5fda0c530000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-v5kgny\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":\"https://BotService-v5kgny.azurewebsites.net/api/messages\",\"msaAppId\":\"72344727-89e6-400f-8a31-20dd2c40da2a\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":\"3.0\",\"configuredChannels\":[\"webchat\"],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":false,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":false,\"cmekKeyVaultUrl\":null,\"cmekEncryptionStatus\":\"Off\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

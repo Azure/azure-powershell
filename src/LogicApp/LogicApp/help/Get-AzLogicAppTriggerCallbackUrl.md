@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F523CFA0-427B-41AF-9C2D-EB54EC96C04B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapptriggercallbackurl
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapptriggercallbackurl
 schema: 2.0.0
 ---
 

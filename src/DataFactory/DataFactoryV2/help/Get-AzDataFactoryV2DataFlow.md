@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactoryv2dataflow
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2dataflow
 schema: 2.0.0
 ---
 
@@ -170,6 +170,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryDataFlow](./Set-AzDataFactoryDataFlow.md)
+[Set-AzDataFactoryV2DataFlow](./set-azdatafactoryv2dataflow.md)
 
-[Remove-AzDataFactoryDataFlow](./Remove-AzDataFactoryDataFlow.md)
+[Remove-AzDataFactoryV2DataFlow](./remove-azdatafactoryv2dataflow.md)

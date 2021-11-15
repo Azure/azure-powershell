@@ -6,10 +6,19 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The category of the health error.</summary>
     public partial struct HealthErrorCategory :
         System.IEquatable<HealthErrorCategory>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdate = @"AgentAutoUpdate";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateArtifactDeleted = @"AgentAutoUpdateArtifactDeleted";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateInfra = @"AgentAutoUpdateInfra";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateRunAsAccount = @"AgentAutoUpdateRunAsAccount";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateRunAsAccountExpired = @"AgentAutoUpdateRunAsAccountExpired";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateRunAsAccountExpiry = @"AgentAutoUpdateRunAsAccountExpiry";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory Configuration = @"Configuration";
 
@@ -30,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="HealthErrorCategory" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new HealthErrorCategory(System.Convert.ToString(value));
+            return new HealthErrorCategory(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type HealthErrorCategory</summary>

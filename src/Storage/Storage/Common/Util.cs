@@ -295,7 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 if (block.StartsWith(snapshotQueryParameter))
                 {
-                    return DateTimeOffset.Parse(block.Replace(snapshotQueryParameter, "")).ToUniversalTime();
+                    return DateTimeOffset.Parse(System.Web.HttpUtility.UrlDecode(block.Replace(snapshotQueryParameter, ""))).ToUniversalTime();
                 }
             }
             return null;
@@ -678,6 +678,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             if (cloudFileNtfsAttributes != NtfsFileAttributes.None) cloudFileNtfsAttributes &= (~NtfsFileAttributes.None);
 
             return cloudFileNtfsAttributes;
+        }
+
+        public static string GetSASStringWithoutQuestionMark(string sas)
+        {
+            if (sas.StartsWith("?"))
+            {
+                sas = sas.Substring(1);
+            }
+            return sas;
         }
     }
 }

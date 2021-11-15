@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 818D5D85-B6D5-458C-A26E-E4DE8E111A10
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchaccount
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchaccount
 schema: 2.0.0
 ---
 

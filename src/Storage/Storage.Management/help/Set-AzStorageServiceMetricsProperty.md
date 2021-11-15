@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 5878FAD4-A4BB-4DBF-A1F2-221FD34F0308
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageservicemetricsproperty
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageservicemetricsproperty
 schema: 2.0.0
 ---
 

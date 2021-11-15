@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The type of the forecast.</summary>
     public partial struct ForecastType :
         System.IEquatable<ForecastType>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ForecastType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ForecastType(System.Convert.ToString(value));
+            return new ForecastType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ForecastType</summary>

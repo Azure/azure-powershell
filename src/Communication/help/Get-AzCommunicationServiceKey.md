@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/en-us/powershell/module/az.communication/get-azcommunicationservicekey
+online version: https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
 schema: 2.0.0
 ---
 

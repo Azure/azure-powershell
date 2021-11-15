@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+using System.Management.Automation.Language;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// A command line consists of the command name and the parameter set,
     /// where the parameter set is a set of parameters (order independent) that go along with the command.
     /// </summary>
-    sealed class CommandLine
+    struct CommandLine
     {
         /// <summary>
         /// Gets the command name.
@@ -38,18 +39,31 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public ParameterSet ParameterSet { get; }
 
         /// <summary>
-        /// Create a new instance of <see cref="CommandLine"/> with the command name and parameter set.
+        /// Gets the text of the whole command line that is used to get the <see cref="CommandLine.Name" /> and <see cref="CommandLine.ParameterSet" />.
         /// </summary>
-        /// <param name="name">The command name.</param>
-        /// <param name="description">The command's description</param>
-        /// <param name="parameterSet">The parameter set.</param>
-        public CommandLine(string name, string description, ParameterSet parameterSet)
-        {
-            Validation.CheckArgument(!string.IsNullOrWhiteSpace(name), $"{nameof(name)} must not be null or whitespace.");
+        public string SourceText { get; }
 
-            Name = name;
-            Description = description;
+        /// <summary>
+        /// Create a new instance of <see cref="CommandLine"/> from <see cref="PredictiveCommand" />.
+        /// </summary>
+        /// <param name="predictiveCommand">The command information.</param>
+        /// <param name="azContext">The current PowerShell conext.</param>
+        public CommandLine(PredictiveCommand predictiveCommand, IAzContext azContext = null)
+        {
+            Validation.CheckArgument(predictiveCommand, $"{nameof(predictiveCommand)} cannot be null.");
+
+            var predictionText = CommandLineUtilities.EscapePredictionText(predictiveCommand.Command);
+            var commandAst = CommandLineUtilities.GetCommandAst(predictionText);
+            var commandName = commandAst?.GetCommandName();
+
+            Validation.CheckInvariant<CommandLineException>(!string.IsNullOrWhiteSpace(commandName), $"Cannot get the command name from the model {predictiveCommand.Command}");
+
+            var parameterSet = new ParameterSet(commandAst, azContext);
+
+            Name = commandName;
+            Description = predictiveCommand.Description;
             ParameterSet = parameterSet;
+            SourceText = predictiveCommand.Command;
         }
     }
 }

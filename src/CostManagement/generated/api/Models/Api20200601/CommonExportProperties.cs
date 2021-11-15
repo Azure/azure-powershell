@@ -13,11 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// The available columns can vary by customer channel (see examples).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public string[] ConfigurationColumn { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).ConfigurationColumn; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).ConfigurationColumn = value; }
+        public string[] ConfigurationColumn { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).ConfigurationColumn; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).ConfigurationColumn = value ?? null /* arrayOf */; }
 
         /// <summary>The granularity of rows in the export. Currently only 'Daily' is supported.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType? DataSetGranularity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).DataSetGranularity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).DataSetGranularity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType? DataSetGranularity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).DataSetGranularity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).DataSetGranularity = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType)""); }
 
         /// <summary>Backing field for <see cref="Definition" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinition _definition;
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// The time frame for pulling data for the export. If custom, then a specific time period must be provided.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType DefinitionTimeframe { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Timeframe; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Timeframe = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType DefinitionTimeframe { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Timeframe; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Timeframe = value ; }
 
         /// <summary>
         /// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide
         /// data for charges or amortization for service reservations.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType DefinitionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Type = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType DefinitionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).Type = value ; }
 
         /// <summary>Backing field for <see cref="DeliveryInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfo _deliveryInfo;
@@ -48,15 +48,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
 
         /// <summary>The name of the container where exports will be uploaded.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public string DestinationContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationContainer; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationContainer = value; }
+        public string DestinationContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationContainer; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationContainer = value ; }
 
         /// <summary>The resource id of the storage account where exports will be delivered.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public string DestinationResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationResourceId = value; }
+        public string DestinationResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationResourceId = value ; }
 
         /// <summary>The name of the directory where exports will be uploaded.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public string DestinationRootFolderPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationRootFolderPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationRootFolderPath = value; }
+        public string DestinationRootFolderPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationRootFolderPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDeliveryInfoInternal)DeliveryInfo).DestinationRootFolderPath = value ?? null; }
 
         /// <summary>Backing field for <see cref="Format" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType? _format;
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
 
         /// <summary>The start date for export data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public global::System.DateTime TimePeriodFrom { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodFrom; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodFrom = value; }
+        public global::System.DateTime? TimePeriodFrom { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodFrom; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodFrom = value ?? default(global::System.DateTime); }
 
         /// <summary>The end date for export data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public global::System.DateTime TimePeriodTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodTo; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodTo = value; }
+        public global::System.DateTime? TimePeriodTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodTo; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportDefinitionInternal)Definition).TimePeriodTo = value ?? default(global::System.DateTime); }
 
         /// <summary>Creates an new <see cref="CommonExportProperties" /> instance.</summary>
         public CommonExportProperties()
@@ -222,20 +222,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[] RunHistoryValue { get;  }
         /// <summary>The start date for export data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The start date for export data.",
         SerializedName = @"from",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime TimePeriodFrom { get; set; }
+        global::System.DateTime? TimePeriodFrom { get; set; }
         /// <summary>The end date for export data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The end date for export data.",
         SerializedName = @"to",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime TimePeriodTo { get; set; }
+        global::System.DateTime? TimePeriodTo { get; set; }
 
     }
     /// The common properties of the export.
@@ -287,9 +287,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// <summary>A list of export executions.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[] RunHistoryValue { get; set; }
         /// <summary>The start date for export data.</summary>
-        global::System.DateTime TimePeriodFrom { get; set; }
+        global::System.DateTime? TimePeriodFrom { get; set; }
         /// <summary>The end date for export data.</summary>
-        global::System.DateTime TimePeriodTo { get; set; }
+        global::System.DateTime? TimePeriodTo { get; set; }
 
     }
 }

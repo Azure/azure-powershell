@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.IO;
 using System.Text;
@@ -26,10 +27,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     sealed class Settings
     {
         private static Settings _instance;
-        private static readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        };
+
+        /// <summary>
+        /// The maximum number of suggestions that have the same command name.
+        /// </summary>
+        public int? MaxAllowedCommandDuplicate { get; set; }
 
         /// <summary>
         /// The service to get the prediction results back.
@@ -37,10 +39,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public string ServiceUri { get; set; }
 
         /// <summary>
+        /// Set the user as an internal user.
+        /// </summary>
+        public bool? SetAsInternal { get; set; }
+
+        /// <summary>
         /// The number of suggestions to return to PSReadLine.
         /// </summary>
         public int? SuggestionCount { get; set; }
-        public int? MaxAllowedCommandDuplicate { get; set; }
+
+        /// <summary>
+        /// The survey id. It should be internal but make it public so that we can read/write to Json.
+        /// </summary>
+        public int? SurveyId { get; set; }
 
         private static bool? _isContinueOnTimeout;
         /// <summary>
@@ -89,49 +100,73 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return Settings._instance;
         }
 
-        private static Settings CreateDefaultSettings()
+        /// <summary>
+        /// Gets the settings from the user profile folder.
+        /// </summary>
+        internal static Settings GetProfileSettings()
         {
-            var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
-            var directory = fileInfo.DirectoryName;
-            var settingFilePath = Path.Join(directory, AzPredictorConstants.SettingsFileName);
-            var fileContent = File.ReadAllText(settingFilePath, Encoding.UTF8);
-            var settings = JsonSerializer.Deserialize<Settings>(fileContent, Settings._jsonSerializerOptions);
-
-            return settings;
-        }
-
-        private void OverrideSettingsFromProfile()
-        {
-            var userProfileDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            string profileDirectoryPath = Path.Join(userProfileDirectory, AzPredictorConstants.AzureProfileDirectoryName);
-            string profileSettingFilePath = Path.Join(profileDirectoryPath, AzPredictorConstants.SettingsFileName);
+            string profileSettingFilePath = Settings.GetProfileSettingsFilePath();
 
             if (File.Exists(profileSettingFilePath))
             {
                 try
                 {
                     var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
-                    var profileSettings = JsonSerializer.Deserialize<Settings>(fileContent, Settings._jsonSerializerOptions);
-
-                    if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
-                    {
-                        ServiceUri = profileSettings.ServiceUri;
-                    }
-
-                    if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
-                    {
-                        SuggestionCount = profileSettings.SuggestionCount;
-                    }
-
-                    if (profileSettings.MaxAllowedCommandDuplicate.HasValue && (profileSettings.MaxAllowedCommandDuplicate.Value > 0))
-                    {
-                        this.MaxAllowedCommandDuplicate = profileSettings.MaxAllowedCommandDuplicate;
-                    }
+                    return JsonSerializer.Deserialize<Settings>(fileContent, JsonUtilities.DefaultSerializerOptions);
                 }
                 catch
                 {
-                    // Ignore all the exception and not to update the settings.
+                    // Ignore all the exception
                 }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the file path of the settings in the user profile folder.
+        /// </summary>
+        internal static string GetProfileSettingsFilePath()
+        {
+            var userProfileDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string profileDirectoryPath = Path.Join(userProfileDirectory, AzPredictorConstants.AzureProfileDirectoryName);
+            return Path.Join(profileDirectoryPath, AzPredictorConstants.SettingsFileName);
+        }
+
+        private static Settings CreateDefaultSettings()
+        {
+            var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
+            var directory = fileInfo.DirectoryName;
+            var settingFilePath = Path.Join(directory, AzPredictorConstants.SettingsFileName);
+            var fileContent = File.ReadAllText(settingFilePath, Encoding.UTF8);
+            var settings = JsonSerializer.Deserialize<Settings>(fileContent, JsonUtilities.DefaultSerializerOptions);
+
+            return settings;
+        }
+
+        private void OverrideSettingsFromProfile()
+        {
+            var profileSettings = Settings.GetProfileSettings();
+
+            if (profileSettings != null)
+            {
+                if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
+                {
+                    ServiceUri = profileSettings.ServiceUri;
+                }
+
+                if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
+                {
+                    SuggestionCount = profileSettings.SuggestionCount;
+                }
+
+                if (profileSettings.MaxAllowedCommandDuplicate.HasValue && (profileSettings.MaxAllowedCommandDuplicate.Value > 0))
+                {
+                    this.MaxAllowedCommandDuplicate = profileSettings.MaxAllowedCommandDuplicate;
+                }
+
+                this.SetAsInternal = profileSettings.SetAsInternal;
+                this.SurveyId = profileSettings.SurveyId;
             }
         }
 

@@ -37,11 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>A list of address blocks reserved for this virtual network in CIDR notation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string[] DatabrickAddressSpaceAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)DatabricksAddressSpace).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)DatabricksAddressSpace).AddressPrefix = value; }
+        public string[] DatabrickAddressSpaceAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)DatabricksAddressSpace).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)DatabricksAddressSpace).AddressPrefix = value ?? null /* arrayOf */; }
 
         /// <summary>The Id of the databricks virtual network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string DatabrickVirtualNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkInternal)DatabricksVirtualNetwork).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkInternal)DatabricksVirtualNetwork).Id = value; }
+        public string DatabrickVirtualNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkInternal)DatabricksVirtualNetwork).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkInternal)DatabricksVirtualNetwork).Id = value ?? null; }
 
         /// <summary>Backing field for <see cref="DatabricksAddressSpace" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpace _databricksAddressSpace;
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>A list of address blocks reserved for this virtual network in CIDR notation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string[] RemoteAddressSpaceAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)RemoteAddressSpace).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)RemoteAddressSpace).AddressPrefix = value; }
+        public string[] RemoteAddressSpaceAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)RemoteAddressSpace).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IAddressSpaceInternal)RemoteAddressSpace).AddressPrefix = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="RemoteVirtualNetwork" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork _remoteVirtualNetwork;
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>The Id of the remote virtual network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string RemoteVirtualNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkInternal)RemoteVirtualNetwork).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkInternal)RemoteVirtualNetwork).Id = value; }
+        public string RemoteVirtualNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkInternal)RemoteVirtualNetwork).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkInternal)RemoteVirtualNetwork).Id = value ?? null; }
 
         /// <summary>Backing field for <see cref="UseRemoteGateway" /> property.</summary>
         private bool? _useRemoteGateway;

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserverreplication
+online version: https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 schema: 2.0.0
 ---
 
@@ -22,6 +22,12 @@ Get-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String>
 ```
 Get-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByMachineName
+```
+Get-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetBySDSID
@@ -255,8 +261,23 @@ Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
 Parameter Sets: GetByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineName
+Specifies the display name of the replicating machine.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByMachineName
 Aliases:
 
 Required: True
@@ -286,7 +307,7 @@ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName
+Parameter Sets: GetByMachineName, ListByName
 Aliases:
 
 Required: True
@@ -316,7 +337,7 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName
+Parameter Sets: GetByMachineName, ListByName
 Aliases:
 
 Required: True
@@ -378,7 +399,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
 
 ## NOTES
 
@@ -391,9 +412,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
   - `[Location <String>]`: Resource Location
-  - `[CurrentJobId <String>]`: The ARM Id of the job being executed.
-  - `[CurrentJobName <String>]`: The job name.
-  - `[CurrentJobStartTime <DateTime?>]`: The start time of the job.
   - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
 
 ## RELATED LINKS

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
         /// <param name="value">the value to convert to an instance of <see cref="PeeringState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PeeringState(System.Convert.ToString(value));
+            return new PeeringState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PeeringState</summary>

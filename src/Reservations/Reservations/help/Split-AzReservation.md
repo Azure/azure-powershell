@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/split-azreservation
+online version: https://docs.microsoft.com/powershell/module/az.reservations/split-azreservation
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Split a `Reservation` into two `Reservation`s with specified quantity distributi
 
 ### Example 1
 ```
-PS C:\> Split-AzReservation -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111" -Quantities 2,3
+PS C:\> Split-AzReservation -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111" -Quantity 2,3
 ```
 
 Split the specified `Reservation` into two `Reservation`s with the corresponding quantities

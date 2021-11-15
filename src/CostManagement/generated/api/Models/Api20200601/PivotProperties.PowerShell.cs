@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.PivotType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.PivotType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.PivotType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.PivotType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotPropertiesInternal)this).Name, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

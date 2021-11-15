@@ -128,7 +128,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
-            string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
+            var asigneeID = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
+
+            string asigneeObjectType = parameters.ADObjectFilter?.ObjectType;
+            if (string.IsNullOrWhiteSpace(asigneeObjectType))
+            {
+                var asigneeObject = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asigneeID }).SingleOrDefault();
+                asigneeObjectType = (!(asigneeObject is PSErrorHelperObject) && asigneeObject != null) ? asigneeObject.Type : null;
+            }
+
+            string principalId = asigneeID;
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = string.IsNullOrEmpty(parameters.RoleDefinitionName)
@@ -140,8 +149,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var createParameters = new RoleAssignmentCreateParameters
             {
                 PrincipalId = principalId.ToString(),
+                PrincipalType = asigneeObjectType,
                 RoleDefinitionId = roleDefinitionId,
-                CanDelegate = parameters.CanDelegate,
                 Description = parameters.Description,
                 Condition = parameters.Condition,
                 ConditionVersion = parameters.ConditionVersion
@@ -204,7 +213,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    var tempResult = AuthorizationManagementClient.RoleAssignments.List(odataQuery);
+                    var tempResult = AuthorizationManagementClient.RoleAssignments.ListForSubscription(odataQuery);
                     result.AddRange(tempResult
                         .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
@@ -226,7 +235,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else
             {
-                var tempResult = AuthorizationManagementClient.RoleAssignments.List(odataQuery);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForSubscription(odataQuery);
                 result.AddRange(tempResult
                      .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                      .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
@@ -290,6 +299,23 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The updated role assignment.</returns>
         public PSRoleAssignment UpdateRoleAssignment(PSRoleAssignment roleAssignment)
         {
+            string principalType = null;
+
+            // check added in case Set-AzRoleAssignment is called as a create operation but the user didn't add the object type
+            if (roleAssignment.ObjectType == null)
+            {
+                var asignee = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { roleAssignment.ObjectId }).SingleOrDefault();
+
+                if (!(asignee is PSErrorHelperObject) && asignee.Type != null)
+                {
+                    principalType = asignee.Type;
+                }
+            }
+            else
+            {
+                principalType = roleAssignment.ObjectType;
+            }
+
             string principalId = roleAssignment.ObjectId;
             var roleAssignmentGuidIndex = roleAssignment.RoleAssignmentId.LastIndexOf("/");
             var roleAssignmentId = roleAssignmentGuidIndex != -1 ? roleAssignment.RoleAssignmentId.Substring(roleAssignmentGuidIndex + 1) : roleAssignment.RoleAssignmentId;
@@ -302,8 +328,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 PrincipalId = principalId.ToString(),
                 RoleDefinitionId = roleDefinitionId,
-                PrincipalType = roleAssignment.ObjectType,
-                CanDelegate = roleAssignment.CanDelegate,
+                PrincipalType = principalType,
                 Description = Description,
                 Condition = Condition,
                 ConditionVersion = ConditionVersion

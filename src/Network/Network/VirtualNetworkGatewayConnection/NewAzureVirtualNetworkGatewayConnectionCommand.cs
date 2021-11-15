@@ -104,6 +104,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
         Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
+
+        [Parameter(
+        Mandatory = false,
         ValueFromPipelineByPropertyName = true,
         HelpMessage = "The Ipsec share key.")]
         public string SharedKey { get; set; }
@@ -171,6 +177,16 @@ namespace Microsoft.Azure.Commands.Network
             IgnoreCase = true)]
         public string ConnectionProtocol { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of ingress NAT rules that are associated with this Connection.")]
+        public PSResourceId[] IngressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of egress  NAT rules that are associated with this Connection.")]
+        public PSResourceId[] EgressNatRule { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -209,6 +225,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds;
+            vnetGatewayConnection.ConnectionMode = this.ConnectionMode;
             vnetGatewayConnection.SharedKey = this.SharedKey;
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
             vnetGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent;
@@ -247,6 +264,32 @@ namespace Microsoft.Azure.Commands.Network
             if (this.TrafficSelectorPolicy != null)
             {
                 vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
+            }
+
+            if (this.IngressNatRule != null && this.IngressNatRule?.ToList().Count > 0)
+            {
+                vnetGatewayConnection.IngressNatRules = new List<PSResourceId>();
+                foreach (var resource in this.IngressNatRule)
+                {
+                    vnetGatewayConnection.IngressNatRules.Add(
+                        new PSResourceId()
+                        {
+                            Id = resource.Id
+                        });
+                }
+            }
+
+            if (this.EgressNatRule != null && this.EgressNatRule?.ToList().Count > 0)
+            {
+                vnetGatewayConnection.EgressNatRules = new List<PSResourceId>();
+                foreach (var resource in this.EgressNatRule)
+                {
+                    vnetGatewayConnection.EgressNatRules.Add(
+                        new PSResourceId()
+                        {
+                            Id = resource.Id
+                        });
+                }
             }
 
             // Map to the sdk object

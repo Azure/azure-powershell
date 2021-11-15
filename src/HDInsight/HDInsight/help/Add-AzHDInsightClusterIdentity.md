@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: A40AB6AB-D3CB-4A6C-B614-0B22085759DA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightclusteridentity
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightclusteridentity
 schema: 2.0.0
 ---
 

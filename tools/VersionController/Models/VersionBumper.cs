@@ -1,14 +1,26 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Language;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
 using Tools.Common.Utilities;
-using Microsoft.Extensions.Logging;
 
 namespace VersionController.Models
 {
@@ -49,28 +61,19 @@ namespace VersionController.Models
                 _newVersion = MinimalVersion.ToString();
             }
 
-            if (_oldVersion == _newVersion)
-            {
-                Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
-
-                if (!_newVersion.StartsWith("0"))
-                {
-                    // Generate the serialized module metadata file
-                    _metadataHelper.SerializeModule();
-                }
-            }
-            else
+            if (_oldVersion != _newVersion)
             {
                 Console.WriteLine("Updating version for " + _fileHelper.ModuleName + " from " + _oldVersion + " to " + _newVersion);
             }
 
+            UpdateSerializedCmdlet();
             UpdateSerializedAssemblyVersion();
             UpdateChangeLog();
             var releaseNotes = GetReleaseNotes();
             UpdateOutputModuleManifest(releaseNotes);
+            UpdateDependentModules();
             UpdateRollupModuleManifest();
             UpdateAssemblyInfo();
-            UpdateDependentModules();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
         }
 
@@ -142,14 +145,14 @@ namespace VersionController.Models
             {
                 versionBump = Version.PATCH;
             }
-            // MINOR update for modules with version 0.x.x. Otherwise, it is always 0.1.x which gives user perception that module is far from GA.
-            if (splitVersion[0] == 0)
+            // Breaking change is allowed when module version is less than 1.0.0. Downgrade bumped version to minor for this case.
+            if (splitVersion[0] == 0 && versionBump == Version.MAJOR)
             {
                 versionBump = Version.MINOR;
             }
 
             var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
-
+            
             List<AzurePSVersion> galleryVersion = GetGalleryVersion();
 
             AzurePSVersion maxGalleryGAVersion = new AzurePSVersion("0.0.0");
@@ -167,8 +170,9 @@ namespace VersionController.Models
             }
             else if (maxGalleryGAVersion >= bumpedVersion)
             {
-                _logger.LogError("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
-                throw new Exception("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+                string errorMsg = $"The GA version of {moduleName} in gallery ({maxGalleryGAVersion}) is greater or equal to the bumped version({bumpedVersion}).";
+                _logger.LogError(errorMsg);
+                throw new Exception(errorMsg);
             }
             else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
             {
@@ -318,6 +322,19 @@ namespace VersionController.Models
             }
         }
 
+        private void UpdateSerializedCmdlet()
+        {
+            var moduleName = _fileHelper.ModuleName;
+            var version = _newVersion;
+            var newModuleMetadata = _metadataHelper.NewModuleMetadata;
+            newModuleMetadata.ModuleName = moduleName;
+            newModuleMetadata.ModuleVersion = version;
+            var serializedCmdletsDirectory = _fileHelper.SerializedCmdletsDirectory;
+            var serializedCmdletName = $"{moduleName}.json";
+            var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+            VersionMetadataHelper.SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
+        }
+
         /// <summary>
         /// Get the releases notes for the upcoming release from a change log.
         /// </summary>
@@ -354,7 +371,7 @@ namespace VersionController.Models
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var projectModuleManifestPath = _fileHelper.ProjectModuleManifestPath;
             var tempModuleManifestPath = Path.Combine(outputModuleDirectory, moduleName + "-temp.psd1");
-            File.Copy(outputModuleManifestPath, tempModuleManifestPath);
+            File.Copy(outputModuleManifestPath, tempModuleManifestPath, true);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
             script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
@@ -379,6 +396,34 @@ namespace VersionController.Models
         }
 
         /// <summary>
+        /// Update the ModuleVersion of the bumped module in any dependent module's RequiredModule field.
+        /// </summary>
+        private void UpdateDependentModules()
+        {
+            var moduleName = _fileHelper.ModuleName;
+            var projectDirectories = _fileHelper.ProjectDirectories;
+            foreach (var projectDirectory in projectDirectories)
+            {
+                var moduleManifestPaths = Directory.GetFiles(projectDirectory, "*.psd1", SearchOption.AllDirectories)
+                                                   .Where(f => !f.Contains("Netcore") &&
+                                                               !f.Contains("bin") &&
+                                                               !f.Contains("dll-Help") &&
+                                                               !ModuleFilter.IsAzureStackModule(f))
+                                                   .ToList();
+                foreach (var moduleManifestPath in moduleManifestPaths)
+                {
+                    var file = File.ReadAllLines(moduleManifestPath);
+                    var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)ModuleVersion(\s*)=(\s*)(['\""])" + "\\d+(\\.\\d+)+" + @"(['\""])";
+                    if (file.Where(l => Regex.IsMatch(l, pattern)).Any())
+                    {
+                        var updatedFile = file.Select(l => Regex.Replace(l, pattern, "ModuleName = '" + moduleName + "'; ModuleVersion = '" + _newVersion + "'"));
+                        File.WriteAllLines(moduleManifestPath, updatedFile);
+                    }
+                }
+            }
+        }
+        
+        /// <summary>
         /// Creates a new header for the upcoming release based on the new version.
         /// </summary>
         private void UpdateChangeLog()
@@ -402,52 +447,6 @@ namespace VersionController.Models
             }
 
             File.WriteAllLines(changeLogPath, newFile);
-        }
-
-        /// <summary>
-        /// Update the ModuleVersion of the bumped module in any dependent module's RequiredModule field.
-        /// </summary>
-        private void UpdateDependentModules()
-        {
-            var moduleName = _fileHelper.ModuleName;
-            var projectDirectories = _fileHelper.ProjectDirectories;
-            var outputDirectories = _fileHelper.OutputDirectories;
-            foreach (var projectDirectory in projectDirectories)
-            {
-                var moduleManifestPaths = Directory.GetFiles(projectDirectory, "*.psd1", SearchOption.AllDirectories)
-                                                   .Where(f => !f.Contains("Netcore") &&
-                                                               !f.Contains("bin") &&
-                                                               !f.Contains("dll-Help") &&
-                                                               !ModuleFilter.IsAzureStackModule(f))
-                                                   .ToList();
-                foreach (var moduleManifestPath in moduleManifestPaths)
-                {
-                    var file = File.ReadAllLines(moduleManifestPath);
-                    var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)ModuleVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
-                    if (file.Where(l => Regex.IsMatch(l, pattern)).Any())
-                    {
-                        var updatedFile = file.Select(l => Regex.Replace(l, pattern, "ModuleName = '" + moduleName + "'; ModuleVersion = '" + _newVersion + "'"));
-                        File.WriteAllLines(moduleManifestPath, updatedFile);
-                        var updatedModuleName = Path.GetFileNameWithoutExtension(moduleManifestPath);
-                        foreach (var outputDirectory in outputDirectories)
-                        {
-                            var outputModuleDirectory = Directory.GetDirectories(outputDirectory, updatedModuleName).FirstOrDefault();
-                            if (outputModuleDirectory == null)
-                            {
-                                continue;
-                            }
-
-                            var outputModuleManifestPath = Directory.GetFiles(outputModuleDirectory, updatedModuleName + ".psd1").FirstOrDefault();
-                            if (outputModuleManifestPath == null)
-                            {
-                                continue;
-                            }
-
-                            File.WriteAllLines(outputModuleManifestPath, updatedFile);
-                        }
-                    }
-                }
-            }
         }
 
         /// <summary>

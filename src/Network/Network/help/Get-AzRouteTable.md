@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 4F487FCA-930D-4D56-8D28-7693312E1A01
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azroutetable
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azroutetable
 schema: 2.0.0
 ---
 

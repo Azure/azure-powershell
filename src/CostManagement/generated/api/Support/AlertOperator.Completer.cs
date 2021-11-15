@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for AlertOperator.</summary>
+    /// <summary>operator used to compare currentSpend with amount</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.AlertOperatorTypeConverter))]
     public partial struct AlertOperator :
         System.Management.Automation.IArgumentCompleter

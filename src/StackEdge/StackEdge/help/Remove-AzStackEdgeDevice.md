@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StackEdge.dll-Help.xml
 Module Name: Az.StackEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.stackedge/remove-azstackedgedevice
+online version: https://docs.microsoft.com/powershell/module/az.stackedge/remove-azstackedgedevice
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Remove-AzStackEdgeDevice -DeviceObject <PSStackEdgeDevice> [-AsJob] [-DefaultPro
 The **Remove-AzStackEdgeDevice** cmdlet removes the configuration for a Stack Edge device.
 Note that the device can only be deleted after you have placed the order and before the device is prepared by Microsoft for shipment.
 
-Refer the documentation on Deleting the resource before using this [cmdlet](https://docs.microsoft.com/en-us/azure/databox-online/data-box-edge-return-device#delete-the-resource)
+Refer the documentation on Deleting the resource before using this [cmdlet](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device#delete-the-resource)
 
 ## EXAMPLES
 

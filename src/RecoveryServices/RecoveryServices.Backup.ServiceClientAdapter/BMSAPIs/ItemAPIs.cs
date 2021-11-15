@@ -123,6 +123,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// List protected items protected from secondary region by the Recovery Services vault according to the query params 
+        /// and pagination params.
+        /// </summary>
+        /// <param name="queryFilter">Query params</param>
+        /// <param name="skipToken">Skip token used for pagination</param>
+        /// <returns>List of protected items</returns>
+        public List<ProtectedItemResource> ListCrrProtectedItem(
+            ODataQuery<ProtectedItemQueryObject> queryFilter,
+            string skipToken = default(string),
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<ProtectedItemResource>> listAsync =
+                () => BmsAdapter.Client.BackupProtectedItemsCrr.ListWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    queryFilter,
+                    skipToken,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, RestAzureNS.IPage<ProtectedItemResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.BackupProtectedItemsCrr.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList(listAsync, listNextAsync);
+        }       
+
+        /// <summary>
         /// Triggers backup on the specified item
         /// </summary>
         /// <param name="containerName">Name of the container which this item belongs to</param>
@@ -216,13 +245,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  protectedItemName,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
-
+                
         /// <summary>
         /// List protection intents
         /// </summary>
-        /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="request">Protected item create or update request</param>
-        /// <returns>Job created in the service for this operation</returns>
+        /// <param name="queryFilter"></param>
+        /// <param name="skipToken"></param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>List of protection intents resource</returns>
         public List<ProtectionIntentResource> ListProtectionIntent(
             ODataQuery<ProtectionIntentQueryObject> queryFilter,
             string skipToken = default(string),

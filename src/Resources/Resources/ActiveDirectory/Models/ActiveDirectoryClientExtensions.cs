@@ -15,6 +15,7 @@
 using Microsoft.Azure.Graph.RBAC.Models;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -38,60 +39,67 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             };
         }
 
-        public static PSADObject ToPSADObject(this AADObject obj)
+        public static PSADObject ToPSADObject(this DirectoryObject obj)
         {
             if (obj == null) throw new ArgumentNullException();
 
-            if (obj.ObjectType == typeof(User).Name)
+            if(obj is User user)
             {
                 return new PSADUser()
                 {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType,
-                    UserPrincipalName = obj.UserPrincipalName
+                    DisplayName = user.DisplayName,
+                    Id = user.ObjectId,
+                    DeletionTimestamp = user.DeletionTimestamp,
+                    UserPrincipalName = user.UserPrincipalName,
+                    AccountEnabled = user.AccountEnabled,
+                    GivenName = user.GivenName,
+                    Mail = user.Mail,
+                    MailNickname = user.MailNickname,
+                    Surname = user.Surname,
+                    UsageLocation = user.UsageLocation,
+                    Type = "User"
                 };
             }
-            else if (obj.ObjectType == "Group")
+            else if(obj is ADGroup group)
             {
                 return new PSADGroup()
                 {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType,
-                    SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = !string.IsNullOrEmpty(obj.Mail) ? obj.Mail :
-                        !string.IsNullOrEmpty(obj.MailNickname) ? obj.MailNickname :
-                        obj.AdditionalProperties.ContainsKey("mailNickname") ? obj.AdditionalProperties["mailNickname"]?.ToString() : null,
-                    Description = obj.AdditionalProperties.ContainsKey("description") ? obj.AdditionalProperties["description"]?.ToString() : null
+                    DisplayName = group.DisplayName,
+                    Id = group.ObjectId,
+                    Type = "Group",
+                    DeletionTimestamp = group.DeletionTimestamp,
+                    SecurityEnabled = group.SecurityEnabled,
+                    MailEnabled = group.MailEnabled,
+                    MailNickname = !string.IsNullOrEmpty(group.Mail) ? group.Mail :
+                        !string.IsNullOrEmpty(group.MailNickname) ? group.MailNickname :
+                        group.AdditionalProperties.ContainsKey("mailNickname") ? group.AdditionalProperties["mailNickname"]?.ToString() : null,
+                    Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null
                 };
             }
-            else if (obj.ObjectType == typeof(ServicePrincipal).Name)
+            else if(obj is ServicePrincipal sp)
             {
                 return new PSADServicePrincipal()
                 {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType,
-                    ServicePrincipalNames = obj.ServicePrincipalNames.ToArray()
+                    DisplayName = sp.DisplayName,
+                    Id = sp.ObjectId,
+                    Type = "ServicePrincipal",
+                    ServicePrincipalNames = sp.ServicePrincipalNames.ToArray()
                 };
             }
             else
             {
                 return new PSADObject()
                 {
-                    DisplayName = obj.DisplayName,
                     Id = obj.ObjectId,
-                    Type = obj.ObjectType
+                    DeletionTimestamp = obj.DeletionTimestamp
                 };
             }
         }
 
-        public static PSADObject ToPSADGroup(this AADObject obj)
+        public static PSADObject ToPSADGroup(this DirectoryObject obj)
         {
             return new PSADObject()
             {
-                DisplayName = obj.DisplayName,
                 Id = obj.ObjectId
             };
         }
@@ -109,7 +117,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Surname = user.Surname,
                 AccountEnabled = user.AccountEnabled,
                 MailNickname = user.MailNickname,
-                Mail = user.Mail
+                Mail = user.Mail,
+                ImmutableId = user.ImmutableId,
+                AdditionalProperties = user.AdditionalProperties
             };
         }
 
@@ -119,9 +129,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 DisplayName = group.DisplayName,
                 Id = group.ObjectId,
+                DeletionTimestamp = group.DeletionTimestamp,
                 SecurityEnabled = group.SecurityEnabled,
                 MailNickname =  !string.IsNullOrEmpty(group.Mail) ? group.Mail : group.AdditionalProperties.ContainsKey("mailNickname") ? group.AdditionalProperties["mailNickname"]?.ToString() : null,
-                Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null
+                Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null,
+                MailEnabled = group.MailEnabled,
+                AdditionalProperties = group.AdditionalProperties
             };
         }
 
@@ -131,7 +144,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 DisplayName = servicePrincipal.DisplayName,
                 Id = servicePrincipal.ObjectId,
+                DeletionTimestamp = servicePrincipal.DeletionTimestamp,
                 ApplicationId = Guid.Parse(servicePrincipal.AppId),
+                Type = "ServicePrincipal",
                 ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray()
             };
         }
@@ -144,6 +159,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ObjectId = application.ObjectId,
                     DisplayName = application.DisplayName,
+                    DeletionTimestamp = application.DeletionTimestamp,
                     ApplicationId = Guid.Parse(application.AppId),
                     IdentifierUris = application.IdentifierUris,
                     HomePage = application.Homepage,
@@ -189,19 +205,35 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 KeyId = credential.KeyId,
                 StartDate = credential.StartDate == null ? string.Empty : credential.StartDate.ToString(),
                 EndDate = credential.EndDate == null ? string.Empty : credential.EndDate.ToString(),
-                Type = credential.Type
+                Type = credential.Type,
+                Usage = credential.Usage,
+                CustomKeyIdentifier = credential.CustomKeyIdentifier
             };
         }
 
         public static PSADCredential ToPSADCredential(this PasswordCredential credential)
         {
-            return new PSADCredential
+            PSADCredential ret = new PSADCredential
             {
                 KeyId = credential.KeyId,
                 StartDate = credential.StartDate == null ? string.Empty : credential.StartDate.ToString(),
                 EndDate = credential.EndDate == null ? string.Empty : credential.EndDate.ToString(),
                 Type = "Password"
             };
+
+            if(credential.CustomKeyIdentifier != null && credential.CustomKeyIdentifier.Length > 0)
+            {
+                try
+                {
+                    ret.CustomKeyIdentifier = Encoding.UTF8.GetString(credential.CustomKeyIdentifier);
+                }
+                catch
+                {
+                    // Ignore this property if service response cannot be converted to string
+                }
+            }
+
+            return ret;
         }
     }
 }

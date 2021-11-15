@@ -16,16 +16,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
         private string _azureAsyncOperation;
 
-        /// <summary>Tracking URL for long running operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <param name="headers"></param>
         void Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
         {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader))
+            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVCenterCreateOrUpdateAcceptedResponseHeadersInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader) is string __headerAzureAsyncOperationHeader ? __headerAzureAsyncOperationHeader : (string)null;
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVCenterCreateOrUpdateAcceptedResponseHeadersInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
             }
         }
 
@@ -40,11 +39,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     public partial interface IVCenterCreateOrUpdateAcceptedResponseHeaders
 
     {
-        /// <summary>Tracking URL for long running operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Tracking URL for long running operation.",
+        Description = @"",
         SerializedName = @"Azure-AsyncOperation",
         PossibleTypes = new [] { typeof(string) })]
         string AzureAsyncOperation { get; set; }
@@ -53,7 +51,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     internal partial interface IVCenterCreateOrUpdateAcceptedResponseHeadersInternal
 
     {
-        /// <summary>Tracking URL for long running operation.</summary>
         string AzureAsyncOperation { get; set; }
 
     }

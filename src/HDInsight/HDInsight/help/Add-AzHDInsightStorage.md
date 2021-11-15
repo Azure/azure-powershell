@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 2C2AF43D-18BF-4036-A355-FC27E406B18A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightstorage
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightstorage
 schema: 2.0.0
 ---
 

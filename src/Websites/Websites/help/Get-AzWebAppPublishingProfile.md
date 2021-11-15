@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 38433470-CAFD-4B8F-980C-63D4B264B39F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebapppublishingprofile
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebapppublishingprofile
 schema: 2.0.0
 ---
 

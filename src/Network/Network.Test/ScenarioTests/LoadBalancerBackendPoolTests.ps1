@@ -71,7 +71,7 @@ function Test-LoadBalancerBackendPoolCRUD
 
         #remove IpAddress from list
         $backendPoolSet1.LoadBalancerBackendAddresses.Remove($backendPoolSet1.LoadBalancerBackendAddresses[0])
-        $backendPoolSet2 = Set-AzLoadBalancerBackendAddressPool -InputObject $backendPoolSet1
+        $backendPoolSet2 = $backendPoolSet1 | Set-AzLoadBalancerBackendAddressPool
 
         Assert-NotNull  $backendPoolSet2
         
@@ -104,7 +104,7 @@ function Test-LoadBalancerBackendPoolCreate
     $location = Get-ProviderLocation $resourceTypeParent
     $backendAddressConfigName = "TestVNetRef"
     $testIpAddress1 = "10.0.0.5"
-    $testIpAddress2 = "10.0.0.6"
+    $testIpAddress2 = "10.0.1.6"
     $testIpAddress3 = "10.0.0.7"
 
     $backendAddressConfigName1 = Get-ResourceName
@@ -129,7 +129,7 @@ function Test-LoadBalancerBackendPoolCreate
         $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetworkId $vnet.Id
-        $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetworkId $vnet.Id 
+        $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -SubnetId $vnet.Subnets[0].Id 
         $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress3 -Name $backendAddressConfigName3 -VirtualNetworkId $vnet.Id
 
         $ips = @($ip1, $ip2)
@@ -274,7 +274,7 @@ function Test-LoadBalancerBackendPoolDelete
         $lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPoolName1
 
         ##test passing input object
-        Remove-AzLoadBalancerBackendAddressPool -InputObject $b2
+        $b2 | Remove-AzLoadBalancerBackendAddressPool
 
         ##test passing resourceId
         Remove-AzLoadBalancerBackendAddressPool -ResourceId $b3.Id
@@ -369,6 +369,56 @@ function Test-LoadBalancerBackendPoolUpdate
     }
 }
 
+<#
+.SYNOPSIS
+Tests Set-LoadBalancerBackendPoolCRUDWithAddTunnelInterface
+#>
+function Test-LoadBalancerBackendPoolCRUDWithAddTunnelInterface
+{
+
+     # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "eastus2euap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 172.20.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 172.20.0.0/16 -Subnet $subnet
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
+        $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol Vxlan -Type Internal -Port 2000 -Identifier 800
+        $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol Vxlan -Type External -Port 2001 -Identifier 801
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName -TunnelInterface $tunnelInterface1, $tunnelInterface2
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Set backendPool change port
+        $getBackendPoolByName = $expectedLb | Get-AzLoadBalancerBackendAddressPool -Name $backendAddressPoolName
+
+        $modified1 = Set-AzLoadBalancerBackendAddressPool -InputObject $getBackendPoolByName -TunnelInterface $tunnelInterface1, $tunnelInterface2
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 <#
 .SYNOPSIS
@@ -469,6 +519,12 @@ function Test-LoadBalancerBackendAddressConfig
         Assert-AreEqual $ipconfig1.Name $backendAddressConfigName1
         Assert-AreEqual $ipconfig1.IpAddress $validIpAddress
         Assert-AreEqual $ipconfig1.VirtualNetwork.Id $virtualNetwork.Id
+
+        $ipconfig2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $validIpAddress -Name $backendAddressConfigName1 -SubnetId virtualNetwork.Subnets[0].Id
+
+        Assert-AreEqual $ipconfig2.Name $backendAddressConfigName1
+        Assert-AreEqual $ipconfig2.IpAddress $validIpAddress
+        Assert-AreEqual $ipconfig2.Subnet.Id  virtualNetwork.Subnets[0].Id
 
         Assert-ThrowsLike { New-AzLoadBalancerBackendAddressConfig -IpAddress $invalidIpAddress2 -Name $backendAddressConfigName1 -VirtualNetworkId $virtualNetwork.Id} "*Invalid IPAddress*"
 

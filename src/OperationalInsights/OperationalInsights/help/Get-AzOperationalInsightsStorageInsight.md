@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 29ABCC1B-8590-4243-A629-709F207927B4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsstorageinsight
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsstorageinsight
 schema: 2.0.0
 ---
 

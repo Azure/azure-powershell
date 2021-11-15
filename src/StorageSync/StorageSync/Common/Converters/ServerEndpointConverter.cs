@@ -29,38 +29,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerEndpointConverter" /> class.
-        /// </summary>
-        public ServerEndpointConverter()
-        {
-        }
-
-        /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.ServerEndpoint.</returns>
         protected override StorageSyncModels.ServerEndpoint Transform(PSServerEndpoint source)
         {
-            return new StorageSyncModels.ServerEndpoint(source.ResourceId,
-                source.ServerEndpointName,
-                source.Type,
-                source.ServerLocalPath,
-                source.CloudTiering,
-                source.VolumeFreeSpacePercent,
-                source.TierFilesOlderThanDays,
-                source.FriendlyName,
-                source.ServerResourceId,
-                source.ProvisioningState,
-                source.LastWorkflowId,
-                source.LastOperationName,
-                new ServerEndpointHealthConverter().Convert(source.SyncStatus),
-                source.OfflineDataTransfer,
-                source.OfflineDataTransferStorageAccountResourceId,
-                source.OfflineDataTransferStorageAccountTenantId,
-                source.OfflineDataTransferShareName,
-                initialDownloadPolicy:source.InitialDownloadPolicy != null ? (StorageSyncModels.InitialDownloadPolicy)System.Enum.Parse(typeof(StorageSyncModels.InitialDownloadPolicy),source.InitialDownloadPolicy,ignoreCase:true): default(StorageSyncModels.InitialDownloadPolicy?),
-                localCacheMode: source.LocalCacheMode != null ? (StorageSyncModels.LocalCacheMode)System.Enum.Parse(typeof(StorageSyncModels.LocalCacheMode), source.LocalCacheMode, ignoreCase: true) : default(StorageSyncModels.LocalCacheMode?));
+            return new StorageSyncModels.ServerEndpoint(
+                id: source.ResourceId,
+                name: source.ServerEndpointName,
+                type: source.Type,
+                serverLocalPath: source.ServerLocalPath,
+                cloudTiering: source.CloudTiering,
+                volumeFreeSpacePercent: source.VolumeFreeSpacePercent,
+                tierFilesOlderThanDays: source.TierFilesOlderThanDays,
+                friendlyName: source.FriendlyName,
+                serverResourceId: source.ServerResourceId,
+                initialDownloadPolicy: source.InitialDownloadPolicy,
+                localCacheMode: source.LocalCacheMode,
+                initialUploadPolicy: source.InitialUploadPolicy);
         }
 
         /// <summary>
@@ -70,6 +57,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSServerEndpoint.</returns>
         protected override PSServerEndpoint Transform(StorageSyncModels.ServerEndpoint source)
         {
+            PSServerEndpointHealth syncStatus = source.SyncStatus != null ? new ServerEndpointHealthConverter().Convert(source.SyncStatus) : null;
+            PSServerEndpointCloudTieringStatus cloudTieringStatus = source.CloudTieringStatus != null ? new ServerEndpointCloudTieringStatusConverter().Convert(source.CloudTieringStatus) : null;
+            PSServerEndpointRecallStatus recallStatus = source.RecallStatus != null ? new ServerEndpointRecallStatusConverter().Convert(source.RecallStatus) : null;
+
             var resourceIdentifier = new ResourceIdentifier(source.Id);
             return new PSServerEndpoint()
             {
@@ -82,19 +73,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerLocalPath = source.ServerLocalPath,
                 ServerResourceId = source.ServerResourceId,
                 ProvisioningState = source.ProvisioningState,
-                SyncStatus = new ServerEndpointHealthConverter().Convert(source.SyncStatus),
+                SyncStatus = syncStatus,
                 FriendlyName = source.FriendlyName,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,
                 CloudTiering = source.CloudTiering,
                 VolumeFreeSpacePercent = source.VolumeFreeSpacePercent,
                 TierFilesOlderThanDays = source.TierFilesOlderThanDays,
-                OfflineDataTransfer = source.OfflineDataTransfer,
-                OfflineDataTransferShareName = source.OfflineDataTransferShareName,
-                OfflineDataTransferStorageAccountResourceId = source.OfflineDataTransferStorageAccountResourceId,
-                OfflineDataTransferStorageAccountTenantId = source.OfflineDataTransferStorageAccountTenantId,
-                InitialDownloadPolicy= source.InitialDownloadPolicy.HasValue ? source.InitialDownloadPolicy.Value.ToString() : null,
-                LocalCacheMode=source.LocalCacheMode.HasValue ? source.LocalCacheMode.Value.ToString() : null
+                InitialDownloadPolicy = source.InitialDownloadPolicy,
+                LocalCacheMode = source.LocalCacheMode,
+                InitialUploadPolicy = source.InitialUploadPolicy,
+                CloudTieringStatus = cloudTieringStatus,
+                RecallStatus = recallStatus,
+                ServerName = source.ServerName
             };
         }
     }

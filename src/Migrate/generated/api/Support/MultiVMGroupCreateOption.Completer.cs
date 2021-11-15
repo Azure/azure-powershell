@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for MultiVMGroupCreateOption.</summary>
+    /// <summary>Whether Multi VM group is auto created or specified by user.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MultiVMGroupCreateOptionTypeConverter))]
     public partial struct MultiVMGroupCreateOption :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AutoCreated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AutoCreated", "AutoCreated", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutoCreated");
+                yield return new global::System.Management.Automation.CompletionResult("'AutoCreated'", "AutoCreated", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutoCreated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserSpecified", "UserSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'UserSpecified'", "UserSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserSpecified");
             }
         }
     }

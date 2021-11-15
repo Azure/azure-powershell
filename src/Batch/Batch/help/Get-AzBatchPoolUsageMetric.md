@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 4B373447-3078-4C1F-932E-8337AB170DEB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolusagemetric
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchpoolusagemetric
 schema: 2.0.0
 ---
 

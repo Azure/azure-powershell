@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ImageBuilder service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2020-02-14/imagebuilder.json
-
+branch: 94ec975d860d4f62525c2381d1cbf7de3e24df2b
 title: ImageBuilder
 module-version: 0.1.0
 subject-prefix: ''

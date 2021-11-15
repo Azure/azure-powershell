@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for CredentialType.</summary>
+    /// <summary>Credential type of the run as account.</summary>
     public partial class CredentialTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

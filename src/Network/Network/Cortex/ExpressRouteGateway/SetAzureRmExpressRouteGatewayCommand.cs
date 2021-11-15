@@ -73,11 +73,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Min for the scale units for this ExpressRouteGateway.")]
+        [ValidateRange(1, 100)]
         public uint MinScaleUnits { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Max for the scale units for this ExpressRouteGateway.")]
+        [ValidateRange(1, 100)]
         public uint MaxScaleUnits { get; set; }
 
         [Parameter(
@@ -116,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ExpressRouteGatewayNotFound);
             }
 
-            if (this.MinScaleUnits > 0 && this.MaxScaleUnits > 0)
+            if (this.MinScaleUnits > 0 || this.MaxScaleUnits > 0)
             {
                 if (this.MinScaleUnits > this.MaxScaleUnits)
                 {

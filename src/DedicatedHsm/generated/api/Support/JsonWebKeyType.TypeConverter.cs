@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support
 {
 
-    /// <summary>TypeConverter implementation for JsonWebKeyType.</summary>
+    /// <summary>Provisioning state.</summary>
     public partial class JsonWebKeyTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

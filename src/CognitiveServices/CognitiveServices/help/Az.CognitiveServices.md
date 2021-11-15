@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CognitiveServices
 Module Guid: 66c566b4-950c-4a2b-9f3b-199d92f0df1a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices
+Download Help Link: https://docs.microsoft.com/powershell/module/az.cognitiveservices
 Help Version: 0.9.4.0
 Locale: en-US
 ---
@@ -35,6 +35,9 @@ Get current usages for a Cognitive Services account.
 ### [New-AzCognitiveServicesAccount](New-AzCognitiveServicesAccount.md)
 Creates a Cognitive Services account.
 
+### [New-AzCognitiveServicesAccountApiProperty](New-AzCognitiveServicesAccountApiProperty.md)
+Generate a new instance of Cognitive Services Account ApiProperties
+
 ### [New-AzCognitiveServicesAccountKey](New-AzCognitiveServicesAccountKey.md)
 Regenerates an account key.
 
@@ -46,6 +49,9 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Cogniti
 
 ### [Set-AzCognitiveServicesAccount](Set-AzCognitiveServicesAccount.md)
 Modifies an account.
+
+### [Undo-AzCognitiveServicesAccountRemoval](Undo-AzCognitiveServicesAccountRemoval.md)
+Recover a deleted account.
 
 ### [Update-AzCognitiveServicesAccountNetworkRuleSet](Update-AzCognitiveServicesAccountNetworkRuleSet.md)
 Update the NetworkRule property of a Cognitive Services account

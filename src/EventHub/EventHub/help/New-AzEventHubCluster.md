@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/new-azeventhubcluster
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 schema: 2.0.0
 ---
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for AccumulatedType.</summary>
+    /// <summary>Show costs accumulated over time.</summary>
     public partial class AccumulatedTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

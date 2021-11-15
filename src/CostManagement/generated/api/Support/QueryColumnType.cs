@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The type of the column in the export.</summary>
     public partial struct QueryColumnType :
         System.IEquatable<QueryColumnType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="QueryColumnType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new QueryColumnType(System.Convert.ToString(value));
+            return new QueryColumnType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type QueryColumnType</summary>

@@ -11,40 +11,36 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 {
     /// <summary>
     /// Represents a command entry in the model files.
     /// </summary>
-    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class ModelEntry
     {
         /// <summary>
         /// The command in the model.
         /// </summary>
-        [JsonProperty("suggestion", Required = Required.Always)]
+        [JsonPropertyName("suggestion")]
         public string Command { get; set; }
 
         /// <summary>
         /// The description of the command in the model.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
         public string Description { get; set; }
 
         /// <summary>
         /// The prediction count in the model.
         /// </summary>
-        [JsonProperty("suggestion count", Required = Required.Always)]
+        [JsonPropertyName("suggestion count")]
         public int PredictionCount { get; set; }
 
         /// <summary>
         /// The history count in the model.
         /// </summary>
-        [JsonProperty("history count", Required = Required.Always)]
+        [JsonPropertyName("history count")]
         public int HistoryCount { get; set; }
 
         /// <summary>

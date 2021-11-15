@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceIdentityType.</summary>
+    /// <summary>The type of identity used for the resource mover service.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityTypeTypeConverter))]
     public partial struct ResourceIdentityType :
         System.Management.Automation.IArgumentCompleter

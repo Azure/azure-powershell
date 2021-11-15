@@ -15,37 +15,18 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
-    public class NewAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", DefaultParameterSetName = ResourceIdParameterSet), OutputType(typeof(PSServiceDiagnosticSettings))]
+    public class NewAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
-        public const string StorageAccountIdParamName = "StorageAccountId";
-        public const string ServiceBusRuleIdParamName = "ServiceBusRuleId";
-        public const string EventHubNameParamName = "EventHubName";
-        public const string EventHubRuleIdParamName = "EventHubAuthorizationRuleId";
-        public const string WorkspacetIdParamName = "WorkspaceId";
-        public const string EnabledParamName = "Enabled";
-        public const string EnableLogParamName = "EnableLog";
-        public const string EnableMetricsParamName = "EnableMetrics";
-
         #region Parameters declarations
 
-        /// <summary>
-        /// Gets or sets the resourceId parameter of the cmdlet
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
-        [ValidateNotNullOrEmpty]
-        public string TargetResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resourceId parameter of the cmdlet
-        /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting. Defaults to 'service'")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; } = "service";
@@ -83,7 +64,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the retention in days
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether to export (to ODS) to resource-specific (if present) or to AzureDiagnostics (default, not present)")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether to export (to ODS) to resource-specific (if present) or to AzureDiagnostics (default, not present)")]
         public SwitchParameter DedicatedLogAnalyticsDestinationType { get; set; }
 
         /// <summary>
@@ -98,8 +79,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             Validate();
 
-            IList<MetricSettings> metrics = new List<MetricSettings>();
-            IList<LogSettings> logs = new List<LogSettings>();
+            IList<MetricSettings> metrics = null;
+            IList<LogSettings> logs = null;
 
             if (this.IsParameterBound(c => c.Setting) && Setting.Length != 0)
             {
@@ -108,9 +89,17 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     switch (setting.CategoryType)
                     {
                         case PSDiagnosticSettingCategoryType.Metrics:
+                            if (metrics == null)
+                            {
+                                metrics = new List<MetricSettings>();
+                            }
                             metrics.Add(((PSMetricSettings)setting).GetMetricSetting());
                             break;
                         case PSDiagnosticSettingCategoryType.Logs:
+                            if (logs == null)
+                            {
+                                logs = new List<LogSettings>();
+                            }
                             logs.Add(((PSLogSettings)setting).GetLogSetting());
                             break;
                         default:
@@ -119,7 +108,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
             }
 
-            PSServiceDiagnosticSettings DiagnosticSetting = new PSServiceDiagnosticSettings(id: this.TargetResourceId + "/diagnosticSettings/" + this.Name, name: this.Name)
+            PSServiceDiagnosticSettings DiagnosticSetting = new PSServiceDiagnosticSettings(id: GetTargetUri() + "/providers/microsoft.insights/diagnosticSettings/" + this.Name, name: this.Name)
             {
                 StorageAccountId = this.IsParameterBound(c => c.StorageAccountId) ? this.StorageAccountId : null,
                 ServiceBusRuleId = this.IsParameterBound(c => c.ServiceBusRuleId) ? this.ServiceBusRuleId : null,
@@ -134,20 +123,22 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             WriteObject(DiagnosticSetting);
         }
 
-        protected void Validate()
+        protected override void Validate()
         {
+            base.Validate();
+
             if (!this.IsParameterBound(c => c.StorageAccountId) && 
                 !this.IsParameterBound(c => c.ServiceBusRuleId) && 
                 !this.IsParameterBound(c => c.EventHubName) && 
                 !this.IsParameterBound(c => c.EventHubAuthorizationRuleId) && 
                 !this.IsParameterBound(c => c.WorkspaceId))
             {
-                throw new ArgumentException("No operation is specified, please specify storage account Id/service bus rule Id/eventhub name/eventhub authorization rule Id/workspace Id");
+                throw new AzPSInvalidOperationException("No operation is specified, please specify storage account Id/service bus rule Id/eventhub name/eventhub authorization rule Id/workspace Id");
             }
 
             if (!this.IsParameterBound(c => c.WorkspaceId) && this.IsParameterBound(c => c.DedicatedLogAnalyticsDestinationType))
             {
-                throw new ArgumentException("Please provide workspace Id if want to use dedicated log analytics destination type");
+                throw new AzPSInvalidOperationException("Please provide workspace Id if want to use dedicated log analytics destination type");
             }
         }
     }

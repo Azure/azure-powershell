@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/new-azconsumptionbudget
+online version: https://docs.microsoft.com/powershell/module/az.billing/new-azconsumptionbudget
 schema: 2.0.0
 ---
 

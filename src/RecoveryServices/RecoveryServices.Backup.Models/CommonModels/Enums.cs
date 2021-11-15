@@ -80,7 +80,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure Workload
         /// </summary>
         AzureWorkload,
-        MAB
+
+        /// <summary>
+        /// Represents MAB agent
+        /// </summary>
+        MAB,
+
+        /// <summary>
+        /// Represents that the BackupManagementType is Not Applicable.
+        /// </summary>
+        NA
+    }  
+
+    /// <summary>
+    /// Tier information for Recovery point: "Vault", "Snapshot", "Archive"
+    /// </summary>
+    public enum RecoveryPointTier
+    {
+        VaultStandard = 1,
+        Snapshot,
+        VaultArchive,
+        VaultStandardRehydrated,
+        SnapshotAndVaultStandard,
+        SnapshotAndVaultArchive
     }
 
     /// <summary>
@@ -331,7 +353,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Data move between source and target vaults
         /// </summary>
-        BackupDataMove
+        BackupDataMove,
+
+        /// <summary>
+        /// update the customer managed key
+        /// </summary>
+        UpdateCustomerManagedKey
     }
 
     /// <summary>

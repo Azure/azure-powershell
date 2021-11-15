@@ -34,7 +34,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
     'WEBSITE_CONTENTSHARE'
     'APPINSIGHTS_INSTRUMENTATIONKEY'
 )
-$constants["SupportedFunctionsVersion"] = @('2', '3')
+$constants["SupportedFunctionsVersion"] = @('3', '4')
 $constants["FunctionsNoV2Version"] = @(
     "USNat West"
     "USNat East"
@@ -52,6 +52,7 @@ foreach ($variableName in $constants.Keys)
 
 function GetConnectionString
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -138,14 +139,34 @@ function GetConnectionString
                               -Exception $exception
     }
 
+    $suffix = GetEndpointSuffix
     $accountKey = $keys[0].Value
-    $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey"
+
+    $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey" + $suffix
 
     return $connectionString
 }
 
+function GetEndpointSuffix
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param()
+
+    $environmentName = (Get-AzContext).Environment.Name
+
+    switch ($environmentName)
+    {
+        "AzureUSGovernment" { ';EndpointSuffix=core.usgovcloudapi.net' }
+        "AzureChinaCloud"   { ';EndpointSuffix=core.chinacloudapi.cn' }
+        "AzureGermanCloud"  { ';EndpointSuffix=core.cloudapi.de' }
+        "AzureCloud"        { ';EndpointSuffix=core.windows.net' }
+        default { '' }
+    }
+}
+
 function NewAppSetting
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -153,8 +174,7 @@ function NewAppSetting
         [System.String]
         $Name,
 
-        [Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory=$false)]
         [System.String]
         $Value
     )
@@ -168,6 +188,7 @@ function NewAppSetting
 
 function GetServicePlan
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -206,6 +227,7 @@ function GetServicePlan
 
 function GetStorageAccount
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -235,6 +257,7 @@ function GetStorageAccount
 
 function GetApplicationInsightsProject
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -265,6 +288,7 @@ function GetApplicationInsightsProject
 
 function CreateApplicationInsightsProject
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -340,6 +364,7 @@ function CreateApplicationInsightsProject
 
 function ConvertWebAppApplicationSettingToHashtable
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -359,6 +384,7 @@ function ConvertWebAppApplicationSettingToHashtable
 
 function AddFunctionAppSettings
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -450,6 +476,7 @@ function AddFunctionAppSettings
 
 function GetFunctionApps
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -515,6 +542,7 @@ function GetFunctionApps
 
 function AddFunctionAppPlanWorkerType
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -549,6 +577,7 @@ function AddFunctionAppPlanWorkerType
 
 function GetFunctionAppPlans
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -616,6 +645,7 @@ function GetFunctionAppPlans
 
 function ValidateFunctionName
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -643,6 +673,7 @@ function ValidateFunctionName
 
 function NormalizeSku
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -659,6 +690,7 @@ function NormalizeSku
 
 function CreateFunctionsIdentity
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -686,6 +718,7 @@ function CreateFunctionsIdentity
 
 function GetSkuName
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -727,7 +760,7 @@ function GetSkuName
         return "Isolated"
     }
 
-    $guidanceUrl = 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
+    $guidanceUrl = 'https://docs.microsoft.com/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
 
     $errorMessage = "Invalid sku (pricing tier), please refer to '$guidanceUrl' for valid values."
     $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -739,6 +772,7 @@ function GetSkuName
 
 function ThrowTerminatingError
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param 
     (
         [Parameter(Mandatory=$true)]
@@ -775,6 +809,7 @@ function ThrowTerminatingError
 
 function GetErrorMessage
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -801,6 +836,7 @@ function GetErrorMessage
 
 function GetSupportedRuntimes
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -823,6 +859,7 @@ function GetSupportedRuntimes
 
 function ValidateFunctionsVersion
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -836,7 +873,7 @@ function ValidateFunctionsVersion
         $currentlySupportedFunctionsVersions = $SupportedFunctionsVersion -join ' and '
         $errorMessage = "Functions version not supported. Currently supported version are: $($currentlySupportedFunctionsVersions)."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "FunctionsVersionIsInvalid" `
+        ThrowTerminatingError -ErrorId "FunctionsVersionNotSupported" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
@@ -845,6 +882,7 @@ function ValidateFunctionsVersion
 
 function ValidateFunctionsV2NotAvailableLocation
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -875,6 +913,7 @@ function ValidateFunctionsV2NotAvailableLocation
 
 function GetDefaultOSType
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -898,6 +937,7 @@ function GetDefaultOSType
 
 function GetRuntimeJsonDefinition
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1009,6 +1049,7 @@ function GetRuntimeJsonDefinition
 
 function ThrowRuntimeNotSupportedException
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1023,7 +1064,7 @@ function ThrowRuntimeNotSupportedException
     )
 
     $Message += [System.Environment]::NewLine
-    $Message += "For supported languages, please visit 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'."
+    $Message += "For supported languages, please visit 'https://docs.microsoft.com/azure/azure-functions/functions-versions#languages'."
 
     $exception = [System.InvalidOperationException]::New($Message)
     ThrowTerminatingError -ErrorId $ErrorId `
@@ -1034,6 +1075,7 @@ function ThrowRuntimeNotSupportedException
 
 function GetSupportedRuntimeVersions
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1071,6 +1113,7 @@ function GetSupportedRuntimeVersions
 
 function FormatListToString
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1106,6 +1149,7 @@ function FormatListToString
 
 function ValidatePlanLocation
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1166,6 +1210,7 @@ function ValidatePlanLocation
 
 function ValidatePremiumPlanLocation
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1187,6 +1232,7 @@ function ValidatePremiumPlanLocation
 
 function ValidateConsumptionPlanLocation
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1208,6 +1254,7 @@ function ValidateConsumptionPlanLocation
 
 function GetParameterKeyValues
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1237,6 +1284,7 @@ function GetParameterKeyValues
 
 function NewResourceTag
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1256,6 +1304,7 @@ function NewResourceTag
 
 function ParseDockerImage
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1280,6 +1329,7 @@ function ParseDockerImage
 
 function GetFunctionAppServicePlanInfo
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1327,6 +1377,7 @@ function GetFunctionAppServicePlanInfo
 
 function ValidatePlanSwitchCompatibility
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1352,6 +1403,7 @@ function ValidatePlanSwitchCompatibility
 
 function NewAppSettingObject
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1376,6 +1428,7 @@ function NewAppSettingObject
 
 function ContainsReservedFunctionAppSettingName
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1397,6 +1450,7 @@ function ContainsReservedFunctionAppSettingName
 
 function GetFunctionAppByName
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1443,9 +1497,10 @@ function GetFunctionAppByName
 
     return $existingFunctionApp
 }
-
 function GetAzWebAppConfig
 {
+
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1514,6 +1569,7 @@ function GetAzWebAppConfig
 
 function NewIdentityUserAssignedIdentity
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -1532,6 +1588,81 @@ function NewIdentityUserAssignedIdentity
     }
 
     return $msiUserAssignedIdentities
+}
+
+function GetShareSuffix
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Int]
+        $Length = 8
+    )
+
+    $letters = 'a'..'z'
+    $numbers = 0..9
+    $alphanumericLowerCase = $letters + $numbers
+
+    $suffix = [System.Text.StringBuilder]::new()
+
+    for ($index = 0; $index -lt $Length; $index++)
+    {
+        $value = $alphanumericLowerCase | Get-Random
+        $suffix.Append($value) | Out-Null
+    }
+
+    $suffix.ToString()
+}
+
+function GetShareName
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $FunctionAppName
+    )
+
+    $FunctionAppName = $FunctionAppName.ToLower()
+
+    if ($env:FunctionsTestMode)
+    {
+        # To support the tests' playback mode, we need to have the same values for each function app creation payload.
+        # Adding this test hook will allows us to have a constant share name when creation an app.
+
+        return $FunctionAppName
+    }
+
+    <#
+    Share name restrictions:
+        - A share name must be a valid DNS name.
+        - Share names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.
+        - Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted in share names.
+        - All letters in a share name must be lowercase.
+        - Share names must be from 3 through 63 characters long.
+
+    Docs: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names
+    #>
+
+    # Share name will be function app name + 8 random char suffix with a max length of 60
+    $MAXLENGTH = 60
+    $SUFFIXLENGTH = 8
+    if (($FunctionAppName.Length + $SUFFIXLENGTH) -lt $MAXLENGTH)
+    {
+        $name = $FunctionAppName
+    }
+    else
+    {
+        $endIndex = $MAXLENGTH - $SUFFIXLENGTH - 1
+        $name = $FunctionAppName.Substring(0, $endIndex)
+    }
+
+    $suffix = GetShareSuffix -Length $SUFFIXLENGTH
+    $shareName = $name + $suffix
+
+    return $shareName
 }
 
 # Set Linux and Windows supported runtimes
@@ -1558,6 +1689,10 @@ $RuntimeVersions = @{}
 
 function SetLinuxandWindowsSupportedRuntimes
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+    )
     foreach ($fileName in @("LinuxFunctionsStacks.json", "WindowsFunctionsStacks.json"))
     {
         $filePath = Join-Path "$PSScriptRoot/FunctionsStack" $fileName
@@ -1611,8 +1746,8 @@ function SetLinuxandWindowsSupportedRuntimes
                     continue
                 }
 
-                # Skip hidden runtimes if $env:DisplayHiddenRuntimes is set to false
-                if ($majorVersion.isHidden -and (-not $env:DisplayHiddenRuntimes))
+                # Skip hidden runtimes if $env:FunctionsDisplayHiddenRuntimes is set to false
+                if ($majorVersion.isHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
                 {
                     continue
                 }

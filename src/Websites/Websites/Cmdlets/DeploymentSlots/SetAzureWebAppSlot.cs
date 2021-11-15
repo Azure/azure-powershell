@@ -181,7 +181,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
-                            AlwaysOn = parameters.Contains("AlwaysOn") ? (bool)AlwaysOn : false
+                            AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState
                         };
                     }
 
@@ -234,11 +235,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         }
                     }
 
-                    appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
-
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+                        if (ContainerRegistryPassword.ConvertToString() != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        }
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))

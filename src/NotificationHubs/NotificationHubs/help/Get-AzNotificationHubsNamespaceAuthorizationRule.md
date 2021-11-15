@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 08D03498-D18D-47FE-8916-702FA2E7D719
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/get-aznotificationhubsnamespaceauthorizationrule
+online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/get-aznotificationhubsnamespaceauthorizationrule
 schema: 2.0.0
 ---
 

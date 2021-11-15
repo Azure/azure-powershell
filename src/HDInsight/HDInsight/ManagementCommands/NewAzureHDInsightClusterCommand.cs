@@ -371,6 +371,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ValidateSet(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
         public string PrivateLink { get; set; }
 
+        [Parameter(HelpMessage = "Enables HDInsight compute isolation feature.")]
+        public SwitchParameter EnableComputeIsolation { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the dedicated host sku for compute isolation.")]
+        public string ComputeIsolationHostSku { get; set; }
+
 
         #endregion
 
@@ -481,8 +487,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
+            bool isKafkaRestProxyEnable = kafkaRestProperties != null;
+            var defaultVmSizeConfigurations = GetDefaultVmsizesConfigurations(Location);
+
             // Compute profile contains headnode, workernode, zookeepernode, edgenode, kafkamanagementnode, idbrokernode, etc.
-            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, KafkaManagementNodeSize, EnableIDBroker.IsPresent);
+            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, isKafkaRestProxyEnable, KafkaManagementNodeSize, EnableIDBroker.IsPresent, defaultVmSizeConfigurations);
 
             // Handle SecurityProfile
             SecurityProfile securityProfile = ClusterCreateHelper.ConvertAzureHDInsightSecurityProfileToSecurityProfile(SecurityProfile, AssignedIdentity);
@@ -564,6 +573,13 @@ namespace Microsoft.Azure.Commands.HDInsight
                 networkProperties = new NetworkProperties(ResourceProviderConnection, PrivateLink);
             }
 
+            // Handle compute isolation properties
+            ComputeIsolationProperties computeIsolationProperties = null;
+            if (EnableComputeIsolation.IsPresent)
+            {
+                computeIsolationProperties = new ComputeIsolationProperties(EnableComputeIsolation.IsPresent, ComputeIsolationHostSku);
+            }
+
             // Construct cluster create parameter
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
             {
@@ -591,7 +607,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                         IsEncryptionInTransitEnabled = EncryptionInTransit
                     } : null,
                     MinSupportedTlsVersion = MinSupportedTlsVersion,
-                    NetworkProperties = networkProperties
+                    NetworkProperties = networkProperties,
+                    ComputeIsolationProperties= computeIsolationProperties
 
                 },
                 Identity = clusterIdentity

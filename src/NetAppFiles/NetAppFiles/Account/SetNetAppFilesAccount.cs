@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 // Note:
 // Both set and Update need to exist
@@ -73,9 +74,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IDictionary<string, string> tagPairs = null;
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
 
             if (Tag != null)
             {

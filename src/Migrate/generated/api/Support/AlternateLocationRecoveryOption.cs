@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The ALR option.</summary>
     public partial struct AlternateLocationRecoveryOption :
         System.IEquatable<AlternateLocationRecoveryOption>
     {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="AlternateLocationRecoveryOption" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AlternateLocationRecoveryOption(System.Convert.ToString(value));
+            return new AlternateLocationRecoveryOption(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AlternateLocationRecoveryOption</summary>

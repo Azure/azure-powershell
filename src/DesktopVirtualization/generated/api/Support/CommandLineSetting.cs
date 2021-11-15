@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="CommandLineSetting" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new CommandLineSetting(System.Convert.ToString(value));
+            return new CommandLineSetting(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type CommandLineSetting</summary>

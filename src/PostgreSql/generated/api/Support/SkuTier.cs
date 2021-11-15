@@ -6,10 +6,13 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
     public partial struct SkuTier :
         System.IEquatable<SkuTier>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier Basic = @"Basic";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier Burstable = @"Burstable";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier GeneralPurpose = @"GeneralPurpose";
 
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="SkuTier" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SkuTier(System.Convert.ToString(value));
+            return new SkuTier(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SkuTier</summary>

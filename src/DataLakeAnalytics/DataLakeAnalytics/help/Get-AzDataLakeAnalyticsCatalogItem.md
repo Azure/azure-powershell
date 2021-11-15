@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: A6899341-1E5E-4F8B-8D5D-5923B1223628
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscatalogitem
+online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscatalogitem
 schema: 2.0.0
 ---
 

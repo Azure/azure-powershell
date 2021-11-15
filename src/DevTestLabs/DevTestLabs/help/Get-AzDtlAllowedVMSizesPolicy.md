@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs.dll-Help.xml
 Module Name: Az.DevTestLabs
 ms.assetid: 869167AA-54F8-4A1C-AC08-5555A63EE1BC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.devtestlabs/get-azdtlallowedvmsizespolicy
+online version: https://docs.microsoft.com/powershell/module/az.devtestlabs/get-azdtlallowedvmsizespolicy
 schema: 2.0.0
 ---
 

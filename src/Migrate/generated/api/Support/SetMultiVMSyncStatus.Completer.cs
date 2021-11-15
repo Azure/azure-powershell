@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for SetMultiVMSyncStatus.</summary>
+    /// <summary>
+    /// A value indicating whether multi-VM sync has to be enabled. Value should be 'Enabled' or 'Disabled'.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SetMultiVMSyncStatusTypeConverter))]
     public partial struct SetMultiVMSyncStatus :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enable", "Enable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enable");
+                yield return new global::System.Management.Automation.CompletionResult("'Enable'", "Enable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disable", "Disable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disable");
+                yield return new global::System.Management.Automation.CompletionResult("'Disable'", "Disable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disable");
             }
         }
     }

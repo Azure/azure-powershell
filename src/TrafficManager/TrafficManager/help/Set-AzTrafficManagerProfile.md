@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 975DD42E-61B6-437B-884D-C15A8DB7A667
-online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile
+online version: https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile
 schema: 2.0.0
 ---
 

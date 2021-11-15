@@ -30,15 +30,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Container".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Container", "Container", global::System.Management.Automation.CompletionResultType.ParameterValue, "Container");
+                yield return new global::System.Management.Automation.CompletionResult("'Container'", "Container", global::System.Management.Automation.CompletionResultType.ParameterValue, "Container");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Blob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Blob", "Blob", global::System.Management.Automation.CompletionResultType.ParameterValue, "Blob");
+                yield return new global::System.Management.Automation.CompletionResult("'Blob'", "Blob", global::System.Management.Automation.CompletionResultType.ParameterValue, "Blob");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
         }
     }

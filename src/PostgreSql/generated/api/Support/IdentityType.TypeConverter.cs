@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for IdentityType.</summary>
+    /// <summary>
+    /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory
+    /// principal for the resource.
+    /// </summary>
     public partial class IdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

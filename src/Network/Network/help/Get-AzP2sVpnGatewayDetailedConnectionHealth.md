@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azp2svpngatewaydetailedconnectionhealth
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azp2svpngatewaydetailedconnectionhealth
 schema: 2.0.0
 ---
 
@@ -33,6 +33,8 @@ Get-AzP2sVpnGatewayDetailedConnectionHealth -ResourceId <String> -OutputBlobSasU
 
 ## DESCRIPTION
 The **Get-AzP2sVpnGatewayDetailedConnectionHealth** cmdlet enables you to get the detailed information of current point to site connections from P2SVpnGateway. Customer needs to pass SAS url where we can put this detailed health information.
+
+Please note that the SAS url provided should be one for the **blob** (file) that has been created in the storage account and **not** the container. Please use the **New-AzStorageBlobSASToken** Powershell command and not the **New-AzStorageContainerSASToken**. You will also need to allow read and write permissions on your SaSURl. 
 
 ## EXAMPLES
 

@@ -12,15 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
-    public enum AuditStateType { Enabled, Disabled };
-
     public enum AuditActionGroups
     {
         BATCH_STARTED_GROUP,
@@ -42,46 +35,23 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP,
         SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP,
         SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
-        USER_CHANGE_PASSWORD_GROUP
+        USER_CHANGE_PASSWORD_GROUP,
+        LEDGER_OPERATION_GROUP,
+        DBCC_GROUP,
+        DATABASE_OWNERSHIP_CHANGE_GROUP,
+        DATABASE_CHANGE_GROUP
     }
 
     public enum StorageKeyKind { None, Primary, Secondary };
 
-    public class ServerAuditModel
+    public class ServerAuditModel : ServerDevOpsAuditModel
     {
-        public string ResourceGroupName { get; set; }
-
-        public string ServerName { get; set; }
-
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         public string PredicateExpression { get; set; }
 
-        public AuditStateType BlobStorageTargetState { get; set; }
-
-        public string StorageAccountResourceId { get; set; }
-
         public StorageKeyKind StorageKeyType { get; set; }
 
         public uint? RetentionInDays { get; set; }
-
-        public AuditStateType EventHubTargetState { get; set; }
-
-        public string EventHubName { get; set; }
-
-        public string EventHubAuthorizationRuleResourceId { get; set; }
-
-        public AuditStateType LogAnalyticsTargetState { get; set; }
-
-        public string WorkspaceResourceId { get; set; }
-
-        [Hidden]
-        internal bool? IsAzureMonitorTargetEnabled { get; set; }
-
-        [Hidden]
-        internal IList<DiagnosticSettingsResource> DiagnosticsEnablingAuditCategory { get; set; }
-
-        [Hidden]
-        internal string NextDiagnosticSettingsName { get; set; }
     }
 }

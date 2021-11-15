@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/remove-azsentinelalertrule
+online version: https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelalertrule
 schema: 2.0.0
 ---
 
 # Remove-AzSentinelAlertRule
 
 ## SYNOPSIS
-Delete an Analytic.
+Deletes an Analytics Rule (AlertRule)
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId"
+PS C:\> Remove-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "dcf87c5a-19c3-4b5a-90cd-78bf46deee5b"
 ```
 
 This command removes the Alert Rule from the workspace.

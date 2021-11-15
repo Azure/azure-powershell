@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for AlertTimeGrainType.</summary>
+    /// <summary>Type of timegrain cadence</summary>
     public partial class AlertTimeGrainTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

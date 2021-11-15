@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CostManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+online version: https://docs.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Create a in-memory object for QueryComparisonExpression
 
 ### Example 1: Create a comparison expression object of query for cost management export
 ```powershell
-PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe')
+PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 
 Name             Operator Value
 ----             -------- -----

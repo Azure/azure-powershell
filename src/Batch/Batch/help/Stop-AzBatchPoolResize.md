@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 3E736E85-0488-4D10-BEA1-4F9B8DA54C4B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/stop-azbatchpoolresize
+online version: https://docs.microsoft.com/powershell/module/az.batch/stop-azbatchpoolresize
 schema: 2.0.0
 ---
 

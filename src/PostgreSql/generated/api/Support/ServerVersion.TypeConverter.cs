@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for ServerVersion.</summary>
+    /// <summary>The version of a server.</summary>
     public partial class ServerVersionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

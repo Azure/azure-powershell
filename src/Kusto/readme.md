@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Kusto service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -53,7 +53,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/95fe440d70409ec80238fe76175f4061ba8e073c/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2020-09-18/kusto.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2021-01-01/kusto.json
 
 ```
 
@@ -128,5 +128,5 @@ directive:
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection Property');
 ```

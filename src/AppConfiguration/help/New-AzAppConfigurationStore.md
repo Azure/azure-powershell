@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
+online version: https://docs.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
 schema: 2.0.0
 ---
 
@@ -292,5 +292,5 @@ ALIASES
 
 
 
-[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
+    /// <summary>Defines the dependency type.</summary>
     public partial struct DependencyType :
         System.IEquatable<DependencyType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         /// <param name="value">the value to convert to an instance of <see cref="DependencyType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DependencyType(System.Convert.ToString(value));
+            return new DependencyType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DependencyType" Enum class./></summary>

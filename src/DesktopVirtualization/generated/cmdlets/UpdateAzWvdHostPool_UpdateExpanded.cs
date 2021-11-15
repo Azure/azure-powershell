@@ -6,13 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
+    using System;
 
     /// <summary>Update a host pool.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzWvdHostPool_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Update a host pool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
     public partial class UpdateAzWvdHostPool_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -83,10 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public string FriendlyName { get => HostPoolBody.FriendlyName ?? null; set => HostPoolBody.FriendlyName = value; }
 
         /// <summary>Backing field for <see cref="HostPoolBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPoolPatch _hostPoolBody= new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.HostPoolPatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPoolPatch _hostPoolBody= new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatch();
 
         /// <summary>HostPool properties that can be patched.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPoolPatch HostPoolBody { get => this._hostPoolBody; set => this._hostPoolBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPoolPatch HostPoolBody { get => this._hostPoolBody; set => this._hostPoolBody = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -266,17 +267,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string SsoClientSecretKeyVaultPath { get => HostPoolBody.SsoClientSecretKeyVaultPath ?? null; set => HostPoolBody.SsoClientSecretKeyVaultPath = value; }
 
-        /// <summary>Path to keyvault containing ssoContext secret.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Path to keyvault containing ssoContext secret.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Path to keyvault containing ssoContext secret.",
-        SerializedName = @"ssoContext",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SsoContext { get => HostPoolBody.SsoContext ?? null; set => HostPoolBody.SsoContext = value; }
-
         /// <summary>The type of single sign on Secret Type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of single sign on Secret Type.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
@@ -338,8 +328,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"tags to be updated",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPoolPatchTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPoolPatchTags Tag { get => HostPoolBody.Tag ?? null /* object */; set => HostPoolBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPoolPatchTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPoolPatchTags Tag { get => HostPoolBody.Tag ?? null /* object */; set => HostPoolBody.Tag = value; }
 
         /// <summary>VM template for sessionhosts configuration within hostpool.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "VM template for sessionhosts configuration within hostpool.")]
@@ -368,24 +358,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ICloudError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -437,7 +427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.Debug:
@@ -557,12 +547,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ICloudError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -579,7 +569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=HostPoolBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -597,12 +587,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool> response)
         {
             using( NoSynchronizationContext )
             {
@@ -614,7 +604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool
                 WriteObject((await response));
             }
         }

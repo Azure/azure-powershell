@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.GetPolicyArtifactFullyQualifiedId(this.Scope, Constants.MicrosoftAuthorizationPolicyAssignmentType, this.Name);
         }
     }
 }

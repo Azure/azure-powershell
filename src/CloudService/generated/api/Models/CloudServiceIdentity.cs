@@ -25,6 +25,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>Name of the location that the OS version pertains to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="OSFamilyName" /> property.</summary>
+        private string _oSFamilyName;
+
+        /// <summary>Name of the OS family.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        public string OSFamilyName { get => this._oSFamilyName; set => this._oSFamilyName = value; }
+
+        /// <summary>Backing field for <see cref="OSVersionName" /> property.</summary>
+        private string _oSVersionName;
+
+        /// <summary>Name of the OS version.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        public string OSVersionName { get => this._oSVersionName; set => this._oSVersionName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -89,6 +110,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Name of the location that the OS version pertains to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the location that the OS version pertains to.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
+        /// <summary>Name of the OS family.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the OS family.",
+        SerializedName = @"osFamilyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string OSFamilyName { get; set; }
+        /// <summary>Name of the OS version.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the OS version.",
+        SerializedName = @"osVersionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string OSVersionName { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
@@ -143,6 +188,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         string CloudServiceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>Name of the location that the OS version pertains to.</summary>
+        string Location { get; set; }
+        /// <summary>Name of the OS family.</summary>
+        string OSFamilyName { get; set; }
+        /// <summary>Name of the OS version.</summary>
+        string OSVersionName { get; set; }
 
         string ResourceGroupName { get; set; }
         /// <summary>Name of the role instance.</summary>

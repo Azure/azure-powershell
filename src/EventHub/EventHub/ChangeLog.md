@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.0
+* Added support for Premium sku and namesapce and optional switch parameter 'DisableLocalAuth' to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` 
+
+## Version 1.8.0
+* Added functionality to accept input from pipeline for `Get-AzEventHub` from `Get-AzEventHubNamespace`.
+
+## Version 1.7.2
+* Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
+
 ## Version 1.7.1
 * Fixed Cluster commands for EventHub cluster without tags
 * Updated help text for PartnerNamespace of AzEventHubGeoDRConfiguration commands 

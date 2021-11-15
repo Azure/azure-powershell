@@ -86,11 +86,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         public string[] ResourceGroupFilter { get => this._resourceGroupFilter; set => this._resourceGroupFilter = value; }
 
         /// <summary>Backing field for <see cref="TagFilter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertPropertiesDetailsTagFilter _tagFilter;
+        private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAny _tagFilter;
 
         /// <summary>tags to filter by</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertPropertiesDetailsTagFilter TagFilter { get => (this._tagFilter = this._tagFilter ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.AlertPropertiesDetailsTagFilter()); set => this._tagFilter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAny TagFilter { get => (this._tagFilter = this._tagFilter ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Any()); set => this._tagFilter = value; }
 
         /// <summary>Backing field for <see cref="Threshold" /> property.</summary>
         private decimal? _threshold;
@@ -224,8 +224,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         ReadOnly = false,
         Description = @"tags to filter by",
         SerializedName = @"tagFilter",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertPropertiesDetailsTagFilter) })]
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertPropertiesDetailsTagFilter TagFilter { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAny TagFilter { get; set; }
         /// <summary>notification threshold percentage as a decimal which activated this alert</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// <summary>array of resourceGroups to filter by</summary>
         string[] ResourceGroupFilter { get; set; }
         /// <summary>tags to filter by</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertPropertiesDetailsTagFilter TagFilter { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAny TagFilter { get; set; }
         /// <summary>notification threshold percentage as a decimal which activated this alert</summary>
         decimal? Threshold { get; set; }
         /// <summary>Type of timegrain cadence</summary>

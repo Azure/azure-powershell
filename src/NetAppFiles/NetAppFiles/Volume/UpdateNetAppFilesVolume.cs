@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "The service level of the ANF volume")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
         [ValidateNotNullOrEmpty]
         public string ServiceLevel { get; set; }
 
@@ -115,6 +116,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
         public double? ThroughputMibps { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
+        [ValidateNotNullOrEmpty]
+        public string SnapshotPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies if default quota is enabled for the volume")]
+        public SwitchParameter IsDefaultQuotaEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
+        public long? DefaultUserQuotaInKiB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
+        public long? DefaultGroupQuotaInKiB { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -187,11 +209,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
-            
-            var dataProtection = new PSNetAppFilesVolumeDataProtection
+
+            PSNetAppFilesVolumeDataProtection dataProtection = null;
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
             {
-                Backup = Backup
-            };
+                dataProtection = new PSNetAppFilesVolumeDataProtection
+                {
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
+                    Backup = Backup
+                };
+            }
 
             var volumePatchBody = new VolumePatch()
             {
@@ -200,7 +227,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyPatchFromPs(ExportPolicy) : null,
                 Tags = tagPairs,
                 ThroughputMibps = ThroughputMibps,
-                DataProtection = (dataProtection.Backup != null) ? dataProtection.ConvertToPatchFromPs() : null
+                DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatchFromPs() : null,
+                IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
+                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

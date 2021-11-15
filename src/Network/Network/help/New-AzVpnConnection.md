@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnconnection
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnconnection
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Creates a IPSec connection that connects a VpnGateway to a remote customer branc
 ```
 New-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  -VpnSite <PSVpnSite> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
- [-IpSecPolicy <PSIpsecPolicy>] [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress]
+ [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress]
  [-UsePolicyBasedTrafficSelectors] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
  [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -25,7 +25,7 @@ New-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Na
 ### ByVpnGatewayNameByVpnSiteResourceId
 ```
 New-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String> -VpnSiteId <String>
- [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
+ [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -34,7 +34,7 @@ New-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Na
 ### ByVpnGatewayObjectByVpnSiteObject
 ```
 New-AzVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSite <PSVpnSite>
- [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
+ [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -43,7 +43,7 @@ New-AzVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSite <PSVpnS
 ### ByVpnGatewayObjectByVpnSiteResourceId
 ```
 New-AzVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSiteId <String> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-VpnConnectionProtocolType <String>]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-VpnConnectionProtocolType <String>]
  [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,7 +52,7 @@ New-AzVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSiteId <Stri
 ### ByVpnGatewayResourceIdByVpnSiteObject
 ```
 New-AzVpnConnection -ParentResourceId <String> -Name <String> -VpnSite <PSVpnSite> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-VpnConnectionProtocolType <String>]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-VpnConnectionProtocolType <String>]
  [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -61,7 +61,7 @@ New-AzVpnConnection -ParentResourceId <String> -Name <String> -VpnSite <PSVpnSit
 ### ByVpnGatewayResourceIdByVpnSiteResourceId
 ```
 New-AzVpnConnection -ParentResourceId <String> -Name <String> -VpnSiteId <String> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-VpnConnectionProtocolType <String>]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-VpnConnectionProtocolType <String>]
  [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -233,6 +233,21 @@ The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: PSIpsecPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficSelectorPolicy
+A list of Traffic Selector policies.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
 Parameter Sets: (All)
 Aliases:
 

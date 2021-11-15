@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.WindowsIotServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
+online version: https://docs.microsoft.com/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
 schema: 2.0.0
 ---
 

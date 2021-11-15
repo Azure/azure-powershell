@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConnectedKubernetes_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Description(@"API to update certain properties of the connected cluster resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Generated]
     public partial class UpdateAzConnectedKubernetes_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -33,19 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>
-        /// Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.",
-        SerializedName = @"agentPublicKeyCertificate",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AgentPublicKeyCertificate { get => ConnectedClusterPatchBody.AgentPublicKeyCertificate ?? null; set => ConnectedClusterPatchBody.AgentPublicKeyCertificate = value; }
-
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Runtime)]
@@ -55,10 +42,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ConnectedKubernetes Client => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Module.Instance.ClientAPI;
 
         /// <summary>Backing field for <see cref="ConnectedClusterPatchBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedClusterPatch _connectedClusterPatchBody= new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.ConnectedClusterPatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatch _connectedClusterPatchBody= new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterPatch();
 
         /// <summary>Object containing updates for patch operations.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedClusterPatch ConnectedClusterPatchBody { get => this._connectedClusterPatchBody; set => this._connectedClusterPatchBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatch ConnectedClusterPatchBody { get => this._connectedClusterPatchBody; set => this._connectedClusterPatchBody = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -105,6 +92,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>
+        /// Describes the connected cluster resource properties that can be updated during PATCH operation.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Describes the connected cluster resource properties that can be updated during PATCH operation.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Describes the connected cluster resource properties that can be updated during PATCH operation.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatchProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatchProperties Property { get => ConnectedClusterPatchBody.Property ?? null /* object */; set => ConnectedClusterPatchBody.Property = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Runtime)]
@@ -130,32 +130,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedClusterPatchTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedClusterPatchTags Tag { get => ConnectedClusterPatchBody.Tag ?? null /* object */; set => ConnectedClusterPatchBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatchTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatchTags Tag { get => ConnectedClusterPatchBody.Tag ?? null /* object */; set => ConnectedClusterPatchBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -347,12 +347,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ConnectedClusterPatchBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -387,12 +387,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster> response)
         {
             using( NoSynchronizationContext )
             {
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster
                 WriteObject((await response));
             }
         }

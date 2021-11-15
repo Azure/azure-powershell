@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -207,10 +208,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var templateSpecVersionModel = new TemplateSpecVersion
             {
                 Location = templateSpecModel.Location,
-                Template = packagedTemplate.RootTemplate,
-                Artifacts = packagedTemplate.Artifacts?.ToList(),
-                Description = versionDescription ?? existingTemplateSpecVersion?.Description
-            };
+                MainTemplate = packagedTemplate.RootTemplate,
+                LinkedTemplates = packagedTemplate.Artifacts?.ToList(),
+                Description = versionDescription ?? existingTemplateSpecVersion?.Description,
+                UiFormDefinition = packagedTemplate.UIFormDefinition
+        };
 
             // Handle our conditional tagging:
             // ------------------------------------------

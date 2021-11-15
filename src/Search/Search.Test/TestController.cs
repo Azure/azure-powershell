@@ -24,6 +24,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 {
@@ -34,6 +35,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public SearchManagementClient SearchClient { get; private set; }
+
+        public StorageManagementClient StorageManagementClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -63,17 +66,19 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
-            var d = new Dictionary<string, string>
+            var providersToInclude = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Storage", null}
             };
+
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providersToInclude, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
@@ -82,12 +87,12 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath("AzureRM.Search.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    _helper.RMProfileModule,
-                    "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath("AzureRM.Search.psd1")
-                );
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -108,8 +113,17 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             SearchClient = GetAzureSearchManagementClient(context);
+            StorageManagementClient = GetStorageManagementClient(context);
 
-            _helper.SetupManagementClients(ResourceManagementClient, SearchClient);
+            _helper.SetupManagementClients(
+                ResourceManagementClient,
+                SearchClient,
+                StorageManagementClient);
+        }
+
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)

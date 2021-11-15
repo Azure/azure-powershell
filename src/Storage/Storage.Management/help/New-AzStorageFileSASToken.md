@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BB139312-A536-4B61-A005-6CAF02BE1637
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragefilesastoken
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragefilesastoken
 schema: 2.0.0
 ---
 

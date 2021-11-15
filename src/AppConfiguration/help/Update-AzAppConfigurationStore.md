@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/update-azappconfigurationstore
+online version: https://docs.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
 schema: 2.0.0
 ---
 
@@ -351,6 +351,6 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
 
 
 
-[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
-[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
+[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 

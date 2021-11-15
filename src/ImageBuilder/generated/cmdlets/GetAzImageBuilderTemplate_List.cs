@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
     /// <summary>Gets information about the VM image templates associated with the subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualMachineImageTemplates_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.VirtualMachineImages/imageTemplates"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.VirtualMachineImages/imageTemplates"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzImageBuilderTemplate_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate))]

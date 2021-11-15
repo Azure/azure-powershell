@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 064196C3-ABF3-4F3A-A4AB-EB0D27098C70
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension
 schema: 2.0.0
 ---
 
@@ -17,16 +17,18 @@ Updates extension properties or adds an extension to a virtual machine.
 ```
 Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
  [-ProtectedSettings <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
+ [-EnableAutomaticUpgrade <Boolean>] [-ForceRerun <String>] [-NoWait]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingString
 ```
 Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
  [-ProtectedSettingString <String>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
+ [-EnableAutomaticUpgrade <Boolean>] [-ForceRerun <String>] [-NoWait]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +105,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

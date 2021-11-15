@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StackEdge.dll-Help.xml
 Module Name: Az.StackEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.stackedge/get-azstackedgestorageaccount
+online version: https://docs.microsoft.com/powershell/module/az.stackedge/get-azstackedgestorageaccount
 schema: 2.0.0
 ---
 

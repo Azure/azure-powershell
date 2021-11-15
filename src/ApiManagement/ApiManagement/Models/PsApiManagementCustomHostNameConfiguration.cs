@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             CertificateInformation = hostnameConfigurationResource.Certificate != null ? new PsApiManagementCertificateInformation(hostnameConfigurationResource.Certificate) : null;
             Hostname = hostnameConfigurationResource.HostName;
             KeyVaultId = hostnameConfigurationResource.KeyVaultId;
+            IdentityClientId = hostnameConfigurationResource.IdentityClientId;
             DefaultSslBinding = hostnameConfigurationResource.DefaultSslBinding;
             NegotiateClientCertificate = hostnameConfigurationResource.NegotiateClientCertificate;
             HostnameType = Mappers.MapHostnameType(hostnameConfigurationResource.Type);
@@ -55,5 +56,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public bool? DefaultSslBinding { get; set; }
 
         public bool? NegotiateClientCertificate { get; set; }
+
+        public string IdentityClientId { get; set; }
     }
 }

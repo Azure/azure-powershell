@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner/new-azmanagementpartner
+online version: https://docs.microsoft.com/powershell/module/az.managementpartner/new-azmanagementpartner
 schema: 2.0.0
 ---
 

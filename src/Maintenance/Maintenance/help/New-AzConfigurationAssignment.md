@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/new-azconfigurationassignment
+online version: https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment
 schema: 2.0.0
 ---
 

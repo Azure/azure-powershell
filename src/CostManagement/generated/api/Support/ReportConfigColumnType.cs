@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The type of the column in the report.</summary>
     public partial struct ReportConfigColumnType :
         System.IEquatable<ReportConfigColumnType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ReportConfigColumnType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ReportConfigColumnType(System.Convert.ToString(value));
+            return new ReportConfigColumnType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ReportConfigColumnType</summary>

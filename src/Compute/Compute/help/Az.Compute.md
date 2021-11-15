@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
+Download Help Link: https://docs.microsoft.com/powershell/module/az.compute
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -11,9 +11,6 @@ Locale: en-US
 This topic displays the help topics for the Azure Compute Cmdlets.
 
 ## Az.Compute Cmdlets
-### [Add-AzContainerServiceAgentPoolProfile](Add-AzContainerServiceAgentPoolProfile.md)
-Adds a container service agent pool profile.
-
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
 Adds a data disk to an image object.
 
@@ -25,6 +22,9 @@ Adds information to the unattended Windows Setup answer file.
 
 ### [Add-AzVMDataDisk](Add-AzVMDataDisk.md)
 Adds a data disk to a virtual machine.
+
+### [Add-AzVmGalleryApplication](Add-AzVmGalleryApplication.md)
+Add a PSGalleryApplication object to the PSVirtualMachine object.
 
 ### [Add-AzVMNetworkInterface](Add-AzVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
@@ -43,6 +43,9 @@ Adds a diagnostics extension to the VMSS.
 
 ### [Add-AzVmssExtension](Add-AzVmssExtension.md)
 Adds an extension to the VMSS.
+
+### [Add-AzVmssGalleryApplication](Add-AzVmssGalleryApplication.md)
+Add a PSVMGalleryApplication object to the PSVirtualMachineScaleSetVMProfile object.
 
 ### [Add-AzVMSshPublicKey](Add-AzVMSshPublicKey.md)
 Adds the public keys for SSH for a virtual machine, when only creating the VM.
@@ -80,11 +83,14 @@ Export logs that show total throttled Api requests for this subscription in the 
 ### [Get-AzAvailabilitySet](Get-AzAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
+### [Get-AzCapacityReservation](Get-AzCapacityReservation.md)
+Gets the properties of Capacity Reservation resources from a Capacity Reservation Group
+
+### [Get-AzCapacityReservationGroup](Get-AzCapacityReservationGroup.md)
+Gets the properties of Capacity Reservation Groups
+
 ### [Get-AzComputeResourceSku](Get-AzComputeResourceSku.md)
 List all compute resource Skus
-
-### [Get-AzContainerService](Get-AzContainerService.md)
-Gets a container service.
 
 ### [Get-AzDisk](Get-AzDisk.md)
 Gets the properties of a Managed disk.
@@ -94,6 +100,9 @@ Gets the properties of Disk Accesses
 
 ### [Get-AzDiskEncryptionSet](Get-AzDiskEncryptionSet.md)
 Get or list disk encryption sets.
+
+### [Get-AzDiskEncryptionSetAssociatedResource](Get-AzDiskEncryptionSetAssociatedResource.md)
+Gets the list of resources associated with the specified disk encryption set.
 
 ### [Get-AzGallery](Get-AzGallery.md)
 Get or list galleries.
@@ -119,8 +128,17 @@ Get or list Proximity Placement Group resource(s).
 ### [Get-AzRemoteDesktopFile](Get-AzRemoteDesktopFile.md)
 Gets an .rdp file.
 
+### [Get-AzRestorePoint](Get-AzRestorePoint.md)
+Command to get the Restore Point
+
+### [Get-AzRestorePointCollection](Get-AzRestorePointCollection.md)
+Get a Restore Point Collection
+
 ### [Get-AzSnapshot](Get-AzSnapshot.md)
 Gets the properties of a snapshot
+
+### [Get-AzSshKey](Get-AzSshKey.md)
+Gets the properties of SSH Public Key resources.
 
 ### [Get-AzVM](Get-AzVM.md)
 Gets the properties of a virtual machine.
@@ -212,6 +230,9 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
+### [Invoke-AzVMInstallPatch](Invoke-AzVMInstallPatch.md)
+Installs patches on the VM
+
 ### [Invoke-AzVMPatchAssessment](Invoke-AzVMPatchAssessment.md)
 Assess patch state of a virtual machine.
 
@@ -227,11 +248,11 @@ Run command on the Virtual Machine Scale Set VM.
 ### [New-AzAvailabilitySet](New-AzAvailabilitySet.md)
 Creates an Azure availability set.
 
-### [New-AzContainerService](New-AzContainerService.md)
-Creates a container service.
+### [New-AzCapacityReservation](New-AzCapacityReservation.md)
+Creates a Capacity Reservation resource in a Capacity Reservation Group
 
-### [New-AzContainerServiceConfig](New-AzContainerServiceConfig.md)
-Creates a local configuration object for a container service.
+### [New-AzCapacityReservationGroup](New-AzCapacityReservationGroup.md)
+Creates a Capacity Reservation Group
 
 ### [New-AzDisk](New-AzDisk.md)
 Creates a managed disk.
@@ -247,6 +268,9 @@ Creates a disk encryption set.
 
 ### [New-AzDiskEncryptionSetConfig](New-AzDiskEncryptionSetConfig.md)
 Creates a configurable disk encryption set object.
+
+### [New-AzDiskPurchasePlanConfig](New-AzDiskPurchasePlanConfig.md)
+Creates a PurchasePlan Object
 
 ### [New-AzDiskUpdateConfig](New-AzDiskUpdateConfig.md)
 Creates a configurable disk update object.
@@ -275,6 +299,12 @@ Creates a configurable image object.
 ### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
 Create Proximity Placement Group resource.
 
+### [New-AzRestorePoint](New-AzRestorePoint.md)
+This cmdlet can create a New Restore Point
+
+### [New-AzRestorePointCollection](New-AzRestorePointCollection.md)
+Creates a New Restore Point Collection
+
 ### [New-AzSnapshot](New-AzSnapshot.md)
 Creates a snapshot.
 
@@ -284,6 +314,9 @@ Creates a configurable snapshot object.
 ### [New-AzSnapshotUpdateConfig](New-AzSnapshotUpdateConfig.md)
 Creates a configurable snapshot update object.
 
+### [New-AzSshKey](New-AzSshKey.md)
+Create a SSH Public Key resource.
+
 ### [New-AzVM](New-AzVM.md)
 Creates a virtual machine.
 
@@ -292,6 +325,9 @@ Creates a configurable virtual machine object.
 
 ### [New-AzVMDataDisk](New-AzVMDataDisk.md)
 Creates a local data disk object for a virtual machine or a Vmss VM.
+
+### [New-AzVmGalleryApplication](New-AzVmGalleryApplication.md)
+Create a local PSVMGalleryApplication object.
 
 ### [New-AzVMSqlServerAutoBackupConfig](New-AzVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
@@ -308,6 +344,9 @@ Creates a VMSS.
 ### [New-AzVmssConfig](New-AzVmssConfig.md)
 Creates a VMSS configuration object.
 
+### [New-AzVmssGalleryApplication](New-AzVmssGalleryApplication.md)
+Create a local PSVMGalleryApplication object.
+
 ### [New-AzVmssIpConfig](New-AzVmssIpConfig.md)
 Creates an IP configuration for a network interface of a VMSS.
 
@@ -323,11 +362,11 @@ Uploads a DSC script to Azure blob storage.
 ### [Remove-AzAvailabilitySet](Remove-AzAvailabilitySet.md)
 Removes an availability set from Azure.
 
-### [Remove-AzContainerService](Remove-AzContainerService.md)
-Removes a container service.
+### [Remove-AzCapacityReservation](Remove-AzCapacityReservation.md)
+Removes a Capacity Reservation resource
 
-### [Remove-AzContainerServiceAgentPoolProfile](Remove-AzContainerServiceAgentPoolProfile.md)
-Removes an agent pool profile from a container service.
+### [Remove-AzCapacityReservationGroup](Remove-AzCapacityReservationGroup.md)
+Removes a Capacity Reservation Group
 
 ### [Remove-AzDisk](Remove-AzDisk.md)
 Removes a disk.
@@ -362,8 +401,17 @@ Removes a data disk from an image object.
 ### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
 Delete Proximity Placement Group resource.
 
+### [Remove-AzRestorePoint](Remove-AzRestorePoint.md)
+This cmdlet can remove a Restore Point 
+
+### [Remove-AzRestorePointCollection](Remove-AzRestorePointCollection.md)
+This Cmdlet can remove Restore Point Collection
+
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.
+
+### [Remove-AzSshKey](Remove-AzSshKey.md)
+Delete a SSH Public Key resource.
 
 ### [Remove-AzVM](Remove-AzVM.md)
 Removes a virtual machine from Azure.
@@ -398,6 +446,9 @@ Removes a DSC extension handler from a virtual machine in a resource group.
 ### [Remove-AzVMExtension](Remove-AzVMExtension.md)
 Removes an extension from a virtual machine.
 
+### [Remove-AzVmGalleryApplication](Remove-AzVmGalleryApplication.md)
+Remove a VMGalleryApplication object from PSVirtualMachine object.
+
 ### [Remove-AzVMNetworkInterface](Remove-AzVMNetworkInterface.md)
 Removes a network interface from a virtual machine.
 
@@ -418,6 +469,9 @@ Removes a diagnostics extension from the VMSS.
 
 ### [Remove-AzVmssExtension](Remove-AzVmssExtension.md)
 Removes an extension from the VMSS.
+
+### [Remove-AzVmssGalleryApplication](Remove-AzVmssGalleryApplication.md)
+Remove a VMGalleryApplication object from PSVirtualMachineScaleSetVMProfile object.
 
 ### [Remove-AzVmssNetworkInterfaceConfiguration](Remove-AzVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
@@ -454,6 +508,9 @@ Sets the image reference properties on a disk object.
 
 ### [Set-AzDiskKeyEncryptionKey](Set-AzDiskKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk object.
+
+### [Set-AzDiskSecurityProfile](Set-AzDiskSecurityProfile.md)
+Set SecurityProfile on managed disk
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
 Sets the disk encryption key properties on a disk update object.
@@ -530,6 +587,9 @@ Sets the operating system disk properties on a virtual machine.
 ### [Set-AzVMPlan](Set-AzVMPlan.md)
 Sets the Marketplace plan information on a virtual machine.
 
+### [Set-AzVMSecurityProfile](Set-AzVMSecurityProfile.md)
+Sets the SecurityType enum for Virtual Machines.
+
 ### [Set-AzVMSourceImage](Set-AzVMSourceImage.md)
 Specifies the image for a virtual machine.
 
@@ -554,17 +614,29 @@ Sets the VMSS operating system profile properties.
 ### [Set-AzVmssRollingUpgradePolicy](Set-AzVmssRollingUpgradePolicy.md)
 Sets the VMSS rolling upgrade policy properties.
 
+### [Set-AzVmssSecurityProfile](Set-AzVmssSecurityProfile.md)
+This cmdlet allows users to set the SecurityType enum for Virtual Machines scale sets.
+
 ### [Set-AzVmssStorageProfile](Set-AzVmssStorageProfile.md)
 Sets the storage profile properties for the VMSS.
 
+### [Set-AzVmssUefi](Set-AzVmssUefi.md)
+Modifies UEFI properties of gen 2 virtual machines that are part of virtual machine scale sets
+
 ### [Set-AzVmssVM](Set-AzVmssVM.md)
 Modifies the state of a VMSS instance.
+
+### [Set-AzVMUefi](Set-AzVMUefi.md)
+Modifies UEFI properties of a gen 2 virtual machine
 
 ### [Start-AzVM](Start-AzVM.md)
 Starts an Azure virtual machine.
 
 ### [Start-AzVmss](Start-AzVmss.md)
 Starts the VMSS or a set of virtual machines within the VMSS.
+
+### [Start-AzVmssRollingExtensionUpgrade](Start-AzVmssRollingExtensionUpgrade.md)
+This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version. 
 
 ### [Start-AzVmssRollingOSUpgrade](Start-AzVmssRollingOSUpgrade.md)
 Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.
@@ -584,8 +656,11 @@ Checks the configuration of the AEM extension.
 ### [Update-AzAvailabilitySet](Update-AzAvailabilitySet.md)
 Updates an availability set.
 
-### [Update-AzContainerService](Update-AzContainerService.md)
-Updates the state of a container service.
+### [Update-AzCapacityReservation](Update-AzCapacityReservation.md)
+Update the Capacity Reservation.
+
+### [Update-AzCapacityReservationGroup](Update-AzCapacityReservationGroup.md)
+Update the Capacity Reservation Group.
 
 ### [Update-AzDisk](Update-AzDisk.md)
 Updates a disk.
@@ -605,8 +680,14 @@ Update a gallery image version.
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
 
+### [Update-AzRestorePointCollection](Update-AzRestorePointCollection.md)
+Update Restore Point Collection.
+
 ### [Update-AzSnapshot](Update-AzSnapshot.md)
 Updates a snapshot.
+
+### [Update-AzSshKey](Update-AzSshKey.md)
+Update a SSH Public Key resource.
 
 ### [Update-AzVM](Update-AzVM.md)
 Updates the state of an Azure virtual machine.
@@ -620,3 +701,44 @@ Starts a manual upgrade of the VMSS instance.
 ### [Update-AzVmssVM](Update-AzVmssVM.md)
 Updates the state of a Vmss VM.
 
+### [Get-AzVMRunCommand](Get-AzVMRunCommand.md)
+Gets specific run command for a subscription in a location.
+
+### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
+The operation to get the VMSS VM run command.
+
+### [Remove-AzVMRunCommand](Remove-AzVMRunCommand.md)
+The operation to delete the run command.
+
+### [Remove-AzVmssVMRunCommand](Remove-AzVmssVMRunCommand.md)
+The operation to delete the VMSS VM run command.
+
+### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
+The operation to create or update the run command.
+
+### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
+The operation to create or update the VMSS VM run command.
+
+### [Get-AzGalleryApplication](Get-AzGalleryApplication.md)
+Retrieves information about a gallery Application Definition.
+
+### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
+Retrieves information about a gallery Application Version.
+
+### [New-AzGalleryApplication](New-AzGalleryApplication.md)
+Create or update a gallery Application Definition.
+
+### [New-AzGalleryApplicationVersion](New-AzGalleryApplicationVersion.md)
+Create or update a gallery Application Version.
+
+### [Remove-AzGalleryApplication](Remove-AzGalleryApplication.md)
+Delete a gallery Application.
+
+### [Remove-AzGalleryApplicationVersion](Remove-AzGalleryApplicationVersion.md)
+Delete a gallery Application Version.
+
+### [Update-AzGalleryApplication](Update-AzGalleryApplication.md)
+Update a gallery Application Definition.
+
+### [Update-AzGalleryApplicationVersion](Update-AzGalleryApplicationVersion.md)
+Update a gallery Application Version.

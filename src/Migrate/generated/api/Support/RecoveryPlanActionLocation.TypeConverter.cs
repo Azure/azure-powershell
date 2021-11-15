@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for RecoveryPlanActionLocation.</summary>
+    /// <summary>The fabric location.</summary>
     public partial class RecoveryPlanActionLocationTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -58,14 +58,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)Description;}
-            {_category = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("category"), out var __jsonCategory) ? (string)__jsonCategory : (string)Category;}
-            {_data = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("data"), out var __jsonData) ? If( __jsonData as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Data;}
             {_filterEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean>("filterEnabled"), out var __jsonFilterEnabled) ? (bool?)__jsonFilterEnabled : FilterEnabled;}
             {_groupingEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean>("groupingEnabled"), out var __jsonGroupingEnabled) ? (bool?)__jsonGroupingEnabled : GroupingEnabled;}
-            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)NextLink;}
+            {_data = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("data"), out var __jsonData) ? If( __jsonData as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Data;}
             {_total = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNumber>("total"), out var __jsonTotal) ? (int?)__jsonTotal : Total;}
-            {_usageEnd = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("usageEnd"), out var __jsonUsageEnd) ? global::System.DateTime.TryParse((string)__jsonUsageEnd, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonUsageEndValue) ? __jsonUsageEndValue : UsageEnd : UsageEnd;}
+            {_category = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("category"), out var __jsonCategory) ? (string)__jsonCategory : (string)Category;}
             {_usageStart = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("usageStart"), out var __jsonUsageStart) ? global::System.DateTime.TryParse((string)__jsonUsageStart, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonUsageStartValue) ? __jsonUsageStartValue : UsageStart : UsageStart;}
+            {_usageEnd = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("usageEnd"), out var __jsonUsageEnd) ? global::System.DateTime.TryParse((string)__jsonUsageEnd, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonUsageEndValue) ? __jsonUsageEndValue : UsageEnd : UsageEnd;}
+            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)NextLink;}
             AfterFromJson(json);
         }
 
@@ -106,7 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._category)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._category.ToString()) : null, "category" ,container.Add );
+                AddIf( null != this._filterEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean((bool)this._filterEnabled) : null, "filterEnabled" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._groupingEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean((bool)this._groupingEnabled) : null, "groupingEnabled" ,container.Add );
             }
             if (null != this._data)
             {
@@ -119,19 +123,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._filterEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean((bool)this._filterEnabled) : null, "filterEnabled" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._groupingEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean((bool)this._groupingEnabled) : null, "groupingEnabled" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != this._total ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNumber((int)this._total) : null, "total" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._category)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._category.ToString()) : null, "category" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._usageStart ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._usageStart?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "usageStart" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._usageStart ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._usageStart?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "usageStart" ,container.Add );
+                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

@@ -124,6 +124,12 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -203,6 +209,12 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile = new SecurityProfile();
 
                 vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+            {
+                vm.CapacityReservation = new CapacityReservationProfile();
+                vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
             }
 
             WriteObject(vm);

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: DFA41A2B-7C8A-42CB-B0B6-5E6FF853EFEE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactorylinkedservice
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactorylinkedservice
 schema: 2.0.0
 ---
 

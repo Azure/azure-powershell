@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 17D7EBD2-FE3F-4D24-A1AA-8C45B9B1FEF5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementregion
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementregion
 schema: 2.0.0
 ---
 

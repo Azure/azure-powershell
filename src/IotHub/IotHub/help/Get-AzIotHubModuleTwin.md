@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubmoduletwin
+online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubmoduletwin
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Get-AzIotHubModuleTwin [-ResourceId] <String> [-DeviceId] <String> -ModuleId <St
 ```
 
 ## DESCRIPTION
-Gets an IoT device module twin. See https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-module-twins for more information.
+Gets an IoT device module twin. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
 
 ## EXAMPLES
 

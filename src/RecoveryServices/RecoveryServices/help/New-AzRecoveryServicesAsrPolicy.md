@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrpolicy
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrpolicy
 schema: 2.0.0
 ---
 
@@ -52,6 +52,13 @@ New-AzRecoveryServicesAsrPolicy [-VmmToVmm] -Name <String> -ReplicationProvider 
  [-Compression <String>] -ReplicationPort <UInt16> [-Authentication <String>]
  [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReplicateVMwareToAzure
+```
+New-AzRecoveryServicesAsrPolicy [-ReplicateVMwareToAzure] -Name <String> -RecoveryPointRetentionInHours <Int32>
+ [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-MultiVmSyncStatus <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,7 +246,7 @@ Specifies multiVm sync status for the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzure, AzureToVMware, AzureToAzure
+Parameter Sets: VMwareToAzure, AzureToVMware, AzureToAzure, ReplicateVMwareToAzure
 Aliases:
 Accepted values: Enable, Disable
 
@@ -300,7 +307,7 @@ Retain the recovery points for given time in hours.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: VMwareToAzure, AzureToVMware, AzureToAzure
+Parameter Sets: VMwareToAzure, AzureToVMware, AzureToAzure, ReplicateVMwareToAzure
 Aliases:
 
 Required: True
@@ -321,6 +328,21 @@ Accepted values: Required, NotRequired
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicateVMwareToAzure
+Switch parameter specifying VMware to Azure replication scenario.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReplicateVMwareToAzure
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.Aks.Commands
         [Alias("ResourceId")]
         public string Id { get; set; }
 
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of nodes for the node pools.")]
+        public int NodeCount { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -77,7 +81,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 case Constants.IdParameterSet:
                     resource = new ResourceIdentifier(Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(Id));
                     Name = resource.ResourceName;
                     break;
                 case Constants.InputObjectParameterSet:
@@ -85,7 +89,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     pool = PSMapper.Instance.Map<AgentPool>(InputObject);
                     resource = new ResourceIdentifier(pool.Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(InputObject));
                     Name = resource.ResourceName;
                     break;
                 case Constants.ParentObjectParameterSet:
@@ -130,6 +134,10 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     if (this.IsParameterBound(c => c.EnableAutoScaling))
                     {
                         pool.EnableAutoScaling = EnableAutoScaling.ToBool();
+                    }
+                    if (this.IsParameterBound(c => c.NodeCount))
+                    {
+                        pool.Count = NodeCount;
                     }
 
                     var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact]
+        [Fact(Skip = "Not recordable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseRestorePoints()
         {
@@ -119,6 +119,29 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact(Skip = "This is not recordable test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCopyLongTermRetentionBackup()
+        {
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
+            if (TestMockSupport.RunningMocked)
+            {
+                RunPowerShellTest("Test-CopyLongTermRetentionBackup");
+            }
+        }
+
+        [Fact(Skip = "This is not recordable test")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateLongTermRetentionBackup()
+        {
+            if (TestMockSupport.RunningMocked)
+            {
+                RunPowerShellTest("Test-UpdateLongTermRetentionBackup");
+            }
+        }
+
+
+        [Fact(Skip = "This is not recordable test")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBased()
         {
             RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBased");
@@ -148,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not recordable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDatabaseRestorePoint()
         {
@@ -160,11 +183,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not recordable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShortTermRetentionPolicy()
         {
-            RunPowerShellTest("Test-ShortTermRetentionPolicy");
+            if (TestMockSupport.RunningMocked)
+            {
+                RunPowerShellTest("Test-ShortTermRetentionPolicy");
+            }
         }
     }
 }

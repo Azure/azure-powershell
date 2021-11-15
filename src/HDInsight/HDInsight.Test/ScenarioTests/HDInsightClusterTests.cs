@@ -91,5 +91,12 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithCustomAmbariDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithComputeIsolation()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithComputeIsolation");
+        }
     }
 }

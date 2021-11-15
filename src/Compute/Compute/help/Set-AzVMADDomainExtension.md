@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 65BF37D3-4FCE-48A3-BC5D-01AA20FEB6CA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmaddomainextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmaddomainextension
 schema: 2.0.0
 ---
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/en-us/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
+Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]

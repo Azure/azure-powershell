@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: CB621890-EF8A-4F14-8F18-D8806E624DAB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationschedule
+online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule
 schema: 2.0.0
 ---
 
@@ -91,7 +91,7 @@ The final command creates a daily schedule named Schedule02 to begin at the time
 ```
 PS C:\> $StartTime = (Get-Date "13:00:00").AddDays(1)
 PS C:\> [System.DayOfWeek[]]$WeekDays = @([System.DayOfWeek]::Monday..[System.DayOfWeek]::Friday)
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime - WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
+PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.

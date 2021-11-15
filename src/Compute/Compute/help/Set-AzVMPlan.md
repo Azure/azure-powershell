@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A1EA7D34-A8B4-4FA0-BD8C-3E846715AFBA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmplan
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 ### -Name
 Specifies the name of the image from the Marketplace.
 This is the same value that is returned by the Get-AzVMImageSku cmdlet.
-For more information about how to find image information, see Navigating and Selecting Azure Virtual Machine images with PowerShell and the Azure CLIhttps://azure.microsoft.com/documentation/articles/resource-groups-vm-searching/ (https://azure.microsoft.com/documentation/articles/resource-groups-vm-searching/) in the Microsoft Azure documentation.
+For more information about how to find image information, see [Find and use Azure Marketplace VM images with Azure PowerShell](/azure/virtual-machines/windows/cli-ps-findimage) in the Microsoft Azure documentation.
 
 ```yaml
 Type: System.String

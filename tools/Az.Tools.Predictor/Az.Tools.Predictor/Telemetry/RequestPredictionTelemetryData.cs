@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -21,16 +23,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class RequestPredictionTelemetryData : ITelemetryData
     {
-        /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        /// <summary>
+        /// The telemetry property name for "HttpRequestSent".
+        /// </summary>
+        public const string PropertyNameHttpRequestSent = "HttpRequestSent";
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        public PredictionClient Client { get; init; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.CommandId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.RequestId { get; set; }
 
         /// <summary>
         /// Gets the masked command lines that are used to request prediction.
         /// </summary>
-        public string Commands { get; } // "Get-AzContext\nGet-AzVM" /predictions
+        public IEnumerable<string> Commands { get; } // ["Get-AzContext", "Get-AzVM"]
 
         /// <summary>
         /// Gets whether the http request to the service is sent.
@@ -48,11 +58,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates an instance of <see cref="RequestPredictionTelemetryData"/>.
         /// </summary>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="commands">The commands to request prediction for.</param>
         /// <param name="hasSentHttpRequest">The flag to indicate whether the http request is canceled.</param>
         /// <param name="exception">The exception that may be thrown.</param>
-        public RequestPredictionTelemetryData(string commands, bool hasSentHttpRequest, Exception exception)
+        public RequestPredictionTelemetryData(PredictionClient client, IEnumerable<string> commands, bool hasSentHttpRequest, Exception exception)
         {
+            Client = client;
             Commands = commands;
             HasSentHttpRequest = hasSentHttpRequest;
             Exception = exception;

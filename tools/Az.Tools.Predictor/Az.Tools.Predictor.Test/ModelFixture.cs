@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Text.Json;
 using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
@@ -54,8 +55,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var fileInfo = new FileInfo(currentLocation);
             var directory = fileInfo.DirectoryName;
             var dataDirectory = Path.Join(directory, ModelFixture.DataDirectoryName);
-            var commandsModelVersions= JsonConvert.DeserializeObject<IDictionary<Version, IList<ModelEntry>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.CommandsModelZip), ModelFixture.CommandsModelJson));
-            var predictionsModelVersions = JsonConvert.DeserializeObject<IDictionary<Version, Dictionary<string, IList<ModelEntry>>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.PredictionsModelZip), ModelFixture.PredictionsModelJson));
+            var commandsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, IList<ModelEntry>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.CommandsModelZip), ModelFixture.CommandsModelJson), JsonUtilities.DefaultSerializerOptions);
+            var predictionsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, Dictionary<string, IList<ModelEntry>>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.PredictionsModelZip), ModelFixture.PredictionsModelJson), JsonUtilities.DefaultSerializerOptions);
 
             var commandsModel = commandsModelVersions[CommandsVersionToUse];
             var predictionsModel = predictionsModelVersions[PredictionsVersionToUse];

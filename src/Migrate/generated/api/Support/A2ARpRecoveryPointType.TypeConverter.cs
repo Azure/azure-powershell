@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for A2ARpRecoveryPointType.</summary>
+    /// <summary>The recovery point type.</summary>
     public partial class A2ARpRecoveryPointTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

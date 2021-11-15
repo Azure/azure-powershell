@@ -6,18 +6,21 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
+    /// <summary>The provisioning state of the extension resource.</summary>
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Accepted = @"Accepted";
+        public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Canceled = @"Canceled";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Creating = @"Creating";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Deleting = @"Deleting";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Failed = @"Failed";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Running = @"Running";
-
         public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Succeeded = @"Succeeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningState Updating = @"Updating";
 
         /// <summary>the value for an instance of the <see cref="ProvisioningState" /> Enum.</summary>
         private string _value { get; set; }
@@ -26,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
         /// <param name="value">the value to convert to an instance of <see cref="ProvisioningState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ProvisioningState(System.Convert.ToString(value));
+            return new ProvisioningState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ProvisioningState</summary>

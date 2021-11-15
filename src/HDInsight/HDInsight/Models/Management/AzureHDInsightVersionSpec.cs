@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         {
             this.FriendlyName = versionSpec?.FriendlyName;
             this.DisplayName = versionSpec?.DisplayName;
-            this.IsDefault = versionSpec?.IsDefault;
+            this.IsDefault = versionSpec?.IsDefault.ToString();  // ToDo: need to change IsDefault from string to bool, waiting for next major release
             this.ComponentVersions = versionSpec?.ComponentVersions;
         }
 

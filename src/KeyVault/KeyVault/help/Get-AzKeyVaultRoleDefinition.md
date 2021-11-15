@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultroledefinition
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultroledefinition
 schema: 2.0.0
 ---
 
@@ -16,6 +16,12 @@ List role definitions of a given managed HSM at a given scope.
 ```
 Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### CustomOnly
+```
+Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-Custom]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
@@ -75,7 +81,29 @@ Managed HSM Backup                                1 permission(s)
 
 The example gets the "Managed HSM Backup" role and inspects its permissions.
 
+### Example 3
+```powershell
+Get-AzKeyVaultRoleDefinition -HsmName myHsm -Custom
+```
+
+This example lists all the custom role definitions belong to "myHsm".
+
 ## PARAMETERS
+
+### -Custom
+If specified, only displays the custom created roles in the directory.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CustomOnly
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

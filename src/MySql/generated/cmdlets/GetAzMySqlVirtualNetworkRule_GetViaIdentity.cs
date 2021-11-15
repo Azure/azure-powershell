@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Extensions;
+    using System;
 
     /// <summary>Gets a virtual network rule.</summary>
     /// <remarks>
-    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlVirtualNetworkRule_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule))]
@@ -188,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Debug:

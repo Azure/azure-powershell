@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for AgentAutoUpdateStatus.</summary>
+    /// <summary>A value indicating whether the auto update is enabled.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentAutoUpdateStatusTypeConverter))]
     public partial struct AgentAutoUpdateStatus :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enabled", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Enabled'", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
             }
         }
     }

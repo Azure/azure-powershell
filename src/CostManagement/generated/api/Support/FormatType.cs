@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The format of the export being delivered. Currently only 'Csv' is supported.</summary>
     public partial struct FormatType :
         System.IEquatable<FormatType>
     {
@@ -18,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="FormatType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new FormatType(System.Convert.ToString(value));
+            return new FormatType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type FormatType</summary>

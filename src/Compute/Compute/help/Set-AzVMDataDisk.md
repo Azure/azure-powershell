@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmdatadisk
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk
 schema: 2.0.0
 ---
 

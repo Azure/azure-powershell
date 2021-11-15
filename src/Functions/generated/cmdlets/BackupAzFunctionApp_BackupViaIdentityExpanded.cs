@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
+    using System;
 
     /// <summary>Description for Creates a backup of an app.</summary>
     /// <remarks>
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)",
         SerializedName = @"frequencyInterval",
         PossibleTypes = new [] { typeof(int) })]
-        public int BackupScheduleFrequencyInterval { get => RequestBody.BackupScheduleFrequencyInterval; set => RequestBody.BackupScheduleFrequencyInterval = value; }
+        public int BackupScheduleFrequencyInterval { get => RequestBody.BackupScheduleFrequencyInterval ?? default(int); set => RequestBody.BackupScheduleFrequencyInterval = value; }
 
         /// <summary>
         /// The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"frequencyUnit",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit BackupScheduleFrequencyUnit { get => RequestBody.BackupScheduleFrequencyUnit; set => RequestBody.BackupScheduleFrequencyUnit = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit BackupScheduleFrequencyUnit { get => RequestBody.BackupScheduleFrequencyUnit ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit)""); set => RequestBody.BackupScheduleFrequencyUnit = value; }
 
         /// <summary>
         /// True if the retention policy should always keep at least one backup in the storage account, regardless how old it is;
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.",
         SerializedName = @"keepAtLeastOneBackup",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter BackupScheduleKeepAtLeastOneBackup { get => RequestBody.BackupScheduleKeepAtLeastOneBackup; set => RequestBody.BackupScheduleKeepAtLeastOneBackup = value; }
+        public global::System.Management.Automation.SwitchParameter BackupScheduleKeepAtLeastOneBackup { get => RequestBody.BackupScheduleKeepAtLeastOneBackup ?? default(global::System.Management.Automation.SwitchParameter); set => RequestBody.BackupScheduleKeepAtLeastOneBackup = value; }
 
         /// <summary>After how many days backups should be deleted.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "After how many days backups should be deleted.")]
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"After how many days backups should be deleted.",
         SerializedName = @"retentionPeriodInDays",
         PossibleTypes = new [] { typeof(int) })]
-        public int BackupScheduleRetentionPeriodInDay { get => RequestBody.BackupScheduleRetentionPeriodInDay; set => RequestBody.BackupScheduleRetentionPeriodInDay = value; }
+        public int BackupScheduleRetentionPeriodInDay { get => RequestBody.BackupScheduleRetentionPeriodInDay ?? default(int); set => RequestBody.BackupScheduleRetentionPeriodInDay = value; }
 
         /// <summary>When the schedule should start working.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "When the schedule should start working.")]
@@ -313,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Debug:

@@ -17,12 +17,15 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
-using System;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public class SqlServerAuditCmdlet : AzureSqlCmdletBase<ServerAuditModel, SqlAuditAdapter>
+    public abstract class SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : AzureSqlCmdletBase<ServerAuditModelType, ServerAuditAdapterType>
+        where ServerAuditPolicyType : ProxyResource 
+        where ServerAuditModelType : ServerDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.ServerParameterSetName,
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        protected override ServerAuditModel GetEntity()
+        protected override ServerAuditModelType GetEntity()
         {
             if (ServerObject != null)
             {
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 ServerName = ServerObject.ServerName;
             }
 
-            ServerAuditModel model = new ServerAuditModel()
+            ServerAuditModelType model = new ServerAuditModelType()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName
@@ -71,11 +74,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, model);
             return model;
-        }
-
-        protected override SqlAuditAdapter InitModelAdapter()
-        {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

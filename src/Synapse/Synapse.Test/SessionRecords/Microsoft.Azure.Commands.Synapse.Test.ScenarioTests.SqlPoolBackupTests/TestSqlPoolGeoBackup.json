@@ -1,0 +1,131 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/sql-bk-cmdlet-test-rgps2502/providers/Microsoft.Synapse/workspaces/sqlbkwsps2502/recoverableSqlpools?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3NxbC1iay1jbWRsZXQtdGVzdC1yZ3BzMjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LlN5bmFwc2Uvd29ya3NwYWNlcy9zcWxia3dzcHMyNTAyL3JlY292ZXJhYmxlU3FscG9vbHM/YXBpLXZlcnNpb249MjAxOS0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2751a9d3-d96b-4105-99e8-248c0a79e5b1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.preview.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "e15e6373-320d-4d66-b448-7baec75771ed"
+        ],
+        "x-ms-correlation-request-id": [
+          "e15e6373-320d-4d66-b448-7baec75771ed"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20210301T060113Z:e15e6373-320d-4d66-b448-7baec75771ed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 01 Mar 2021 06:01:12 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "119"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'sql-bk-cmdlet-test-rgps2502' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourcegroups/sql-bk-cmdlet-test-rgps2502?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlZ3JvdXBzL3NxbC1iay1jbWRsZXQtdGVzdC1yZ3BzMjUwMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6714ada1-f986-4364-89ed-e94535ea4ef9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "2cc2e11a-924f-4c05-9f46-e7826a2ff6f1"
+        ],
+        "x-ms-correlation-request-id": [
+          "2cc2e11a-924f-4c05-9f46-e7826a2ff6f1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20210301T060113Z:2cc2e11a-924f-4c05-9f46-e7826a2ff6f1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 01 Mar 2021 06:01:13 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "119"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'sql-bk-cmdlet-test-rgps2502' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3"
+  }
+}

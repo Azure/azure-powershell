@@ -15,8 +15,9 @@ Describe 'Remove-AzMigrateProject' {
     It 'Delete' {
         $props = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
         $props.RegisteredTool = {}
-        $projName = "AzMigratePwshTestProj"
-        New-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId -Location "centralus" -ETag "*" -Property $props
-        {Remove-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId} | Should -Not -Throw
+        $projName = "test1234"
+        $migResourceGroup = "abhi_test"
+        #New-AzMigrateProject -Name $projName -ResourceGroupName $migResourceGroup -SubscriptionId $env.migSubscriptionId -Location "centralus" -ETag "*" -Property $props
+        {Remove-AzMigrateProject -Name $projName -ResourceGroupName $migResourceGroup -SubscriptionId $env.migSubscriptionId} | Should -Not -Throw
     }
 }

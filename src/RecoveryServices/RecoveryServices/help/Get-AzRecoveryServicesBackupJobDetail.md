@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 707A3E57-AF46-44B3-A491-89554900EF03
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail
 schema: 2.0.0
 ---
 
@@ -16,13 +16,13 @@ Gets details for a Backup job.
 
 ### JobFilterSet (Default)
 ```
-Get-AzRecoveryServicesBackupJobDetail [-Job] <JobBase> [-VaultId <String>]
+Get-AzRecoveryServicesBackupJobDetail [-Job] <JobBase> [-UseSecondaryRegion] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdFilterSet
 ```
-Get-AzRecoveryServicesBackupJobDetail [-JobId] <String> [-VaultId <String>]
+Get-AzRecoveryServicesBackupJobDetail [-JobId] <String> [-UseSecondaryRegion] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -95,6 +95,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSecondaryRegion
+Filters from Secondary Region for Cross Region Restore
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

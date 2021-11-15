@@ -101,6 +101,41 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateNotNullOrEmpty]
         public string ApiVersion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "TPM endorsement key for a TPM device.")]
+        [ValidateNotNullOrEmpty]
+        public string EndorsementKey { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "TPM storage root key for a TPM device.")]
+        [ValidateNotNullOrEmpty]
+        public string StorageRootKey { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The primary symmetric shared access key stored in base64 format.")]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryKey { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The secondary symmetric shared access key stored in base64 format.")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryKey { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The path to the file containing the primary certificate. Base-64 representation of X509 certificate .cer file or .pem file path.")]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryCertificate { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The path to the file containing the secondary certificate. Base-64 representation of X509 certificate .cer file or .pem file path.")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryCertificate { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Switch to update X509attestation using root certificates.")]
+        public SwitchParameter RootCertificate { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The name of the primary root CA certificate. If attestation with a root CA certificate is desired then a root ca name must be provided.")]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryCAName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The name of the secondary root CA certificate. If attestation with a root CA certificate is desired then a root ca name must be provided.")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryCAName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(this.DpsName, DPSResources.AddEnrollment))
@@ -260,6 +295,76 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                                 throw new ArgumentException("Please provide allocation policy.");
                             }
                             break;
+                    }
+
+                    switch (enrollment.Attestation)
+                    {
+                        case SymmetricKeyAttestation attestation:
+                            if (this.IsParameterBound(c => c.PrimaryKey) || this.IsParameterBound(c => c.SecondaryKey))
+                            {
+                                enrollment.Attestation = new SymmetricKeyAttestation(
+                                    this.IsParameterBound(c => c.PrimaryKey) ? this.PrimaryKey : attestation.PrimaryKey,
+                                    this.IsParameterBound(c => c.SecondaryKey) ? this.SecondaryKey : attestation.SecondaryKey
+                                );
+                            }
+                            break;
+                        case TpmAttestation attestation:
+                            if (this.IsParameterBound(c => c.EndorsementKey) || this.IsParameterBound(c => c.StorageRootKey))
+                            {
+                                enrollment.Attestation = new TpmAttestation(this.IsParameterBound(c => c.EndorsementKey) ? this.EndorsementKey : attestation.EndorsementKey, this.IsParameterBound(c => c.StorageRootKey) ? this.StorageRootKey : attestation.StorageRootKey);
+                            }
+                            break;
+                        case X509Attestation attestation:
+                            bool updatedPrimaryCAName = this.IsParameterBound(c => c.PrimaryCAName);
+                            bool updatedSecondaryCAName = this.IsParameterBound(c => c.SecondaryCAName);
+
+                            bool updatedPrimaryCertificate = this.IsParameterBound(c => c.PrimaryCertificate);
+                            bool updatedSecondaryCertificate = this.IsParameterBound(c => c.SecondaryCertificate);
+
+                            if (updatedPrimaryCAName || updatedSecondaryCAName)
+                            {
+                                enrollment.Attestation = X509Attestation.CreateFromCAReferences(
+                                    updatedPrimaryCAName ? this.PrimaryCAName : attestation.CAReferences.Primary,
+                                    updatedSecondaryCAName ? this.SecondaryCAName : (attestation.CAReferences.Secondary ?? null)
+                                );
+
+                            }
+                            else if (updatedPrimaryCertificate || updatedSecondaryCertificate)
+                            {
+                                string primaryCer = string.Empty, secondaryCer = string.Empty;
+                                if (!updatedPrimaryCertificate)
+                                {
+                                    throw new ArgumentException("Primary certificate cannot be null or empty.");
+                                }
+                                primaryCer = IotDpsUtils.GetCertificateString(this.PrimaryCertificate);
+
+                                if (this.IsParameterBound(c => c.SecondaryCertificate))
+                                {
+                                    secondaryCer = IotDpsUtils.GetCertificateString(this.SecondaryCertificate);
+
+                                    if (this.IsParameterBound(c => c.RootCertificate))
+                                    {
+                                        enrollment.Attestation = X509Attestation.CreateFromRootCertificates(primaryCer, secondaryCer);
+                                    }
+                                    else
+                                    {
+                                        enrollment.Attestation = X509Attestation.CreateFromClientCertificates(primaryCer, secondaryCer);
+                                    }
+                                }
+                                else
+                                {
+                                    if (this.IsParameterBound(c => c.RootCertificate))
+                                    {
+                                        enrollment.Attestation = X509Attestation.CreateFromRootCertificates(primaryCer);
+                                    }
+                                    else
+                                    {
+                                        enrollment.Attestation = X509Attestation.CreateFromClientCertificates(primaryCer);
+                                    }
+                                }
+                            }
+                            break;
+                        default: break;
                     }
                 }
                 else

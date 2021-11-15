@@ -39,7 +39,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.Initialize();
         }
 
-        [Fact (Skip ="Need to ReRecord")]
+        [Fact(Skip = "Needs investigation for linux.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AvCenterTest()
         {
@@ -47,6 +47,18 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
               Constants.NewModel,
               "Test-vCenter -vaultSettingsFilePath \"" +
+              this.VaultSettingsFilePath +
+              "\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void V2AAddvCenterTest()
+        {
+            this.RunPowerShellTest(
+                _logger,
+              Constants.NewModel,
+              "Test-AddvCenter -vaultSettingsFilePath \"" +
               this.VaultSettingsFilePath +
               "\"");
         }
@@ -119,7 +131,21 @@ namespace RecoveryServices.SiteRecovery.Test
              "\"");
         }
 
-        [Fact(Skip = "Need to ReRecord")]
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void V2ACreatePolicyAndAssociateTest()
+        {
+            this.RunPowerShellTest(
+                _logger,
+             Constants.NewModel,
+             "V2ACreatePolicyAndAssociate -vaultSettingsFilePath \"" +
+             this.VaultSettingsFilePath +
+             "\"");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2ACreateRPI()
         {
@@ -197,12 +223,36 @@ namespace RecoveryServices.SiteRecovery.Test
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
+        public void V2ATestSwitchProtection()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ATestReprotectAzureToVmware -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void V2ATestFailback()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ATestFailback -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
         public void V2ATestReprotect()
         {
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
-                "V2ATestReprotect -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+                "V2ATestReprotectVMwareToAzure -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
         }
 
         [Fact]
@@ -249,9 +299,6 @@ namespace RecoveryServices.SiteRecovery.Test
            Category.CheckIn)]
         public void V2ACreateRPIWithDES()
         {
-            this.VaultSettingsFilePath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "V2A", "CMKInput","V2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
@@ -266,13 +313,94 @@ namespace RecoveryServices.SiteRecovery.Test
            Category.CheckIn)]
         public void V2ACreateRPIWithDESEnabledDiskInput()
         {
-            this.VaultSettingsFilePath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "V2A", "CMKInput", "V2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
                 "V2ACreateRPIWithDESEnabledDiskInput -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithPPG()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithPPG -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithPPG()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithPPG -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithAvZone()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithAvZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithAvZone()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithAvZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithAdditionalProperties()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithAdditionalProperties()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
                 this.VaultSettingsFilePath +
                 "\"");
         }

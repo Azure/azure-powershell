@@ -72,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             }
             {_display = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("display"), out var __jsonDisplay) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.OperationDisplay.FromJson(__jsonDisplay) : Display;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_isDataAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean>("isDataAction"), out var __jsonIsDataAction) ? (bool?)__jsonIsDataAction : IsDataAction;}
             {_origin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("origin"), out var __jsonOrigin) ? (string)__jsonOrigin : (string)Origin;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.OperationProperties.FromJson(__jsonProperties) : Property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Any.FromJson(__jsonProperties) : Property;}
+            {_isDataAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean>("isDataAction"), out var __jsonIsDataAction) ? (bool?)__jsonIsDataAction : IsDataAction;}
             AfterFromJson(json);
         }
 
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             }
             AddIf( null != this._display ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._display.ToJson(null,serializationMode) : null, "display" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != this._isDataAction ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean((bool)this._isDataAction) : null, "isDataAction" ,container.Add );
             AddIf( null != (((object)this._origin)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._origin.ToString()) : null, "origin" ,container.Add );
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._isDataAction ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean((bool)this._isDataAction) : null, "isDataAction" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

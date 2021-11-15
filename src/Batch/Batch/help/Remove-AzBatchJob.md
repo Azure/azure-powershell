@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: CB2F472B-C792-4A11-A055-F4161DCFBB28
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchjob
+online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchjob
 schema: 2.0.0
 ---
 
@@ -41,6 +41,25 @@ PS C:\>Get-AzBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzBatchJo
 This command gets the job that has the ID Job-000002 by using the Get-AzBatchJob cmdlet.
 The command passes that job to the current cmdlet by using the pipeline operator.
 The command deletes that job.
+Because the command includes the *Force* parameter, it does not prompt you for confirmation.
+
+### Example 3: Loop through all jobs and delete
+```
+# Get context
+$accountname = "PUT YOUR AZURE BATCH ACCOUNT NAME HERE"
+$batchcontext = Get-AzBatchAccount -AccountName $accountname
+
+# Get jobs
+$jobs = Get-AzBatchJob -BatchContext $batchcontext
+
+# Loop through jobs
+foreach ($element in $jobs) {
+	Write-Host "Processing "$element.Id
+	Remove-AzBatchJob -Id $element.Id -BatchContext $batchcontext -Force -Confirm:$false
+}
+```
+
+The commands above Remove all of the jobs for a given Azure Batch account.
 Because the command includes the *Force* parameter, it does not prompt you for confirmation.
 
 ## PARAMETERS

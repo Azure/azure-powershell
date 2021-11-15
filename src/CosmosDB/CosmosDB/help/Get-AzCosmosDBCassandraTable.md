@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable
+online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ Name    Id   Resource
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Cassandra Keyspace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Cassandra Table Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Cassandra Keyspace object.
 
 ```yaml
-Type: PSCassandraKeyspaceGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraKeyspaceGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 

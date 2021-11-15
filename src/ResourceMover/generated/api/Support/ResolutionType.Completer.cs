@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for ResolutionType.</summary>
+    /// <summary>Defines the resolution type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionTypeTypeConverter))]
     public partial struct ResolutionType :
         System.Management.Automation.IArgumentCompleter

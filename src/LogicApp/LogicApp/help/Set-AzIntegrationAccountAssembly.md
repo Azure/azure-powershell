@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azintegrationaccountassembly
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccountassembly
 schema: 2.0.0
 ---
 

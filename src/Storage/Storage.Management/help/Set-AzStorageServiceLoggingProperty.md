@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 5422429E-C609-4C1F-A021-E2A085B5F74E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageserviceloggingproperty
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty
 schema: 2.0.0
 ---
 

@@ -11,7 +11,7 @@ Invoke AzCostManagementQuery by Scope
 
 ### Example 2: Invoke AzCostManagementQuery by Scope with Dimensions
 ```powershell
-PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator 'In' -Value 'API'
+PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Value 'API'
 $filter = New-AzCostManagementQueryFilterObject -Dimensions $dimensions
 Invoke-AzCostManagementQuery -Type Usage -Scope "subscriptions/***********" -DatasetGranularity 'Monthly' -DatasetFilter $filter -Timeframe MonthToDate -Debug
 

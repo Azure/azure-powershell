@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         /// />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PrivateLinkServiceConnectionStateActionsRequire(System.Convert.ToString(value));
+            return new PrivateLinkServiceConnectionStateActionsRequire(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PrivateLinkServiceConnectionStateActionsRequire</summary>

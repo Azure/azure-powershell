@@ -21,7 +21,6 @@ using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -102,7 +101,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.ContainerBase container,
             CmdletModel.PolicyBase policy,
             string backupManagementType,
-            string dataSourceType)
+            string dataSourceType, 
+            bool UseSecondaryRegion = false)
         {
             ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
                 new ODataQuery<ProtectedItemQueryObject>(
@@ -113,16 +113,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == backupManagementType &&
-                         q.ItemType == dataSourceType);
+                         q.ItemType == dataSourceType);            
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
-            var listResponse = ServiceClientAdapter.ListProtectedItem(
+
+            // fetching backup items from secondary region
+            if (UseSecondaryRegion)
+            {
+                var listResponse = ServiceClientAdapter.ListCrrProtectedItem(
                 queryParams,
                 skipToken,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
-            protectedItems.AddRange(listResponse);
+                protectedItems.AddRange(listResponse);
+            }
+            else
+            {
+                var listResponse = ServiceClientAdapter.ListProtectedItem(
+                queryParams,
+                skipToken,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+                protectedItems.AddRange(listResponse);
+            }            
 
             if (container != null)
             {
@@ -200,7 +214,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             }
 
-
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
 
             if (!string.IsNullOrEmpty(itemName))
@@ -258,7 +271,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
             }
 
-            if(backupManagementType == BackupManagementType.AzureStorage &&
+            if(backupManagementType == ServiceClientModel.BackupManagementType.AzureStorage &&
                 ((CmdletModel.SimpleSchedulePolicy)policy).ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
                 throw new ArgumentException(Resources.AFSWeeklyScheduleNotAllowed);
@@ -279,7 +292,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // call validation
             policy.Validate();
         }
-                
+
         public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "")
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
@@ -357,18 +370,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = ProviderData.ContainsKey(RecoveryPointParams.RestorePointQueryType) ?
                 (string)ProviderData[RecoveryPointParams.RestorePointQueryType] : "All";
+            bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            RecoveryPointTier targetTier = (RecoveryPointTier)ProviderData[RecoveryPointParams.TargetTier];
+            bool isReadyForMove = (bool)ProviderData[RecoveryPointParams.IsReadyForMove];
+            RecoveryPointTier tier = (RecoveryPointTier)ProviderData[RecoveryPointParams.Tier];
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
 
             //we need to fetch the list of RPs
             var queryFilterString = "null";
@@ -394,13 +405,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
             queryFilter.Filter = queryFilterString;
 
-            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+            List<RecoveryPointResource> rpListResponse;
+            if (secondaryRegion)
+            {
+                //fetch recovery points from secondary region
+                rpListResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,
                 queryFilter,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
+            }
+            else
+            {
+                rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+            }
+
+            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
+
+            //filter out archived recovery points for secondary region
+            if (secondaryRegion)
+            { 
+                recoveryPointList = recoveryPointList.Where(
+                    recoveryPoint =>
+                    {
+                        if (recoveryPoint.GetType() == typeof(AzureVmRecoveryPoint))
+                        {
+                            return ((AzureVmRecoveryPoint)recoveryPoint).RecoveryPointTier != RecoveryPointTier.VaultArchive;
+                        }
+
+                        if (recoveryPoint.GetType() == typeof(CmdletModel.AzureWorkloadRecoveryPoint))
+                        {
+                            return ((CmdletModel.AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier != RecoveryPointTier.VaultArchive;
+                        }
+
+                        return false;
+                    }).ToList();
+            }
+
+            // filter move readness based on target tier
+            recoveryPointList = RecoveryPointConversions.CheckRPMoveReadiness(recoveryPointList, targetTier, isReadyForMove);
+
+            //filter RPs based on tier
+            return RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, tier);
         }
 
         public List<PointInTimeBase> ListLogChains(Dictionary<Enum, object> ProviderData)
@@ -410,18 +462,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = (string)ProviderData[RecoveryPointParams.RestorePointQueryType];
+            bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
 
             //we need to fetch the list of RPs
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
@@ -435,12 +482,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
             queryFilter.Filter = queryFilterString;
 
-            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+            List<RecoveryPointResource> rpListResponse;
+            if (secondaryRegion)
+            {
+                //fetch recovery points Log Chain from secondary region
+                rpListResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,
                 queryFilter,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+            }
+            else
+            {
+                rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+            }
 
             List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();
             foreach (RecoveryPointResource rp in rpListResponse)
@@ -559,18 +620,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public List<ItemBase> GetMABProtectedItems(string vaultName, string resourceGroupName)
+        public List<ItemBase> GetMABProtectedItems(string vaultName, string resourceGroupName, ContainerBase container = null)
         {
             ODataQuery<ProtectedItemQueryObject> queryParams =
                 new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType == BackupManagementType.MAB);
-                            
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);                            
 
             List<ProtectedItemResource> protectedItems = ServiceClientAdapter.ListProtectedItem(
                 queryParams,
                 null,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+
+            // filter by Container Name if given
+            if (container != null)
+            {
+                protectedItems = protectedItems.Where(protectedItem =>
+                {
+                    Dictionary<CmdletModel.UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                    string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
+
+                    var delimIndex = containerUri.IndexOf(';');
+                    string containerName = containerUri.Substring(delimIndex + 1);                    
+                    return containerName.ToLower().Equals(container.Name.ToLower());
+                }).ToList();
+            }
 
             return ConversionHelpers.GetItemModelList(protectedItems);
         }

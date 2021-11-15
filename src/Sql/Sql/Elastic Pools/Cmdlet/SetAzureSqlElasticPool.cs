@@ -154,6 +154,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the maintenance configuration id for the elastic pool
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the SQL Elastic Pool.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -196,7 +203,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Location = location,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
-                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType
+                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationId,
             };
 
             var elasticPool = ModelAdapter.GetElasticPool(ResourceGroupName, ServerName, ElasticPoolName);

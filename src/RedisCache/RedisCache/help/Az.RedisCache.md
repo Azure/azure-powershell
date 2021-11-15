@@ -1,7 +1,7 @@
 ﻿---
 Module Name: Az.RedisCache
 Module Guid: 820628d7-6938-488a-8760-43373a5ffce6
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.rediscache
+Download Help Link: https://docs.microsoft.com/powershell/module/az.rediscache
 Help Version: 4.1.2.0
 Locale: en-US
 ---

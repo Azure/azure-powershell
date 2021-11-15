@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/connect-azcontainerregistry
+online version: https://docs.microsoft.com/powershell/module/az.containerregistry/connect-azcontainerregistry
 schema: 2.0.0
 ---
 
@@ -72,7 +72,7 @@ Azure Container Registry Name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: RegistryName
 
 Required: True
 Position: Named

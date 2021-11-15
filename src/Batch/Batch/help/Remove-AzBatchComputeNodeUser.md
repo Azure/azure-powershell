@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 9E423A10-06AF-42F8-AC90-82DB01012AFA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchcomputenodeuser
+online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchcomputenodeuser
 schema: 2.0.0
 ---
 

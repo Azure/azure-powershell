@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: A03F32C3-BB01-46A5-86C5-B7A4DDC42351
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/new-aznotificationhubkey
+online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhubkey
 schema: 2.0.0
 ---
 

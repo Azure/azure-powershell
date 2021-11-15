@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/new-azcontainerregistry
+online version: https://docs.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistry
 schema: 2.0.0
 ---
 
@@ -131,13 +131,12 @@ Accept wildcard characters: False
 
 ### -Sku
 Container Registry SKU.
-Allowed values: Basic.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: ContainerRegistrySku, RegistrySku
-Accepted values: Basic, Premium, Standard
+Accepted values: Basic, Classic, Premium, Standard
 
 Required: True
 Position: 2

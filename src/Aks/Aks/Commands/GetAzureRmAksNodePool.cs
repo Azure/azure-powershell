@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -19,6 +20,7 @@ using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Aks.Commands
 {
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     case Constants.IdParameterSet:
                         var resource = new ResourceIdentifier(Id);
                         ResourceGroupName = resource.ResourceGroupName;
-                        ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                        ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(Id));
                         Name = resource.ResourceName;
                         break;
                     case Constants.ParentObjectParameterSet:
@@ -75,16 +77,31 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     case Constants.NameParameterSet:
                         break;
                 }
-                if (string.IsNullOrEmpty(Name))
+                try
                 {
-                    var pools = ListPaged(() => Client.AgentPools.List(ResourceGroupName, ClusterName),
-                        nextPageLink => Client.AgentPools.ListNext(nextPageLink));
-                    WriteObject(pools.Select(PSMapper.Instance.Map<PSNodePool>), true);
+                    if (string.IsNullOrEmpty(Name))
+                    {
+                        var pools = ListPaged(() => Client.AgentPools.List(ResourceGroupName, ClusterName),
+                            nextPageLink => Client.AgentPools.ListNext(nextPageLink));
+                        WriteObject(pools.Select(PSMapper.Instance.Map<PSNodePool>), true);
+                    }
+                    else
+                    {
+                        var pool = Client.AgentPools.Get(ResourceGroupName, ClusterName, Name);
+                        WriteObject(PSMapper.Instance.Map<PSNodePool>(pool));
+                    }
                 }
-                else
+                catch (ValidationException e)
                 {
-                    var pool = Client.AgentPools.Get(ResourceGroupName, ClusterName, Name);
-                    WriteObject(PSMapper.Instance.Map<PSNodePool>(pool));
+                    var sdkApiParameterMap = new Dictionary<string, CmdletParameterNameValuePair>()
+                    {
+                        { Constants.DotNetApiParameterResourceGroupName, new CmdletParameterNameValuePair(nameof(ResourceGroupName), ResourceGroupName) },
+                        { Constants.DotNetApiParameterResourceName, new CmdletParameterNameValuePair(nameof(ClusterName), ClusterName) },
+                        { Constants.DotNetApiParameterAgentPoolName, new CmdletParameterNameValuePair(nameof(Name), Name) },
+                    };
+
+                    if (!HandleValidationException(e, sdkApiParameterMap))
+                        throw;
                 }
             });
         }

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>Virtual Network Rule State</summary>
     public partial struct VirtualNetworkRuleState :
         System.IEquatable<VirtualNetworkRuleState>
     {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="VirtualNetworkRuleState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new VirtualNetworkRuleState(System.Convert.ToString(value));
+            return new VirtualNetworkRuleState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type VirtualNetworkRuleState</summary>

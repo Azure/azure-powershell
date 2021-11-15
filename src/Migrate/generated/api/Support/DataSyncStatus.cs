@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The data sync option.</summary>
     public partial struct DataSyncStatus :
         System.IEquatable<DataSyncStatus>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="DataSyncStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DataSyncStatus(System.Convert.ToString(value));
+            return new DataSyncStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DataSyncStatus" Enum class./></summary>

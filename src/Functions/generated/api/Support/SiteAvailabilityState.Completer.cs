@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Normal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Normal", "Normal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Normal");
+                yield return new global::System.Management.Automation.CompletionResult("'Normal'", "Normal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Normal");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Limited".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Limited", "Limited", global::System.Management.Automation.CompletionResultType.ParameterValue, "Limited");
+                yield return new global::System.Management.Automation.CompletionResult("'Limited'", "Limited", global::System.Management.Automation.CompletionResultType.ParameterValue, "Limited");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DisasterRecoveryMode".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DisasterRecoveryMode", "DisasterRecoveryMode", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisasterRecoveryMode");
+                yield return new global::System.Management.Automation.CompletionResult("'DisasterRecoveryMode'", "DisasterRecoveryMode", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisasterRecoveryMode");
             }
         }
     }

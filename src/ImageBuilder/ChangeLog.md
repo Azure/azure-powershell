@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Added support for runAsSystem parameter in `New-AzImageBuilderCustomizerObject` [#13163]
+* Added support to create template basing on imported json in `New-AzImageBuilderTemplate`. [#12634]
+
 ## Version 0.1.2
 * Removed `Sha256Checksum` parameter from example of `New-AzImageBuilderCustomizerObject`.
 

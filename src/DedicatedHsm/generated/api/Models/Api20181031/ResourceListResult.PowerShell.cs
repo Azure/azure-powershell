@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.ResourceTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.ResourceTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Azure Cache for Redis to update.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specify the TLS version required by clients to connect to cache.")]
         [PSArgumentCompleter(TlsStrings.OneFullStopZero, TlsStrings.OneFullStopOne, TlsStrings.OneFullStopTwo)]
         public string MinimumTlsVersion { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. Valid values: 4, 6")]
+        public string RedisVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]
         public Hashtable Tag { get; set; }
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity,
-                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, Tag);
+                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, RedisVersion, Tag);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

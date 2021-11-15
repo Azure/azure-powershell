@@ -168,7 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Alias("DestinationContainer")]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = UriParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ContainerParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ShareParameterSet)]
@@ -179,7 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Alias("DestinationBlob")]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = true, ParameterSetName = UriParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareNameParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareParameterSet)]
@@ -250,6 +250,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private Azure.Storage.Blob.RehydratePriority? rehydratePriority = null;
 
+        [Parameter(HelpMessage = "Blob Tags", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag
+        {
+            get
+            {
+                return BlobTag;
+            }
+
+            set
+            {
+                BlobTag = value;
+            }
+        }
+        private Hashtable BlobTag = null;
+
         [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
@@ -264,10 +280,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override IStorageContext Context { get; set; }
 
         [Alias("DestinationContext")]
-        [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
+        [Parameter(HelpMessage = "Destination Storage context object", ValueFromPipelineByPropertyName = true, Mandatory = false)]
         public IStorageContext DestContext { get; set; }
 
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Destination Blob. The blob request will fail when the destiantion blob tags not match the given tag conditions.", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public virtual string DestTagCondition { get; set; }
+
+        // Overwrite the parameter, function
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = BlobToBlobParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = ContainerParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = UriParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public override string TagCondition { get; set; }
+
         public override SwitchParameter AsJob { get; set; }
+
+        protected override bool UseTrack2Sdk()
+        {
+            if (this.BlobTag != null || this.TagCondition != null || this.DestTagCondition != null)
+            {
+                return true;
+            }
+            return base.UseTrack2Sdk();
+        }
 
         private bool skipSourceChannelInit;
 
@@ -626,7 +664,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
+                Uri srcBlobUriWithCredentail = null;
+                if (Channel!=null && destChannel != null && 
+                    Channel.StorageContext!= null && destChannel.StorageContext != null 
+                    && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                {
+                    // if inside same account, source blob can be anonumous
+                    srcBlobUriWithCredentail = srcBlob.SnapshotQualifiedUri;
+                }
+                else
+                {
+                    srcBlobUriWithCredentail = srcBlob.GenerateUriWithCredentials();
+                }
+                await StartCopyFromUri(taskId, destChannel, srcBlobUriWithCredentail, destBlob).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -648,7 +699,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(Channel.StorageContext), destBlob).ConfigureAwait(false);
+                Uri srcBlobUriWithCredentail = null;
+                if (Channel != null && destChannel != null &&
+                    Channel.StorageContext != null && destChannel.StorageContext != null
+                    && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                {
+                    // if inside same account, source blob can be anonumous
+                    srcBlobUriWithCredentail = srcBlob.Uri;
+                }
+                else
+                {
+                    srcBlobUriWithCredentail = srcBlob.GenerateUriWithCredentials(Channel.StorageContext);
+                }
+                await StartCopyFromUri(taskId, destChannel, srcBlobUriWithCredentail, destBlob).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -756,8 +820,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
                     options.RehydratePriority = Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority);
                 }
+                if (this.BlobTag != null)
+                {
+                    options.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                }
                 options.SourceConditions = this.BlobRequestConditions;
-
+                if (this.DestTagCondition != null)
+                {
+                    options.DestinationConditions = new Track2Models.BlobRequestConditions();
+                    options.DestinationConditions.TagConditions = DestTagCondition;
+                }
                 Track2Models.CopyFromUriOperation copyId = await destBlob.StartCopyFromUriAsync(srcUri, options, this.CmdletCancellationToken).ConfigureAwait(false);
 
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.BlobContainerName, copyId));

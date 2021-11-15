@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 98836BC0-AB4F-4F24-88BE-E7DD350B71E8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadappcredential
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential
 schema: 2.0.0
 ---
 
@@ -16,49 +16,57 @@ Adds a credential to an existing application.
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
 New-AzADAppCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithCertValueParameterSet
 ```
 New-AzADAppCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ApplicationIdWithCertValueParameterSet
 ```
 New-AzADAppCredential -ApplicationId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ApplicationIdWithPasswordParameterSet
 ```
 New-AzADAppCredential -ApplicationId <Guid> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordParameterSet
 ```
 New-AzADAppCredential -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithCertValueParameterSet
 ```
 New-AzADAppCredential -DisplayName <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithCertValueParameterSet
 ```
 New-AzADAppCredential -ApplicationObject <PSADApplication> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordParameterSet
 ```
 New-AzADAppCredential -ApplicationObject <PSADApplication> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-CustomKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,8 +87,7 @@ A new password credential is added to the existing application with object id '1
 ### Example 2 - Create a new application credential using a certificate
 
 ```
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-PS C:\> $cer.Import("C:\myapp.cer")
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("C:\myapp.cer")
 PS C:\> $binCert = $cer.GetRawCertData()
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
 PS C:\> New-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -CertValue $credValue -StartDate $cer.NotBefore -EndDate $cer.NotAfter
@@ -150,6 +157,21 @@ Parameter Sets: DisplayNameWithCertValueParameterSet, ApplicationObjectWithCertV
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CustomKeyIdentifier
+Custom Key Identifier
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -21,13 +22,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public interface ITelemetryData
     {
         /// <summary>
-        /// Gets the session id.
+        /// Gets the id to correlate events proceeding to and including a command history.
         /// </summary>
-        string SessionId { get; }
+        public string CommandId { get; internal set; }
 
         /// <summary>
-        /// Gets the correlation id.
+        /// Gets the id to correlate the request and the server.
         /// </summary>
-        string CorrelationId { get; }
+        public string RequestId { get; internal set; }
+
+        /// <summary>
+        /// Gets the client that makes the calls.
+        /// </summary>
+        public PredictionClient Client { get; }
     }
 }

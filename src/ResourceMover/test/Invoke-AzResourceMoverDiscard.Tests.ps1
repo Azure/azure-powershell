@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Invoke-AzResourceMoverDiscard' {
     It 'DiscardExpanded' {
-        $discardResponse = Invoke-AzResourceMoverDiscard -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
-        $discardResponse.Status.Length | Should -BeGreaterOrEqual 6
+        $discardResponse = Invoke-AzResourceMoverDiscard -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg" -MoveResourceInputType "MoveResourceSourceId"
+        $discardResponse.Status | Should -Be "Succeeded"
     }
 }

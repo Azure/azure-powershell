@@ -117,7 +117,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string KeyUri { get; set; }
 
-
+        [Parameter(Mandatory = false, HelpMessage = "The encryption scope will apply a secondary layer of encryption with platform managed keys for data at rest.")]
+        public SwitchParameter RequireInfrastructureEncryption { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -146,6 +147,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 else
                 {
                     scope.Source = EncryptionScopeSource.MicrosoftStorage;
+                }
+                if (this.RequireInfrastructureEncryption.IsPresent)
+                {
+                    scope.RequireInfrastructureEncryption = true;
                 }
 
                 scope = this.StorageClient.EncryptionScopes.Put(

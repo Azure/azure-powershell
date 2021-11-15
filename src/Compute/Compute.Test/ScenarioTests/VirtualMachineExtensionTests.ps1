@@ -1042,7 +1042,7 @@ function Test-VirtualMachineCustomScriptExtensionManagedDisk
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM with managed disk
-        $vmname0 = $rgname + "v0";        
+        $vmname0 = $rgname + "v0";
         $username = "admin01";
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
@@ -1063,7 +1063,7 @@ function Test-VirtualMachineCustomScriptExtensionManagedDisk
         $managedDisk = Get-AzDisk -ResourceGroupName $rgname -DiskName $vm.StorageProfile.OsDisk.Name;
 
         # Create a managed OS disk by copying the OS disk of the stopped VM.
-        $diskname = $rgname + "disk";        
+        $diskname = $rgname + "disk";
         $diskConfig = New-AzDiskConfig -SourceResourceId $managedDisk.Id -Location $loc -CreateOption Copy;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
@@ -1104,7 +1104,7 @@ function Test-VirtualMachineCustomScriptExtensionManagedDisk
 
         # Create a VM using the managed OS disk.
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;       
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
         Assert-Null $vm.OSProfile;
 
         # Storage Account (SA)
@@ -1407,6 +1407,16 @@ function Test-AzureDiskEncryptionExtensionSinglePass
         Assert-NotNull $settings
         Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
         Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+
+        #Enable using -Migrate flag and verify exception is thrown
+        Write-Verbose "Use -Migrate flag"
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force; } `
+        "Migration is only supported for VMs using Azure Disk Encryption (with AAD). -Migrate parameter is unsupported for this VM as it is running Azure Disk Encryption (without AAD)";
+
+        # Enable using -MigrationRecovery flag and verify exception is thrown
+        Write-Verbose "Use -MigrationRecovery flag"
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -MigrationRecovery -Force; } `
+        "Invalid -MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery";
     }
     finally
     {
@@ -1638,7 +1648,12 @@ function Test-AzureDiskEncryptionLnxManagedDisk
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
         $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -1653,6 +1668,21 @@ function Test-AzureDiskEncryptionLnxManagedDisk
         # Enable single pass encryption without -skipVmBackup on Linux VM managed disk and verify exception is thrown
         Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId -VolumeType "OS" -Force; } `
             "skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks"; #>
+
+        # Enable with normal parameters
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId -VolumeType "OS" -Force -skipVmBackup;
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmname
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted EncryptionInProgress;
+
+        # Enable using -Migrate flag and verify exception is thrown
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -Migrate -Force; } `
+            "Migration is only supported for VMs using Azure Disk Encryption (with AAD). -Migrate parameter is unsupported for this VM as it is running Azure Disk Encryption (without AAD)";
+
+        # Enable using -MigrationRecovery flag and verify exception is thrown
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -MigrationRecovery -Force; } `
+            "Invalid -MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery";
+
     }
     finally
     {
@@ -1899,6 +1929,97 @@ function Test-AzureDiskEncryptionExtension
         # Cleanup
         Clean-ResourceGroup $rgname;
         #Remove-AzADApplication -ApplicationObjectId $ADApp.ApplicationId -Force;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension dual pass to single pass migration scenario
+#>
+function Test-AzureDiskEncryptionExtensionDualPassToSinglePassMigration
+{
+    # This test should be run in Live mode only not in Playback mode
+    # pre-requisites to be filled in before running this test. The AAD app should belong to the directory as the user running the test.
+    $resourceGroupName = Get-ComputeTestResourceName
+    try
+    {
+        #Check if AAD app was already created
+        $aadAppName = "detestapp"
+        $SvcPrincipals = Get-AzADServicePrincipal -SearchString $aadAppName;
+        if(-not $SvcPrincipals)
+        {
+            # Create a new AD application if not created before
+            $identifierUri = [string]::Format("http://localhost:8080/{0}", $rgname);
+            $defaultHomePage = 'http://contoso.com';
+            $now = [System.DateTime]::Now;
+            $oneYearFromNow = $now.AddYears(1);
+            $aadClientSecret = Get-ResourceName;
+            $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+            Assert-NotNull $ADApp;
+            $servicePrincipal = New-AzADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+            $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
+            # Was AAD app created?
+            Assert-NotNull $SvcPrincipals;
+            $aadClientID = $servicePrincipal.ApplicationId;
+        }
+        else
+        {
+            # Was AAD app already created?
+            Assert-NotNull $aadClientSecret;
+            $aadClientID = $SvcPrincipals[0].ApplicationId;
+			Write-Verbose "Got SPN client ID.."
+        }
+
+		# create virtual machine and key vault prerequisites
+        $vm = Create-VirtualMachine $resourceGroupName
+
+        # Create new KeyVault
+        $vaultName = "detestvault";
+        $keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $loc -Sku standard;
+        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+        #set enabledForDiskEncryption
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption;
+        #set permissions to AAD app to write secrets and keys
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
+        $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
+        $keyVaultResourceId = $keyVault.ResourceId;
+
+        #Enable encryption on the VM
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force;
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $keyVaultResourceId
+
+        # migrate VM to single pass
+        Write-Verbose "Migrate VM to 1pass"
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force;
+        Write-Verbose "Migration complete"
+
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $keyVaultResourceId
+
+        #verify VM Model is null after Migration
+        $vmModel = Get-AzVM  -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
+        Assert-Null $vmModel.StorageProfile.OSDisk.EncryptionSettings
+    }
+    finally
+    {
+       Clean-ResourceGroup($resourceGroupName)
     }
 }
 
@@ -2512,6 +2633,67 @@ function Test-VirtualMachineADDomainExtensionDomainJoin
         Assert-NotNull $vm1.Extensions[1].Settings;
 
         Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Extensions EnableAutomaticUpgrade
+#>
+function Test-VirtualMachineExtensionEnableAutomaticUpgrade
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vmname = "extensionTestVM"
+        $vmssname = "extensionTestVmss"
+        $domainNameLabel = 'pubip'+$rgname;
+        $domainNameLabel2 = $domainNameLabel + '2'
+
+
+        # create vm/vmss
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -domainNameLabel $domainNameLabel
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScalesetName $vmssname -credential $cred -domainNameLabel $domainNameLabel2
+
+        # check vm/vmss
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-NotNull $vm;
+        $vmss = Get-AzVmss -Name $vmssname -ResourceGroupName $rgname;
+        Assert-NotNull $vmss;
+
+        # Extension
+        $extname = 'csetest';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'CustomScriptExtension';
+        $extver = '1.1';
+
+        # Set extension settings by raw strings
+        $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
+        $protectedsettingstr = '{"storageAccountName":"somename","storageAccountKey":"somekey"}';
+
+        Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -enableAutomaticUpgrade $False;
+        $VMSSext = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -enableAutomaticUpgrade $False;
+
+        $VMext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+
+        # check enableAutomaticUpgrade property
+        Assert-False { $VMext.EnableAutomaticUpgrade };
+        Assert-False { $VMSSext.VirtualMachineProfile.ExtensionProfile.Extensions[-1].EnableAutomaticUpgrade };
     }
     finally
     {

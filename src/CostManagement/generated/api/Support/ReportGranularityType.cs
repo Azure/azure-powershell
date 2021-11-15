@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The granularity of rows in the report.</summary>
     public partial struct ReportGranularityType :
         System.IEquatable<ReportGranularityType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ReportGranularityType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ReportGranularityType(System.Convert.ToString(value));
+            return new ReportGranularityType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ReportGranularityType</summary>

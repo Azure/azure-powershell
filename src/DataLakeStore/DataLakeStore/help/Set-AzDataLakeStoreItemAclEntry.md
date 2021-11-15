@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry
 schema: 2.0.0
 ---
 
@@ -47,8 +47,8 @@ PS C:\>Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceTyp
 ### Example 3: Modify permissions for an ACE recursively using Acl object
 ```
 PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x"
-PS C:\>$newFullAcl = $fullAcl.Split("{,}")
-PS C:\>Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128
+PS C:\>$newFullAcl = $fullAcl.Split(",")
+PS C:\>Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128 -ShowProgress -Verbose
 ```
 
 This command recursively modifies the ACE for Patti Fuller to have all permissions to root and all its subdirectories and files.

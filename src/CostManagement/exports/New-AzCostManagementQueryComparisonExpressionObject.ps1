@@ -19,7 +19,7 @@ Create a in-memory object for QueryComparisonExpression
 .Description
 Create a in-memory object for QueryComparisonExpression
 .Example
-PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe')
+PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 
 Name             Operator Value
 ----             -------- -----

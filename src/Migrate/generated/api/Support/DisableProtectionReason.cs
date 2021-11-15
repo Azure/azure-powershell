@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Disable protection reason. It can have values NotSpecified/MigrationComplete.</summary>
     public partial struct DisableProtectionReason :
         System.IEquatable<DisableProtectionReason>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="DisableProtectionReason" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DisableProtectionReason(System.Convert.ToString(value));
+            return new DisableProtectionReason(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DisableProtectionReason" Enum class./></summary>

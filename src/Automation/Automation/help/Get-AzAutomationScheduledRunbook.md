@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: EE854F8A-4B6B-4831-992A-6EC318BEE234
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationscheduledrunbook
+online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook
 schema: 2.0.0
 ---
 

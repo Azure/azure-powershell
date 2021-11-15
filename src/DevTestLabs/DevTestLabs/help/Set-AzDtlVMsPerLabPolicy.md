@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs.dll-Help.xml
 Module Name: Az.DevTestLabs
 ms.assetid: D2A7ECF6-E2B1-4BD5-BEA6-C9EC0C7377BA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.devtestlabs/set-azdtlvmsperlabpolicy
+online version: https://docs.microsoft.com/powershell/module/az.devtestlabs/set-azdtlvmsperlabpolicy
 schema: 2.0.0
 ---
 

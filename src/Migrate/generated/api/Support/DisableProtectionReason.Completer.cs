@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for DisableProtectionReason.</summary>
+    /// <summary>Disable protection reason. It can have values NotSpecified/MigrationComplete.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DisableProtectionReasonTypeConverter))]
     public partial struct DisableProtectionReason :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MigrationComplete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MigrationComplete", "MigrationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationComplete");
+                yield return new global::System.Management.Automation.CompletionResult("'MigrationComplete'", "MigrationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationComplete");
             }
         }
     }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnszone
+online version: https://docs.microsoft.com/powershell/module/az.dns/get-azdnszone
 schema: 2.0.0
 ---
 

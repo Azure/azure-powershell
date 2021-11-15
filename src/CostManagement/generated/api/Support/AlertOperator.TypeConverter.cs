@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for AlertOperator.</summary>
+    /// <summary>operator used to compare currentSpend with amount</summary>
     public partial class AlertOperatorTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

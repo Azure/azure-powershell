@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedKubernetes_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Description(@"API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Generated]
     public partial class NewAzConnectedKubernetes_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -34,39 +34,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>The client app id configured on target K8 cluster</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The client app id configured on target K8 cluster ")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The client app id configured on target K8 cluster ",
-        SerializedName = @"clientAppId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AadProfileClientAppId { get => ConnectedClusterBody.AadProfileClientAppId ?? null; set => ConnectedClusterBody.AadProfileClientAppId = value; }
-
-        /// <summary>The server app id to access AD server</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The server app id to access AD server")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The server app id to access AD server",
-        SerializedName = @"serverAppId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AadProfileServerAppId { get => ConnectedClusterBody.AadProfileServerAppId ?? null; set => ConnectedClusterBody.AadProfileServerAppId = value; }
-
-        /// <summary>The aad tenant id which is configured on target K8s cluster</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The aad tenant id which is configured on target K8s cluster")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The aad tenant id which is configured on target K8s cluster",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AadProfileTenantId { get => ConnectedClusterBody.AadProfileTenantId ?? null; set => ConnectedClusterBody.AadProfileTenantId = value; }
 
         /// <summary>
         /// Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
@@ -110,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
 
         /// <summary>Backing field for <see cref="ConnectedClusterBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster _connectedClusterBody= new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.ConnectedCluster();
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster _connectedClusterBody= new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedCluster();
 
         /// <summary>Represents a connected cluster.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster ConnectedClusterBody { get => this._connectedClusterBody; set => this._connectedClusterBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster ConnectedClusterBody { get => this._connectedClusterBody; set => this._connectedClusterBody = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -123,6 +90,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The Kubernetes distribution running on this connected cluster.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Kubernetes distribution running on this connected cluster.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Kubernetes distribution running on this connected cluster.",
+        SerializedName = @"distribution",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Distribution { get => ConnectedClusterBody.Distribution ?? null; set => ConnectedClusterBody.Distribution = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -150,6 +128,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType IdentityType { get => ConnectedClusterBody.IdentityType; set => ConnectedClusterBody.IdentityType = value; }
+
+        /// <summary>
+        /// The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.",
+        SerializedName = @"infrastructure",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Infrastructure { get => ConnectedClusterBody.Infrastructure ?? null; set => ConnectedClusterBody.Infrastructure = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -186,13 +177,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.HttpPipeline Pipeline { get; set; }
 
-        /// <summary>The current deployment state of connectedClusters.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The current deployment state of connectedClusters.")]
+        /// <summary>Provisioning state of the connected cluster resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Provisioning state of the connected cluster resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The current deployment state of connectedClusters.",
+        Description = @"Provisioning state of the connected cluster resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState))]
@@ -246,6 +237,74 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timestamp of resource creation (UTC).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The timestamp of resource creation (UTC).",
+        SerializedName = @"createdAt",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime SystemDataCreatedAt { get => ConnectedClusterBody.SystemDataCreatedAt ?? default(global::System.DateTime); set => ConnectedClusterBody.SystemDataCreatedAt = value; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity that created the resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The identity that created the resource.",
+        SerializedName = @"createdBy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SystemDataCreatedBy { get => ConnectedClusterBody.SystemDataCreatedBy ?? null; set => ConnectedClusterBody.SystemDataCreatedBy = value; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity that created the resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of identity that created the resource.",
+        SerializedName = @"createdByType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.CreatedByType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.CreatedByType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.CreatedByType SystemDataCreatedByType { get => ConnectedClusterBody.SystemDataCreatedByType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.CreatedByType)""); set => ConnectedClusterBody.SystemDataCreatedByType = value; }
+
+        /// <summary>The timestamp of resource modification (UTC).</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timestamp of resource modification (UTC).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The timestamp of resource modification (UTC).",
+        SerializedName = @"lastModifiedAt",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime SystemDataLastModifiedAt { get => ConnectedClusterBody.SystemDataLastModifiedAt ?? default(global::System.DateTime); set => ConnectedClusterBody.SystemDataLastModifiedAt = value; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity that last modified the resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The identity that last modified the resource.",
+        SerializedName = @"lastModifiedBy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SystemDataLastModifiedBy { get => ConnectedClusterBody.SystemDataLastModifiedBy ?? null; set => ConnectedClusterBody.SystemDataLastModifiedBy = value; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity that last modified the resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of identity that last modified the resource.",
+        SerializedName = @"lastModifiedByType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.LastModifiedByType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.LastModifiedByType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.LastModifiedByType SystemDataLastModifiedByType { get => ConnectedClusterBody.SystemDataLastModifiedByType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.LastModifiedByType)""); set => ConnectedClusterBody.SystemDataLastModifiedByType = value; }
+
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
@@ -255,32 +314,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api10.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api10.ITrackedResourceTags Tag { get => ConnectedClusterBody.Tag ?? null /* object */; set => ConnectedClusterBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags Tag { get => ConnectedClusterBody.Tag ?? null /* object */; set => ConnectedClusterBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -506,12 +565,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -528,7 +587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, body=ConnectedClusterBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -546,12 +605,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster> response)
         {
             using( NoSynchronizationContext )
             {
@@ -563,7 +622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster
                 WriteObject((await response));
             }
         }

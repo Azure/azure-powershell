@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -88,6 +90,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Auto", "Manual")]
         public string QosType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the pool can contain cool Access enabled volumes.")]
+        public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    HelpMessage = "Encryption type of the capacity pool (Single, Double), set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Single", "Double")]
+        public string EncryptionType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -117,6 +131,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                     tagPairs.Add(key, Tag[key].ToString());
                 }
             }
+            //check existing 
+            CapacityPool existingPool = null;
+
+            try
+            {
+                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName,  Name);
+            }
+            catch
+            {
+                existingPool = null;
+            }
+            if (existingPool != null)
+            {
+                throw new AzPSResourceNotFoundCloudException($"A Capacity Pool with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesPool to update an existing Capacity Pool.");
+            }
 
             if (ParameterSetName == ParentObjectParameterSet)
             {
@@ -131,7 +160,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Size = PoolSize,
                 Location = Location,
                 Tags = tagPairs,
-                QosType = QosType
+                QosType = QosType,
+                CoolAccess = CoolAccess,
+                EncryptionType = EncryptionType
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

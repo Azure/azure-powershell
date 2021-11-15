@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         Description = @"The value which should be used for this field.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableNoPublicIPValue { get => ParametersBody.EnableNoPublicIPValue; set => ParametersBody.EnableNoPublicIPValue = value; }
+        public global::System.Management.Automation.SwitchParameter EnableNoPublicIPValue { get => ParametersBody.EnableNoPublicIP ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableNoPublicIP = value; }
 
         /// <summary>The name of KeyVault key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         Description = @"The value which should be used for this field.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter PrepareEncryption { get => ParametersBody.PrepareEncryption; set => ParametersBody.PrepareEncryption = value; }
+        public global::System.Management.Automation.SwitchParameter PrepareEncryption { get => ParametersBody.PrepareEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.PrepareEncryption = value; }
 
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         Description = @"The value which should be used for this field.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter RequireInfrastructureEncryption { get => ParametersBody.RequireInfrastructureEncryption; set => ParametersBody.RequireInfrastructureEncryption = value; }
+        public global::System.Management.Automation.SwitchParameter RequireInfrastructureEncryption { get => ParametersBody.RequireInfrastructureEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.RequireInfrastructureEncryption = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;

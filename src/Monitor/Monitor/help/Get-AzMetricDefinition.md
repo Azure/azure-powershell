@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 7915A7AC-5A47-4868-B846-2896BCEBFAB2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricdefinition
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition
 schema: 2.0.0
 ---
 
@@ -221,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 More information about the supported metrics may be found at:
-https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported
 
 ## RELATED LINKS
 

@@ -1,0 +1,217 @@
+{
+  "Get-AzStaticWebApp+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/staticSites?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/staticSites?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5a885f56-280a-4fc6-8e3b-4c6f1df7a354" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "25417e2f-d619-4ea7-ad76-f1b9cd820015" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "c33ba58d-611b-4fdb-b12d-35e699ef3290" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T075147Z:c33ba58d-611b-4fdb-b12d-35e699ef3290" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 07:51:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2497" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-mq5gbh/providers/Microsoft.Web/staticSites/staticweb-45asde\",\"name\":\"staticweb-45asde\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"calm-dune-0fe1a9710.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev02\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux\",\"name\":\"staticweb-p6edux\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"white-mushroom-05cf8d110.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev01\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}],\"nextLink\":null,\"id\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStaticWebApp+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "df4dc8b0-3a38-4493-8283-c9e545d698b7" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c3ed285b-a888-47ca-8ceb-dc4de72830c4" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "a343573f-0a8d-4b3b-b2d5-951a993d130b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T075147Z:a343573f-0a8d-4b3b-b2d5-951a993d130b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 07:51:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1758" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux\",\"name\":\"staticweb-p6edux\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"white-mushroom-05cf8d110.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev01\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}],\"nextLink\":null,\"id\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStaticWebApp+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d23ea730-42dc-4390-9c0d-fa824c0bddbe" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "26218d80-ecf6-453d-be8f-b4614f45b753" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "2573fa51-7384-4820-81f7-7c53bae19d80" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T075148Z:2573fa51-7384-4820-81f7-7c53bae19d80" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 07:51:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "976" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStaticWebApp+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "e91ae64f-ff1b-497b-a3d3-6dd737729596" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "37f636d7-c22c-4f9e-96b8-ddc677e64f9b" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "badb0721-6f38-42b8-a44a-de5272724997" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T075148Z:badb0721-6f38-42b8-a44a-de5272724997" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 07:51:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "976" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStaticWebApp+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "5a9c0d76-3211-4d81-99e9-61b5b1917d3e" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "286342a8-514a-4a6e-893d-dedd9ff97b35" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "d7fd8812-dc9b-4d81-83ff-fb3a68708c3e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T075149Z:d7fd8812-dc9b-4d81-83ff-fb3a68708c3e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 07:51:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "976" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for AlternateLocationRecoveryOption.</summary>
+    /// <summary>The ALR option.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AlternateLocationRecoveryOptionTypeConverter))]
     public partial struct AlternateLocationRecoveryOption :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CreateVmIfNotFound".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CreateVmIfNotFound", "CreateVmIfNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreateVmIfNotFound");
+                yield return new global::System.Management.Automation.CompletionResult("'CreateVmIfNotFound'", "CreateVmIfNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreateVmIfNotFound");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoAction".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoAction", "NoAction", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoAction");
+                yield return new global::System.Management.Automation.CompletionResult("'NoAction'", "NoAction", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoAction");
             }
         }
     }

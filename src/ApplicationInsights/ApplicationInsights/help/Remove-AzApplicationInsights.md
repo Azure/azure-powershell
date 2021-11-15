@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/remove-azapplicationinsights
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsights
 schema: 2.0.0
 ---
 

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System.Security;
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD user.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADUser), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
     public class NewAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Password for the user.")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("Password", ChangeDescription = "Parameter Password will not be supported, server generated secret text could be found in response")]
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ImmutableId - to be specified only if you are using a federated domain for the user's user principal name (upn) property.")]

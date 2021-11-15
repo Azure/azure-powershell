@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.1
+* Set site config netFrameworkVersion for Windows V4 apps only
+* Enabled function app creation for Functions V4 stacks [#15919]
+
+## Version 3.1.0
+* Added two additional app settings (WEBSITE_CONTENTSHARE and WEBSITE_CONTENTAZUREFILECONNECTIONSTRING) for Linux Consumption apps. [15124]
+* Fixed bug with New-AzFunctionApp when created on Azure Gov. [13379]
+* Added Az.Functions cmdlets need to support creating and copying app settings with empty values. [14511]
+
+## Version 3.0.0
+* Added support in function app creation for Python 3.9 and Node 14 function apps
+* Removed support in function app creation for V2, Python 3.6, Node 8, and Node 10 function apps
+* Updated IdentityID parameter from string to string array in Update-AzFunctionApp. This is to be consistent with New-AzFunctionApp which has the same parameter as a string array
+* Updated FullyQualifiedErrorId for an invalid Functions version from FunctionsVersionIsInvalid to FunctionsVersionNotSupported 
+* When creating a Node.js function app, if no runtime version is specified, the default runtime version is set to 14 instead of 12
+
 ## Version 2.0.0
 * [Breaking Change] Removed `IncludeSlot` switch parameter from all but one parameter set of `Get-AzFunctionApp`. The cmdlet now supports retrieving deployment slots in the results when `-IncludeSlot` is specified. 
 * Updated `New-AzFunctionApp`:

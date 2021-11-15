@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>Lists all of the available cost management REST API operations.</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.CostManagement/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.CostManagement/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCostManagementOperation_List")]

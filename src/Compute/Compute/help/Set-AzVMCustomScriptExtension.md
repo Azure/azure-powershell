@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmcustomscriptextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension
 schema: 2.0.0
 ---
 

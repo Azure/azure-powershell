@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azactivitylogalert
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert
 schema: 2.0.0
 ---
 
@@ -127,8 +127,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
-
-[Update-AzActivityLogAlert](./Update-AzActivityLogAlert.md)
 
 [Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 

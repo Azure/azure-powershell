@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>Deletes server active directory administrator.</summary>
     /// <remarks>
-    /// [OpenAPI] ServerAdministrators_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/Administrators/activeDirectory"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/administrators/activeDirectory"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzPostgreSqlServerAdministrator_DeleteViaIdentity", SupportsShouldProcess = true)]

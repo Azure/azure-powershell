@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnsitelinkconnection
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnsitelinkconnection
 schema: 2.0.0
 ---
 
@@ -16,6 +16,7 @@ Creates an Azure VpnSiteLinkConnection object.
 New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-SharedKey <SecureString>]
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-VpnLinkConnectionMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -81,11 +82,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EgressNatRule
+The list of egress  NAT rules that are associated with this link Connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableBgp
 Enable BGP for this link connection
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressNatRule
+The list of ingress NAT rules that are associated with this link Connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -199,6 +230,19 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VpnLinkConnectionMode
+The connection mode for this link connection.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: Default
 Accept wildcard characters: False
 ```
 

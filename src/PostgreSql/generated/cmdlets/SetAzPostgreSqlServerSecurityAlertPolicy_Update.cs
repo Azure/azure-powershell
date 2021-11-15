@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>Creates or updates a threat detection policy.</summary>
     /// <remarks>
-    /// [OpenAPI] ServerSecurityAlertPolicies_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzPostgreSqlServerSecurityAlertPolicy_Update", SupportsShouldProcess = true)]
