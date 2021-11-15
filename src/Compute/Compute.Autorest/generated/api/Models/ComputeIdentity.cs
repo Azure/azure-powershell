@@ -19,6 +19,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
         public string CommandId { get => this._commandId; set => this._commandId = value; }
 
+        /// <summary>Backing field for <see cref="GalleryApplicationName" /> property.</summary>
+        private string _galleryApplicationName;
+
+        /// <summary>
+        /// The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers
+        /// with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
+        public string GalleryApplicationName { get => this._galleryApplicationName; set => this._galleryApplicationName = value; }
+
+        /// <summary>Backing field for <see cref="GalleryApplicationVersionName" /> property.</summary>
+        private string _galleryApplicationVersionName;
+
+        /// <summary>
+        /// The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed
+        /// characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
+        public string GalleryApplicationVersionName { get => this._galleryApplicationVersionName; set => this._galleryApplicationVersionName = value; }
+
+        /// <summary>Backing field for <see cref="GalleryImageName" /> property.</summary>
+        private string _galleryImageName;
+
+        /// <summary>
+        /// The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with
+        /// dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
+        public string GalleryImageName { get => this._galleryImageName; set => this._galleryImageName = value; }
+
+        /// <summary>Backing field for <see cref="GalleryImageVersionName" /> property.</summary>
+        private string _galleryImageVersionName;
+
+        /// <summary>
+        /// The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters
+        /// are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
+        public string GalleryImageVersionName { get => this._galleryImageVersionName; set => this._galleryImageVersionName = value; }
+
+        /// <summary>Backing field for <see cref="GalleryName" /> property.</summary>
+        private string _galleryName;
+
+        /// <summary>
+        /// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in
+        /// the middle. The maximum length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
+        public string GalleryName { get => this._galleryName; set => this._galleryName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -97,6 +147,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         SerializedName = @"commandId",
         PossibleTypes = new [] { typeof(string) })]
         string CommandId { get; set; }
+        /// <summary>
+        /// The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers
+        /// with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.",
+        SerializedName = @"galleryApplicationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GalleryApplicationName { get; set; }
+        /// <summary>
+        /// The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed
+        /// characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>",
+        SerializedName = @"galleryApplicationVersionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GalleryApplicationVersionName { get; set; }
+        /// <summary>
+        /// The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with
+        /// dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.",
+        SerializedName = @"galleryImageName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GalleryImageName { get; set; }
+        /// <summary>
+        /// The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters
+        /// are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>",
+        SerializedName = @"galleryImageVersionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GalleryImageVersionName { get; set; }
+        /// <summary>
+        /// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in
+        /// the middle. The maximum length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.",
+        SerializedName = @"galleryName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GalleryName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
@@ -173,6 +278,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
     {
         /// <summary>The command id.</summary>
         string CommandId { get; set; }
+        /// <summary>
+        /// The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers
+        /// with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+        /// </summary>
+        string GalleryApplicationName { get; set; }
+        /// <summary>
+        /// The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed
+        /// characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+        /// </summary>
+        string GalleryApplicationVersionName { get; set; }
+        /// <summary>
+        /// The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with
+        /// dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+        /// </summary>
+        string GalleryImageName { get; set; }
+        /// <summary>
+        /// The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters
+        /// are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+        /// </summary>
+        string GalleryImageVersionName { get; set; }
+        /// <summary>
+        /// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in
+        /// the middle. The maximum length is 80 characters.
+        /// </summary>
+        string GalleryName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The instance ID of the virtual machine.</summary>

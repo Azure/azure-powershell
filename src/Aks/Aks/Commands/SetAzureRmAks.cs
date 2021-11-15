@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Disable the 'acrpull' role assignment to the ACR specified by name or resource ID, e.g. myacr")]
         public string AcrNameToDetach { get; set; }
 
+
+        [Parameter(Mandatory = false, HelpMessage = "Will only upgrade node pool version to align control plane.")]
+        public SwitchParameter NodeImageOnly { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Will only upgrade control plane to target version.")]
+        public SwitchParameter ControlPlaneOnly { get; set; }
+
         /// <summary>
         /// Cluster name
         /// </summary>
@@ -259,10 +266,80 @@ namespace Microsoft.Azure.Commands.Aks
                             }
                         }
 
+                        if (this.IsParameterBound(c => c.KubernetesVersion) && this.IsParameterBound(c => c.NodeImageOnly))
+                        {
+                            throw new AzPSArgumentException(Resources.UpdateKubernetesVersionAndNodeImageOnlyConflict, "KubernetesVersion");
+                        }
+
+                        bool allAgentPoolVirtualMachineScaleSets = cluster.AgentPoolProfiles.All(c => c.Type.ToLower().Equals("virtualmachinescalesets"));
+                        if (this.IsParameterBound(c => c.NodeImageOnly))
+                        {
+                            if (!ShouldProcess(Resources.ConfirmOnlyUpgradeNodeVersion, ""))
+                            {
+                                return;
+                            }
+
+                            foreach (var agentPoolProfile in cluster.AgentPoolProfiles)
+                            {
+                                if (!allAgentPoolVirtualMachineScaleSets)
+                                {
+                                    throw new AzPSApplicationException(Resources.NotUsingVirtualMachineScaleSets);
+                                }
+                                var agentPoolClient = Client.AgentPools.Get(ResourceGroupName, Name, agentPoolProfile.Name);
+                                AgentPool parameter = new AgentPool
+                                {
+                                    Count = agentPoolClient.Count,
+                                    VmSize = agentPoolClient.VmSize,
+                                    OsDiskSizeGB = agentPoolClient.OsDiskSizeGB,
+                                    MaxPods = agentPoolClient.MaxPods,
+                                    Mode = agentPoolClient.Mode,
+                                    OsType = agentPoolClient.OsType,
+                                    OrchestratorVersion = cluster.KubernetesVersion,
+                                };
+                                Client.AgentPools.CreateOrUpdate(ResourceGroupName, Name, agentPoolProfile.Name, parameter);
+                            }
+                            cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
+                            WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(cluster));
+                            return;
+                        }
                         if (this.IsParameterBound(c => c.KubernetesVersion))
                         {
                             WriteVerbose(Resources.UpdatingKubernetesVersion);
                             cluster.KubernetesVersion = KubernetesVersion;
+                        }
+                        bool upgradeAllNode = false;
+                        if (cluster.MaxAgentPools < 8 || !allAgentPoolVirtualMachineScaleSets)
+                        {
+                            if (this.IsParameterBound(c => c.ControlPlaneOnly))
+                            {
+                                if (!ShouldProcess(string.Format(Resources.ConfirmControlPlaneOnlyInVMASCluster, KubernetesVersion), ""))
+                                {
+                                    return;
+                                }
+                            }
+                            upgradeAllNode = true;
+                        }
+                        else
+                        {
+                            if (!this.IsParameterBound(c => c.ControlPlaneOnly))
+                            {
+                                if (!ShouldProcess(string.Format(Resources.ConfirmNotControlPlaneOnly, KubernetesVersion), ""))
+                                {
+                                    return;
+                                }
+                                upgradeAllNode = true;
+                            }
+                            else
+                            {
+                                if (!ShouldProcess(string.Format(Resources.ConfirmControlPlaneOnly, KubernetesVersion), ""))
+                                {
+                                    return;
+                                }
+                            }
+                        }
+                        if (upgradeAllNode)
+                        {
+                            cluster.AgentPoolProfiles.ForEach(c => c.OrchestratorVersion = KubernetesVersion);
                         }
 
                         if (this.IsParameterBound(c => c.Tag))

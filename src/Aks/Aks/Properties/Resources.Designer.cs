@@ -214,6 +214,42 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Since control-plane-only argument is specified, this will upgrade only the control plane to {0}. Node pool will not change. Continue?.
+        /// </summary>
+        internal static string ConfirmControlPlaneOnly {
+            get {
+                return ResourceManager.GetString("ConfirmControlPlaneOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legacy clusters do not support control plane only upgrade. All node pools will be upgraded to {0} as well. Continue?.
+        /// </summary>
+        internal static string ConfirmControlPlaneOnlyInVMASCluster {
+            get {
+                return ResourceManager.GetString("ConfirmControlPlaneOnlyInVMASCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since control-plane-only argument is not specified, this will upgrade the control plane AND all nodepools to version {0}. Continue?.
+        /// </summary>
+        internal static string ConfirmNotControlPlaneOnly {
+            get {
+                return ResourceManager.GetString("ConfirmNotControlPlaneOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This node image upgrade operation will run across every node pool in the cluster and might take a while, do you wish to continue?.
+        /// </summary>
+        internal static string ConfirmOnlyUpgradeNodeVersion {
+            get {
+                return ResourceManager.GetString("ConfirmOnlyUpgradeNodeVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not add &apos;acrpull&apos; role assignment, please make sure you have right permission..
         /// </summary>
         internal static string CouldNotAddAcrRoleAssignment {
@@ -565,6 +601,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This cluster is not using VirtualMachineScaleSets. Node image upgrade only operation can only be applied on VirtualMachineScaleSets cluster..
+        /// </summary>
+        internal static string NotUsingVirtualMachineScaleSets {
+            get {
+                return ResourceManager.GetString("NotUsingVirtualMachineScaleSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parameter set could not be determined from the provided parameters. Please check the documentation for appropriate parameters, and report this issue at https://github.com/azure/azure-powershell/issues.
         /// </summary>
         internal static string ParameterSetError {
@@ -795,6 +840,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string UpdateAgentPool {
             get {
                 return ResourceManager.GetString("UpdateAgentPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflicting flags. Upgrading the Kubernetes version will also upgrade node image version. If you only want to upgrade the node version please use the &quot;-NodeImageOnly&quot; option only..
+        /// </summary>
+        internal static string UpdateKubernetesVersionAndNodeImageOnlyConflict {
+            get {
+                return ResourceManager.GetString("UpdateKubernetesVersionAndNodeImageOnlyConflict", resourceCulture);
             }
         }
         
