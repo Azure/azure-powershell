@@ -5,9 +5,9 @@ Generate cmdlet design markdown for the specified azure module.
 
 .EXAMPLE
 
-PS> GenerateCmdletDesignMarkdown.ps1 -Path 'azure-powershell\src\Databricks\docs' -OutPath 'azure-powershell\ModuleCmdletDesign' -OutputFileName 'Az.ApplicationInsights.Cmdlet.Design.md' -NounPriority 'AzDatabricksWorkspace','AzDatabricksVNetPeering'
+PS> GenerateCmdletDesignMarkdown.ps1 -Path 'azure-powershell\src\Databricks\docs' -OutPath 'azure-powershell\ModuleCmdletDesign' -OutputFileName 'Az.Databricks.Cmdlet.Design.md' -NounPriority 'AzDatabricksWorkspace','AzDatabricksVNetPeering'
 
-Genereated azure-powershell\ModuleCmdletDesign\Az.ApplicationInsights.Cmdlet.Design.md completed.
+Genereated azure-powershell\ModuleCmdletDesign\Az.Databricks.Cmdlet.Design.md completed.
 #>
 [CmdletBinding()]
 param (
