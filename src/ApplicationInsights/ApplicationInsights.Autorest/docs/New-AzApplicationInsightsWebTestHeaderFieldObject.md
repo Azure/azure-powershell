@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsHeaderFieldObject
+online version: https://docs.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
 schema: 2.0.0
 ---
 
