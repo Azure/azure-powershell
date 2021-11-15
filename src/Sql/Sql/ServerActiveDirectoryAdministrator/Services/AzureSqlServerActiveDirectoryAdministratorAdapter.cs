@@ -49,33 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         private MicrosoftGraphClient _microsoftGraphClient;
 
-        // /// <summary>
-        // /// A private instance of ActiveDirectoryClient
-        // /// </summary>
-        // private ActiveDirectoryClient _activeDirectoryClient;
-
-        // /// <summary>
-        // /// Gets or sets the Azure ActiveDirectoryClient instance
-        // /// </summary>
-        // public ActiveDirectoryClient ActiveDirectoryClient
-        // {
-        //     get
-        //     {
-        //         if (_activeDirectoryClient == null)
-        //         {
-        //             _activeDirectoryClient = new ActiveDirectoryClient(Context);
-        //             if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
-        //             {
-        //                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
-        //             }
-        //             _activeDirectoryClient = new ActiveDirectoryClient(Context);
-        //         }
-        //         return this._activeDirectoryClient;
-        //     }
-
-        //     set { this._activeDirectoryClient = value; }
-        // }
-
         /// <summary>
         /// Gets or sets the Azure MicrosoftGraphClient instance
         /// </summary>
