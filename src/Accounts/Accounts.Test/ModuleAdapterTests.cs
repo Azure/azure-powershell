@@ -219,6 +219,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 AdTenant = "Common",
                 GraphEndpointResourceId = "https://customgraph.windows.net/",
                 GraphUrl = "https://customgraph.windows.net/",
+                MicrosoftGraphUrl = "https://graph.microsoft.com/",
                 OnPremise = false,
                 ResourceManagerUrl = "https://customresourcemanager.azure.com/",
                 StorageEndpointSuffix = ".custom.core.windows.net"
