@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
     /// <summary>
     /// Uploads a vhd as fixed disk format vhd to a blob in Microsoft Azure Storage
     /// </summary>
-    [GenericBreakingChange("This cmdlet will now try to resize the VHD file to (N * Mib + 512 bytes) using Hyper-V before uploading.\n If Hyper-V is not found, user will have to either enabled Hyper-V or resize manually before uploading.")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vhd", DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(VhdUploadContext))]
     public class AddAzureVhdCommand : ComputeClientBaseCmdlet

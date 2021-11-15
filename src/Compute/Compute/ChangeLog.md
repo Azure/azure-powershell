@@ -41,12 +41,6 @@
 * Added new cmdlets:
     - Add-AzVmssRunCommand
     - Remove-AzVmssRunCommand
-    - Set-AzVMRunCommand
-    - Get-AzVMRunCommand
-    - Remove-AzVMRunCommand
-    - Set-AzVmssVMRunCommand
-    - Remove-AzVmssVMRunCommand
-    - Get-AzVmssVMRunCommand
 
 ## Version 4.18.0
 * Added cmdlets for adding VMGalleryApplication property to VM/VMSS
