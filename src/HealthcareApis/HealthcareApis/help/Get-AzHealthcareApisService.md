@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapis/get-azhealthcareapisservice
+online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisservice
 schema: 2.0.0
 ---
 

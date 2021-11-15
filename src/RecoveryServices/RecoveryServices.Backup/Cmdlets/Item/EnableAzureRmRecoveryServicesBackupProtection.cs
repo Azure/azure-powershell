@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Policy to be associated with this item as part of the protection operation.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.EnableProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 

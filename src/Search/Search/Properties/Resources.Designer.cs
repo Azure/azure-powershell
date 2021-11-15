@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Search Service..
+        ///   Looks up a localized string similar to Create Azure Cognitive Search Service..
         /// </summary>
         internal static string CreateSearchService {
             get {
@@ -79,7 +79,16 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Regenerate {0} key for Search Service &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Create Azure Cognitive Search Service Shared Private Link Resource.
+        /// </summary>
+        internal static string CreateSharedPrivateLinkResource {
+            get {
+                return ResourceManager.GetString("CreateSharedPrivateLinkResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regenerate {0} key for Azure Cognitive Search Service &apos;{1}&apos;..
         /// </summary>
         internal static string RegenerateAdminKey {
             get {
@@ -88,11 +97,29 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to regenerate &apos;{0}&apos; key for Search Service &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to regenerate &apos;{0}&apos; key for Azure Cognitive Search Service &apos;{1}&apos;?.
         /// </summary>
         internal static string RegenerateAdminKeyWarning {
             get {
                 return ResourceManager.GetString("RegenerateAdminKeyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Private Endpoint Connection &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovePrivateEndpointConnection {
+            get {
+                return ResourceManager.GetString("RemovePrivateEndpointConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Private Endpoint Connection &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovePrivateEndpointConnectionWarning {
+            get {
+                return ResourceManager.GetString("RemovePrivateEndpointConnectionWarning", resourceCulture);
             }
         }
         
@@ -115,7 +142,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Search Service &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Remove Azure Cognitive Search Service &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveSearchService {
             get {
@@ -124,7 +151,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Search Service &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove Azure Cognitive Search Service &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSearchServiceWarning {
             get {
@@ -133,11 +160,47 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Search Service..
+        ///   Looks up a localized string similar to Remove Shared Private Link Resource &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveSharedPrivateLinkResource {
+            get {
+                return ResourceManager.GetString("RemoveSharedPrivateLinkResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Shared Private Link Resource &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSharedPrivateLinkResourceWarning {
+            get {
+                return ResourceManager.GetString("RemoveSharedPrivateLinkResourceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Private Endpoint Connection..
+        /// </summary>
+        internal static string UpdatePrivateEndpointConnection {
+            get {
+                return ResourceManager.GetString("UpdatePrivateEndpointConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Azure Cognitive Search Service..
         /// </summary>
         internal static string UpdateSearchService {
             get {
                 return ResourceManager.GetString("UpdateSearchService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Shared Private Link Resource.
+        /// </summary>
+        internal static string UpdateSharedPrivateLinkResource {
+            get {
+                return ResourceManager.GetString("UpdateSharedPrivateLinkResource", resourceCulture);
             }
         }
     }

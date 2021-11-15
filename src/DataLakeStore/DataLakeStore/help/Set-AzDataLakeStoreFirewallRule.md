@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 9983EA1E-2515-4F5D-8476-8D0EE9837E88
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/set-azdatalakestorefirewallrule
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestorefirewallrule
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 4C839730-B494-45BD-B5A1-F93B02AB4B2A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/remove-azdatafactoryhub
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryhub
 schema: 2.0.0
 ---
 

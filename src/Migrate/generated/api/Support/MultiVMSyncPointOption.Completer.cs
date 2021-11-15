@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for MultiVMSyncPointOption.</summary>
+    /// <summary>
+    /// A value indicating whether multi VM sync enabled VMs should use multi VM sync points for failover.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MultiVMSyncPointOptionTypeConverter))]
     public partial struct MultiVMSyncPointOption :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UseMultiVmSyncRecoveryPoint".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UseMultiVmSyncRecoveryPoint", "UseMultiVmSyncRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "UseMultiVmSyncRecoveryPoint");
+                yield return new global::System.Management.Automation.CompletionResult("'UseMultiVmSyncRecoveryPoint'", "UseMultiVmSyncRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "UseMultiVmSyncRecoveryPoint");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UsePerVmRecoveryPoint".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UsePerVmRecoveryPoint", "UsePerVmRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "UsePerVmRecoveryPoint");
+                yield return new global::System.Management.Automation.CompletionResult("'UsePerVmRecoveryPoint'", "UsePerVmRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "UsePerVmRecoveryPoint");
             }
         }
     }

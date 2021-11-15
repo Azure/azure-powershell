@@ -4,10 +4,31 @@ parameters:
   configuration: ''
 
 steps:
+- task: NodeTool@0
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Install autorest
+  inputs:
+    versionSpec: '14.17.1'
+    command: custom
+    verbose: false
+    customCommand: install autorest@latest
+- task: PowerShell@2
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Setup environment for autorest
+  inputs:
+    targetType: inline
+    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+    pwsh: true
 - task: PowerShell@2
   displayName: 'Check Ingored File'
   inputs:
     filePath: tools/CheckIgnoredFile.ps1
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 3.1.x
 
 - task: DotNetCoreCLI@2
   displayName: Build

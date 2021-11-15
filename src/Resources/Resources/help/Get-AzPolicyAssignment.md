@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2DBAF415-A039-479E-B3CA-E00FD5E476C9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azpolicyassignment
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 schema: 2.0.0
 ---
 
@@ -202,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
 
 ## NOTES
 

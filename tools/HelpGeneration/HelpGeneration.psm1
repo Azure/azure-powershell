@@ -225,7 +225,7 @@ function Test-AzMarkdownHelp
                     }
                     "online version:"
                     {
-                        $onlineString = "https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+                        $onlineString = "https://docs.microsoft.com/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
                         $split = $content[$idx] -split "online version:"
                         if ([string]::IsNullOrWhiteSpace($split[1]) -or $split[1] -notlike "*$onlineString*")
                         {

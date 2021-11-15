@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for ResyncState.</summary>
+    /// <summary>The resync state.</summary>
     public partial class ResyncStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

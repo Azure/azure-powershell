@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: E1FC931E-4EB8-4DCA-92BD-8013DDC13219
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationwebhook
+online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationwebhook
 schema: 2.0.0
 ---
 

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The type of the export execution.</summary>
     public partial struct ExecutionType :
         System.IEquatable<ExecutionType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ExecutionType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ExecutionType(System.Convert.ToString(value));
+            return new ExecutionType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ExecutionType</summary>

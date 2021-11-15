@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/get-azsentinelincidentcomment
+online version: https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentcomment
 schema: 2.0.0
 ---
 
 # Get-AzSentinelIncidentComment
 
 ## SYNOPSIS
-Get an Incident Comment.
+Gets an Incident Comment.
 
 ## SYNTAX
 
@@ -42,14 +42,14 @@ If you do not specify the *IncidentCommentId* parameter, an array containing all
 PS C:\> $IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
 ```
 
-This example gets all of the **IncidentComments** for the specified Incident in the specified workspace, and then stores it in the $IncidentComments variable.
+This example gets all of the IncidentComments for the specified Incident in the specified workspace, and then stores it in the $IncidentComments variable.
 
 ### Example 2
 ```powershell
 PS C:\> $IncidentComment = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId" -IncidentCommentId "MyIncidentCommentId"
 ```
 
-This example gets an **IncidentComment** for the specified Incident in the specified workspace, and then stores it in the $IncidentComment variable.
+This example gets an IncidentComment for the specified Incident in the specified workspace, and then stores it in the $IncidentComment variable.
 
 ## PARAMETERS
 

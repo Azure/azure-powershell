@@ -71,10 +71,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
 
                 IAzureContext result = null;
-                if (DefaultContextKey == "Default" && Contexts.Any(c => c.Key != "Default"))
+                if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
-                    // If the default context is "Default", but there are other contexts set, remove the "Default" context to throw the below exception
-                    TryCacheRemoveContext("Default");
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
+                    EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
+                    TryRemoveContext(Constants.DefaultValue);
                 }
 
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
@@ -292,6 +293,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             try
             {
+                TryRemoveContext(Constants.DefaultValue);
                 string contents = ToString(serializeCache);
                 string diskContents = string.Empty;
                 diskContents = provider.CreateReader().ReadToEnd();

@@ -17,19 +17,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
         /// <summary>The friendly name of the operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Description = value; }
+        public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>For example: read, write, delete, or listKeys/action</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Operation = value; }
+        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Friendly name of the resource provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Provider = value; }
+        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>The resource type on which the operation is performed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Resource = value; }
+        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Backing field for <see cref="IsDataAction" /> property.</summary>
         private bool? _isDataAction;
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         public string Origin { get => this._origin; set => this._origin = value; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IAny _property;
 
-        /// <summary>Properties of the operation.</summary>
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.OperationProperties()); set => this._property = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IAny Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Any()); set => this._property = value; }
 
         /// <summary>Creates an new <see cref="Operation" /> instance.</summary>
         public Operation()
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         SerializedName = @"origin",
         PossibleTypes = new [] { typeof(string) })]
         string Origin { get; set; }
-        /// <summary>Properties of the operation.</summary>
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Properties of the operation.",
+        Description = @"Any object",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationProperties Property { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IAny Property { get; set; }
 
     }
     /// A REST API operation
@@ -158,8 +158,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         string Name { get; set; }
         /// <summary>The intended executor of the operation.</summary>
         string Origin { get; set; }
-        /// <summary>Properties of the operation.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperationProperties Property { get; set; }
+        /// <summary>Any object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IAny Property { get; set; }
 
     }
 }

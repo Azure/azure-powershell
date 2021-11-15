@@ -1,7 +1,7 @@
 ﻿---
 Module Name: Az.Media
 Module Guid: c66edca6-2e57-4550-905e-f5cc104de25e
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.media
+Download Help Link: https://docs.microsoft.com/powershell/module/az.media
 Help Version: 0.9.2.0
 Locale: en-US
 ---

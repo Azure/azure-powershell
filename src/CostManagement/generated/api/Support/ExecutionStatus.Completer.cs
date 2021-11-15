@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for ExecutionStatus.</summary>
+    /// <summary>The last known status of the export execution.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatusTypeConverter))]
     public partial struct ExecutionStatus :
         System.Management.Automation.IArgumentCompleter

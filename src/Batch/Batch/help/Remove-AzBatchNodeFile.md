@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: DBA02017-8372-4A91-A4F1-985777DEDAB9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchnodefile
+online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchnodefile
 schema: 2.0.0
 ---
 

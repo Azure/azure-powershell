@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints?.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
+            ConnectivityEndpoints = cluster?.Properties?.ConnectivityEndpoints?.Select(endpoint => new AzureHDInsightConnectivityEndpoint(endpoint)).ToList();
             Error = cluster.Properties.Errors?.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
             ComponentVersion = new List<string>();
@@ -79,6 +80,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
             KafkaRestProperties = cluster?.Properties?.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
             NetworkProperties = cluster?.Properties?.NetworkProperties != null ? new AzureHDInsightNetworkProperties(cluster.Properties.NetworkProperties) : null;
+            ComputeIsolationProperties = cluster?.Properties?.ComputeIsolationProperties != null ? new AzureHDInsightComputeIsolationProperties(cluster.Properties.ComputeIsolationProperties) : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -274,5 +276,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the network properties.
         /// </summary>
         public AzureHDInsightNetworkProperties NetworkProperties;
+
+        /// <summary>
+        /// Gets or sets the compute isolation properties.
+        /// </summary>
+        public AzureHDInsightComputeIsolationProperties ComputeIsolationProperties;
+
+        /// <summary>
+        /// Gets or sets the connectivity endpoints.
+        /// </summary>
+        public IList<AzureHDInsightConnectivityEndpoint> ConnectivityEndpoints;
     }
 }

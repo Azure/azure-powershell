@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
+    [GenericBreakingChange("Please avoid using BackupManagementType MARS, it will be removed in upcoming breaking change release, instead use BackupManagementType MAB", "5.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem",DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL, FileFolder";
 
         /// <summary>
         /// When this option is specified, only those items which belong to this container will be returned.
@@ -115,6 +117,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
+        /// <summary>
+        /// Fetches the VM Bakup Items from Secondary Region.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        public SwitchParameter UseSecondaryRegion;
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -138,16 +146,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ItemParams.ProtectionStatus, ProtectionStatus },
                         { ItemParams.ProtectionState, ProtectionState },
                         { ItemParams.WorkloadType, WorkloadType },
-                        { ItemParams.FriendlyName, FriendlyName }
+                        { ItemParams.FriendlyName, FriendlyName },
+                        { CRRParams.UseSecondaryRegion, UseSecondaryRegion.IsPresent}
                     }, ServiceClientAdapter);
-
+                
                 IPsBackupProvider psBackupProvider = null;
                 List<ItemBase> itemModels = null;
-
-                if (BackupManagementType == BackupManagementType.MAB)
-                {
+                if (BackupManagementType == BackupManagementType.MAB || 
+                  (this.ParameterSetName == GetItemsForContainerParamSet &&  (Container as ContainerContext).ContainerType == ContainerType.Windows))
+                {   
                     AzureWorkloadProviderHelper provider = new AzureWorkloadProviderHelper(ServiceClientAdapter);
-                    itemModels = provider.GetMABProtectedItems(vaultName, resourceGroupName);
+                    itemModels = provider.GetMABProtectedItems(vaultName, resourceGroupName, Container);
                 }
                 else
                 {

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         /// <param name="value">the value to convert to an instance of <see cref="IsConfigPendingRestart" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new IsConfigPendingRestart(System.Convert.ToString(value));
+            return new IsConfigPendingRestart(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type IsConfigPendingRestart</summary>

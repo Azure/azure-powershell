@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Rest;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -112,6 +108,22 @@ namespace Microsoft.Azure.Commands.Compute
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Install the new extension.")]
         public SwitchParameter InstallNewExtension { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 7,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Configures the proxy URI that should be used by the VM Extension for SAP.")]
+        public string ProxyURI { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 8,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Enable debug mode for the VM Extension.")]
+        public SwitchParameter DebugExtension { get; set; }
 
         private IAuthorizationManagementClient _authClient;
 
@@ -308,12 +320,26 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            var sapmonPublicConfig = new List<KeyValuePair>();
+            if (!String.IsNullOrEmpty(this.ProxyURI))
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "proxy", Value = this.ProxyURI });
+            }
+            if (this.DebugExtension.IsPresent)
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "debug", Value = "1" });
+            }
+
+            ExtensionConfig jsonPublicConfig = new ExtensionConfig();
+            jsonPublicConfig.Config = sapmonPublicConfig;
+
             var vmExtensionConfig = new VirtualMachineExtension()
             {
                 Publisher = AEMExtensionConstants.AEMExtensionPublisherv2[OSType],
                 VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionTypev2[OSType],
                 TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersionv2[OSType].ToString(2),
                 Location = selectedVM.Location,
+                Settings = jsonPublicConfig,
                 AutoUpgradeMinorVersion = true,
                 ForceUpdateTag = DateTime.Now.Ticks.ToString()
             };

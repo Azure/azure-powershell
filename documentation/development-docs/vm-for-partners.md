@@ -1,4 +1,4 @@
-If you need an Azure Virtual Machine with all the [prerequisites](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-developer-guide.md#prerequisites) installed and ready to build and test Powershell Azure - follow the steps below. 
+If you need an Azure Virtual Machine with all the [prerequisites](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#prerequisites) installed and ready to build and test Powershell Azure - follow the steps below. 
 
 # Copy the PowerShell Azure VHD blob to your subscription and create a VM from it.
 
@@ -134,7 +134,7 @@ git config --global user.email "<Your email on GitHub>"
 ```
 git config --global user.name "<Your name>"
 ```
-Next, you will need to follow the steps [here](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-developer-guide.md#environment-setup) to set up your local fork of Azure/azure-powershell.
+Next, you will need to follow the steps [here](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#environment-setup) to set up your local fork of Azure/azure-powershell.
 
 # Building and Running Tests
-This image has been set up to build and run tests immediately. To build the project, run msbuild build.proj in the Developer Command Prompt for VS2015. Once this has completed, you can open your module in Visual Studio and start development there. To record tests, follow the instructions [here](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests).
+This image has been set up to build and run tests immediately. To build the project, run msbuild build.proj in the Developer Command Prompt for VS2015. Once this has completed, you can open your module in Visual Studio and start development there. To record tests, follow the instructions [here](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests).

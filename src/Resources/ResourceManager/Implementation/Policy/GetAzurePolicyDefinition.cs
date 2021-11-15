@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Queries the ARM cache and returns the cached resource that match the query specified.
+        /// Queries the ARM cache and returns the cached resource that matches the query specified.
         /// </summary>
         /// <param name="policyTypeFilter">The policy type filter.</param>
         private async Task<ResponseWithContinuation<JObject[]>> GetResources(ListFilter policyTypeFilter)

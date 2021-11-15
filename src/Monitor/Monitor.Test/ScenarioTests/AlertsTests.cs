@@ -129,6 +129,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmMetricAlertRuleV2WithAutoMitigate()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-autoMitigate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAzureRmMetricAlertRuleV2WithActionGroups()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-DisableAzureRmMetricAlertRuleV2WithActionGroups");

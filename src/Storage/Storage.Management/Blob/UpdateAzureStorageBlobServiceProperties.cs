@@ -103,6 +103,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
         Mandatory = false,
+        HelpMessage = "Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). Never specify it when enabled changeFeed will get null value in service properties, indicates an infinite retention of the change feed.")]
+        [ValidateNotNullOrEmpty]
+        public int ChangeFeedRetentionInDays
+        {
+            get
+            {
+                return changeFeedRetentionInDays is null ? 0 : changeFeedRetentionInDays.Value;
+            }
+            set
+            {
+                changeFeedRetentionInDays = value;
+            }
+        }
+        private int? changeFeedRetentionInDays = null;
+        
+        [Parameter(
+        Mandatory = false,
         HelpMessage = "Gets or sets versioning is enabled if set to true.")]
         [ValidateNotNullOrEmpty]
         public bool IsVersioningEnabled
@@ -148,6 +165,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     serviceProperties.ChangeFeed = new ChangeFeed();
                     serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
+                    if (this.changeFeedRetentionInDays != null)
+                    {
+                        serviceProperties.ChangeFeed.RetentionInDays = this.changeFeedRetentionInDays;
+                    }
+                }
+                else
+                {
+                    if (this.changeFeedRetentionInDays != null)
+                    {
+                        throw new ArgumentException("ChangeFeed RetentionInDays can only be specified when enable Changefeed.", "ChangeFeedRetentionInDays");
+                    }
                 }
                 if (isVersioningEnabled != null)
                 {

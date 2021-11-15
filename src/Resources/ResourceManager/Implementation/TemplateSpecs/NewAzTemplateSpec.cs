@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ParameterSetName = FromJsonFileParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
@@ -132,6 +133,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "Do not ask for confirmation when overwriting an existing version.")]
         public SwitchParameter Force { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionFile { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionString { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -153,7 +164,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             );
                         }
 
-                        packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath);
+                        if (BicepUtility.IsBicepFile(TemplateFile))
+                        {
+                            filePath = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
+                        }
+
+                        // Note: We set uiFormDefinitionFilePath to null below because we process the UIFormDefinition
+                        // specified by the cmdlet parameters later within this method...
+                        packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath, uiFormDefinitionFilePath: null);
                         break;
                     case FromJsonStringParameterSet:
 
@@ -195,12 +213,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         packagedTemplate = new PackagedTemplate
                         {
                             RootTemplate = parsedTemplate,
-                            Artifacts = new TemplateSpecArtifact[0]
+                            Artifacts = new LinkedTemplateArtifact[0]
                         };
                         break;
                     default:
                         throw new PSNotSupportedException();
                 }
+
+                if (!string.IsNullOrWhiteSpace(UIFormDefinitionFile))
+                {
+                    string UIFormFilePath = this.TryResolvePath(UIFormDefinitionFile);
+                    if (!File.Exists(UIFormFilePath))
+                    {
+                        throw new PSInvalidOperationException(
+                            string.Format(ProjectResources.InvalidFilePath, UIFormDefinitionFile)
+                        );
+                    }
+                    string UIFormJson = FileUtilities.DataStore.ReadFileAsText(UIFormDefinitionFile);
+                    packagedTemplate.UIFormDefinition = JObject.Parse(UIFormJson);
+                }
+                else if (!string.IsNullOrEmpty(UIFormDefinitionString))
+                {
+                    packagedTemplate.UIFormDefinition = JObject.Parse(UIFormDefinitionString);
+                }
+
 
                 Action createOrUpdateAction = () =>
                 {

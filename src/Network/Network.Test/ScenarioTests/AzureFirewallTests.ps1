@@ -1229,6 +1229,65 @@ function Test-AzureFirewallVirtualHubCRUD {
 
 <#
 .SYNOPSIS
+Tests Hub Firewall with Zones CRUD
+#>
+function Test-AzureFirewallVirtualHubCRUDWithZones {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $policyLocation = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $azureFirewallPolicyName = Get-ResourceName
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+    $firewallPIPCount = "2"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $policyLocation
+
+        # Get the AzureFirewallPolicy
+        $getazureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        Assert-NotNull $azureFirewallPolicy
+        Assert-NotNull $getazureFirewallPolicy.Id
+
+        $azureFirewallPolicyId = $getazureFirewallPolicy.Id
+
+        $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier  -HubIPAddress $hubIpAddresses -FirewallPolicyId $azureFirewallPolicyId -Zone 1, 2, 3
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.FirewallPolicy
+        Assert-AreEqual $azureFirewallPolicyId $getAzureFirewall.FirewallPolicy.Id
+        Assert-AreEqual 3 @($getAzureFirewall.Zones).Count
+        Assert-NotNull $getAzureFirewall.HubIPAddresses
+        Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
+        Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests AzureFirewall ThreatIntelWhitelist
 #>
 function Test-AzureFirewallThreatIntelWhitelistCRUD {
@@ -1522,6 +1581,150 @@ function Test-AzureFirewallCRUDAllowActiveFTP {
         $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
         
         Assert-AreEqual false $azfw.AllowActiveFTP
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall NoDataPip
+#>
+function Test-AzureFirewallNoDataPip {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+	$mgmtSubnetName = "AzureFirewallManagementSubnet"
+    $mgmtPublicIpName = Get-ResourceName
+    $publicIp1Name = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $mgmtSubnet = New-AzVirtualNetworkSubnetConfig -Name $mgmtSubnetName -AddressPrefix 10.0.100.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$mgmtSubnet
+        
+        # Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+        $mgmtSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $mgmtSubnetName
+
+        # Create mgmt public ip
+        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall with a management IP, without data PIP
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -ManagementPublicIpAddress $mgmtPublicIp
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verify creating firewall without data PIP
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+        Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
+        Assert-Null $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual $subnet.Id $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+        Assert-AreEqual $mgmtSubnet.Id $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-AreEqual $mgmtPublicIp.Id $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+
+        # Verify adding a data PIP to firewall
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard
+        $getAzureFirewall.AddPublicIpAddress($publicip1)
+        Set-AzFirewall -AzureFirewall $getAzureFirewall
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $publicip1.Id $getAzureFirewall.IpConfigurations.PublicIpAddress.Id
+
+        # Verify removing data PIP from exisiting FT firewall
+        $getAzureFirewall.RemovePublicIpAddress($publicip1)
+        Set-AzFirewall -AzureFirewall $getAzureFirewall
+        Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
+        Assert-Null $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork 
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall with Multip IPs on Virtual Hub
+#>
+function Test-AzureFirewallVirtualHubAllocateDeallocated {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $location = "eastus2euap"
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+    $firewallPIPCount = "2"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+
+    try {
+        # Create the resource group and rest
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+
+        # Create firewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -HubIPAddress $hubIpAddresses
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # create virtual Hub
+        $Vwan = New-AzVirtualWan -Name $virtualWanName -ResourceGroupName $rgname -Location $location -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic -VirtualWANType "Standard"
+        $Hub = New-AzVirtualHub -Name $virtualHubName -ResourceGroupName $rgname -VirtualWan $Vwan -Location $Location -AddressPrefix "192.168.1.0/24" -Sku "Standard"
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+        Assert-Null $getAzureFirewall.VirtualHub
+
+        # Allocate Virtual Hub to Firewall
+        $azureFirewall.Allocate($Hub.Id)
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewall.VirtualHub
+        Assert-AreEqual $Hub.Id $getAzureFirewall.VirtualHub.Id
+
+        # Test Deallocate
+        $azureFirewall.Deallocate()
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewall.VirtualHub
     }
     finally {
         # Cleanup

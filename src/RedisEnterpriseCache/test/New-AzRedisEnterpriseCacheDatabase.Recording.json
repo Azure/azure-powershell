@@ -1,0 +1,167 @@
+{
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default?api-version=2021-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "166" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default?api-version=2021-03-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f?api-version=2021-03-01" ],
+        "x-ms-request-id": [ "42720e25-e9a7-4bf9-9ff4-b48104dc12c7" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "04efb28b-b369-4099-bb28-100ccd63ba60" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T222028Z:04efb28b-b369-4099-bb28-100ccd63ba60" ],
+        "Date": [ "Wed, 03 Mar 2021 22:20:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "510" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f?api-version=2021-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "fdd23c29-5e7d-43be-be62-eef4614a1695" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
+        "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fac0a181-788c-4983-85c3-3ff96c6979ca" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "281de5b1-8158-4d67-a05f-7f5c3b0760d5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T222058Z:281de5b1-8158-4d67-a05f-7f5c3b0760d5" ],
+        "Date": [ "Wed, 03 Mar 2021 22:20:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "320" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f\",\"name\":\"6879ac08-0459-4fb2-ab14-3d31e7f9401f\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:20:27.9432633+00:00\",\"endTime\":\"2021-03-03T22:20:28.9571571+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f?api-version=2021-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "fdd23c29-5e7d-43be-be62-eef4614a1695" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
+        "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9a32903d-1ca2-477d-a24c-3f140d291f28" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "1eaefe46-5bf7-497a-beb2-d099ca54e3b3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T222128Z:1eaefe46-5bf7-497a-beb2-d099ca54e3b3" ],
+        "Date": [ "Wed, 03 Mar 2021 22:21:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "317" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/6879ac08-0459-4fb2-ab14-3d31e7f9401f\",\"name\":\"6879ac08-0459-4fb2-ab14-3d31e7f9401f\",\"status\":\"Succeeded\",\"startTime\":\"2021-03-03T22:20:27.9432633+00:00\",\"endTime\":\"2021-03-03T22:21:00.26235+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default?api-version=2021-03-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "fdd23c29-5e7d-43be-be62-eef4614a1695" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
+        "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d860a6ed-a258-40ef-a440-d286e3fc6e65" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "5783afe2-f77f-4339-b9eb-502df619a3f4" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T222128Z:5783afe2-f77f-4339-b9eb-502df619a3f4" ],
+        "Date": [ "Wed, 03 Mar 2021 22:21:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "442" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt/databases/default\",\"type\":\"Microsoft.Cache/redisEnterprise/databases\",\"properties\":{\"clientProtocol\":\"Encrypted\",\"port\":10000,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"clusteringPolicy\":\"EnterpriseCluster\",\"evictionPolicy\":\"NoEviction\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"management\": {\r\n      \"manifestOwners\": [ \"SPARTA-PlatformServiceAdministrator\" ],\r\n      \"incidentRoutingService\": \"Resource Provider Service as a Service\",\r\n      \"incidentRoutingTeam\": \"RPaaS\",\r\n      \"incidentContactEmail\": \"rpaascore@microsoft.com\",\r\n      \"serviceTreeInfos\": [\r\n        {\r\n          \"serviceId\": \"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\r\n          \"componentId\": \"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"\r\n        }\r\n      ]\r\n    },\r\n    \"namespace\": \"Microsoft.Contoso\",\r\n    \"providerVersion\": \"2.0\",\r\n    \"providerType\": \"Internal\",\r\n    \"capabilities\": [\r\n      {\r\n        \"quotaId\": \"CSP_2015-05-01\",\r\n        \"effect\": \"Allow\"\r\n      },\r\n      {\r\n        \"quotaId\": \"CSP_MG_2017-12-01\",\r\n        \"effect\": \"Allow\"\r\n      }\r\n    ],\r\n    \"providerHubMetadata\": {\r\n      \"providerAuthentication\": {\r\n        \"allowedAudiences\": [ \"https://management.core.windows.net/\" ]\r\n      },\r\n      \"providerAuthorizations\": [\r\n        {\r\n          \"applicationId\": \"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\r\n          \"roleDefinitionId\": \"760505bf-dcfa-4311-b890-18da392a00b2\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1148" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "eb97371c-e825-4a78-8f3a-2480c8312bfd" ],
+        "x-ms-correlation-request-id": [ "01f16045-3254-4da1-a28f-c34338e4f68d" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222120Z:01f16045-3254-4da1-a28f-c34338e4f68d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:21:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "930" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "5f045444-6349-4419-a3e8-638bcdbff79a" ],
+        "CommandName": [ "New-AzProviderHubProviderRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubProviderRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "a30f8b51-16ac-4e3e-a1bc-0c4554b71e82" ],
+        "x-ms-correlation-request-id": [ "bb6c5359-0eab-40a0-9e34-c4042da03873" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222151Z:bb6c5359-0eab-40a0-9e34-c4042da03873" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:21:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "946" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}],\"metadata\":null},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "5f045444-6349-4419-a3e8-638bcdbff79a" ],
+        "CommandName": [ "New-AzProviderHubProviderRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubProviderRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "6aaff09a-0787-4053-9f84-186a6ec53d8c" ],
+        "x-ms-correlation-request-id": [ "bbb0234e-1f0f-4200-ba4d-3a3b8ab8a4f6" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222151Z:bbb0234e-1f0f-4200-ba4d-3a3b8ab8a4f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:21:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "946" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}],\"metadata\":null},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "f14df57b-26a9-4647-83aa-397ee05431e6" ],
+        "CommandName": [ "Get-AzProviderHubProviderRegistration" ],
+        "FullCommandName": [ "Get-AzProviderHubProviderRegistration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "c3578e87-df1c-48b7-8a73-4c986ab96e13" ],
+        "x-ms-correlation-request-id": [ "c9b4203b-9943-46d8-859a-72867c39a874" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222152Z:c9b4203b-9943-46d8-859a-72867c39a874" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:21:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "946" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}],\"metadata\":null},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$DELETE+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "65c5a4ab-6867-45b0-8e6a-d03aaf0f60b6" ],
+        "CommandName": [ "Remove-AzProviderHubProviderRegistration" ],
+        "FullCommandName": [ "Remove-AzProviderHubProviderRegistration_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "158fb22e-8556-4386-ae2f-2bdccadd43aa" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222155Z:158fb22e-8556-4386-ae2f-2bdccadd43aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:21:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+6": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"management\": {\r\n      \"manifestOwners\": [ \"SPARTA-PlatformServiceAdministrator\" ],\r\n      \"incidentRoutingService\": \"Resource Provider Service as a Service\",\r\n      \"incidentRoutingTeam\": \"RPaaS\",\r\n      \"incidentContactEmail\": \"rpaascore@microsoft.com\",\r\n      \"serviceTreeInfos\": [\r\n        {\r\n          \"serviceId\": \"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\r\n          \"componentId\": \"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"\r\n        }\r\n      ]\r\n    },\r\n    \"namespace\": \"Microsoft.Contoso\",\r\n    \"providerVersion\": \"2.0\",\r\n    \"providerType\": \"Internal\",\r\n    \"capabilities\": [\r\n      {\r\n        \"quotaId\": \"CSP_2015-05-01\",\r\n        \"effect\": \"Allow\"\r\n      },\r\n      {\r\n        \"quotaId\": \"CSP_MG_2017-12-01\",\r\n        \"effect\": \"Allow\"\r\n      }\r\n    ],\r\n    \"providerHubMetadata\": {\r\n      \"providerAuthentication\": {\r\n        \"allowedAudiences\": [ \"https://management.core.windows.net/\" ]\r\n      },\r\n      \"providerAuthorizations\": [\r\n        {\r\n          \"applicationId\": \"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\r\n          \"roleDefinitionId\": \"760505bf-dcfa-4311-b890-18da392a00b2\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1148" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "04db9f03-d80c-43f4-a052-64a9949b4c64" ],
+        "x-ms-correlation-request-id": [ "9e6ca2e0-d674-4be9-b714-feb754f04747" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222156Z:9e6ca2e0-d674-4be9-b714-feb754f04747" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:21:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "930" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "0efab120-b2e9-41f3-9535-051ab6cebf82" ],
+        "CommandName": [ "New-AzProviderHubProviderRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubProviderRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "8a8a191e-3026-4de7-b7bc-971bc5b3b47f" ],
+        "x-ms-correlation-request-id": [ "59e42110-a307-4c2d-8ed2-b07ec2673505" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222227Z:59e42110-a307-4c2d-8ed2-b07ec2673505" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:22:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "946" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}],\"metadata\":null},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  },
+  "AzProviderHubProviderRegistration-CRUD+[NoContext]+Create and get a ProviderRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "0efab120-b2e9-41f3-9535-051ab6cebf82" ],
+        "CommandName": [ "New-AzProviderHubProviderRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubProviderRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "ce45efe2-5802-4634-80cd-f0a6501bef6e" ],
+        "x-ms-correlation-request-id": [ "ce71cc01-3f7a-44f0-b9e1-49467c570f67" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210419T222227Z:ce71cc01-3f7a-44f0-b9e1-49467c570f67" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 19 Apr 2021 22:22:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "946" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"providerHubMetadata\":{\"providerAuthorizations\":[{\"applicationId\":\"3d834152-5efa-46f7-85a4-a18c2b5d46f9\",\"roleDefinitionId\":\"760505bf-dcfa-4311-b890-18da392a00b2\"}],\"providerAuthentication\":{\"allowedAudiences\":[\"https://management.core.windows.net/\"]}},\"provisioningState\":\"Succeeded\",\"namespace\":\"Microsoft.Contoso\",\"providerVersion\":\"2.0\",\"providerType\":\"Internal\",\"management\":{\"manifestOwners\":[\"SPARTA-PlatformServiceAdministrator\"],\"incidentRoutingService\":\"Resource Provider Service as a Service\",\"incidentRoutingTeam\":\"RPaaS\",\"incidentContactEmail\":\"rpaascore@microsoft.com\",\"serviceTreeInfos\":[{\"serviceId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\",\"componentId\":\"d1b7d8ba-05e2-48e6-90d6-d781b99c6e69\"}],\"resourceAccessPolicy\":\"NotSpecified\"},\"capabilities\":[{\"quotaId\":\"CSP_2015-05-01\",\"effect\":\"Allow\"},{\"quotaId\":\"CSP_MG_2017-12-01\",\"effect\":\"Allow\"}],\"metadata\":null},\"type\":\"Microsoft.ProviderHub/providerRegistrations\"}"
+    }
+  }
+}

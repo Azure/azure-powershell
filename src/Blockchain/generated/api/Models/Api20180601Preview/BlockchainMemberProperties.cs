@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         public string ConsortiumManagementAccountAddress { get => this._consortiumManagementAccountAddress; }
 
         /// <summary>Backing field for <see cref="ConsortiumManagementAccountPassword" /> property.</summary>
-        private string _consortiumManagementAccountPassword;
+        private System.Security.SecureString _consortiumManagementAccountPassword;
 
         /// <summary>Sets the managed consortium management account password.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Owned)]
-        public string ConsortiumManagementAccountPassword { get => this._consortiumManagementAccountPassword; set => this._consortiumManagementAccountPassword = value; }
+        public System.Security.SecureString ConsortiumManagementAccountPassword { get => this._consortiumManagementAccountPassword; set => this._consortiumManagementAccountPassword = value; }
 
         /// <summary>Backing field for <see cref="ConsortiumMemberDisplayName" /> property.</summary>
         private string _consortiumMemberDisplayName;
@@ -79,11 +79,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberNodesSku Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal.ValidatorNodesSku { get => (this._validatorNodesSku = this._validatorNodesSku ?? new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.BlockchainMemberNodesSku()); set { {_validatorNodesSku = value;} } }
 
         /// <summary>Backing field for <see cref="Password" /> property.</summary>
-        private string _password;
+        private System.Security.SecureString _password;
 
         /// <summary>Sets the basic auth password of the blockchain member.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Owned)]
-        public string Password { get => this._password; set => this._password = value; }
+        public System.Security.SecureString Password { get => this._password; set => this._password = value; }
 
         /// <summary>Backing field for <see cref="Protocol" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol? _protocol;
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Gets or sets the nodes capacity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public int? ValidatorNodeSkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberNodesSkuInternal)ValidatorNodesSku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberNodesSkuInternal)ValidatorNodesSku).Capacity = value; }
+        public int? ValidatorNodeSkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberNodesSkuInternal)ValidatorNodesSku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberNodesSkuInternal)ValidatorNodesSku).Capacity = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="ValidatorNodesSku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberNodesSku _validatorNodesSku;
@@ -163,8 +163,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the managed consortium management account password.",
         SerializedName = @"consortiumManagementAccountPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string ConsortiumManagementAccountPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
         /// <summary>Gets the display name of the member in the consortium.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Info(
         Required = false,
@@ -203,8 +203,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the basic auth password of the blockchain member.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        string Password { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString Password { get; set; }
         /// <summary>Gets or sets the blockchain protocol.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Info(
         Required = false,
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         /// <summary>Gets the managed consortium management account address.</summary>
         string ConsortiumManagementAccountAddress { get; set; }
         /// <summary>Sets the managed consortium management account password.</summary>
-        string ConsortiumManagementAccountPassword { get; set; }
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
         /// <summary>Gets the display name of the member in the consortium.</summary>
         string ConsortiumMemberDisplayName { get; set; }
         /// <summary>Gets the role of the member in the consortium.</summary>
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         /// <summary>Gets or sets firewall rules</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get; set; }
         /// <summary>Sets the basic auth password of the blockchain member.</summary>
-        string Password { get; set; }
+        System.Security.SecureString Password { get; set; }
         /// <summary>Gets or sets the blockchain protocol.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol? Protocol { get; set; }
         /// <summary>Gets or sets the blockchain member provision state.</summary>

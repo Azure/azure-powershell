@@ -17,8 +17,10 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -74,6 +76,12 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = NicIdParamSetName)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Primary { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Delete", "Detach")]
+        public string DeleteOption { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -135,6 +143,12 @@ namespace Microsoft.Azure.Commands.Compute
                         existingNic.Primary = true;
                     }
                 }
+
+                if (!string.IsNullOrEmpty(this.DeleteOption))
+                {
+                    var existingNic = networkProfile.NetworkInterfaces.FirstOrDefault(e => e.Id.Equals(this.Id));
+                    existingNic.DeleteOption = this.DeleteOption;
+                }
             }
             else
             { // Nic Object Parameter Set
@@ -148,12 +162,17 @@ namespace Microsoft.Azure.Commands.Compute
                             new NetworkInterfaceReference
                             {
                                 Id = nic.Id,
-                                Primary = nic.Primary
+                                Primary = nic.Primary,
+                                DeleteOption = this.IsParameterBound(c => c.DeleteOption) ? this.DeleteOption : null
                             });
                     }
                     else
                     {
                         existingNic.Primary = nic.Primary;
+                        if (this.IsParameterBound(c => c.DeleteOption))
+                        {
+                            existingNic.DeleteOption = this.DeleteOption;
+                        }
                     }
                 }
             }

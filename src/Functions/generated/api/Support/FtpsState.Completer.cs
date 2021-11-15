@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllAllowed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllAllowed", "AllAllowed", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllAllowed");
+                yield return new global::System.Management.Automation.CompletionResult("'AllAllowed'", "AllAllowed", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllAllowed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FtpsOnly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FtpsOnly", "FtpsOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "FtpsOnly");
+                yield return new global::System.Management.Automation.CompletionResult("'FtpsOnly'", "FtpsOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "FtpsOnly");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
         }
     }

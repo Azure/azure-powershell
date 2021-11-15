@@ -27,6 +27,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -68,8 +69,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             Position = 5,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.")]
         public bool? WindowsConfigurationProvisionVMAgent { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.")]
+            
+        public bool? LinuxConfigurationProvisionVMAgent { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -112,6 +121,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 12,
             ValueFromPipelineByPropertyName = true)]
         public VaultSecretGroup[] Secret { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the mode of VM Guest Patching with OrchestrationMode as Flexible. Possible values: Manual, AutomaticByOS, AutomaticByPlatform")]
+        [PSArgumentCompleter("Manual", "AutomaticByOS", "AutomaticByPlatform")]
+        public string WindowsConfigurationPatchMode { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the mode of VM Guest Patching with OrchestrationMode as Flexible. Possible values: ImageDefault, AutomaticByPlatform")]
+        [PSArgumentCompleter("ImageDefault", "AutomaticByPlatform")]
+        public string LinuxConfigurationPatchMode { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -185,6 +206,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.WindowsConfigurationProvisionVMAgent))
             {
+                if (this.IsParameterBound(c => c.LinuxConfigurationProvisionVMAgent))
+                {
+                    throw new Exception("Please provide only one of the following parameters: -WindowsConfigurationProvisionVMAgent or -LinuxConfigurationProvisionVMAgent");
+                }
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -201,6 +226,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.WindowsConfigurationProvisionVMAgent;
+            }
+
+            if (this.IsParameterBound(c => c.LinuxConfigurationProvisionVMAgent))
+            {
+                if (this.IsParameterBound(c => c.WindowsConfigurationProvisionVMAgent))
+                {
+                    throw new Exception("Please provide only one of the following parameters: -WindowsConfigurationProvisionVMAgent or -LinuxConfigurationProvisionVMAgent");
+                }
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // OsProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile();
+                }
+                // WindowsConfiguration
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration = new LinuxConfiguration();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.ProvisionVMAgent = this.LinuxConfigurationProvisionVMAgent;
             }
 
             if (this.IsParameterBound(c => c.WindowsConfigurationEnableAutomaticUpdate))
@@ -346,6 +395,64 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets = this.Secret;
+            }
+
+            if (this.IsParameterBound(c => c.WindowsConfigurationPatchMode))
+            {
+                if (this.IsParameterBound(c => c.LinuxConfigurationPatchMode))
+                {
+                    throw new Exception("Please provide only one of the following parameters: -WindowsConfigurationPatchMode or - LinuxConfigurationPatchMode");
+                }
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // OsProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile();
+                }
+                // WindowsConfiguration
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new WindowsConfiguration();
+                }
+                // PatchSettings
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings = new PatchSettings();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.PatchMode = this.WindowsConfigurationPatchMode;
+            }
+
+            if (this.IsParameterBound(c => c.LinuxConfigurationPatchMode))
+            {
+                if (this.IsParameterBound(c => c.WindowsConfigurationPatchMode))
+                {
+                    throw new Exception("Please provide only one of the following parameters: -WindowsConfigurationPatchMode or - LinuxConfigurationPatchMode");
+                }
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // OsProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile();
+                }
+                // LinuxConfiguration
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration = new LinuxConfiguration();
+                }
+                // LinuxPatchSettings
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.PatchSettings == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.PatchSettings = new LinuxPatchSettings();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.PatchSettings.PatchMode = this.LinuxConfigurationPatchMode;
             }
 
             WriteObject(this.VirtualMachineScaleSet);

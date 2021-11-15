@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for PrivateEndpointProvisioningState.</summary>
+    /// <summary>State of the private endpoint connection.</summary>
     public partial class PrivateEndpointProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

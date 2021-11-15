@@ -1,4 +1,18 @@
-﻿using Azure.Analytics.Synapse.Artifacts.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
@@ -42,6 +56,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         [Alias("NotebookName")]
         public string Name { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NoteBookFolderPath)]
+        [ValidateNotNullOrEmpty]
+        public string FolderPath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
@@ -98,7 +116,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                     string suffix = DefaultContext.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
                     string endpoint = "https://" + this.WorkspaceName + "." + suffix;
-                    var sparkPoolInfo = new SynapseAnalyticsManagementClient(DefaultContext).GetSparkPool(null, this.WorkspaceName, this.SparkPoolName);
+                    var sparkPoolInfo = SynapseAnalyticsClient.GetBigDataPool(SparkPoolName);
 
                     options["auth"] = new ComputeOptions
                     {
@@ -114,10 +132,17 @@ namespace Microsoft.Azure.Commands.Synapse
                     options["name"] = this.SparkPoolName;
                     options["sparkVersion"] = sparkPoolInfo.SparkVersion;
                     options["type"] = "Spark";
-                    metadata["a365ComputeOptions"] = options;
+                    metadata.AdditionalProperties.Add("a365ComputeOptions", options);
 
                     notebookResource.Properties.BigDataPool = new BigDataPoolReference(BigDataPoolReferenceType.BigDataPoolReference, this.SparkPoolName);
                     notebookResource.Properties.SessionProperties = new NotebookSessionProperties(options["memory"] + "g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]);
+                }
+
+                if (this.IsParameterBound(c => c.FolderPath))
+                {
+                    NotebookFolder folder = new NotebookFolder();
+                    folder.Name = this.FolderPath;
+                    notebookResource.Properties.Folder = folder;
                 }
 
                 WriteObject(new PSNotebookResource(SynapseAnalyticsClient.CreateOrUpdateNotebook(this.Name, notebookResource), this.WorkspaceName));

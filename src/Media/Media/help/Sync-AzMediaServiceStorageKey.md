@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: F395E192-80FA-421D-A389-8C5C0C2267E4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.media/sync-azmediaservicestoragekey
+online version: https://docs.microsoft.com/powershell/module/az.media/sync-azmediaservicestoragekey
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Synchronizes storage account keys for a storage account associated with the medi
 
 ## SYNTAX
 
-```
+```powershell
 Sync-AzMediaServiceStorageKey [-ResourceGroupName] <String> [-AccountName] <String>
  [-StorageAccountId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -25,9 +25,10 @@ The **Sync-AzMediaServiceStorageKey** cmdlet synchronizes storage account keys f
 ## EXAMPLES
 
 ### Example 1: Synchronize storage account keys for a storage account associated with the media service
-```
-PS C:\>$StorageAccount = Get-AzStorageAccount -ResourceGroupName "ResourceGroup001" -Name "Storage135"
-PS C:\> Sync-AzMediaServiceStorageKey -ResourceGroupName "ResourceGroup001" -AccoutName "MediasService001" -StorageAccoutId $StorageAccount.Id
+
+```powershell
+$StorageAccount = Get-AzStorageAccount -ResourceGroupName "ResourceGroup001" -Name "Storage135"
+Sync-AzMediaServiceStorageKey -ResourceGroupName "ResourceGroup001" -AccountName "MediasService001" -StorageAccountId $StorageAccount.Id
 ```
 
 The first command uses the Get-AzStorageAccount cmdlet to get the storage account named Storage135 that belongs to ResourceGroup001 and stores the result in the variable named $StorageAccount.

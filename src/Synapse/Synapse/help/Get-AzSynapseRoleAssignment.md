@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapseroleassignment
+online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseroleassignment
 schema: 2.0.0
 ---
 
@@ -15,19 +15,22 @@ Gets a Synapse Analytics role assignment.
 ### GetByWorkspaceNameAndNameParameterSet (Default)
 ```
 Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>] [-SignInName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByWorkspaceNameAndIdParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>] [-ObjectId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> [-ObjectId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByWorkspaceNameAndAssignmentIdParameterSet
@@ -39,25 +42,29 @@ Get-AzSynapseRoleAssignment -WorkspaceName <String> -RoleAssignmentId <String>
 ### GetByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>]
- [-ServicePrincipalName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServicePrincipalName <String>] [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndNameParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefinitionName <String>]
- -SignInName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -SignInName <String> [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndIdParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefinitionName <String>]
- [-ObjectId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ObjectId <String>] [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String>
- [-ObjectId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ObjectId <String>] [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndAssignmentIdParameterSet
@@ -69,7 +76,8 @@ Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleAssignmen
 ### GetByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefinitionName <String>]
- -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,20 +94,34 @@ PS C:\> Get-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace
 This command gets all role assignments under a workspace.
 
 ### Example 2
-```powershells
+```powershell
 PS C:\> Get-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole
 ```
 
 This command gets all role assignments under workspace ContosoWorkspace with role name ContosoRole.
 
 ### Example 3
-```powershells
+```powershell
 PS C:\> Get-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName
 ```
 
 This command gets a role assignment under workspace ContosoWorkspace with role name ContosoRole and user principal name ContosoName.
 
 ### Example 4
+```powershell
+PS C:\> Get-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType
+```
+
+This command gets role assignments under workspace ContosoWorkspace with role name ContosoRole, user principal name ContosoName and under itemtype ContosoItemtype.
+
+### Example 5
+```powershell
+PS C:\> Get-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
+```
+
+This command gets a role assignment under workspace ContosoWorkspace with role name ContosoRole, user principal name ContosoName, ContosoItemType and ContosoItem.
+
+### Example 6
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Get-AzSynapseRoleAssignment
@@ -116,6 +138,37 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Item
+The item of Azure Synapse workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByWorkspaceNameAndNameParameterSet, GetByWorkspaceNameAndIdParameterSet, GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceNameAndServicePrincipalNameParameterSet, GetByWorkspaceObjectAndNameParameterSet, GetByWorkspaceObjectAndIdParameterSet, GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceObjectAndServicePrincipalNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ItemType
+The itemtype of Azure Synapse workspace.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+WorkspaceItemType
+Parameter Sets: GetByWorkspaceNameAndNameParameterSet, GetByWorkspaceNameAndIdParameterSet, GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceNameAndServicePrincipalNameParameterSet, GetByWorkspaceObjectAndNameParameterSet, GetByWorkspaceObjectAndIdParameterSet, GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceObjectAndServicePrincipalNameParameterSet
+Aliases:
+Accepted values: ApacheSparkPool, IntegrationRuntime, LinkedService, Credential
 
 Required: False
 Position: Named

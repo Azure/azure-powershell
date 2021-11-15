@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 91919242-59ED-4938-A3A3-23A66F85FBC1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnorigin
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnorigin
 schema: 2.0.0
 ---
 

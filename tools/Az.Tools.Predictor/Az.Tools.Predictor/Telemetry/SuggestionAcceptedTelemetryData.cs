@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
@@ -19,11 +21,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class SuggestionAcceptedTelemetryData : ITelemetryData
     {
-        /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        /// <summary>
+        /// The telemetry property name for "Accepted".
+        /// </summary>
+        public const string PropertyNameAccepted = "Accepted";
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        public PredictionClient Client { get; init; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.CommandId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.RequestId { get; set; }
 
         /// <summary>
         /// Gets the suggestion that's accepted by the user.
@@ -31,8 +41,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Suggestion { get; }
 
         /// <summary>
+        /// Gets the id of the suggestion session.
+        /// </summary>
+        public uint SuggestionSessionId { get; init; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="SuggestionAcceptedTelemetryData"/>.
         /// </summary>
-        public SuggestionAcceptedTelemetryData(string suggestion) => Suggestion = suggestion;
+        /// <param name="client">The client that makes the call.</param>
+        /// <param name="suggestionSessionId">The suggestion session id.</param>
+        /// <param name="suggestion">The suggestion that's accepted by the user.</param>
+        public SuggestionAcceptedTelemetryData(PredictionClient client, uint suggestionSessionId, string suggestion)
+        {
+            Client = client;
+            SuggestionSessionId = suggestionSessionId;
+            Suggestion = suggestion;
+        }
     }
 }

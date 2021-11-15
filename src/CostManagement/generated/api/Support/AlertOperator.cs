@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>operator used to compare currentSpend with amount</summary>
     public partial struct AlertOperator :
         System.IEquatable<AlertOperator>
     {
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="AlertOperator" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AlertOperator(System.Convert.ToString(value));
+            return new AlertOperator(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AlertOperator</summary>

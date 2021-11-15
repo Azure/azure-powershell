@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs.dll-Help.xml
 Module Name: Az.DevTestLabs
 ms.assetid: 8AAD9309-5763-4903-AF6A-1E50310146C0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.devtestlabs/set-azdtlautoshutdownpolicy
+online version: https://docs.microsoft.com/powershell/module/az.devtestlabs/set-azdtlautoshutdownpolicy
 schema: 2.0.0
 ---
 

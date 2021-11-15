@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Tags.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 66B25541-0FA5-46CF-90D8-FE9527BE11C6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-aztag
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-aztag
 schema: 2.0.0
 ---
 

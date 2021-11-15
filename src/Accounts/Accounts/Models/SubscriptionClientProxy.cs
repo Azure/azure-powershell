@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Threading;
 using SubscriptionClientVersion2016 = Microsoft.Azure.Commands.ResourceManager.Common.Utilities.SubscriptionClientWrapper;
-using SubscriptionClientVersion2019 = Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2019_06_01.SubscriptionClientWrapper;
+using SubscriptionClientVersion2021 = Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2021_01_01.SubscriptionClientWrapper;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         private SubscritpionClientCandidates()
         {
-            Enqueue(new SubscriptionClientVersion2019());
+            Enqueue(new SubscriptionClientVersion2021());
             Enqueue(new SubscriptionClientVersion2016());
         }
 

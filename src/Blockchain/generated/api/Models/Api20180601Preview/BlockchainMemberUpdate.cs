@@ -12,18 +12,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Sets the managed consortium management account password.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string ConsortiumManagementAccountPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdateInternal)Property).ConsortiumManagementAccountPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdateInternal)Property).ConsortiumManagementAccountPassword = value; }
+        public System.Security.SecureString ConsortiumManagementAccountPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdateInternal)Property).ConsortiumManagementAccountPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdateInternal)Property).ConsortiumManagementAccountPassword = value ?? null; }
 
         /// <summary>Gets or sets the firewall rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).FirewallRule = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).FirewallRule = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.BlockchainMemberPropertiesUpdate()); set { {_property = value;} } }
 
         /// <summary>Sets the transaction node dns endpoint basic auth password.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).Password = value; }
+        public System.Security.SecureString Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)Property).Password = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdate _property;
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the managed consortium management account password.",
         SerializedName = @"consortiumManagementAccountPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string ConsortiumManagementAccountPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
         /// <summary>Gets or sets the firewall rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Info(
         Required = false,
@@ -73,8 +73,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the transaction node dns endpoint basic auth password.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        string Password { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString Password { get; set; }
         /// <summary>
         /// Tags of the service which is a list of key value pairs that describes the resource.
         /// </summary>
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
     {
         /// <summary>Sets the managed consortium management account password.</summary>
-        string ConsortiumManagementAccountPassword { get; set; }
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
         /// <summary>Gets or sets the firewall rules.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get; set; }
         /// <summary>Sets the transaction node dns endpoint basic auth password.</summary>
-        string Password { get; set; }
+        System.Security.SecureString Password { get; set; }
         /// <summary>Gets or sets the blockchain member update properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesUpdate Property { get; set; }
         /// <summary>

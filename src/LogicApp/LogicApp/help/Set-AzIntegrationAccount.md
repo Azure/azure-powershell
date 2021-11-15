@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F6D9EA59-BA61-4117-8771-9B190424BFF8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azintegrationaccount
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccount
 schema: 2.0.0
 ---
 

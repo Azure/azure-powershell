@@ -13,17 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.Aks.Models;
-using Microsoft.Azure.Commands.Aks.Properties;
-using Microsoft.Azure.Commands.Aks.Utils;
-using Microsoft.Azure.Management.ContainerService.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Runtime.ExceptionServices;
-using System.Text;
+
+using Microsoft.Azure.Commands.Aks.Models;
+using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Management.ContainerService.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks.Commands
 {
@@ -38,11 +35,13 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 string addonServiceName = Constants.AddOnUserReadNameToServiceNameMapper.GetValueOrDefault(addOn, null);
                 if (addonServiceName == null)
                 {
-                    throw new ArgumentException(string.Format(Resources.AddonNotDefined, addOn));
+                    var errorMessage = string.Format(Resources.AddonNotDefined, addOn, string.Join(",", Constants.AddOnUserReadNameToServiceNameMapper.Keys));
+                    throw new AzPSArgumentException(errorMessage, nameof(Name), desensitizedMessage: errorMessage);
                 }
                 if (!addonProfiles.ContainsKey(addonServiceName))
                 {
-                    throw new ArgumentException(string.Format(Resources.AddonIsNotInstalled, addOn));
+                    var errorMessage = string.Format(Resources.AddonIsNotInstalled, addOn);
+                    throw new AzPSArgumentException(errorMessage, nameof(Name), desensitizedMessage: errorMessage);
                 }
                 ManagedClusterAddonProfile addonProfile = addonProfiles[addonServiceName];
                 addonProfile.Config = null;

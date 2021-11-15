@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/get-azattestationpolicy
+online version: https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationpolicy
 schema: 2.0.0
 ---
 

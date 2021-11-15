@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azalertruleemail
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azalertruleemail
 schema: 2.0.0
 ---
 
@@ -107,8 +107,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzLogAlertRule](./Add-AzLogAlertRule.md)
 
 [Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 

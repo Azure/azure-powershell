@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for RecoveryPlanGroupType.</summary>
+    /// <summary>The group type.</summary>
     public partial class RecoveryPlanGroupTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 848A6972-AB29-46FB-8E03-FF2ADB113A0E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasedatamaskingrule
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasedatamaskingrule
 schema: 2.0.0
 ---
 

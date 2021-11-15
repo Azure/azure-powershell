@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: A202537B-D292-4822-A0B9-27A6A20621D4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/reset-azbatchcomputenode
+online version: https://docs.microsoft.com/powershell/module/az.batch/reset-azbatchcomputenode
 schema: 2.0.0
 ---
 

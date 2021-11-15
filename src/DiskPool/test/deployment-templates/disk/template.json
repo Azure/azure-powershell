@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "defaultValue": "storagepool-disk",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/disks",
+            "apiVersion": "2020-09-30",
+            "name": "[parameters('name')]",
+            "location": "westeurope",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "Premium"
+            },
+            "zones": [
+                "1"
+            ],
+            "properties": {
+                "creationData": {
+                    "createOption": "Empty"
+                },
+                "diskSizeGB": 256,
+                "diskIOPSReadWrite": 5000,
+                "diskMBpsReadWrite": 200,
+                "encryption": {
+                    "type": "EncryptionAtRestWithPlatformKey"
+                },
+                "maxShares": 2,
+                "diskState": "Unattached",
+                "networkAccessPolicy": "AllowAll",
+                "tier": "P30"
+            }
+        }
+    ]
+}

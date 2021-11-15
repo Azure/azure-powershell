@@ -1,0 +1,21 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/documentation/sdkautomation/SwaggerToSdkConfigSchema.json",
+    "generateOptions": {
+      "generateScript": {
+        "path": "pwsh ./tools/SwaggerCI/psci.ps1",
+        "stderr": {
+          "showInComment": "^\\[AUTOREST\\]",
+          "scriptError": "^\\[ERROR\\]",
+          "scriptWarning": "^\\[WARNING\\]"
+        }
+      }
+    },
+    "initOptions": {
+      "initScript": {
+        "path": "sh ./tools/SwaggerCI/init.sh",
+        "stderr": {
+          "scriptWarning": false
+        }
+      }
+    }
+  }

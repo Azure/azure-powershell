@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 29CCF141-CC2F-4E11-8235-64025CFB5782
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementapi
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementapi
 schema: 2.0.0
 ---
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -BearerTokenSendingMethod
-OpenId authorization server mechanism by which access token is passed to the API. Refer to http://tools.ietf.org/html/rfc6749#section-4. This parameter is optional. Default value is $null.
+OpenId authorization server mechanism by which access token is passed to the API. Refer to https://datatracker.ietf.org/doc/html/rfc6749#section-4. This parameter is optional. Default value is $null.
 
 ```yaml
 Type: System.String[]

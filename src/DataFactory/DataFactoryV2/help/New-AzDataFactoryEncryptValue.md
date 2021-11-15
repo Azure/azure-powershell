@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 5BF24BC2-DEB6-4830-BDEA-841BAB070388
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/new-azdatafactoryencryptvalue
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue
 schema: 2.0.0
 ---
 

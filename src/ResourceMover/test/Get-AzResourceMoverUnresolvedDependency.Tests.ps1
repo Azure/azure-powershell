@@ -13,7 +13,7 @@ while (-not $mockingPath) {
 
 Describe 'Get-AzResourceMoverUnresolvedDependency' {
     It 'Get' {
-        $response = Get-AzResourceMoverUnresolvedDependency -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName 
-        $response.Length | Should -Be 0   
+       $response = Get-AzResourceMoverUnresolvedDependency -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -DependencyLevel "Direct"
+       $response.Length | Should -Be 0   
     }
 }

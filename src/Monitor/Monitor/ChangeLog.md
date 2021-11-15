@@ -19,6 +19,35 @@
 -->
 
 ## Upcoming Release
+* Added default parameter set `GetByResourceGroup` for the command `Get-AzAlertRule` [#16356]
+
+## Version 2.7.0
+* Added parameter `ResourceGroupName` back for `Add-AzAutoscaleSetting` parameter set `AddAzureRmAutoscaleSettingUpdateParamGroup` and made it optional [#15491]
+
+## Version 2.6.0
+* Fixed null reference bug for `Get-AzMetric` when `ResultType` set to "Metadata"
+* Fixed bug for `Add-AzAutoscaleSetting` not able to pipe result from `Get-AzAutoscaleSetting` [#13861]
+
+## Version 2.5.0
+* Added cmdlet to get diagnostic setting categories for subscription
+    - `Get-AzSubscriptionDiagnosticSettingCategory`
+* Supported subscription diagnostic setting operations with new parameter: SubscriptionId
+    - 'Get-AzDiagnosticSetting'
+    - 'New-AzDiagnosticSetting'
+    - 'Remove-AzDiagnosticSetting'
+* Supported `AutoMitigate` parameter in metric alert rule properties. The flag indicates whether the alert should be auto resolved or not.
+
+## Version 2.4.0
+* Added cmdlets for data collection rules: 
+    - `Get-AzDataCollectionRule`
+    - `New-AzDataCollectionRule`
+    - `Set-AzDataCollectionRule`
+    - `Update-AzDataCollectionRule`
+    - `Remove-AzDataCollectionRule`
+* Added cmdlets for data collection rules associations
+    - `Get-AzDataCollectionRuleAssociation`
+    - `New-AzDataCollectionRuleAssociation`
+    - `Remove-AzDataCollectionRuleAssociation`
 
 ## Version 2.3.0
 * Changed parameter `Rule` of `New-AzAutoscaleProfile` to accept empty list. [#12903]

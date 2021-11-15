@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             string key;
             switch (device.Authentication.Type)
             {
-                case AuthenticationType.Sas:
+                case Devices.AuthenticationType.Sas:
                     key = string.Format("SharedAccessKey={0}", this.KeyType.Equals(PSKeyType.primary) ? device.Authentication.SymmetricKey.PrimaryKey : device.Authentication.SymmetricKey.SecondaryKey);
                     break;
-                case AuthenticationType.SelfSigned:
-                case AuthenticationType.CertificateAuthority:
+                case Devices.AuthenticationType.SelfSigned:
+                case Devices.AuthenticationType.CertificateAuthority:
                     key = "x509=true";
                     break;
                 default:

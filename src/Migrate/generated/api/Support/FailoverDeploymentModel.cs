@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The failover deployment model.</summary>
     public partial struct FailoverDeploymentModel :
         System.IEquatable<FailoverDeploymentModel>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="FailoverDeploymentModel" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new FailoverDeploymentModel(System.Convert.ToString(value));
+            return new FailoverDeploymentModel(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type FailoverDeploymentModel</summary>

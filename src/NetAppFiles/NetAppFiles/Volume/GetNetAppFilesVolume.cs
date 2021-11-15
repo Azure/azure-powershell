@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -114,8 +115,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else
             {
-                var anfVolumes = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName).Select(e => e.ToPsNetAppFilesVolume());
-                WriteObject(anfVolumes, true);
+                //var anfVolumes = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName).Select(e => e.ToPsNetAppFilesVolume());
+                var volumes = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName);
+
+                // To get all volumes Get all volumes by polling on next page link
+                var volumeResponseList = ListNextLink<Management.NetApp.Models.Volume>.GetAllResourcesByPollingNextLink(volumes, AzureNetAppFilesManagementClient.Volumes.ListNext);
+                var volumesList = new List<PSNetAppFilesVolume>();
+
+                foreach (var volume in volumeResponseList)
+                {
+                    volumesList.Add(volume.ToPsNetAppFilesVolume());
+                }
+
+                WriteObject(volumesList, true);
             }
         }
     }

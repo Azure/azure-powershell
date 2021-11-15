@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
 schema: 2.0.0
 ---
 
 # Get-AzRedisEnterpriseCacheDatabase
 
 ## SYNOPSIS
-Gets information about a database in a RedisEnterprise cluster.
+Gets information about a database in a Redis Enterprise cluster.
 
 ## SYNTAX
 
@@ -18,11 +18,11 @@ Get-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Gets information about a database in a RedisEnterprise cluster.
+Gets information about a database in a Redis Enterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: Get database
+### Example 1: Get database information
 ```powershell
 PS C:\> Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
@@ -32,12 +32,12 @@ default Microsoft.Cache/redisEnterprise/databases
 
 ```
 
-This command gets the database for the Redis Enterprise Cache named MyCache.
+This command gets information about a database in the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -68,6 +68,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -82,8 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
 
 ## NOTES
 

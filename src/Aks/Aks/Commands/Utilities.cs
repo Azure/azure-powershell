@@ -14,14 +14,19 @@
 
 using System;
 
+using Microsoft.Azure.Commands.Common.Exceptions;
+
 namespace Microsoft.Azure.Commands.Aks.Commands
 {
     internal static class Utilities
     {
-        public static string GetParentResourceName(string parentResource)
+        public static string GetParentResourceName(string parentResource, string parameterSource)
         {
             if (string.IsNullOrWhiteSpace(parentResource))
-                throw new ArgumentNullException("parentResource");
+                throw new AzPSArgumentNullException(
+                    Properties.Resources.ParentResourceMustNotBeEmpty,
+                    parameterSource,
+                    desensitizedMessage: Properties.Resources.ParentResourceMustNotBeEmpty);
 
             var items = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 

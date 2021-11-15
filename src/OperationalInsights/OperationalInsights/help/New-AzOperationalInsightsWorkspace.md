@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 4682807D-34E8-4057-8894-36820447067B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -27,16 +27,18 @@ The **New-AzOperationalInsightsWorkspace** cmdlet creates a workspace in the spe
 
 ### Example 1: Create a workspace by name
 ```
-PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Location "East US" -Sku "Standard"
-```
+PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Location "East US"
 
+
+
+```
 This command creates a standard SKU workspace named MyWorkspace in the resource group named ContosoResourceGroup.
 
 ### Example 2: Create a workspace and link it to an existing account
 ```
 PS C:\>$OILinkTargets = Get-AzOperationalInsightsLinkTargets
 
-PS C:\>$OILinkTargets[0] | New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Sku "Standard"
+PS C:\>$OILinkTargets[0] | New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 ```
 
 The first command uses the Get-AzOperationalInsightsLinkTargets cmdlet to get Operational Insights account link targets, and then stores them in the $OILinkTargets variable.
@@ -167,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
+Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
 Valid values are:
 - free
 - pergb2018
@@ -253,12 +255,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
+A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
 
 ## RELATED LINKS
 
 [Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
-
-[Get-AzOperationalInsightsLinkTargets](./Get-AzOperationalInsightsLinkTargets.md)
-
-

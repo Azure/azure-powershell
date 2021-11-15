@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+        public bool? SupportsHibernation { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public bool? EncryptionSettingsEnabled { get; set; }
 
@@ -105,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Sku
             SnapshotSku vSku = null;
-
+            
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
@@ -187,6 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 Sku = vSku,
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
             };
 
             WriteObject(vSnapshotUpdate);

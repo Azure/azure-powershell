@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -131,6 +132,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public PsPolicyAssignment InputObject { get; set; }
 
         /// <summary>
+        /// Gets or sets the messages that describe why a resource is non-compliant with the policy.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentNonComplianceMessageHelp)]
+        [ValidateNotNull]
+        public PsNonComplianceMessage[] NonComplianceMessage { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -166,31 +174,54 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetResource(string resourceId, string apiVersion)
         {
-            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource<PolicyAssignmentProperties>();
 
-            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
-
-            PolicyAssignmentEnforcementMode? existingMode = null;
-            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
+            // get incoming object properties if present
+            JObject inputMetadata = null;
+            if (this.InputObject != null)
             {
-                existingMode = tempMode;
+                var newProperties = this.InputObject.Properties.ToJToken();
+                inputMetadata = newProperties["metadata"] as JObject;
+            }
+
+            var parameterMetadata = this.Metadata != null ? this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)) : null;
+
+            PolicyAssignmentEnforcementMode? inputMode = null;
+            if (Enum.TryParse(this.InputObject?.Properties?.EnforcementMode?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode1))
+            {
+                inputMode = tempMode1;
+            }
+
+            // Grab the non-compliance messages from the parameter or input object or existing resource
+            var nonComplianceMessages = this.NonComplianceMessage?.Where(message => message != null).SelectArray(message => message.ToModel());
+            if (nonComplianceMessages == null && this.InputObject?.Properties.NonComplianceMessages != null)
+            {
+                nonComplianceMessages = this.InputObject.Properties.NonComplianceMessages.Where(message => message != null).SelectArray(message => message.ToModel());
+            }
+            else if (nonComplianceMessages == null)
+            {
+                nonComplianceMessages = resource.Properties.NonComplianceMessages;
             }
 
             var policyAssignmentObject = new PolicyAssignment
             {
-                Name = this.Name ?? resource.Name,
+                Name = this.Name ?? this.InputObject?.Name ?? resource.Name,
                 Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
-                Location = this.Location ?? resource.Location,
+                Location = this.Location ?? this.InputObject?.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {
-                    DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    Description = this.Description ?? resource.Properties["description"]?.ToString(),
-                    Scope = resource.Properties["scope"].ToString(),
-                    NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
-                    PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
-                    Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
-                    EnforcementMode = this.EnforcementMode ?? existingMode,
-                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
+                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties.DisplayName,
+                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties.Description,
+                    Scope = resource.Properties.Scope,
+                    NotScopes = this.NotScope ?? this.InputObject?.Properties?.NotScopes ?? resource.Properties.NotScopes,
+                    PolicyDefinitionId = resource.Properties.PolicyDefinitionId,
+                    Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties.Metadata,
+                    EnforcementMode = this.EnforcementMode ?? inputMode ?? resource.Properties.EnforcementMode,
+                    NonComplianceMessages = nonComplianceMessages,
+                    Parameters =
+                        this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
+                            ?? this.InputObject?.Properties?.Parameters?.ToResourcePropertiesBody() as JObject
+                            ?? resource.Properties.Parameters
                 }
             };
 
@@ -202,7 +233,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.GetPolicyArtifactFullyQualifiedId(this.Scope, Constants.MicrosoftAuthorizationPolicyAssignmentType, this.Name);
         }
     }
 }

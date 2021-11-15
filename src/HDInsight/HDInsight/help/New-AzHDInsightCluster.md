@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 691AC991-3249-487C-A0DF-C579ED7D00E7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightcluster
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster
 schema: 2.0.0
 ---
 
@@ -36,7 +36,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
  [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
  [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CertificateFilePath
@@ -62,7 +63,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
@@ -88,7 +90,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +107,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -140,7 +143,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -184,7 +187,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -219,7 +222,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -259,7 +262,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -294,7 +297,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -333,7 +336,7 @@ PS C:\&gt; # Primary storage account info
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -450,6 +453,47 @@ PS C:\&gt; # Primary storage account info
             -VirtualNetworkId $vnetId -SubnetName $subnetName `
             -AssignedIdentity $assignedIdentity `
             -SecurityProfile $config.SecurityProfile -EnableIDBroker
+```
+
+### Example 10: Create an Azure HDInsight cluster which enables compute isolation.
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+        $workerNodeSize="Standard_E16S_V3" # here is just an example
+        $headNodeSize="Standard_E8S_V3"
+        $zookeeperNodeSize="Standard_E2S_V3"
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -WorkerNodeSize $workerNodeSize `
+            -HeadNodeSize $headNodeSize `
+            -ZookeeperNodeSize $zookeeperNodeSize `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -EnableComputeIsolation `
 ```
 
 ## PARAMETERS
@@ -669,6 +713,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeIsolationHostSku
+Gets or sets the dedicated host sku for compute isolation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Config
 Specifies the cluster object to be used to create the cluster.
 This object can be created by using the New-AzHDInsightClusterConfig cmdlet.
@@ -736,6 +795,21 @@ Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize fo
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableComputeIsolation
+Enables HDInsight compute isolation feature.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

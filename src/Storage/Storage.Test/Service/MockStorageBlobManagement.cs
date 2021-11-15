@@ -25,6 +25,7 @@ using Microsoft.Azure.Storage.Auth;
 using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.Storage.Shared.Protocol;
 using Azure.Storage.Blobs;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
 {
@@ -55,14 +56,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             }
         }
 
-        public List<Tuple<CloudBlobContainer, BlobContinuationToken>> ContainerAndTokenList
+        public List<Tuple<AzureStorageContainer, BlobContinuationToken>> ContainerAndTokenList
         {
             get
             {
-                List<Tuple<CloudBlobContainer, BlobContinuationToken>> containerAndTokenList = new List<Tuple<CloudBlobContainer, BlobContinuationToken>>(ContainerList.Count);
+                List<Tuple<AzureStorageContainer, BlobContinuationToken>> containerAndTokenList = new List<Tuple<AzureStorageContainer, BlobContinuationToken>>(ContainerList.Count);
                 foreach (CloudBlobContainer container in ContainerList)
                 {
-                    containerAndTokenList.Add(new Tuple<CloudBlobContainer, BlobContinuationToken>(container, null));
+                    AzureStorageContainer azurecontainer = new AzureStorageContainer(container, new BlobContainerPermissions());
+                    containerAndTokenList.Add(new Tuple<AzureStorageContainer, BlobContinuationToken>(azurecontainer, null));
                 }
 
                 return containerAndTokenList;

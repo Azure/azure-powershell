@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 335588D4-4D2C-4DBD-B6B2-B1227C4AF9A9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoreitemowner
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/get-azdatalakestoreitemowner
 schema: 2.0.0
 ---
 

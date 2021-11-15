@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
     /// <summary>Lists available operations for the Microsoft.VirtualMachineImages provider</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.VirtualMachineImages/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.VirtualMachineImages/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOperation_List")]

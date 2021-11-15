@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: A0D620DA-B5A3-4F8F-BD43-A58630C95432
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchcomputenodeuser
+online version: https://docs.microsoft.com/powershell/module/az.batch/set-azbatchcomputenodeuser
 schema: 2.0.0
 ---
 

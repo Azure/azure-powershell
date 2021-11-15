@@ -261,14 +261,15 @@ function Get-SecretInfo
     {
         if ($pattern.IsMatch($vaultSecretInfo.Name))
         {
-            if($vaultSecretInfo.ContentType -eq $null) 
+            [Microsoft.PowerShell.SecretManagement.SecretType]$secretType = New-Object Microsoft.PowerShell.SecretManagement.SecretType
+            if (![System.Enum]::TryParse($vaultSecretInfo.ContentType, $true, [ref]$secretType))
             {
-                $vaultSecretInfo.ContentType = 'Unknown'
+                $secretType = "Unknown"
             }
             Write-Output (
                 [Microsoft.PowerShell.SecretManagement.SecretInformation]::new(
                     $vaultSecretInfo.Name,
-                    [System.Enum]::Parse([Microsoft.PowerShell.SecretManagement.SecretType], $vaultSecretInfo.ContentType),
+                    $secretType,
                     $VaultName)
             )
         }

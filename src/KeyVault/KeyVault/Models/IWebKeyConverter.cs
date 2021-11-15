@@ -21,10 +21,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     internal interface IWebKeyConverter
     {
-        Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password);
+        Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password, WebKeyConverterExtraInfo extraInfo = null);
 
         Track2Sdk.JsonWebKey ConvertToTrack2SdkKeyFromFile(FileInfo fileInfo, SecureString password);
     }
 
-
+    /// <summary>
+    /// Extra information you may append to the converted JWK
+    /// </summary>
+    internal class WebKeyConverterExtraInfo {
+        public string KeyType;
+        public string CurveName;
+    }
 }

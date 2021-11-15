@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 DependsOn = DependsOn
                             };
 
-                            WriteObject(BlueprintClientWithVersion.CreateArtifact(scope, Blueprint.Name, Name,
+                            WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name,
                                 templateArtifact));
                         }
 

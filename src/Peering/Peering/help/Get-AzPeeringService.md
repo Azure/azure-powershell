@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringservice
+online version: https://docs.microsoft.com/powershell/module/az.peering/get-azpeeringservice
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF02FFF8-F00D-4446-968F-F3C9008C39F0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaysslpolicy
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 

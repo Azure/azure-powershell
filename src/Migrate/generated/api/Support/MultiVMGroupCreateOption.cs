@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Whether Multi VM group is auto created or specified by user.</summary>
     public partial struct MultiVMGroupCreateOption :
         System.IEquatable<MultiVMGroupCreateOption>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="MultiVMGroupCreateOption" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MultiVMGroupCreateOption(System.Convert.ToString(value));
+            return new MultiVMGroupCreateOption(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MultiVMGroupCreateOption</summary>

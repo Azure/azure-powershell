@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 18D5B95E-4CF1-4C79-AE8B-9F4DA49B46A9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/add-azlogprofile
+online version: https://docs.microsoft.com/powershell/module/az.monitor/add-azlogprofile
 schema: 2.0.0
 ---
 

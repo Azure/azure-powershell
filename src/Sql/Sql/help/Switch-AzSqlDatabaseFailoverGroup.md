@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/switch-azsqldatabasefailovergroup
+online version: https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup
 schema: 2.0.0
 ---
 

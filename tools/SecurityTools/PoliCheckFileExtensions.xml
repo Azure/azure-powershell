@@ -33,6 +33,7 @@
         <Ext Check="1">.php</Ext>
         <Ext Check="1">.csv</Ext>
         <Ext Check="1">.py</Ext>
+        <Ext Check="1">.rdp</Ext>
       </Extensions>
     </Type>
     <Type ID="1" Check="1">

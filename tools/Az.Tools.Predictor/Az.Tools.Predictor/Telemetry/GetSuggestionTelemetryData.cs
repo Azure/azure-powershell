@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -22,11 +23,34 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class GetSuggestionTelemetryData : ITelemetryData
     {
-        /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        /// <summary>
+        /// The telemetry property name for "isCancelled".
+        /// </summary>
+        public const string PropertyNameIsCancelled = "IsCancelled";
+
+        /// <summary>
+        /// The telemetry property name for "Found".
+        /// </summary>
+        public const string PropertyNameFound = "Found";
+
+        /// <summary>
+        /// The telemetry property name for "SuggestionSessionId".
+        /// </summary>
+        public const string PropertyNameSuggestionSessionId = "SuggestionSessionId";
+
+        /// <summary>
+        /// The telemetry property name fo "userInput".
+        /// </summary>
+        public const string PropertyNameUserInput = "UserInput";
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        public PredictionClient Client { get; init; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.CommandId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.RequestId { get; set; }
 
         /// <summary>
         /// Gets the user input.
@@ -52,14 +76,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public Exception Exception { get; }
 
         /// <summary>
+        /// Gets the id of the suggestion session.
+        /// </summary>
+        public uint SuggestionSessionId { get; init; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="GetSuggestionTelemetryData"/>.
         /// </summary>
+        /// <param name="client">The client that makes the call.</param>
+        /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="userInput">The user input that the <paramref name="suggestion"/> is for.</param>
         /// <param name="suggestion">The suggestions returned for the <paramref name="userInput"/>.</param>
         /// <param name="isCancellationRequested">Indicates if the cancellation has been requested.</param>
         /// <param name="exception">The exception that is thrown if there is an error.</param>
-        public GetSuggestionTelemetryData(Ast userInput, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
+        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, Ast userInput, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
         {
+            Client = client;
+            SuggestionSessionId = suggestionSessionId;
             UserInput = userInput;
             Suggestion = suggestion;
             IsCancellationRequested = isCancellationRequested;

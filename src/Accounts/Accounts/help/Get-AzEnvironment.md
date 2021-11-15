@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azenvironment
+online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azenvironment
 schema: 2.0.0
 ---
 
@@ -21,29 +21,45 @@ The Get-AzEnvironment cmdlet gets endpoints and metadata for an instance of Azur
 
 ## EXAMPLES
 
-### Example 1: Getting the AzureCloud environment
-```
-PS C:\> Get-AzEnvironment AzureCloud
+### Example 1: Getting all Azure environments
+```powershell
+PS C:\> Get-AzEnvironment 
 
-Name       Resource Manager Url          ActiveDirectory Authority
-----       --------------------          -------------------------
-AzureCloud https://management.azure.com/ https://login.microsoftonline.com/
+Name              Resource Manager Url                  ActiveDirectory Authority          Type
+----              --------------------                  -------------------------          ----
+AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/  Built-in
+AzureGermanCloud  https://management.microsoftazure.de/ https://login.microsoftonline.de/  Built-in
+AzureCloud        https://management.azure.com/         https://login.microsoftonline.com/ Built-in
+AzureChinaCloud   https://management.chinacloudapi.cn/  https://login.chinacloudapi.cn/    Built-in
 ```
 
 This example shows how to get the endpoints and metadata for the AzureCloud (default) environment.
 
-### Example 2: Getting the AzureChinaCloud environment
+### Example 2: Getting the AzureCloud environment
+```powershell
+PS C:\> Get-AzEnvironment -Name AzureCloud
+
+Name       Resource Manager Url          ActiveDirectory Authority          Type
+----       --------------------          -------------------------          ----
+AzureCloud https://management.azure.com/ https://login.microsoftonline.com/ Built-in
 ```
-PS C:\> Get-AzEnvironment AzureChinaCloud | Format-List
+
+This example shows how to get the endpoints and metadata for the AzureCloud (default) environment.
+
+### Example 3: Getting the AzureChinaCloud environment
+```powershell
+PS C:\> Get-AzEnvironment -Name AzureChinaCloud | Format-List
 
 Name                                              : AzureChinaCloud
+Type                                              : Built-in
 EnableAdfsAuthentication                          : False
+OnPremise                                         : False
 ActiveDirectoryServiceEndpointResourceId          : https://management.core.chinacloudapi.cn/
-AdTenant                                          :
-GalleryUrl                                        : https://gallery.chinacloudapi.cn/
-ManagementPortalUrl                               : http://go.microsoft.com/fwlink/?LinkId=301902
+AdTenant                                          : Common
+GalleryUrl                                        : https://gallery.azure.com/
+ManagementPortalUrl                               : https://go.microsoft.com/fwlink/?LinkId=301902
 ServiceManagementUrl                              : https://management.core.chinacloudapi.cn/
-PublishSettingsFileUrl                            : http://go.microsoft.com/fwlink/?LinkID=301776
+PublishSettingsFileUrl                            : https://go.microsoft.com/fwlink/?LinkID=301776
 ResourceManagerUrl                                : https://management.chinacloudapi.cn/
 SqlDatabaseDnsSuffix                              : .database.chinacloudapi.cn
 StorageEndpointSuffix                             : core.chinacloudapi.cn
@@ -52,20 +68,30 @@ GraphUrl                                          : https://graph.chinacloudapi.
 GraphEndpointResourceId                           : https://graph.chinacloudapi.cn/
 TrafficManagerDnsSuffix                           : trafficmanager.cn
 AzureKeyVaultDnsSuffix                            : vault.azure.cn
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+DataLakeEndpointResourceId                        : 
+AzureDataLakeStoreFileSystemEndpointSuffix        : 
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix : 
 AzureKeyVaultServiceEndpointResourceId            : https://vault.azure.cn
+ContainerRegistryEndpointSuffix                   : azurecr.cn
+AzureOperationalInsightsEndpointResourceId        : 
+AzureOperationalInsightsEndpoint                  : 
+AzureAnalysisServicesEndpointSuffix               : asazure.chinacloudapi.cn
+AnalysisServicesEndpointResourceId                : https://region.asazure.chinacloudapi.cn
+AzureAttestationServiceEndpointSuffix             : 
+AzureAttestationServiceEndpointResourceId         : 
+AzureSynapseAnalyticsEndpointSuffix               : dev.azuresynapse.azure.cn
+AzureSynapseAnalyticsEndpointResourceId           : https://dev.azuresynapse.azure.cn
 ```
 
 This example shows how to get the endpoints and metadata for the AzureChinaCloud environment.
 
-### Example 3: Getting the AzureUSGovernment environment
-```
-PS C:\> Get-AzEnvironment AzureUSGovernment
+### Example 4: Getting the AzureUSGovernment environment
+```powershell
+PS C:\> Get-AzEnvironment -Name AzureUSGovernment
 
-Name              Resource Manager Url                  ActiveDirectory Authority
-----              --------------------                  -------------------------
-AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/
+Name              Resource Manager Url                  ActiveDirectory Authority         Type
+----              --------------------                  -------------------------         ----
+AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/ Built-in
 ```
 
 This example shows how to get the endpoints and metadata for the AzureUSGovernment environment.
@@ -103,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

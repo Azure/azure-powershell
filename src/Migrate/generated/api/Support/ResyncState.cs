@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The resync state.</summary>
     public partial struct ResyncState :
         System.IEquatable<ResyncState>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="ResyncState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ResyncState(System.Convert.ToString(value));
+            return new ResyncState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ResyncState</summary>

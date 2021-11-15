@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Management.Automation.Models;
 using System;
 using System.Collections;
 
@@ -67,6 +68,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = automationAccount.LastModifiedTime.ToLocalTime();
             this.State = automationAccount.State;
             this.LastModifiedBy = automationAccount.LastModifiedBy;
+            this.Identity = automationAccount.Identity;
+            this.Encryption = automationAccount.Encryption;
+            this.PublicNetworkAccess = automationAccount.PublicNetworkAccess;
         }
 
         /// <summary>
@@ -125,5 +129,21 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the tags.
         /// </summary>
         public Hashtable Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity.
+        /// </summary>
+        public Identity Identity { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the encryption properties.
+        /// </summary>
+        public EncryptionProperties Encryption { get; private set; }
+
+        /// <summary>
+        /// Get or set indicate whether traffic on the non-ARM endpoint (Webhook/Agent)
+        //     is allowed from the public internet
+        /// </summary>
+        public bool? PublicNetworkAccess { get; set; }
     }
 }

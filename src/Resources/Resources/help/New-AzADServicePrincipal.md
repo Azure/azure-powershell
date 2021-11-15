@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D602F910-B26F-473D-B5B6-C7BDFB0A14CB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadserviceprincipal
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
 schema: 2.0.0
 ---
 
@@ -14,7 +14,6 @@ Creates a new Azure active directory service principal.
 ## SYNTAX
 
 ### SimpleParameterSet (Default)
-
 ```
 New-AzADServicePrincipal [-ApplicationId <Guid>] [-DisplayName <String>] [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-Scope <String>] [-Role <String>] [-SkipAssignment]
@@ -22,98 +21,84 @@ New-AzADServicePrincipal [-ApplicationId <Guid>] [-DisplayName <String>] [-Start
 ```
 
 ### ApplicationWithoutCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationId <Guid> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationId <Guid> -PasswordCredential <PSADPasswordCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationId <Guid> -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationId <Guid> -KeyCredential <PSADKeyCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithoutCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordPlainParameterSet
-
 ```
 New-AzADServicePrincipal -DisplayName <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -DisplayName <String> -PasswordCredential <PSADPasswordCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyPlainParameterSet
-
 ```
 New-AzADServicePrincipal -DisplayName <String> -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -DisplayName <String> -KeyCredential <PSADKeyCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordPlainParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationObject <PSADApplication> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationObject <PSADApplication> -PasswordCredential <PSADPasswordCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyPlainParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationObject <PSADApplication> -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyCredentialParameterSet
-
 ```
 New-AzADServicePrincipal -ApplicationObject <PSADApplication> -KeyCredential <PSADKeyCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -131,7 +116,7 @@ properties if an ApplicationId is not provided. To update the application-specif
 the [Update-AzADApplication](./update-azadapplication.md) cmdlet.
 
 > [!WARNING]
-> When you create a service principal using the **New-AzADServicePrincipal** command, the output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. As an alternative, consider using [managed identities](/azure/active-directory/managed-identities-azure-resources/overview) to avoid the need to use credentials.
+> When you create a service principal using the **New-AzADServicePrincipal** command, the output includes credentials that you must protect. As an alternative, consider using [managed identities](/azure/active-directory/managed-identities-azure-resources/overview) to avoid the need to use credentials.
 >
 > By default, **New-AzADServicePrincipal** assigns the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role to the service principal at the subscription scope. To reduce your risk of a compromised service principal, assign a more specific role and narrow the scope to a resource or resource group. See [Steps to add a role assignment](/azure/role-based-access-control/role-assignments-steps) for more information.
 
@@ -150,11 +135,13 @@ New-AzADServicePrincipal
 
 ```Output
 Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000
 DisplayName           : azure-powershell-05-22-2018-18-23-43
 Id                    : 00000000-0000-0000-0000-000000000000
 Type                  : ServicePrincipal
+
+WARNING: Assigning role 'Contributor' over scope '/subscriptions/00000000-0000-0000-0000-000000000000' to the new service principal.
 ```
 
 ### Example 2: Simple AD service principal creation with a specified role and default scope
@@ -170,7 +157,7 @@ New-AzADServicePrincipal -Role Reader
 
 ```Output
 Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000
 DisplayName           : azure-powershell-05-22-2018-18-23-43
 Id                    : 00000000-0000-0000-0000-000000000000
@@ -192,7 +179,7 @@ New-AzADServicePrincipal -Scope /subscriptions/00000000-0000-0000-0000-000000000
 
 ```Output
 Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000
 DisplayName           : azure-powershell-05-22-2018-18-23-43
 Id                    : 00000000-0000-0000-0000-000000000000
@@ -214,7 +201,7 @@ New-AzADServicePrincipal -Role Reader -Scope /subscriptions/00000000-0000-0000-0
 
 ```Output
 Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000
 DisplayName           : azure-powershell-05-22-2018-18-23-43
 Id                    : 00000000-0000-0000-0000-000000000000
@@ -265,7 +252,7 @@ $sp = New-AzAdServicePrincipal -DisplayName ServicePrincipalName -PasswordCreden
 ```
 
 ```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://ServicePrincipalName}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000c
 ObjectType            : ServicePrincipal
 DisplayName           : ServicePrincipalName
@@ -285,7 +272,7 @@ $sp = New-AzADServicePrincipal -DisplayName ServicePrincipalName -CertValue $cer
 ```
 
 ```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://ServicePrincipalName}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000
 ObjectType            : ServicePrincipal
 DisplayName           : ServicePrincipalName
@@ -614,10 +601,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.Guid

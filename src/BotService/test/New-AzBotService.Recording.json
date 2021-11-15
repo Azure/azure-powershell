@@ -1,0 +1,70 @@
+{
+  "New-AzBotService+[NoContext]+Registration+$POST+https://management.azure.com/providers/Microsoft.BotService/checkNameAvailability?api-version=2018-07-12+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BotService/checkNameAvailability?api-version=2018-07-12",
+      "Content": "{\r\n  \"name\": \"BotService-02le6b\",\r\n  \"type\": \"bot\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "53" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "196a3fb6-347e-4f44-8b02-ace52a682398" ],
+        "x-ms-correlation-request-id": [ "196a3fb6-347e-4f44-8b02-ace52a682398" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201222T065124Z:196a3fb6-347e-4f44-8b02-ace52a682398" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Dec 2020 06:51:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "42" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"valid\":true,\"message\":\"\",\"absCode\":null}"
+    }
+  },
+  "New-AzBotService+[NoContext]+Registration+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-02le6b?api-version=2018-07-12+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-02le6b?api-version=2018-07-12",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"F0\"\r\n  },\r\n  \"location\": \"global\",\r\n  \"kind\": \"bot\",\r\n  \"properties\": {\r\n    \"displayName\": \"BotService-02le6b\",\r\n    \"endpoint\": \"\",\r\n    \"msaAppId\": \"2d00693f-17b0-4b43-b850-1d3fb485272e\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "225" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0100ff99-0000-1800-0000-5fe197720000\"" ],
+        "x-ms-request-id": [ "5746c342-bc8e-4d3f-9e96-4f1088dd16bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "164fe878-e220-4eba-989a-8a6508d75069" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201222T065132Z:164fe878-e220-4eba-989a-8a6508d75069" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Dec 2020 06:51:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1069" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-02le6b\",\"name\":\"BotService-02le6b\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0100ff99-0000-1800-0000-5fe197720000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"bot\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-02le6b\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":\"\",\"msaAppId\":\"2d00693f-17b0-4b43-b850-1d3fb485272e\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":\"3.0\",\"configuredChannels\":[\"webchat\"],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":false,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":false,\"cmekKeyVaultUrl\":null,\"cmekEncryptionStatus\":\"Off\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

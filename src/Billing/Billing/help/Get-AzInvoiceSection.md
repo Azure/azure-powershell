@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Billing.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azinvoicesection
+online version: https://docs.microsoft.com/powershell/module/az.billing/get-azinvoicesection
 schema: 2.0.0
 ---
 

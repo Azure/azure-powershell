@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for HyperVReplicaAzureRpRecoveryPointType.</summary>
+    /// <summary>The recovery point type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HyperVReplicaAzureRpRecoveryPointTypeTypeConverter))]
     public partial struct HyperVReplicaAzureRpRecoveryPointType :
         System.Management.Automation.IArgumentCompleter
@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Latest".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Latest", "Latest", global::System.Management.Automation.CompletionResultType.ParameterValue, "Latest");
+                yield return new global::System.Management.Automation.CompletionResult("'Latest'", "Latest", global::System.Management.Automation.CompletionResultType.ParameterValue, "Latest");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LatestApplicationConsistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LatestApplicationConsistent", "LatestApplicationConsistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestApplicationConsistent");
+                yield return new global::System.Management.Automation.CompletionResult("'LatestApplicationConsistent'", "LatestApplicationConsistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestApplicationConsistent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LatestProcessed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LatestProcessed", "LatestProcessed", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestProcessed");
+                yield return new global::System.Management.Automation.CompletionResult("'LatestProcessed'", "LatestProcessed", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestProcessed");
             }
         }
     }

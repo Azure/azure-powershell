@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>Show costs accumulated over time.</summary>
     public partial struct AccumulatedType :
         System.IEquatable<AccumulatedType>
     {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="AccumulatedType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AccumulatedType(System.Convert.ToString(value));
+            return new AccumulatedType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AccumulatedType</summary>

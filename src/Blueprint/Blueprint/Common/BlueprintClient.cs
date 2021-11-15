@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             var customHandlers = AzureSession.Instance.ClientFactory.GetCustomHandlers();
             var apiExpandHandler = customHandlers?.Where(handler => handler.GetType().Equals(typeof(ApiExpandHandler))).FirstOrDefault();
 
-            if (apiExpandHandler != null )
+            if (apiExpandHandler != null)
             {
                 AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
             }

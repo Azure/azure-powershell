@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         {
             var queryOptions = new RestApiModels.QueryOptions
             {
-                Top = MyInvocation.BoundParameters.ContainsKey("Top") ? (int?)Top : int.MaxValue,
+                Top = MyInvocation.BoundParameters.ContainsKey("Top") ? (int?)Top : null,
                 OrderBy = OrderBy,
                 Select = Select,
                 FromProperty = MyInvocation.BoundParameters.ContainsKey("From") ? (DateTime?)From : null,

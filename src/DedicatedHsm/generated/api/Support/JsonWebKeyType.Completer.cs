@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support
 {
 
-    /// <summary>Argument completer implementation for JsonWebKeyType.</summary>
+    /// <summary>Provisioning state.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyTypeTypeConverter))]
     public partial struct JsonWebKeyType :
         System.Management.Automation.IArgumentCompleter

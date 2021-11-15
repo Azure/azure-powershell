@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>The operation to delete a export.</summary>
     /// <remarks>
-    /// [OpenAPI] Exports_Delete=>DELETE:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}"
+    /// [OpenAPI] Delete=>DELETE:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzCostManagementExport_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

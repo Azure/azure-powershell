@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StackEdge.dll-Help.xml
 Module Name: Az.StackEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.stackedge/new-azstackedgerole
+online version: https://docs.microsoft.com/powershell/module/az.stackedge/new-azstackedgerole
 schema: 2.0.0
 ---
 

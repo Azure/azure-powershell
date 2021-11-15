@@ -145,6 +145,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             };
 
             var policyObject = this.GetObjectFromParameter(this.Policy, nameof(this.Policy));
+            if (policyObject["properties"] != null)
+            {
+                // export-to-Git format includes outer object, we want the property bag
+                policyObject = (JObject)policyObject["properties"];
+            }
+
             if (policyObject["policyRule"] != null)
             {
                 // policy parameter was a full policy object, populate the properties from it, override from other command line parameters

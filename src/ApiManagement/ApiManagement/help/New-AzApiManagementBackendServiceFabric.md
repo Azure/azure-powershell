@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementbackendservicefabric
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackendservicefabric
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Creates an object of `PsApiManagementServiceFabric`
 ## SYNTAX
 
 ```
-New-AzApiManagementBackendServiceFabric -ManagementEndpoint <String[]> -ClientCertificateThumbprint <String>
- [-MaxPartitionResolutionRetry <Int32>] [-ServerX509Name <Hashtable>] [-ServerCertificateThumbprint <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApiManagementBackendServiceFabric -ManagementEndpoint <String[]> [-ClientCertificateThumbprint <String>]
+ [-ClientCertificateId <String>] [-MaxPartitionResolutionRetry <Int32>] [-ServerX509Name <Hashtable>]
+ [-ServerCertificateThumbprint <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +39,21 @@ Creates a Backend Service Fabric Contract
 
 ## PARAMETERS
 
+### -ClientCertificateId
+Client Certificate Id for the management endpoint. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ClientCertificateThumbprint
 Client Certificate Thumbprint for the management endpoint.
 This parameter is required.
@@ -48,7 +63,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

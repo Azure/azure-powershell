@@ -18,7 +18,7 @@ Describe 'Invoke-AzCostManagementQuery' {
     }
 
     # It 'UsageExpanded1' -skip {
-    #     #$DimensionObject = new-AzCostManagementQueryComparisonExpressionObject -name 'ResourceGroup' -Operator 'In' -Value 'API'
+    #     #$DimensionObject = new-AzCostManagementQueryComparisonExpressionObject -name 'ResourceGroup' -Value 'API'
     #     #$FilterObject = New-AzCostManagementQueryFilterObject -Dimension $DimensionObject
     #     #Invoke-AzCostManagementQuery -ExternalCloudProviderId 'Microsoft.Compute' -ExternalCloudProviderType externalBillingAccounts -Timeframe MonthToDate -type Usage -DatasetFilter $FilterObject -DatasetGranularity Daily -debug
     # }

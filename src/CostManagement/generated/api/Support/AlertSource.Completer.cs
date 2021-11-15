@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for AlertSource.</summary>
+    /// <summary>Source of alert</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.AlertSourceTypeConverter))]
     public partial struct AlertSource :
         System.Management.Automation.IArgumentCompleter

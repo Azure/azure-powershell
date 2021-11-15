@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public bool? SinglePlacementGroup { get; set; }
         public bool? ZoneBalance { get; set; }
         public int? PlatformFaultDomainCount { get; set; }
+        public SpotRestorePolicy SpotRestorePolicy { get; set; }
         public SubResource ProximityPlacementGroup { get; set; }
         public SubResource HostGroup { get; set; }
         public AdditionalCapabilities AdditionalCapabilities { get; set; }
@@ -61,8 +63,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
+        public PSExtendedLocation ExtendedLocation { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
-
+        public string OrchestrationMode { get; set; }
     }
 }

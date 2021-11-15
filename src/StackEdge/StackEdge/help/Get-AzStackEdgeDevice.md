@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StackEdge.dll-Help.xml
 Module Name: Az.StackEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.stackedge/get-azstackedgedevice
+online version: https://docs.microsoft.com/powershell/module/az.stackedge/get-azstackedgedevice
 schema: 2.0.0
 ---
 
@@ -53,7 +53,7 @@ PS C:\>$device.Alert
 
 Title                            Severity AppearedDateTime      Recommendation
 -----                            -------- ----------------      --------------
-Lost heartbeat from your device. Critical 02-Jan-20 10:35:20 AM If your device is offline, then the device is not able to communicate with the Azure service. This could be due to one of the following reasons: <br/> &nbs…
+Lost heartbeat from your device. Critical 02-Jan-20 10:35:20 AM If your device is offline, then the device is not able to communicate with the Azure service. This could be due to one of the following reasons: <br/> &nbsï¿½
 
 
 PS C:\>$device.NetworkSetting

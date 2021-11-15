@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     public enum PSCapabilities
     {
         None = 0,
-        DeviceManagement = 1
+        DeviceManagement = 1,
+        GWV2 = 2
     }
 }

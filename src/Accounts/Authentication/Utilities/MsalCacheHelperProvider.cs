@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         var cacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".IdentityService");
                         try
                         {
-                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory, PowerShellClientId)
+                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory)
                                 .WithMacKeyChain("Microsoft.Developer.IdentityService", "MSALCache")
                                 .WithLinuxKeyring("msal.cache", "default", "MSALCache",
                                 new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         }
                         catch(MsalCachePersistenceException)
                         {
-                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory, PowerShellClientId)
+                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory)
                                 .WithMacKeyChain("Microsoft.Developer.IdentityService", "MSALCache")
                                 .WithLinuxUnprotectedFile()
                                 .Build();

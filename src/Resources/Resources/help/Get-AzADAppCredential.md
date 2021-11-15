@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6AC9DA05-756D-4D59-BD97-DBAAFBB3C7AC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadappcredential
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadappcredential
 schema: 2.0.0
 ---
 

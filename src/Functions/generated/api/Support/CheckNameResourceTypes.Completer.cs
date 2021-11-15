@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Site".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Site", "Site", global::System.Management.Automation.CompletionResultType.ParameterValue, "Site");
+                yield return new global::System.Management.Automation.CompletionResult("'Site'", "Site", global::System.Management.Automation.CompletionResultType.ParameterValue, "Site");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Slot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Slot", "Slot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Slot");
+                yield return new global::System.Management.Automation.CompletionResult("'Slot'", "Slot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Slot");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HostingEnvironment".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HostingEnvironment", "HostingEnvironment", global::System.Management.Automation.CompletionResultType.ParameterValue, "HostingEnvironment");
+                yield return new global::System.Management.Automation.CompletionResult("'HostingEnvironment'", "HostingEnvironment", global::System.Management.Automation.CompletionResultType.ParameterValue, "HostingEnvironment");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PublishingUser".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PublishingUser", "PublishingUser", global::System.Management.Automation.CompletionResultType.ParameterValue, "PublishingUser");
+                yield return new global::System.Management.Automation.CompletionResult("'PublishingUser'", "PublishingUser", global::System.Management.Automation.CompletionResultType.ParameterValue, "PublishingUser");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Web/sites".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Web/sites", "Microsoft.Web/sites", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/sites");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Web/sites'", "Microsoft.Web/sites", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/sites");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Web/sites/slots".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Web/sites/slots", "Microsoft.Web/sites/slots", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/sites/slots");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Web/sites/slots'", "Microsoft.Web/sites/slots", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/sites/slots");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Web/hostingEnvironments".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Web/hostingEnvironments", "Microsoft.Web/hostingEnvironments", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/hostingEnvironments");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Web/hostingEnvironments'", "Microsoft.Web/hostingEnvironments", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/hostingEnvironments");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Web/publishingUsers".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Web/publishingUsers", "Microsoft.Web/publishingUsers", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/publishingUsers");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Web/publishingUsers'", "Microsoft.Web/publishingUsers", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/publishingUsers");
             }
         }
     }

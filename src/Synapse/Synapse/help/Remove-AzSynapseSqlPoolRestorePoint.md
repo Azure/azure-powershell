@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsesqlpoolrestorepoint
+online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsesqlpoolrestorepoint
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Deletes a Synapse Analytics SQL pool restore point.
 
 ### DeleteByNameParameterSet (Default)
 ```
-Remove-AzSynapseSqlPoolRestorePoint [-ResourceGroupName <String>] -WorkspaceName <String> -SqlPoolName <String>
+Remove-AzSynapseSqlPoolRestorePoint [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  -RestorePointCreationDate <DateTime> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -135,6 +135,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of Synapse SQL pool.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByNameParameterSet
+Aliases: SqlPoolName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
@@ -186,21 +201,6 @@ Name of Synapse SQL Restore Point Creation Date .
 ```yaml
 Type: System.DateTime
 Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlPoolName
-Name of Synapse Sql pool.
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True

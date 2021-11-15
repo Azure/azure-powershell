@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVpnServerConfiguration CreateOrUpdateVpnServerConfiguration(string resourceGroupName, string vpnServerConfigurationName, PSVpnServerConfiguration vpnServerConfiguration, Hashtable tags)
         {
-            var vpnServerConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfiguration>(vpnServerConfiguration);            
+            var vpnServerConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfiguration>(vpnServerConfiguration);
             vpnServerConfigurationModel.Location = vpnServerConfiguration.Location;
             vpnServerConfigurationModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
             WriteObject(vpnServerConfigurationModel);
@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // VpnAuthenticationType = Certificate related validations.
-            if (vpnAuthenticationType == null || 
+            if (vpnAuthenticationType == null ||
                 (vpnAuthenticationType != null && vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Certificate)))
-                
+
             {
                 // Read the VpnClientRootCertificates if present
                 if (vpnClientRootCertificateFilesList != null)
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
             // VpnAuthenticationType = Radius related validations.
-            else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Radius))
+            if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 if (radiusServerAddress != null)
                 {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
             // VpnAuthenticationType = AAD related validations.
-            else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
+            if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
             {
                 if (aadTenant == null || aadAudience == null || aadIssuer == null)
                 {

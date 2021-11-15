@@ -1,7 +1,7 @@
 ---
 Module Name: Az.OperationalInsights
 Module Guid: e827799a-7abf-4538-a61f-94dc52a48bd4
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights
+Download Help Link: https://docs.microsoft.com/powershell/module/az.operationalinsights
 Help Version: 4.3.2.0
 Locale: en-US
 ---

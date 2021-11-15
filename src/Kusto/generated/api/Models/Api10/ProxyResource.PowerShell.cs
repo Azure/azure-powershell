@@ -3,7 +3,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
     using Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ProxyResourceTypeConverter))]
     public partial class ProxyResource
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     [System.ComponentModel.TypeConverter(typeof(ProxyResourceTypeConverter))]
     public partial interface IProxyResource
 

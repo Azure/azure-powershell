@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 using System.Net;
@@ -21,6 +22,7 @@ using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
+    [GenericBreakingChange("This cmdlet will use Microsoft Graph in Az 7.x and later., Visit https://go.microsoft.com/fwlink/?linkid=2174792 for migration guide and breaking changes.")]
     public abstract class ActiveDirectoryBaseCmdlet : AzureRMCmdlet
     {
         private ActiveDirectoryClient _activeDirectoryClient;

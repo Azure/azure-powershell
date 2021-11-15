@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverdnsalias
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverdnsalias
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Get the specific Azure SQL Server DNS Alias or lists all Server DNS Aliases for 
 
 ### Example 1
 ```
-PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname
+PS C:\> $serverDNSAliases = Get-AzSqlServerDnsAlias -ServerName servername -ResourceGroupName rgname
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -36,7 +36,7 @@ Lists all Server DNS Aliases for the specific server
 
 ### Example 2
 ```
-PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
+PS C:\> $serverDNSAliases = Get-AzSqlServerDnsAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -47,7 +47,7 @@ Gets Server DNS Alias specified by server and alias name
 
 ### Example 3
 ```
-PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname -DnsAliasName "dnsaliasname*"
+PS C:\> $serverDNSAliases = Get-AzSqlServerDnsAlias -ServerName servername -ResourceGroupName rgname -DnsAliasName "dnsaliasname*"
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -86,7 +86,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName

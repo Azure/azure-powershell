@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IReportConfigAggregation>)this).AdditionalProperties, null ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IReportConfigAggregation>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ReportConfigAggregation.FromJson(j) ,exclusions );
             AfterFromJson(json);
         }
 

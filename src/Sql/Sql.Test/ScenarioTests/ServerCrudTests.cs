@@ -70,6 +70,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateWithFederatedClientId()
+        {
+            RunPowerShellTest("Test-CreateServerWithFederatedClientId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithFederatedClientId()
+        {
+            RunPowerShellTest("Test-UpdatingServerWithFederatedClientId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithoutIdentity()
         {
             RunPowerShellTest("Test-UpdateServerWithoutIdentity");
@@ -87,6 +101,27 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestServerUpdateWithPublicNetworkAccess()
         {
             RunPowerShellTest("Test-UpdateServerWithPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOutboundFirewallRulesCRUD()
+        {
+            RunPowerShellTest("Test-OutboundFirewallRulesCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateAndGetWithRestrictOutboundNetworkAccess()
+        {
+            RunPowerShellTest("Test-CreateAndGetServerWithRestrictOutboundNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithRestrictOutboundNetworkAccess()
+        {
+            RunPowerShellTest("Test-UpdateServerWithRestrictOutboundNetworkAccess");
         }
 
         [Fact]

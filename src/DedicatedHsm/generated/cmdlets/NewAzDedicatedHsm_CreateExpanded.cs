@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
 
     /// <summary>Create or Update a dedicated HSM in the specified subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] DedicatedHsm_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDedicatedHsm_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm))]
@@ -510,12 +510,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
                     return ;
                 }
                 // Error Response : default
-                // Unrecognized Response. Create an error record based on what we have.
-                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError>(responseMessage, await response);
-                WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ParametersBody })
+                var code = (await response)?.Error?.Code;
+                var message = (await response)?.Error?.Message;
+                if ((null == code || null == message))
                 {
-                  ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
-                });
+                    // Unrecognized Response. Create an error record based on what we have.
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ParametersBody })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
+                    });
+                }
+                else
+                {
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ParametersBody })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
+                    });
+                }
             }
         }
 

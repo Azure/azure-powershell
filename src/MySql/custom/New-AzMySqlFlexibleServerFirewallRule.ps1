@@ -19,6 +19,7 @@ Creates a new firewall rule for MySQL flexible server
 .Description
 Creates a new firewall rule for MySQL flexible server
 #>
+
 function New-AzMySqlFlexibleServerFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="DefaultPrincipalsModificationKind" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DefaultPrincipalsModificationKind(System.Convert.ToString(value));
+            return new DefaultPrincipalsModificationKind(global::System.Convert.ToString(value));
         }
 
         /// <summary>

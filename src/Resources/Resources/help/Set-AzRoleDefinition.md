@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azroledefinition
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azroledefinition
 schema: 2.0.0
 ---
 

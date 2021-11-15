@@ -1,0 +1,45 @@
+{
+  "Get-AzDiskPoolZone+[NoContext]+List+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/diskPoolZones?api-version=2021-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/diskPoolZones?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "0c64d632-4d75-49d4-af29-f75f79520fe6" ],
+        "CommandName": [ "Get-AzDiskPoolZone" ],
+        "FullCommandName": [ "Get-AzDiskPoolZone_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "0c64d632-4d75-49d4-af29-f75f79520fe6" ],
+        "X-Ms-Request-Id": [ "ce108518-d945-4663-8355-22c52aaae9ec" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "e818c865-488e-4354-8b3a-dcbe5f01e3a8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T223144Z:e818c865-488e-4354-8b3a-dcbe5f01e3a8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:31:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "243" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"availabilityZones\":[\"3\",\"1\",\"2\"],\"sku\":{\"name\":\"Basic\",\"tier\":\"Basic\"}},{\"availabilityZones\":[\"3\",\"1\",\"2\"],\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}},{\"availabilityZones\":[\"3\",\"1\",\"2\"],\"sku\":{\"name\":\"Premium\",\"tier\":\"Premium\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

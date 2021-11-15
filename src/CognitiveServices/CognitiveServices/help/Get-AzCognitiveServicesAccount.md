@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11D5BFDF-5E5D-46B2-9F9B-A0524EFA1B42
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount
+online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -23,6 +23,18 @@ Get-AzCognitiveServicesAccount [[-ResourceGroupName] <String>] [-DefaultProfile 
 ```
 Get-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetDeletedAccountParameterSet
+```
+Get-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ListDeletedAccountParameterSet
+```
+Get-AzCognitiveServicesAccount [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,12 +79,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to only show the deleted accounts in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeletedAccountParameterSet, ListDeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Cognitive Services Account Location.
+
+```yaml
+Type: System.String
+Parameter Sets: GetDeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Cognitive Services account to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
+Parameter Sets: AccountNameParameterSet, GetDeletedAccountParameterSet
 Aliases: CognitiveServicesAccountName, AccountName
 
 Required: True
@@ -99,7 +141,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
+Parameter Sets: AccountNameParameterSet, GetDeletedAccountParameterSet
 Aliases:
 
 Required: True

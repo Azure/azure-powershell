@@ -55,14 +55,14 @@ function Create-VM(
 
 		$UserName='demouser'
 		$PasswordString = $(Get-RandomSuffix 12)
-		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+		$Password=$PasswordString + "Aa." | ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
 		$tags = @{"MabUsed"="Yes"}
 		$tags += @{"Owner"="sarath"}
 		$tags += @{"Purpose"="PSTest"}
 		$tags += @{"AutoShutDown"="No"}
-		$tags += @{"DeleteBy"="05-2020"}
+		$tags += @{"DeleteBy"="06-2022"}
 
 		$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
 			Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $Credential | `
@@ -141,7 +141,7 @@ function Create-UnmanagedVM(
 		$tags += @{"Owner"="sarath"}
 		$tags += @{"Purpose"="PSTest"}
 		$tags += @{"AutoShutDown"="No"}
-		$tags += @{"DeleteBy"="05-2020"}
+		$tags += @{"DeleteBy"="06-2022"}
 
 		$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saname
 		$diskName = "mydisk"

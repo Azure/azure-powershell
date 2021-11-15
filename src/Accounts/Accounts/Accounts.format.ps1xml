@@ -240,5 +240,42 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Tenants</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Credential</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TenantMap</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CertificateThumbprint</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedProperties</Label>
+                <ScriptBlock>$_.ExtendedProperties.GetEnumerator() | Where-Object { $_.Key -ne "ServicePrincipalSecret" }</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
   </ViewDefinitions>
 </Configuration>

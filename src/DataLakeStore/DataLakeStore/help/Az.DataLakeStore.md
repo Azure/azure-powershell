@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore
+Download Help Link: https://docs.microsoft.com/powershell/module/az.datalakestore
 Help Version: 1.0.0.0
 Locale: en-US
 ---

@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using Tools.Common.Loaders;
 
 namespace Tools.Common.Models
@@ -217,13 +217,23 @@ namespace Tools.Common.Models
 
         public List<MethodSignature> Constructors { get { return _constructors; } }
 
+        public string GetClassNameWithoutApiVersion(string className)
+        {
+            var matcher = Regex.Match(className, @"Microsoft\.Azure\.PowerShell\.Cmdlets\.([\w\.]+)\.Api[\w\d]+\.([\w\.]+)");
+            if (!matcher.Success || matcher.Groups.Count < 3)
+            {
+                return className;
+            }
+            return string.Format("Microsoft.Azure.PowerShell.Cmdlets.{0}.{1}", matcher.Groups[1].Value, matcher.Groups[2].Value);
+        }
+
         /// <summary>
         /// Checks if two TypeMetadata objects are equal by comparing
         /// each of the properties, methods, and constructors.
         /// </summary>
         /// <param name="other">The TypeMetadata object being compared to this object.</param>
         /// <returns>True if the two objects are equal, false otherwise.</returns>
-        public override bool Equals(Object obj)
+        public bool Equals(Object obj, bool ignoreMethod = false)
         {
             var other = obj as TypeMetadata;
             if (other == null)
@@ -232,6 +242,9 @@ namespace Tools.Common.Models
             }
 
             var typesEqual = true;
+            string className = GetClassNameWithoutApiVersion(this.Name);
+            string otherClassName = GetClassNameWithoutApiVersion(other.Name);
+            typesEqual &= string.Equals(className, otherClassName, StringComparison.OrdinalIgnoreCase);
             typesEqual &= string.Equals(this.ElementType, other.ElementType, StringComparison.OrdinalIgnoreCase);
             this.GenericTypeArguments.ForEach(t => typesEqual &= other.GenericTypeArguments.Contains(t));
             typesEqual &= this.GenericTypeArguments.Count == other.GenericTypeArguments.Count;
@@ -265,8 +278,11 @@ namespace Tools.Common.Models
             }
 
             typesEqual &= this.Properties.Keys.Count == other.Properties.Keys.Count;
-            typesEqual &= AreMethodSignaturesEqual(this.Methods, other.Methods);
-            typesEqual &= AreMethodSignaturesEqual(this.Constructors, other.Constructors);
+            if (!ignoreMethod)
+            {
+                typesEqual &= AreMethodSignaturesEqual(this.Methods, other.Methods);
+                typesEqual &= AreMethodSignaturesEqual(this.Constructors, other.Constructors);
+            }
             return typesEqual;
         }
 

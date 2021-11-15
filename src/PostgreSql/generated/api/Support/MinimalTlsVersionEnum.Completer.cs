@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for MinimalTlsVersionEnum.</summary>
+    /// <summary>Enforce a minimal Tls version for the server.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnumTypeConverter))]
     public partial struct MinimalTlsVersionEnum :
         System.Management.Automation.IArgumentCompleter
@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TLS1_0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TLS1_0", "TLS1_0", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS1_0");
+                yield return new global::System.Management.Automation.CompletionResult("'TLS1_0'", "TLS1_0", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS1_0");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TLS1_1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TLS1_1", "TLS1_1", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS1_1");
+                yield return new global::System.Management.Automation.CompletionResult("'TLS1_1'", "TLS1_1", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS1_1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TLS1_2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TLS1_2", "TLS1_2", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS1_2");
+                yield return new global::System.Management.Automation.CompletionResult("'TLS1_2'", "TLS1_2", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS1_2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TLSEnforcementDisabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TLSEnforcementDisabled", "TLSEnforcementDisabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLSEnforcementDisabled");
+                yield return new global::System.Management.Automation.CompletionResult("'TLSEnforcementDisabled'", "TLSEnforcementDisabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLSEnforcementDisabled");
             }
         }
     }

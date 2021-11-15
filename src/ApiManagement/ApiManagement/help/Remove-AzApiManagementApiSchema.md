@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementapischema
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementapischema
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The cmdlet **Remove-AzApiManagementSchema** from the Api.
 ### Example 1: Removes the Api Schema from the API
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzAzureRmApiManagementApiSchema -Context $apimContext -ApiId "echo-api" -SchemaId "2"
+PS C:\>Remove-AzApiManagementApiSchema -Context $apimContext -ApiId "echo-api" -SchemaId "2"
 ```
 
 The script removes the Schema `2` from the Api `echo-api` if it is not referenced.

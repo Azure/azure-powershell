@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 7060D3D7-B397-447E-88E3-B6F0D094770D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdncustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
 schema: 2.0.0
 ---
 

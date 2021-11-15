@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 65962F9A-CC79-4B8B-9208-A993708FD36F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragedirectory
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragedirectory
 schema: 2.0.0
 ---
 

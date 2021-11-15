@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 009F6E65-0268-4505-AEC1-FF379CB96804
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteserviceprovider
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressrouteserviceprovider
 schema: 2.0.0
 ---
 

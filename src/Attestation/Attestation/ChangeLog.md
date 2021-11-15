@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of `Az.Attestation` module
+
 ## Version 0.1.8
 * Added default provider support to `Az.Attestation` module
     - Added `Location` and `DefaultProvider` to `Get-AzAttestation`

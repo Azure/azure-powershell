@@ -6,9 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>The mode to create a new server.</summary>
     public partial struct CreateMode :
         System.IEquatable<CreateMode>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Create = @"Create";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Default = @"Default";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode GeoRestore = @"GeoRestore";
@@ -17,6 +20,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Replica = @"Replica";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Update = @"Update";
+
         /// <summary>the value for an instance of the <see cref="CreateMode" /> Enum.</summary>
         private string _value { get; set; }
 
@@ -24,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="CreateMode" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new CreateMode(System.Convert.ToString(value));
+            return new CreateMode(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="CreateMode" Enum class./></summary>

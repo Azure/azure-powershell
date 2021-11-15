@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azalert
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/get-azalert
 schema: 2.0.0
 ---
 
@@ -42,7 +42,7 @@ Get-AzAlert [-TargetResourceId <String>] [-MonitorService <String>] [-MonitorCon
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext true
+PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext $true
 ```
 
 List all alerts with Sev2 severity and Fired monitor condition. Setting IncludeContext to true, include custom payload of alert.

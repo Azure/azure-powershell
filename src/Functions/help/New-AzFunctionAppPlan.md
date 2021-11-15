@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionappplan
+online version: https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 schema: 2.0.0
 ---
 

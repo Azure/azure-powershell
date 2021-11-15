@@ -54,23 +54,5 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// of 1 to 100 (inclusive). The default value is 1.
         /// </summary>
         public int? Count { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Count > 100)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Count", 100);
-            }
-            if (Count < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Count", 1);
-            }
-        }
     }
 }

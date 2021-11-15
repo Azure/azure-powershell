@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
 
@@ -22,8 +22,9 @@ Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-Backup
 
 ## DESCRIPTION
 
-The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container.
-A Backup container encapsulates data sources that are modelled as backup items.
+The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container. A Backup container encapsulates data sources that are modelled as backup items.
+For Container type "Azure VM" , the output lists all the containers whose name exactly matches to the one passed  as the value for Friendly Name parameter. 
+For other container types,  output gives a list of containers with name similar to the value passed for Friendly name parameter.
 Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
@@ -80,7 +81,6 @@ The acceptable values for this parameter are:
 
 - AzureVM
 - Windows
-- AzureSQL
 - AzureStorage
 - AzureVMAppContainer
 
@@ -88,7 +88,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureVMAppContainer
+Accepted values: AzureVM, Windows, AzureStorage, AzureVMAppContainer
 
 Required: True
 Position: 1

@@ -1,0 +1,911 @@
+{
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"domainSecuritySettings\": {\r\n      \"ntlmV1\": \"\",\r\n      \"tlsV1\": \"Disabled\",\r\n      \"syncNtlmPasswords\": \"\",\r\n      \"syncKerberosPasswords\": \"\",\r\n      \"syncOnPremPasswords\": \"\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "218" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T13%3A37%3A04.2911697Z\u0027\"" ],
+        "x-ms-request-id": [ "ffb32e49-8a5d-45bb-87cb-098215532757" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "69707faa-78bb-4ed4-b923-a1d5a29de18e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T133715Z:69707faa-78bb-4ed4-b923-a1d5a29de18e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:37:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1292" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T13%3A37%3A04.2911697Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\",\"10.0.0.5\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Accepted\"}}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "626fa4f7-a809-4dc2-a6ad-66ca9411d0dc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "dd8bf719-a4fb-4ea2-8060-1b4cdcd08640" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T133745Z:dd8bf719-a4fb-4ea2-8060-1b4cdcd08640" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:37:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9c7ba755-5980-481e-a2c7-2b5122fcf3aa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "1720479a-1c58-4525-9bf0-237578f46361" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T133816Z:1720479a-1c58-4525-9bf0-237578f46361" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:38:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "670babdd-caee-401f-bf14-a81983fc92eb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "98556a8e-3498-4bff-a083-66b064a9f2cb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T133846Z:98556a8e-3498-4bff-a083-66b064a9f2cb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:38:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ab5c0d7e-d4eb-4963-823d-57580f82b15e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "03721b7d-ff8c-4678-8db2-e354b6525b02" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T133916Z:03721b7d-ff8c-4678-8db2-e354b6525b02" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:39:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4182c5f4-3751-4cbe-b30f-d8c5f8afe99c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "daef7634-77ec-4368-a380-0bdc09c7284e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T133949Z:daef7634-77ec-4368-a380-0bdc09c7284e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:39:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a05553f5-c40d-4b0b-b82b-92327c0e3ac1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "c61350b0-a01d-4e03-afac-de8b5bab95df" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134019Z:c61350b0-a01d-4e03-afac-de8b5bab95df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:40:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "6bc3492e-2418-402e-be16-5b4ea04a7dc2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "3bfa0174-13d7-45e6-ad28-799ee3f7e77c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134049Z:3bfa0174-13d7-45e6-ad28-799ee3f7e77c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:40:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f9f77dba-e649-49e3-8386-5068c71b0103" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "790dd7f8-0d6b-4f8a-9b58-646a05965d76" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134120Z:790dd7f8-0d6b-4f8a-9b58-646a05965d76" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:41:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "c8e495cf-ac7c-46dd-ac9d-898b38c9efdd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "7fed3a96-1b8c-4ff2-9a60-4f6a7287e503" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134150Z:7fed3a96-1b8c-4ff2-9a60-4f6a7287e503" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:41:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "df44ec50-d383-44e9-a0f7-b19a0c320e97" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "4e982e9c-1b83-4192-aea3-85d5c2cc312d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134221Z:4e982e9c-1b83-4192-aea3-85d5c2cc312d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:42:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/86673531-f8e9-465a-aac1-615283653eec\",\"name\":\"86673531-f8e9-465a-aac1-615283653eec\",\"status\":\"Succeeded\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "44e7b8d9-8f0b-4996-8907-5652a68b8666" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T13%3A42%3A19.2392396Z\u0027\"" ],
+        "x-ms-request-id": [ "e3c101db-84fd-48e7-a77c-242fddb6326a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "df1d3e57-f384-4dcf-b591-575f78168c5b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134222Z:df1d3e57-f384-4dcf-b591-575f78168c5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:42:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1403" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T13%3A42%3A19.2392396Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\",\"10.0.0.5\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Disabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "77a68305-be86-48d6-b995-26a56ef1077e" ],
+        "CommandName": [ "Get-AzADDomainService" ],
+        "FullCommandName": [ "Get-AzADDomainService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T13%3A42%3A19.2392396Z\u0027\"" ],
+        "x-ms-request-id": [ "d1c210b9-7d50-46eb-a86f-74c14f7431f2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "5069fe22-b3d6-4c26-81da-c717d2837eb5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134623Z:5069fe22-b3d6-4c26-81da-c717d2837eb5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:46:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1403" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T13%3A42%3A19.2392396Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\",\"10.0.0.5\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Disabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"domainSecuritySettings\": {\r\n      \"ntlmV1\": \"\",\r\n      \"tlsV1\": \"Enabled\",\r\n      \"syncNtlmPasswords\": \"\",\r\n      \"syncKerberosPasswords\": \"\",\r\n      \"syncOnPremPasswords\": \"\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "217" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T13%3A46%3A25.0455618Z\u0027\"" ],
+        "x-ms-request-id": [ "c2d82c75-a866-4a84-80ce-afe498484ad3" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "98d0fb62-c799-4080-a299-2d0230671dcf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134635Z:98d0fb62-c799-4080-a299-2d0230671dcf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:46:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T13%3A46%3A25.0455618Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\",\"10.0.0.5\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Disabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Accepted\"}}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ae6042fa-a355-4e3b-88bf-ec1579e75949" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "203a3791-640d-431c-815d-a5d6357a36e5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134705Z:203a3791-640d-431c-815d-a5d6357a36e5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:47:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fbb1c4e3-b40b-4093-a5e2-ed80e1b8b987" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "0b112756-8226-45df-9ca1-76b5472c459b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134736Z:0b112756-8226-45df-9ca1-76b5472c459b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:47:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0b733673-2cbb-426a-a7f1-c8d6e9673361" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "282420c5-dfab-4336-843d-2cd753a42043" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134806Z:282420c5-dfab-4336-843d-2cd753a42043" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:48:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "96442a87-4858-47f4-96a7-0032b1387888" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "0396c43f-d5dc-4c83-92a9-bf93351563ef" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134836Z:0396c43f-d5dc-4c83-92a9-bf93351563ef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:48:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "aa5b43a2-974e-41ec-ba86-4cb191a6cec0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "be41dbf3-d9de-41da-acc4-12e77272e3e4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134907Z:be41dbf3-d9de-41da-acc4-12e77272e3e4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:49:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f4797bc6-daa1-4cf2-a2eb-ef32e9c43101" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "87bb4d07-98a4-479b-8c8a-dcfb7700e11a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T134937Z:87bb4d07-98a4-479b-8c8a-dcfb7700e11a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:49:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "aab7fb45-e5c0-4fe3-8aa2-7d3a380402e1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "53f2f1dc-eae7-4ec5-8edd-654a7ecfe534" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T135007Z:53f2f1dc-eae7-4ec5-8edd-654a7ecfe534" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:50:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4b78a9d0-1f9b-4b43-be5e-374daaf56b43" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "3b19dc32-854e-49b7-b4fc-9b709f10edc2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T135038Z:3b19dc32-854e-49b7-b4fc-9b709f10edc2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:50:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "311" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Updating\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f5fd3b78-0d97-4c1a-a312-2e27a45b6bcd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "1749b6a0-db31-4928-8237-a11d7d871c2a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T135108Z:1749b6a0-db31-4928-8237-a11d7d871c2a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:51:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/locations/westus/operationResults/2631f09e-207e-4914-b4fe-8468e795b2eb\",\"name\":\"2631f09e-207e-4914-b4fe-8468e795b2eb\",\"status\":\"Succeeded\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\",\"percentComplete\":0.0}"
+    }
+  },
+  "Update-AzADDomainService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "d92e74f7-59fc-446f-88dd-e6d010caadac" ],
+        "CommandName": [ "Az.ADDomainServices.internal\\Update-AzADDomainService" ],
+        "FullCommandName": [ "Update-AzADDomainService_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T13%3A50%3A57.5935401Z\u0027\"" ],
+        "x-ms-request-id": [ "0964dbc2-092b-456b-934b-794ff47c0f1e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "1ef3eaf2-8882-4432-970e-ac30a78fb05d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T135109Z:1ef3eaf2-8882-4432-970e-ac30a78fb05d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 13:51:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T13%3A50%3A57.5935401Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\",\"10.0.0.5\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

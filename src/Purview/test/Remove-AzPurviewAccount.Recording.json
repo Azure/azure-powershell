@@ -1,0 +1,454 @@
+{
+  "Remove-AzPurviewAccount+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa1?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa1?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "bf802d86-9234-4623-aa88-58dcff0d8e75" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "e2b307bc-70a4-4891-8515-289450938a3d" ],
+        "x-ms-correlation-request-id": [ "e2b307bc-70a4-4891-8515-289450938a3d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042331Z:e2b307bc-70a4-4891-8515-289450938a3d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:23:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "bf802d86-9234-4623-aa88-58dcff0d8e75" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
+        "x-ms-request-id": [ "b0d7088e-4ae2-49e9-8b14-935ec9dc37fc" ],
+        "x-ms-correlation-request-id": [ "b0d7088e-4ae2-49e9-8b14-935ec9dc37fc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042401Z:b0d7088e-4ae2-49e9-8b14-935ec9dc37fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:24:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "bf802d86-9234-4623-aa88-58dcff0d8e75" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
+        "x-ms-request-id": [ "4abca81d-3bb1-4420-a1c9-42cd4b0d007e" ],
+        "x-ms-correlation-request-id": [ "4abca81d-3bb1-4420-a1c9-42cd4b0d007e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042432Z:4abca81d-3bb1-4420-a1c9-42cd4b0d007e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:24:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "bf802d86-9234-4623-aa88-58dcff0d8e75" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "49860df8-1815-46c1-b56f-5f82c9d16db8" ],
+        "x-ms-correlation-request-id": [ "49860df8-1815-46c1-b56f-5f82c9d16db8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042502Z:49860df8-1815-46c1-b56f-5f82c9d16db8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:25:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startTime\":\"2021-08-18T04:23:31.2243826Z\",\"endTime\":\"2021-08-18T04:23:34.4003717Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/d6d39f8a-f182-4ebc-9802-78ab2817ee16?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "bf802d86-9234-4623-aa88-58dcff0d8e75" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "7a8cef67-b676-444d-8804-4ab51b0499d4" ],
+        "x-ms-correlation-request-id": [ "7a8cef67-b676-444d-8804-4ab51b0499d4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042502Z:7a8cef67-b676-444d-8804-4ab51b0499d4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:25:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startTime\":\"2021-08-18T04:23:31.2243826Z\",\"endTime\":\"2021-08-18T04:23:34.4003717Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa2?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa2?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "68ed72d8-f435-4016-af13-a795c45afd5d" ],
+        "CommandName": [ "Get-AzPurviewAccount" ],
+        "FullCommandName": [ "Get-AzPurviewAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
+        "x-ms-account-status": [ "Succeeded" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "83a78d1b-dab6-4a6f-9f95-088895e1616d" ],
+        "x-ms-correlation-request-id": [ "83a78d1b-dab6-4a6f-9f95-088895e1616d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042503Z:83a78d1b-dab6-4a6f-9f95-088895e1616d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:25:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1712" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"905a7226-82a6-4670-9799-10da0755c466\"},\"friendlyName\":\"bez-test-pa2\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:15:49.4448857Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa2.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa2.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa2.guardian.purview.azure.com\"},\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-acavfmx\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-acavfmx/providers/Microsoft.Storage/storageAccounts/scaneastus2ptfjirf\",\"eventHubNamespace\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-acavfmx/providers/Microsoft.EventHub/namespaces/Atlas-a0cdc5ad-e84e-43aa-8ae2-9651e2f06080\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-acavfmx\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa2\",\"name\":\"bez-test-pa2\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus2\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"43865551-da81-41ea-bb02-7241e75fd4a6\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:15:49.4448857Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:15:49.4448857Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa2?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa2?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "658b1211-6ca4-4ba1-81cd-e89a2de3a0f0" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "895cffbb-f2d9-4914-8162-edf2394a52a3" ],
+        "x-ms-correlation-request-id": [ "895cffbb-f2d9-4914-8162-edf2394a52a3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042504Z:895cffbb-f2d9-4914-8162-edf2394a52a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:25:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "658b1211-6ca4-4ba1-81cd-e89a2de3a0f0" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11943" ],
+        "x-ms-request-id": [ "d6e8076e-be3b-46a3-adc8-1cb661184789" ],
+        "x-ms-correlation-request-id": [ "d6e8076e-be3b-46a3-adc8-1cb661184789" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042535Z:d6e8076e-be3b-46a3-adc8-1cb661184789" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:25:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "658b1211-6ca4-4ba1-81cd-e89a2de3a0f0" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
+        "x-ms-request-id": [ "3e7774e2-3184-4d33-a97a-59884a0e5ed1" ],
+        "x-ms-correlation-request-id": [ "3e7774e2-3184-4d33-a97a-59884a0e5ed1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042605Z:3e7774e2-3184-4d33-a97a-59884a0e5ed1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:26:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "658b1211-6ca4-4ba1-81cd-e89a2de3a0f0" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "8f48ed87-c1aa-43a8-9f57-777b6ee3e439" ],
+        "x-ms-correlation-request-id": [ "8f48ed87-c1aa-43a8-9f57-777b6ee3e439" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042636Z:8f48ed87-c1aa-43a8-9f57-777b6ee3e439" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:26:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startTime\":\"2021-08-18T04:25:04.7664985Z\",\"endTime\":\"2021-08-18T04:25:05.2407928Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPurviewAccount+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Purview/locations/eastus2/operationResults/909681d3-3c5d-4736-afb7-3c6f0edaf091?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "658b1211-6ca4-4ba1-81cd-e89a2de3a0f0" ],
+        "CommandName": [ "Remove-AzPurviewAccount" ],
+        "FullCommandName": [ "Remove-AzPurviewAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "14cc9a85-7b75-4293-9434-59a23bc559fc" ],
+        "x-ms-correlation-request-id": [ "14cc9a85-7b75-4293-9434-59a23bc559fc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042636Z:14cc9a85-7b75-4293-9434-59a23bc559fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:26:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startTime\":\"2021-08-18T04:25:04.7664985Z\",\"endTime\":\"2021-08-18T04:25:05.2407928Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  }
+}

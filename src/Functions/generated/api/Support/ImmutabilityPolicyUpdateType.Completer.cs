@@ -30,15 +30,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "put".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("put", "put", global::System.Management.Automation.CompletionResultType.ParameterValue, "put");
+                yield return new global::System.Management.Automation.CompletionResult("'put'", "put", global::System.Management.Automation.CompletionResultType.ParameterValue, "put");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "lock".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("lock", "lock", global::System.Management.Automation.CompletionResultType.ParameterValue, "lock");
+                yield return new global::System.Management.Automation.CompletionResult("'lock'", "lock", global::System.Management.Automation.CompletionResultType.ParameterValue, "lock");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "extend".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("extend", "extend", global::System.Management.Automation.CompletionResultType.ParameterValue, "extend");
+                yield return new global::System.Management.Automation.CompletionResult("'extend'", "extend", global::System.Management.Automation.CompletionResultType.ParameterValue, "extend");
             }
         }
     }

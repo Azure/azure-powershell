@@ -1,0 +1,125 @@
+{
+  "New-AzDatadogMonitor+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw?api-version=2021-03-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"drawdown_testing_20200904_Monthly\"\r\n  },\r\n  \"properties\": {\r\n    \"userInfo\": {\r\n      \"name\": \"user\",\r\n      \"emailAddress\": \"user@microsoft.com\",\r\n      \"phoneNumber\": \"11111111111\"\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "308" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0200241c-0000-3400-0000-60b48d550000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/51799d0d-8fb9-4834-b773-bf51b9d0ccdc?api-version=2021-03-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/51799d0d-8fb9-4834-b773-bf51b9d0ccdc?api-version=2021-03-01" ],
+        "x-ms-request-id": [ "51799d0d-8fb9-4834-b773-bf51b9d0ccdc" ],
+        "x-ms-correlation-request-id": [ "b7e7d4b8-5d48-409a-8a11-f13bcad2dd9b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071639Z:b7e7d4b8-5d48-409a-8a11-f13bcad2dd9b" ],
+        "Date": [ "Mon, 31 May 2021 07:16:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1049" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw\",\"name\":\"monitor5sdwcw\",\"type\":\"microsoft.Datadog/monitors\",\"sku\":{\"name\":\"drawdown_testing_20200904_Monthly\"},\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:16:28.8857408Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:16:28.8857408Z\"},\"identity\":{\"principalId\":\"38d79e3f-b655-4570-95cd-445187fe40fe\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Provisioning\",\"DatadogOrganizationProperties\":{\"name\":\"monitor5sdwcw\",\"id\":null,\"linkingAuthCode\":null,\"linkingClientId\":null,\"redirectUri\":null,\"apiKey\":null,\"applicationKey\":null,\"enterpriseAppId\":null},\"userInfo\":null,\"liftrResourceCategory\":\"Unknown\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/51799d0d-8fb9-4834-b773-bf51b9d0ccdc?api-version=2021-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/51799d0d-8fb9-4834-b773-bf51b9d0ccdc?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "2923164e-9719-4e71-9298-2a34000a195d" ],
+        "CommandName": [ "New-AzDatadogMonitor" ],
+        "FullCommandName": [ "New-AzDatadogMonitor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00006356-0000-3400-0000-60b48d650000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "6d6c3da9-4257-4132-aca5-021052f06c5f" ],
+        "x-ms-correlation-request-id": [ "d3fe5ff7-2a7a-48fb-bbeb-15773eb74c48" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071709Z:d3fe5ff7-2a7a-48fb-bbeb-15773eb74c48" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:17:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "451" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/51799d0d-8fb9-4834-b773-bf51b9d0ccdc\",\"name\":\"51799d0d-8fb9-4834-b773-bf51b9d0ccdc\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-31T07:16:36.9662999Z\",\"endTime\":\"2021-05-31T07:16:53.626044Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw?api-version=2021-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "2923164e-9719-4e71-9298-2a34000a195d" ],
+        "CommandName": [ "New-AzDatadogMonitor" ],
+        "FullCommandName": [ "New-AzDatadogMonitor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"02002a1c-0000-3400-0000-60b48d650000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b05b5514-0c38-4600-9f3d-7126bc0bba1e" ],
+        "x-ms-correlation-request-id": [ "56b3270a-85e5-4c4e-bc36-9397457f0bc8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071710Z:56b3270a-85e5-4c4e-bc36-9397457f0bc8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:17:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "961" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitor5sdwcw\",\"name\":\"monitor5sdwcw\",\"type\":\"microsoft.Datadog/monitors\",\"sku\":{\"name\":\"drawdown_testing_20200904_Monthly\"},\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:16:28.8857408Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:16:53.3262045Z\"},\"identity\":{\"principalId\":\"38d79e3f-b655-4570-95cd-445187fe40fe\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"DatadogOrganizationProperties\":{\"name\":\"monitor5sdwcw\",\"id\":\"24301ca0-c1e0-11eb-9a40-da7ad0900003\"},\"liftrResourceCategory\":\"Unknown\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  }
+}

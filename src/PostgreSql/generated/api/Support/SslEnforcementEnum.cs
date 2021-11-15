@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>Enable ssl enforcement or not when connect to server.</summary>
     public partial struct SslEnforcementEnum :
         System.IEquatable<SslEnforcementEnum>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="SslEnforcementEnum" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SslEnforcementEnum(System.Convert.ToString(value));
+            return new SslEnforcementEnum(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SslEnforcementEnum</summary>

@@ -88,12 +88,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     break;
                 case ParameterSetNames.SubscriptionLevelResource:
                     SecurityCenterClient.AscLocation = Location;
-                    var alert = SecurityCenterClient.Alerts.GetSubscriptionLevelAlertWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
+                    var alert = SecurityCenterClient.Alerts.GetSubscriptionLevelWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceGroupLevelResource:
                     SecurityCenterClient.AscLocation = Location;
-                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelAlertsWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
+                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
@@ -103,11 +103,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 
                     if (string.IsNullOrEmpty(rg))
                     {
-                        alert = SecurityCenterClient.Alerts.GetSubscriptionLevelAlertWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
+                        alert = SecurityCenterClient.Alerts.GetSubscriptionLevelWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
                     }
                     else
                     {
-                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelAlertsWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId), rg).GetAwaiter().GetResult().Body;
+                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId), rg).GetAwaiter().GetResult().Body;
                     }
 
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);

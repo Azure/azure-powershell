@@ -31,11 +31,11 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
-- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.DescriptionAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.DescriptionAttribute`
   - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
-- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.DoNotExportAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.CostManagement`.
-- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.InternalExportAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.InternalExportAttribute`
   - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.CostManagement`. For more information, see [readme.md](..\internal/readme.md) in the `..\internal` folder.
-- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ProfileAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.CostManagement.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.

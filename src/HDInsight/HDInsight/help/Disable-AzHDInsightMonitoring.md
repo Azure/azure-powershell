@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/disable-azhdinsightmonitoring
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring
 schema: 2.0.0
 ---
 
 # Disable-AzHDInsightMonitoring
 
 ## SYNOPSIS
-Disables monitoring in a HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
+Disables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Disable-AzHDInsightMonitoring [-Name] <String> [-ResourceGroupName <String>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzHDInsightMonitoring** cmdlet disables monitoring in a Azure HDInsight cluster.
+The **Disable-AzHDInsightMonitoring** cmdlet disables the Classic Azure Monitor logs integration on an HDInsight cluster.
 
 ## EXAMPLES
 

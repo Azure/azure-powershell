@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The test migrate state.</summary>
     public partial struct TestMigrationState :
         System.IEquatable<TestMigrationState>
     {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="TestMigrationState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new TestMigrationState(System.Convert.ToString(value));
+            return new TestMigrationState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type TestMigrationState</summary>

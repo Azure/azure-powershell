@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 26EC220C-5123-4CEF-8CC6-5FFD08F33481
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverrecommendedactionstate
+online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverrecommendedactionstate
 schema: 2.0.0
 ---
 

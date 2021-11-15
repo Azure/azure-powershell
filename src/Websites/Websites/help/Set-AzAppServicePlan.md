@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 32D45795-FBCD-4157-BF45-41BD1F61782E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azappserviceplan
+online version: https://docs.microsoft.com/powershell/module/az.websites/set-azappserviceplan
 schema: 2.0.0
 ---
 

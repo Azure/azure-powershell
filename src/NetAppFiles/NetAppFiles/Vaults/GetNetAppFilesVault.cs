@@ -23,9 +23,11 @@ using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Vault
 {
+    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), ReplacementCmdletOutputTypeName = "PSNetAppFilesVault")]
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVault",
@@ -83,8 +85,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Vault
                 AccountName = NameParts[0];
             }
 
-            var anfBackups = AzureNetAppFilesManagementClient.Vaults.List(ResourceGroupName, accountName: AccountName).Select(e => e.ConvertToPs());
-            WriteObject(anfBackups, true);
+            var anfVault = AzureNetAppFilesManagementClient.Vaults.List(ResourceGroupName, accountName: AccountName).Select(e => e.ConvertToPs());
+            WriteObject(anfVault, true);
         }
     }
 }

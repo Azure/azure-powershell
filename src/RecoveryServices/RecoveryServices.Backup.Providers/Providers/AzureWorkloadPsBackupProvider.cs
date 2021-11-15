@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
-        {
+        {   
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
@@ -265,6 +266,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
             // 1. Filter by container
@@ -274,7 +276,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 container,
                 policy,
                 ServiceClientModel.BackupManagementType.AzureWorkload,
-                DataSourceType.SQLDataBase);
+                DataSourceType.SQLDataBase,
+                UseSecondaryRegion);
 
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
@@ -398,10 +401,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultLocation = (string)ProviderData[VaultParams.VaultLocation];
             RecoveryConfigBase wLRecoveryConfigBase =
                 (RecoveryConfigBase)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
-
             AzureWorkloadRecoveryConfig wLRecoveryConfig =
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
+            string rehydrateDuration = ProviderData.ContainsKey(RecoveryPointParams.RehydrateDuration) ?
+                ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
+            string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
+                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
@@ -426,6 +434,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+
+                    if (wLRecoveryConfig.TargetVirtualMachineId != null && wLRecoveryConfig.TargetVirtualMachineId != "")
+                    {
+                        azureWorkloadSQLRestoreRequest.TargetVirtualMachineId = wLRecoveryConfig.TargetVirtualMachineId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.TargetVirtualMachineIdRequiredException);
+                    }                    
                 }
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
@@ -463,6 +480,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+
+                    if (wLRecoveryConfig.TargetVirtualMachineId != null && wLRecoveryConfig.TargetVirtualMachineId != "")
+                    {
+                        azureWorkloadSQLPointInTimeRestoreRequest.TargetVirtualMachineId = wLRecoveryConfig.TargetVirtualMachineId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.TargetVirtualMachineIdRequiredException);
+                    }
                 }
 
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
@@ -481,14 +507,65 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
             }
 
-            var response = ServiceClientAdapter.RestoreDisk(
+            if (useSecondaryRegion)
+            {
+                AzureRecoveryPoint rp = (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                // get access token
+                CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName, ServiceClientModel.BackupManagementType.AzureWorkload);
+
+                // AzureWorkload  CRR Request
+                Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);
+
+                CrossRegionRestoreRequest crrRestoreRequest = new CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                crrRestoreRequest.RestoreRequest = triggerRestoreRequest.Properties;
+
+                // storage account location isn't required in case of workload restore
+                var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    rp,
+                    triggerCRRRestoreRequest: crrRestoreRequest,
+                    secondaryRegion: secondaryRegion);
+                return response;
+            }
+            else
+            {
+                #region Rehydrate Restore 
+                CmdletModel.AzureWorkloadRecoveryPoint rp =  (CmdletModel.AzureWorkloadRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                if(rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority == null)
+                {
+                    throw new ArgumentException(Resources.InvalidRehydration); 
+                }
+
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority != null)
+                {
+                    var azureWorkloadRestoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    
+                    if (triggerRestoreRequest.Properties.GetType().Equals("AzureWorkloadSQLPointInTimeRestoreRequest"))
+                    {
+                        Logger.Instance.WriteWarning("Rehyrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");                        
+                    }
+                    else
+                    {
+                        AzureWorkloadSQLRestoreWithRehydrateRequest azureWorkloadRestoreRequestDeSerialized = JsonConvert.DeserializeObject<AzureWorkloadSQLRestoreWithRehydrateRequest>(azureWorkloadRestoreRequestSerialized);
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo();
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationRetentionDuration = "P" + rehydrateDuration + "D"; // P <val> D
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationPriority = rehydratePriority;
+                        triggerRestoreRequest.Properties = azureWorkloadRestoreRequestDeSerialized;
+                    }
+                }
+                #endregion
+
+                var response = ServiceClientAdapter.RestoreDisk(
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
                 "LocationNotRequired",
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
                 vaultLocation: vaultLocation);
-            return response;
+                return response;
+            }
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> CreateorModifyPolicy()

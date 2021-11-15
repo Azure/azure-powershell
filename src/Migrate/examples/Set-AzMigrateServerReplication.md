@@ -25,3 +25,36 @@ Type                             : Microsoft.RecoveryServices/vaults/replication
 ```
 
 By id.
+
+### Example 2: Update multiple disk names by id
+```powershell
+PS C:\> $OSDisk = Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+PS C:\> $DataDisk = Set-AzMigrateDiskMapping -DiskID "6000C292-79b9-bbdc-fb8a-f1fa8dbeff84" -DiskName "ContosoDisk_2"
+PS C:\> $DiskMapping = $OSDisk, $DataDisk
+PS C:\> Set-AzMigrateServerReplication -TargetObjectId "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015f6d8-fc84-afdf-de47-1eab79330f00" -DiskToUpdate $DiskMapping
+
+ActivityId                       : c533d88d-2211-43c6-b615-7b46876d8882 ActivityId: de18df8b-8d43-4249-8989-846d33a124f6
+AllowedAction                    : {}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobDetailsAffectedObje
+                                   ctDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Update the virtual machine
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105src
+                                   rg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJo
+                                   bs/6ec1cca6-87c7-4f14-9657-bd0469c02fcd
+Location                         :
+Name                             : 6ec1cca6-87c7-4f14-9657-bd0469c02fcd
+ScenarioName                     : UpdateVmProperties
+StartTime                        : 8/30/2021 7:08:51 AM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : f3aa6bd4-1b60-52bb-b12d-e850f8d8f13c
+TargetObjectName                 : Win2k16
+Task                             : {UpdateVmPropertiesTask}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+```
+
+Updating disk name by id.

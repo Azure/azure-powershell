@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/en-us/powershell/module/az.importexport/remove-azimportexport
+online version: https://docs.microsoft.com/powershell/module/az.importexport/remove-azimportexport
 schema: 2.0.0
 ---
 

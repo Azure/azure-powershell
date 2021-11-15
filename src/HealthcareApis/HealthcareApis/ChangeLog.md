@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Added support for Acr LoginServers
+
 ## Version 1.2.0
 * Added support for customer managed keys
 

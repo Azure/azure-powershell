@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for FailoverDeploymentModel.</summary>
+    /// <summary>The failover deployment model.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.FailoverDeploymentModelTypeConverter))]
     public partial struct FailoverDeploymentModel :
         System.Management.Automation.IArgumentCompleter
@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotApplicable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotApplicable", "NotApplicable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotApplicable");
+                yield return new global::System.Management.Automation.CompletionResult("'NotApplicable'", "NotApplicable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotApplicable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Classic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Classic", "Classic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Classic");
+                yield return new global::System.Management.Automation.CompletionResult("'Classic'", "Classic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Classic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceManager".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceManager", "ResourceManager", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceManager");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceManager'", "ResourceManager", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceManager");
             }
         }
     }

@@ -12,51 +12,133 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.ApplicationInsights;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
-    sealed class MockAzPredictorTelemetryClient : ITelemetryClient
+    sealed class MockAzPredictorTelemetryClient : AzPredictorTelemetryClient
     {
-        public class RecordedSuggestionForHistory
+        public record TelemetryRecord(string EventName, IDictionary<string, string> Properties);
+
+        public HistoryTelemetryData HistoryData { get; internal set; }
+        public RequestPredictionTelemetryData RequestPredictionData { get; internal set; }
+        public GetSuggestionTelemetryData GetSuggestionData { get; internal set; }
+        public SuggestionDisplayedTelemetryData SuggestionDisplayedData { get; internal set; }
+        public SuggestionAcceptedTelemetryData SuggestionAcceptedData { get; internal set; }
+        public ParameterMapTelemetryData ParameterMapData { get; internal set; }
+        public IList<TelemetryRecord> RecordedTelemetry { get; internal set; } = new List<TelemetryRecord>();
+        public IList<ITelemetryData> DispatchedTelemetry { get; internal set; } = new List<ITelemetryData>();
+        public AggregatedTelemetryData RecordedAggregatedData { get; private set; }
+        public bool FlushAtDispatch { get; set; }
+
+        private int _expctedTelemetryDispatchCount = 1;
+        public int ExceptedTelemetryDispatchCount
         {
-            public string HistoryLine { get; set; }
-        }
-
-        /// <inheritdoc/>
-        public string SessionId { get; } = Guid.NewGuid().ToString();
-
-        /// <inheritdoc/>
-        public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
-
-        public RecordedSuggestionForHistory RecordedSuggestion { get; set; }
-        public int SuggestionAccepted { get; set; }
-
-        /// <inheritdoc/>
-        public void OnHistory(HistoryTelemetryData telemetryData)
-        {
-            this.RecordedSuggestion = new RecordedSuggestionForHistory()
+            get
             {
-                HistoryLine = telemetryData.Command,
-            };
+                return _expctedTelemetryDispatchCount;
+            }
+            set
+            {
+                RecordedTelemetry.Clear();
+                DispatchedTelemetry.Clear();
+                _expctedTelemetryDispatchCount = value;
+            }
         }
 
-        /// <inheritdoc/>
-        public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
+        public TaskCompletionSource HistoryTaskCompletionSource { get; private set; }
+        public TaskCompletionSource RequestPredictionTaskCompletionSource { get; private set; }
+        public TaskCompletionSource DispatchTelemetryTaskCompletionSource { get; private set; }
+
+        public MockAzPredictorTelemetryClient() : base(new MockAzContext())
         {
         }
 
         /// <inheritdoc/>
-        public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
+        public override void OnHistory(HistoryTelemetryData telemetryData)
         {
-            ++this.SuggestionAccepted;
+            base.OnHistory(telemetryData);
+            HistoryData = telemetryData;
+            HistoryTaskCompletionSource?.TrySetResult();
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
+        public override void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
+            base.OnRequestPrediction(telemetryData);
+            RequestPredictionData = telemetryData;
+            RequestPredictionTaskCompletionSource?.TrySetResult();
         }
 
+        /// <inheritdoc/>
+        public override void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
+        {
+            base.OnGetSuggestion(telemetryData);
+            GetSuggestionData = telemetryData;
+        }
+
+        /// <inheritdoc/>
+        public override void OnSuggestionDisplayed(SuggestionDisplayedTelemetryData telemetryData)
+        {
+            base.OnSuggestionDisplayed(telemetryData);
+            SuggestionDisplayedData = telemetryData;
+        }
+
+        /// <inheritdoc/>
+        public override void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
+        {
+            base.OnSuggestionAccepted(telemetryData);
+            SuggestionAcceptedData = telemetryData;
+        }
+
+        /// <inheritdoc/>
+        public override void OnLoadParameterMap(ParameterMapTelemetryData telemetryData)
+        {
+            base.OnLoadParameterMap(telemetryData);
+            ParameterMapData = telemetryData;
+        }
+
+        public void FlushTelemetry() => SendAggregatedTelemetryData();
+
+        public void ResetWaitingTasks()
+        {
+            HistoryTaskCompletionSource = new TaskCompletionSource();
+            RequestPredictionTaskCompletionSource  = new TaskCompletionSource();
+            DispatchTelemetryTaskCompletionSource = new TaskCompletionSource();
+            HistoryData = default;
+            RequestPredictionData = default;
+        }
+
+        protected override TelemetryClient GetApplicationInsightTelemetryClient()
+        {
+            return null;
+        }
+
+        protected override void DispatchTelemetryData(ITelemetryData telemetryData)
+        {
+            base.DispatchTelemetryData(telemetryData);
+            DispatchedTelemetry.Add(telemetryData);
+
+            if (DispatchedTelemetry.Count == ExceptedTelemetryDispatchCount)
+            {
+                RecordedAggregatedData = CachedAggregatedTelemetryData;
+
+                if (FlushAtDispatch && base.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize > 0)
+                {
+                    CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
+                    SendAggregatedTelemetryData();
+                }
+
+                DispatchTelemetryTaskCompletionSource?.TrySetResult();
+            }
+        }
+
+        protected override void SendTelemetry(string eventName, IDictionary<string, string> properties)
+        {
+            RecordedTelemetry.Add(new TelemetryRecord(eventName, properties));
+        }
     }
 }

@@ -2,14 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification
+online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification
 schema: 2.0.0
 ---
 
 # Set-AzSqlInstanceDatabaseSensitivityClassification
 
 ## SYNOPSIS
-Sets the information types and sensitivity labels of columns in the Azure SQL managed instance database.
+Sets the information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
 ## SYNTAX
 
@@ -36,21 +36,21 @@ Set-AzSqlInstanceDatabaseSensitivityClassification [-SensitivityLabel <String>] 
 ```
 
 ## DESCRIPTION
-The Set-AzSqlInstanceDatabaseSensitivityClassification cmdlet sets the information types and sensitivity labels of columns in the Azure SQL managed instance database.
+The Set-AzSqlInstanceDatabaseSensitivityClassification cmdlet sets the information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
 ## EXAMPLES
 
-### Example 1: Set information type and sensitivity label of a column in an Azure SQL managed instance database.
+### Example 1: Set information type and sensitivity label of a column in an Azure SQL Managed Instance database.
 ```powershell
 PS C:\> Set-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column -InformationType informationType -SensitivityLabel label
 ```
 
-### Example 2: Set recommended information types and sensitivity labels of columns in an Azure SQL managed instance database.
+### Example 2: Set recommended information types and sensitivity labels of columns in an Azure SQL Managed Instance database.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Set-AzSqlInstanceDatabaseSensitivityClassification
 ```
 
-### Example 3: Set information type and sensitivity label of a column in an Azure SQL managed instance database, using piping.
+### Example 3: Set information type and sensitivity label of a column in an Azure SQL Managed Instance database, using piping.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Set-AzSqlInstanceDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column -InformationType informationType -SensitivityLabel label
 ```
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL managed instance database.
+The name of the Azure SQL Managed Instance database.
 
 ```yaml
 Type: System.String
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseObject
-The Azure SQL managed instance database object.
+The Azure SQL Managed Instance database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Azure SQL managed instance name.
+Azure SQL Managed Instance name.
 
 ```yaml
 Type: System.String
@@ -297,4 +297,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
+[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azdeploymentscript
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azdeploymentscript
 schema: 2.0.0
 ---
 

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         /// <param name="value">the value to convert to an instance of <see cref="ServerState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ServerState(System.Convert.ToString(value));
+            return new ServerState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ServerState</summary>

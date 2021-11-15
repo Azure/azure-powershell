@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             switch (propertyChange.PropertyChangeType)
             {
                 case PropertyChangeType.Create:
+                case PropertyChangeType.NoEffect:
                     return propertyChange.After.IsLeaf();
 
                 case PropertyChangeType.Delete:
@@ -126,6 +127,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     return $"{count} to ignore";
                 case ChangeType.NoChange:
                     return $"{count} no change";
+                case ChangeType.Unsupported:
+                    return $"{count} unsupported";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(changeType), changeType, null);
             }
@@ -138,34 +141,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 return;
             }
 
-            var changeTypeSet = new HashSet<ChangeType>();
+            var psChangeTypeSet = new HashSet<PSChangeType>();
 
             void PopulateChangeTypeSet(IList<PSWhatIfPropertyChange> propertyChanges)
             {
                 propertyChanges?.ForEach(propertyChange =>
                 {
-                    changeTypeSet.Add(propertyChange.PropertyChangeType.ToChangeType());
+                    psChangeTypeSet.Add(propertyChange.PropertyChangeType.ToPSChangeType());
                     PopulateChangeTypeSet(propertyChange.Children);
                 });
             }
 
             foreach (PSWhatIfChange resourceChange in resourceChanges)
             {
-                changeTypeSet.Add(resourceChange.ChangeType);
+                psChangeTypeSet.Add(resourceChange.ChangeType.ToPSChangeType());
                 PopulateChangeTypeSet(resourceChange.Delta);
             }
 
             this.Builder
                 .Append("Resource and property changes are indicated with ")
-                .AppendLine(changeTypeSet.Count == 1 ? "this symbol:" : "these symbols:");
+                .AppendLine(psChangeTypeSet.Count == 1 ? "this symbol:" : "these symbols:");
 
-            changeTypeSet
-                .OrderBy(changeType => changeType, new ChangeTypeComparer())
-                .ForEach(changeType => this.Builder
+            psChangeTypeSet
+                .OrderBy(x => x, new PSChangeTypeComparer())
+                .ForEach(x => this.Builder
                     .Append(Indent())
-                    .Append(changeType.ToSymbol(), changeType.ToColor())
+                    .Append(x.ToSymbol(), x.ToColor())
                     .Append(Symbol.WhiteSpace)
-                    .Append(changeType)
+                    .Append(x)
                     .AppendLine());
         }
 
@@ -235,21 +238,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
                     return;
 
-                case ChangeType.Modify when resourceChange.Delta?.Count > 0:
-                    using (this.Builder.NewColorScope(Color.Reset))
+                default:
+                    if (resourceChange.Delta?.Count > 0)
                     {
-                        IList<PSWhatIfPropertyChange> propertyChanges = resourceChange.Delta
-                            .OrderBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
-                            .ThenBy(pc => pc.Path)
-                            .ToList();
+                        using (this.Builder.NewColorScope(Color.Reset))
+                        {
+                            IList<PSWhatIfPropertyChange> propertyChanges = resourceChange.Delta
+                                .OrderBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
+                                .ThenBy(pc => pc.Path)
+                                .ToList();
 
-                        this.Builder.AppendLine();
-                        this.FormatPropertyChanges(propertyChanges);
+                            this.Builder.AppendLine();
+                            this.FormatPropertyChanges(propertyChanges);
+                        }
+
+                        return;
                     }
 
-                    return;
-
-                default:
                     if (isLast)
                     {
                         this.Builder.AppendLine();
@@ -326,6 +331,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 case PropertyChangeType.Array:
                     this.FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
                     this.FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
+                    break;
+
+                case PropertyChangeType.NoEffect:
+                    this.FormatPropertyChangePath(propertyChangeType, path, after, children, maxPathLength, indentLevel);
+                    this.FormatPropertyNoEffect(after, indentLevel + 1);
                     break;
 
                 default:
@@ -462,6 +472,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder
                 .Append(Indent(indentLevel))
                 .Append(Symbol.RightSquareBracket);
+        }
+
+        private void FormatPropertyNoEffect(JToken value, int indentLevel)
+        {
+            using (this.Builder.NewColorScope(Color.Gray))
+            {
+                this.FormatJson(value, indentLevel: indentLevel);
+            }
         }
     }
 }

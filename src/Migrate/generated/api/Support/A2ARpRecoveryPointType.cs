@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The recovery point type.</summary>
     public partial struct A2ARpRecoveryPointType :
         System.IEquatable<A2ARpRecoveryPointType>
     {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="A2ARpRecoveryPointType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new A2ARpRecoveryPointType(System.Convert.ToString(value));
+            return new A2ARpRecoveryPointType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type A2ARpRecoveryPointType</summary>

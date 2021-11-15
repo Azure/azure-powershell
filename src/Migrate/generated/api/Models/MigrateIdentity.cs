@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="FabricName" /> property.</summary>
         private string _fabricName;
 
-        /// <summary>Fabric unique name.</summary>
+        /// <summary>Fabric name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string FabricName { get => this._fabricName; set => this._fabricName = value; }
 
@@ -75,10 +75,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="IntentObjectName" /> property.</summary>
+        private string _intentObjectName;
+
+        /// <summary>Replication protection intent name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string IntentObjectName { get => this._intentObjectName; set => this._intentObjectName = value; }
+
         /// <summary>Backing field for <see cref="JobName" /> property.</summary>
         private string _jobName;
 
-        /// <summary>Job identifier</summary>
+        /// <summary>Job ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string JobName { get => this._jobName; set => this._jobName = value; }
 
@@ -169,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="ProviderName" /> property.</summary>
         private string _providerName;
 
-        /// <summary>Recovery services provider name</summary>
+        /// <summary>Recovery services provider name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ProviderName { get => this._providerName; set => this._providerName = value; }
 
@@ -250,12 +257,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Backing field for <see cref="VCenterName" /> property.</summary>
-        private string _vCenterName;
+        /// <summary>Backing field for <see cref="VaultSettingName" /> property.</summary>
+        private string _vaultSettingName;
 
-        /// <summary>vCenter name.</summary>
+        /// <summary>Vault setting name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string VCenterName { get => this._vCenterName; set => this._vCenterName = value; }
+        public string VaultSettingName { get => this._vaultSettingName; set => this._vaultSettingName = value; }
 
         /// <summary>Backing field for <see cref="VcenterName" /> property.</summary>
         private string _vcenterName;
@@ -263,6 +270,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>VCenter ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string VcenterName { get => this._vcenterName; set => this._vcenterName = value; }
+
+        /// <summary>Backing field for <see cref="VirtualMachineName" /> property.</summary>
+        private string _virtualMachineName;
+
+        /// <summary>Virtual Machine name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string VirtualMachineName { get => this._virtualMachineName; set => this._virtualMachineName = value; }
 
         /// <summary>Creates an new <see cref="MigrateIdentity" /> instance.</summary>
         public MigrateIdentity()
@@ -321,11 +335,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"eventName",
         PossibleTypes = new [] { typeof(string) })]
         string EventName { get; set; }
-        /// <summary>Fabric unique name.</summary>
+        /// <summary>Fabric name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Fabric unique name.",
+        Description = @"Fabric name.",
         SerializedName = @"fabricName",
         PossibleTypes = new [] { typeof(string) })]
         string FabricName { get; set; }
@@ -345,11 +359,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Job identifier</summary>
+        /// <summary>Replication protection intent name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Job identifier",
+        Description = @"Replication protection intent name.",
+        SerializedName = @"intentObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string IntentObjectName { get; set; }
+        /// <summary>Job ARM name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Job ARM name.",
         SerializedName = @"jobName",
         PossibleTypes = new [] { typeof(string) })]
         string JobName { get; set; }
@@ -449,11 +471,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"protectionContainerName",
         PossibleTypes = new [] { typeof(string) })]
         string ProtectionContainerName { get; set; }
-        /// <summary>Recovery services provider name</summary>
+        /// <summary>Recovery services provider name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Recovery services provider name",
+        Description = @"Recovery services provider name.",
         SerializedName = @"providerName",
         PossibleTypes = new [] { typeof(string) })]
         string ProviderName { get; set; }
@@ -545,14 +567,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
-        /// <summary>vCenter name.</summary>
+        /// <summary>Vault setting name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"vCenter name.",
-        SerializedName = @"vCenterName",
+        Description = @"Vault setting name.",
+        SerializedName = @"vaultSettingName",
         PossibleTypes = new [] { typeof(string) })]
-        string VCenterName { get; set; }
+        string VaultSettingName { get; set; }
         /// <summary>VCenter ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -561,6 +583,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"vcenterName",
         PossibleTypes = new [] { typeof(string) })]
         string VcenterName { get; set; }
+        /// <summary>Virtual Machine name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Virtual Machine name.",
+        SerializedName = @"virtualMachineName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VirtualMachineName { get; set; }
 
     }
     internal partial interface IMigrateIdentityInternal
@@ -578,13 +608,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string DatabaseName { get; set; }
         /// <summary>Unique name of an event within a migrate project.</summary>
         string EventName { get; set; }
-        /// <summary>Fabric unique name.</summary>
+        /// <summary>Fabric name.</summary>
         string FabricName { get; set; }
         /// <summary>Host ARM name.</summary>
         string HostName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Job identifier</summary>
+        /// <summary>Replication protection intent name.</summary>
+        string IntentObjectName { get; set; }
+        /// <summary>Job ARM name.</summary>
         string JobName { get; set; }
         /// <summary>Logical network name.</summary>
         string LogicalNetworkName { get; set; }
@@ -610,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string ProtectableItemName { get; set; }
         /// <summary>Protection container name.</summary>
         string ProtectionContainerName { get; set; }
-        /// <summary>Recovery services provider name</summary>
+        /// <summary>Recovery services provider name.</summary>
         string ProviderName { get; set; }
         /// <summary>Name of the recovery plan.</summary>
         string RecoveryPlanName { get; set; }
@@ -634,10 +666,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string StorageClassificationName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
-        /// <summary>vCenter name.</summary>
-        string VCenterName { get; set; }
+        /// <summary>Vault setting name.</summary>
+        string VaultSettingName { get; set; }
         /// <summary>VCenter ARM name.</summary>
         string VcenterName { get; set; }
+        /// <summary>Virtual Machine name.</summary>
+        string VirtualMachineName { get; set; }
 
     }
 }

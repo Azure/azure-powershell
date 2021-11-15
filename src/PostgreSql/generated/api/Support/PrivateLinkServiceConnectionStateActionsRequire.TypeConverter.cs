@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>
-    /// TypeConverter implementation for PrivateLinkServiceConnectionStateActionsRequire.
-    /// </summary>
+    /// <summary>The actions required for private link service connection.</summary>
     public partial class PrivateLinkServiceConnectionStateActionsRequireTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

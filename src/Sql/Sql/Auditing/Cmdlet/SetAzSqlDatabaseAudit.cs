@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             if (PredicateExpression != null)
             {
-                model.PredicateExpression = PredicateExpression = PredicateExpression;
+                model.PredicateExpression = PredicateExpression;
             }
 
             if (BlobStorageTargetState != null)
@@ -187,9 +187,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
-        protected override SqlAuditAdapter InitModelAdapter()
+        protected override SqlDatabaseAuditAdapter InitModelAdapter()
         {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
+            return new SqlDatabaseAuditAdapter(DefaultProfile.DefaultContext, DatabaseName, RoleAssignmentId);
         }
 
         protected override bool WriteResult() => PassThru;

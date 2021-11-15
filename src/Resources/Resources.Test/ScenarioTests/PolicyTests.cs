@@ -240,5 +240,54 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SetPolicySetDefinitionParameters");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyExemptionCRUD()
+        {
+            TestRunner.RunTestScript("Test-PolicyExemptionCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyExemptionCRUDOnPolicySet()
+        {
+            TestRunner.RunTestScript("Test-PolicyExemptionCRUDOnPolicySet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyExemptionCRUDAtManagementGroup()
+        {
+            TestRunner.RunTestScript("Test-PolicyExemptionCRUDAtManagementGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPolicyExemptionParameters()
+        {
+            TestRunner.RunTestScript("Test-GetPolicyExemptionParameters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewPolicyExemptionParameters()
+        {
+            TestRunner.RunTestScript("Test-NewPolicyExemptionParameters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemovePolicyExemptionParameters()
+        {
+            TestRunner.RunTestScript("Test-RemovePolicyExemptionParameters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetPolicyExemptionParameters()
+        {
+            TestRunner.RunTestScript("Test-SetPolicyExemptionParameters");
+        }
     }
 }

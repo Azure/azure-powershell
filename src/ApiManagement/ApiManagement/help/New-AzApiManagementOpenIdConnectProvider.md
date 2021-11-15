@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: D5B18FF4-3294-4561-A4CD-CF0FA5E4A59B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementopenidconnectprovider
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementopenidconnectprovider
 schema: 2.0.0
 ---
 

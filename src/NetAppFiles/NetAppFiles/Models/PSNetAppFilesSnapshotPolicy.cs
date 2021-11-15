@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Type { get; set; }
 
         /// <summary>
+        /// Gets or sets resource etag
+        /// </summary>
+        /// <remarks>
+        /// A unique read-only string that changes whenever the resource is updated.
+        /// </remarks>
+        public string Etag { get; set; }
+
+        /// <summary>
         /// Gets or sets resource tags
         /// </summary>
         public object Tags { get; set; }
@@ -64,36 +72,39 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         ///     Schedule for hourly snapshots
         /// </remarks>
         public PSNetAppFilesHourlySchedule HourlySchedule { get; set; }
-        
-        ///
-        /// Summary:
+
+        /// <summary>
         ///     Gets or sets dailySchedule
         ///
-        /// Remarks:
+        /// </summary>
+        /// <remarks>
         ///     Schedule for daily snapshots
+        /// </remarks>
         public PSNetAppFilesDailySchedule DailySchedule { get; set; }
-        
-        ///
-        /// Summary:
-        ///     Gets or sets weeklySchedule
-        ///
-        /// Remarks:
-        ///     Schedule for weekly snapshots        
-        public PSNetAppFilesWeeklySchedule WeeklySchedule { get; set; }
-        
-        ///
-        /// Summary:
-        ///     Gets or sets monthlySchedule
-        ///
-        /// Remarks:
-        ///     Schedule for monthly snapshots        
-        public PSNetAppFilesMonthlySchedule MonthlySchedule { get; set; }
 
         ///
-        /// Summary:
-        ///     Gets or sets the property to decide policy is enabled or not        
-        /// Remarks:
+        /// <summary>
+        ///     Gets or sets weeklySchedule
+        /// </summary>
+        /// <remarks>
+        ///     Schedule for weekly snapshots
+        /// </remarks>
+        public PSNetAppFilesWeeklySchedule WeeklySchedule { get; set; }
+
+        /// <summary>
+        ///     Gets or sets monthlySchedule
+        /// </summary>
+        /// <remarks>
+        ///      Schedule for monthly snapshots
+        /// </remarks>
+        public PSNetAppFilesMonthlySchedule MonthlySchedule { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the property to decide policy is enabled or not
+        /// </summary>
+        /// <remarks>
         /// The property to decide policy is enabled or not
+        /// </remarks>
         public bool? Enabled { get; set; }
 
         /// <summary>

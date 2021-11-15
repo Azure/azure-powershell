@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntime
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
@@ -64,6 +64,8 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	CatalogPricingTier           : S1
 	VNetId                       : 
 	Subnet                       : 
+	SubnetId                     : 
+	VNetInjectionMethod          : Express
 	PublicIPs                    : 
 	State                        : Starting
 	ResourceGroupName            : rg-test-dfv2
@@ -93,6 +95,8 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	CatalogPricingTier           : S1
 	VNetId                       : 
 	Subnet                       : 
+	SubnetId                     : 
+	VNetInjectionMethod          : Standard
 	PublicIPs                    : 
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2

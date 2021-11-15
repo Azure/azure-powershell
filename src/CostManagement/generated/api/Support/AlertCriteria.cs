@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>Criteria that triggered alert</summary>
     public partial struct AlertCriteria :
         System.IEquatable<AlertCriteria>
     {
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="AlertCriteria" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AlertCriteria(System.Convert.ToString(value));
+            return new AlertCriteria(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AlertCriteria</summary>

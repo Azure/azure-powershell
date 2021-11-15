@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappsnapshot
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebappsnapshot
 schema: 2.0.0
 ---
 

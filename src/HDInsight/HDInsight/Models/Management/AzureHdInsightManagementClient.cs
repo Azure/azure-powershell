@@ -209,6 +209,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Extensions.GetMonitoringStatus(resourceGroupName, clusterName);
         }
 
+        public virtual void EnableAzureMonitor(string resourceGroupName, string clusterName, AzureMonitorRequest azureMonitorRequestParameters)
+        {
+            HdInsightManagementClient.Extensions.EnableAzureMonitor(resourceGroupName, clusterName, azureMonitorRequestParameters);
+        }
+
+        public virtual void DisableAzureMonitor(string resourceGroupName, string clusterName)
+        {
+            HdInsightManagementClient.Extensions.DisableAzureMonitor(resourceGroupName, clusterName);
+        }
+
+        public virtual AzureMonitorResponse GetAzureMonitor(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Extensions.GetAzureMonitorStatus(resourceGroupName, clusterName);
+        }
+
         public virtual void RotateDiskEncryptionKey(string resourceGroupName, string clusterName, ClusterDiskEncryptionParameters parameters)
         {
             HdInsightManagementClient.Clusters.RotateDiskEncryptionKey(resourceGroupName, clusterName, parameters);
@@ -227,6 +242,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual void UpdateAutoScaleConfiguration(string resourceGroupName, string clusterName, AutoscaleConfigurationUpdateParameter autoscaleConfigurationUpdateParameter)
         {
             HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter);
+        }
+
+        public virtual BillingResponseListResult ListBillingSpecs(string location)
+        {
+            return HdInsightManagementClient.Locations.ListBillingSpecs(location);
         }
 
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)

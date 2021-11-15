@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MonitoringSolutions
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
+online version: https://docs.microsoft.com/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
 schema: 2.0.0
 ---
 

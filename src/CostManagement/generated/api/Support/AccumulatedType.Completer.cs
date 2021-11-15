@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for AccumulatedType.</summary>
+    /// <summary>Show costs accumulated over time.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.AccumulatedTypeTypeConverter))]
     public partial struct AccumulatedType :
         System.Management.Automation.IArgumentCompleter

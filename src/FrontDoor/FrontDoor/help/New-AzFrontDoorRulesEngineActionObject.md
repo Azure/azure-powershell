@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorrulesengineactionobject
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengineactionobject
 schema: 2.0.0
 ---
 
@@ -11,6 +11,14 @@ schema: 2.0.0
 Create a PSRulesEngineAction object for creating a rules engine rule.
 
 ## SYNTAX
+
+### ByFieldsWithRegularActionParameterSet (Default)
+```
+New-AzFrontDoorRulesEngineActionObject
+ [-RequestHeaderAction <System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction]>]
+ [-ResponseHeaderAction <System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ### ByFieldsWithForwardingParameterSet
 ```
@@ -36,18 +44,38 @@ New-AzFrontDoorRulesEngineActionObject
 ## DESCRIPTION
 Create a PSRulesEngineAction object for creating a rules engine rule. 
 
-Use cmdlet "New-AzFrontDoorHeaderActionObject" to create PSHeaderObjects to pass into the parameters "-RequestHeaderActions" and "-ResponseHeaderActions"."
+Use cmdlet "New-AzFrontDoorHeaderActionObject" to create PSHeaderObjects to pass into the parameters "-RequestHeaderActions" and "-ResponseHeaderActions".
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+PS C:\> $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
+PS C:\> $headerActions
+
+HeaderName             HeaderActionType Value
+----------             ---------------- -----
+X-Content-Type-Options           Append nosniff
+
+PS C:\> $rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions
+PS C:\> $rulesEngineAction
+
+RequestHeaderActions ResponseHeaderActions    RouteConfigurationOverride
+-------------------- ---------------------    --------------------------
+{}                   {X-Content-Type-Options}
+
+```
+
+Create a rules engine action that append response header value and show how to view the properties of the rules engine action created.
+
+### Example 2
 ```powershell
 PS C:\> $rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -RequestHeaderAction $headerActions -ForwardingProtocol HttpsOnly -BackendPoolName mybackendpool -ResourceGroupName Jessicl-Test-RG -FrontDoorName jessicl-test-myappfrontend -QueryParameterStripDirective StripNone -DynamicCompression Disabled -EnableCaching $true
 PS C:\> $rulesEngineAction
 
 RequestHeaderAction            ResponseHeaderAction RouteConfigurationOverride
 -------------------            -------------------- --------------------------
-{headeraction1, headeraction2} {}                   Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfigurati�
+{headeraction1, headeraction2} {}                   Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
 
 PS C:\> $rulesEngineAction.RequestHeaderAction
 
@@ -68,7 +96,30 @@ DynamicCompression           : Disabled
 EnableCaching                : True
 ```
 
-Create a rules engine action and show how to view the properties of the rules engine action created.
+Create a rules engine action that forwards the requests to a speicific backend pool and show how to view the properties of the rules engine action created.
+
+### Example 3
+```powershell
+PS C:\> $rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -RedirectType Moved -RedirectProtocol MatchRequest -CustomHost www.contoso.com
+PS C:\> $rulesEngineAction
+
+RequestHeaderActions ResponseHeaderActions RouteConfigurationOverride
+-------------------- --------------------- --------------------------
+{}                   {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectConfiguration
+
+PS C:\> $rulesEngineAction.RouteConfigurationOverride
+
+RedirectType      : Moved
+RedirectProtocol  : MatchRequest
+CustomHost        : www.contoso.com
+CustomPath        :
+CustomFragment    :
+CustomQueryString :
+
+```
+
+Create a rules engine action that redirects the requests to another host and show how to view the properties of the rules engine action created.
+
 
 ## PARAMETERS
 

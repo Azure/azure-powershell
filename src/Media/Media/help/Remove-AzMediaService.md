@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 6AB6C366-4925-4370-A33E-EDAF4BE1E230
-online version: https://docs.microsoft.com/en-us/powershell/module/az.media/remove-azmediaservice
+online version: https://docs.microsoft.com/powershell/module/az.media/remove-azmediaservice
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azavailableservicedelegation
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azavailableservicedelegation
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ The **Get-AzAvailableServiceDelegation** cmdlet allows you to retrieve all of th
 
 ## EXAMPLES
 
-### 1: Getting all available service delegations
+### Example 1: Getting all available service delegations
 ```powershell
 PS C:\> Get-AzAvailableServiceDelegation -Location "westus"
 

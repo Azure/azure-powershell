@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Portal
-online version: https://docs.microsoft.com/en-us/powershell/module/az.portal/remove-azportaldashboard
+online version: https://docs.microsoft.com/powershell/module/az.portal/remove-azportaldashboard
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscachelink
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscachelink
 schema: 2.0.0
 ---
 
