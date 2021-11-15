@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.ApplicationInsig
 schema: 2.0.0
 ---
 
-# New-AzApplicationInsightsHeaderFieldObject
+# New-AzApplicationInsightsWebTestHeaderFieldObject
 
 ## SYNOPSIS
 Create a in-memory object for HeaderField
@@ -13,7 +13,7 @@ Create a in-memory object for HeaderField
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsHeaderFieldObject [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzApplicationInsightsWebTestHeaderFieldObject [-Name <String>] [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Create a in-memory object for HeaderField
 
 ### Example 1: Create a in-memory object for HeaderField
 ```powershell
-PS C:\> New-AzApplicationInsightsHeaderFieldObject -Name 'version' -Value '2.0.1'
+PS C:\> New-AzApplicationInsightsWebTestHeaderFieldObject -Name 'version' -Value '2.0.1'
 
 Name    Value
 ----    -----

@@ -14,14 +14,14 @@ Microsoft Azure PowerShell: ApplicationInsights cmdlets
 ### [Get-AzApplicationInsightsWebTest](Get-AzApplicationInsightsWebTest.md)
 Get a specific Application Insights web test definition.
 
-### [New-AzApplicationInsightsHeaderFieldObject](New-AzApplicationInsightsHeaderFieldObject.md)
-Create a in-memory object for HeaderField
-
 ### [New-AzApplicationInsightsWebTest](New-AzApplicationInsightsWebTest.md)
 Creates or updates an Application Insights web test definition.
 
 ### [New-AzApplicationInsightsWebTestGeolocationObject](New-AzApplicationInsightsWebTestGeolocationObject.md)
 Create a in-memory object for WebTestGeolocation
+
+### [New-AzApplicationInsightsWebTestHeaderFieldObject](New-AzApplicationInsightsWebTestHeaderFieldObject.md)
+Create a in-memory object for HeaderField
 
 ### [Remove-AzApplicationInsightsWebTest](Remove-AzApplicationInsightsWebTest.md)
 Deletes an Application Insights web test.

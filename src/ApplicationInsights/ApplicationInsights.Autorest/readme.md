@@ -162,7 +162,8 @@ directive:
 
   - model-cmdlet:
     - WebTestGeolocation
-    - HeaderField
+    # Hide for custom modle cmdlet.
+    # - HeaderField
   
   # format output table
   - where:

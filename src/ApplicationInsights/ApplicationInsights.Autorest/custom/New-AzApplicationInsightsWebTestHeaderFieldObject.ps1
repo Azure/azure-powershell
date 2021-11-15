@@ -25,7 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview
 .Link
 https://docs.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsHeaderFieldObject
 #>
-function New-AzApplicationInsightsHeaderFieldObject {
+function New-AzApplicationInsightsWebTestHeaderFieldObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.HeaderField')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
