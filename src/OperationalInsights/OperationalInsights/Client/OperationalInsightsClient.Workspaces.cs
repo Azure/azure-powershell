@@ -23,6 +23,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSWorkspace GetWorkspace(string resourceGroupName, string workspaceName)
         {
             var response = OperationalInsightsManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
-            
+
             return new PSWorkspace(response, resourceGroupName);
         }
 
@@ -125,15 +126,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             PSWorkspaceFeatures features = null)
         {
             Workspace properties = new Workspace(
+                name: workspaceName,
                 location: location,
                 tags: tags,
                 customerId: customerId.HasValue ? customerId.Value.ToString() : null,
                 publicNetworkAccessForIngestion: publicNetworkAccessForIngestion,
                 publicNetworkAccessForQuery: publicNetworkAccessForQuery,
                 forceCmkForQuery: forceCmkForQuery,
-                features: features.GetWorkspaceFeatures());
+                sku: sku?.getWorkspaceSku(),
+                features: features?.GetWorkspaceFeatures());
 
-            properties.Sku = sku.getWorkspaceSku();
 
             if (retentionInDays.HasValue)
             {
@@ -142,25 +144,30 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             properties.WorkspaceCapping = dailyQuotaGb != null ? new WorkspaceCapping(dailyQuotaGb) : null;
 
-            var response = OperationalInsightsManagementClient.Workspaces.CreateOrUpdate(
-                resourceGroupName,
-                workspaceName,
-                properties);
-
+            var response = OperationalInsightsManagementClient.Workspaces.CreateOrUpdate(resourceGroupName, workspaceName, properties);
             return response;
         }
 
         public virtual PSWorkspace UpdatePSWorkspace(UpdatePSWorkspaceParameters parameters)
         {
             // Get the existing workspace
-            PSWorkspace workspace = GetWorkspace(parameters.ResourceGroupName, parameters.WorkspaceName);
+            PSWorkspace workspace;
+            try
+            {
+                workspace = GetWorkspace(parameters.ResourceGroupName, parameters.WorkspaceName);
+            }
+            catch (RestException)
+            {
+                //worksace not found - use New-AzOperationalInsightsWorkspace command instead
+                throw new ArgumentException($"Workspace {parameters?.WorkspaceName} under resourceGroup {parameters?.ResourceGroupName} was not found, please use New-AzOperationalInsightsWorkspace.");
+            }
 
             // Execute the update
             Workspace updatedWorkspace = CreateOrUpdateWorkspace(
                 parameters.ResourceGroupName,
                 parameters.WorkspaceName,
                 workspace.Location,
-                parameters.Sku ?? new PSWorkspaceSku(workspace.Sku, workspace.CapacityReservationLevel),
+                parameters.Sku = parameters.Sku == null ? new PSWorkspaceSku(workspace.Sku, workspace.CapacityReservationLevel) : parameters.Sku,
                 parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForIngestion) ? workspace.PublicNetworkAccessForIngestion : parameters.PublicNetworkAccessForIngestion,
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForQuery) ? workspace.PublicNetworkAccessForQuery : parameters.PublicNetworkAccessForQuery,
@@ -190,7 +197,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.ResourceGroupName,
                             parameters.WorkspaceName,
                             parameters.Location,
-                            parameters.Sku,
+                            parameters.Sku ?? new PSWorkspaceSku(),
                             tags,
                             parameters.PublicNetworkAccessForIngestion,
                             parameters.PublicNetworkAccessForQuery,

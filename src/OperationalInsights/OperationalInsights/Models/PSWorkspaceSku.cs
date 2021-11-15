@@ -39,6 +39,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             ValidateSKU();
         }
 
+        public PSWorkspaceSku()
+        {
+            this.Capacity = null;
+            this.Name = null;
+        }
+
         public PSWorkspaceSku(WorkspaceSku sku)
         {
             this.Capacity = sku.CapacityReservationLevel;
@@ -54,6 +60,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public WorkspaceSku getWorkspaceSku()
         {
+            if (Name == null)
+            {
+                return null;
+            }
             return new WorkspaceSku(Name, capacityReservationLevel: Capacity);
         }
 
