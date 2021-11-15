@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;

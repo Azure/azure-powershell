@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
