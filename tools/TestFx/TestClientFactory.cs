@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public void AddUserAgent(string productName)
         {
-            AddUserAgent(productName, string.Empty);
+            AddUserAgent(productName, "");
         }
 
         public void RemoveUserAgent(string name)
