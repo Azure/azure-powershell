@@ -76,5 +76,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     Gets or sets possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets percentage complete for the background copy when a resource is created
+        //     via the CopyStart operation.
+        public double? CompletionPercent { get; set; }
+
     }
 }
