@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             else if (((environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId) && resourceId.EqualsInsensitively(environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId])) ||
                       resourceId.EqualsInsensitively(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId) ||
                       resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId)))
-                      && account.IsPropertySet(AzureAccount.Property.MicrosoftGraphAccessToken))
+                      && account.IsPropertySet(Constants.MicrosoftGraphAccessToken))
             {
                 TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
-                rawToken.AccessToken = account.GetProperty(AzureAccount.Property.MicrosoftGraphAccessToken);
+                rawToken.AccessToken = account.GetProperty(Constants.MicrosoftGraphAccessToken);
             }
             else
             {

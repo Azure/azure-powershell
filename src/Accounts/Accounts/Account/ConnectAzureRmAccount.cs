@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
                     azureAccount.SetProperty(AzureAccount.Property.GraphAccessToken, GraphAccessToken);
                     azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
-                    azureAccount.SetProperty(AzureAccount.Property.MicrosoftGraphAccessToken, MicrosoftGraphAccessToken);
+                    azureAccount.SetProperty(Constants.MicrosoftGraphAccessToken, MicrosoftGraphAccessToken);
                     break;
                 case ServicePrincipalCertificateParameterSet:
                 case ServicePrincipalCertificateFileParameterSet:
