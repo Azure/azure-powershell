@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Profile
         public Uri Uri { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The audience for tokens authenticating with the MS Graph Endpoint.")]
+            HelpMessage = "The audience for tokens authenticating with the Microsoft Graph Endpoint.")]
         [Alias("MSGraphEndpointResourceId", "MicrosoftGraphGraphResourceId")]
         public string MSGraphAudience { get; set; }
 
