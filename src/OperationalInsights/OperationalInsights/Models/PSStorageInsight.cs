@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.State = storageInsight.Status?.State;
             this.StateDescription = storageInsight.Status?.Description;
             this.ETag = storageInsight.ETag;
-            this.Tags = new Hashtable((IDictionary)storageInsight.Tags);
+            this.Tags = storageInsight.Tags == null ? null : new Hashtable((IDictionary)storageInsight.Tags);
         }
 
         public string Name { get; set; }

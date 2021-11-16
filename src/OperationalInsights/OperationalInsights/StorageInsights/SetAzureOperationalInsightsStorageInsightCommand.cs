@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The full Azure Resource Manager ID of the storage account.")]
         [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -69,15 +69,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         public string[] Containers { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ETag of the StorageInsight.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The ETag of the StorageInsight.")]
         [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
-        [ValidateNotNullOrEmpty]
         public string ETag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
         [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
-        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
@@ -90,22 +87,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 WorkspaceName = Workspace.Name;
             }
 
-            if (ParameterSetName == ByWorkspaceName)
+            parameters = new PSStorageInsightParameters
             {
-                parameters = new PSStorageInsightParameters
-                {
-                    ResourceGroupName = ResourceGroupName,
-                    WorkspaceName = WorkspaceName,
-                    Name = Name,
-                    StorageAccountKey = StorageAccountKey,
-                    StorageAccountResourceId = StorageAccountResourceId,
-                    Containers = Containers != null ? Containers.ToList() : null,
-                    Tables = Tables != null ? Tables.ToList() : null,
-                    Etag = ETag,
-                    Tags = Tag
-                };
-            }
-
+                ResourceGroupName = ResourceGroupName,
+                WorkspaceName = WorkspaceName,
+                Name = Name,
+                StorageAccountKey = StorageAccountKey,
+                StorageAccountResourceId = StorageAccountResourceId,
+                Containers = Containers?.ToList(),
+                Tables = Tables?.ToList(),
+                Etag = ETag,
+                Tags = Tag
+            };
 
             if (ShouldProcess(Name, $"Update StorageInsight: {Name}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {

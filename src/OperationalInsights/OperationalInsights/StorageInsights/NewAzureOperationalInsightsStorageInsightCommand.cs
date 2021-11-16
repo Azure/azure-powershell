@@ -64,11 +64,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The ETag of the StorageInsight.")]
-        [ValidateNotNullOrEmpty]
         public string ETag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
@@ -81,8 +79,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Name = Name,
                 StorageAccountResourceId = StorageAccountResourceId,
                 StorageAccountKey = StorageAccountKey,
-                Tables = Tables != null ? Tables.ToList() : null,
-                Containers = Containers != null ? Containers.ToList() : null,
+                Tables = Tables?.ToList(),
+                Containers = Containers?.ToList(),
                 Etag = ETag,
                 Tags = Tag
             };
