@@ -124,5 +124,12 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-VMSSReplication");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ACRGReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-CRGReplication");
+        }
     }
 }

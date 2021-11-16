@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for capacity reservation for Azure to Azure provider.
 
 ## Version 4.8.0
 * Azure Backup fixed issues with StorageConfig

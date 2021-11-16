@@ -404,7 +404,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/groupps3886/providers/Microsoft.Network/virtualNetworks/vnps2991/providers/microsoft.insights/diagnosticSettingsCategories/VMProtectionAlerts?api-version=2017-05-01-preview",
+      "RequestUri": "//subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/groupps3886/providers/Microsoft.Network/virtualNetworks/vnps2991/providers/Microsoft.Insights/diagnosticSettingsCategories/VMProtectionAlerts?api-version=2017-05-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU3OTQ3Y2I1LWFhZGQtNGI2Yy05ZThlLTI3ZjU0NWJiN2JmNS9yZXNvdXJjZUdyb3Vwcy9ncm91cHBzMzg4Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZucHMyOTkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvZGlhZ25vc3RpY1NldHRpbmdzQ2F0ZWdvcmllcy9WTVByb3RlY3Rpb25BbGVydHM/YXBpLXZlcnNpb249MjAxNy0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -463,11 +463,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/groupps3886/providers/microsoft.network/virtualnetworks/vnps2991/providers/microsoft.insights/diagnosticSettingsCategories/VMProtectionAlerts\",\r\n  \"type\": \"microsoft.insights/diagnosticSettingsCategories\",\r\n  \"name\": \"VMProtectionAlerts\",\r\n  \"location\": null,\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"categoryType\": \"Logs\"\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/groupps3886/providers/microsoft.network/virtualnetworks/vnps2991/providers/Microsoft.Insights/diagnosticSettingsCategories/VMProtectionAlerts\",\r\n  \"type\": \"Microsoft.Insights/diagnosticSettingsCategories\",\r\n  \"name\": \"VMProtectionAlerts\",\r\n  \"location\": null,\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"categoryType\": \"Logs\"\r\n  },\r\n  \"identity\": null\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/groupps3886/providers/Microsoft.Network/virtualNetworks/vnps2991/providers/microsoft.insights/diagnosticSettingsCategories/AllMetrics?api-version=2017-05-01-preview",
+      "RequestUri": "//subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/groupps3886/providers/Microsoft.Network/virtualNetworks/vnps2991/providers/Microsoft.Insights/diagnosticSettingsCategories/AllMetrics?api-version=2017-05-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU3OTQ3Y2I1LWFhZGQtNGI2Yy05ZThlLTI3ZjU0NWJiN2JmNS9yZXNvdXJjZUdyb3Vwcy9ncm91cHBzMzg4Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZucHMyOTkxL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvZGlhZ25vc3RpY1NldHRpbmdzQ2F0ZWdvcmllcy9BbGxNZXRyaWNzP2FwaS12ZXJzaW9uPTIwMTctMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -526,7 +526,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/groupps3886/providers/microsoft.network/virtualnetworks/vnps2991/providers/microsoft.insights/diagnosticSettingsCategories/AllMetrics\",\r\n  \"type\": \"microsoft.insights/diagnosticSettingsCategories\",\r\n  \"name\": \"AllMetrics\",\r\n  \"location\": null,\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"categoryType\": \"Metrics\"\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/groupps3886/providers/microsoft.network/virtualnetworks/vnps2991/providers/Microsoft.Insights/diagnosticSettingsCategories/AllMetrics\",\r\n  \"type\": \"Microsoft.Insights/diagnosticSettingsCategories\",\r\n  \"name\": \"AllMetrics\",\r\n  \"location\": null,\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"categoryType\": \"Metrics\"\r\n  },\r\n  \"identity\": null\r\n}",
       "StatusCode": 200
     },
     {

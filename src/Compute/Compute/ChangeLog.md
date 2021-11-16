@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* `Add-AzVhd` has the following new functionalities:
+    - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
+    - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
+    - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:

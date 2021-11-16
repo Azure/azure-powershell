@@ -964,6 +964,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove spark configuration &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Spark job definition &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseSparkJobDefinition {
@@ -1194,6 +1203,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseRoleAssignmentById {
             get {
                 return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting spark configuration &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSparkConfiguration {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSparkConfiguration", resourceCulture);
             }
         }
         
@@ -1500,6 +1518,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSynapsePipeline {
             get {
                 return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Synapse spark configuration &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseSparkConfiguration {
+            get {
+                return ResourceManager.GetString("SettingSynapseSparkConfiguration", resourceCulture);
             }
         }
         

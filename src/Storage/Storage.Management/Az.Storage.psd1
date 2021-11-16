@@ -192,7 +192,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Set-AzStorageBlobTag', 'Get-AzStorageBlobTag', 
                'Get-AzStorageBlobByTag', 
                'Invoke-AzStorageAccountHierarchicalNamespaceUpgrade', 
-               'Stop-AzStorageAccountHierarchicalNamespaceUpgrade'
+               'Stop-AzStorageAccountHierarchicalNamespaceUpgrade', 
+               'Set-AzStorageBlobImmutabilityPolicy', 'Remove-AzStorageBlobImmutabilityPolicy',
+               'Set-AzStorageBlobLegalHold', 'Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()
