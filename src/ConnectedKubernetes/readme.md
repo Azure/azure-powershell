@@ -85,7 +85,4 @@ directive:
       subject-prefix: ConnectedKubernetes
     hide: true
 
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
 ```
