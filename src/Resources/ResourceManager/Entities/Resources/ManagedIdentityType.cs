@@ -12,39 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
     /// <summary>
-    /// The resource identity object that represents the resource's Managed Service Identity.
+    /// The type of resource identity that is assigned to a resource.
     /// </summary>
-    public class ResourceIdentity
+    public enum ManagedIdentityType
     {
         /// <summary>
-        /// Gets or sets the type of identity assigned to the resource.
+        /// The name of the resource identity type that will automatically create an identity for the resource.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Type { get; set; }
+        SystemAssigned = 1,
 
         /// <summary>
-        /// Gets or sets the principal ID of the assigned identity.
+        /// The name of the resource identity type that will automatically create an identity for the resource.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string PrincipalId { get; set; }
+        UserAssigned,
 
         /// <summary>
-        /// Gets or sets the Azure Active Directory tenant ID that contains the assigned identity.
+        /// The name of the resource identity type that indicates the resource should have no identity assigned.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string TenantId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Azure Active Directory tenant ID that contains the assigned identity.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, UserAssignedIdentityResource> UserAssignedIdentities { get; set; }
+        None
     }
 }
 

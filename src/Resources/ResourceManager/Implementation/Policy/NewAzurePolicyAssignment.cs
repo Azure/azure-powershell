@@ -24,14 +24,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     using Newtonsoft.Json.Linq;
     using Policy;
+    using System.Collections.Generic;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Creates a policy assignment.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PsPolicyAssignment), NewOutputProperties = new String[] { "Identity" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class NewAzurePolicyAssignmentCmdlet : PolicyCmdletBase, IDynamicParameters
     {
@@ -119,11 +121,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
-        /// <summary>
-        /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "Parameter AssignIdentity is invalid and preserved for compatibility.")]
+        [ValidateNotNullOrEmpty]
         public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of managed identity to be assigned to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityTypeHelp)]
+        public ManagedIdentityType? IdentityType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the user assigned managed identity to be assigned to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityIdHelp)]
+        public String IdentityId { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the policy assignment. Only required when assigning a resource identity to the assignment.
@@ -160,6 +172,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new PSInvalidOperationException("The supplied PolicySetDefinition object is invalid.");
             }
 
+            CheckIfIdentityPresent();
+
             string resourceId = GetResourceId();
 
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
@@ -195,14 +209,49 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+        /// Verifies if identity type and/or identity ID and/or location are present
+        /// </summary>
+        private bool CheckIfIdentityPresent()
+        {
+            if (this.IdentityType != null & this.Location == null)
+            {
+                throw new PSInvalidOperationException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.");
+            }
+
+            if (this.IdentityType == ManagedIdentityType.UserAssigned && this.IdentityId == null)
+            {
+                throw new PSInvalidOperationException("A user assigned identity id needs to be specified if the identity type is 'UserAssigned'.");
+            }
+
+            if (this.IdentityType == ManagedIdentityType.SystemAssigned && this.IdentityId != null)
+            {
+                throw new PSInvalidOperationException("Cannot specify an identity ID if identity type is 'SystemAssigned'.");
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Constructs the resource
         /// </summary>
         private JToken GetResource()
         {
+            ResourceIdentity identityObject = this.IdentityType != null ?
+                (this.IdentityType == ManagedIdentityType.SystemAssigned ?
+                new ResourceIdentity { Type = ManagedIdentityType.SystemAssigned.ToString() } :
+                new ResourceIdentity
+                {
+                    Type = ManagedIdentityType.UserAssigned.ToString(),
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentityResource>
+                    {
+                        { this.IdentityId, new UserAssignedIdentityResource {} }
+                    }
+                }) : null;
+
             var policyassignmentObject = new PolicyAssignment
             {
                 Name = this.Name,
-                Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
+                Identity = identityObject,
                 Location = this.Location,
                 Properties = new PolicyAssignmentProperties
                 {
