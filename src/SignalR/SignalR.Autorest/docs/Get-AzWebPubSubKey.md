@@ -1,76 +1,58 @@
 ---
 external help file:
-Module Name: Az.WebPubSub
-online version: https://docs.microsoft.com/powershell/module/az.webpubsub/get-azwebpubsubhub
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubkey
 schema: 2.0.0
 ---
 
-# Get-AzWebPubSubHub
+# Get-AzWebPubSubKey
 
 ## SYNOPSIS
-Get a hub setting.
+Get the access keys of the resource.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWebPubSubHub -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Get
+### ListViaIdentity
 ```
-Get-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzWebPubSubHub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebPubSubKey -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a hub setting.
+Get the access keys of the resource.
 
 ## EXAMPLES
 
-### Example 1: List hub settings of a Web PubSub resource.
+### Example 1: Get the access keys of a Web PubSub resource
 ```powershell
-PS C:\>  Get-AzWebPubSubHub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> Get-AzWebPubSubKey -ResourceGroupName psdemo -ResourceName psdemo-wps  | Format-List
 
-Name     AnonymousConnectPolicy
-----     ----------------------
-testHub  deny
-testHub2 deny
+PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
+PrimaryKey                : ********
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryKey              : ********
 ```
 
+The example gets the access keys of the Web PubSub resource and then pipes the result to `Format-List` to see all the property values of the result.
 
-
-### Example 2: Get a Web PubSub hub setting.
+### Example 2: Get the access keys of a Web PubSub resource via identity
 ```powershell
-PS C:\>  Get-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> $wps = Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> $wps | Get-AzWebPubSubKey | Format-List
 
-Name    AnonymousConnectPolicy
-----    ----------------------
-testHub deny
+PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
+PrimaryKey                : ********
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryKey              : ********
 ```
 
-
-
-### Example 3: Get a Web PubSub hub setting via identity.
-```powershell
-PS C:\>  $hubIdentity = @{ ResourceGroupName = 'psdemo'
-ResourceName = 'psdemo-wps'
-SubscriptionId = $(Get-AzContext).Subscription.Id
-HubName = 'testHub' }
-PS C:\>   $hubIdentity | Get-AzWebPubSubHub
-
-Name    AnonymousConnectPolicy
-----    ----------------------
-testHub deny
-```
-
-
+The example gets the access keys of the Web PubSub resource and then pipes the result to `Format-List` to see all the property values of the result.
 
 ## PARAMETERS
 
@@ -95,7 +77,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: ListViaIdentity
 Aliases:
 
 Required: True
@@ -105,28 +87,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The hub name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -141,7 +108,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -157,12 +124,43 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -176,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys
 
 ## NOTES
 

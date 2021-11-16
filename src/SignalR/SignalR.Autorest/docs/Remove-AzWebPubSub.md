@@ -1,48 +1,48 @@
 ---
 external help file:
-Module Name: Az.WebPubSub
-online version: https://docs.microsoft.com/powershell/module/az.webpubsub/restart-azwebpubsub
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/powershell/module/az.signalr/remove-azwebpubsub
 schema: 2.0.0
 ---
 
-# Restart-AzWebPubSub
+# Remove-AzWebPubSub
 
 ## SYNOPSIS
-Operation to restart a resource.
+Operation to delete a resource.
 
 ## SYNTAX
 
-### Restart (Default)
+### Delete (Default)
 ```
-Restart-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RestartViaIdentity
+### DeleteViaIdentity
 ```
-Restart-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to restart a resource.
+Operation to delete a resource.
 
 ## EXAMPLES
 
-### Example 1: Restart a Web PubSub resource
+### Example 1: Remove a Web PubSub resource
 ```powershell
-PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
+PS C:\> Remove-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
 
 
-### Example 2: Restart a Web PubSub resource with identity
+### Example 2: Remove a Web PubSub resource via identity
 ```powershell
 PS C:\> $identity = @{ResourceGroupName = 'psdemo'
 ResourceName = 'psdemo-wps'
 SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-PS C:\> $identity | Restart-AzWebPubSub
+PS C:\> $identity | Remove-AzWebPubSub
 ```
 
 
@@ -85,7 +85,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
-Parameter Sets: RestartViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -100,7 +100,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Delete
 Aliases: ResourceName
 
 Required: True
@@ -146,7 +146,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Delete
 Aliases:
 
 Required: False

@@ -8,18 +8,24 @@
 
 <#
 .Synopsis
-Regenerate the access key for the resource.
-PrimaryKey and SecondaryKey cannot be regenerated at the same time.
+Get the access keys of the resource.
 .Description
-Regenerate the access key for the resource.
-PrimaryKey and SecondaryKey cannot be regenerated at the same time.
+Get the access keys of the resource.
 .Example
-PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary'
+PS C:\> Get-AzWebPubSubKey -ResourceGroupName psdemo -ResourceName psdemo-wps  | Format-List
+
+PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
+PrimaryKey                : ********
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryKey              : ********
 .Example
-PS C:\>  $identity = @{ ResourceGroupName = 'psdemo'
-ResourceName = 'psdemo-wps'
-SubscriptionId = $(Get-AzContext).Subscription.Id }
-PS C:\> $identity | New-AzWebPubSubKey -KeyType Primary
+PS C:\> $wps = Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> $wps | Get-AzWebPubSubKey | Format-List
+
+PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
+PrimaryKey                : ********
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryKey              : ********
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
@@ -39,49 +45,18 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-.Link
-https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsubkey
 #>
-function New-AzWebPubSubKey
+function Get-AzWebPubSubKey_ListViaIdentity
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys])]
-    [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
-        [System.String]
-        # The name of the resource group that contains the resource.
-        # You can obtain this value from the Azure Resource Manager API or the portal.
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
-        [System.String]
-        # The name of the resource.
-        ${ResourceName},
-
-        [Parameter(ParameterSetName='RegenerateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # Gets subscription Id which uniquely identify the Microsoft Azure subscription.
-        # The subscription ID forms part of the URI for every service call.
-        ${SubscriptionId},
-
-        [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='ListViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
-        # The keyType to regenerate.
-        # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
-        ${KeyType},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -90,12 +65,6 @@ function New-AzWebPubSubKey
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
@@ -116,18 +85,6 @@ function New-AzWebPubSubKey
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
@@ -153,19 +110,13 @@ function New-AzWebPubSubKey
     {
         try
         {
-            $null = Az.WebPubSub.internal\New-AzWebPubSubKey @PSBoundParameters
+            $null = $InputObject.Id -match '/subscriptions/(?<SubscriptionId>.+)/resourceGroups/(?<ResourceGroupName>.+)/providers/Microsoft.SignalRService/WebPubSub/(?<ResourceName>.+)'
+            $PSBoundParameters.Add("ResourceGroupName", $Matches.ResourceGroupName)
+            $PSBoundParameters.Add("ResourceName", $Matches.ResourceName)
+            $PSBoundParameters.Add("SubscriptionId", $Matches.SubscriptionId)
 
-            $unacceptableKeys = "KeyType", "AsJob", "NoWait", "PassThru"
-            foreach ($key in $unacceptableKeys)
-            {
-                if($PSBoundParameters.ContainsKey($key))
-                {
-                    $null = $PSBoundParameters.Remove($key)
-                }
-            }
-
-            # The new key resource is returned in the first REST API call, but auto.rest can only return the result of the last REST API call. Here get a key result manually to mitigate the problem.
-            Az.WebPubSub\Get-AzWebPubSubKey @PSBoundParameters
+            $null = $PSBoundParameters.Remove("InputObject")
+            Az.SignalR\Get-AzWebPubSubKey @PSBoundParameters
         } catch
         {
             throw

@@ -1,60 +1,68 @@
 ---
 external help file:
-Module Name: Az.WebPubSub
-online version: https://docs.microsoft.com/powershell/module/az.webpubsub/get-azwebpubsubkey
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
 schema: 2.0.0
 ---
 
-# Get-AzWebPubSubKey
+# Restart-AzWebPubSub
 
 ## SYNOPSIS
-Get the access keys of the resource.
+Operation to restart a resource.
 
 ## SYNTAX
 
-### List (Default)
+### Restart (Default)
 ```
-Get-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ListViaIdentity
+### RestartViaIdentity
 ```
-Get-AzWebPubSubKey -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Restart-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the access keys of the resource.
+Operation to restart a resource.
 
 ## EXAMPLES
 
-### Example 1: Get the access keys of a Web PubSub resource
+### Example 1: Restart a Web PubSub resource
 ```powershell
-PS C:\> Get-AzWebPubSubKey -ResourceGroupName psdemo -ResourceName psdemo-wps  | Format-List
-
-PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
-SecondaryKey              : ********
+PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
-The example gets the access keys of the Web PubSub resource and then pipes the result to `Format-List` to see all the property values of the result.
 
-### Example 2: Get the access keys of a Web PubSub resource via identity
+
+### Example 2: Restart a Web PubSub resource with identity
 ```powershell
-PS C:\> $wps = Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
-PS C:\> $wps | Get-AzWebPubSubKey | Format-List
+PS C:\> $identity = @{ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
-SecondaryKey              : ********
+PS C:\> $identity | Restart-AzWebPubSub
 ```
 
-The example gets the access keys of the Web PubSub resource and then pipes the result to `Format-List` to see all the property values of the result.
+
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -77,7 +85,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
-Parameter Sets: ListViaIdentity
+Parameter Sets: RestartViaIdentity
 Aliases:
 
 Required: True
@@ -87,14 +95,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -Name
+The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
-Aliases:
+Parameter Sets: Restart
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -103,12 +110,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the resource.
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: Restart
 Aliases:
 
 Required: True
@@ -123,8 +161,8 @@ Gets subscription Id which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: List
+Type: System.String
+Parameter Sets: Restart
 Aliases:
 
 Required: False
@@ -174,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys
+### System.Boolean
 
 ## NOTES
 
