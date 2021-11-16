@@ -335,7 +335,8 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
-                    var servicePrincipal = GraphClient.ServicePrincipals.GetServicePrincipal(acsServicePrincipal.ObjectId);
+                    ODataQuery<MicrosoftGraphServicePrincipal> oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
+                    var servicePrincipal = GraphClient.FilterServicePrincipals(oDataQuery).First();
                     spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
