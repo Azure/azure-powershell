@@ -38,9 +38,4 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.TemplateSpecTests\SetTemplateSpec_Tags_AppliesInheritedTagsIfNewVersionAndNoTagsProvidedAndSpecExists.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
