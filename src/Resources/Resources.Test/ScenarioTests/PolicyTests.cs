@@ -61,9 +61,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPolicyAssignmentIdentity()
+        public void TestPolicyAssignmentSystemAssignedIdentity()
         {
-            TestRunner.RunTestScript("Test-PolicyAssignmentIdentity");
+            TestRunner.RunTestScript("Test-PolicyAssignmentSystemAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyAssignmentUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-PolicyAssignmentUserAssignedIdentity");
         }
 
         [Fact]
