@@ -153,7 +153,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
                'Get-AzTenantDeploymentWhatIfResult', 'Get-AzTemplateSpec', 
                'New-AzTemplateSpec', 'Set-AzTemplateSpec', 'Export-AzTemplateSpec', 
-               'Remove-AzTemplateSpec'
+               'Remove-AzTemplateSpec',
+               'Publish-AzBicepModule'
 
 # Variables to export from this module
 # VariablesToExport = @()

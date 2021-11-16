@@ -980,6 +980,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride, MNM.ManagedRuleOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusion, MNM.ApplicationGatewayFirewallExclusion>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet, MNM.ExclusionManagedRuleSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup, MNM.ExclusionManagedRuleGroup>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRule, MNM.ExclusionManagedRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayConnectionDraining, MNM.ApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallDisabledRuleGroup, MNM.ApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
@@ -1049,6 +1052,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
                 cfg.CreateMap<MNM.ManagedRuleOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallPolicyExclusion>();
+                cfg.CreateMap<MNM.ExclusionManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet>();
+                cfg.CreateMap<MNM.ExclusionManagedRuleGroup, CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup>();
+                cfg.CreateMap<MNM.ExclusionManagedRule, CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayConnectionDraining, CNM.PSApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallDisabledRuleGroup, CNM.PSApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
