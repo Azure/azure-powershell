@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* [Breaking change] Migrated from AAD Graph to Microsoft Graph 
+* [Breaking change] Migrated from AAD Graph to Microsoft Graph
+* [Breaking change] Changed the return id in PSDenyAssignment from Guid string to fully qualified id
+* Allowed `Id` in `Get-AzDenyAssignment` to accept fully qualified id
 * Removed breaking change warnings for AAD cmdlets
 * Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
 
