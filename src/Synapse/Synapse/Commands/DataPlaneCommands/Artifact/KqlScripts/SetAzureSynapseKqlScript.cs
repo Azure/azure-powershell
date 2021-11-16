@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
@@ -92,32 +91,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = Path.GetFileNameWithoutExtension(path);
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseNotebook, this.Name, this.WorkspaceName)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseKqlScript, this.Name, this.WorkspaceName)))
             {
                 string query = this.ReadFileAsText(DefinitionFile);
-                //KqlScriptResource kqlScript = new KqlScriptResource
-                //{
-                //    Properties = new KqlScript
-                //    {
-                //        Content = new KqlScriptContent
-                //        {
-                //            Query = query,
-                //            Metadata = new KqlScriptContentMetadata
-                //            {
-                //                Language = "kql"
-                //            }
-                //        }
-                //    }
-                //};
-
-                //if (this.IsParameterBound(c => c.KustoPoolName))
-                //{
-                //    kqlScript.Properties.Content.CurrentConnection = new KqlScriptContentCurrentConnection
-                //    {
-                //        Name = this.KustoPoolDatabaseName
-                //    };
-                //}
-
                 KqlScriptResource kqlScript = new KqlScriptResource
                 {
                     Properties = new KqlScript
@@ -127,7 +103,7 @@ namespace Microsoft.Azure.Commands.Synapse
                             Query = query,
                             Metadata = new KqlScriptContentMetadata
                             {
-                                Language = "?"
+                                Language = "kql"
                             }
                         }
                     }
@@ -137,8 +113,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     kqlScript.Properties.Content.CurrentConnection = new KqlScriptContentCurrentConnection
                     {
-                        Name = "?",
-                        Type = "?"
+                        PoolName = this.KustoPoolName,
+                        DatabaseName = this.KustoPoolDatabaseName
                     };
                 }
 

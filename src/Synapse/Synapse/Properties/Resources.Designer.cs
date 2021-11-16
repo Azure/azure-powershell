@@ -1504,6 +1504,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting KQL script &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("SettingSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {

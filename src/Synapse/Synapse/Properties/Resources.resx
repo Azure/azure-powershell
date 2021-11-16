@@ -800,4 +800,7 @@ Failed: {2}.</value>
   <data name="RemovingSynapseKqlScript" xml:space="preserve">
     <value>Deleting KQL script '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="SettingSynapseKqlScript" xml:space="preserve">
+    <value>Setting KQL script '{0}' in workspace '{1}'.</value>
+  </data>
 </root>
