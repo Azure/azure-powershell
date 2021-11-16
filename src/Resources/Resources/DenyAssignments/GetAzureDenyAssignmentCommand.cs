@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentIdParameterSet, HelpMessage = "Deny assignment fully qualified id or guid. If Id is provided as a guid, please provide detailed scope. Otherwise, will take current subscription as scope.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentIdParameterSet, HelpMessage = "Deny assignment fully qualified id or guid. When Id is provided as a guid, will take current subscription as default scope.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
