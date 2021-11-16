@@ -287,5 +287,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Add,
             Remove
         }
+
+        public const string SparkConfiguration = nameof(SparkConfiguration);
     }
 }
