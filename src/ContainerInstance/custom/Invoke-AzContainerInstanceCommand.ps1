@@ -82,7 +82,7 @@ function Invoke-AzContainerInstanceCommand {
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
-      # Returns last execution result when the command succeeds
+      # Returns last execution result when the command succeeds. By default the cmdlet returns nothing.
       ${PassThru},
 
       [Parameter()]

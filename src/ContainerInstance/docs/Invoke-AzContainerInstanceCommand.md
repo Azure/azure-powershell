@@ -95,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns last execution result when the command succeeds
+Returns last execution result when the command succeeds.
+By default the cmdlet returns nothing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

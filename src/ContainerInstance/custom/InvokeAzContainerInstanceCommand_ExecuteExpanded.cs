@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// <summary>
         /// When specified, forces the cmdlet returns last execution result when the command succeeds
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns last execution result when the command succeeds. By default the cmdlet returns nothing.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
 
