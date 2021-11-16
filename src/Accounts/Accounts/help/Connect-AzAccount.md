@@ -546,7 +546,7 @@ Accept wildcard characters: False
 ```
 
 ### -MicrosoftGraphAccessToken
-AccessToken for Microsoft Graph Service
+Access token to Microsoft Graph
 
 ```yaml
 Type: System.String

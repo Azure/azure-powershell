@@ -551,7 +551,7 @@ Accept wildcard characters: False
 ```
 
 ### -MicrosoftGraphEndpointResourceId
-Microsoft Graph Endpoint Resource Id
+The resource identifier of Microsoft Graph
 
 ```yaml
 Type: System.String
