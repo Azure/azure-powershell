@@ -21,14 +21,14 @@ Add-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
  [[-TrafficManagerDnsSuffix] <String>] [[-SqlDatabaseDnsSuffix] <String>]
  [[-AzureDataLakeStoreFileSystemEndpointSuffix] <String>]
- [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [[-MicrosoftGraphEndpointResourceId] <String>]
- [[-MicrosoftGraphUrl] <String>] [-EnableAdfsAuthentication] [[-AdTenant] <String>] [[-GraphAudience] <String>]
- [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
- [-AzureAnalysisServicesEndpointSuffix <String>] [-AzureAnalysisServicesEndpointResourceId <String>]
- [-AzureAttestationServiceEndpointSuffix <String>] [-AzureAttestationServiceEndpointResourceId <String>]
- [-AzureSynapseAnalyticsEndpointSuffix <String>] [-ContainerRegistryEndpointSuffix <String>]
- [-AzureSynapseAnalyticsEndpointResourceId <String>] [-Scope <ContextModificationScope>]
+ [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
+ [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
+ [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>]
+ [-AzureAnalysisServicesEndpointResourceId <String>] [-AzureAttestationServiceEndpointSuffix <String>]
+ [-AzureAttestationServiceEndpointResourceId <String>] [-AzureSynapseAnalyticsEndpointSuffix <String>]
+ [-ContainerRegistryEndpointSuffix <String>] [-AzureSynapseAnalyticsEndpointResourceId <String>]
+ [-MicrosoftGraphEndpointResourceId <String>] [-MicrosoftGraphUrl <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -559,7 +559,7 @@ Parameter Sets: Name
 Aliases:
 
 Required: False
-Position: 16
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -574,7 +574,7 @@ Parameter Sets: Name
 Aliases:
 
 Required: False
-Position: 17
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

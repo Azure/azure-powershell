@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string GraphAccessToken { get; set; }
 
         [Parameter(ParameterSetName = AccessTokenParameterSet,
-                   Mandatory = false, HelpMessage = "AccessToken for Microsoft Graph Service")]
+                   Mandatory = false, HelpMessage = "Access token to Microsoft Graph")]
         [ValidateNotNullOrEmpty]
         public string MicrosoftGraphAccessToken { get; set; }
 
