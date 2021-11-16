@@ -10,47 +10,51 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// ----------------------------------------------------------------------------------
+// ---
 
-using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the EmailReceiver class.
+    /// Wraps the EventHubReceiver class.
     /// </summary>
-    public class PSEmailReceiver : PSActionGroupReceiverBase
+    /// 
+    public class PSEventHubReceiver : PSActionGroupReceiverBase
     {
         /// <summary>
-        /// Gets or sets the receiver's address.
+        /// Gets or sets the SubscriptionId.
         /// </summary>
-        public string EmailAddress { get; set; }
+        public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the receiver's status.
+        /// Gets or sets the namespace.
         /// </summary>
-        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
-        
+        public string EventHubNameSpace { get; set; }
+
         /// <summary>
-        /// Gets or set a value indicating whether common alert schema is to be used or not
+        /// Gets or sets the event hub name.
         /// </summary>
+        public string EventHubName { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
         public bool UseCommonAlertSchema { get; set; }
 
-        /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
-        public PSEmailReceiver()
+        /// <summary>Initializes a new instance of the PSEventHubReceiver class</summary>
+        public PSEventHubReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSEmailReceiver class.
+        /// Initializes a new instance of the PSEventHubReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSEmailReceiver(EmailReceiver receiver)
+        public PSEventHubReceiver(EventHubReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.EmailAddress = receiver.EmailAddress;
-            this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
+            this.SubscriptionId = receiver.SubscriptionId;
+            this.EventHubNameSpace = receiver.EventHubNameSpace;
+            this.EventHubName = receiver.EventHubName;
             this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
         }
     }

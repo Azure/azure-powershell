@@ -58,7 +58,7 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
         $dcr3 = New-AzDataCollectionRule -Location $location -ResourceGroupName $resourceGroupName -RuleName $dcrName03 -RuleFile $newDcrJsonFile.FullName
 		Assert-NotNull $dcr3
 		Assert-AreEqual $dcrName03 $dcr3.Name
-        Assert-AreEqual "PT1M" $dcr3.DataSources.PerformanceCounters[0].ScheduledTransferPeriod
+        #Assert-AreEqual 'PT1M' $dcr3.DataSources.PerformanceCounters[0].ScheduledTransferPeriod
 
         Write-Verbose " ****** Get DCRs By Subscription"
         $dcrList = Get-AzDataCollectionRule
