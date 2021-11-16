@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* [Breaking change] Migrate from AAD Graph to Microsoft Graph 
+* [Breaking change] Migrated from AAD Graph to Microsoft Graph 
 * Removed breaking change warnings for AAD cmdlets
 * Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
 
