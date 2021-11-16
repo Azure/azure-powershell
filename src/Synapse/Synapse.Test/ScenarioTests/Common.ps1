@@ -119,7 +119,7 @@ Creates the test environment needed to perform the Synapse SQL related tests
 function Create-SqlTestEnvironmentWithParams ($params, $location)
 {
 	Create-BasicTestEnvironmentWithParams $params $location
-	New-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -PerformanceLevel $params.perfLevel
+	New-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -PerformanceLevel $params.perfLevel -Tag $params.tags -StorageAccountType $params.storageAccountType
 	Wait-Seconds 10
 }
 
