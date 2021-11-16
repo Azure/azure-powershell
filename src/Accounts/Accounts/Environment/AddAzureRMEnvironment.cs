@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Specifies URI of the internet resource to fetch environments.")]
         public Uri Uri { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The audience for tokens authenticating with the Microsoft Graph Endpoint.")]
         [Alias("MSGraphEndpointResourceId", "MicrosoftGraphGraphResourceId")]
         public string MSGraphAudience { get; set; }
