@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly RemoveAzureFeatureRegistrationCmdlet cmdlet;
+        private readonly UnregisterAzureProviderPreviewFeatureCmdlet cmdlet;
 
         /// <summary>
         /// A mock of the client
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
               .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
               .Returns(() => true);
 
-            this.cmdlet = new RemoveAzureFeatureRegistrationCmdlet()
+            this.cmdlet = new UnregisterAzureProviderPreviewFeatureCmdlet()
             {
                 ProviderFeatureClient = new ProviderFeatureClient
                 {

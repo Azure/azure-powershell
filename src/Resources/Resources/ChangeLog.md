@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added 'New-AzFeatureRegistration', 'Remove-AzFeatureRegistration' and 'Get-AzFeatureRegistration' cmdlets.
+* Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.
 
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]

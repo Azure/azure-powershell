@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
-    public class GetAzureFeatureRegistrationCmdletTests : RMTestBase
+    public class RegisterAzureProviderPreviewFeatureCmdletTests : RMTestBase
     {
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly GetAzureFeatureRegistrationCmdlet cmdlet;
+        private readonly RegisterAzureProviderPreviewFeatureCmdlet cmdlet;
 
         /// <summary>
         /// A mock of the client
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public GetAzureFeatureRegistrationCmdletTests(ITestOutputHelper output)
+        public RegisterAzureProviderPreviewFeatureCmdletTests(ITestOutputHelper output)
         {
             this.featureOperationsMock = new Mock<ISubscriptionFeatureRegistrationsOperations>();
             var featureClient = new Mock<IFeatureClient>();
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
               .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
               .Returns(() => true);
 
-            this.cmdlet = new GetAzureFeatureRegistrationCmdlet()
+            this.cmdlet = new RegisterAzureProviderPreviewFeatureCmdlet()
             {
                 ProviderFeatureClient = new ProviderFeatureClient
                 {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetFeatureRegistrationTests()
+        public void CreateFeatureRegistrationTests()
         {
             const string ProviderName = "Providers.Test";
             const string FeatureName = "Feature1";
@@ -99,8 +99,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             };
 
             this.featureOperationsMock
-                .Setup(client => client.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
-                .Callback((string providerName, string featureName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
+                .Setup(client => client.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SubscriptionFeatureRegistration>(), null, It.IsAny<CancellationToken>()))
+                .Callback((string providerName, string featureName, SubscriptionFeatureRegistration subscriptionFeatureRegistrationType, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
                 {
                     Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase);
                     Assert.Equal(FeatureName, featureName, StringComparer.OrdinalIgnoreCase);
@@ -117,9 +117,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
                 .Callback((object obj) =>
                 {
-                    Assert.IsType<PSSubscriptionFeatureRegistration[]>(obj);
-                    var features = (PSSubscriptionFeatureRegistration[])obj;
-                    Assert.Single(features);
+                    Assert.IsType<PSSubscriptionFeatureRegistration>(obj);
+                    var feature = (PSSubscriptionFeatureRegistration)obj;
+                    Assert.Equal(ProviderFeatureClient.RegisteredStateName, feature.Properties.State, StringComparer.OrdinalIgnoreCase);
+                    Assert.Equal($"{ProviderName}/{FeatureName}", feature.Name, StringComparer.OrdinalIgnoreCase);
                 });
 
             this.cmdlet.ExecuteCmdlet();
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.featureOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SubscriptionFeatureRegistration>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
             this.featureOperationsMock.ResetCalls();

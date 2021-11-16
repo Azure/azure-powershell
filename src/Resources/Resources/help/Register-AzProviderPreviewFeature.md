@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/new-az
 schema: 2.0.0
 ---
 
-# New-AzFeatureRegistration
+# Register-AzProviderPreviewFeature
 
 ## SYNOPSIS
 Creates a feature registration in your account.
@@ -13,18 +13,18 @@ Creates a feature registration in your account.
 ## SYNTAX
 
 ```
-New-AzFeatureRegistration -Name <String> -ProviderNamespace <String> [-DefaultProfile <IAzureContextContainer>]
+Register-AzProviderPreviewFeature -Name <String> -ProviderNamespace <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzFeatureRegistration** cmdlet creates a feature registration in your account.
+The **Register-AzProviderPreviewFeature** cmdlet creates a feature registration in your account.
 
 ## EXAMPLES
 
 ### Example 1: Creates a feature registration
 ```
-PS C:\>New-AzFeatureRegistration -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+PS C:\>Register-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
@@ -122,6 +122,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzFeatureRegistration](./Get-AzFeatureRegistration.md)
+[Get-AzProviderPreviewFeature](./Get-AzProviderPreviewFeature.md)
 
-[Remove-AzFeatureRegistration](./Remove-AzFeatureRegistration.md)
+[Unregister-AzProviderPreviewFeature](./Unregister-AzProviderPreviewFeature.md)

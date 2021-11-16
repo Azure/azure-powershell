@@ -44,13 +44,13 @@ function Test-AzureProviderFeature
 
     Assert-True { $UnregisteredFeatures.Length -gt 0 }
 
-    New-AzFeatureRegistration -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
+    Register-AzProviderPreviewFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
 
-    $newRegisteredFeatures = Get-AzFeatureRegistration -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
+    $newRegisteredFeatures = Get-AzProviderPreviewFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
 
     Assert-True { $newRegisteredFeatures.Length -gt 0 }
 
-    Remove-AzFeatureRegistration -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
+    Unregister-AzProviderPreviewFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
 
     $cacheRegisteredFeatures = Get-AzProviderFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
 

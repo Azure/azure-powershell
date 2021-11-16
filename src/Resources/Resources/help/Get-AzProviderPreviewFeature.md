@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/get-az
 schema: 2.0.0
 ---
 
-# Get-AzFeatureRegistration
+# Get-AzProviderPreviewFeature
 
 ## SYNOPSIS
 Gets a feature registration in your account.
@@ -13,18 +13,18 @@ Gets a feature registration in your account.
 ## SYNTAX
 
 ```
-Get-AzFeatureRegistration [-Name <String>] -ProviderNamespace <String>
+Get-AzProviderPreviewFeature [-Name <String>] -ProviderNamespace <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzFeatureRegistration** cmdlet gets a feature registration in your account.
+The **Get-AzProviderPreviewFeaturen** cmdlet gets a feature registration in your account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzFeatureRegistration -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+PS C:\>Get-AzProviderPreviewFeaturen -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This gets the AllowApplicationSecurityGroups feature for Microsoft.Network in your account.
@@ -91,6 +91,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzFeatureRegistration](./New-AzFeatureRegistration.md)
+[Register-AzProviderPreviewFeature](./Register-AzProviderPreviewFeature.md)
 
-[Remove-AzFeatureRegistration](./Remove-AzFeatureRegistration.md)
+[Unregister-AzProviderPreviewFeature](./Unregister-AzProviderPreviewFeature.md)

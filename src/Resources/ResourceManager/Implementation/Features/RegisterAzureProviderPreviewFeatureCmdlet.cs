@@ -15,13 +15,14 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
-    /// Deletes feature registration.
+    /// Registers feature registration.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
+    [Cmdlet("Register", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ProviderPreviewFeature", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionFeatureRegistration))]
+    public class RegisterAzureProviderPreviewFeatureCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider name
@@ -38,29 +39,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ProviderNamespace { get; set; }
 
-        [Parameter(Mandatory = false)]
-        /// <summary>
-        /// Gets or sets the pass thru.
-        /// </summary>
-        public SwitchParameter PassThru { get; set; }
-
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                processMessage: ProjectResources.RemoveFeatureRegistrationMessage,
+                processMessage: ProjectResources.NewFeatureRegistrationMessage,
                 target: this.ProviderNamespace,
-                action: () =>
-                {
-                    this.ProviderFeatureClient.DeleteFeatureRegistration(providerName: this.ProviderNamespace, featureName: this.Name);
-
-                    if (this.PassThru.IsPresent)
-                    {
-                        this.WriteObject(true);
-                    }
-                });
+                action: () => this.WriteObject(this.ProviderFeatureClient.CreateFeatureRegistration(providerName: this.ProviderNamespace, featureName: this.Name)));
         }
     }
 }

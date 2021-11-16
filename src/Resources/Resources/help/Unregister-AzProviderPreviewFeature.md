@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/remove
 schema: 2.0.0
 ---
 
-# Remove-AzFeatureRegistration
+# Unregister-AzProviderPreviewFeature
 
 ## SYNOPSIS
 Removes a feature registration from your account.
@@ -13,18 +13,18 @@ Removes a feature registration from your account.
 ## SYNTAX
 
 ```
-Remove-AzFeatureRegistration -Name <String> -ProviderNamespace <String> [-PassThru]
+Unregister-AzProviderPreviewFeature -Name <String> -ProviderNamespace <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzFeatureRegistration** cmdlet removes a feature registration from your account.
+The **Unregister-AzProviderPreviewFeature** cmdlet removes a feature registration from your account.
 
 ## EXAMPLES
 
 ### Example 1: Removes a feature registration
 ```
-PS C:\>Remove-AzFeatureRegistration -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+PS C:\>Unregister-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This removes the AllowApplicationSecurityGroups feature for Microsoft.Network from your account.
@@ -137,6 +137,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzFeatureRegistration](./Get-AzFeatureRegistration.md)
+[Get-AzProviderPreviewFeature](./Get-AzProviderPreviewFeature.md)
 
-[New-AzFeatureRegistration](./New-AzFeatureRegistration.md)
+[Register-AzProviderPreviewFeature](./Register-AzProviderPreviewFeature.md)

@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Management.ResourceManager.Models;
 
     /// <summary>
-    /// Creates feature registration.
+    /// Gets feature registration.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration"), OutputType(typeof(PSSubscriptionFeatureRegistration))]
-    public class GetAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ProviderPreviewFeature"), OutputType(typeof(PSSubscriptionFeatureRegistration))]
+    public class GetAzureProviderPreviewFeatureCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider name
