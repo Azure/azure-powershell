@@ -19,8 +19,6 @@
 --->
 
 ## Upcoming Release
-* Bugfix in Remove peering and connection commandlet for ExpressrouteCircuit scenario
-    - Remove-AzExpressRouteCircuitPeeringConfig and Remove-AzExpressRouteCircuitConnectionConfig
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
