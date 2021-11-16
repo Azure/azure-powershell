@@ -389,7 +389,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             //the value may be null in test cases
             if (string.IsNullOrWhiteSpace(productName))
+            {
                 return;
+            }
+            if (string.IsNullOrEmpty(productVersion))
+            {
+                productVersion = "";
+            }
             _userAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion ?? ""), GetProductInfoHeaderKey(productName));
         }
 
