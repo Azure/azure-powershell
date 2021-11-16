@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
@@ -24,13 +25,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
-    using Policy;      
+    using Policy;
 
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PsPolicyAssignment), NewOutputProperties = new String[] { "Identity" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
@@ -105,10 +107,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string PolicyParameter { get; set; }
 
-        /// <summary>
-        /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "Parameter AssignIdentity is invalid and preserved for compatibility.")]
+        [ValidateNotNullOrEmpty]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
@@ -124,6 +124,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]
         [ValidateNotNullOrEmpty]
         public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of managed identity to be assigned to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityTypeHelp)]
+        public ManagedIdentityType? IdentityType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the user assigned managed identity to be assigned to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityIdHelp)]
+        public String IdentityId { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment input object parameter.
@@ -144,6 +156,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            CheckIfIdentityPresent();
             string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
 
@@ -167,6 +180,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .WaitOnOperation(operationResult: operationResult);
 
             this.WriteObject(this.GetOutputPolicyAssignments(JObject.Parse(result)), enumerateCollection: true);
+        }
+
+        /// <summary>
+        /// Verifies if identity type and/or identity ID and/or location are present
+        /// </summary>
+        private bool CheckIfIdentityPresent()
+        {
+            if (this.IdentityType != null && this.Location == null)
+            {
+                throw new PSInvalidOperationException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.");
+            }
+
+            if (this.IdentityType == ManagedIdentityType.UserAssigned && this.IdentityId == null)
+            {
+                throw new PSInvalidOperationException("A user assigned identity id needs to be specified if the identity type is 'UserAssigned'.");
+            }
+
+            if (this.IdentityType == ManagedIdentityType.SystemAssigned && this.IdentityId != null)
+            {
+                throw new PSInvalidOperationException("Cannot specify an identity ID if identity type is 'SystemAssigned'.");
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -203,10 +239,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 nonComplianceMessages = resource.Properties.NonComplianceMessages;
             }
 
+            ResourceIdentity identityObject = this.IdentityType != null ?
+                this.IdentityType == ManagedIdentityType.SystemAssigned ?
+                new ResourceIdentity { Type = ManagedIdentityType.SystemAssigned.ToString() } :
+                new ResourceIdentity
+                {
+                    Type = ManagedIdentityType.UserAssigned.ToString(),
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentityResource>
+                    {
+                        { this.IdentityId, new UserAssignedIdentityResource {} }
+                    }
+                } : null;
+
             var policyAssignmentObject = new PolicyAssignment
             {
                 Name = this.Name ?? this.InputObject?.Name ?? resource.Name,
-                Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
+                Identity = identityObject,
                 Location = this.Location ?? this.InputObject?.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {

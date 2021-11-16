@@ -13,20 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    /// <summary>
-    /// The resource identity object that represents the resource's Managed Service Identity.
-    /// </summary>
-    public class ResourceIdentity
+    public class UserAssignedIdentityResource
     {
-        /// <summary>
-        /// Gets or sets the type of identity assigned to the resource.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the principal ID of the assigned identity.
@@ -38,13 +29,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         /// Gets or sets the Azure Active Directory tenant ID that contains the assigned identity.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string TenantId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Azure Active Directory tenant ID that contains the assigned identity.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, UserAssignedIdentityResource> UserAssignedIdentities { get; set; }
+        public string ClientId { get; set; }
     }
 }
-
