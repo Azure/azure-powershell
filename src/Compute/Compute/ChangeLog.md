@@ -28,7 +28,8 @@
 * Added boolean parameter `AcceleratedNetwork` to the following cmdlets:
     - `New-AzDiskConfig`
     - `New-AzDiskUpdateConfig`
-    - `New-AzSNapshotConfig`
+    - `New-AzSnapshotConfig`
+* Added `CompletionPercent` property to the PSSNapshot model so it is visible to the user.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
