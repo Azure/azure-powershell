@@ -19,6 +19,7 @@ param(
 )
 $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
+
 $ALL_MODULE = "ALL_MODULE"
 
 $SKIP_MODULES = @("KubernetesConfiguration")
