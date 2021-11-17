@@ -383,7 +383,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Deny assignment fully qualified id or guid. When Id is provided as a guid, will take current subscription as default scope.
+Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.
 
 ```yaml
 Type: System.Guid
