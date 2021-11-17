@@ -16,7 +16,7 @@ PS C:\> Get-AzWebPubSubKey -ResourceGroupName psdemo -ResourceName psdemo-wps  |
 
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 .Example
 PS C:\> $wps = Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
@@ -24,7 +24,7 @@ PS C:\> $wps | Get-AzWebPubSubKey | Format-List
 
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 
 .Inputs
@@ -110,7 +110,7 @@ function Get-AzWebPubSubKey_ListViaIdentity
     {
         try
         {
-            $null = $InputObject.Id -match '/subscriptions/(?<SubscriptionId>.+)/resourceGroups/(?<ResourceGroupName>.+)/providers/Microsoft.SignalRService/WebPubSub/(?<ResourceName>.+)'
+            $null = $InputObject.Id -match '/subscriptions/(?<SubscriptionId>[a-zA-Z0-9-]{36})/resourceGroups/(?<ResourceGroupName>[^/]+)/providers/Microsoft.SignalRService/WebPubSub/(?<ResourceName>.+$)'
             $PSBoundParameters.Add("ResourceGroupName", $Matches.ResourceGroupName)
             $PSBoundParameters.Add("ResourceName", $Matches.ResourceName)
             $PSBoundParameters.Add("SubscriptionId", $Matches.SubscriptionId)

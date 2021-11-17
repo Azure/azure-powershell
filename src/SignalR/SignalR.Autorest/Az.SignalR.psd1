@@ -1,6 +1,6 @@
 @{
   GUID = '887a3597-2c6e-46ff-a239-c56a20f0bf79'
-  RootModule = 'SignalR.psm1'
+  RootModule = 'Az.SignalR.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
