@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.SasPolicy = storageAccount.SasPolicy;
             this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
             this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
-
+            this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -154,6 +154,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSExtendedLocation ExtendedLocation { get; set; }
 
         public string PublicNetworkAccess { get; set; }
+
+        public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
@@ -253,5 +255,45 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
         public System.DateTime? Key1 { get; set; }
         public System.DateTime? Key2 { get; set; }
+    }
+
+    /// <summary>
+    /// wrapper class for ImmutableStorageAccount
+    /// </summary>
+    public class PSImmutableStorageAccount
+    {
+        public PSImmutableStorageAccount()
+        { }
+
+        public PSImmutableStorageAccount(ImmutableStorageAccount immutableStorageAccount)
+        {
+            if (immutableStorageAccount != null)
+            {
+                this.Enabled = immutableStorageAccount.Enabled;
+                this.ImmutabilityPolicy = immutableStorageAccount.ImmutabilityPolicy is null ? null : new PSAccountImmutabilityPolicyProperties(immutableStorageAccount.ImmutabilityPolicy);
+            }
+        }
+        public bool? Enabled { get; set; }
+        public PSAccountImmutabilityPolicyProperties ImmutabilityPolicy { get; set; }
+    }
+
+    /// <summary>
+    /// wrapper class for AccountImmutabilityPolicyProperties
+    /// </summary>
+    public class PSAccountImmutabilityPolicyProperties
+    {
+        public PSAccountImmutabilityPolicyProperties()
+        { }
+
+        public PSAccountImmutabilityPolicyProperties(AccountImmutabilityPolicyProperties accountImmutabilityPolicyProperties)
+        {
+            if (accountImmutabilityPolicyProperties != null)
+            {
+                this.ImmutabilityPeriodSinceCreationInDays = accountImmutabilityPolicyProperties.ImmutabilityPeriodSinceCreationInDays;
+                this.State = accountImmutabilityPolicyProperties.State;
+            }
+        }
+        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
+        public string State { get; set; }
     }
 }

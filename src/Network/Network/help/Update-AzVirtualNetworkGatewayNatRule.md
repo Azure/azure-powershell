@@ -15,22 +15,25 @@ Updates a Virtual Network Gateway NatRule.
 ### ByVirtualNetworkGatewayNatRuleName (Default)
 ```
 Update-AzVirtualNetworkGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRange <String[]>]
+ [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayNatRuleResourceId
 ```
 Update-AzVirtualNetworkGatewayNatRule -ResourceId <String> [-InternalMapping <String[]>]
- [-ExternalMapping <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExternalMapping <String[]>] [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>]
+ [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayNatRuleObject
 ```
 Update-AzVirtualNetworkGatewayNatRule -InputObject <PSVirtualNetworkGatewayNatRule>
- [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRange <String[]>]
+ [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +70,7 @@ Etag              : W/"5150d788-e165-42ba-99c4-8138a545fce9"
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -97,7 +100,22 @@ Accept wildcard characters: False
 The list of private IP address subnet external mappings for NAT
 
 ```yaml
-Type: String[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalPortRange
+The list of external port range mappings for NAT subnets
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +130,7 @@ Accept wildcard characters: False
 The VirtualNetworkGatewayNatRule object to update.
 
 ```yaml
-Type: PSVirtualNetworkGatewayNatRule
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule
 Parameter Sets: ByVirtualNetworkGatewayNatRuleObject
 Aliases: VirtualNetworkGatewayNatRule
 
@@ -127,7 +145,22 @@ Accept wildcard characters: False
 The list of private IP address subnet internal mappings for NAT
 
 ```yaml
-Type: String[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InternalPortRange
+The list of internal port range mappings for NAT subnets
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +175,7 @@ Accept wildcard characters: False
 The IP Configuration ID this NAT rule applies to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +190,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayNatRuleName
 Aliases: ResourceName, VirtualNetworkGatewayNatRuleName
 
@@ -172,7 +205,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayNatRuleName
 Aliases: ParentVirtualNetworkGatewayName, VirtualNetworkGatewayName
 
@@ -187,7 +220,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayNatRuleName
 Aliases:
 
@@ -202,7 +235,7 @@ Accept wildcard characters: False
 The resource id of the VirtualNetworkGatewayNatRule object to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayNatRuleResourceId
 Aliases: VirtualNetworkGatewayNatRuleResourceId
 
@@ -210,6 +243,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
