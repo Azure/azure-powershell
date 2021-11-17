@@ -340,9 +340,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.IsParameterBound(c => c.UserData))
             {
-                if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(this.UserData))
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
                 {
-                    this.UserData = ValidateBase64EncodedString.encodeStringToBase64(this.UserData);
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
                     this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification + this.UserData, new string[] { "PSHOST" });
                 }
             }
