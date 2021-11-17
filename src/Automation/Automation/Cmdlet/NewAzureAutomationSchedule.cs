@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Models = Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using DayOfWeek = Microsoft.Azure.Commands.Automation.Model.DayOfWeek;
-
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             if (!this.IsScheduleNameValid())
             {
-                throw new ArgumentException(Resources.ScheduleNameInvalid);
+                throw new AzPSArgumentException(Resources.ScheduleNameInvalid, nameof(Name));
             }
 
             var schedule = new Models.Schedule
