@@ -91,7 +91,7 @@ foreach ($Module in $ModuleList)
     
     # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
     # We need to redirect output stream to file to avoid the mistake.
-    npx autorest --version:3.6.6 --max-memory-size=8192 > "$AutorestOutputDir\$Module.log"
+    npx autorest --version=3.6.6 --max-memory-size=8192 > "$AutorestOutputDir\$Module.log"
     
     ./build-module.ps1
     Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
