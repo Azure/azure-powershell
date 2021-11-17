@@ -65,6 +65,7 @@ git init
 git remote add -f origin https://github.com/Azure/azure-powershell.git
 git config core.sparseCheckout true
 Add-Content -Path .git/info/sparse-checkout -Value "src/Accounts/"
+Add-Content -Path .git/info/sparse-checkout -Value "tools/"
 git pull origin main
 Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts"
 Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
