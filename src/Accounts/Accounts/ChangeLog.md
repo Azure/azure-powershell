@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.6.2
+* Upgraded Azure.Identity to 1.5.0
+
 ## Version 2.6.1
 * Added new version of AAD service client using Microsoft Graph API
 
