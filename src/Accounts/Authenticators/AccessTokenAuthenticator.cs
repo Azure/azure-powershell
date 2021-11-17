@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class AccessTokenAuthenticator : DelegatingAuthenticator
     {
-        private const string _accessTokenFailure = "Cannot retrieve access token for resource '{0}';. " +
+        private const string _accessTokenFailure = "[AccessTokenAuthenticator] failed to retrieve access token for resource '{0}';. " +
                                                    "Please ensure that you have provided the appropriate access tokens when using access token login.";
 
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
@@ -66,6 +66,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
                 rawToken.AccessToken = account.GetAccessToken();
+            }
+            else if (((environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId) && resourceId.EqualsInsensitively(environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId])) ||
+                      resourceId.EqualsInsensitively(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId) ||
+                      resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId)))
+                      && account.IsPropertySet(Constants.MicrosoftGraphAccessToken))
+            {
+                TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
+                rawToken.AccessToken = account.GetProperty(Constants.MicrosoftGraphAccessToken);
             }
             else
             {
