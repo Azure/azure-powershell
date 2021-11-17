@@ -24,57 +24,47 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the storage insight.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNull]
         public PSWorkspace Workspace { get; set; }
 
         [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 2, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the workspace that will contain the storage insight.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage insight name.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The access key for the storage account.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
         [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The full Azure Resource Manager ID of the storage account.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceId { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage tables that the storage insight will read data from.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         public string[] Tables { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage blob containers that the storage insight will read data from.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         public string[] Containers { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The ETag of the StorageInsight.")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         public string ETag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()

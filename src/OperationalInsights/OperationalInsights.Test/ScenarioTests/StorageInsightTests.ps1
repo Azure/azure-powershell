@@ -79,6 +79,9 @@ function Test-StorageInsightCreateUpdateDelete
     $storageinsight = Set-AzOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable") -Containers @() -StorageAccountKey "anotherfakekey" -StorageAccountResourceId $said
     Assert-AreEqualArray @("WADWindowsEventLogsTable") $storageInsight.Tables
     Assert-AreEqualArray @() $storageInsight.Containers
+    Assert-AreEqual $siname $storageInsight.Name
+    Assert-AreEqual $rgname $storageInsight.ResourceGroupName
+    Assert-AreEqual $wsname $storageInsight.WorkspaceName
 
     $storageinsight = $storageinsight | Set-AzOperationalInsightsStorageInsight -Tables @() -Containers @("wad-iis-logfiles") -StorageAccountKey "anotherfakekey" -StorageAccountResourceId $said
     Assert-AreEqualArray @() $storageInsight.Tables

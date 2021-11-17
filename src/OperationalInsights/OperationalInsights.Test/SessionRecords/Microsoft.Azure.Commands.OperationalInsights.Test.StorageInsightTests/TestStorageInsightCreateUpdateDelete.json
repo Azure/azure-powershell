@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "94357e3c-7f33-4fb2-8526-9a2e8536e5cd"
+          "5ddf44a1-208c-4bbd-9bb1-eb6b36f24afa"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "11c41485-bd2a-418e-b657-e31003cb151c"
+          "b723c16c-5ae2-4708-99aa-692872f83d87"
         ],
         "x-ms-correlation-request-id": [
-          "11c41485-bd2a-418e-b657-e31003cb151c"
+          "b723c16c-5ae2-4708-99aa-692872f83d87"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090633Z:11c41485-bd2a-418e-b657-e31003cb151c"
+          "UAECENTRAL:20211117T145112Z:b723c16c-5ae2-4708-99aa-692872f83d87"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:06:32 GMT"
+          "Wed, 17 Nov 2021 14:51:12 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,13 +61,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1ND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a3bd6d17-db6f-4728-976a-e8de436de23a"
+          "851081ac-ad91-4fd7-8be6-905544a6a989"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "91464412-b25c-45c2-a068-d689e3d7ffb0"
+          "a9431340-d66e-48db-bea0-4479a30679ba"
         ],
         "x-ms-correlation-request-id": [
-          "91464412-b25c-45c2-a068-d689e3d7ffb0"
+          "a9431340-d66e-48db-bea0-4479a30679ba"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090634Z:91464412-b25c-45c2-a068-d689e3d7ffb0"
+          "UAECENTRAL:20211117T145115Z:a9431340-d66e-48db-bea0-4479a30679ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:06:33 GMT"
+          "Wed, 17 Nov 2021 14:51:14 GMT"
         ],
         "Content-Length": [
           "165"
@@ -123,17 +123,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps6354\",\r\n  \"name\": \"ps6354\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps6513\",\r\n  \"name\": \"ps6513\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTg/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"features\": {}\r\n  },\r\n  \"tags\": {},\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "29a49192-3ef9-4487-b0b7-fb59514759d7"
+          "c45ee424-6aee-479c-aca3-c46f0e4e2747"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,7 +159,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "396cab6d-2685-4044-91fa-6dff25c179b9"
+          "acc8fac2-38f7-4976-b3be-0bd2633449af"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -176,16 +176,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "940338a5-63af-44f7-8634-3b526f36434f"
+          "7f5a8701-3437-44b7-bc79-62c7b72a94d6"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090643Z:940338a5-63af-44f7-8634-3b526f36434f"
+          "UAECENTRAL:20211117T145124Z:7f5a8701-3437-44b7-bc79-62c7b72a94d6"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:06:43 GMT"
+          "Wed, 17 Nov 2021 14:51:24 GMT"
         ],
         "Content-Length": [
           "1064"
@@ -194,17 +194,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"31623273-1567-4d77-8c8a-3d41d8b3ff42\",\r\n    \"provisioningState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Tue, 16 Nov 2021 09:06:43 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 16 Nov 2021 18:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Tue, 16 Nov 2021 09:06:43 GMT\",\r\n    \"modifiedDate\": \"Tue, 16 Nov 2021 09:06:43 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998\",\r\n  \"name\": \"AzTestps1998\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"376c2b30-30d1-41d4-972c-9dc7d181b6c2\",\r\n    \"provisioningState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Wed, 17 Nov 2021 14:51:23 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Thu, 18 Nov 2021 04:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Wed, 17 Nov 2021 14:51:23 GMT\",\r\n    \"modifiedDate\": \"Wed, 17 Nov 2021 14:51:23 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433\",\r\n  \"name\": \"AzTestps6433\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTg/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "29a49192-3ef9-4487-b0b7-fb59514759d7"
+          "c45ee424-6aee-479c-aca3-c46f0e4e2747"
         ],
         "User-Agent": [
           "FxVersion/4.6.30411.01",
@@ -221,7 +221,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c3a2f18c-7c16-483c-aadc-7c230d48a9c4"
+          "4fae800c-19ce-4268-a80f-9cac4b5b6c97"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -238,16 +238,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11988"
         ],
         "x-ms-correlation-request-id": [
-          "5a1e82e3-916f-42cb-a792-130a849cc693"
+          "a0fad765-c97a-4c4a-96f1-14e729e0d793"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090714Z:5a1e82e3-916f-42cb-a792-130a849cc693"
+          "UAECENTRAL:20211117T145155Z:a0fad765-c97a-4c4a-96f1-14e729e0d793"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:13 GMT"
+          "Wed, 17 Nov 2021 14:51:55 GMT"
         ],
         "Content-Length": [
           "1065"
@@ -256,17 +256,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"31623273-1567-4d77-8c8a-3d41d8b3ff42\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Tue, 16 Nov 2021 09:06:43 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 16 Nov 2021 18:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Tue, 16 Nov 2021 09:06:43 GMT\",\r\n    \"modifiedDate\": \"Tue, 16 Nov 2021 09:06:43 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998\",\r\n  \"name\": \"AzTestps1998\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"376c2b30-30d1-41d4-972c-9dc7d181b6c2\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Wed, 17 Nov 2021 14:51:23 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Thu, 18 Nov 2021 04:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Wed, 17 Nov 2021 14:51:23 GMT\",\r\n    \"modifiedDate\": \"Wed, 17 Nov 2021 14:51:27 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433\",\r\n  \"name\": \"AzTestps6433\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dda87c06-c2d5-49f8-8028-cbd166ac27a3"
+          "726aeec7-38d7-4543-9cda-14741bb7ee04"
         ],
         "Accept-Language": [
           "en-US"
@@ -286,7 +286,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2f3dd918-8232-40c1-a26d-3225cbd93c88"
+          "348f5814-e816-4c4c-bda1-7b6918d803af"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -303,16 +303,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11987"
         ],
         "x-ms-correlation-request-id": [
-          "702ba966-cfb7-4a04-a814-1578a1b4d25f"
+          "a56aafdd-fdf7-4825-a9e8-0040fa8a928f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090721Z:702ba966-cfb7-4a04-a814-1578a1b4d25f"
+          "UAECENTRAL:20211117T145202Z:a56aafdd-fdf7-4825-a9e8-0040fa8a928f"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:21 GMT"
+          "Wed, 17 Nov 2021 14:52:02 GMT"
         ],
         "Content-Length": [
           "0"
@@ -322,13 +322,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c66296da-74ed-4a9a-8f9e-afa2bf7e5b48"
+          "ba5a13bc-0733-4ebf-a0d3-a3723f6e9b93"
         ],
         "Accept-Language": [
           "en-US"
@@ -348,7 +348,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "af81c8c9-2e49-47c5-847a-dd4d6962bbc0"
+          "19c57b7a-25ef-4e83-bc14-5785a739c208"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -365,16 +365,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11986"
         ],
         "x-ms-correlation-request-id": [
-          "f76641c0-5143-48e4-9a2d-3cf7f424011d"
+          "8f4ff769-c399-40c6-8311-d7c95674f7b3"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090722Z:f76641c0-5143-48e4-9a2d-3cf7f424011d"
+          "UAECENTRAL:20211117T145204Z:8f4ff769-c399-40c6-8311-d7c95674f7b3"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:21 GMT"
+          "Wed, 17 Nov 2021 14:52:04 GMT"
         ],
         "Content-Length": [
           "683"
@@ -383,17 +383,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5aaf08ed-48c9-4a8e-a544-1416b4fb8ee6"
+          "921fce14-47c6-4f9d-b42f-a2c45f500fcf"
         ],
         "Accept-Language": [
           "en-US"
@@ -413,7 +413,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "81a30c93-55a7-481c-8361-7ddd3ba2b90d"
+          "4b648188-edb3-4cd7-bbdf-f39f16d88d46"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -430,16 +430,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11980"
         ],
         "x-ms-correlation-request-id": [
-          "a8810c5f-0661-42f8-a35b-dce77b471ceb"
+          "55d396ba-087d-47ab-8cc1-b925813d58e1"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090742Z:a8810c5f-0661-42f8-a35b-dce77b471ceb"
+          "UAECENTRAL:20211117T145223Z:55d396ba-087d-47ab-8cc1-b925813d58e1"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:41 GMT"
+          "Wed, 17 Nov 2021 14:52:22 GMT"
         ],
         "Content-Length": [
           "683"
@@ -448,17 +448,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3333dbc8-3f68-4c47-8fa0-c511576b2537"
+          "cd12d2e3-8cc9-47ab-926d-b43bfd2299ac"
         ],
         "Accept-Language": [
           "en-US"
@@ -478,7 +478,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "54041cff-00d4-4350-abd1-fa9f926f4925"
+          "462f220a-94ae-42f3-98d5-2966355d8b0e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -495,16 +495,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11979"
         ],
         "x-ms-correlation-request-id": [
-          "614c0c3e-b3b3-4806-b76c-ccf260b25e6b"
+          "2bfe72c1-a6af-4330-99ec-f2c4bc09250c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090744Z:614c0c3e-b3b3-4806-b76c-ccf260b25e6b"
+          "UAECENTRAL:20211117T145224Z:2bfe72c1-a6af-4330-99ec-f2c4bc09250c"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:43 GMT"
+          "Wed, 17 Nov 2021 14:52:23 GMT"
         ],
         "Content-Length": [
           "623"
@@ -513,17 +513,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dff81db1-66ca-49f5-a3e0-5912d790568b"
+          "e4925f74-5261-4830-8f3e-f2a21a7088d3"
         ],
         "Accept-Language": [
           "en-US"
@@ -543,7 +543,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1b6e3f26-f52e-4131-99dd-92f80c0c87a9"
+          "5614067a-3a09-4732-9953-7c4451cab2a9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -560,16 +560,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11978"
         ],
         "x-ms-correlation-request-id": [
-          "29933daf-0ebc-4f6d-8610-82ba28f92ad8"
+          "0a2142c9-63c4-4f20-b31f-7a573be3e5fd"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090752Z:29933daf-0ebc-4f6d-8610-82ba28f92ad8"
+          "UAECENTRAL:20211117T145234Z:0a2142c9-63c4-4f20-b31f-7a573be3e5fd"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:52 GMT"
+          "Wed, 17 Nov 2021 14:52:33 GMT"
         ],
         "Content-Length": [
           "0"
@@ -579,13 +579,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\",\r\n      \"key\": \"fakekey\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\",\r\n      \"key\": \"fakekey\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dda87c06-c2d5-49f8-8028-cbd166ac27a3"
+          "726aeec7-38d7-4543-9cda-14741bb7ee04"
         ],
         "Accept-Language": [
           "en-US"
@@ -611,7 +611,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c7a3471d-241b-410f-86b4-d92ee3899750"
+          "6d29160b-8897-484e-a9e3-9b19548aae67"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -628,16 +628,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1193"
         ],
         "x-ms-correlation-request-id": [
-          "5c6b49c5-3a6c-41b0-9ca4-9bd7212bd028"
+          "ff1f6752-19ec-4c5c-868e-f09795cf370f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090722Z:5c6b49c5-3a6c-41b0-9ca4-9bd7212bd028"
+          "UAECENTRAL:20211117T145203Z:ff1f6752-19ec-4c5c-868e-f09795cf370f"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:21 GMT"
+          "Wed, 17 Nov 2021 14:52:03 GMT"
         ],
         "Content-Length": [
           "683"
@@ -646,17 +646,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\",\r\n      \"key\": \"anotherfakekey\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\",\r\n      \"key\": \"anotherfakekey\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5aaf08ed-48c9-4a8e-a544-1416b4fb8ee6"
+          "921fce14-47c6-4f9d-b42f-a2c45f500fcf"
         ],
         "Accept-Language": [
           "en-US"
@@ -682,7 +682,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f21e7b18-7cdd-491e-a2a9-d8fe5afcba1f"
+          "3c406fc9-2965-49dc-9888-723f3650fccf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -699,16 +699,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1191"
         ],
         "x-ms-correlation-request-id": [
-          "d8007a54-2eee-43c6-b8d5-2ba70a3fad7f"
+          "f6318c4a-c273-47fd-b68f-03ccaa47a660"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090744Z:d8007a54-2eee-43c6-b8d5-2ba70a3fad7f"
+          "UAECENTRAL:20211117T145223Z:f6318c4a-c273-47fd-b68f-03ccaa47a660"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:43 GMT"
+          "Wed, 17 Nov 2021 14:52:23 GMT"
         ],
         "Content-Length": [
           "623"
@@ -717,17 +717,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\",\r\n      \"key\": \"anotherfakekey\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\",\r\n      \"key\": \"anotherfakekey\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3333dbc8-3f68-4c47-8fa0-c511576b2537"
+          "cd12d2e3-8cc9-47ab-926d-b43bfd2299ac"
         ],
         "Accept-Language": [
           "en-US"
@@ -753,7 +753,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4d243692-ca1d-4625-aac5-dd1e0f9a543c"
+          "6a166772-b0e4-4bec-a10b-f76bd415e4df"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -770,16 +770,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1190"
         ],
         "x-ms-correlation-request-id": [
-          "6cec139e-bc33-4df3-9353-92f0f5f79725"
+          "87b5665d-e0ff-41e9-9c40-29c7af931a00"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090744Z:6cec139e-bc33-4df3-9353-92f0f5f79725"
+          "UAECENTRAL:20211117T145225Z:87b5665d-e0ff-41e9-9c40-29c7af931a00"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:44 GMT"
+          "Wed, 17 Nov 2021 14:52:24 GMT"
         ],
         "Content-Length": [
           "615"
@@ -788,17 +788,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\",\r\n      \"key\": \"anotherfakekey\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\",\r\n      \"key\": \"anotherfakekey\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7bf2bae7-22ba-4488-b044-175cbffdbef5"
+          "c56d7cad-d776-4c92-862b-8ead8f4b3eac"
         ],
         "Accept-Language": [
           "en-US"
@@ -824,7 +824,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b33084ef-8379-4510-a46d-3d3515ab8017"
+          "b5e91f9c-67f9-49c7-be0f-0079dd43b8ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -841,16 +841,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1189"
         ],
         "x-ms-correlation-request-id": [
-          "622afc3c-7b0e-41f1-be70-38b2c90f9ab2"
+          "dc8b13ba-8ebc-4373-b8a2-c0783494c7cc"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090745Z:622afc3c-7b0e-41f1-be70-38b2c90f9ab2"
+          "UAECENTRAL:20211117T145225Z:dc8b13ba-8ebc-4373-b8a2-c0783494c7cc"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:44 GMT"
+          "Wed, 17 Nov 2021 14:52:25 GMT"
         ],
         "Content-Length": [
           "655"
@@ -859,17 +859,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n  \"name\": \"AzTestps2302\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      \"wad-iis-logfiles\"\r\n    ],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n  \"name\": \"AzTestps7845\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps4072?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNDA3Mj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps1203?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMTIwMz9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "54d7629f-4bb1-4658-80bb-b1ceb7c121cc"
+          "d9c83aa8-7cb8-4338-98b9-a8e49b56b780"
         ],
         "Accept-Language": [
           "en-US"
@@ -889,7 +889,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c052ad2c-71f3-4ada-b8d3-fcdc8eab980e"
+          "27408827-0415-47e4-93b0-c7b83815f60e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -906,16 +906,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11985"
         ],
         "x-ms-correlation-request-id": [
-          "14af735a-6e50-44fc-bf51-172a40fdc0fd"
+          "12186c59-3420-4d6c-916b-ac1000715b5b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090729Z:14af735a-6e50-44fc-bf51-172a40fdc0fd"
+          "UAECENTRAL:20211117T145211Z:12186c59-3420-4d6c-916b-ac1000715b5b"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:29 GMT"
+          "Wed, 17 Nov 2021 14:52:11 GMT"
         ],
         "Content-Length": [
           "0"
@@ -925,13 +925,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps4072?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNDA3Mj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps1203?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMTIwMz9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3a54e08b-5717-443a-9c4f-555afdcd094c"
+          "ed28174e-5e85-41f6-bd04-15ab02ff7145"
         ],
         "Accept-Language": [
           "en-US"
@@ -951,7 +951,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "41e217bb-0500-400f-a46d-75a9fea23f6a"
+          "6876eecb-38d7-4a36-97a1-9014efbf4377"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -968,16 +968,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11982"
         ],
         "x-ms-correlation-request-id": [
-          "a28a12ab-319b-4875-95ef-a8caa66d2ae2"
+          "ef5c81d4-d989-4941-8726-25498c8b87a0"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090741Z:a28a12ab-319b-4875-95ef-a8caa66d2ae2"
+          "UAECENTRAL:20211117T145222Z:ef5c81d4-d989-4941-8726-25498c8b87a0"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:40 GMT"
+          "Wed, 17 Nov 2021 14:52:21 GMT"
         ],
         "Content-Length": [
           "0"
@@ -987,13 +987,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps4072?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNDA3Mj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps1203?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMTIwMz9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\",\r\n      \"key\": \"fakekey\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\",\r\n      \"key\": \"fakekey\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "54d7629f-4bb1-4658-80bb-b1ceb7c121cc"
+          "d9c83aa8-7cb8-4338-98b9-a8e49b56b780"
         ],
         "Accept-Language": [
           "en-US"
@@ -1019,7 +1019,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "71fee688-4cf2-4753-8ee6-8b681eb4963b"
+          "ee6753c9-4a33-4c95-a128-e143ffb484a2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1036,16 +1036,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1192"
         ],
         "x-ms-correlation-request-id": [
-          "276e8a74-5797-4077-8456-f82df47444e7"
+          "ca9c9b9b-f0d7-4ee7-93ca-5083ae965b76"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090730Z:276e8a74-5797-4077-8456-f82df47444e7"
+          "UAECENTRAL:20211117T145212Z:ca9c9b9b-f0d7-4ee7-93ca-5083ae965b76"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:29 GMT"
+          "Wed, 17 Nov 2021 14:52:12 GMT"
         ],
         "Content-Length": [
           "651"
@@ -1054,17 +1054,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps4072\",\r\n  \"name\": \"AzTestps4072\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"containers\": [],\r\n    \"tables\": [\r\n      \"WADWindowsEventLogsTable\",\r\n      \"LinuxSyslogVer2v0\"\r\n    ],\r\n    \"storageAccount\": {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n    },\r\n    \"status\": {\r\n      \"state\": \"OK\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps1203\",\r\n  \"name\": \"AzTestps1203\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d49da5a4-4526-456f-afa4-bde5fdf4e14a"
+          "c5099f1c-f0e0-4a38-a1ca-bdb16e966724"
         ],
         "Accept-Language": [
           "en-US"
@@ -1084,7 +1084,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e9827cbb-58c1-4246-a4ae-7a1e6f6ff611"
+          "394e056e-e047-4fbb-855b-9abf1ab81e65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1101,16 +1101,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11984"
         ],
         "x-ms-correlation-request-id": [
-          "2b2270f6-dcf4-45f6-b88f-2bbcc839fccd"
+          "13189f3c-31a6-4093-97f1-f961b57b4c1f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090733Z:2b2270f6-dcf4-45f6-b88f-2bbcc839fccd"
+          "UAECENTRAL:20211117T145213Z:13189f3c-31a6-4093-97f1-f961b57b4c1f"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:32 GMT"
+          "Wed, 17 Nov 2021 14:52:12 GMT"
         ],
         "Content-Length": [
           "1514"
@@ -1119,17 +1119,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [\r\n          \"wad-iis-logfiles\"\r\n        ],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n      \"name\": \"AzTestps2302\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps4072\",\r\n      \"name\": \"AzTestps4072\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps1203\",\r\n      \"name\": \"AzTestps1203\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [\r\n          \"wad-iis-logfiles\"\r\n        ],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n      \"name\": \"AzTestps7845\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3187f188-9df6-4207-9a3d-dd570d07637a"
+          "2af0911e-701d-464d-bd1e-71c121c3baad"
         ],
         "Accept-Language": [
           "en-US"
@@ -1149,7 +1149,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c3aea194-8f41-4570-9c99-7293697a9a39"
+          "dc7309ff-9532-42e1-882c-8d371780b281"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1166,16 +1166,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11983"
         ],
         "x-ms-correlation-request-id": [
-          "e166384c-0d21-48f3-9f68-5696a3d51962"
+          "5a5f6420-ae3b-48d9-a705-c63d4a786dde"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090733Z:e166384c-0d21-48f3-9f68-5696a3d51962"
+          "UAECENTRAL:20211117T145213Z:5a5f6420-ae3b-48d9-a705-c63d4a786dde"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:33 GMT"
+          "Wed, 17 Nov 2021 14:52:13 GMT"
         ],
         "Content-Length": [
           "1514"
@@ -1184,17 +1184,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [\r\n          \"wad-iis-logfiles\"\r\n        ],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n      \"name\": \"AzTestps2302\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps4072\",\r\n      \"name\": \"AzTestps4072\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps1203\",\r\n      \"name\": \"AzTestps1203\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [\r\n          \"wad-iis-logfiles\"\r\n        ],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n      \"name\": \"AzTestps7845\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1ab68175-bb1e-46db-880f-ac7d5199e486"
+          "5fa1df1e-f221-487a-a76f-c0e38c15d958"
         ],
         "Accept-Language": [
           "en-US"
@@ -1214,7 +1214,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9434e789-53ec-4ef8-9381-511ee6850ad5"
+          "94eec2b7-a6a4-4519-be47-1f1732ca86f0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1231,16 +1231,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11981"
         ],
         "x-ms-correlation-request-id": [
-          "0a9c496c-4bdd-463c-b817-99c7b9ef920e"
+          "f88139b7-6443-4f90-8610-7d5aedb34302"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090741Z:0a9c496c-4bdd-463c-b817-99c7b9ef920e"
+          "UAECENTRAL:20211117T145222Z:f88139b7-6443-4f90-8610-7d5aedb34302"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:41 GMT"
+          "Wed, 17 Nov 2021 14:52:22 GMT"
         ],
         "Content-Length": [
           "788"
@@ -1249,17 +1249,17 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [\r\n          \"wad-iis-logfiles\"\r\n        ],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.storage/storageaccounts/AzTestps2818\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/microsoft.operationalinsights/workspaces/aztestps1998/storageinsightconfigs/AzTestps2302\",\r\n      \"name\": \"AzTestps2302\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"containers\": [\r\n          \"wad-iis-logfiles\"\r\n        ],\r\n        \"tables\": [\r\n          \"WADWindowsEventLogsTable\",\r\n          \"LinuxSyslogVer2v0\"\r\n        ],\r\n        \"storageAccount\": {\r\n          \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.storage/storageaccounts/AzTestps7476\"\r\n        },\r\n        \"status\": {\r\n          \"state\": \"OK\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/microsoft.operationalinsights/workspaces/aztestps6433/storageinsightconfigs/AzTestps7845\",\r\n      \"name\": \"AzTestps7845\",\r\n      \"type\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "01f15528-b45b-4048-a590-988b0cc4a5a8"
+          "f2991c12-9545-4936-9eef-1f61999d0adb"
         ],
         "Accept-Language": [
           "en-US"
@@ -1279,7 +1279,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9ace5038-4c00-4c04-bc87-4658ee8b4908"
+          "230fb635-fe8f-4994-8928-95595b33cbc5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1296,16 +1296,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11977"
         ],
         "x-ms-correlation-request-id": [
-          "ecc65919-da20-4564-b22d-b557e6d0cc0e"
+          "11f39c1a-a8fe-4d66-9f22-8a637c1c9566"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090753Z:ecc65919-da20-4564-b22d-b557e6d0cc0e"
+          "UAECENTRAL:20211117T145234Z:11f39c1a-a8fe-4d66-9f22-8a637c1c9566"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:52 GMT"
+          "Wed, 17 Nov 2021 14:52:33 GMT"
         ],
         "Content-Length": [
           "19"
@@ -1318,13 +1318,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps4072?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNDA3Mj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps1203?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMTIwMz9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bffc0c67-9b15-456d-b17c-c243d6eeb49e"
+          "f5ad91f9-a58c-48f0-80fb-31c5f2bfead2"
         ],
         "Accept-Language": [
           "en-US"
@@ -1344,7 +1344,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "53a41c34-8c18-4588-933f-51cb5699f4a1"
+          "4e80d4c0-ae20-4150-8112-783881fde5b8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1361,16 +1361,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "be63f3fd-a1b3-40c9-9ae4-8b64e2e0e018"
+          "fbc12277-f51d-4674-8c27-b3d1c48b8cde"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090734Z:be63f3fd-a1b3-40c9-9ae4-8b64e2e0e018"
+          "UAECENTRAL:20211117T145214Z:fbc12277-f51d-4674-8c27-b3d1c48b8cde"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:33 GMT"
+          "Wed, 17 Nov 2021 14:52:14 GMT"
         ],
         "Content-Length": [
           "0"
@@ -1380,13 +1380,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6354/providers/Microsoft.OperationalInsights/workspaces/AzTestps1998/storageInsightConfigs/AzTestps2302?api-version=2020-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjM1NC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczE5OTgvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzMjMwMj9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps6513/providers/Microsoft.OperationalInsights/workspaces/AzTestps6433/storageInsightConfigs/AzTestps7845?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzNjUxMy9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczY0MzMvc3RvcmFnZUluc2lnaHRDb25maWdzL0F6VGVzdHBzNzg0NT9hcGktdmVyc2lvbj0yMDIwLTA4LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64c17a4e-2b9b-4658-a7cd-7f480595ebcf"
+          "34d07450-70b7-4d94-afd4-0694a474176a"
         ],
         "Accept-Language": [
           "en-US"
@@ -1406,7 +1406,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ce4ad18a-3a20-43ab-8938-eeecbb312e05"
+          "82e008f7-afa6-4449-80cc-848ea118a4ae"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1423,16 +1423,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14995"
         ],
         "x-ms-correlation-request-id": [
-          "d47fa374-8c71-49b1-a36a-49eda8b020cb"
+          "f2472ea4-b0c0-4a0f-9240-2dc181b31073"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20211116T090745Z:d47fa374-8c71-49b1-a36a-49eda8b020cb"
+          "UAECENTRAL:20211117T145226Z:f2472ea4-b0c0-4a0f-9240-2dc181b31073"
         ],
         "Date": [
-          "Tue, 16 Nov 2021 09:07:44 GMT"
+          "Wed, 17 Nov 2021 14:52:25 GMT"
         ],
         "Content-Length": [
           "0"
@@ -1444,11 +1444,11 @@
   ],
   "Names": {
     "Test-StorageInsightCreateUpdateDelete": [
-      "ps1998",
-      "ps2302",
-      "ps2818",
-      "ps6354",
-      "ps4072"
+      "ps6433",
+      "ps7845",
+      "ps7476",
+      "ps6513",
+      "ps1203"
     ]
   },
   "Variables": {
