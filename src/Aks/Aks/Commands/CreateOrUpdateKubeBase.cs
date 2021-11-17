@@ -39,6 +39,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.Aks
 {
