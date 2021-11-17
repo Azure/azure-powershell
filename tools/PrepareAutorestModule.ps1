@@ -70,10 +70,11 @@ git pull origin main
 Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts"
 Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
 Remove-Item -Path "$TmpFolder\src" -Recurse -Force
+Move-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools"
+Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
 Install-Module Az.Accounts -Repository PSGallery -Force
 Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
-Copy-Item "$PSScriptRoot\..\tools\Common*.targets" $TmpFolder
 #EndRegion
 
 #Region generate the code and make the struture same with main branch.
@@ -100,5 +101,4 @@ foreach ($Module in $ModuleList)
     Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
-Move-Item -Path "$TmpFolder\Common*.targets" -Destination "$PSScriptRoot\..\tools"
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
