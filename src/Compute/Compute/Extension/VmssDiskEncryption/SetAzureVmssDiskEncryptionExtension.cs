@@ -116,7 +116,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension publisher name. If this parameter is not specified, default value is Microsoft.Azure.Security for Windows VMs and Linux VMs")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
         [ValidateNotNullOrEmpty]
         public string ExtensionPublisherName { get; set; }
 
@@ -124,7 +123,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for Windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
 
