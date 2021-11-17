@@ -313,8 +313,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        // No idea about the object type in exception scenario
-                        // ObjectType = assignment.Type
                         Description = assignment.Description,
                         Condition = assignment.Condition,
                         ConditionVersion = assignment.ConditionVersion,
