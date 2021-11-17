@@ -3,7 +3,7 @@
 > Values
 ``` yaml
 azure: true
-version: 2.6.6
+version: 3.6.6
 powershell: true
 help-link-prefix: https://docs.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
