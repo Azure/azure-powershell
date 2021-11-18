@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Moved SQL Server and SQL Instance AAD from ActiveDirectoryClient to MicrosoftGraphClient 
+
 ## Version 3.5.1
 
 * Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
