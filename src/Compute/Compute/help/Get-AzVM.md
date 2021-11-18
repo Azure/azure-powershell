@@ -219,7 +219,31 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
-This command gets all the virtual machines in your subscription that start with "test".
+### Example 7: Get VM with UserData value
+```
+PS C:\> Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;
+
+ResourceGroupName : <>
+Id                : /subscriptions/<Subscription Id>/resourceGroups/<Resource Group Name>/providers/Microsoft
+.Compute/virtualMachines/<VM Name>
+VmId              : <VM Id>
+Name              : <VM Name>
+Type              : Microsoft.Compute/virtualMachines
+Location          : eastus
+Tags              :
+{"azsecpack":"nonprod","platformsettings.host_environment.service.platform_optedin_for_rootcerts":"true"}
+Extensions        : {Microsoft.Azure.Geneva.GenevaMonitoring,
+Microsoft.Azure.Security.AntimalwareSignature.AntimalwareConfiguration}
+HardwareProfile   : {VmSize}
+NetworkProfile    : {NetworkInterfaces}
+OSProfile         : {ComputerName, AdminUsername, WindowsConfiguration, Secrets, AllowExtensionOperations,
+RequireGuestProvisionSignal}
+ProvisioningState : Succeeded
+StorageProfile    : {ImageReference, OsDisk, DataDisks}
+UserData          : bm90IGVuY29kZWQ=
+```
+
+The UserData value must always be Base64 encoded. This command assumes you have already created a VM with a UserData value.
 
 ## PARAMETERS
 

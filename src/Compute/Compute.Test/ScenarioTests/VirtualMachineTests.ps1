@@ -5180,8 +5180,7 @@ function Test-VMwithSSHKey
 
 <#
 .SYNOPSIS
-Windows machine test ensuring the EnableAutoUpdate value on the 
-provided VM is not overwritten. 
+Test Virtual Machine UserData feature. 
 #>
 function Test-VMUserData
 {

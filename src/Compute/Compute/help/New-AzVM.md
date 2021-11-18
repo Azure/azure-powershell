@@ -169,8 +169,33 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
-This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
+### Example 4: Create a VM with a UserData value:
+```
+PS C:\> 
+## VM Account
+$VMLocalAdminUser = "LocalAdminUser";
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
+
+## Azure Account
+$LocationName = "eastus";
+$ResourceGroupName = "MyResourceGroup";
+
+# VM Profile & Hardware
+$VMName = 'v' + $ResourceGroupName;
+$domainNameLabel = "d1" + $ResourceGroupName;
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+# Create UserData value
+$text = "text for UserData";
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+$userData = [Convert]::ToBase64String($bytes);
+
+# Create VM
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
+```
+
+The UserData value must always be Base64 encoded. 
 
 ## PARAMETERS
 
