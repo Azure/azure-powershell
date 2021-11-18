@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update our Azure PowerShell command to use our latest released .NET package with the version of 3.1.0.'
+        ReleaseNotes = '* Update our Azure PowerShell command to use our latest released .NET package with the version of 4.0.0.'
 
         # Prerelease string of this module
         # Prerelease = ''
