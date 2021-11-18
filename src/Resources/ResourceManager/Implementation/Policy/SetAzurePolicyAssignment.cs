@@ -107,8 +107,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string PolicyParameter { get; set; }
 
-        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "Parameter AssignIdentity is invalid and preserved for compatibility.")]
-        [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "Parameter AssignIdentity is deprecated and will be removed in future releases. Please use the 'IdentityType' parameter instead.")]
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
@@ -157,6 +157,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             CheckIfIdentityPresent();
+
             string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
 
@@ -187,7 +188,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool CheckIfIdentityPresent()
         {
-            if (this.IdentityType != null && this.Location == null)
+            if (this.IdentityType != null && this.Location == null || this.AssignIdentity != null && this.AssignIdentity.IsPresent && this.Location == null)
             {
                 throw new PSInvalidOperationException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.");
             }
@@ -237,6 +238,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             else if (nonComplianceMessages == null)
             {
                 nonComplianceMessages = resource.Properties.NonComplianceMessages;
+            }
+
+            if (this.AssignIdentity != null && this.AssignIdentity.IsPresent)
+            {
+                this.IdentityType = ManagedIdentityType.SystemAssigned;
             }
 
             ResourceIdentity identityObject = this.IdentityType != null ?
