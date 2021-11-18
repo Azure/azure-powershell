@@ -189,24 +189,28 @@ function Test-CortexCRUD
 		#Assert-AreEqual $false $createdVpnGateway.EnableBgpRouteTranslationForNat
 
 		# Create one more NATRule using New-AzVpnGatewayNatRule
-		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Dynamic" -Mode "IngressSnat" -InternalMapping "192.168.1.0/26" -ExternalMapping "10.0.1.0/26"
+		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Static" -Mode "IngressSnat" -InternalMapping "192.168.1.0/26" -ExternalMapping "10.0.1.0/26" -InternalPortRange @("100-100") -ExternalPortRange @("200-200")
 		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
 		Assert-AreEqual "NatRule3" $natRule.Name
-		Assert-AreEqual "Dynamic" $natRule.VpnGatewayNatRulePropertiesType
+		Assert-AreEqual "Static" $natRule.VpnGatewayNatRulePropertiesType
 		Assert-AreEqual "IngressSnat" $natRule.Mode
 		Assert-AreEqual 1 $natRule.InternalMappings.Count		
 		Assert-AreEqual "192.168.1.0/26" $natRule.InternalMappings[0].AddressSpace
 		Assert-AreEqual 1 $natRule.ExternalMappings.Count		
 		Assert-AreEqual "10.0.1.0/26" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "100-100" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "200-200" $natRule.ExternalMappings[0].PortRange
 		Assert-AreEqual 0 $natRule.IngressVpnSiteLinkConnections.Count	
 		Assert-AreEqual 0 $natRule.EgressVpnSiteLinkConnections.Count
 		Assert-AreEqual "Succeeded" $natRule.ProvisioningState		
 
-		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -InternalMapping "192.168.2.0/26" -ExternalMapping "10.0.2.0/26"
+		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -InternalMapping "192.168.2.0/26" -ExternalMapping "10.0.2.0/26" -InternalPortRange @("300-300") -ExternalPortRange @("400-400")
 		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
 		Assert-AreEqual "NatRule3" $natRule.Name
 		Assert-AreEqual "192.168.2.0/26" $natRule.InternalMappings[0].AddressSpace
 		Assert-AreEqual "10.0.2.0/26" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "300-300" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "400-400" $natRule.ExternalMappings[0].PortRange
 		Assert-AreEqual "Succeeded" $natRule.ProvisioningState	
 		#Assert-AreEqual $True $vpnGateway.IsRoutingPreferenceInternet
 

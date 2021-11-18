@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Schedule schedule = new Schedule();
             Action action = new Action();
             
-            var resource = new ScheduledQueryRuleResource(new LogSearchRuleResource(name: "alert2", location: "westus", source: source, schedule: schedule, action: action, id: "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/alert2"));
+            var resource = new ScheduledQueryRuleResource(new LogSearchRuleResource(name: "alert2", location: "westus", source: source, schedule: schedule, action: action, id: "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/scheduledqueryrules/alert2"));
 
 
             cmdlet.InputObject = new OutputClasses.PSScheduledQueryRuleResource(resource);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             cmdlet.Name = null;
             cmdlet.ResourceGroupName = null;
             cmdlet.InputObject = null;
-            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/alert3";
+            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/scheduledqueryrules/alert3";
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);

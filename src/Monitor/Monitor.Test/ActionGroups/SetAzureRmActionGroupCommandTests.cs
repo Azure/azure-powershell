@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         private const string Location = "Global";
 
         private const string ResourceId =
-            "/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/microsoft.insights/actionGroups/ActionGroupName";
+            "/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/Microsoft.Insights/actionGroups/ActionGroupName";
 
         private readonly SetAzureRmActionGroupCommand cmdlet;
         private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
@@ -100,6 +100,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 
                  new PSEmailReceiver(
                     ActionGroupsUtilities.CreateEmailReceiver("email2", "email2@email2.com", false)),
+
+                 new PSEventHubReceiver(
+                    ActionGroupsUtilities.CreateEventHubReceiver(name: "eventhub", subscriptionId:"5def922a-3ed4-49c1-b9fd-05ec533819a3", eventHubNameSpace:"eventhub1NameSpace", eventHubName:"testEventHubName")),
+
+                 new PSEventHubReceiver(
+                    ActionGroupsUtilities.CreateEventHubReceiver("eventhub1", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace1", "testEventHubName1", true)),
+
+                 new PSEventHubReceiver(
+                    ActionGroupsUtilities.CreateEventHubReceiver("eventhub2", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace2", "testEventHubName2", false)),
 
                 new PSSmsReceiver(
                     ActionGroupsUtilities.CreateSmsReceiver(name: "sms", phoneNumber: "4254251234")),
@@ -174,6 +183,25 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             Assert.Equal("email2@email2.com", this.createOrUpdatePrms.EmailReceivers[2].EmailAddress);
             Assert.False(this.createOrUpdatePrms.EmailReceivers[2].UseCommonAlertSchema);
 
+            Assert.Equal(3, this.createOrUpdatePrms.EventHubReceivers.Count);
+
+            Assert.Equal("eventhub", this.createOrUpdatePrms.EventHubReceivers[0].Name);
+            Assert.Equal("5def922a-3ed4-49c1-b9fd-05ec533819a3", this.createOrUpdatePrms.EventHubReceivers[0].SubscriptionId);
+            Assert.Equal("eventhub1NameSpace", this.createOrUpdatePrms.EventHubReceivers[0].EventHubNameSpace);
+            Assert.Equal("testEventHubName", this.createOrUpdatePrms.EventHubReceivers[0].EventHubName);
+            Assert.False(this.createOrUpdatePrms.EventHubReceivers[0].UseCommonAlertSchema);
+
+            Assert.Equal("eventhub1", this.createOrUpdatePrms.EventHubReceivers[1].Name);
+            Assert.Equal("5def922a-3ed4-49c1-b9fd-05ec533819a3", this.createOrUpdatePrms.EventHubReceivers[1].SubscriptionId);
+            Assert.Equal("eventhub1NameSpace1", this.createOrUpdatePrms.EventHubReceivers[1].EventHubNameSpace);
+            Assert.Equal("testEventHubName1", this.createOrUpdatePrms.EventHubReceivers[1].EventHubName);
+            Assert.True(this.createOrUpdatePrms.EventHubReceivers[1].UseCommonAlertSchema);
+
+            Assert.Equal("eventhub2", this.createOrUpdatePrms.EventHubReceivers[2].Name);
+            Assert.Equal("5def922a-3ed4-49c1-b9fd-05ec533819a3", this.createOrUpdatePrms.EventHubReceivers[2].SubscriptionId);
+            Assert.Equal("eventhub1NameSpace2", this.createOrUpdatePrms.EventHubReceivers[2].EventHubNameSpace);
+            Assert.Equal("testEventHubName2", this.createOrUpdatePrms.EventHubReceivers[2].EventHubName);
+            Assert.False(this.createOrUpdatePrms.EventHubReceivers[2].UseCommonAlertSchema);
 
             Assert.Equal(1, this.createOrUpdatePrms.SmsReceivers.Count);
 

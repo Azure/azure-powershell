@@ -65,7 +65,6 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
-               'Microsoft.Azure.Graph.RBAC.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -152,7 +151,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
                'Get-AzTenantDeploymentWhatIfResult', 'Get-AzTemplateSpec', 
                'New-AzTemplateSpec', 'Set-AzTemplateSpec', 'Export-AzTemplateSpec', 
-               'Remove-AzTemplateSpec'
+               'Remove-AzTemplateSpec',
+               'Publish-AzBicepModule'
 
 # Variables to export from this module
 # VariablesToExport = @()

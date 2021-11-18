@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(24);
 
-        public const string AutoscaleResourceType = "microsoft.insights/autoscalesettings";
+        public const string AutoscaleResourceType = "Microsoft.Insights/autoscalesettings";
 
         #region Parameters declarations
 

@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* [Breaking change] Migrated from AAD Graph to Microsoft Graph
+* [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
+* Allowed parameter `Id` in `Get-AzDenyAssignment` to accept fully qualified ID
+* Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
 
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]

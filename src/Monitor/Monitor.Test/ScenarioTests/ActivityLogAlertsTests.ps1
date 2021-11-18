@@ -171,7 +171,7 @@ function Test-SetGetListUpdateRemoveActivityLogAlert
 		Get-AzActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Set-AzActivityLogAlert
 
 		Write-Verbose " ****** Disabling an activity log alert using the value of ResourceId plus another parameter"
-		Set-AzActivityLogAlert -ResourceId '/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule' -DisableAlert
+		Set-AzActivityLogAlert -ResourceId '/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/activityLogAlerts/andy0307rule' -DisableAlert
 
 		Write-Verbose " ****** Removing the ActivityLogAlert using pileline"
 		Get-AzActivityLogAlert -ResourceGroup $resourceGroupName -Name $alertName | Remove-AzActivityLogAlert
