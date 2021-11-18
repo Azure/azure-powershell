@@ -15,10 +15,10 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSAvailableServiceTiers
+    public class PSAvailableServiceTier
     {
 
-        public PSAvailableServiceTiers(AvailableServiceTier serviceTier)
+        public PSAvailableServiceTier(AvailableServiceTier serviceTier)
         {
             ServiceTier = serviceTier.ServiceTier;
             Enabled = serviceTier.Enabled;

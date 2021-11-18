@@ -29,10 +29,8 @@ The **New-AzOperationalInsightsWorkspace** cmdlet creates a workspace in the spe
 ### Example 1: Create a workspace by name
 ```
 PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Location "East US"
-
-
-
 ```
+
 This command creates a standard SKU workspace named MyWorkspace in the resource group named ContosoResourceGroup.
 
 ### Example 2: Create a workspace and link it to an existing account
@@ -218,7 +216,7 @@ Accept wildcard characters: False
 Sku Capacity, value need to be multiple of 100 and at least 0.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

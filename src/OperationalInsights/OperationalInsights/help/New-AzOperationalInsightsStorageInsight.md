@@ -23,8 +23,7 @@ New-AzOperationalInsightsStorageInsight [-ResourceGroupName] <String> [-Workspac
 
 ### ByWorkspaceObject
 ```
-New-AzOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-Name] <String>
- [-StorageAccountResourceId] <String> [-StorageAccountKey] <String> [[-Tables] <String[]>]
+New-AzOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-StorageAccountKey] <String>
  [[-Containers] <String[]>] [-ETag <String>] [-Tag <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -132,7 +131,7 @@ Specifies the name of the Storage Insight.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByWorkspaceName
 Aliases:
 
 Required: True
@@ -178,7 +177,7 @@ This can be retrieved by executing the Get-AzStorageAccount cmdlet and accessing
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByWorkspaceName
 Aliases:
 
 Required: True
@@ -193,7 +192,7 @@ Specifies the list of tables that provide the data.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ByWorkspaceName
 Aliases:
 
 Required: False

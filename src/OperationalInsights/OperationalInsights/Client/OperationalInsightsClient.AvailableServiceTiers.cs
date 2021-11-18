@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
     public partial class OperationalInsightsClient
     {
-        public IList<PSAvailableServiceTiers> ListPSAvailableServiceTiers(string resourceGroupName, string workspaceName)
+        public IList<PSAvailableServiceTier> ListPSAvailableServiceTier(string resourceGroupName, string workspaceName)
         {
             if (string.IsNullOrWhiteSpace(resourceGroupName))
             {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
 
             IList<AvailableServiceTier> availableServiceTiers =  this.OperationalInsightsManagementClient.AvailableServiceTiers.ListByWorkspace(resourceGroupName, workspaceName);
-            return availableServiceTiers.Select(item => new PSAvailableServiceTiers(item)).ToList();
+            return availableServiceTiers.Select(item => new PSAvailableServiceTier(item)).ToList();
         }
     }
 }

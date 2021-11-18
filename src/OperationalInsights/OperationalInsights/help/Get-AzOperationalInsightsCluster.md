@@ -14,8 +14,8 @@ Get or list clusters
 
 ### ListParameterSet (Default)
 ```
-Get-AzOperationalInsightsCluster [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzOperationalInsightsCluster [-ResourceGroupName <String>] [-ClusterName <String>] [-ResourceId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
@@ -64,6 +64,18 @@ Get cluster
 
 ### -ClusterName
 The cluster name.
+
+```yaml
+Type: System.String
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
@@ -125,13 +137,25 @@ This can be copied from the Properties entry of the destination resource in Azur
 
 ```yaml
 Type: System.String
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

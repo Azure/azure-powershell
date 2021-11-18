@@ -20,6 +20,15 @@ Update-AzOperationalInsightsCluster -ResourceGroupName <String> -ClusterName <St
  [-Confirm] [<CommonParameters>]
 ```
 
+### AllParameterSet
+```
+Update-AzOperationalInsightsCluster [-ResourceGroupName <String>] [-ClusterName <String>]
+ [-ResourceId <String>] [-InputCluster <PSCluster>] [-SkuName <String>] [-SkuCapacity <Int64>]
+ [-KeyVaultUri <String>] [-KeyName <String>] [-KeyVersion <String>] [-Tag <Hashtable>] [-IdentityType <String>]
+ [-BillingType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateByResourceIdParameterSet
 ```
 Update-AzOperationalInsightsCluster -ResourceId <String> [-SkuName <String>] [-SkuCapacity <Int64>]
@@ -86,7 +95,7 @@ Billing type can be set as 'Cluster' or 'Workspaces'
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 Accepted values: Cluster, Workspaces
 
@@ -106,6 +115,18 @@ Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: AllParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +153,7 @@ the identity type, value can be 'SystemAssigned', 'None'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 Accepted values: SystemAssigned, None, UserAssigned
 
@@ -148,13 +169,25 @@ Specifies the cluster to be updated.
 
 ```yaml
 Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+Parameter Sets: AllParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -163,7 +196,7 @@ Key Name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -178,7 +211,7 @@ Key Vault Uri, "Purge Protection" and "Soft Delete" have to be enabled for this 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -193,7 +226,7 @@ Key Version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -218,9 +251,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: AllParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The destination resource ID.
 This can be copied from the Properties entry of the destination resource in Azure.
+
+```yaml
+Type: System.String
+Parameter Sets: AllParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
@@ -230,7 +287,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -239,7 +296,7 @@ Sku Capacity
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -270,7 +327,7 @@ Tags of the cluster
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
