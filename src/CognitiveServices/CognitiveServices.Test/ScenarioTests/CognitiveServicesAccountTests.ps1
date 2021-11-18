@@ -639,7 +639,6 @@ function Test-GetAzureRmCognitiveServicesAccountType
 
 		$typeNames = (Get-AzCognitiveServicesAccountType -Location 'global');
         Assert-False {$typeNames.Contains('Face')}
-        Assert-True {$typeNames.Contains('Bing.Search.v7')}
     }
     finally
     {
@@ -1306,7 +1305,7 @@ function Test-PrivateEndpoint
 
         $vnet = Get-AzVirtualNetwork -ResourceName yydemo-vnet -ResourceGroupName yuanyang-demo
         $plsConnection = New-AzPrivateLinkServiceConnection -Name pe-powershell-ut -PrivateLinkServiceId $createdAccount.Id -RequestMessage "Please Approve my request" -GroupId "account"
-        New-AzPrivateEndpoint -PrivateLinkServiceConnection $plsConnection -Subnet $vnet.Subnets[0] -Name pe-powershell-ut -ResourceGroupName yuanyang-demo -Location centraluseuap 
+        New-AzPrivateEndpoint -PrivateLinkServiceConnection $plsConnection -Subnet $vnet.Subnets[0] -Name pe-powershell-ut -ResourceGroupName yuanyang-demo -Location centraluseuap -Force
         
         $account = Get-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname
         Assert-AreEqual $account.PrivateEndpointConnections.Length 1
@@ -1507,6 +1506,97 @@ function Test-SoftDelete
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test CommitmentPlan
+#>
+function Test-CommitmentPlan
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S';
+        $accounttype = 'TextAnalytics';
+        $loc = "Central US EUAP";
+        
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $createdAccount;
+        
+
+        Get-AzCognitiveServicesCommitmentTier -Location westus
+
+
+        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname
+
+        $plan = New-AzCognitiveServicesObject -Type CommitmentPlan
+        $plan.Properties.HostingModel = "Web"
+        $plan.Properties.AutoRenew = $false
+        $plan.Properties.PlanType = "TA"
+        $plan.Properties.Current.Tier = "T1"
+        $plan.Properties.Next = $null
+
+        New-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname -CommitmentPlanName plan -CommitmentPlan $plan
+        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname
+        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname -CommitmentPlanName plan
+        Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname -CommitmentPlanName plan
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Deployment
+#>
+function Test-Deployment
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'OpenAI';
+        $loc = "westus2";
+        
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $createdAccount;
+        
+        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname
+
+        $dpy = New-AzCognitiveServicesObject -Type Deployment
+        $dpy.Properties.Model.Format = "OpenAI"
+        $dpy.Properties.Model.Name = "ada"
+        $dpy.Properties.Model.Version = "1"
+        $dpy.Properties.ScaleSettings.Capacity = 1
+        $dpy.Properties.ScaleSettings.ScaleType = "Manual"
+
+        New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname -DeploymentName dpy -Deployment $dpy
+        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname
+        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname -DeploymentName dpy
+        Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname -DeploymentName dpy
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 
 <#
 .SYNOPSIS
