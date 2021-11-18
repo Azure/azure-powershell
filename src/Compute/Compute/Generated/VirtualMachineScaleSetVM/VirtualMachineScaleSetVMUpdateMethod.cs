@@ -195,12 +195,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ParameterSetName = "DefaultParameter",
-            HelpMessage = "UserData for the Vmss Vm, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            HelpMessage = "UserData for the Vmss Vm, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = "ResourceIdParameter",
-            HelpMessage = "UserData for the Vmss Vm, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            HelpMessage = "UserData for the Vmss Vm, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         public string UserData { get; set; }
     }

@@ -2919,7 +2919,7 @@ function Test-AddAndRemoveAzVmssRunCommand
 
 <#
 .SYNOPSIS
-Test the VMSS UserData feature in the Vmss and VmssVm resources.
+Test the VMSS UserData feature, specifically the Base64 encoding functionality.
 #>
 function Test-VirtualMachineScaleSetUserdata
 {

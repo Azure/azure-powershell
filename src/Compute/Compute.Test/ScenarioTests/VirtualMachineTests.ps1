@@ -5280,3 +5280,50 @@ function Test-VMUserData
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine UserData feature. 
+#>
+function Test-VMUserDataBase64Encoded
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $defaultSize = "Standard_D2s_v3";
+        $domainNameLabel = "d1" + $rgname;
+
+        $text = "this isvm encoded";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        Start-Transcript -Path "transcript.txt";
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $text;
+        Stop-Transcript;
+
+        $wordToFind="The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is";
+        $file = (Get-Content -path "transcript.txt") -join ' ';
+        Assert-True { $file -match $wordToFind } ;
+
+        $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
+        Assert-AreEqual $userData $vmGet.UserData; 
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

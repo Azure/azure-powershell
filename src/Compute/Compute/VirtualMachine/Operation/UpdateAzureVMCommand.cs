@@ -122,17 +122,17 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ParameterSetName = ResourceGroupNameParameterSet,
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = IdParameterSet,
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         public string UserData { get; set; }
 
