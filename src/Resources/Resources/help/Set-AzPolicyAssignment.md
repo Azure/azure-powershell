@@ -16,7 +16,7 @@ Modifies a policy assignment.
 ### NameParameterSet (Default)
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>]  [-Location <String>]
+ [-Description <String>] [-Metadata <String>] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

@@ -157,7 +157,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             CheckIfIdentityPresent();
-
             string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
 
