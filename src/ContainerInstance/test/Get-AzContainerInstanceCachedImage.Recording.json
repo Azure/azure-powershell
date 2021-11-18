@@ -1,17 +1,17 @@
 {
-  "Get-AzContainerInstanceCachedImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2021-09-01+1": {
+  "Get-AzContainerInstanceCachedImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2021-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "62ae26ae-ae51-4a79-b0f6-f8355eb75074" ],
+        "x-ms-client-request-id": [ "388393a2-4512-43d3-b4f9-ca10487d70d7" ],
         "CommandName": [ "Get-AzContainerInstanceCachedImage" ],
         "FullCommandName": [ "Get-AzContainerInstanceCachedImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:7859ce02-8a0c-456c-8e9b-7f1cfa968f26" ],
+        "x-ms-request-id": [ "eastus:343276e8-0ab1-44e3-8317-bdd0a3053ff2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "abd47cb3-6345-43ed-b1fe-2b8bd5b37b62" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211018T222705Z:abd47cb3-6345-43ed-b1fe-2b8bd5b37b62" ],
+        "x-ms-correlation-request-id": [ "9bce64dc-6c53-43ba-ab1c-52b72eff96be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T085613Z:9bce64dc-6c53-43ba-ab1c-52b72eff96be" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 18 Oct 2021 22:27:05 GMT" ]
+        "Date": [ "Tue, 09 Nov 2021 08:56:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "7953" ],
