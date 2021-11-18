@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.Aks
                 }
                 if (!supressWarningOrError)
                 {
-                    WriteVerbose(Constants.MSGraphMigrationMessage);
+                    WriteWarning(Constants.MSGraphMigrationMessage);
                 }
 
                 acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
