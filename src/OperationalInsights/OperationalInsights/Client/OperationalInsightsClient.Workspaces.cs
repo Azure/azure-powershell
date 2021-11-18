@@ -24,6 +24,7 @@ using System.Linq;
 using System.Net;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             catch (RestException)
             {
                 //worksace not found - use New-AzOperationalInsightsWorkspace command instead
-                throw new ArgumentException($"Workspace {parameters?.WorkspaceName} under resourceGroup {parameters?.ResourceGroupName} was not found, please use New-AzOperationalInsightsWorkspace.");
+                throw new PSArgumentException($"Workspace {parameters?.WorkspaceName} under resourceGroup {parameters?.ResourceGroupName} was not found, please use New-AzOperationalInsightsWorkspace.");
             }
 
             // Execute the update
@@ -265,7 +266,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (string.IsNullOrWhiteSpace(resourceGroupName))
                 {
-                    throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
+                    throw new PSArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
                 }
 
                 workspaces.Add(GetWorkspace(resourceGroupName, workspaceName));
@@ -296,7 +297,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             var existingIp = GetIntelligencePackList(resourceGroupName, workspaceName).FirstOrDefault(ip => ip.Name.Equals(intelligencePackName));
             if (existingIp == null || existingIp == default(PSIntelligencePack))
             {
-                throw new ArgumentException($"Intelligence Pack {intelligencePackName} under resourceGroup {resourceGroupName} worspace:{workspaceName} does not exist");
+                throw new PSArgumentException($"Intelligence Pack {intelligencePackName} under resourceGroup {resourceGroupName} worspace:{workspaceName} does not exist");
             }
 
             existingIp.Enabled = enabled;
@@ -317,7 +318,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             if (!Guid.TryParse(operationId, out Guid tempGuid))
             {
-                throw new ArgumentException($"OperationStatus {operationId} is not a valid GUID");
+                throw new PSArgumentException($"OperationStatus {operationId} is not a valid GUID");
             }
 
             var response = OperationalInsightsManagementClient.OperationStatuses.Get(location, operationId);

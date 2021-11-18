@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                throw new ArgumentException($"Saved Search '{parameters.DisplayName}' under resource group: '{parameters.ResourceGroupName}', workspace: '{parameters.WorkspaceName}' does not exist. Please use New-OperationalInsightsSavedSearch for creating Saved search");
+                throw new PSArgumentException($"Saved Search '{parameters.DisplayName}' under resource group: '{parameters.ResourceGroupName}', workspace: '{parameters.WorkspaceName}' does not exist. Please use New-OperationalInsightsSavedSearch for creating Saved search");
             }
 
             parameters.DisplayName = parameters.DisplayName == null ? existingSavedSearch.Properties.DisplayName : parameters.DisplayName;

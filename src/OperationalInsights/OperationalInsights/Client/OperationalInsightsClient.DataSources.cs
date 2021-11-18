@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
@@ -92,11 +93,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             
             if (parameters.Properties.Kind != dataSource.Kind)
             {
-                throw new ArgumentException(Resources.DataSourceUpdateCannotModifyKind);
+                throw new PSArgumentException(Resources.DataSourceUpdateCannotModifyKind);
             }
             if (parameters.Name != dataSource.Name)
             {
-                throw new ArgumentException(Resources.DataSourceUpdateCannotModifyName);
+                throw new PSArgumentException(Resources.DataSourceUpdateCannotModifyName);
             }
             
             // Execute the update
@@ -150,12 +151,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             
             if (string.IsNullOrWhiteSpace(resourceGroupName) || string.IsNullOrWhiteSpace(workspaceName))
             {
-                throw new ArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
+                throw new PSArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
             }
             
             if (string.IsNullOrWhiteSpace(kind))
             {
-                throw new ArgumentException(Resources.DataSourceKindCannotBeEmpty);
+                throw new PSArgumentException(Resources.DataSourceKindCannotBeEmpty);
             }
             
             dataSources.AddRange(ListDataSources(resourceGroupName, workspaceName, kind));
@@ -175,7 +176,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             else
             {
-                throw new ArgumentException(String.Format(Resources.DataSourceEnableNotSupported, dataSourceKind));
+                throw new PSArgumentException(String.Format(Resources.DataSourceEnableNotSupported, dataSourceKind));
             }
             
             if (dataSources.Count > 1) { throw new Exception(Resources.DataSourceSingletonMultipleRecord); }

@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.Rest;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (string.IsNullOrWhiteSpace(resourceGroupName))
                 {
-                    throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
+                    throw new PSArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
                 }
 
                 dataExports.Add(GetPSDataExport(resourceGroupName, workspaceName, dataExportName));
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                throw new ArgumentException($"Data export {parameters.DataExportName} under resourceGroup {resourceGroupName} worspace:{parameters.WorkspaceName} does not exist");
+                throw new PSArgumentException($"Data export {parameters.DataExportName} under resourceGroup {resourceGroupName} worspace:{parameters.WorkspaceName} does not exist, please use 'New-AzOperationalInsightsDataExport' instead.");
             }
 
             //validate user input parameters were not null - if they were then use existing values so they wont be ran over by null values

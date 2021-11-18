@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                throw new System.ArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
+                throw new PSArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
             }
 
             parameters.Tags = parameters.Tags ?? existingCluster.Tags;

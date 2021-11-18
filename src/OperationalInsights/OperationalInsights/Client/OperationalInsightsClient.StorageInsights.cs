@@ -23,6 +23,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                throw new ArgumentException($"StorageInsight {parameters.Name} under workspace {parameters.WorkspaceName} does not existed");
+                throw new PSArgumentException($"StorageInsight {parameters.Name} under workspace {parameters.WorkspaceName} does not existed");
             }
 
             // Execute the update
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (string.IsNullOrWhiteSpace(resourceGroupName) || string.IsNullOrWhiteSpace(workspaceName))
                 {
-                    throw new ArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
+                    throw new PSArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
                 }
 
                 storageInsights.Add(GetStorageInsight(resourceGroupName, workspaceName, storageInsightName));

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 customLogProperties = JsonConvert.DeserializeObject<PSCustomLogDataSourceProperties>(this.CustomLogRawJson);
             }
             catch (Exception ex) {
-                throw new ArgumentException(Resources.DataSourceCustomLogInvalidSchema, ex);
+                throw new PSArgumentException(Resources.DataSourceCustomLogInvalidSchema, ex);
             }
             CreatePSDataSourceWithProperties(customLogProperties);
         }

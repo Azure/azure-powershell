@@ -15,9 +15,7 @@
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
@@ -91,7 +89,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             if (CollectInformational.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.info }); }
 
             if (severitySubscription.Count == 0) {
-                throw new ArgumentException(Resources.DataSourceSyslogNoSeveritySelected);
+                throw new PSArgumentException(Resources.DataSourceSyslogNoSeveritySelected);
             }
 
             var dsProperties = new PSLinuxSyslogDataSourceProperties

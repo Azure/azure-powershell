@@ -16,9 +16,9 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (string.IsNullOrWhiteSpace(resourceGroupName))
                 {
-                    throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
+                    throw new PSArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
                 }
 
                 tables.Add(GetTable(resourceGroupName, workspaceName, tableName));
