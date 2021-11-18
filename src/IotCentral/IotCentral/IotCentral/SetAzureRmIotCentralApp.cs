@@ -83,10 +83,6 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             {
                 appPatch.Identity = new SystemAssignedServiceIdentity(type: this.Identity);
             }
-            else
-            {
-                appPatch.Identity = new SystemAssignedServiceIdentity(type: SystemAssignedServiceIdentityType.None);
-            }
 
             return appPatch;
         }

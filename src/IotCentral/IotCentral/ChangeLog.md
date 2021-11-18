@@ -21,7 +21,7 @@
 
 ## Version 1.0.0
 * Stable release version, updated to IoT Central .NET Management Plane SDK version 4.0.0. 
-* This change introduces support for System-Assigned Managed Identities, adds support for regional locations like 'eastus' (while removing support for geographic locations like 'unitedstates'), and removes support for legacy S1 sku.
+* This change introduces support for System-Assigned Managed Identities, removes support for geographic locations (e.g., 'unitedstates'), and removes support for legacy S1 sku.
 
 ## Version 0.9.0
 * Update our Azure PowerShell command to use our latest released .NET package with the version of 3.1.0.

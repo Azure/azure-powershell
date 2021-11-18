@@ -114,6 +114,9 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Subdomain $newSubdomain
 		Assert-AreEqual $actual.Name $rname
 		Assert-AreEqual $actual.Sku.Name $st1Sku
+		
+		# Ensure MI is not updated after update (when Identity is not provided as input to patch operation)
+		Assert-AreEqual $actual.Identity.Type "SystemAssigned"
 
 		# Delete
 		# $job = Find-AzResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzIotCentralApp | Remove-AzIotCentralApp -AsJob
