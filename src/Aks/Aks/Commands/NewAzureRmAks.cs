@@ -136,6 +136,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
         public SwitchParameter EnableNodePublicIp { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
+        public string NodePublicIPPrefixID { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -434,6 +437,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (EnableNodePublicIp.IsPresent)
             {
                 defaultAgentPoolProfile.EnableNodePublicIP = EnableNodePublicIp.ToBool();
+            }
+            if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
+            {
+                defaultAgentPoolProfile.NodePublicIPPrefixID = NodePublicIPPrefixID;
             }
             if (this.IsParameterBound(c => c.NodeScaleSetEvictionPolicy))
             {

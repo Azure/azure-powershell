@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
         public SwitchParameter EnableNodePublicIp { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
+        public string NodePublicIPPrefixID { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
         [PSArgumentCompleter("Low", "Regular")]
         public string ScaleSetPriority { get; set; }
@@ -162,6 +165,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (EnableNodePublicIp.IsPresent)
             {
                 agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
+            }
+            if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
+            {
+                agentPool.NodePublicIPPrefixID = NodePublicIPPrefixID;
             }
             if (this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
             {
