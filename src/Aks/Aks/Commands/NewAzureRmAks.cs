@@ -133,6 +133,9 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
         public SwitchParameter GenerateSshKey { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
+        public SwitchParameter EnableNodePublicIp { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -428,10 +431,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
             }
-            //if (EnableNodePublicIp.IsPresent)
-            //{
-            //    defaultAgentPoolProfile.EnableNodePublicIP = EnableNodePublicIp.ToBool();
-            //}
+            if (EnableNodePublicIp.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableNodePublicIP = EnableNodePublicIp.ToBool();
+            }
             if (this.IsParameterBound(c => c.NodeScaleSetEvictionPolicy))
             {
                 defaultAgentPoolProfile.ScaleSetEvictionPolicy = NodeScaleSetEvictionPolicy;

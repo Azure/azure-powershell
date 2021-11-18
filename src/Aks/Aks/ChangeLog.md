@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support of `EnableNodePublicIp` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
 * Fixed the issue that `Set-AzAksCluster` can't upgrade cluster when node pool version doesn't match cluster version. [#14583]
 * Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]
 
