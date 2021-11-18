@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Name = receiver.Name;
             this.ResourceId = receiver.ResourceId;
             this.CallbackUrl = receiver.CallbackUrl;
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
         }
     }
 }

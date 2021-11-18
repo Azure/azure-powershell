@@ -94,12 +94,20 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public void AddUserAgent(string productName, string productVersion)
         {
+            if(string.IsNullOrEmpty(productName))
+            {
+                return;
+            }
+            if(string.IsNullOrEmpty(productVersion))
+            {
+                productVersion = "";
+            }
             UniqueUserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
         }
 
         public void AddUserAgent(string productName)
         {
-            AddUserAgent(productName, string.Empty);
+            AddUserAgent(productName, "");
         }
 
         public void RemoveUserAgent(string name)

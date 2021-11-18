@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         GenericError = 0,
         MalformedQuery = 1,
+        AuthorizationRequestDenied = 2
     }
 
     public class PSErrorHelperObject : PSADObject

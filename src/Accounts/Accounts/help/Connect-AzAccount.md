@@ -65,10 +65,10 @@ Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrinc
 ### AccessTokenWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <String> [-GraphAccessToken <String>]
- [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>] [-ContextName <String>]
- [-SkipValidation] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MicrosoftGraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipValidation] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagedServiceLogin
@@ -536,6 +536,21 @@ Max subscription number to populate contexts after login. Default is 25. To popu
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MicrosoftGraphAccessToken
+Access token to Microsoft Graph
+
+```yaml
+Type: System.String
+Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
 Required: False

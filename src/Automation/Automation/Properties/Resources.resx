@@ -189,6 +189,10 @@
     <value>The Automation schedule name is in use. Schedule name: {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="ScheduleNameInvalid" xml:space="preserve">
+    <value>The name length must be from 1 to 128 characters. The name cannot contain special characters &lt; &gt; * % &amp; : \ ? . + / and cannot end with a whitespace character.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="ScheduleNotFound" xml:space="preserve">
     <value>The schedule was not found. Schedule name: {0}.</value>
     <comment>Automation</comment>
