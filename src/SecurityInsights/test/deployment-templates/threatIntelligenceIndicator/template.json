@@ -29,9 +29,9 @@
     "resources": [
         {
             "id": "",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/threatIntelligence/indicators",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/threatIntelligence/main/indicators",
             "apiVersion": "2021-04-01",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/main/', parameters('threatIntelligenceIndicatorId'))]",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/threatIntelligence/main/', parameters('threatIntelligenceIndicatorId'))]",
             "kind": "indicator",
             "properties": {
                 "confidence": 0,

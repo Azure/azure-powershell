@@ -14,6 +14,12 @@ Microsoft Azure PowerShell: SecurityInsights cmdlets
 ### [Add-AzSentinelThreatIntelligenceIndicatorTag](Add-AzSentinelThreatIntelligenceIndicatorTag.md)
 Append tags to a threat intelligence indicator.
 
+### [Connect-AzSentinelDataConnector](Connect-AzSentinelDataConnector.md)
+Connects a data connector.
+
+### [Disconnect-AzSentinelDataConnector](Disconnect-AzSentinelDataConnector.md)
+Disconnect a data connector.
+
 ### [Expand-AzSentinelBookmark](Expand-AzSentinelBookmark.md)
 Expand an bookmark
 
@@ -152,9 +158,6 @@ Create a Metadata.
 ### [New-AzSentinelOnboardingState](New-AzSentinelOnboardingState.md)
 Create Sentinel onboarding state
 
-### [New-AzSentinelSourceControl](New-AzSentinelSourceControl.md)
-Creates a source control.
-
 ### [New-AzSentinelThreatIntelligenceIndicator](New-AzSentinelThreatIntelligenceIndicator.md)
 Update a threat Intelligence indicator.
 
@@ -196,9 +199,6 @@ Delete the office365 consent.
 
 ### [Remove-AzSentinelOnboardingState](Remove-AzSentinelOnboardingState.md)
 Delete Sentinel onboarding state
-
-### [Remove-AzSentinelSourceControl](Remove-AzSentinelSourceControl.md)
-Delete a source control.
 
 ### [Remove-AzSentinelThreatIntelligenceIndicator](Remove-AzSentinelThreatIntelligenceIndicator.md)
 Delete a threat intelligence indicator.

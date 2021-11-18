@@ -23,23 +23,14 @@ Gets all incident bookmarks.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Bookmarks for a given Incident
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelIncidentBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists all Bookmarks for a given Incident.
 
 ## PARAMETERS
 

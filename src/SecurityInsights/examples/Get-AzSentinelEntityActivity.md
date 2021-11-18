@@ -1,18 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Insights and Activities for an Entity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+This command gets insights and activities for an Entity.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Insights and Activities for an Entity by object Id
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+PS C:\> $Entity | Get-AzSentinelEntityActivity
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command gets insights and activies for an Entity by object

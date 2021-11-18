@@ -13,14 +13,13 @@ Creates or updates the bookmark.
 ## SYNTAX
 
 ```
-New-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Created <DateTime>]
- [-CreatedByObjectId <String>] [-DisplayName <String>] [-Etag <String>] [-EventTime <DateTime>]
+New-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -DisplayName <String>
+ -EventTime <DateTime> -Query <String> [-OperationalInsightsResourceProvider <String>]
+ [-SubscriptionId <String>] [-Created <DateTime>] [-CreatedByObjectId <String>] [-Etag <String>]
  [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
  [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
- [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
- [-Updated <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>] [-Updated <DateTime>]
+ [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,23 +27,16 @@ Creates or updates the bookmark.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Bookmark
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $queryStartTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+PS C:\> $queryEndTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+PS C:\> New-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -DisplayName "Incident Evidence" -Query "SecurityEvent\n| take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a Bookmark.
 
 ## PARAMETERS
 
@@ -101,7 +93,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,7 +123,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -266,7 +258,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

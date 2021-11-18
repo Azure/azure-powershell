@@ -15,9 +15,9 @@ Creates or updates the action of alert rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleId <String>
- -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-Etag <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> -LogicAppResourceId <String> -TriggerUri <String>
+ [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Etag <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -29,9 +29,8 @@ Update-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleI
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSentinelAlertRuleAction -InputObject <ISecurityInsightsIdentity> [-Etag <String>]
- [-LogicAppResourceId <String>] [-TriggerUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSentinelAlertRuleAction -InputObject <ISecurityInsightsIdentity> -LogicAppResourceId <String>
+ -TriggerUri <String> [-Etag <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +143,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,7 +219,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -296,6 +295,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ACTION <IActionRequest>: Action for alert rule.
+  - `LogicAppResourceId <String>`: Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
+  - `TriggerUri <String>`: Logic App Callback URL for this specific workflow.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
@@ -303,8 +304,6 @@ ACTION <IActionRequest>: Action for alert rule.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[LogicAppResourceId <String>]`: Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
-  - `[TriggerUri <String>]`: Logic App Callback URL for this specific workflow.
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID

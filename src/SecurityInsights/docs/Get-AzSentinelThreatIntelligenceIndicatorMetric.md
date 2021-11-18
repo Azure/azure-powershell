@@ -23,23 +23,14 @@ Get threat intelligence indicators metrics (Indicators counts by Type, Threat Ty
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all metrics for Threat Intelligence Indicators
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelThreatIntelligenceIndicatorMetric -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets Threat Intelligence Indicator metrics.
 
 ## PARAMETERS
 

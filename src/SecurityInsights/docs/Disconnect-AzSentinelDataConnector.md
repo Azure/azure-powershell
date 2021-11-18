@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelsourcecontrol
+online version: https://docs.microsoft.com/powershell/module/az.securityinsights/disconnect-azsentineldataconnector
 schema: 2.0.0
 ---
 
-# Remove-AzSentinelSourceControl
+# Disconnect-AzSentinelDataConnector
 
 ## SYNOPSIS
-Delete a source control.
+Disconnect a data connector.
 
 ## SYNTAX
 
-### Delete (Default)
+### Disconnect (Default)
 ```
-Remove-AzSentinelSourceControl -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
+Disconnect-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### DisconnectViaIdentity
 ```
-Remove-AzSentinelSourceControl -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>]
+Disconnect-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a source control.
+Disconnect a data connector.
 
 ## EXAMPLES
 
@@ -66,12 +66,12 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Source control Id
+Connector ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: SourceControlId
+Parameter Sets: Disconnect
+Aliases: DataConnectorId
 
 Required: True
 Position: Named
@@ -86,7 +86,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: DisconnectViaIdentity
 Aliases:
 
 Required: True
@@ -101,7 +101,7 @@ The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Disconnect
 Aliases:
 
 Required: False
@@ -132,7 +132,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Disconnect
 Aliases:
 
 Required: True
@@ -147,7 +147,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Disconnect
 Aliases:
 
 Required: False
@@ -162,7 +162,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Disconnect
 Aliases:
 
 Required: True

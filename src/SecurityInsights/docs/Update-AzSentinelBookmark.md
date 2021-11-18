@@ -15,13 +15,12 @@ Creates or updates the bookmark.
 ### UpdateExpanded (Default)
 ```
 Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Created <DateTime>]
- [-CreatedByObjectId <String>] [-DisplayName <String>] [-Etag <String>] [-EventTime <DateTime>]
+ -DisplayName <String> -EventTime <DateTime> -Query <String> [-OperationalInsightsResourceProvider <String>]
+ [-SubscriptionId <String>] [-Created <DateTime>] [-CreatedByObjectId <String>] [-Etag <String>]
  [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
  [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
- [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
- [-Updated <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>] [-Updated <DateTime>]
+ [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -33,13 +32,12 @@ Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceNam
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSentinelBookmark -InputObject <ISecurityInsightsIdentity> [-Created <DateTime>]
- [-CreatedByObjectId <String>] [-DisplayName <String>] [-Etag <String>] [-EventTime <DateTime>]
+Update-AzSentinelBookmark -InputObject <ISecurityInsightsIdentity> -DisplayName <String> -EventTime <DateTime>
+ -Query <String> [-Created <DateTime>] [-CreatedByObjectId <String>] [-Etag <String>]
  [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
  [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
- [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
- [-Updated <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>] [-Updated <DateTime>]
+ [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,7 +134,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +164,7 @@ Type: System.DateTime
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -317,7 +315,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -499,6 +497,9 @@ To create the parameters described below, construct a hash table containing the 
 
 
 BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
+  - `DisplayName <String>`: The display name of the bookmark
+  - `EventTime <DateTime>`: The bookmark event time
+  - `Query <String>`: The query of the bookmark.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
@@ -508,15 +509,12 @@ BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
   - `[Created <DateTime?>]`: The time the bookmark was created
   - `[CreatedByObjectId <String>]`: The object id of the user.
-  - `[DisplayName <String>]`: The display name of the bookmark
-  - `[EventTime <DateTime?>]`: The bookmark event time
   - `[IncidentInfoIncidentId <String>]`: Incident Id
   - `[IncidentInfoRelationName <String>]`: Relation Name
   - `[IncidentInfoSeverity <IncidentSeverity?>]`: The severity of the incident
   - `[IncidentInfoTitle <String>]`: The title of the incident
   - `[Label <String[]>]`: List of labels relevant to this bookmark
   - `[Note <String>]`: The notes of the bookmark
-  - `[Query <String>]`: The query of the bookmark.
   - `[QueryEndTime <DateTime?>]`: The end time for the query
   - `[QueryResult <String>]`: The query result of the bookmark.
   - `[QueryStartTime <DateTime?>]`: The start time for the query

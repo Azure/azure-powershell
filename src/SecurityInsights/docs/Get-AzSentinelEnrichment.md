@@ -41,23 +41,23 @@ Get geodata for a single IP address
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Domain Enrichment
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "domain.com
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+This command gets an enrichment for a domain.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a IP Enrichment
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" IPAddress "1.1.1.1"
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+This command an enrichment for an IP Address.
 
 ## PARAMETERS
 

@@ -89,6 +89,15 @@ directive:
             1
           ]
         }
+  #- from: Bookmarks.json
+  #  where: $.definitions.Bookmark
+  #  transform: $['required'] = ['properties']
+  #- from: Bookmarks.json
+  #  where: $.definitions.BookmarkProperties
+  #  transform: $['required'] = ['displayName', 'query', 'eventTime']
+  #- from: AlertRules.json
+  #  where: $.definitions.ActionRequest
+  #  transform: $['required'] = ['properties']
   # Customize
   # OperationalInsightsResourceProvider is parameter, its always Microsoft.OperationalInsights to making a default value to save user prompt.
   - where:
@@ -243,6 +252,11 @@ directive:
       subject: Setting
       variant: ^Delete$|^DeleteViaIdentity$
     remove: true
+  # Remove source control create/update/delete (requires OAUTH tokens)
+  - where:
+      subject: SourceControl
+      variant: ^CreateExpanded$|^Delete$|^DeleteViaIdentity$
+    remove: true
   #Custom Built Commands
   - where:
       verb: Invoke
@@ -258,7 +272,7 @@ directive:
     hide: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Append$|^AppendViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$
+      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$
     remove: true
   # fix Equals that conflicts with inhertied property
   - where:

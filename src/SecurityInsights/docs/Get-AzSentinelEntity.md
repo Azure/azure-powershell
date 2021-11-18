@@ -37,23 +37,33 @@ Gets an entity.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Entities
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+This command lists all Entities under a Microsoft Sentinel workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an Entity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityId"
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+This command gets an Entity.
+
+### Example 3: Get a Entity by object Id
+```powershell
+PS C:\> $Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+PS C:\> $Entitys[0] | Get-AzSentinelEntity
+
+{{ Add output here }}
+```
+
+This command gets an Entity by object
 
 ## PARAMETERS
 
