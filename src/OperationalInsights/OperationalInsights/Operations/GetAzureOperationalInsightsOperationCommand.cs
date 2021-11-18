@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Operations
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsOperation"), OutputType(typeof(IList<PSOperation>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsOperation"), OutputType(typeof(PSOperation))]
     public class GetAzureOperationalInsightsOperationCommand : OperationalInsightsBaseCmdlet
     {
         public override void ExecuteCmdlet()

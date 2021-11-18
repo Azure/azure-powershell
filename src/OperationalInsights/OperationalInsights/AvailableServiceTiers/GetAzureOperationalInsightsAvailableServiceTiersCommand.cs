@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.AvailableServiceTiers
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(OperationalInsightsClient.ListPSAvailableServiceTiers(ResourceGroupName, WorkspaceName));
+            WriteObject(OperationalInsightsClient.ListPSAvailableServiceTiers(ResourceGroupName, WorkspaceName), true);
         }
     }
 }
