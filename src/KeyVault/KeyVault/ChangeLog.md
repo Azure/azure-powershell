@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added message to `Set-AzKeyVaultAccessPolicy` stating that for the Permissions parameters, using the 'All' option will not include the 'Purge' permission.
 
 ## Version 3.6.1
 * Added warning message of upcoming breaking change to `New-AzKeyVaultRoleDefinition` and `Get-AzKeyVaultRoleDefinition`.
