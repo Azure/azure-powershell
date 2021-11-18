@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
+    - `Get-AzRmStorageShare`
 * Supported create or migrate container to enable immutable Storage with versioning.
     -  `New-AzRmStorageContainer`
     -  `Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration`
