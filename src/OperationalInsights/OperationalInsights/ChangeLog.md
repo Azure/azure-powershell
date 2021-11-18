@@ -43,7 +43,7 @@
   - `New-AzOperationalInsightsWorkspace`
 * Added new property: `DailyQuotaGb`:
   - `Set-AzOperationalInsightsWorkspace`
-* Added new properties: `ETag`, `Tags` for cmdlets:
+* Added new properties: `ETag`, `Tag` for cmdlets:
   - `Set-AzOperationalInsightsStorageInsight`
   - `New-AzOperationalInsightsStorageInsight`
 * Added new property `StorageAccountResourceId` to cmdlet:
@@ -51,9 +51,8 @@
 * Added SupportsShouldProcess attribute to cmdlet:
   - `Set-AzOperationalInsightsStorageInsight`
 * Added new cmdlets:
-  - `Set-AzOperationalInsightsTable` (currently not exported as endpoint supports this operation functionality only for PUT but .NET SDK uses PATCH)
   - `Get-AzOperationalInsightsTable`
-  - `Get-AzOperationalInsightsOperations`
+  - `Get-AzOperationalInsightsOperation`
   - `Get-AzOperationalInsightsDataExport`
   - `New-AzOperationalInsightsDataExport`
   - `Remove-AzOperationalInsightsDataExport`
@@ -62,6 +61,7 @@
   - `Update-AzOperationalInsightsWorkspaceSharedKey`
   - `New-AzOperationalInsightsPurgeWorkspace`
   - `Get-AzOperationalInsightsPurgeWorkspaceStatus`
+  - `Get-AzOperationalInsightsAvailableServiceTier`
 
 
 ## Version 2.3.1

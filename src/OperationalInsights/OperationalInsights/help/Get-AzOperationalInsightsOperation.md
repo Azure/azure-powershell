@@ -66,7 +66,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSOperation, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSOperation
 
 ## NOTES
 

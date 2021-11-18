@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateSet("CustomLogs", "AzureWatson", "Query", "Alerts", IgnoreCase = true)]
         public string DataSourceType { get; set; }
 
-        [CmdletParameterBreakingChange("StorageAccountId", ReplaceMentCmdletParameterName = "StorageAccountIds")]
+        [CmdletParameterBreakingChange("StorageAccountId")]
         [Parameter(Position = 3,
             Mandatory = true,
             HelpMessage = "list of storage account Id.")]

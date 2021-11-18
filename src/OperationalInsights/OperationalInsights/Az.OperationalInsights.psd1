@@ -125,7 +125,6 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Get-AzOperationalInsightsDeletedWorkspace', 
                'Restore-AzOperationalInsightsWorkspace',
                'Get-AzOperationalInsightsTable',
-               # 'Set-AzOperationalInsightsTable', curently disabled due to backend 
                'Get-AzOperationalInsightsOperation',
                'Get-AzOperationalInsightsDataExport',
                'New-AzOperationalInsightsDataExport',
@@ -134,7 +133,8 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Get-AzOperationalInsightsOperationStatus',
                'Update-AzOperationalInsightsWorkspaceSharedKey',
                'New-AzOperationalInsightsPurgeWorkspace',
-               'Get-AzOperationalInsightsPurgeWorkspaceStatus'
+               'Get-AzOperationalInsightsPurgeWorkspaceStatus',
+               'Get-AzOperationalInsightsAvailableServiceTier'
 
 
 # Variables to export from this module

@@ -182,9 +182,6 @@ Updates a saved search that already exists.
 ### [Set-AzOperationalInsightsStorageInsight](Set-AzOperationalInsightsStorageInsight.md)
 Updates a Storage Insight.
 
-### [Set-AzOperationalInsightsTable](Set-AzOperationalInsightsTable.md)
-Updates a tables.
-
 ### [Set-AzOperationalInsightsWorkspace](Set-AzOperationalInsightsWorkspace.md)
 Updates a workspace.
 

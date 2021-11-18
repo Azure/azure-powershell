@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights.AvailableServiceTiers
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsAvailableServiceTier"), OutputType(typeof(PSAvailableServiceTier))]
-    public class GetAzureOperationalInsightsAvailableServiceTiersCommand : OperationalInsightsBaseCmdlet
+    public class GetAzureOperationalInsightsAvailableServiceTierCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
