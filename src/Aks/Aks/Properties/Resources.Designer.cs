@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Since control-plane-only argument is not specified, this will upgrade the control plane AND all nodepools to version {0}. Continue?.
+        ///   Looks up a localized string similar to Since control-plane-only argument is not specified, this will upgrade the control plane AND all node pools to version {0}. Continue?.
         /// </summary>
         internal static string ConfirmNotControlPlaneOnly {
             get {
