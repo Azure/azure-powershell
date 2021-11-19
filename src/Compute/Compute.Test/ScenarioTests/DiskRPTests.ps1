@@ -1590,6 +1590,7 @@ function Test-AutomaticKeyRotation
 .SYNOPSIS
 Test AcceleratedNetwork and PublicNetworkAccess parameters for 
 Disk and Snapshot objects. 
+Also tested the CopyStart and CompletionPercent features for snapshots. 
 #>
 function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
 {
@@ -1640,6 +1641,26 @@ function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
         Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -SnapshotUpdate $snapshotUpdateConfig;
         $snapshotUpdated = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName;
         Assert-AreEqual $snapshotUpdated.PublicNetworkAccess $publicNetworkAccess2;
+
+        # CopyStart and CompletionPercent features in Snapshots
+        $baseRegion = "eastus2euap";
+        $otherRegion = "centraluseuap";
+        $diskName = "diskA" + $rgname;
+        $snapName = "snapB" + $rgname;
+        $snapName2 = "snapC" + $rgname;
+        $diskConfig = New-AzDiskConfig -Location $baseRegion  -AccountType $diskAccountType -CreateOption $createOption -DiskSizeGB $diskSize -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        $diskSourceId = $disk.Id.substring(1);
+        $snapshotconfigB = New-AzSnapshotConfig -Location $baseRegion -CreateOption Copy -Incremental -SourceResourceId $diskSourceId;
+
+        $snapB =New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -Snapshot $snapshotconfigB;
+        $snapSourceId = $snapB.Id.substring(1);
+        Assert-Null $snapB.CompletionPercent;
+
+        $snapshotconfigC = New-AzSnapshotConfig -Location $otherRegion -CreateOption CopyStart -Incremental -SourceResourceId $snapSourceId;
+        $snapC = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName2 -Snapshot $snapshotconfigC;
+        Assert-NotNull $snapC.CompletionPercent;
 	}
     finally 
     {
