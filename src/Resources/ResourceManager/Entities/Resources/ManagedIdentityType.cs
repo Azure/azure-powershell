@@ -20,17 +20,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
     public enum ManagedIdentityType
     {
         /// <summary>
-        /// The name of the resource identity type that will automatically create an identity for the resource.
+        /// Indicates that a system assigned identity is associated with the resource.
         /// </summary>
         SystemAssigned = 1,
 
         /// <summary>
-        /// The name of the resource identity type that will automatically create an identity for the resource.
+        /// Indicates that a user assigned identity is associated with the resource.
         /// </summary>
         UserAssigned,
 
         /// <summary>
-        /// The name of the resource identity type that indicates the resource should have no identity assigned.
+        /// Indicates that no identity is associated with the resource or that the existing identity should be removed.
         /// </summary>
         None
     }

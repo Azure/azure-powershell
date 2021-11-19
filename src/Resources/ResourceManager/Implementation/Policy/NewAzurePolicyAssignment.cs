@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the ID of the user assigned managed identity to be assigned to the policy assignment.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityIdHelp)]
-        public String IdentityId { get; set; }
+        public string IdentityId { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the policy assignment. Only required when assigning a resource identity to the assignment.
@@ -213,17 +213,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool CheckIfIdentityPresent()
         {
-            if (this.IdentityType != null & this.Location == null || this.AssignIdentity != null && this.AssignIdentity.IsPresent && this.Location == null)
+            if (this.AssignIdentity.IsPresent && this.IdentityType != null) 
+            {
+                throw new PSInvalidOperationException("Cannot specify both IdentityType and AssignIdentity at the same time.");
+            }
+
+            if (this.AssignIdentity.IsPresent && !string.IsNullOrEmpty(this.IdentityId))
+            {
+                throw new PSInvalidOperationException("Cannot specify both AssignIdentity and IdentityId at the same time.");
+            }
+
+            if (this.IdentityType != null & string.IsNullOrEmpty(this.Location) || this.AssignIdentity.IsPresent && string.IsNullOrEmpty(this.Location))
             {
                 throw new PSInvalidOperationException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.");
             }
 
-            if (this.IdentityType == ManagedIdentityType.UserAssigned && this.IdentityId == null)
+            if (this.IdentityType == ManagedIdentityType.UserAssigned && string.IsNullOrEmpty(this.IdentityId))
             {
                 throw new PSInvalidOperationException("A user assigned identity id needs to be specified if the identity type is 'UserAssigned'.");
             }
 
-            if (this.IdentityType == ManagedIdentityType.SystemAssigned && this.IdentityId != null)
+            if (this.IdentityType == ManagedIdentityType.SystemAssigned && !string.IsNullOrEmpty(this.IdentityId))
             {
                 throw new PSInvalidOperationException("Cannot specify an identity ID if identity type is 'SystemAssigned'.");
             }
@@ -242,16 +252,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             ResourceIdentity identityObject = this.IdentityType != null ?
-                (this.IdentityType == ManagedIdentityType.SystemAssigned ?
-                new ResourceIdentity { Type = ManagedIdentityType.SystemAssigned.ToString() } :
-                new ResourceIdentity
-                {
-                    Type = ManagedIdentityType.UserAssigned.ToString(),
-                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentityResource>
+                ( this.IdentityType == ManagedIdentityType.UserAssigned ?
+                    new ResourceIdentity
                     {
-                        { this.IdentityId, new UserAssignedIdentityResource {} }
-                    }
-                }) : null;
+                        Type = IdentityType.ToString(),
+                        UserAssignedIdentities = new Dictionary<string, UserAssignedIdentityResource>
+                        {
+                            { this.IdentityId, new UserAssignedIdentityResource {} }
+                        }
+                    } :
+                    new ResourceIdentity { Type = IdentityType.ToString() }
+                ) : null;
 
             var policyassignmentObject = new PolicyAssignment
             {

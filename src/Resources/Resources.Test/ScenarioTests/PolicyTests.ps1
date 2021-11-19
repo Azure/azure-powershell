@@ -556,14 +556,8 @@ function Test-PolicyAssignmentAssignIdentity
     $remove = Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId
     Assert-AreEqual True $remove
 
-	$remove = Remove-AzPolicySetDefinition -Name $policySetDefName -Force
-	Assert-AreEqual True $remove
-
-	$remove = Remove-AzPolicyDefinition -Name $policyDefName1 -Force
-	Assert-AreEqual True $remove
-
-	$remove = Remove-AzPolicyDefinition -Name $policyDefName2 -Force
-	Assert-AreEqual True $remove
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
 
     $remove = Remove-AzResourceGroup -Name $rgname -Force
     Assert-AreEqual True $remove
