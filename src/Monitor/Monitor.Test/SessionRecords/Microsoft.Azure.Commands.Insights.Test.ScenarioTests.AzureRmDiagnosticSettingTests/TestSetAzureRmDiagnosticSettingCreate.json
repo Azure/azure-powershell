@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettings?api-version=2017-05-01-preview",
+      "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/Microsoft.Insights/diagnosticSettings?api-version=2017-05-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNy0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -64,7 +64,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettingsCategories?api-version=2017-05-01-preview",
+      "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/Microsoft.Insights/diagnosticSettingsCategories?api-version=2017-05-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3NDYXRlZ29yaWVzP2FwaS12ZXJzaW9uPTIwMTctMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -82,7 +82,7 @@
           "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.20.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/providers/microsoft.insights/diagnosticSettingsCategories/AuditEvent\",\r\n      \"type\": \"microsoft.insights/diagnosticSettingsCategories\",\r\n      \"name\": \"AuditEvent\",\r\n      \"location\": null,\r\n      \"kind\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"categoryType\": \"Logs\"\r\n      },\r\n      \"identity\": null\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/providers/microsoft.insights/diagnosticSettingsCategories/AllMetrics\",\r\n      \"type\": \"microsoft.insights/diagnosticSettingsCategories\",\r\n      \"name\": \"AllMetrics\",\r\n      \"location\": null,\r\n      \"kind\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"categoryType\": \"Metrics\"\r\n      },\r\n      \"identity\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/providers/Microsoft.Insights/diagnosticSettingsCategories/AuditEvent\",\r\n      \"type\": \"Microsoft.Insights/diagnosticSettingsCategories\",\r\n      \"name\": \"AuditEvent\",\r\n      \"location\": null,\r\n      \"kind\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"categoryType\": \"Logs\"\r\n      },\r\n      \"identity\": null\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/providers/Microsoft.Insights/diagnosticSettingsCategories/AllMetrics\",\r\n      \"type\": \"Microsoft.Insights/diagnosticSettingsCategories\",\r\n      \"name\": \"AllMetrics\",\r\n      \"location\": null,\r\n      \"kind\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"categoryType\": \"Metrics\"\r\n      },\r\n      \"identity\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "796"
@@ -127,7 +127,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettings/service?api-version=2017-05-01-preview",
+      "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/Microsoft.Insights/diagnosticSettings/service?api-version=2017-05-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3Mvc2VydmljZT9hcGktdmVyc2lvbj0yMDE3LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageAccountId\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2\",\r\n    \"metrics\": [\r\n      {\r\n        \"category\": \"AllMetrics\",\r\n        \"enabled\": true\r\n      }\r\n    ],\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"AuditEvent\",\r\n        \"enabled\": true\r\n      }\r\n    ]\r\n  }\r\n}",
@@ -151,7 +151,7 @@
           "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.20.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/providers/microsoft.insights/diagnosticSettings/service\",\r\n  \"type\": null,\r\n  \"name\": \"service\",\r\n  \"location\": null,\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"storageAccountId\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2\",\r\n    \"serviceBusRuleId\": null,\r\n    \"workspaceId\": null,\r\n    \"eventHubAuthorizationRuleId\": null,\r\n    \"eventHubName\": null,\r\n    \"metrics\": [\r\n      {\r\n        \"timeGrain\": \"PT1M\",\r\n        \"category\": \"AllMetrics\",\r\n        \"enabled\": true,\r\n        \"retentionPolicy\": {\r\n          \"enabled\": false,\r\n          \"days\": 0\r\n        }\r\n      }\r\n    ],\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"AuditEvent\",\r\n        \"enabled\": true,\r\n        \"retentionPolicy\": {\r\n          \"enabled\": false,\r\n          \"days\": 0\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/providers/Microsoft.Insights/diagnosticSettings/service\",\r\n  \"type\": null,\r\n  \"name\": \"service\",\r\n  \"location\": null,\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"storageAccountId\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/vnet-east-test/providers/Microsoft.Storage/storageAccounts/vnetcnarytestcuseuap2\",\r\n    \"serviceBusRuleId\": null,\r\n    \"workspaceId\": null,\r\n    \"eventHubAuthorizationRuleId\": null,\r\n    \"eventHubName\": null,\r\n    \"metrics\": [\r\n      {\r\n        \"timeGrain\": \"PT1M\",\r\n        \"category\": \"AllMetrics\",\r\n        \"enabled\": true,\r\n        \"retentionPolicy\": {\r\n          \"enabled\": false,\r\n          \"days\": 0\r\n        }\r\n      }\r\n    ],\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"AuditEvent\",\r\n        \"enabled\": true,\r\n        \"retentionPolicy\": {\r\n          \"enabled\": false,\r\n          \"days\": 0\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"identity\": null\r\n}",
         "ResponseHeaders": {
             "Content-Length": [
                 "786"

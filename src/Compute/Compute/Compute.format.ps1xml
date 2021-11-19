@@ -769,7 +769,7 @@
                 <ScriptBlock>$_.OsVolumeEncrypted</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.DataVolumesEncrypted</ScriptBlock>
+                <ScriptBlock>$_.DataVolumesEncryptionStatus</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Extension.Statuses[0].DisplayStatus</ScriptBlock>

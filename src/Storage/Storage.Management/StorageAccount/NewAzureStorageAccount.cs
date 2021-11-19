@@ -496,6 +496,34 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string PublicNetworkAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enables account-level immutability, then all the containers under this account will have object-level immutability enabled by default.")]
+        public SwitchParameter EnableAccountLevelImmutability { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The immutability period for the blobs in the container since the policy creation in days. This property can only be only be specified with '-EnableAccountLevelImmutability'.")]
+        public int ImmutabilityPeriod
+        {
+            get
+            {
+                return immutabilityPeriod is null ? 0 : immutabilityPeriod.Value;
+            }
+            set
+            {
+                immutabilityPeriod = value;
+            }
+        }
+        private int? immutabilityPeriod;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Disabled. " +
+            "Disabled state disablesthe policy. " +
+            "Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. " +
+            "A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states." +
+            "This property can only be specified with '-EnableAccountLevelImmutability'.")]
+        [PSArgumentCompleter("Disabled", "Unlocked")]
+        [ValidateNotNullOrEmpty]
+        public string ImmutabilityPolicyState { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -728,6 +756,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.PublicNetworkAccess != null)
             {
                 createParameters.PublicNetworkAccess = this.PublicNetworkAccess;
+            }
+            if (EnableAccountLevelImmutability.IsPresent || this.immutabilityPeriod != null ||  this.ImmutabilityPolicyState != null)
+            {
+                if (!EnableAccountLevelImmutability.IsPresent)
+                {
+                    throw new ArgumentException("ImmutabilityPeriod, ImmutabilityPolicyState and AllowProtectedAppendWrite, can only be specified with -EnableAccountLevelImmutability.");
+                }
+                createParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
+                createParameters.ImmutableStorageWithVersioning.Enabled = this.EnableAccountLevelImmutability.IsPresent;
+                if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
+                {
+                    createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
+                    createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
+                    createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                }
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

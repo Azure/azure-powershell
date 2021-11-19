@@ -44,6 +44,9 @@ Exports notbooks.
 ### [Export-AzSynapseSqlScript](Export-AzSynapseSqlScript.md)
 Exports a sql script from a Synapse workspace.
 
+### [Export-AzSynapseSparkConfiguration](Export-AzSynapseSparkConfiguration.md)
+Exports a Synapse spark configuration to an output folder.
+
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
@@ -100,6 +103,9 @@ Gets a Synapse Analytics role definition.
 
 ### [Get-AzSynapseRoleScope](Get-AzSynapseRoleScope.md)
 Gets a Synapse Analytics role scope.
+
+### [Get-AzSynapseSparkConfiguration](Get-AzSynapseSparkConfiguration.md)
+Gets information about spark configurations in a workspace.
 
 ### [Get-AzSynapseSparkJob](Get-AzSynapseSparkJob.md)
 Gets a Synapse Analytics Spark job.
@@ -224,6 +230,9 @@ Creates managed virtual network configuration.
 ### [New-AzSynapseRoleAssignment](New-AzSynapseRoleAssignment.md)
 Creates a Synapse Analytics role assignment.
 
+### [New-AzSynapseSparkConfiguration](New-AzSynapseSparkConfiguration.md)
+Creates or updates a spark configuration in a workspace.
+
 ### [New-AzSynapseSparkPool](New-AzSynapseSparkPool.md)
 Creates a Synapse Analytics Spark pool.
 
@@ -274,6 +283,9 @@ Removes a pipeline from workspace.
 
 ### [Remove-AzSynapseRoleAssignment](Remove-AzSynapseRoleAssignment.md)
 Deletes a Synapse Analytics role assignment.
+
+### [Remove-AzSynapseSparkConfiguration](Remove-AzSynapseSparkConfiguration.md)
+Removes a spark configuration from a workspace.
 
 ### [Remove-AzSynapseSparkJobDefinition](Remove-AzSynapseSparkJobDefinition.md)
 Removes a Spark job definition from workspace.
