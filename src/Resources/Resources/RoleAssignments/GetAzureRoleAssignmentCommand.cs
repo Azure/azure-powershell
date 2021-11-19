@@ -243,7 +243,6 @@ namespace Microsoft.Azure.Commands.Resources
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
-                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);

@@ -45,10 +45,10 @@ function Test-RaClassicAdminsWithScope
 
 <#
 .SYNOPSIS
-Tests retrieval of assignments to deleted principals/Users/Groups
-This test will fail if the objectId is changed or the role assignment deleted
+Tests retrieval of assignments to unknown principals/Users/Groups
+This test will fail if the objectId is changed, the role assignment deleted or user is unable to know the type of oject
 #>
-function Test-RaDeletedPrincipals
+function Test-UnknowndPrincipals
 {
     $objectId = "6f58a770-c06e-4012-b9f9-e5479c03d43f"
     $assignment = Get-AzRoleAssignment -ObjectId $objectId

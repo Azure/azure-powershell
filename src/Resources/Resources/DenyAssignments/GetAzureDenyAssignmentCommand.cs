@@ -176,7 +176,6 @@ namespace Microsoft.Azure.Commands.Resources
                     Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
-                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);
