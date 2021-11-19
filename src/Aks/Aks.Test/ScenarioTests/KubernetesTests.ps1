@@ -179,7 +179,7 @@ function Test-NewAzAksAddons
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
 
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AddOnNameToBeEnabled KubeDashboard,HttpApplicationRouting
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AddOnNameToBeEnabled HttpApplicationRouting
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
 
@@ -215,7 +215,7 @@ function Test-ResetAzureKubernetesServicePrincipal
         $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
         
-        $newCred = $(createTestCredential "eca36736-a58e-48f0-916b-a6c41afd018a" "ain7Q~2kVL6pDFusUSaZTOUgnsot0onxC96Bc")
+        $newCred = $(createTestCredential "aa0f0dd4-d00c-4a4f-8d22-1f5ea397a8b2" "Acc7Q~FB5apzrf4yHFar~PtiJzZ_c2y0xGhTC")
         Set-AzAksClusterCredential -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $newCred -force
     }
     finally
