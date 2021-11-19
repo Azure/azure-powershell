@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(_cmdlet.UserData))
                     {
                         _cmdlet.UserData = ValidateBase64EncodedString.EncodeStringToBase64(_cmdlet.UserData);
-                        _cmdlet.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification + _cmdlet.UserData, new string[] { "PSHOST" });
+                        _cmdlet.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                     }
                 }
 

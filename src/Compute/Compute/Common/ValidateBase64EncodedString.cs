@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 {
     public static class ValidateBase64EncodedString
     {
-        public const string UserDataEncodeNotification = "The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is ";
+        public const string UserDataEncodeNotification = "The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value by Base64 encoding it.";
         public static bool ValidateStringIsBase64Encoded(string encodedString)
         {
             if (String.IsNullOrEmpty(encodedString) ||

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
                 {
                     this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
-                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification + this.UserData, new string[] { "PSHOST" });
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                 }
             }
 
