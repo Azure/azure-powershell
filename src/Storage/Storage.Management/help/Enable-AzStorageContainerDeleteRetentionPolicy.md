@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzStorageContainerDeleteRetentionPolicy
 
 ## SYNOPSIS
-Enable delete retention policy for Azure Storage blob contatiners.
+Enable delete retention policy for Azure Storage blob containers.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Enable-AzStorageContainerDeleteRetentionPolicy [-ResourceId] <String> -Retention
 ```
 
 ## DESCRIPTION
-The **Enable-AzStorageContainerDeleteRetentionPolicy** cmdlet enables delete retention policy for Azure Storage blob Contatiner.
+The **Enable-AzStorageContainerDeleteRetentionPolicy** cmdlet enables delete retention policy for Azure Storage blob containers.
 
 ## EXAMPLES
 
@@ -45,7 +45,7 @@ Enabled Days
    True    3
 ```
 
-This command enables delete retention policy for Blob Contatiners, and set deleted blob retention days to 3.
+This command enables delete retention policy for Blob containers, and set deleted blob retention days to 3.
 
 ## PARAMETERS
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Changed API version to 2021-05-01
 * Fixed bugs for location capabilities
 

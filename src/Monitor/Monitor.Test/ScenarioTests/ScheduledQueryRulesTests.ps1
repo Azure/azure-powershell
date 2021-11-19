@@ -19,7 +19,7 @@ function Test-setup
 	$global:ruleName2 = Get-ResourceName
 	$global:ruleName3 = Get-ResourceName
 	$global:resourceGroupName = Get-ResourceGroupName
-	$global:location = Get-ProviderLocation("microsoft.insights")
+	$global:location = Get-ProviderLocation("Microsoft.Insights")
 	$global:description = "SQR log alert rule"
 	$global:severity = "2"
 	$global:throttlingInMin = "5"
@@ -53,7 +53,7 @@ function Test-setup
 	$global:actionGroup = @($newActionGroup.Id)
 	
 	$global:subscription = (Get-AzureRmContext).Subscription
-	$global:authorizedResources = "/subscriptions/" + $subscription + "/resourceGroups/" + $resourceGroupName + "/providers/microsoft.insights/components/" + $appInsightsResourceName
+	$global:authorizedResources = "/subscriptions/" + $subscription + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.Insights/components/" + $appInsightsResourceName
 	$global:dataSourceId = $authorizedResources
 	$global:queryType = "ResultCount"
 	$global:metricTriggerThreshold = 10

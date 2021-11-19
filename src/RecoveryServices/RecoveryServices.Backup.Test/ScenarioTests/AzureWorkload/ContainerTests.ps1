@@ -21,28 +21,29 @@ function Get-AzureVmWorkloadContainer
 {
    $resourceGroupName = "pstestwlRG1bca8"
    $vaultName = "pstestwlRSV1bca8"
-   $containerName = "PSTestVM235870"
-   $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG235879ba/providers/Microsoft.Compute/virtualMachines/PSTestVM235870"
+   $containerName = "pstestvm8895"
+   # $containerName = "PSTestVM235870"
+   # $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG235879ba/providers/Microsoft.Compute/virtualMachines/PSTestVM235870"
     
    try
    {
       $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
 	  #Register container
-      $container = Register-AzRecoveryServicesBackupContainer `
+      <# $container = Register-AzRecoveryServicesBackupContainer `
          -ResourceId $resourceId `
          -BackupManagementType AzureWorkload `
          -WorkloadType MSSQL `
          -VaultId $vault.ID `
 		 -Force
-	  Assert-AreEqual $container.Status "Registered"
+	  Assert-AreEqual $container.Status "Registered" #>
 
       # VARIATION-1: Get All Containers with only mandatory parameters
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
          -Status Registered;
-      Assert-True { $containers.FriendlyName -contains $containerName }
+      Assert-True { $containers[0].FriendlyName -contains $containerName }
 
       # VARIATION-2: Get Containers with friendly name filter
       $containers = Get-AzRecoveryServicesBackupContainer `
@@ -58,7 +59,7 @@ function Get-AzureVmWorkloadContainer
          -ContainerType AzureVMAppContainer `
          -Status Registered `
          -ResourceGroupName $resourceGroupName;
-      Assert-True { $containers.FriendlyName -contains $containerName }
+      Assert-True { $containers[0].FriendlyName -contains $containerName }
    
       # VARIATION-4: Get Containers with friendly name and resource group filters
       $containers = Get-AzRecoveryServicesBackupContainer `
@@ -72,9 +73,9 @@ function Get-AzureVmWorkloadContainer
    finally
    {
 	  #Unregister container
-      Unregister-AzRecoveryServicesBackupContainer `
+      <# Unregister-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
-		-Container $containers
+		-Container $containers #>
    }
 }
 

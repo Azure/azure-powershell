@@ -6,12 +6,15 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Extensions;
+    using System;
 
     /// <summary>List all Source Control Configurations.</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzKubernetesConfiguration_List")]
+    [global::System.Management.Automation.Alias("Get-AzK8sConfiguration")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Description(@"List all Source Control Configurations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Generated]
@@ -31,6 +34,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -257,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Events.Debug:
@@ -430,13 +439,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                 // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
-                if (result.NextLink != null)
+                _nextLink = result.NextLink;
+                if (_isFirst)
                 {
-                    if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                    _isFirst = false;
+                    while (_nextLink != null)
                     {
-                        requestMessage = requestMessage.Clone(new global::System.Uri( result.NextLink ),Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Method.Get );
-                        await ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.SourceControlConfigurationsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.SourceControlConfigurationsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

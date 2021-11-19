@@ -19,6 +19,21 @@
 --->
 
 ## Upcoming Release
+* Added optional parameter `-IsSecuritySite` to the following cmdlet:
+    - `New-AzVpnSite`
+* Support for new Match Variables in WAF Exclusions
+* Onboard Virtual Network Encryption to Virtual Network Cmdlets
+* Support for NAT port range parameters in VPN NAT rule resources
+	- `New-AzVpnGatewayNatRule.md`
+	- `Update-AzVpnGatewayNatRule.md`
+	- `New-AzVirtualNetworkGatewayNatRule.md`
+	- `Update-AzVirtualNetworkGatewayNatRule.md`
+* Added new cmdlets to support Per Rule Exclusions for Application Gateway WAF
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet`
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup`
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRule`
+    - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
+        - `New-AzApplicationGatewayFirewallPolicyExclusion`
 
 ## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.

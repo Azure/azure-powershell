@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
+* Added Support for AzureStack HCI Attestation (Azure Benefits)
+    - New cmdlets: Enable-AzStackHCIAttestation, Disable-AzStackHCIAttestation, Add-AzStackHCIVMAttestation, Remove-AzStackHCIVMAttestation, Get-AzStackHCIVMAttestation
+* Added Support for Windows Server Subscription
+    - New cmdlet: Set-AzStackHCI
+
+## Version 0.9.1
 * Added Support for AzureUSGovernment cloud
     - EnvironmentName parameter in Register-AzStackHCI, Unregister-AzStackHCI and Test-AzStackHCIConnection now supports a new value "AzureUSGovernment"
 ## Version 0.9.0

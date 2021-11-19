@@ -11,8 +11,26 @@ Locale: en-US
 Microsoft Azure PowerShell: Azure Stack HCI registration cmdlets
 
 ## Az.StackHCI Cmdlets
+### [Add-AzStackHCIVMAttestation](Add-AzStackHCIVMAttestation.md)
+Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestation.
+
+### [Disable-AzStackHCIAttestation](Disable-AzStackHCIAttestation.md)
+Disable-AzStackHCIAttestation disables IMDS Attestation on the host
+
+### [Enable-AzStackHCIAttestation](Enable-AzStackHCIAttestation.md)
+Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
+
+### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
+Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
+
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
+
+### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
+Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
+
+### [Set-AzStackHCI](Set-AzStackHCI.md)
+Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
 ### [Test-AzStackHCIConnection](Test-AzStackHCIConnection.md)
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.

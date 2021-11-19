@@ -1,286 +1,284 @@
 {
-    "Entries":  [
-                    {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "9370aeba-e757-48db-a389-66917a2fc3ed"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-request-id":  [
-                                                                        "ed252ab8-bef7-4acd-8012-a21dda5c5193"
-                                                                    ],
-                                                "x-ms-client-request-id":  [
-                                                                               "9370aeba-e757-48db-a389-66917a2fc3ed"
-                                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11999"
-                                                                                                ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "ed252ab8-bef7-4acd-8012-a21dda5c5193"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210405T175049Z:ed252ab8-bef7-4acd-8012-a21dda5c5193"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:15 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "474"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"PwsTestVault\",\r\n      \"etag\": \"W/\\\"datetime\u00272021-03-24T14%3A01%3A50.8326358Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "ffb22783-73d1-497b-8b26-6acb20d02e06"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1617641449707)\\/\",\"NotAfterTimestamp\":\"\\/Date(1618246249707)\\/\",\"ClientRequestId\":\"52a757e9-f44e-4e90-b693-7bddb4d2cd6a-2021-04-05 17:50:49Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Z8p9sCuLmstTgyMMyCBmY46fmRE3Ri2FvAwpqwiPSWI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11998"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "ffb22783-73d1-497b-8b26-6acb20d02e06 4/5/2021 5:50:50 PM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "ffb22783-73d1-497b-8b26-6acb20d02e06"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "04da1f72-d6b4-4adb-b980-136998457b72"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210405T175050Z:04da1f72-d6b4-4adb-b980-136998457b72"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:15 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "6339"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PwsTestCS\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"01fbe5d9-6391-45fc-a729-bef0b458c9fe\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMware\",\r\n          \"processServers\": [\r\n            {\r\n              \"friendlyName\": \"V2A-PS-200\",\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:40:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 5032087552,\r\n              \"availableMemoryInBytes\": 2927165329,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 107337478144,\r\n              \"availableSpaceInBytes\": 104919038293,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-22T14:18:58Z\",\r\n              \"sslCertExpiryRemainingDays\": 1081,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:13Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            },\r\n            {\r\n              \"friendlyName\": \"PwsTestCS\",\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:13Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 20266405888,\r\n              \"availableMemoryInBytes\": 15909128622,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 137435803648,\r\n              \"availableSpaceInBytes\": 133171265536,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-18T14:07:04Z\",\r\n              \"sslCertExpiryRemainingDays\": 1077,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:25Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            }\r\n          ],\r\n          \"masterTargetServers\": [\r\n            {\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"name\": \"PwsTestCS\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"D\",\r\n                  \"capacityInBytes\": 34357637120,\r\n                  \"freeSpaceInBytes\": 31186448384,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 0,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            },\r\n            {\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"name\": \"V2A-PS-200\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:58Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"F\",\r\n                  \"capacityInBytes\": 10734268416,\r\n                  \"freeSpaceInBytes\": 10688544768,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [\r\n                {\r\n                  \"symbolicName\": \"datastore1\",\r\n                  \"uuid\": \"6005a082-e4a06cce-c50c-f0d4e2e6578e\",\r\n                  \"capacity\": \"439.5\",\r\n                  \"freeSpace\": \"154.11\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"DS-77\",\r\n                  \"uuid\": \"5c5d35b2-509cd314-afbf-f8bc124d5eea\",\r\n                  \"capacity\": \"2047.75\",\r\n                  \"freeSpace\": \"247.02\",\r\n                  \"type\": \"VMFS\"\r\n                }\r\n              ],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 3,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            }\r\n          ],\r\n          \"runAsAccounts\": [\r\n            {\r\n              \"accountId\": \"1\",\r\n              \"accountName\": \"vcenteruser\"\r\n            },\r\n            {\r\n              \"accountId\": \"2\",\r\n              \"accountName\": \"windowsuser\"\r\n            },\r\n            {\r\n              \"accountId\": \"3\",\r\n              \"accountName\": \"linuxuser\"\r\n            }\r\n          ],\r\n          \"replicationPairCount\": \"0\",\r\n          \"processServerCount\": \"2\",\r\n          \"agentCount\": \"3\",\r\n          \"protectedServers\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 20266405888,\r\n          \"availableMemoryInBytes\": 15909128622,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 137435803648,\r\n          \"availableSpaceInBytes\": 133171265536,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"webLoad\": \"0\",\r\n          \"webLoadStatus\": \"Green\",\r\n          \"databaseServerLoad\": \"0.25\",\r\n          \"databaseServerLoadStatus\": \"Green\",\r\n          \"csServiceStatus\": \"Running\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"hostName\": \"PwsTestCS\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:42:50.995485Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"sslCertExpiryDate\": \"2024-03-18T14:07:03Z\",\r\n          \"sslCertExpiryRemainingDays\": 1077,\r\n          \"psTemplateVersion\": \"202102.14.00\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1617641450706)\\/\",\"NotAfterTimestamp\":\"\\/Date(1618246250706)\\/\",\"ClientRequestId\":\"34a0e664-8dba-4fb6-b903-6ae091da5aac-2021-04-05 17:50:50Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6wK3T57+vTIHezgjQKgXr+3UNxUaiQOD+/GxTg8hq9w=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11997"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "510a0fdb-3129-4183-8d49-486cf1e7d3e6 4/5/2021 5:50:50 PM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "f08e8e69-046a-4fad-8c26-23bc01250d93"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210405T175050Z:f08e8e69-046a-4fad-8c26-23bc01250d93"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:15 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "6339"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PwsTestCS\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"01fbe5d9-6391-45fc-a729-bef0b458c9fe\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMware\",\r\n          \"processServers\": [\r\n            {\r\n              \"friendlyName\": \"V2A-PS-200\",\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:40:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 5032087552,\r\n              \"availableMemoryInBytes\": 2927165329,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 107337478144,\r\n              \"availableSpaceInBytes\": 104919038293,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-22T14:18:58Z\",\r\n              \"sslCertExpiryRemainingDays\": 1081,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:13Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            },\r\n            {\r\n              \"friendlyName\": \"PwsTestCS\",\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:13Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 20266405888,\r\n              \"availableMemoryInBytes\": 15909128622,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 137435803648,\r\n              \"availableSpaceInBytes\": 133171265536,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-18T14:07:04Z\",\r\n              \"sslCertExpiryRemainingDays\": 1077,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:25Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            }\r\n          ],\r\n          \"masterTargetServers\": [\r\n            {\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"name\": \"PwsTestCS\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"D\",\r\n                  \"capacityInBytes\": 34357637120,\r\n                  \"freeSpaceInBytes\": 31186448384,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 0,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            },\r\n            {\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"name\": \"V2A-PS-200\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:58Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"F\",\r\n                  \"capacityInBytes\": 10734268416,\r\n                  \"freeSpaceInBytes\": 10688544768,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [\r\n                {\r\n                  \"symbolicName\": \"datastore1\",\r\n                  \"uuid\": \"6005a082-e4a06cce-c50c-f0d4e2e6578e\",\r\n                  \"capacity\": \"439.5\",\r\n                  \"freeSpace\": \"154.11\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"DS-77\",\r\n                  \"uuid\": \"5c5d35b2-509cd314-afbf-f8bc124d5eea\",\r\n                  \"capacity\": \"2047.75\",\r\n                  \"freeSpace\": \"247.02\",\r\n                  \"type\": \"VMFS\"\r\n                }\r\n              ],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 3,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            }\r\n          ],\r\n          \"runAsAccounts\": [\r\n            {\r\n              \"accountId\": \"1\",\r\n              \"accountName\": \"vcenteruser\"\r\n            },\r\n            {\r\n              \"accountId\": \"2\",\r\n              \"accountName\": \"windowsuser\"\r\n            },\r\n            {\r\n              \"accountId\": \"3\",\r\n              \"accountName\": \"linuxuser\"\r\n            }\r\n          ],\r\n          \"replicationPairCount\": \"0\",\r\n          \"processServerCount\": \"2\",\r\n          \"agentCount\": \"3\",\r\n          \"protectedServers\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 20266405888,\r\n          \"availableMemoryInBytes\": 15909128622,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 137435803648,\r\n          \"availableSpaceInBytes\": 133171265536,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"webLoad\": \"0\",\r\n          \"webLoadStatus\": \"Green\",\r\n          \"databaseServerLoad\": \"0.25\",\r\n          \"databaseServerLoadStatus\": \"Green\",\r\n          \"csServiceStatus\": \"Running\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"hostName\": \"PwsTestCS\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:42:50.995485Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"sslCertExpiryDate\": \"2024-03-18T14:07:03Z\",\r\n          \"sslCertExpiryRemainingDays\": 1077,\r\n          \"psTemplateVersion\": \"202102.14.00\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1617641451088)\\/\",\"NotAfterTimestamp\":\"\\/Date(1618246251088)\\/\",\"ClientRequestId\":\"0ca0fc02-e73a-42f9-ac9c-1a23a57a5de6-2021-04-05 17:50:51Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"9Lp0EgTcbwMs1RcccBxNLDDJZ0OhqtifCQalYJEjZL4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11996"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "510a0fdb-3129-4183-8d49-486cf1e7d3e6 4/5/2021 5:50:51 PM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "28d65d6b-1d4c-4c8c-a637-e015a1370dd0"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210405T175051Z:28d65d6b-1d4c-4c8c-a637-e015a1370dd0"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:15 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "6259"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"name\": \"9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"PwsTestCS\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"01fbe5d9-6391-45fc-a729-bef0b458c9fe\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"VMware\",\r\n      \"processServers\": [\r\n        {\r\n          \"friendlyName\": \"V2A-PS-200\",\r\n          \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n          \"ipAddress\": \"10.150.108.21\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:40:44Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"mobilityServiceUpdates\": [\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Windows\"\r\n            },\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Linux\"\r\n            }\r\n          ],\r\n          \"hostId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n          \"machineCount\": \"0\",\r\n          \"replicationPairCount\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 5032087552,\r\n          \"availableMemoryInBytes\": 2927165329,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 107337478144,\r\n          \"availableSpaceInBytes\": 104919038293,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"psServiceStatus\": \"Running\",\r\n          \"sslCertExpiryDate\": \"2024-03-22T14:18:58Z\",\r\n          \"sslCertExpiryRemainingDays\": 1081,\r\n          \"osVersion\": null,\r\n          \"healthErrors\": [],\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"health\": \"Normal\",\r\n          \"psStatsRefreshTime\": \"2021-04-05T17:42:13Z\",\r\n          \"throughputUploadPendingDataInBytes\": 0,\r\n          \"throughputInMBps\": 0,\r\n          \"throughputInBytes\": 0,\r\n          \"throughputStatus\": \"Green\",\r\n          \"marsCommunicationStatus\": \"1\",\r\n          \"marsRegistrationStatus\": \"1\"\r\n        },\r\n        {\r\n          \"friendlyName\": \"PwsTestCS\",\r\n          \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:41:13Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"mobilityServiceUpdates\": [\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Windows\"\r\n            },\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Linux\"\r\n            }\r\n          ],\r\n          \"hostId\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n          \"machineCount\": \"0\",\r\n          \"replicationPairCount\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 20266405888,\r\n          \"availableMemoryInBytes\": 15909128622,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 137435803648,\r\n          \"availableSpaceInBytes\": 133171265536,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"psServiceStatus\": \"Running\",\r\n          \"sslCertExpiryDate\": \"2024-03-18T14:07:04Z\",\r\n          \"sslCertExpiryRemainingDays\": 1077,\r\n          \"osVersion\": null,\r\n          \"healthErrors\": [],\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"health\": \"Normal\",\r\n          \"psStatsRefreshTime\": \"2021-04-05T17:42:25Z\",\r\n          \"throughputUploadPendingDataInBytes\": 0,\r\n          \"throughputInMBps\": 0,\r\n          \"throughputInBytes\": 0,\r\n          \"throughputStatus\": \"Green\",\r\n          \"marsCommunicationStatus\": \"1\",\r\n          \"marsRegistrationStatus\": \"1\"\r\n        }\r\n      ],\r\n      \"masterTargetServers\": [\r\n        {\r\n          \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"name\": \"PwsTestCS\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:41:44Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"retentionVolumes\": [\r\n            {\r\n              \"volumeName\": \"D\",\r\n              \"capacityInBytes\": 34357637120,\r\n              \"freeSpaceInBytes\": 31186448384,\r\n              \"thresholdPercentage\": null\r\n            }\r\n          ],\r\n          \"dataStores\": [],\r\n          \"validationErrors\": [],\r\n          \"healthErrors\": [],\r\n          \"diskCount\": 0,\r\n          \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"marsAgentVersion\": \"2.0.9202.0\",\r\n          \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"marsAgentVersionDetails\": {\r\n            \"version\": \"2.0.9202.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n          \"ipAddress\": \"10.150.108.21\",\r\n          \"name\": \"V2A-PS-200\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:41:58Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"retentionVolumes\": [\r\n            {\r\n              \"volumeName\": \"F\",\r\n              \"capacityInBytes\": 10734268416,\r\n              \"freeSpaceInBytes\": 10688544768,\r\n              \"thresholdPercentage\": null\r\n            }\r\n          ],\r\n          \"dataStores\": [\r\n            {\r\n              \"symbolicName\": \"datastore1\",\r\n              \"uuid\": \"6005a082-e4a06cce-c50c-f0d4e2e6578e\",\r\n              \"capacity\": \"439.5\",\r\n              \"freeSpace\": \"154.11\",\r\n              \"type\": \"VMFS\"\r\n            },\r\n            {\r\n              \"symbolicName\": \"DS-77\",\r\n              \"uuid\": \"5c5d35b2-509cd314-afbf-f8bc124d5eea\",\r\n              \"capacity\": \"2047.75\",\r\n              \"freeSpace\": \"247.02\",\r\n              \"type\": \"VMFS\"\r\n            }\r\n          ],\r\n          \"validationErrors\": [],\r\n          \"healthErrors\": [],\r\n          \"diskCount\": 3,\r\n          \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"marsAgentVersion\": \"2.0.9202.0\",\r\n          \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"marsAgentVersionDetails\": {\r\n            \"version\": \"2.0.9202.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        }\r\n      ],\r\n      \"runAsAccounts\": [\r\n        {\r\n          \"accountId\": \"1\",\r\n          \"accountName\": \"vcenteruser\"\r\n        },\r\n        {\r\n          \"accountId\": \"2\",\r\n          \"accountName\": \"windowsuser\"\r\n        },\r\n        {\r\n          \"accountId\": \"3\",\r\n          \"accountName\": \"linuxuser\"\r\n        }\r\n      ],\r\n      \"replicationPairCount\": \"0\",\r\n      \"processServerCount\": \"2\",\r\n      \"agentCount\": \"3\",\r\n      \"protectedServers\": \"0\",\r\n      \"systemLoad\": \"0\",\r\n      \"systemLoadStatus\": \"Green\",\r\n      \"cpuLoad\": \"0%\",\r\n      \"cpuLoadStatus\": \"Green\",\r\n      \"totalMemoryInBytes\": 20266405888,\r\n      \"availableMemoryInBytes\": 15909128622,\r\n      \"memoryUsageStatus\": \"Green\",\r\n      \"totalSpaceInBytes\": 137435803648,\r\n      \"availableSpaceInBytes\": 133171265536,\r\n      \"spaceUsageStatus\": \"Green\",\r\n      \"webLoad\": \"0\",\r\n      \"webLoadStatus\": \"Green\",\r\n      \"databaseServerLoad\": \"0.25\",\r\n      \"databaseServerLoadStatus\": \"Green\",\r\n      \"csServiceStatus\": \"Running\",\r\n      \"ipAddress\": \"10.144.130.132\",\r\n      \"agentVersion\": \"9.41.0.0\",\r\n      \"hostName\": \"PwsTestCS\",\r\n      \"lastHeartbeat\": \"2021-04-05T17:42:50.995485Z\",\r\n      \"versionStatus\": \"Supported\",\r\n      \"sslCertExpiryDate\": \"2024-03-18T14:07:03Z\",\r\n      \"sslCertExpiryRemainingDays\": 1077,\r\n      \"psTemplateVersion\": \"202102.14.00\",\r\n      \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n      \"agentVersionDetails\": {\r\n        \"version\": \"9.41.0.0\",\r\n        \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n        \"status\": \"Supported\"\r\n      }\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
-                        "StatusCode":  200
-                    }
-                ],
-    "Names":  {
-
-              },
-    "Variables":  {
-                      "SubscriptionId":  "b8aef8e1-37df-4f17-a537-f10e183c8eca"
-                  }
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9370aeba-e757-48db-a389-66917a2fc3ed"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ed252ab8-bef7-4acd-8012-a21dda5c5193"
+        ],
+        "x-ms-client-request-id": [
+          "9370aeba-e757-48db-a389-66917a2fc3ed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed252ab8-bef7-4acd-8012-a21dda5c5193"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210405T175049Z:ed252ab8-bef7-4acd-8012-a21dda5c5193"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:36 GMT"
+        ],
+        "Content-Length": [
+          "474"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"PwsTestVault\",\r\n      \"etag\": \"W/\\\"datetime'2021-03-24T14%3A01%3A50.8326358Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ffb22783-73d1-497b-8b26-6acb20d02e06"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1617641449707)\\/\",\"NotAfterTimestamp\":\"\\/Date(1618246249707)\\/\",\"ClientRequestId\":\"52a757e9-f44e-4e90-b693-7bddb4d2cd6a-2021-04-05 17:50:49Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Z8p9sCuLmstTgyMMyCBmY46fmRE3Ri2FvAwpqwiPSWI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ffb22783-73d1-497b-8b26-6acb20d02e06 4/5/2021 5:50:50 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "ffb22783-73d1-497b-8b26-6acb20d02e06"
+        ],
+        "x-ms-correlation-request-id": [
+          "04da1f72-d6b4-4adb-b980-136998457b72"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210405T175050Z:04da1f72-d6b4-4adb-b980-136998457b72"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:36 GMT"
+        ],
+        "Content-Length": [
+          "6339"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PwsTestCS\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"01fbe5d9-6391-45fc-a729-bef0b458c9fe\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMware\",\r\n          \"processServers\": [\r\n            {\r\n              \"friendlyName\": \"V2A-PS-200\",\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:40:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 5032087552,\r\n              \"availableMemoryInBytes\": 2927165329,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 107337478144,\r\n              \"availableSpaceInBytes\": 104919038293,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-22T14:18:58Z\",\r\n              \"sslCertExpiryRemainingDays\": 1081,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:13Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            },\r\n            {\r\n              \"friendlyName\": \"PwsTestCS\",\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:13Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 20266405888,\r\n              \"availableMemoryInBytes\": 15909128622,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 137435803648,\r\n              \"availableSpaceInBytes\": 133171265536,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-18T14:07:04Z\",\r\n              \"sslCertExpiryRemainingDays\": 1077,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:25Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            }\r\n          ],\r\n          \"masterTargetServers\": [\r\n            {\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"name\": \"PwsTestCS\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"D\",\r\n                  \"capacityInBytes\": 34357637120,\r\n                  \"freeSpaceInBytes\": 31186448384,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 0,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            },\r\n            {\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"name\": \"V2A-PS-200\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:58Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"F\",\r\n                  \"capacityInBytes\": 10734268416,\r\n                  \"freeSpaceInBytes\": 10688544768,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [\r\n                {\r\n                  \"symbolicName\": \"datastore1\",\r\n                  \"uuid\": \"6005a082-e4a06cce-c50c-f0d4e2e6578e\",\r\n                  \"capacity\": \"439.5\",\r\n                  \"freeSpace\": \"154.11\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"DS-77\",\r\n                  \"uuid\": \"5c5d35b2-509cd314-afbf-f8bc124d5eea\",\r\n                  \"capacity\": \"2047.75\",\r\n                  \"freeSpace\": \"247.02\",\r\n                  \"type\": \"VMFS\"\r\n                }\r\n              ],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 3,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            }\r\n          ],\r\n          \"runAsAccounts\": [\r\n            {\r\n              \"accountId\": \"1\",\r\n              \"accountName\": \"vcenteruser\"\r\n            },\r\n            {\r\n              \"accountId\": \"2\",\r\n              \"accountName\": \"windowsuser\"\r\n            },\r\n            {\r\n              \"accountId\": \"3\",\r\n              \"accountName\": \"linuxuser\"\r\n            }\r\n          ],\r\n          \"replicationPairCount\": \"0\",\r\n          \"processServerCount\": \"2\",\r\n          \"agentCount\": \"3\",\r\n          \"protectedServers\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 20266405888,\r\n          \"availableMemoryInBytes\": 15909128622,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 137435803648,\r\n          \"availableSpaceInBytes\": 133171265536,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"webLoad\": \"0\",\r\n          \"webLoadStatus\": \"Green\",\r\n          \"databaseServerLoad\": \"0.25\",\r\n          \"databaseServerLoadStatus\": \"Green\",\r\n          \"csServiceStatus\": \"Running\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"hostName\": \"PwsTestCS\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:42:50.995485Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"sslCertExpiryDate\": \"2024-03-18T14:07:03Z\",\r\n          \"sslCertExpiryRemainingDays\": 1077,\r\n          \"psTemplateVersion\": \"202102.14.00\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1617641450706)\\/\",\"NotAfterTimestamp\":\"\\/Date(1618246250706)\\/\",\"ClientRequestId\":\"34a0e664-8dba-4fb6-b903-6ae091da5aac-2021-04-05 17:50:50Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6wK3T57+vTIHezgjQKgXr+3UNxUaiQOD+/GxTg8hq9w=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "510a0fdb-3129-4183-8d49-486cf1e7d3e6 4/5/2021 5:50:50 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
+        ],
+        "x-ms-correlation-request-id": [
+          "f08e8e69-046a-4fad-8c26-23bc01250d93"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210405T175050Z:f08e8e69-046a-4fad-8c26-23bc01250d93"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:36 GMT"
+        ],
+        "Content-Length": [
+          "6339"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PwsTestCS\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"01fbe5d9-6391-45fc-a729-bef0b458c9fe\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMware\",\r\n          \"processServers\": [\r\n            {\r\n              \"friendlyName\": \"V2A-PS-200\",\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:40:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 5032087552,\r\n              \"availableMemoryInBytes\": 2927165329,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 107337478144,\r\n              \"availableSpaceInBytes\": 104919038293,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-22T14:18:58Z\",\r\n              \"sslCertExpiryRemainingDays\": 1081,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:13Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            },\r\n            {\r\n              \"friendlyName\": \"PwsTestCS\",\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:13Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.41.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"0\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"0%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 20266405888,\r\n              \"availableMemoryInBytes\": 15909128622,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 137435803648,\r\n              \"availableSpaceInBytes\": 133171265536,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2024-03-18T14:07:04Z\",\r\n              \"sslCertExpiryRemainingDays\": 1077,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2021-04-05T17:42:25Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": \"1\",\r\n              \"marsRegistrationStatus\": \"1\"\r\n            }\r\n          ],\r\n          \"masterTargetServers\": [\r\n            {\r\n              \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n              \"ipAddress\": \"10.144.130.132\",\r\n              \"name\": \"PwsTestCS\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:44Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"D\",\r\n                  \"capacityInBytes\": 34357637120,\r\n                  \"freeSpaceInBytes\": 31186448384,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 0,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            },\r\n            {\r\n              \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n              \"ipAddress\": \"10.150.108.21\",\r\n              \"name\": \"V2A-PS-200\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.41.0.0\",\r\n              \"lastHeartbeat\": \"2021-04-05T17:41:58Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"F\",\r\n                  \"capacityInBytes\": 10734268416,\r\n                  \"freeSpaceInBytes\": 10688544768,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [\r\n                {\r\n                  \"symbolicName\": \"datastore1\",\r\n                  \"uuid\": \"6005a082-e4a06cce-c50c-f0d4e2e6578e\",\r\n                  \"capacity\": \"439.5\",\r\n                  \"freeSpace\": \"154.11\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"DS-77\",\r\n                  \"uuid\": \"5c5d35b2-509cd314-afbf-f8bc124d5eea\",\r\n                  \"capacity\": \"2047.75\",\r\n                  \"freeSpace\": \"247.02\",\r\n                  \"type\": \"VMFS\"\r\n                }\r\n              ],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 3,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9202.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.41.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9202.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            }\r\n          ],\r\n          \"runAsAccounts\": [\r\n            {\r\n              \"accountId\": \"1\",\r\n              \"accountName\": \"vcenteruser\"\r\n            },\r\n            {\r\n              \"accountId\": \"2\",\r\n              \"accountName\": \"windowsuser\"\r\n            },\r\n            {\r\n              \"accountId\": \"3\",\r\n              \"accountName\": \"linuxuser\"\r\n            }\r\n          ],\r\n          \"replicationPairCount\": \"0\",\r\n          \"processServerCount\": \"2\",\r\n          \"agentCount\": \"3\",\r\n          \"protectedServers\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 20266405888,\r\n          \"availableMemoryInBytes\": 15909128622,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 137435803648,\r\n          \"availableSpaceInBytes\": 133171265536,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"webLoad\": \"0\",\r\n          \"webLoadStatus\": \"Green\",\r\n          \"databaseServerLoad\": \"0.25\",\r\n          \"databaseServerLoadStatus\": \"Green\",\r\n          \"csServiceStatus\": \"Running\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"hostName\": \"PwsTestCS\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:42:50.995485Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"sslCertExpiryDate\": \"2024-03-18T14:07:03Z\",\r\n          \"sslCertExpiryRemainingDays\": 1077,\r\n          \"psTemplateVersion\": \"202102.14.00\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZD9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1617641451088)\\/\",\"NotAfterTimestamp\":\"\\/Date(1618246251088)\\/\",\"ClientRequestId\":\"0ca0fc02-e73a-42f9-ac9c-1a23a57a5de6-2021-04-05 17:50:51Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"9Lp0EgTcbwMs1RcccBxNLDDJZ0OhqtifCQalYJEjZL4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "510a0fdb-3129-4183-8d49-486cf1e7d3e6 4/5/2021 5:50:51 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "510a0fdb-3129-4183-8d49-486cf1e7d3e6"
+        ],
+        "x-ms-correlation-request-id": [
+          "28d65d6b-1d4c-4c8c-a637-e015a1370dd0"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210405T175051Z:28d65d6b-1d4c-4c8c-a637-e015a1370dd0"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:36 GMT"
+        ],
+        "Content-Length": [
+          "6259"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"PwsTestCS\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"01fbe5d9-6391-45fc-a729-bef0b458c9fe\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"VMware\",\r\n      \"processServers\": [\r\n        {\r\n          \"friendlyName\": \"V2A-PS-200\",\r\n          \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n          \"ipAddress\": \"10.150.108.21\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:40:44Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"mobilityServiceUpdates\": [\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Windows\"\r\n            },\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Linux\"\r\n            }\r\n          ],\r\n          \"hostId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n          \"machineCount\": \"0\",\r\n          \"replicationPairCount\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 5032087552,\r\n          \"availableMemoryInBytes\": 2927165329,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 107337478144,\r\n          \"availableSpaceInBytes\": 104919038293,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"psServiceStatus\": \"Running\",\r\n          \"sslCertExpiryDate\": \"2024-03-22T14:18:58Z\",\r\n          \"sslCertExpiryRemainingDays\": 1081,\r\n          \"osVersion\": null,\r\n          \"healthErrors\": [],\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"health\": \"Normal\",\r\n          \"psStatsRefreshTime\": \"2021-04-05T17:42:13Z\",\r\n          \"throughputUploadPendingDataInBytes\": 0,\r\n          \"throughputInMBps\": 0,\r\n          \"throughputInBytes\": 0,\r\n          \"throughputStatus\": \"Green\",\r\n          \"marsCommunicationStatus\": \"1\",\r\n          \"marsRegistrationStatus\": \"1\"\r\n        },\r\n        {\r\n          \"friendlyName\": \"PwsTestCS\",\r\n          \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:41:13Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"mobilityServiceUpdates\": [\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Windows\"\r\n            },\r\n            {\r\n              \"version\": \"9.41.0.0\",\r\n              \"rebootStatus\": \"NotRequired\",\r\n              \"osType\": \"Linux\"\r\n            }\r\n          ],\r\n          \"hostId\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n          \"machineCount\": \"0\",\r\n          \"replicationPairCount\": \"0\",\r\n          \"systemLoad\": \"0\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"0%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 20266405888,\r\n          \"availableMemoryInBytes\": 15909128622,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 137435803648,\r\n          \"availableSpaceInBytes\": 133171265536,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"psServiceStatus\": \"Running\",\r\n          \"sslCertExpiryDate\": \"2024-03-18T14:07:04Z\",\r\n          \"sslCertExpiryRemainingDays\": 1077,\r\n          \"osVersion\": null,\r\n          \"healthErrors\": [],\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"health\": \"Normal\",\r\n          \"psStatsRefreshTime\": \"2021-04-05T17:42:25Z\",\r\n          \"throughputUploadPendingDataInBytes\": 0,\r\n          \"throughputInMBps\": 0,\r\n          \"throughputInBytes\": 0,\r\n          \"throughputStatus\": \"Green\",\r\n          \"marsCommunicationStatus\": \"1\",\r\n          \"marsRegistrationStatus\": \"1\"\r\n        }\r\n      ],\r\n      \"masterTargetServers\": [\r\n        {\r\n          \"id\": \"14968BDF-E18E-7F45-A9B0E3EFAC2DDCA2\",\r\n          \"ipAddress\": \"10.144.130.132\",\r\n          \"name\": \"PwsTestCS\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:41:44Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"retentionVolumes\": [\r\n            {\r\n              \"volumeName\": \"D\",\r\n              \"capacityInBytes\": 34357637120,\r\n              \"freeSpaceInBytes\": 31186448384,\r\n              \"thresholdPercentage\": null\r\n            }\r\n          ],\r\n          \"dataStores\": [],\r\n          \"validationErrors\": [],\r\n          \"healthErrors\": [],\r\n          \"diskCount\": 0,\r\n          \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"marsAgentVersion\": \"2.0.9202.0\",\r\n          \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"marsAgentVersionDetails\": {\r\n            \"version\": \"2.0.9202.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n          \"ipAddress\": \"10.150.108.21\",\r\n          \"name\": \"V2A-PS-200\",\r\n          \"osType\": \"Windows\",\r\n          \"agentVersion\": \"9.41.0.0\",\r\n          \"lastHeartbeat\": \"2021-04-05T17:41:58Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"retentionVolumes\": [\r\n            {\r\n              \"volumeName\": \"F\",\r\n              \"capacityInBytes\": 10734268416,\r\n              \"freeSpaceInBytes\": 10688544768,\r\n              \"thresholdPercentage\": null\r\n            }\r\n          ],\r\n          \"dataStores\": [\r\n            {\r\n              \"symbolicName\": \"datastore1\",\r\n              \"uuid\": \"6005a082-e4a06cce-c50c-f0d4e2e6578e\",\r\n              \"capacity\": \"439.5\",\r\n              \"freeSpace\": \"154.11\",\r\n              \"type\": \"VMFS\"\r\n            },\r\n            {\r\n              \"symbolicName\": \"DS-77\",\r\n              \"uuid\": \"5c5d35b2-509cd314-afbf-f8bc124d5eea\",\r\n              \"capacity\": \"2047.75\",\r\n              \"freeSpace\": \"247.02\",\r\n              \"type\": \"VMFS\"\r\n            }\r\n          ],\r\n          \"validationErrors\": [],\r\n          \"healthErrors\": [],\r\n          \"diskCount\": 3,\r\n          \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"marsAgentVersion\": \"2.0.9202.0\",\r\n          \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.41.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          },\r\n          \"marsAgentVersionDetails\": {\r\n            \"version\": \"2.0.9202.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        }\r\n      ],\r\n      \"runAsAccounts\": [\r\n        {\r\n          \"accountId\": \"1\",\r\n          \"accountName\": \"vcenteruser\"\r\n        },\r\n        {\r\n          \"accountId\": \"2\",\r\n          \"accountName\": \"windowsuser\"\r\n        },\r\n        {\r\n          \"accountId\": \"3\",\r\n          \"accountName\": \"linuxuser\"\r\n        }\r\n      ],\r\n      \"replicationPairCount\": \"0\",\r\n      \"processServerCount\": \"2\",\r\n      \"agentCount\": \"3\",\r\n      \"protectedServers\": \"0\",\r\n      \"systemLoad\": \"0\",\r\n      \"systemLoadStatus\": \"Green\",\r\n      \"cpuLoad\": \"0%\",\r\n      \"cpuLoadStatus\": \"Green\",\r\n      \"totalMemoryInBytes\": 20266405888,\r\n      \"availableMemoryInBytes\": 15909128622,\r\n      \"memoryUsageStatus\": \"Green\",\r\n      \"totalSpaceInBytes\": 137435803648,\r\n      \"availableSpaceInBytes\": 133171265536,\r\n      \"spaceUsageStatus\": \"Green\",\r\n      \"webLoad\": \"0\",\r\n      \"webLoadStatus\": \"Green\",\r\n      \"databaseServerLoad\": \"0.25\",\r\n      \"databaseServerLoadStatus\": \"Green\",\r\n      \"csServiceStatus\": \"Running\",\r\n      \"ipAddress\": \"10.144.130.132\",\r\n      \"agentVersion\": \"9.41.0.0\",\r\n      \"hostName\": \"PwsTestCS\",\r\n      \"lastHeartbeat\": \"2021-04-05T17:42:50.995485Z\",\r\n      \"versionStatus\": \"Supported\",\r\n      \"sslCertExpiryDate\": \"2024-03-18T14:07:03Z\",\r\n      \"sslCertExpiryRemainingDays\": 1077,\r\n      \"psTemplateVersion\": \"202102.14.00\",\r\n      \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n      \"agentVersionDetails\": {\r\n        \"version\": \"9.41.0.0\",\r\n        \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n        \"status\": \"Supported\"\r\n      }\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b8aef8e1-37df-4f17-a537-f10e183c8eca"
+  }
 }

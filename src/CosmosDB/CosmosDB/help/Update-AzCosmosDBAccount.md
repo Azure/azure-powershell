@@ -21,9 +21,9 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
- [-AnalyticalStorageSchemaType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -35,9 +35,9 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
- [-AnalyticalStorageSchemaType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -49,9 +49,9 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
- [-AnalyticalStorageSchemaType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -526,6 +526,21 @@ The cmdlet is not run.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupStorageRedundancy
+The redundancy type of the backup Storage account
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

@@ -55,7 +55,7 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDdjMGIwOWQtOWY2OS00ZTZlLThkMDUtZjU5ZjY3Mjk5Y2IyL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtQWN0aXZpdHlMb2dBbGVydHMvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9hY3Rpb25Hcm91cHMvYW5keWdyb3VwLWRvbm90dXNlP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"andygroup\",\r\n    \"enabled\": false,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"emailreceiver\",\r\n        \"emailAddress\": \"andyshen@microsoft.com\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"smsreceiver\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4254251234\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"Global\",\r\n  \"tags\": {}\r\n}",
@@ -79,7 +79,7 @@
           "Microsoft.Azure.Management.Monitor.Management.MonitorManagementClient/0.17.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"andygroup-donotuse\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"groupShortName\": \"andygroup\",\r\n    \"enabled\": false,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"emailreceiver\",\r\n        \"emailAddress\": \"andyshen@microsoft.com\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"smsreceiver\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4254251234\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"webhookReceivers\": [\r\n      {\r\n        \"name\": \"webhookreceiver\",\r\n        \"serviceUri\": \"http://test.com\"\r\n      }\r\n    ]\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"andygroup-donotuse\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"groupShortName\": \"andygroup\",\r\n    \"enabled\": false,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"emailreceiver\",\r\n        \"emailAddress\": \"andyshen@microsoft.com\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"smsreceiver\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4254251234\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"webhookReceivers\": [\r\n      {\r\n        \"name\": \"webhookreceiver\",\r\n        \"serviceUri\": \"http://test.com\"\r\n      }\r\n    ]\r\n  },\r\n  \"identity\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "578"
@@ -121,7 +121,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDdjMGIwOWQtOWY2OS00ZTZlLThkMDUtZjU5ZjY3Mjk5Y2IyL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtQWN0aXZpdHlMb2dBbGVydHMvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9hY3Rpb25Hcm91cHMvYW5keWdyb3VwLWRvbm90dXNlP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -139,7 +139,7 @@
           "Microsoft.Azure.Management.Monitor.Management.MonitorManagementClient/0.17.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"andygroup-donotuse\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"groupShortName\": \"andygroup\",\r\n    \"enabled\": false,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"emailreceiver\",\r\n        \"emailAddress\": \"andyshen@microsoft.com\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"smsreceiver\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4254251234\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"webhookReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"andygroup-donotuse\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"groupShortName\": \"andygroup\",\r\n    \"enabled\": false,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"emailreceiver\",\r\n        \"emailAddress\": \"andyshen@microsoft.com\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"smsreceiver\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4254251234\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"webhookReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "578"
@@ -181,7 +181,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/providers/microsoft.insights/actionGroups?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/providers/Microsoft.Insights/actionGroups?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDdjMGIwOWQtOWY2OS00ZTZlLThkMDUtZjU5ZjY3Mjk5Y2IyL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYWN0aW9uR3JvdXBzP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -199,7 +199,7 @@
           "Microsoft.Azure.Management.Monitor.Management.MonitorManagementClient/0.17.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse\",\r\n      \"type\": \"Microsoft.Insights/ActionGroups\",\r\n      \"name\": \"andygroup-donotuse\",\r\n      \"location\": \"Global\",\r\n      \"kind\": null,\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"groupShortName\": \"andygroup\",\r\n        \"enabled\": false,\r\n        \"emailReceivers\": [\r\n          {\r\n            \"name\": \"emailreceiver\",\r\n            \"emailAddress\": \"andyshen@microsoft.com\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"smsReceivers\": [\r\n          {\r\n            \"name\": \"smsreceiver\",\r\n            \"countryCode\": \"1\",\r\n            \"phoneNumber\": \"4254251234\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"webhookReceivers\": []\r\n      },\r\n      \"identity\": null\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-Storage-EastUS/providers/microsoft.insights/actionGroups/nj\",\r\n      \"type\": \"Microsoft.Insights/ActionGroups\",\r\n      \"name\": \"nj\",\r\n      \"location\": \"Global\",\r\n      \"kind\": null,\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"groupShortName\": \"nj\",\r\n        \"enabled\": true,\r\n        \"emailReceivers\": [],\r\n        \"smsReceivers\": [\r\n          {\r\n            \"name\": \"jaga-sms\",\r\n            \"countryCode\": \"1\",\r\n            \"phoneNumber\": \"4253011342\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"webhookReceivers\": []\r\n      },\r\n      \"identity\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse\",\r\n      \"type\": \"Microsoft.Insights/ActionGroups\",\r\n      \"name\": \"andygroup-donotuse\",\r\n      \"location\": \"Global\",\r\n      \"kind\": null,\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"groupShortName\": \"andygroup\",\r\n        \"enabled\": false,\r\n        \"emailReceivers\": [\r\n          {\r\n            \"name\": \"emailreceiver\",\r\n            \"emailAddress\": \"andyshen@microsoft.com\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"smsReceivers\": [\r\n          {\r\n            \"name\": \"smsreceiver\",\r\n            \"countryCode\": \"1\",\r\n            \"phoneNumber\": \"4254251234\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"webhookReceivers\": []\r\n      },\r\n      \"identity\": null\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-Storage-EastUS/providers/Microsoft.Insights/actionGroups/nj\",\r\n      \"type\": \"Microsoft.Insights/ActionGroups\",\r\n      \"name\": \"nj\",\r\n      \"location\": \"Global\",\r\n      \"kind\": null,\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"groupShortName\": \"nj\",\r\n        \"enabled\": true,\r\n        \"emailReceivers\": [],\r\n        \"smsReceivers\": [\r\n          {\r\n            \"name\": \"jaga-sms\",\r\n            \"countryCode\": \"1\",\r\n            \"phoneNumber\": \"4253011342\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"webhookReceivers\": []\r\n      },\r\n      \"identity\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1040"
@@ -241,7 +241,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDdjMGIwOWQtOWY2OS00ZTZlLThkMDUtZjU5ZjY3Mjk5Y2IyL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtQWN0aXZpdHlMb2dBbGVydHMvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9hY3Rpb25Hcm91cHM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -259,7 +259,7 @@
           "Microsoft.Azure.Management.Monitor.Management.MonitorManagementClient/0.17.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse\",\r\n      \"type\": \"Microsoft.Insights/ActionGroups\",\r\n      \"name\": \"andygroup-donotuse\",\r\n      \"location\": \"Global\",\r\n      \"kind\": null,\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"groupShortName\": \"andygroup\",\r\n        \"enabled\": false,\r\n        \"emailReceivers\": [\r\n          {\r\n            \"name\": \"emailreceiver\",\r\n            \"emailAddress\": \"andyshen@microsoft.com\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"smsReceivers\": [\r\n          {\r\n            \"name\": \"smsreceiver\",\r\n            \"countryCode\": \"1\",\r\n            \"phoneNumber\": \"4254251234\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"webhookReceivers\": []\r\n      },\r\n      \"identity\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse\",\r\n      \"type\": \"Microsoft.Insights/ActionGroups\",\r\n      \"name\": \"andygroup-donotuse\",\r\n      \"location\": \"Global\",\r\n      \"kind\": null,\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"groupShortName\": \"andygroup\",\r\n        \"enabled\": false,\r\n        \"emailReceivers\": [\r\n          {\r\n            \"name\": \"emailreceiver\",\r\n            \"emailAddress\": \"andyshen@microsoft.com\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"smsReceivers\": [\r\n          {\r\n            \"name\": \"smsreceiver\",\r\n            \"countryCode\": \"1\",\r\n            \"phoneNumber\": \"4254251234\",\r\n            \"status\": \"Enabled\"\r\n          }\r\n        ],\r\n        \"webhookReceivers\": []\r\n      },\r\n      \"identity\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "590"
@@ -301,7 +301,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse/subscribe?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse/subscribe?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDdjMGIwOWQtOWY2OS00ZTZlLThkMDUtZjU5ZjY3Mjk5Y2IyL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtQWN0aXZpdHlMb2dBbGVydHMvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9hY3Rpb25Hcm91cHMvYW5keWdyb3VwLWRvbm90dXNlL3N1YnNjcmliZT9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"receiverName\": \"emailreceiver\"\r\n}",
@@ -367,7 +367,7 @@
       "StatusCode": 409
     },
     {
-      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/actionGroups/andygroup-donotuse?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actionGroups/andygroup-donotuse?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDdjMGIwOWQtOWY2OS00ZTZlLThkMDUtZjU5ZjY3Mjk5Y2IyL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtQWN0aXZpdHlMb2dBbGVydHMvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9hY3Rpb25Hcm91cHMvYW5keWdyb3VwLWRvbm90dXNlP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",

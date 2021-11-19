@@ -23,8 +23,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -38,8 +39,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -55,8 +57,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -325,6 +328,24 @@ Enabled
 ```
 
 This command updates a Storage account by set PublicNetworkAccess as enabled.
+
+### Example 19: Update account level  mmutability policy
+```
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
+
+PS C:\> $account.ImmutableStorageWithVersioning.Enabled
+True
+
+PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
+
+ImmutabilityPeriodSinceCreationInDays State    
+------------------------------------- -----    
+                                    2 Unlocked 
+```
+
+The command updates account-level immutability policy properties on an existing storage account, and show the result. 
+The storage account must be created with enable account level immutability with versioning.
+The account-level immutability policy will be inherited and applied to objects that do not possess an explicit immutability policy at the object level.
 
 ## PARAMETERS
 
@@ -646,6 +667,42 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityPeriod
+The immutability period for the blobs in the container since the policy creation in days. 
+This property can only be changed when account is created with '-EnableAccountLevelImmutability'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityPolicyState
+The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. 
+Disabled state disablesthe policy. 
+Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. 
+Locked state only allows the increase of the immutability retention time. 
+A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. 
+This property can only be changed when account is created with '-EnableAccountLevelImmutability'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
