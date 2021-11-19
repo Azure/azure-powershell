@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added new properties EventName, Category, ResourceProviderName, OperationName, Status, SubStatus with type string as output for command Get-AzLog [#15833]
+* Supported event hub receiver in action group [#16348]
+* Added default parameter set `GetByResourceGroup` for the command `Get-AzAlertRule` [#16356]
 
 ## Version 2.7.0
 * Added parameter `ResourceGroupName` back for `Add-AzAutoscaleSetting` parameter set `AddAzureRmAutoscaleSettingUpdateParamGroup` and made it optional [#15491]

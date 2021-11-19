@@ -839,7 +839,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable vmPublicSettings = JsonConvert.DeserializeObject<Hashtable>(adeExtensionInstanceView.PublicSettings);
             VerifyKeyVaultProperties(virtualMachineResponse, vmPublicSettings);
-            vmPublicSettings.Add(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey, AzureDiskEncryptionExtensionConstants.migrateAdeOperationValue);
+
+            //Add Migrate Flag only if its not present on the vmPublicSettings already
+            if (!vmPublicSettings.Contains(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey))
+            {
+                vmPublicSettings.Add(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey, AzureDiskEncryptionExtensionConstants.migrateAdeOperationValue);
+            }
 
             string publicSettingsForOutput = "Azure Disk Encryption Extension Public Settings \n";
             foreach (DictionaryEntry entry in vmPublicSettings)

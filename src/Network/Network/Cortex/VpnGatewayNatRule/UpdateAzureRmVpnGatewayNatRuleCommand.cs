@@ -108,6 +108,16 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of internal port range mappings for NAT subnets")]
+        public string[] InternalPortRange { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of external port range mappings for NAT subnets")]
+        public string[] ExternalPortRange { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The IP Configuration ID this NAT rule applies to")]
         public string IpConfigurationId { get; set; }
 
@@ -193,6 +203,32 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                     var externalMapping = new PSVpnNatRuleMapping();
                     externalMapping.AddressSpace = externalMappingSubnet;
                     vpnGatewayNatRuleToModify.ExternalMappings.Add(externalMapping);
+                }
+            }
+
+            if (this.InternalPortRange != null)
+            {
+                if (vpnGatewayNatRuleToModify.InternalMappings.Count < this.InternalPortRange.Count())
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.VpnNatRuleUnmatchedPortRange, nameof(InternalPortRange), nameof(InternalMapping)));
+                }
+
+                for (int i = 0; i < this.InternalPortRange.Count(); i++)
+                {
+                    vpnGatewayNatRuleToModify.InternalMappings[i].PortRange = this.InternalPortRange[i];
+                }
+            }
+
+            if (this.ExternalPortRange != null)
+            {
+                if (vpnGatewayNatRuleToModify.ExternalMappings.Count < this.ExternalPortRange.Count())
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.VpnNatRuleUnmatchedPortRange, nameof(ExternalPortRange), nameof(ExternalMapping)));
+                }
+
+                for (int i = 0; i < this.ExternalPortRange.Count(); i++)
+                {
+                    vpnGatewayNatRuleToModify.ExternalMappings[i].PortRange = this.ExternalPortRange[i];
                 }
             }
 

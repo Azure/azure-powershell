@@ -154,7 +154,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             RootSquashType.AllSquash,
             IgnoreCase = true)]
         public string RootSquash { get; set; }
-
+        
+        [Parameter(HelpMessage = "Enable object level immutability at the container level.", Mandatory = false)]
+        public SwitchParameter EnableImmutableStorageWithVersioning { get; set; }        
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -191,7 +194,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
 
-                var contaienr =
+                var container =
                     this.StorageClient.BlobContainers.Create(
                             this.ResourceGroupName,
                             this.StorageAccountName,
@@ -201,10 +204,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 denyEncryptionScopeOverride: this.preventEncryptionScopeOverride,
                                 publicAccess: (PublicAccess?)this.publicAccess,
                                 metadata: MetadataDictionary,
+                                immutableStorageWithVersioning: this.EnableImmutableStorageWithVersioning.IsPresent ? new ImmutableStorageWithVersioning(true) : null,
                                 enableNfsV3RootSquash: enableNfsV3RootSquash,
                                 enableNfsV3AllSquash: enableNfsV3AllSquash));
 
-                WriteObject(new PSContainer(contaienr));
+                container =
+                    this.StorageClient.BlobContainers.Get(
+                            this.ResourceGroupName,
+                            this.StorageAccountName,
+                            this.Name);
+
+                WriteObject(new PSContainer(container));
             }
         }
     }

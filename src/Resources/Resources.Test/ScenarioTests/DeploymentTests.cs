@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewDeploymentWithKeyVaultReference()
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithKeyVaultReference");

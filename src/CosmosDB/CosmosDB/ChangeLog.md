@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.
 
 ## Version 1.4.0
 * Introduced Get-AzCosmosDBMongoDBBackupInformation to retrieve latest backup information for MongoDB.

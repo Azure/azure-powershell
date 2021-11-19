@@ -65,7 +65,6 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
-               'Microsoft.Azure.Graph.RBAC.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -91,17 +90,7 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzRoleAssignment', 'New-AzRoleAssignment', 
                'Set-AzRoleAssignment', 'Get-AzRoleDefinition', 
                'New-AzRoleDefinition', 'Set-AzRoleDefinition', 
-               'Remove-AzRoleDefinition', 'Get-AzADAppCredential', 
-               'Get-AzADApplication', 'Add-AzADGroupMember', 'Get-AzADGroupMember', 
-               'Remove-AzADGroupMember', 'Get-AzADGroup', 'New-AzADGroup', 
-               'Remove-AzADGroup', 'Get-AzADServicePrincipal', 
-               'Get-AzADSpCredential', 'Get-AzADUser', 'New-AzADAppCredential', 
-               'New-AzADSpCredential', 'New-AzADUser', 'Remove-AzADAppCredential', 
-               'Remove-AzADApplication', 'New-AzADApplication', 
-               'Remove-AzADServicePrincipal', 'New-AzADServicePrincipal', 
-               'Remove-AzADSpCredential', 'Remove-AzADUser', 
-               'Update-AzADApplication', 'Update-AzADServicePrincipal', 
-               'Update-AzADUser', 'Remove-AzResourceGroup', 'Get-AzProviderFeature', 
+               'Remove-AzRoleDefinition', 'Remove-AzResourceGroup', 'Get-AzProviderFeature', 
                'Register-AzProviderFeature', 'Unregister-AzProviderFeature', 
                'Get-AzLocation', 'Export-AzResourceGroup', 'Get-AzResourceProvider', 
                'Register-AzResourceProvider', 'Unregister-AzResourceProvider', 
@@ -152,7 +141,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
                'Get-AzTenantDeploymentWhatIfResult', 'Get-AzTemplateSpec', 
                'New-AzTemplateSpec', 'Set-AzTemplateSpec', 'Export-AzTemplateSpec', 
-               'Remove-AzTemplateSpec'
+               'Remove-AzTemplateSpec',
+               'Publish-AzBicepModule'
 
 # Variables to export from this module
 # VariablesToExport = @()

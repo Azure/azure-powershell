@@ -20,6 +20,9 @@
 ## Upcoming Release
 
 ## Version 1.7.1
+* Fixed bug: Add Schedule name validation in New-AzAutomationSchedule
+
+## Version 1.7.1
 * Fixed bug: Closing in input file handle in Import-AzAutomationRunbook
 
 ## Version 1.7.0
