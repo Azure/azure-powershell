@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
         public SwitchParameter EnableNodePublicIp { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool")]
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
         public string NodePublicIPPrefixID { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]

@@ -133,10 +133,10 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
         public SwitchParameter GenerateSshKey { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
         public SwitchParameter EnableNodePublicIp { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool")]
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
         public string NodePublicIPPrefixID { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;

@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableNodePublicIp
-Whether to enable public IP for nodes
+Whether to enable public IP for nodes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodePublicIPPrefixID
-Whether to enable public IP for nodes
+The resource Id of public IP prefix for node pool.
 
 ```yaml
 Type: System.String
