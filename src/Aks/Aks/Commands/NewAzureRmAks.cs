@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
         public SwitchParameter EnableNodePublicIp { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool")]
         public string NodePublicIPPrefixID { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
