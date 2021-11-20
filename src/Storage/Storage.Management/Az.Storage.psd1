@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
@@ -192,7 +192,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Set-AzStorageBlobTag', 'Get-AzStorageBlobTag', 
                'Get-AzStorageBlobByTag', 
                'Invoke-AzStorageAccountHierarchicalNamespaceUpgrade', 
-               'Stop-AzStorageAccountHierarchicalNamespaceUpgrade'
+               'Stop-AzStorageAccountHierarchicalNamespaceUpgrade', 
+               'Set-AzStorageBlobImmutabilityPolicy', 'Remove-AzStorageBlobImmutabilityPolicy',
+               'Set-AzStorageBlobLegalHold', 'Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()

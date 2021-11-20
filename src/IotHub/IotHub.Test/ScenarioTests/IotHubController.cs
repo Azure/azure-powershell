@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Storage", null },
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.EventHub", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {

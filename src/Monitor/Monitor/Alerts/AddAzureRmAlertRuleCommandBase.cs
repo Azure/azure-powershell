@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the Location parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Location name")]
-        [LocationCompleter("microsoft.insights/alertrules")]
+        [LocationCompleter("Microsoft.Insights/alertrules")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -409,6 +409,7 @@
   },
   {
     "regex": "SignalR",
+    "group": "SignalR",
     "alias": "SignalR"
   },
   {
@@ -703,6 +704,11 @@
   },
   {
     "regex": "WebPubSub",
-    "alias": "WebPubSub"
+    "group": "SignalR",
+    "alias": "Web PubSub"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
   }
 ]

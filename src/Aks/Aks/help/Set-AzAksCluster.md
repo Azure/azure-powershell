@@ -14,11 +14,11 @@ Update or create a managed Kubernetes cluster.
 
 ### defaultParameterSet (Default)
 ```
-Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-ResourceGroupName] <String>
- [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>]
- [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
- [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
- [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>]
+Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
+ [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
+ [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-NodeName <String>]
+ [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>]
+ [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>] [-KubernetesVersion <String>]
  [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
@@ -26,22 +26,23 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-Resource
 ### InputObjectParameterSet
 ```
 Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-AcrNameToDetach <String>]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-NodeImageOnly] [-ControlPlaneOnly] [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-SshKeyValue <String>] [-KubernetesVersion <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-Id] <String> [-Location <String>]
- [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
+Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
+ [-Id] <String> [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
  [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>]
- [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-KubernetesVersion <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +91,21 @@ Accept wildcard characters: False
 
 ### -AsJob
 Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ControlPlaneOnly
+Will only upgrade control plane to target version.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -244,6 +260,21 @@ The default number of nodes for the node pools.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeImageOnly
+Will only upgrade node pool version to align control plane.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

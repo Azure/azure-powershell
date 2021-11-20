@@ -1506,7 +1506,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.insights/datacollectionrules/testsessiondcr01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.compute/virtualmachines/vmdcrtest/providers/microsoft.insights/datacollectionruleassociations/dcrassocinput01\",\r\n      \"name\": \"dcrassocinput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/Microsoft.Insights/datacollectionrules/testsessiondcr01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.compute/virtualmachines/vmdcrtest/providers/Microsoft.Insights/datacollectionruleassociations/dcrassocinput01\",\r\n      \"name\": \"dcrassocinput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1572,7 +1572,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.insights/datacollectionrules/testsessiondcr01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.compute/virtualmachines/vmdcrtest/providers/microsoft.insights/datacollectionruleassociations/dcrassocinput01\",\r\n      \"name\": \"dcrassocinput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/Microsoft.Insights/datacollectionrules/testsessiondcr01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.compute/virtualmachines/vmdcrtest/providers/Microsoft.Insights/datacollectionruleassociations/dcrassocinput01\",\r\n      \"name\": \"dcrassocinput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {

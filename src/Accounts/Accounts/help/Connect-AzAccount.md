@@ -14,10 +14,10 @@ Connect to Azure with an authenticated account for use with cmdlets from the Az 
 
 ### UserWithSubscriptionId (Default)
 ```
-Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-AuthScope <String>]
- [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-UseDeviceAuthentication]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Subscription <String>]
+ [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
+ [-UseDeviceAuthentication] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
@@ -65,10 +65,10 @@ Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrinc
 ### AccessTokenWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <String> [-GraphAccessToken <String>]
- [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>] [-ContextName <String>]
- [-SkipValidation] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MicrosoftGraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipValidation] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagedServiceLogin
@@ -275,16 +275,16 @@ Accept wildcard characters: False
 
 ### -AccountId
 
-Account ID for access token in **AccessToken** parameter set. Account ID for managed service in
+Account Id / User Id / User Name to login with in **Default (UserWithSubscriptionId)** parameter set; Account ID for access token in **AccessToken** parameter set; Account ID for managed service in
 **ManagedService** parameter set. Can be a managed service resource ID, or the associated client ID.
 To use the system assigned identity, leave this field blank.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccessTokenWithSubscriptionId
+Parameter Sets: UserWithSubscriptionId, ManagedServiceLogin
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -293,10 +293,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagedServiceLogin
+Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -536,6 +536,21 @@ Max subscription number to populate contexts after login. Default is 25. To popu
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MicrosoftGraphAccessToken
+Access token to Microsoft Graph
+
+```yaml
+Type: System.String
+Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
 Required: False

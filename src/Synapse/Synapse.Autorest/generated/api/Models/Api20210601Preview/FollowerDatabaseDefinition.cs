@@ -20,13 +20,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
         public string AttachedDatabaseConfigurationName { get => this._attachedDatabaseConfigurationName; set => this._attachedDatabaseConfigurationName = value; }
 
-        /// <summary>Backing field for <see cref="ClusterResourceId" /> property.</summary>
-        private string _clusterResourceId;
-
-        /// <summary>Resource id of the cluster that follows a database owned by this cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
-        public string ClusterResourceId { get => this._clusterResourceId; set => this._clusterResourceId = value; }
-
         /// <summary>Backing field for <see cref="DatabaseName" /> property.</summary>
         private string _databaseName;
 
@@ -35,6 +28,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
         public string DatabaseName { get => this._databaseName; }
+
+        /// <summary>Backing field for <see cref="KustoPoolResourceId" /> property.</summary>
+        private string _kustoPoolResourceId;
+
+        /// <summary>Resource id of the cluster that follows a database owned by this cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
+        public string KustoPoolResourceId { get => this._kustoPoolResourceId; set => this._kustoPoolResourceId = value; }
 
         /// <summary>Internal Acessors for DatabaseName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IFollowerDatabaseDefinitionInternal.DatabaseName { get => this._databaseName; set { {_databaseName = value;} } }
@@ -57,14 +57,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         SerializedName = @"attachedDatabaseConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
         string AttachedDatabaseConfigurationName { get; set; }
-        /// <summary>Resource id of the cluster that follows a database owned by this cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Resource id of the cluster that follows a database owned by this cluster.",
-        SerializedName = @"clusterResourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterResourceId { get; set; }
         /// <summary>
         /// The database name owned by this cluster that was followed. * in case following all databases.
         /// </summary>
@@ -75,6 +67,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         SerializedName = @"databaseName",
         PossibleTypes = new [] { typeof(string) })]
         string DatabaseName { get;  }
+        /// <summary>Resource id of the cluster that follows a database owned by this cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Resource id of the cluster that follows a database owned by this cluster.",
+        SerializedName = @"clusterResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string KustoPoolResourceId { get; set; }
 
     }
     /// A class representing follower database request.
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
     {
         /// <summary>Resource name of the attached database configuration in the follower cluster.</summary>
         string AttachedDatabaseConfigurationName { get; set; }
-        /// <summary>Resource id of the cluster that follows a database owned by this cluster.</summary>
-        string ClusterResourceId { get; set; }
         /// <summary>
         /// The database name owned by this cluster that was followed. * in case following all databases.
         /// </summary>
         string DatabaseName { get; set; }
+        /// <summary>Resource id of the cluster that follows a database owned by this cluster.</summary>
+        string KustoPoolResourceId { get; set; }
 
     }
 }

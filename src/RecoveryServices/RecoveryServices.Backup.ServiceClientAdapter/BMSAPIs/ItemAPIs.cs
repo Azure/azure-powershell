@@ -245,13 +245,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  protectedItemName,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
-
+                
         /// <summary>
         /// List protection intents
         /// </summary>
-        /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="request">Protected item create or update request</param>
-        /// <returns>Job created in the service for this operation</returns>
+        /// <param name="queryFilter"></param>
+        /// <param name="skipToken"></param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>List of protection intents resource</returns>
         public List<ProtectionIntentResource> ListProtectionIntent(
             ODataQuery<ProtectionIntentQueryObject> queryFilter,
             string skipToken = default(string),

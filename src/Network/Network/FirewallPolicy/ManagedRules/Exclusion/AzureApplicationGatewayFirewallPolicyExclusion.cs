@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "MatchVariable on Exclusion entry.")]
-        [ValidateSet("RequestHeaderNames", "RequestCookieNames", "RequestArgNames", IgnoreCase = true)]
+        [ValidateSet("RequestHeaderNames", "RequestCookieNames", "RequestArgNames", "RequestHeaderKeys", "RequestCookieKeys", "RequestArgKeys", "RequestHeaderValues", "RequestCookieValues", "RequestArgValues", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string MatchVariable { get; set; }
 
@@ -39,6 +40,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Selector")]
         public string Selector { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of Exclusion Managed ruleSets.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[] ExclusionManagedRuleSet { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,7 +57,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 MatchVariable = this.MatchVariable,
                 SelectorMatchOperator = this.SelectorMatchOperator,
-                Selector = this.Selector
+                Selector = this.Selector,
+                ExclusionManagedRuleSets = this.ExclusionManagedRuleSet?.ToList()
             };
         }
     }

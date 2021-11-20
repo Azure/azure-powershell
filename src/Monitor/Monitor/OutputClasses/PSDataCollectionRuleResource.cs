@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets resource entity tag (ETag).
         /// </summary>
-        public string Etag { get; private set; }
+        public new string Etag { get; private set; }
         #endregion
 
         /// <summary>
@@ -101,25 +100,25 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             if (this.DataSources.PerformanceCounters != null && this.DataSources.PerformanceCounters.Count > 0)
             {
                 dcrDefinitionObject.DataSources.PerformanceCounters = this.DataSources.PerformanceCounters.Select(x => new PerfCounterDataSource(
-                    x.Streams, x.ScheduledTransferPeriod, x.SamplingFrequencyInSeconds, x.CounterSpecifiers, x.Name)).ToList();
+                    x.Streams, x.SamplingFrequencyInSeconds, x.CounterSpecifiers, x.Name)).ToList();
             }
 
             if (this.DataSources.WindowsEventLogs != null && this.DataSources.WindowsEventLogs.Count > 0)
             {
                 dcrDefinitionObject.DataSources.WindowsEventLogs = this.DataSources.WindowsEventLogs.Select(x => new WindowsEventLogDataSource(
-                    x.Streams, x.ScheduledTransferPeriod, x.XPathQueries, x.Name)).ToList();
+                    x.Streams, x.XPathQueries, x.Name)).ToList();
             }
 
             if (this.DataSources.Syslog != null && this.DataSources.Syslog.Count > 0)
             {
                 dcrDefinitionObject.DataSources.Syslog = this.DataSources.Syslog.Select(x => new SyslogDataSource(
-                    x.Streams, x.FacilityNames, x.Name, x.LogLevels)).ToList();
+                    x.Streams, x.FacilityNames, x.LogLevels, x.Name)).ToList();
             }
 
             if (this.DataSources.Extensions != null && this.DataSources.Extensions.Count > 0)
             {
                 dcrDefinitionObject.DataSources.Extensions = this.DataSources.Extensions.Select(x => new ExtensionDataSource(
-                    x.Streams, x.ExtensionName, x.Name, x.ExtensionSettings)).ToList();
+                     x.ExtensionName, x.Streams, x.ExtensionSettings, x.InputDataSources, x.Name)).ToList();
             }
 
             if (this.Destinations.LogAnalytics != null && this.Destinations.LogAnalytics.Count > 0)
@@ -413,6 +412,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public object ExtensionSettings { get; set; }
 
         /// <summary>
+        /// Gets or sets the input data sources. The format is specific for
+        /// particular extension.
+        /// </summary>
+        public IList<string> InputDataSources { get; set; }
+
+        /// <summary>
         /// Gets or sets a friendly name for the data source.
         /// This name should be unique across all data sources (regardless of
         /// type) within the data collection rule.
@@ -530,7 +535,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSWindowsEventLogDataSource(WindowsEventLogDataSource windowsEventLogDataSource)
         {
             Streams = windowsEventLogDataSource.Streams?.Select(x => x).ToList();
-            ScheduledTransferPeriod = windowsEventLogDataSource.ScheduledTransferPeriod;
             XPathQueries = windowsEventLogDataSource.XPathQueries?.Select(x => x).ToList();
             Name = windowsEventLogDataSource.Name;
         }
@@ -590,8 +594,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSPerfCounterDataSource(PerfCounterDataSource perfCounterDataSource)
         {
             Streams = perfCounterDataSource.Streams?.Select(x => x).ToList();
-            ScheduledTransferPeriod = perfCounterDataSource.ScheduledTransferPeriod;
-            SamplingFrequencyInSeconds = perfCounterDataSource.SamplingFrequencyInSeconds;
+            SamplingFrequencyInSeconds = (int)perfCounterDataSource.SamplingFrequencyInSeconds;
             CounterSpecifiers = perfCounterDataSource.CounterSpecifiers?.Select(x => x).ToList();
             Name = perfCounterDataSource.Name;
         }
