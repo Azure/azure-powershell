@@ -1,0 +1,13 @@
+{
+  "Location": "eastus2",
+  "SubscriptionId": "9b5711b9-2151-4555-91bf-e0b7f803682f",
+  "ResourceGroup": "dallintest",
+  "HostPoolArmPath": "/subscriptions/9b5711b9-2151-4555-91bf-e0b7f803682f/resourceGroups/dallintest/providers/Microsoft.DesktopVirtualization/hostpools/dallintest-hp",
+  "HostPoolArmPath2": "/subscriptions/9b5711b9-2151-4555-91bf-e0b7f803682f/resourceGroups/dallintest/providers/Microsoft.DesktopVirtualization/hostpools/dallintest-hp-2",
+  "RemoteApplicationGroup": "dallintest-hp-DAG",
+  "HostPool": "damagleb-hp",
+  "HostPool2": "damagleb-hp-2",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "MSIXImagePath": "C:\\msix\\singlemsix.vhd",
+  "DesktopApplicationGroup": "dallintest-hp-DAG"
+}

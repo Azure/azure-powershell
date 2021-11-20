@@ -11,7 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-$envFile = 'env.json'
+param( $EnvFile = 'env.json')
+
+$envFile = $EnvFile
 if ($TestMode -eq 'live') {
     $envFile = 'localEnv.json'
 }

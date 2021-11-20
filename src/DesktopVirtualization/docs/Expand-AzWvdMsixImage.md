@@ -108,7 +108,7 @@ Represents URI referring to MSIX Image
 To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixImageUri
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210903Preview.IMsixImageUri
 Parameter Sets: Expand, ExpandViaIdentity
 Aliases:
 
@@ -201,13 +201,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixImageUri
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210903Preview.IMsixImageUri
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IExpandMsixImage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210903Preview.IExpandMsixImage
 
 ## NOTES
 
@@ -225,6 +225,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
   - `[Id <String>]`: Resource identity path
   - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScalingPlanName <String>]`: The name of the scaling plan.
   - `[SessionHostName <String>]`: The name of the session host within the specified host pool

@@ -1,73 +1,63 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Get-AzWvdScalingPlan
+# Remove-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Get a scaling plan.
+Remove a connection.
 
 ## SYNTAX
 
-### List1 (Default)
+### Delete (Default)
 ```
-Get-AzWvdScalingPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### Delete1
 ```
-Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List2
+### DeleteViaIdentity
 ```
-Get-AzWvdScalingPlan -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a scaling plan.
+Remove a connection.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Scaling Plan by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
+PS C:\> {{ Add code here }}
 
-Location      Name             Type
---------      ----             ----
-westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
+{{ Add output here }}
 ```
 
-This command gets a Windows Virtual Desktop Scaling Plan in a Resource Group.
+{{ Add description here }}
 
-### Example 2: List Windows Virtual Desktop Scaling Plans
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
+PS C:\> {{ Add code here }}
 
-Location      Name             Type
---------      ----             ----
-westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
-westcentralus scalingPlan2     Microsoft.DesktopVirtualization/scalingplans
+{{ Add output here }}
 ```
 
-This command lists all the Windows Virtual Desktop Scaling Plans in a Resource Group.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -91,7 +81,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: List2
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -107,7 +97,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
 Aliases:
 
 Required: True
@@ -118,14 +108,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the scaling plan.
+The name of the private endpoint connection associated with the Azure resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ScalingPlanName
+Parameter Sets: Delete, Delete1
+Aliases: PrivateEndpointConnectionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: True
@@ -152,13 +157,59 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Type: System.String
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+The name of the workspace
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -172,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210903Preview.IScalingPlan
+### System.Boolean
 
 ## NOTES
 
