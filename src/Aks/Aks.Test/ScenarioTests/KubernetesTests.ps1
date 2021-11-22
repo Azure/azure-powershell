@@ -86,13 +86,12 @@ function Test-NewAzAks
     $nodeName = "defnode"
     $nodeCount = 2
     $nodeMinCount = 1
-    $nodeMaxCount = 30
-    $nodeDiskSize = 100
+    $nodeMaxCount = 10
+    $nodeDiskSize = 32
     $nodeVmSetType = "VirtualMachineScaleSets"
     $nodeOsType = "Linux"
     $enableAutoScaling = $true
     $enableRbac = $true
-    $networkPlugin = "kubenet"
     $loadBalancerSku = "Standard"
     $linuxAdminUser = "linuxuser"
     $dnsNamePrefix = "mypre"
@@ -102,17 +101,16 @@ function Test-NewAzAks
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NetworkPlugin $networkPlugin `
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName `
             -KubernetesVersion $kubeVersion -EnableRbac -LoadBalancerSku $loadBalancerSku -LinuxProfileAdminUserName $linuxAdminUser -DnsNamePrefix $dnsNamePrefix `
             -NodeName $nodeName -EnableNodeAutoScaling -NodeCount $nodeCount -NodeOsDiskSize $nodeDiskSize -NodeVmSize $nodeVmSize `
             -NodeMaxCount $nodeMaxCount -NodeMinCount $nodeMinCount -NodeMaxPodCount $maxPodCount -NodeSetPriority Regular -NodeScaleSetEvictionPolicy Deallocate -NodeVmSetType VirtualMachineScaleSets
-
+            
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-AreEqual $dnsNamePrefix $cluster.DnsPrefix
         Assert-AreEqual $kubeVersion $cluster.KubernetesVersion
         Assert-AreEqual $enableRbac $cluster.EnableRBAC
-        Assert-AreEqual $networkPlugin $cluster.NetworkProfile.NetworkPlugin
         Assert-AreEqual $loadBalancerSku $cluster.NetworkProfile.LoadBalancerSku
         Assert-AreEqual $linuxAdminUser $cluster.LinuxProfile.AdminUsername
         Assert-AreEqual $nodeName $cluster.AgentPoolProfiles[0].Name
