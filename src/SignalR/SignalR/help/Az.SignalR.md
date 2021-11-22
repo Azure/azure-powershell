@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.SignalR Module
 ## Description
-Cmdlets to interact with the Azure SignalR service.
+Cmdlets to interact with the Azure SignalR service or Web PubSub service.
 
 ## Az.SignalR Cmdlets
 ### [Get-AzSignalR](Get-AzSignalR.md)

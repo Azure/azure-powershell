@@ -1,0 +1,3 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Aks","Microsoft.Azure.Commands.Aks.Commands.DisableAzureRmAddons","Disable-AzAksAddOn","0","3010","The property 'KeyVaultSecretRef' of type 'Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile' has been removed.","Add the property 'KeyVaultSecretRef' back to type 'Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile'."
+"Az.Aks","Microsoft.Azure.Commands.Aks.Commands.GetAzureRMAksVersion","Get-AzAksVersion","0","1000","The cmdlet 'Get-AzAksVersion' has been removed and no alias was found for the original cmdlet name.","Add the cmdlet 'Get-AzAksVersion' back to the module, or add an alias to the original cmdlet name."

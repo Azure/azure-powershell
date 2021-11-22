@@ -13,17 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Net;
+using System.Web;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    public class PSADKeyCredential
+    public static class OdataHelper
     {
-        public DateTime StartDate { get; set; }
+        public static string GetFilterString<T>(Rest.Azure.OData.ODataQuery<T> odataQuery)
+        {
+            return HttpUtility.UrlDecode(odataQuery.Filter);
+        }
 
-        public DateTime EndDate { get; set; }
+        public static bool IsAuthorizationDeniedException(Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe)
+        {
+            if (oe.Response != null && oe.Response.StatusCode == HttpStatusCode.Forbidden &&
+                oe.Body.Error != null && oe.Body.Error.Code != null && string.Equals(oe.Body.Error.Code, AuthorizationDeniedException, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
 
-        public Guid KeyId { get; set; }
+            return false;
+        }
 
-        public string CertValue { get; set; }
+        public const string AuthorizationDeniedException = "Authorization_RequestDenied";
+
     }
 }

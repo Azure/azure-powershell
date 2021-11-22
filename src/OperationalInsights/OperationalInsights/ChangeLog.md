@@ -63,6 +63,7 @@
   - `Get-AzOperationalInsightsPurgeWorkspaceStatus`
   - `Get-AzOperationalInsightsAvailableServiceTier`
 
+* Added `Error` property in the result of the `Invoke-AzOperationalInsightsQuery` to retrieve partial error when running a query [#16378]
 
 ## Version 2.3.1
 * Fixed a bug in `Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing`

@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -334,6 +335,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
 
+                if (_cmdlet.IsParameterBound(c => c.UserData))
+                {
+                    if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(_cmdlet.UserData))
+                    {
+                        _cmdlet.UserData = ValidateBase64EncodedString.EncodeStringToBase64(_cmdlet.UserData);
+                        _cmdlet.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                    }
+                }
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
@@ -364,7 +374,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
-                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null
                     );
             }
 
