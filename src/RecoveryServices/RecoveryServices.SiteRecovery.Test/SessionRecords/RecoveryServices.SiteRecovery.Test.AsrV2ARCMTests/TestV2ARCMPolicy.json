@@ -1,928 +1,926 @@
 {
-    "Entries":  [
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "77b76aa8-20cc-4628-9e53-a10abcc58b96"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-request-id":  [
-                                                                        "f010099c-ae69-411a-970f-cd85f6f69e2b"
-                                                                    ],
-                                                "x-ms-client-request-id":  [
-                                                                               "77b76aa8-20cc-4628-9e53-a10abcc58b96"
-                                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11986"
-                                                                                                ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "f010099c-ae69-411a-970f-cd85f6f69e2b"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062820Z:f010099c-ae69-411a-970f-cd85f6f69e2b"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "460"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"Rcm-Vault-150\",\r\n  \"etag\": \"W/\\\"datetime\u00272021-08-25T04%3A54%3A22.5105157Z\u0027\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/extendedInformation/vaultExtendedInfo?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL2V4dGVuZGVkSW5mb3JtYXRpb24vdmF1bHRFeHRlbmRlZEluZm8/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            ""
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-request-id":  [
-                                                                        "96b72991-feb3-4b63-8209-e47239a97db9"
-                                                                    ],
-                                                "x-ms-client-request-id":  [
-                                                                               "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
-                                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11985"
-                                                                                                ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "96b72991-feb3-4b63-8209-e47239a97db9"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062820Z:96b72991-feb3-4b63-8209-e47239a97db9"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "390"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"name\": \"vaultExtendedInfo\",\r\n  \"etag\": \"6ff08158-428f-4c59-9f52-fca792dc6641\",\r\n  \"properties\": {\r\n    \"integrityKey\": \"aEsWvnHb1YrcZt0Z4D7AUA==\",\r\n    \"algorithm\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150extendedInformation/vaultExtendedInfo\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/extendedInformation\"\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-request-id":  [
-                                                                        "e06ef623-c0c9-4def-8c77-60c4b5dea40e"
-                                                                    ],
-                                                "x-ms-client-request-id":  [
-                                                                               "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
-                                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11984"
-                                                                                                ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "e06ef623-c0c9-4def-8c77-60c4b5dea40e"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062821Z:e06ef623-c0c9-4def-8c77-60c4b5dea40e"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "941"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"name\": \"Rcm-ECY-Vault-900\",\r\n      \"etag\": \"W/\\\"datetime\u00272021-08-13T15%3A22%3A31.2229784Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-ECY-Vault-900\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"name\": \"Rcm-Vault-150\",\r\n      \"etag\": \"W/\\\"datetime\u00272021-08-25T04%3A54%3A22.5105157Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "PUT",
-                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"providerSpecificInput\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"appConsistentFrequencyInMinutes\": 900,\r\n      \"enableMultiVmSync\": \"False\"\r\n    }\r\n  }\r\n}",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "641c03dd-47dc-4585-9a84-57a2db7f6376"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955701253)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560501253)\\/\",\"ClientRequestId\":\"607d5222-27ab-40d0-a8f3-457f0944fef7-2021-08-26 06:28:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"OQEFYlQooaZmlw9Dre/jup72/IA0pRYDX7vll40cRA4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ],
-                                               "Content-Type":  [
-                                                                    "application/json; charset=utf-8"
-                                                                ],
-                                               "Content-Length":  [
-                                                                      "279"
-                                                                  ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "Location":  [
-                                                                 "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy/operationresults/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-06-01"
-                                                             ],
-                                                "Retry-After":  [
-                                                                    "30"
-                                                                ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "641c03dd-47dc-4585-9a84-57a2db7f6376 8/26/2021 6:28:22 AM"
-                                                                    ],
-                                                "Azure-AsyncOperation":  [
-                                                                             "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationOperationStatus/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-06-01"
-                                                                         ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "641c03dd-47dc-4585-9a84-57a2db7f6376"
-                                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-writes":  [
-                                                                                                     "1199"
-                                                                                                 ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "3001ac89-a12c-41f8-b660-59cb64c51f7e"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062822Z:3001ac89-a12c-41f8-b660-59cb64c51f7e"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ],
-                                                "Content-Length":  [
-                                                                       "0"
-                                                                   ]
-                                            },
-                        "ResponseBody":  "",
-                        "StatusCode":  202
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9jOWJkZWZlYi04MGJhLTQ2ZWUtYjM0My0yNmY5ZTIzYzhiOTE/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "641c03dd-47dc-4585-9a84-57a2db7f6376"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955703433)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560503433)\\/\",\"ClientRequestId\":\"1abba805-488a-4eb7-a6d7-8cdbcfbcdee6-2021-08-26 06:28:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"VX4b0XlfXvGyB59Jvpma0Y6siVg6pQ1osx6tH0uiEZY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11998"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "641c03dd-47dc-4585-9a84-57a2db7f6376"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "bdc93554-d605-4052-9e05-afd24b6a1651"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062823Z:bdc93554-d605-4052-9e05-afd24b6a1651"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "1716"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"name\": \"c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"641c03dd-47dc-4585-9a84-57a2db7f6376 ActivityId: 3001ac89-a12c-41f8-b660-59cb64c51f7e\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.8391535Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:22.6444839Z\",\r\n    \"endTime\": \"2021-08-26T06:28:22Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9jOWJkZWZlYi04MGJhLTQ2ZWUtYjM0My0yNmY5ZTIzYzhiOTE/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "95778d4b-74e2-4c28-a9ae-2d1d8b1b03f8"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955704019)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560504019)\\/\",\"ClientRequestId\":\"ed8f2029-8078-462a-8c21-6a42a5317475-2021-08-26 06:28:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"RSGD0+f0OM8nX3+zhQgq0jKz3K/yxPCtP+BWx/8tYds=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11997"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "95778d4b-74e2-4c28-a9ae-2d1d8b1b03f8"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "a3e6357d-046f-4b58-b9f7-6a067451526e"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062824Z:a3e6357d-046f-4b58-b9f7-6a067451526e"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "1716"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"name\": \"c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"641c03dd-47dc-4585-9a84-57a2db7f6376 ActivityId: 3001ac89-a12c-41f8-b660-59cb64c51f7e\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.8391535Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:22.6444839Z\",\r\n    \"endTime\": \"2021-08-26T06:28:22Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "2071923f-817c-4c5b-b048-c20ab25be36a"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955704472)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560504472)\\/\",\"ClientRequestId\":\"b740d6b2-523b-423c-bde6-0b0ef0c0976b-2021-08-26 06:28:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"fOLd/8NdhGCdBs+o4Vg5oN7iushnDpYVdK3AKSQ0Ji8=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11996"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "2071923f-817c-4c5b-b048-c20ab25be36a 8/26/2021 6:28:24 AM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "2071923f-817c-4c5b-b048-c20ab25be36a"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "acbcf49f-bb27-46d2-8183-447578e1a630"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062824Z:acbcf49f-bb27-46d2-8183-447578e1a630"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "530"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy\",\r\n  \"name\": \"v2aRcm-pwsh-testpolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 900,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"enableMultiVmSync\": \"false\"\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955705500)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560505500)\\/\",\"ClientRequestId\":\"ee3e6a6f-f2de-47a7-ae67-73df7af16025-2021-08-26 06:28:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"BHsKjXedeimeAQdy8ntpJGp4KnL4sVwhr1AK8djneUU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11994"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "8f117404-0b44-4504-8801-b2d3f9b3c7c7 8/26/2021 6:28:25 AM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "fb067602-7281-44db-a45c-4b1bac48d7cb"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062825Z:fb067602-7281-44db-a45c-4b1bac48d7cb"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "530"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy\",\r\n  \"name\": \"v2aRcm-pwsh-testpolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 900,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"enableMultiVmSync\": \"false\"\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "7fe7e149-4934-4a24-b5b7-1faff3a8e53a"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955707570)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560507570)\\/\",\"ClientRequestId\":\"e334aca6-7409-4b28-af39-b9afdfe27f4e-2021-08-26 06:28:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"G6K13tDSI0nli0PlQ5N8xPcY0MOoPaahMGmEbgbPdhY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11991"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "7fe7e149-4934-4a24-b5b7-1faff3a8e53a 8/26/2021 6:28:27 AM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "7fe7e149-4934-4a24-b5b7-1faff3a8e53a"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "e377b769-27e2-47d2-8a6d-36acaa64995f"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062827Z:e377b769-27e2-47d2-8a6d-36acaa64995f"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "530"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy\",\r\n  \"name\": \"v2aRcm-pwsh-testpolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 300,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"enableMultiVmSync\": \"false\"\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/appconsistency-policy-failback?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvYXBwY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "b81da0dc-f9b0-4b68-800e-cfb09b8ff44a"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955705023)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560505023)\\/\",\"ClientRequestId\":\"25695217-e893-4db8-a580-da4f43f64afd-2021-08-26 06:28:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"71hoieSh9Mf2jFcd1aUKbEVjgNfsrlOC0v9V4gVyBq0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11995"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "b81da0dc-f9b0-4b68-800e-cfb09b8ff44a 8/26/2021 6:28:25 AM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "b81da0dc-f9b0-4b68-800e-cfb09b8ff44a"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "cc497982-b363-497f-8ea4-261b97573589"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062825Z:cc497982-b363-497f-8ea4-261b97573589"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "496"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/appconsistency-policy-failback\",\r\n  \"name\": \"appconsistency-policy-failback\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"appconsistency-policy-failback\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcmFailback\",\r\n      \"appConsistentFrequencyInMinutes\": 60,\r\n      \"crashConsistentFrequencyInMinutes\": 5\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "PATCH",
-                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"replicationProviderSettings\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"appConsistentFrequencyInMinutes\": 300,\r\n      \"enableMultiVmSync\": \"False\"\r\n    }\r\n  }\r\n}",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955705993)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560505993)\\/\",\"ClientRequestId\":\"8b1ccf71-fffe-4e80-82a0-d64ef0c67fe6-2021-08-26 06:28:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"HETdFxW2AJRahlSY7H+jVStqc2ZuZ5bi36Z/35YbuAo=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ],
-                                               "Content-Type":  [
-                                                                    "application/json; charset=utf-8"
-                                                                ],
-                                               "Content-Length":  [
-                                                                      "285"
-                                                                  ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "Location":  [
-                                                                 "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy/operationresults/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-06-01"
-                                                             ],
-                                                "Retry-After":  [
-                                                                    "30"
-                                                                ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc",
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc"
-                                                                    ],
-                                                "Azure-AsyncOperation":  [
-                                                                             "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationOperationStatus/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-06-01"
-                                                                         ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
-                                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-writes":  [
-                                                                                                     "1198"
-                                                                                                 ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "74168780-f6ea-429e-ba92-21291ed11051"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062826Z:74168780-f6ea-429e-ba92-21291ed11051"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ],
-                                                "Content-Length":  [
-                                                                       "0"
-                                                                   ]
-                                            },
-                        "ResponseBody":  "",
-                        "StatusCode":  202
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9iZTRhZGQ1MS1lNWRjLTRiMjItYjI2NC0zYzRkM2U4NDAyZmM/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955706633)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560506633)\\/\",\"ClientRequestId\":\"9a6426c0-2785-49cf-93a8-27d75d396278-2021-08-26 06:28:26Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"WXRPoFcwbKJfiS3lXZGrZnPlVRJz1u0/G8hvz9j6l3s=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11993"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "b3c7303c-86d3-47ab-a896-6a727e54f162"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062827Z:b3c7303c-86d3-47ab-a896-6a727e54f162"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "2160"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"name\": \"be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"8f117404-0b44-4504-8801-b2d3f9b3c7c7 ActivityId: 74168780-f6ea-429e-ba92-21291ed11051\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.690177Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:26.410272Z\",\r\n    \"endTime\": \"2021-08-26T06:28:26Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9iZTRhZGQ1MS1lNWRjLTRiMjItYjI2NC0zYzRkM2U4NDAyZmM/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "7165e12a-05e6-4a30-a3c4-171b500a9c00"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1629955707127)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560507127)\\/\",\"ClientRequestId\":\"87b4d202-8604-4ade-9d1d-65b50cfc00b7-2021-08-26 06:28:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"EBqlK81FJT7udfsy+iUaPHYugt4LU4qG8kpzW6jTHA0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.30411.01",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19043.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11992"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "7165e12a-05e6-4a30-a3c4-171b500a9c00"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "67e46bc0-87dd-49e5-8f87-fb6a300cc131"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210826T062827Z:67e46bc0-87dd-49e5-8f87-fb6a300cc131"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:10 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "2160"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"name\": \"be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"8f117404-0b44-4504-8801-b2d3f9b3c7c7 ActivityId: 74168780-f6ea-429e-ba92-21291ed11051\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.690177Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:26.410272Z\",\r\n    \"endTime\": \"2021-08-26T06:28:26Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    }
-                ],
-    "Names":  {
-
-              },
-    "Variables":  {
-                      "SubscriptionId":  "b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c"
-                  }
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "77b76aa8-20cc-4628-9e53-a10abcc58b96"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "f010099c-ae69-411a-970f-cd85f6f69e2b"
+        ],
+        "x-ms-client-request-id": [
+          "77b76aa8-20cc-4628-9e53-a10abcc58b96"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "f010099c-ae69-411a-970f-cd85f6f69e2b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062820Z:f010099c-ae69-411a-970f-cd85f6f69e2b"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "460"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"Rcm-Vault-150\",\r\n  \"etag\": \"W/\\\"datetime'2021-08-25T04%3A54%3A22.5105157Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/extendedInformation/vaultExtendedInfo?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL2V4dGVuZGVkSW5mb3JtYXRpb24vdmF1bHRFeHRlbmRlZEluZm8/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "96b72991-feb3-4b63-8209-e47239a97db9"
+        ],
+        "x-ms-client-request-id": [
+          "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "96b72991-feb3-4b63-8209-e47239a97db9"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062820Z:96b72991-feb3-4b63-8209-e47239a97db9"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "390"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"vaultExtendedInfo\",\r\n  \"etag\": \"6ff08158-428f-4c59-9f52-fca792dc6641\",\r\n  \"properties\": {\r\n    \"integrityKey\": \"aEsWvnHb1YrcZt0Z4D7AUA==\",\r\n    \"algorithm\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150extendedInformation/vaultExtendedInfo\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/extendedInformation\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "e06ef623-c0c9-4def-8c77-60c4b5dea40e"
+        ],
+        "x-ms-client-request-id": [
+          "ff7081cf-6398-4d96-b1c3-ba3f7b8e2d1a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-correlation-request-id": [
+          "e06ef623-c0c9-4def-8c77-60c4b5dea40e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062821Z:e06ef623-c0c9-4def-8c77-60c4b5dea40e"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "941"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"name\": \"Rcm-ECY-Vault-900\",\r\n      \"etag\": \"W/\\\"datetime'2021-08-13T15%3A22%3A31.2229784Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-ECY-Vault-900\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"name\": \"Rcm-Vault-150\",\r\n      \"etag\": \"W/\\\"datetime'2021-08-25T04%3A54%3A22.5105157Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"providerSpecificInput\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"appConsistentFrequencyInMinutes\": 900,\r\n      \"enableMultiVmSync\": \"False\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "641c03dd-47dc-4585-9a84-57a2db7f6376"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955701253)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560501253)\\/\",\"ClientRequestId\":\"607d5222-27ab-40d0-a8f3-457f0944fef7-2021-08-26 06:28:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"OQEFYlQooaZmlw9Dre/jup72/IA0pRYDX7vll40cRA4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "279"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy/operationresults/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-06-01"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "641c03dd-47dc-4585-9a84-57a2db7f6376 8/26/2021 6:28:22 AM"
+        ],
+        "Azure-AsyncOperation": [
+          "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationOperationStatus/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-06-01"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "641c03dd-47dc-4585-9a84-57a2db7f6376"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "3001ac89-a12c-41f8-b660-59cb64c51f7e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062822Z:3001ac89-a12c-41f8-b660-59cb64c51f7e"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9jOWJkZWZlYi04MGJhLTQ2ZWUtYjM0My0yNmY5ZTIzYzhiOTE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "641c03dd-47dc-4585-9a84-57a2db7f6376"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955703433)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560503433)\\/\",\"ClientRequestId\":\"1abba805-488a-4eb7-a6d7-8cdbcfbcdee6-2021-08-26 06:28:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"VX4b0XlfXvGyB59Jvpma0Y6siVg6pQ1osx6tH0uiEZY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "641c03dd-47dc-4585-9a84-57a2db7f6376"
+        ],
+        "x-ms-correlation-request-id": [
+          "bdc93554-d605-4052-9e05-afd24b6a1651"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062823Z:bdc93554-d605-4052-9e05-afd24b6a1651"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "1716"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"name\": \"c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"641c03dd-47dc-4585-9a84-57a2db7f6376 ActivityId: 3001ac89-a12c-41f8-b660-59cb64c51f7e\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.8391535Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:22.6444839Z\",\r\n    \"endTime\": \"2021-08-26T06:28:22Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9jOWJkZWZlYi04MGJhLTQ2ZWUtYjM0My0yNmY5ZTIzYzhiOTE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "95778d4b-74e2-4c28-a9ae-2d1d8b1b03f8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955704019)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560504019)\\/\",\"ClientRequestId\":\"ed8f2029-8078-462a-8c21-6a42a5317475-2021-08-26 06:28:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"RSGD0+f0OM8nX3+zhQgq0jKz3K/yxPCtP+BWx/8tYds=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "95778d4b-74e2-4c28-a9ae-2d1d8b1b03f8"
+        ],
+        "x-ms-correlation-request-id": [
+          "a3e6357d-046f-4b58-b9f7-6a067451526e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062824Z:a3e6357d-046f-4b58-b9f7-6a067451526e"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "1716"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"name\": \"c9bdefeb-80ba-46ee-b343-26f9e23c8b91\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"641c03dd-47dc-4585-9a84-57a2db7f6376 ActivityId: 3001ac89-a12c-41f8-b660-59cb64c51f7e\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.8391535Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"endTime\": \"2021-08-26T06:28:22.9016242Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:22.6444839Z\",\r\n    \"endTime\": \"2021-08-26T06:28:22Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2071923f-817c-4c5b-b048-c20ab25be36a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955704472)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560504472)\\/\",\"ClientRequestId\":\"b740d6b2-523b-423c-bde6-0b0ef0c0976b-2021-08-26 06:28:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"fOLd/8NdhGCdBs+o4Vg5oN7iushnDpYVdK3AKSQ0Ji8=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2071923f-817c-4c5b-b048-c20ab25be36a 8/26/2021 6:28:24 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "2071923f-817c-4c5b-b048-c20ab25be36a"
+        ],
+        "x-ms-correlation-request-id": [
+          "acbcf49f-bb27-46d2-8183-447578e1a630"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062824Z:acbcf49f-bb27-46d2-8183-447578e1a630"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "530"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy\",\r\n  \"name\": \"v2aRcm-pwsh-testpolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 900,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"enableMultiVmSync\": \"false\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955705500)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560505500)\\/\",\"ClientRequestId\":\"ee3e6a6f-f2de-47a7-ae67-73df7af16025-2021-08-26 06:28:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"BHsKjXedeimeAQdy8ntpJGp4KnL4sVwhr1AK8djneUU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7 8/26/2021 6:28:25 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
+        ],
+        "x-ms-correlation-request-id": [
+          "fb067602-7281-44db-a45c-4b1bac48d7cb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062825Z:fb067602-7281-44db-a45c-4b1bac48d7cb"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "530"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy\",\r\n  \"name\": \"v2aRcm-pwsh-testpolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 900,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"enableMultiVmSync\": \"false\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7fe7e149-4934-4a24-b5b7-1faff3a8e53a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955707570)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560507570)\\/\",\"ClientRequestId\":\"e334aca6-7409-4b28-af39-b9afdfe27f4e-2021-08-26 06:28:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"G6K13tDSI0nli0PlQ5N8xPcY0MOoPaahMGmEbgbPdhY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7fe7e149-4934-4a24-b5b7-1faff3a8e53a 8/26/2021 6:28:27 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7fe7e149-4934-4a24-b5b7-1faff3a8e53a"
+        ],
+        "x-ms-correlation-request-id": [
+          "e377b769-27e2-47d2-8a6d-36acaa64995f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062827Z:e377b769-27e2-47d2-8a6d-36acaa64995f"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "530"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy\",\r\n  \"name\": \"v2aRcm-pwsh-testpolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"appConsistentFrequencyInMinutes\": 300,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"enableMultiVmSync\": \"false\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/appconsistency-policy-failback?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvYXBwY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b81da0dc-f9b0-4b68-800e-cfb09b8ff44a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955705023)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560505023)\\/\",\"ClientRequestId\":\"25695217-e893-4db8-a580-da4f43f64afd-2021-08-26 06:28:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"71hoieSh9Mf2jFcd1aUKbEVjgNfsrlOC0v9V4gVyBq0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b81da0dc-f9b0-4b68-800e-cfb09b8ff44a 8/26/2021 6:28:25 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "b81da0dc-f9b0-4b68-800e-cfb09b8ff44a"
+        ],
+        "x-ms-correlation-request-id": [
+          "cc497982-b363-497f-8ea4-261b97573589"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062825Z:cc497982-b363-497f-8ea4-261b97573589"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "496"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/appconsistency-policy-failback\",\r\n  \"name\": \"appconsistency-policy-failback\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"appconsistency-policy-failback\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageRcmFailback\",\r\n      \"appConsistentFrequencyInMinutes\": 60,\r\n      \"crashConsistentFrequencyInMinutes\": 5\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"replicationProviderSettings\": {\r\n      \"instanceType\": \"InMageRcm\",\r\n      \"recoveryPointHistoryInMinutes\": 2400,\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"appConsistentFrequencyInMinutes\": 300,\r\n      \"enableMultiVmSync\": \"False\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955705993)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560505993)\\/\",\"ClientRequestId\":\"8b1ccf71-fffe-4e80-82a0-d64ef0c67fe6-2021-08-26 06:28:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"HETdFxW2AJRahlSY7H+jVStqc2ZuZ5bi36Z/35YbuAo=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "285"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy/operationresults/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-06-01"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc",
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc"
+        ],
+        "Azure-AsyncOperation": [
+          "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationOperationStatus/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-06-01"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "74168780-f6ea-429e-ba92-21291ed11051"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062826Z:74168780-f6ea-429e-ba92-21291ed11051"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9iZTRhZGQ1MS1lNWRjLTRiMjItYjI2NC0zYzRkM2U4NDAyZmM/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955706633)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560506633)\\/\",\"ClientRequestId\":\"9a6426c0-2785-49cf-93a8-27d75d396278-2021-08-26 06:28:26Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"WXRPoFcwbKJfiS3lXZGrZnPlVRJz1u0/G8hvz9j6l3s=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "8f117404-0b44-4504-8801-b2d3f9b3c7c7"
+        ],
+        "x-ms-correlation-request-id": [
+          "b3c7303c-86d3-47ab-a896-6a727e54f162"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062827Z:b3c7303c-86d3-47ab-a896-6a727e54f162"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "2160"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"name\": \"be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"8f117404-0b44-4504-8801-b2d3f9b3c7c7 ActivityId: 74168780-f6ea-429e-ba92-21291ed11051\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.690177Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:26.410272Z\",\r\n    \"endTime\": \"2021-08-26T06:28:26Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9iZTRhZGQ1MS1lNWRjLTRiMjItYjI2NC0zYzRkM2U4NDAyZmM/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7165e12a-05e6-4a30-a3c4-171b500a9c00"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1629955707127)\\/\",\"NotAfterTimestamp\":\"\\/Date(1630560507127)\\/\",\"ClientRequestId\":\"87b4d202-8604-4ade-9d1d-65b50cfc00b7-2021-08-26 06:28:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"EBqlK81FJT7udfsy+iUaPHYugt4LU4qG8kpzW6jTHA0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7165e12a-05e6-4a30-a3c4-171b500a9c00"
+        ],
+        "x-ms-correlation-request-id": [
+          "67e46bc0-87dd-49e5-8f87-fb6a300cc131"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210826T062827Z:67e46bc0-87dd-49e5-8f87-fb6a300cc131"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:30 GMT"
+        ],
+        "Content-Length": [
+          "2160"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"name\": \"be4add51-e5dc-4b22-b264-3c4d3e8402fc\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"8f117404-0b44-4504-8801-b2d3f9b3c7c7 ActivityId: 74168780-f6ea-429e-ba92-21291ed11051\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.690177Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"endTime\": \"2021-08-26T06:28:26.752743Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-08-26T06:28:26.410272Z\",\r\n    \"endTime\": \"2021-08-26T06:28:26Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"e6ffb6d9-00aa-5077-9150-389ba8943350\",\r\n    \"targetObjectName\": \"v2aRcm-pwsh-testpolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c"
+  }
 }

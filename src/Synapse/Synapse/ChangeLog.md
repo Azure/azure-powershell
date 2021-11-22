@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
+* Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
+* Added cmdlets for Synapse Spark Configuration
+    - Added `Get-AzSynapseSparkConfiguration` cmdlet
+    - Added `New-AzSynapseSparkConfiguration` cmdlet
+    - Added `Export-AzSynapseSparkConfiguration` cmdlet
+    - Added `Remove-AzSynapseSparkConfiguration` cmdlet
 
 ## Version 0.18.0
 * Added cmdlets for Synapse Kusto pool

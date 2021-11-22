@@ -304,6 +304,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided client id and assertion will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        /// </summary>
+        internal static string ClientAssertionWarning {
+            get {
+                return ResourceManager.GetString("ClientAssertionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No authentication client factory has been registered, unable to clear the cache..
         /// </summary>
         internal static string ClientFactoryNotRegisteredClear {
@@ -1029,15 +1038,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ServicePrincipalWarning {
             get {
                 return ResourceManager.GetString("ServicePrincipalWarning", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The provided service principal secret will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
-        /// </summary>
-        internal static string ClientAssertionWarning {
-            get {
-                return ResourceManager.GetString("ClientAssertionWarning", resourceCulture);
             }
         }
         

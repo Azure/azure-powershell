@@ -14,27 +14,28 @@ Creates or updates a notebook in a workspace.
 
 ### SetByName (Default)
 ```
-Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] [-FolderPath <String>] -DefinitionFile <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByNameAndSparkPool
 ```
-Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] -SparkPoolName <String> [-ExecutorSize <String>]
- -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] [-FolderPath <String>] -SparkPoolName <String>
+ [-ExecutorSize <String>] -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
-Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] [-FolderPath <String>]
+ -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByObjectAndSparkPool
 ```
-Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -SparkPoolName <String>
- [-ExecutorSize <String>] -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob]
+Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] [-FolderPath <String>]
+ -SparkPoolName <String> [-ExecutorSize <String>] -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -56,13 +57,27 @@ This command creates or updates a notebook from notebook file notebook.ipynb in 
 
 ### Example 2
 ```powershell
+PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb" -FolderPath ContosoFolder
+```
+
+This command creates or updates a notebook from notebook file notebook.ipynb and specify a folder path ContosoFolder where the notebook will be placed in the workspace named ContosoWorkspace.
+
+### Example 3
+```powershell
+PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb" -FolderPath ContosoFolder/SubFolder
+```
+
+This command creates or updates a notebook from notebook file notebook.ipynb and specify a multi-level folder path ContosoFolder/SubFolder where the notebook will be placed in the workspace named ContosoWorkspace.
+
+### Example 4
+```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Set-AzSynapseNotebook -DefinitionFile "C:\\samples\\notebook.ipynb"
 ```
 
 This command creates or updates a notebook from notebook file notebook.ipynb in the workspace named ContosoWorkspace through pipeline.
 
-### Example 3
+### Example 5
 ```powershell
 PS C:\> Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\notebook.ipynb" -SparkPoolName ContosoSparkPool -ExecutorCount 2
 ```
@@ -139,6 +154,21 @@ Type: System.String
 Parameter Sets: SetByNameAndSparkPool, SetByObjectAndSparkPool
 Aliases:
 Accepted values: Small, Medium, Large
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FolderPath
+The folder that this notebook is in. If specify a multi-level path such as [rootFolder/subFolder], the notebook will appear at the bottom level. If not specified, this notebook will appear at the root level.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

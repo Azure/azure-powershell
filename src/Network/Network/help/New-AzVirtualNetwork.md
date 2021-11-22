@@ -14,10 +14,12 @@ Creates a virtual network.
 ## SYNTAX
 
 ```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>] -AddressPrefix <String[]>
+New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
  [-DnsServer <String[]>] [-FlowTimeout <Int32>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>]
- [-Tag <Hashtable>] [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableEncryption <String>] [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>]
+ [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>]
+ [-EdgeZone <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,6 +192,36 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryption
+Indicates if encryption is enabled on the virtual network. The value should be true to enable encryption on the virtual network, false to disable encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EncryptionEnforcementPolicy
+Set the Encryption EnforcementPolicy. The value should be allowUnencrypted to allow VMs without encryption capability inside an encrypted virtual network, or dropUnencrypted to disable any VM without encryption capability from being added into an encrypted virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

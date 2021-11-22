@@ -100,7 +100,7 @@ do
     $totalFailure += $result.TotalFailureCount
     $FailedEntries += $result.FailedEntries
     $token = $result.ContinuationToken
-}while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+}while (($null -ne $token) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
 echo ""
 echo "[Result Summary]"
 echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
