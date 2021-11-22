@@ -47,6 +47,7 @@ title: ContainerInstance
 subject-prefix: $(service-name)
 identity-correction-for-post: true
 nested-object-to-string: true
+resourcegroup-append: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -63,36 +64,63 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Rename *-AzContainerInstanceContainerGroup to *-AzContainerGroup
   - where:
       subject: ContainerGroup
     set:
       subject-prefix: ""
+  # Shorten *-AzContainerInstanceContainerLog to *-AzContainerInstanceLog
   - where:
       subject: ContainerLog
     set:
       subject: Log
+  # Rename Add-AzContainerInstanceContainer -> Add-AzContainerInstanceOutput
   - where:
       subject: Container
     set:
       subject: Output    
+  # Rename Invoke-AzContainerInstanceExecuteContainerCommand -> Invoke-AzContainerInstanceCommand
   - where:
       subject: ExecuteContainerCommand
     set:
       subject: Command
+  # Shorten Get-AzContainerInstanceLocation(.*) -> Get-AzContainerInstance(.*)
   - where:
       subject: (^Location)(.*) 
     set:
       subject: $2
+  # ImageRegistryCredentials -> ImageRegistryCredential
+  - where:
+      parameter-name: ImageRegistryCredentials
+    set:
+      parameter-name: ImageRegistryCredential
+  # Sets OSType equal Linux by default
+  - where:
+      parameter-name: OSType
+    set:
+      default:
+        description: Sets OSType equal Linux by default.
+        script: '"Linux"'
+  # 1. Set IPAddressPort equals $Container.Port
+  # 2. Set Location mandatory
   - where:
       verb: New
       subject: ContainerGroup
     hide: true
   - where:
+      parameter-name: TerminalSizeCol
+    set:
+      default:
+        script: '$host.UI.RawUI.WindowSize.Width'
+  - where:
+      parameter-name: TerminalSizeRow
+    set:
+      default:
+        script: '$host.UI.RawUI.WindowSize.Height'
+  # Set parameter 'Command' required
+  - where:
       verb: Invoke
       subject: Command
-    hide: true
-  - where:
-      verb: Restart
     hide: true
   # Alias long name: Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
   - where:
@@ -120,5 +148,4 @@ directive:
             }
           }
         }
-
 ```

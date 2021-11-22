@@ -91,9 +91,6 @@ directive:
     transform: $ = $.replace(/internal partial interface/, 'public partial interface');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
-  - from: source-file-csharp
-    where: $
     transform: $ = $.replace(/Azure-AsyncOperation/g, 'azure-asyncoperation');
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run"].post.responses
