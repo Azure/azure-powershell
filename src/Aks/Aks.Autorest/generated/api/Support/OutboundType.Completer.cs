@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "loadBalancer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("loadBalancer", "loadBalancer", global::System.Management.Automation.CompletionResultType.ParameterValue, "loadBalancer");
+                yield return new global::System.Management.Automation.CompletionResult("'loadBalancer'", "loadBalancer", global::System.Management.Automation.CompletionResultType.ParameterValue, "loadBalancer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "userDefinedRouting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("userDefinedRouting", "userDefinedRouting", global::System.Management.Automation.CompletionResultType.ParameterValue, "userDefinedRouting");
+                yield return new global::System.Management.Automation.CompletionResult("'userDefinedRouting'", "userDefinedRouting", global::System.Management.Automation.CompletionResultType.ParameterValue, "userDefinedRouting");
             }
         }
     }

@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Spot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Spot", "Spot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Spot");
+                yield return new global::System.Management.Automation.CompletionResult("'Spot'", "Spot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Spot");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Regular".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Regular", "Regular", global::System.Management.Automation.CompletionResultType.ParameterValue, "Regular");
+                yield return new global::System.Management.Automation.CompletionResult("'Regular'", "Regular", global::System.Management.Automation.CompletionResultType.ParameterValue, "Regular");
             }
         }
     }
