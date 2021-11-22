@@ -533,7 +533,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string ResultLimit = "Limit of results, '-1' for no limit.";
 
-        public const string FolderName = "The folder that this SQL script is in. If not specified, this SQL script will appear at the root level.";
+        public const string SqlFolderPath = "The folder that this SQL script is in. If specify a multi-level path such as [rootFolder/subFolder], the SqlScript will appear at the bottom level. If not specified, this SQL script will appear at the root level.";
 
         public const string Description = "The description of the SQL script.";
 
@@ -544,5 +544,9 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string SparkConfigurationFolderPath = "The folder that this Spark job definition is in. If specify a multi-level path such as [rootFolder/subFolder], the Spark job definition will appear at the bottom level. If not specified, this Spark job definition will appear at the root level.";
 
         public const string NoteBookFolderPath = "The folder that this notebook is in. If specify a multi-level path such as [rootFolder/subFolder], the notebook will appear at the bottom level. If not specified, this notebook will appear at the root level.";
+
+        public const string SparkConfigurationName = "The Spark Configuration name.";
+
+        public const string SparkConfigurationObject = "The Spark configuration object.";
     }
 }
