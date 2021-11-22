@@ -333,7 +333,7 @@
                 <PropertyName>Statistics</PropertyName>
               </ListItem>
               <ListItem>
-                <ScriptBlock>ConvertTo-Json $_.Error -Depth 10</ScriptBlock>
+                <ScriptBlock>$_.Error ? (ConvertTo-Json $_.Error -Depth 10) : $_.Error</ScriptBlock>
                 <Label>Error</Label>
               </ListItem>
             </ListItems>
