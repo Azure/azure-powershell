@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             List<SshPublicKey> sshPublicKeys,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
-            string dataDiskDeleteOption = null)
+            string dataDiskDeleteOption = null,
+            string userData = null)
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -114,7 +115,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
-                    }
+                    },
+                    UserData = userData
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -140,7 +142,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool encryptionAtHostPresent,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
-            string dataDiskDeleteOption = null
+            string dataDiskDeleteOption = null,
+            string userData = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -185,7 +188,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
-                    }
+                    },
+                    UserData = userData
                 });
     }
 }
