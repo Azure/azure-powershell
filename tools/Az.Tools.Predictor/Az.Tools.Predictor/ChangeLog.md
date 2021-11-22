@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Improvements in command parsing mechanism
+* Fixed end of user input detection when - character is used
+* Optimized collection of anonymized data
+
 ## Version 0.2.0
 * Second preview release
 * Add Enable-AzPredictor and Disable-AzPredictor cmdlets to simplify configuration

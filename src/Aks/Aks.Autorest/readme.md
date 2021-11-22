@@ -100,7 +100,4 @@ directive:
           "description": "Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1.",
           "default": 1
         }
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
 ```
