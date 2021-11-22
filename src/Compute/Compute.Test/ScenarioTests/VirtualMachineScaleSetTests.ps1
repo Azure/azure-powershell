@@ -2822,6 +2822,7 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
     }
 }
 
+
 <#
 .SYNOPSIS
 Test the VMSS Flexible orchestration mode defaulting. 
@@ -2909,6 +2910,69 @@ function Test-AddAndRemoveAzVmssRunCommand
         Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
 
     } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS UserData feature, specifically the Base64 encoding functionality.
+#>
+function Test-VirtualMachineScaleSetUserdata
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create Vmss with UserData.
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -Userdata $userData;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
+
+        # Update UserData property on Vmss.
+        $text2 = "update vmss";
+        $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
+        $encodedText2 = [Convert]::ToBase64String($bytes2);
+        $userData2 = $encodedText2;
+
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssGet -Userdata $userData2;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName -Userdata -InstanceView:$false;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
+
+        # Update VmssVm UserData property.
+        $text3 = "vm update vmss vm";
+        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
+        $encodedText3 = [Convert]::ToBase64String($bytes3);
+        $userData3 = $encodedText3;
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -UserData; 
+        Assert-AreNotEqual $vmssvm.UserData $userData3;
+        $vmssvmUp = Update-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData $userData3;
+        
+        $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData; 
+        Assert-AreEqual $vmssvm2.UserData $userData3;
+
+    }
     finally
     {
         # Cleanup

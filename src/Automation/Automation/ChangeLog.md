@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed example in reference doc for `Remove-AzAutomationHybridWorkerGroup`
 
 ## Version 1.7.1
 * Fixed bug: Add Schedule name validation in New-AzAutomationSchedule

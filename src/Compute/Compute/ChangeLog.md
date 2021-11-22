@@ -28,6 +28,18 @@
     - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
+* Added `UserData` parameter to the following cmdlets:
+    - `Get-AzVm`
+    - `Get-AzVmss`
+    - `Get-AzVmssVm`
+    - `New-Azvm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzVmssVm`
+  When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
 * Added string parameter `PublicNetworkAccess` to the following cmdlets:
     - `New-AzDiskConfig`
     - `New-AzDiskUpdateConfig`
