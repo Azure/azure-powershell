@@ -216,6 +216,14 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Specifies URI of the internet resource to fetch environments.")]
         public Uri Uri { get; set; }
 
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of Microsoft Graph")]
+        public string MicrosoftGraphEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Microsoft Graph Url")]
+        public string MicrosoftGraphUrl { get; set; }
+
 
         protected override void BeginProcessing()
         {
@@ -378,6 +386,10 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureSynapseAnalyticsEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,
                                     nameof(AzureSynapseAnalyticsEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
+                                    nameof(MicrosoftGraphEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl,
+                                    nameof(MicrosoftGraphUrl));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
