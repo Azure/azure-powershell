@@ -36,6 +36,7 @@
     - `Update-AzVmss`
     - `Update-AzVmssVm`
   When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
+  When UserData is set to null, the Base64 encoding will not occur.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
