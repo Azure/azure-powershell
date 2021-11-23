@@ -69,8 +69,8 @@ function Invoke-AzSentinelDataConnectorsCheckRequirement {
         [Parameter(ParameterSetName = 'MicrosoftDefenderAdvancedThreatProtection')]
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
         [Parameter(ParameterSetName = 'MicrosoftThreatProtection')]
-        [Parameter(ParameterSetName = 'Office365')]
         [Parameter(ParameterSetName = 'OfficeATP')]
+        [Parameter(ParameterSetName = 'OfficeIRM')]
         [Parameter(ParameterSetName = 'ThreatIntelligence')]
         [Parameter(ParameterSetName = 'ThreatIntelligenceTaxii')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -194,6 +194,11 @@ function Invoke-AzSentinelDataConnectorsCheckRequirement {
             #}
             if($PSBoundParameters['Kind'] -eq 'OfficeATP'){
                 $DataConnectorsCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeATPCheckRequirements]::new()
+                $DataConnectorsCheckRequirement.TenantId = $PSBoundParameters['TenantId']
+                $null = $PSBoundParameters.Remove('TenantId')
+            }
+            if($PSBoundParameters['Kind'] -eq 'OfficeIRM'){
+                $DataConnectorsCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeIrmCheckRequirements]::new()
                 $DataConnectorsCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }

@@ -15,7 +15,7 @@ Creates or updates the automation rule.
 ```
 New-AzSentinelAutomationRule -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Etag <String>] [-Order <Int32>]
+ [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
  [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
  [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -88,21 +88,6 @@ Accept wildcard characters: False
 
 ### -DisplayName
 The display name of the automation rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
 
 ```yaml
 Type: System.String

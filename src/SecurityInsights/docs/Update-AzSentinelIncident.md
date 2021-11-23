@@ -17,7 +17,7 @@ Creates or updates the incident.
 Update-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
  [-Classification <IncidentClassification>] [-ClassificationComment <String>]
- [-ClassificationReason <IncidentClassificationReason>] [-Description <String>] [-Etag <String>]
+ [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
  [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
  [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
  [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>] [-ProviderName <String>]
@@ -36,7 +36,7 @@ Update-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceNam
 ```
 Update-AzSentinelIncident -InputObject <ISecurityInsightsIdentity> [-Classification <IncidentClassification>]
  [-ClassificationComment <String>] [-ClassificationReason <IncidentClassificationReason>]
- [-Description <String>] [-Etag <String>] [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>]
+ [-Description <String>] [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>]
  [-LastActivityTimeUtc <DateTime>] [-OwnerAssignedTo <String>] [-OwnerEmail <String>]
  [-OwnerObjectId <String>] [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>]
  [-ProviderName <String>] [-Severity <IncidentSeverity>] [-Status <IncidentStatus>] [-Title <String>]
@@ -130,21 +130,6 @@ Accept wildcard characters: False
 
 ### -Description
 The description of the incident
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
 
 ```yaml
 Type: System.String

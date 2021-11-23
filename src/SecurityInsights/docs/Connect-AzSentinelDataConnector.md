@@ -21,20 +21,6 @@ Connect-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Worksp
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Connect
-```
-Connect-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- -ConnectBody <IDataConnectorConnectBody> [-OperationalInsightsResourceProvider <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ConnectViaIdentity
-```
-Connect-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- -ConnectBody <IDataConnectorConnectBody> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ConnectViaIdentityExpanded
 ```
 Connect-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-ApiKey <String>]
@@ -73,7 +59,7 @@ The API key of the audit server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -88,7 +74,7 @@ The authorization code used in OAuth 2.0 code flow to issue a token.
 
 ```yaml
 Type: System.String
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -103,7 +89,7 @@ The client id of the OAuth 2.0 application.
 
 ```yaml
 Type: System.String
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,29 +104,13 @@ The client secret of the OAuth 2.0 application.
 
 ```yaml
 Type: System.String
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectBody
-Represents Codeless API Polling data connector.
-To construct, see NOTES section for CONNECTBODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnectorConnectBody
-Parameter Sets: Connect, ConnectViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -164,7 +134,7 @@ Connector ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Connect, ConnectExpanded
+Parameter Sets: ConnectExpanded
 Aliases: DataConnectorId
 
 Required: True
@@ -180,7 +150,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: ConnectViaIdentity, ConnectViaIdentityExpanded
+Parameter Sets: ConnectViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -195,7 +165,7 @@ The authentication kind used to poll the data
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.ConnectAuthKind
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,7 +180,7 @@ The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 
 ```yaml
 Type: System.String
-Parameter Sets: Connect, ConnectExpanded
+Parameter Sets: ConnectExpanded
 Aliases:
 
 Required: False
@@ -240,7 +210,7 @@ The user password in the audit log server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -255,7 +225,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAny[]
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -271,7 +241,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Connect, ConnectExpanded
+Parameter Sets: ConnectExpanded
 Aliases:
 
 Required: True
@@ -286,7 +256,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Connect, ConnectExpanded
+Parameter Sets: ConnectExpanded
 Aliases:
 
 Required: False
@@ -301,7 +271,7 @@ The user name in the audit log server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ConnectExpanded, ConnectViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -316,7 +286,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Connect, ConnectExpanded
+Parameter Sets: ConnectExpanded
 Aliases:
 
 Required: True
@@ -362,8 +332,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnectorConnectBody
-
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
@@ -378,16 +346,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CONNECTBODY <IDataConnectorConnectBody>: Represents Codeless API Polling data connector.
-  - `[ApiKey <String>]`: The API key of the audit server.
-  - `[AuthorizationCode <String>]`: The authorization code used in OAuth 2.0 code flow to issue a token.
-  - `[ClientId <String>]`: The client id of the OAuth 2.0 application.
-  - `[ClientSecret <String>]`: The client secret of the OAuth 2.0 application.
-  - `[Kind <ConnectAuthKind?>]`: The authentication kind used to poll the data
-  - `[Password <String>]`: The user password in the audit log server.
-  - `[RequestConfigUserInputValue <IAny[]>]`: 
-  - `[UserName <String>]`: The user name in the audit log server.
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID

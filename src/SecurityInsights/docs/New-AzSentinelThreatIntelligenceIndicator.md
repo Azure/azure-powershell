@@ -17,7 +17,7 @@ Update a threat Intelligence indicator.
 New-AzSentinelThreatIntelligenceIndicator -ResourceGroupName <String> -WorkspaceName <String>
  [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Confidence <Int32>]
  [-Created <String>] [-CreatedByRef <String>] [-Defanged] [-Description <String>] [-DisplayName <String>]
- [-Etag <String>] [-Extension <Hashtable>] [-ExternalId <String>] [-ExternalLastUpdatedTimeUtc <String>]
+ [-Extension <Hashtable>] [-ExternalId <String>] [-ExternalLastUpdatedTimeUtc <String>]
  [-ExternalReference <IThreatIntelligenceExternalReference[]>]
  [-GranularMarking <IThreatIntelligenceGranularMarkingModel[]>] [-IndicatorType <String[]>]
  [-KillChainPhase <IThreatIntelligenceKillChainPhase[]>] [-Label <String[]>] [-Language <String>]
@@ -153,21 +153,6 @@ Accept wildcard characters: False
 
 ### -DisplayName
 Display name of a threat intelligence entity
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
 
 ```yaml
 Type: System.String

@@ -13,13 +13,14 @@ Creates or updates the bookmark.
 ## SYNTAX
 
 ```
-New-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -DisplayName <String>
- -EventTime <DateTime> -Query <String> [-OperationalInsightsResourceProvider <String>]
- [-SubscriptionId <String>] [-Created <DateTime>] [-CreatedByObjectId <String>] [-Etag <String>]
+New-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Created <DateTime>]
+ [-CreatedByObjectId <String>] [-DisplayName <String>] [-EventTime <DateTime>]
  [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
  [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
- [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>] [-Updated <DateTime>]
- [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
+ [-Updated <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,21 +94,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -123,7 +109,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -258,7 +244,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

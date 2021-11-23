@@ -270,6 +270,10 @@ directive:
       verb: Update
       subject: Setting
     hide: true
+  # Hide Etag as it isnt used
+  - where:
+      parameter-name: Etag
+    hide: true
   # Remove the unexpanded parameter set
   - where:
       variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$

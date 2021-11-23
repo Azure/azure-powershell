@@ -401,7 +401,7 @@ Function Create-IncidentRelation{
         [Parameter(Mandatory = $true, Position = 1)]
         [string]$WorkspaceName
     )
-    $incidentRelationName = $PSVerb+"incidentRelation"+ (RandomString -allChars $false -len 6)
+    $incidentRelationName = $PSVerb+"incidentRelationName"+ (RandomString -allChars $false -len 6)
     $incidentRelationId = (New-Guid).Guid
     $incidentRelationIncidentName = $PSVerb+"incidentRelationIncidentName"+ (RandomString -allChars $false -len 6)
     $incidentRelationIncidentId = (New-Guid).Guid
@@ -422,12 +422,12 @@ Function Create-IncidentRelation{
     #Bug due to bookmark
     $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incidentRelation") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
-        $null = $env.Add((PSVerb+'incidentRelationName'), $incidentRelationName)
-        $null = $env.Add((PSVerb+'incidentRelationId'), $incidentRelationId)
-        $null = $env.Add((PSVerb+'incidentRelationIncidentId'), $incidentRelationIncidentId)
-        $null = $env.Add((PSVerb+'incidentRelationIncidentName'), $incidentRelationIncidentName)
-        $null = $env.Add((PSVerb+'incidentRelationBookmarkId'), $incidentRelationBookmarkId)
-        $null = $env.Add((PSVerb+'incidentRelationBookmarkName'), $incidentRelationBookmarkName)
+        $null = $env.Add(($PSVerb+'incidentRelationName'), $incidentRelationName)
+        $null = $env.Add(($PSVerb+'incidentRelationId'), $incidentRelationId)
+        $null = $env.Add(($PSVerb+'incidentRelationIncidentId'), $incidentRelationIncidentId)
+        $null = $env.Add(($PSVerb+'incidentRelationIncidentName'), $incidentRelationIncidentName)
+        $null = $env.Add(($PSVerb+'incidentRelationBookmarkId'), $incidentRelationBookmarkId)
+        $null = $env.Add(($PSVerb+'incidentRelationBookmarkName'), $incidentRelationBookmarkName)
     }
 }
 

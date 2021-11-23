@@ -16,7 +16,7 @@ Creates or updates the incident comment.
 ```
 Update-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGroupName <String>
  -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-Etag <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -28,7 +28,7 @@ Update-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGrou
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Etag <String>] [-Message <String>]
+Update-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Message <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -64,21 +64,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named

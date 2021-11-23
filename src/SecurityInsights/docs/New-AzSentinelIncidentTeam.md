@@ -24,23 +24,15 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an Incident Teams Room
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
+PS C:\> New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a Teams group for the Incident.
 
 ## PARAMETERS
 

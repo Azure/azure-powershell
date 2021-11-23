@@ -16,8 +16,7 @@ Creates the bookmark relation.
 ```
 Update-AzSentinelBookmarkRelation -BookmarkId <String> -RelationName <String> -ResourceGroupName <String>
  -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-Etag <String>] [-RelatedResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RelatedResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -29,8 +28,8 @@ Update-AzSentinelBookmarkRelation -BookmarkId <String> -RelationName <String> -R
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSentinelBookmarkRelation -InputObject <ISecurityInsightsIdentity> [-Etag <String>]
- [-RelatedResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelBookmarkRelation -InputObject <ISecurityInsightsIdentity> [-RelatedResourceId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,21 +79,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named

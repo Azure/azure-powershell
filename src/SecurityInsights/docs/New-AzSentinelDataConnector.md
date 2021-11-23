@@ -60,6 +60,21 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### GenericUI
+```
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String>
+ -AvailabilityIsPreview <Boolean> -ConnectorUiConfigConnectivityCriterion <ConnectivityCriteria[]>
+ -ConnectorUiConfigDataType <LastDataReceivedDataType[]> -ConnectorUiConfigDescriptionMarkdown <String>
+ -ConnectorUiConfigGraphQueriesTableName <String> -ConnectorUiConfigGraphQuery <GraphQueries[]>
+ -ConnectorUiConfigInstructionStep <InstructionSteps[]> -ConnectorUiConfigPublisher <String>
+ -ConnectorUiConfigSampleQuery <SampleQueries[]> -ConnectorUiConfigTitle <String> -Kind <DataConnectorKind>
+ [-DataConnectorId <String>] [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
+ [-AvailabilityStatus <Int32>] [-ConnectorUiConfigCustomImage <String>]
+ [-PermissionCustom <PermissionsCustomsItem[]>]
+ [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### MicrosoftCloudAppSecurity
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
@@ -110,6 +125,14 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
  [<CommonParameters>]
 ```
 
+### OfficeIRM
+```
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
+ [-DataConnectorId <String>] [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
+ [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### ThreatIntelligence
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
@@ -133,32 +156,23 @@ Creates or updates the data connector.
 
 ## EXAMPLES
 
-### Example 1: Create a Data Connector
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzSentinelDataConnector -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-This command creates a Data Connector for a Microsoft Defender for Cloud subscription.
+{{ Add description here }}
 
-### Example 2: Create a Data Connector
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> New-AzSentinelDataConnector -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-This command creates a Data Connector for Microsoft Defender for Cloud Apps.
-
-### Example 3: Create a Data Connector
-```powershell
-PS C:\> New-AzSentinelDataConnector -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind MicrosoftThreatIntelligence -BingSafetyPhishingURL "Enabled" -BingSafetyPhishingUrlLookbackPeriod "All" -MicrosoftEmergingThreatFeed "Enabled" -MicrosoftEmergingThreatFeedLookbackPeriod "All"
-
-{{ Add output here }}
-```
-
-This command creates a Data Connector for Microsoft Threat Intelligence Feed.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -167,7 +181,7 @@ This command creates a Data Connector for Microsoft Threat Intelligence Feed.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, AzureSecurityCenter, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, OfficeATP
+Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, AzureSecurityCenter, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, OfficeATP, OfficeIRM
 Aliases:
 
 Required: False
@@ -218,6 +232,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityIsPreview
+
+
+```yaml
+Type: System.Boolean
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityStatus
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: GenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -297,6 +341,156 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConnectorUiConfigConnectivityCriterion
+To construct, see NOTES section for CONNECTORUICONFIGCONNECTIVITYCRITERION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigCustomImage
+
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigDataType
+To construct, see NOTES section for CONNECTORUICONFIGDATATYPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigDescriptionMarkdown
+
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigGraphQueriesTableName
+
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigGraphQuery
+To construct, see NOTES section for CONNECTORUICONFIGGRAPHQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigInstructionStep
+To construct, see NOTES section for CONNECTORUICONFIGINSTRUCTIONSTEP properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigPublisher
+
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigSampleQuery
+To construct, see NOTES section for CONNECTORUICONFIGSAMPLEQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigTitle
+
+
+```yaml
+Type: System.String
+Parameter Sets: GenericUI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataConnectorId
 The Id of the Data Connector.
 
@@ -313,8 +507,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-[Parameter(ParameterSetName = 'GenericUI', Mandatory)]
- The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -523,6 +716,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PermissionCustom
+To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermissionResourceProvider
+To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]
+Parameter Sets: GenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PollingFrequency
 
 
@@ -634,7 +857,7 @@ The TenantId.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, Dynamics365, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, MicrosoftThreatIntelligence, MicrosoftThreatProtection, Office365, OfficeATP, ThreatIntelligence, ThreatIntelligenceTaxii
+Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, Dynamics365, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, MicrosoftThreatIntelligence, MicrosoftThreatProtection, Office365, OfficeATP, OfficeIRM, ThreatIntelligence, ThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -732,6 +955,49 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+CONNECTORUICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
+  - `[Type <ConnectivityType?>]`: type of connectivity
+  - `[Value <String[]>]`: Queries for checking connectivity
+
+CONNECTORUICONFIGDATATYPE <LastDataReceivedDataType[]>: 
+  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
+  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
+
+CONNECTORUICONFIGGRAPHQUERY <GraphQueries[]>: 
+  - `[BaseQuery <String>]`: The base query for the graph
+  - `[Legend <String>]`: The legend for the graph
+  - `[MetricName <String>]`: the metric that the query is checking
+
+CONNECTORUICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
+  - `[Description <String>]`: Instruction step description
+  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
+    - `Type <SettingType>`: The kind of the setting
+    - `[Parameter <IAny>]`: The parameters for the setting
+  - `[Title <String>]`: Instruction step title
+
+CONNECTORUICONFIGSAMPLEQUERY <SampleQueries[]>: 
+  - `[Description <String>]`: The sample query description
+  - `[Query <String>]`: the sample query
+
+PERMISSIONCUSTOM <PermissionsCustomsItem[]>: 
+  - `[Description <String>]`: Customs permissions description
+  - `[Name <String>]`: Customs permissions name
+
+PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: 
+  - `[PermissionsDisplayText <String>]`: Permission description text
+  - `[Provider <ProviderName?>]`: Provider name
+  - `[ProviderDisplayName <String>]`: Permission provider display name
+  - `[RequiredPermissionAction <Boolean?>]`: action permission
+  - `[RequiredPermissionDelete <Boolean?>]`: delete permission
+  - `[RequiredPermissionRead <Boolean?>]`: read permission
+  - `[RequiredPermissionWrite <Boolean?>]`: write permission
+  - `[Scope <PermissionProviderScope?>]`: Permission provider scope
 
 ## RELATED LINKS
 

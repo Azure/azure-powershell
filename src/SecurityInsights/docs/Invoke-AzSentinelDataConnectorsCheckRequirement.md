@@ -76,7 +76,7 @@ Invoke-AzSentinelDataConnectorsCheckRequirement -ResourceGroupName <String> -Wor
  [<CommonParameters>]
 ```
 
-### Office365
+### OfficeATP
 ```
 Invoke-AzSentinelDataConnectorsCheckRequirement -ResourceGroupName <String> -WorkspaceName <String>
  -Kind <DataConnectorKind> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
@@ -84,7 +84,7 @@ Invoke-AzSentinelDataConnectorsCheckRequirement -ResourceGroupName <String> -Wor
  [<CommonParameters>]
 ```
 
-### OfficeATP
+### OfficeIRM
 ```
 Invoke-AzSentinelDataConnectorsCheckRequirement -ResourceGroupName <String> -WorkspaceName <String>
  -Kind <DataConnectorKind> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
@@ -262,7 +262,7 @@ The TenantId.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, Dynamics365, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, MicrosoftThreatIntelligence, MicrosoftThreatProtection, Office365, OfficeATP, ThreatIntelligence, ThreatIntelligenceTaxii
+Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, Dynamics365, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, MicrosoftThreatIntelligence, MicrosoftThreatProtection, OfficeATP, OfficeIRM, ThreatIntelligence, ThreatIntelligenceTaxii
 Aliases:
 
 Required: False

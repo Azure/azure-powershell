@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
+ 
 <#
 .Synopsis
 Creates or updates the data connector.
@@ -76,6 +76,7 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'MicrosoftThreatProtection')]
         [Parameter(ParameterSetName = 'Office365')]
         [Parameter(ParameterSetName = 'OfficeATP')]
+        [Parameter(ParameterSetName = 'OfficeIRM')]
         [Parameter(ParameterSetName = 'ThreatIntelligence')]
         [Parameter(ParameterSetName = 'ThreatIntelligenceTaxii')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -96,6 +97,7 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'MicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'MicrosoftDefenderAdvancedThreatProtection')]
         [Parameter(ParameterSetName = 'OfficeATP')]
+        [Parameter(ParameterSetName = 'OfficeIRM')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
@@ -232,7 +234,90 @@ function New-AzSentinelDataConnector {
         [System.String]
         ${DetinationTable},
 
-        #[Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${ConnectorUiConfigTitle},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${ConnectorUiConfigPublisher},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${ConnectorUiConfigDescriptionMarkdown},
+
+        [Parameter(ParameterSetName = 'GenericUI')]
+        #[Parameter(ParameterSetName = 'APIPolling')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${ConnectorUiConfigCustomImage},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${ConnectorUiConfigGraphQueriesTableName},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]]
+        ${ConnectorUiConfigGraphQuery},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]]
+        ${ConnectorUiConfigSampleQuery},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]]
+        ${ConnectorUiConfigDataType},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]]
+        ${ConnectorUiConfigConnectivityCriterion},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Bool]
+        ${AvailabilityIsPreview},
+
+        [Parameter(ParameterSetName = 'GenericUI')]
+        #[Parameter(ParameterSetName = 'APIPolling')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 1)]
+        [Int]
+        ${AvailabilityStatus},
+
+        [Parameter(ParameterSetName = 'GenericUI')]
+        #[Parameter(ParameterSetName = 'APIPolling')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]] 
+        ${PermissionResourceProvider},
+
+        [Parameter(ParameterSetName = 'GenericUI')]
+        #[Parameter(ParameterSetName = 'APIPolling')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]]
+        ${PermissionCustom},
+
+        [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]]
+        ${ConnectorUiConfigInstructionStep},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -450,7 +535,18 @@ function New-AzSentinelDataConnector {
                 $null = $PSBoundParameters.Remove('TenantId')
                 
                 If($PSBoundParameters['Alerts']){
-                    $DataConnector.AlertState = $PSBoundParameters['Teams']
+                    $DataConnector.AlertState = $PSBoundParameters['Alerts']
+                    $null = $PSBoundParameters.Remove('Alerts')
+                }
+            }
+            if($PSBoundParameters['Kind'] -eq 'OfficeIRM'){
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeIrmDataConnector]::new()
+                
+                $DataConnector.TenantId = $PSBoundParameters['TenantId']
+                $null = $PSBoundParameters.Remove('TenantId')
+                
+                If($PSBoundParameters['Alerts']){
+                    $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
             }
@@ -548,7 +644,63 @@ function New-AzSentinelDataConnector {
                 $DataConnector.DestinationTable = $PSBoundParameters['DetinationTable']
                 $null = $PSBoundParameters.Remove('DetinationTable')
             }
-            #if($PSBoundParameters['Kind'] -eq 'GenericUI'){ }
+            if($PSBoundParameters['Kind'] -eq 'GenericUI'){
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CodelessUiDataConnector]::new()
+                
+                $DataConnector.ConnectorUiConfigTitle = $PSBoundParameters['ConnectorUiConfigTitle']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigTitle')
+
+                $DataConnector.ConnectorUiConfigPublisher = $PSBoundParameters['ConnectorUiConfigPublisher']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigPublisher')
+
+                $DataConnector.ConnectorUiConfigDescriptionMarkdown = $PSBoundParameters['ConnectorUiConfigDescriptionMarkdown']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigDescriptionMarkdown')
+
+                If($PSBoundParameters['Logs']){
+                    $DataConnector.ConnectorUiConfigCustomImage = $PSBoundParameters['ConnectorUiConfigCustomImage']
+                    $null = $PSBoundParameters.Remove('ConnectorUiConfigCustomImage')
+                }
+
+                $DataConnector.ConnectorUiConfigGraphQueriesTableName = $PSBoundParameters['ConnectorUiConfigGraphQueriesTableName']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigGraphQueriesTableName')
+
+                $DataConnector.ConnectorUiConfigGraphQuery = $PSBoundParameters['ConnectorUiConfigGraphQuery']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigGraphQuery')
+
+                $DataConnector.ConnectorUiConfigSampleQuery = $PSBoundParameters['ConnectorUiConfigSampleQuery']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigSampleQuery')
+        
+                $DataConnector.ConnectorUiConfigDataType = $PSBoundParameters['ConnectorUiConfigDataType']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigDataType')
+
+                $DataConnector.ConnectorUiConfigConnectivityCriterion = $PSBoundParameters['ConnectorUiConfigConnectivityCriterion']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigConnectivityCriterion')
+
+                $DataConnector.AvailabilityIsPreview = $PSBoundParameters['AvailabilityIsPreview']
+                $null = $PSBoundParameters.Remove('AvailabilityIsPreview')
+
+                If($PSBoundParameters['AvailabilityStatus']){
+                    $DataConnector.AvailabilityStatus = $PSBoundParameters['AvailabilityStatus']
+                    $null = $PSBoundParameters.Remove('AvailabilityStatus')
+                }
+
+                If($PSBoundParameters['PermissionResourceProvider']){
+                    $DataConnector.AvailabilityStatus = $PSBoundParameters['PermissionResourceProvider']
+                    $null = $PSBoundParameters.Remove('PermissionResourceProvider')
+                }
+                ElseIf($PSBoundParameters['PermissionCustom']){
+                    $DataConnector.AvailabilityStatus = $PSBoundParameters['PermissionCustom']
+                    $null = $PSBoundParameters.Remove('PermissionCustom')
+                }
+                Else {
+                    Write-Host -ForegroundColor Red "You must provide either a Resource Provider Permission or Custom Permissions"
+                    break
+                }
+
+                $DataConnector.ConnectorUiConfigInstructionStep = $PSBoundParameters['ConnectorUiConfigInstructionStep']
+                $null = $PSBoundParameters.Remove('ConnectorUiConfigInstructionStep')
+
+            }
     
             $DataConnector.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')

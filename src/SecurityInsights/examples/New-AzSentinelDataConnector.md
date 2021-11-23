@@ -1,27 +1,18 @@
-### Example 1: Create a Data Connector
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzSentinelDataConnector -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-This command creates a Data Connector for a Microsoft Defender for Cloud subscription.
+{{ Add description here }}
 
-### Example 2: Create a Data Connector
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> New-AzSentinelDataConnector -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-This command creates a Data Connector for Microsoft Defender for Cloud Apps.
-
-### Example 3: Create a Data Connector
-```powershell
-PS C:\> New-AzSentinelDataConnector -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind MicrosoftThreatIntelligence -BingSafetyPhishingURL "Enabled" -BingSafetyPhishingUrlLookbackPeriod "All" -MicrosoftEmergingThreatFeed "Enabled" -MicrosoftEmergingThreatFeedLookbackPeriod "All"
-
-{{ Add output here }}
-```
-
-This command creates a Data Connector for Microsoft Threat Intelligence Feed.
+{{ Add description here }}
 

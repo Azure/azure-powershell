@@ -128,46 +128,46 @@ function setupEnv() {
     Create-AlertRuleAction -PSVerb Update -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
     Create-AlertRuleAction -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
     
-    #Need Az CLI to get enterprise application object id
-    Write-Host "Get Service Principal"
-    $ClientID = '1950a258-227b-4e31-a9cf-717495945fc2'
-    $Resource = "74658136-14ec-4630-ad9b-26e160ff0fc6"
-    $uri = "https://login.microsoftonline.com/"+$env.Tenant+"/oauth2/devicecode"
-    $DeviceCodeRequestParams = @{
-        Method = 'POST'
-        Uri    = $uri
-        Body   = @{
-            client_id = $ClientId
-            resource  = $Resource
-        }
-    }
-    $DeviceCodeRequest = Invoke-RestMethod @DeviceCodeRequestParams
-    Write-Host $DeviceCodeRequest.message -ForegroundColor Yellow
-    write-host "after login...."
-    pause
-    $uri = "https://login.microsoftonline.com/"+$env.Tenant+"/oauth2/token"
-    $TokenRequestParams = @{
-        Method = 'POST'
-        Uri    = $uri
-        Body   = @{
-            grant_type = "urn:ietf:params:oauth:grant-type:device_code"
-            code       = $DeviceCodeRequest.device_code
-            client_id  = $ClientId
-        }
-    }
-    $TokenRequest = Invoke-RestMethod @TokenRequestParams
-    $appToken = $TokenRequest.access_token
+    #Service Principal needs to be in constants.json.
+    #Write-Host "Get Service Principal"
+    #$ClientID = '1950a258-227b-4e31-a9cf-717495945fc2'
+    #$Resource = "74658136-14ec-4630-ad9b-26e160ff0fc6"
+    #$uri = "https://login.microsoftonline.com/"+$env.Tenant+"/oauth2/devicecode"
+    #$DeviceCodeRequestParams = @{
+    #    Method = 'POST'
+    #    Uri    = $uri
+    #    Body   = @{
+    #        client_id = $ClientId
+    #        resource  = $Resource
+    #    }
+    #}
+    #$DeviceCodeRequest = Invoke-RestMethod @DeviceCodeRequestParams
+    #Write-Host $DeviceCodeRequest.message -ForegroundColor Yellow
+    #write-host "You need to go login with the data above. script will continue in "
+    #start-sleep -Seconds 120
+    #$uri = "https://login.microsoftonline.com/"+$env.Tenant+"/oauth2/token"
+    #$TokenRequestParams = @{
+    #    Method = 'POST'
+    #    Uri    = $uri
+    #    Body   = @{
+    #        grant_type = "urn:ietf:params:oauth:grant-type:device_code"
+    #        code       = $DeviceCodeRequest.device_code
+    #        client_id  = $ClientId
+    #    }
+    #}
+    #$TokenRequest = Invoke-RestMethod @TokenRequestParams
+    #$appToken = $TokenRequest.access_token
 
-    $header = @{
-    'Authorization' = 'Bearer ' + $appToken
-    'X-Requested-With'= 'XMLHttpRequest'
-    'x-ms-client-request-id'= [guid]::NewGuid()
-    'x-ms-correlation-id' = [guid]::NewGuid()
-    }
-    $body = @{"accountEnabled"=$null;"isAppVisible"=$null;"appListQuery"=1;"searchText"="Azure Security Insights";"top"=50;"loadLogo"=$false;"putCachedLogoUrlOnly"=$true;"nextLink"="";"usedFirstPartyAppIds"=$null;"__ko_mapping__"=@{"ignore"=@();"include"=@("_destroy");"copy"=@();"observe"=@();"mappedProperties"=@{"accountEnabled"=$true;"isAppVisible"=$true;"appListQuery"=$true;"searchText"=$true;"top"=$true;"loadLogo"=$true;"putCachedLogoUrlOnly"=$true;"nextLink"=$true;"usedFirstPartyAppIds"=$true};"copiedProperties"=@()}}
-    $url = "https://main.iam.ad.ext.azure.com/api/ManagedApplications/List"
-    $res = Invoke-RestMethod -Uri $url -Headers $header -Method POST -body ($body | convertto-Json) -ErrorAction Stop -ContentType "application/json"
-    $null = $env.Add('ASIServicePrinicpal', ($res.appList[0].objectId))
+    #$header = @{
+    #'Authorization' = 'Bearer ' + $appToken
+    #'X-Requested-With'= 'XMLHttpRequest'
+    #'x-ms-client-request-id'= [guid]::NewGuid()
+    #'x-ms-correlation-id' = [guid]::NewGuid()
+    #}
+    #$body = @{"accountEnabled"=$null;"isAppVisible"=$null;"appListQuery"=1;"searchText"="Azure Security Insights";"top"=50;"loadLogo"=$false;"putCachedLogoUrlOnly"=$true;"nextLink"="";"usedFirstPartyAppIds"=$null;"__ko_mapping__"=@{"ignore"=@();"include"=@("_destroy");"copy"=@();"observe"=@();"mappedProperties"=@{"accountEnabled"=$true;"isAppVisible"=$true;"appListQuery"=$true;"searchText"=$true;"top"=$true;"loadLogo"=$true;"putCachedLogoUrlOnly"=$true;"nextLink"=$true;"usedFirstPartyAppIds"=$true};"copiedProperties"=@()}}
+    #$url = "https://main.iam.ad.ext.azure.com/api/ManagedApplications/List"
+    #$res = Invoke-RestMethod -Uri $url -Headers $header -Method POST -body ($body | convertto-Json) -ErrorAction Stop -ContentType "application/json"
+    #$null = $env.Add('ASIServicePrinicpal', ($res.appList[0].objectId))
     
     Write-Host "Deploy authorization to allow automation rules"
     $authorizationParams = Get-Content .\test\deployment-templates\authorization\template.parameters.json | ConvertFrom-Json
@@ -296,18 +296,18 @@ function setupEnv() {
     #SourceControl
     #SourceControlRepository
     #need to talk to the team.
-    Write-Host "Start to create test source control"
+    #Write-Host "Start to create test source control"
     #Create-SourceControl -PSVerb Get -WorkspaceName $env.workspaceName -Url "https://github.com/dicolanl/gettest"
     #Create-SourceControl -PSVerb Remove -WorkspaceName $env.workspaceName -Url "https://github.com/dicolanl/removetest"
     #Create-SourceControl -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -Url "https://github.com/dicolanl/removeviaidtest"
     
     #ThreatIntelligeneceIndicator
     Write-Host "Start to create test threat intelligence indicator"
-    Create-ThreatIntelligenceIndicator -PSVerb Get -WorkspaceName $env.workspaceName -IP "8.8.8.1"
-    Create-ThreatIntelligenceIndicator -PSVerb Remove -WorkspaceName $env.workspaceName -IP "8.8.8.2"
-    Create-ThreatIntelligenceIndicator -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -IP "8.8.8.3"
-    Create-ThreatIntelligenceIndicator -PSVerb Update -WorkspaceName $env.workspaceName -IP "8.8.8.4"
-    Create-ThreatIntelligenceIndicator -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -IP "8.8.8.5"
+    #Create-ThreatIntelligenceIndicator -PSVerb Get -WorkspaceName $env.workspaceName -IP "8.8.8.1"
+    #Create-ThreatIntelligenceIndicator -PSVerb Remove -WorkspaceName $env.workspaceName -IP "8.8.8.2"
+    #Create-ThreatIntelligenceIndicator -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -IP "8.8.8.3"
+    #Create-ThreatIntelligenceIndicator -PSVerb Update -WorkspaceName $env.workspaceName -IP "8.8.8.4"
+    #Create-ThreatIntelligenceIndicator -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -IP "8.8.8.5"
 
     #ThreatIntelligeneceIndicatorMetric
     #nothing to create

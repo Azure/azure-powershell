@@ -14,9 +14,9 @@ Creates or updates the action of alert rule.
 
 ```
 New-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleId <String>
- -WorkspaceName <String> -LogicAppResourceId <String> -TriggerUri <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Etag <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
+ [-LogicAppResourceId <String>] [-TriggerUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,21 +52,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Etag
-Etag of the azure resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Id
 Action ID
 
@@ -90,7 +75,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +151,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -19,11 +19,11 @@ Update-AzSentinelMetadata -Name <String> -ResourceGroupName <String> -WorkspaceN
  [-AuthorLink <String>] [-AuthorName <String>] [-CategoryDomain <String[]>] [-CategoryVertical <String[]>]
  [-ContentId <String>] [-DependencyContentId <String>] [-DependencyCriterion <IMetadataDependencies[]>]
  [-DependencyKind <Kind>] [-DependencyName <String>] [-DependencyOperator <Operator>]
- [-DependencyVersion <String>] [-Etag <String>] [-FirstPublishDate <DateTime>] [-Kind <Kind>]
- [-LastPublishDate <DateTime>] [-ParentId <String>] [-Provider <String[]>] [-SourceId <String>]
- [-SourceKind <SourceKind>] [-SourceName <String>] [-SupportEmail <String>] [-SupportLink <String>]
- [-SupportName <String>] [-SupportTier <SupportTier>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DependencyVersion <String>] [-FirstPublishDate <DateTime>] [-Kind <Kind>] [-LastPublishDate <DateTime>]
+ [-ParentId <String>] [-Provider <String[]>] [-SourceId <String>] [-SourceKind <SourceKind>]
+ [-SourceName <String>] [-SupportEmail <String>] [-SupportLink <String>] [-SupportName <String>]
+ [-SupportTier <SupportTier>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -39,11 +39,11 @@ Update-AzSentinelMetadata -InputObject <ISecurityInsightsIdentity> [-AuthorEmail
  [-AuthorLink <String>] [-AuthorName <String>] [-CategoryDomain <String[]>] [-CategoryVertical <String[]>]
  [-ContentId <String>] [-DependencyContentId <String>] [-DependencyCriterion <IMetadataDependencies[]>]
  [-DependencyKind <Kind>] [-DependencyName <String>] [-DependencyOperator <Operator>]
- [-DependencyVersion <String>] [-Etag <String>] [-FirstPublishDate <DateTime>] [-Kind <Kind>]
- [-LastPublishDate <DateTime>] [-ParentId <String>] [-Provider <String[]>] [-SourceId <String>]
- [-SourceKind <SourceKind>] [-SourceName <String>] [-SupportEmail <String>] [-SupportLink <String>]
- [-SupportName <String>] [-SupportTier <SupportTier>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DependencyVersion <String>] [-FirstPublishDate <DateTime>] [-Kind <Kind>] [-LastPublishDate <DateTime>]
+ [-ParentId <String>] [-Provider <String[]>] [-SourceId <String>] [-SourceKind <SourceKind>]
+ [-SourceName <String>] [-SupportEmail <String>] [-SupportLink <String>] [-SupportName <String>]
+ [-SupportTier <SupportTier>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -261,21 +261,6 @@ Accept wildcard characters: False
 Version of the the content item we depend on.
 Can be blank, * or missing to indicate any version fulfills the dependency.
 If version does not match our defined numeric format then an exact match is required.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag of the azure resource
 
 ```yaml
 Type: System.String

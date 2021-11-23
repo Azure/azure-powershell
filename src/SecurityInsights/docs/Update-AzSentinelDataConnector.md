@@ -55,6 +55,19 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateGenericUI
+```
+Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-AvailabilityStatus <Int32>]
+ [-ConnectorUiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-ConnectorUiConfigCustomImage <String>]
+ [-ConnectorUiConfigDataType <LastDataReceivedDataType[]>] [-ConnectorUiConfigDescriptionMarkdown <String>]
+ [-ConnectorUiConfigGraphQueriesTableName <String>] [-ConnectorUiConfigGraphQuery <GraphQueries[]>]
+ [-ConnectorUiConfigInstructionStep <InstructionSteps[]>] [-ConnectorUiConfigPublisher <String>]
+ [-ConnectorUiConfigSampleQuery <SampleQueries[]>] [-ConnectorUiConfigTitle <String>]
+ [-PermissionCustom <PermissionsCustomsItem[]>]
+ [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateMicrosoftCloudAppSecurity
 ```
 Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
@@ -97,6 +110,14 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
 Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateOfficeIRM
+```
+Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateThreatIntelligence
@@ -159,6 +180,19 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityGenericUI
+```
+Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-AvailabilityStatus <Int32>]
+ [-ConnectorUiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-ConnectorUiConfigCustomImage <String>]
+ [-ConnectorUiConfigDataType <LastDataReceivedDataType[]>] [-ConnectorUiConfigDescriptionMarkdown <String>]
+ [-ConnectorUiConfigGraphQueriesTableName <String>] [-ConnectorUiConfigGraphQuery <GraphQueries[]>]
+ [-ConnectorUiConfigInstructionStep <InstructionSteps[]>] [-ConnectorUiConfigPublisher <String>]
+ [-ConnectorUiConfigSampleQuery <SampleQueries[]>] [-ConnectorUiConfigTitle <String>]
+ [-PermissionCustom <PermissionsCustomsItem[]>]
+ [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityMicrosoftCloudAppSecurity
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
@@ -203,6 +237,13 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
  [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityOfficeIRM
+```
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityThreatIntelligence
@@ -251,7 +292,7 @@ PS C:\> {{ Add code here }}
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOfficeATP, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOfficeATP
+Parameter Sets: UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOfficeATP, UpdateOfficeIRM, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM
 Aliases:
 
 Required: False
@@ -302,6 +343,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityIsPreview
+
+
+```yaml
+Type: System.Boolean
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityStatus
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -381,13 +452,163 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConnectorUiConfigConnectivityCriterion
+To construct, see NOTES section for CONNECTORUICONFIGCONNECTIVITYCRITERION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigCustomImage
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigDataType
+To construct, see NOTES section for CONNECTORUICONFIGDATATYPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigDescriptionMarkdown
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigGraphQueriesTableName
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigGraphQuery
+To construct, see NOTES section for CONNECTORUICONFIGGRAPHQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigInstructionStep
+To construct, see NOTES section for CONNECTORUICONFIGINSTRUCTIONSTEP properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigPublisher
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigSampleQuery
+To construct, see NOTES section for CONNECTORUICONFIGSAMPLEQUERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorUiConfigTitle
+
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataConnectorId
 [Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
  The Id of the Data Connector.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -398,9 +619,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
-[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
- The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -512,7 +731,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -588,7 +807,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateOfficeIRM, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -604,6 +823,36 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermissionCustom
+To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermissionResourceProvider
+To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]
+Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
 Aliases:
 
 Required: False
@@ -634,7 +883,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -681,7 +930,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -727,7 +976,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -773,7 +1022,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -834,6 +1083,30 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+CONNECTORUICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
+  - `[Type <ConnectivityType?>]`: type of connectivity
+  - `[Value <String[]>]`: Queries for checking connectivity
+
+CONNECTORUICONFIGDATATYPE <LastDataReceivedDataType[]>: 
+  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
+  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
+
+CONNECTORUICONFIGGRAPHQUERY <GraphQueries[]>: 
+  - `[BaseQuery <String>]`: The base query for the graph
+  - `[Legend <String>]`: The legend for the graph
+  - `[MetricName <String>]`: the metric that the query is checking
+
+CONNECTORUICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
+  - `[Description <String>]`: Instruction step description
+  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
+    - `Type <SettingType>`: The kind of the setting
+    - `[Parameter <IAny>]`: The parameters for the setting
+  - `[Title <String>]`: Instruction step title
+
+CONNECTORUICONFIGSAMPLEQUERY <SampleQueries[]>: 
+  - `[Description <String>]`: The sample query description
+  - `[Query <String>]`: the sample query
+
 INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter 
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
@@ -858,6 +1131,20 @@ INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateVi
   - `[SourceControlId <String>]`: Source control Id
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
+
+PERMISSIONCUSTOM <PermissionsCustomsItem[]>: 
+  - `[Description <String>]`: Customs permissions description
+  - `[Name <String>]`: Customs permissions name
+
+PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: 
+  - `[PermissionsDisplayText <String>]`: Permission description text
+  - `[Provider <ProviderName?>]`: Provider name
+  - `[ProviderDisplayName <String>]`: Permission provider display name
+  - `[RequiredPermissionAction <Boolean?>]`: action permission
+  - `[RequiredPermissionDelete <Boolean?>]`: delete permission
+  - `[RequiredPermissionRead <Boolean?>]`: read permission
+  - `[RequiredPermissionWrite <Boolean?>]`: write permission
+  - `[Scope <PermissionProviderScope?>]`: Permission provider scope
 
 ## RELATED LINKS
 
