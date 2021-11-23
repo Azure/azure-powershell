@@ -13,6 +13,16 @@ Microsoft Azure PowerShell: MSGraph cmdlets
 ## Az.Resources Cmdlets
 ### [Add-AzADAppPermission](Add-AzADAppPermission.md)
 Add an API permission.
+The list of available permissions of API is property of application represented by service principal in tenant.
+
+For instance, to get available permissions for Graph API:
+* Azure Active Directory Graph: `Get-AzAdServicePrincipal -ApplicationId 00000002-0000-0000-c000-000000000000`
+* Microsoft Graph: `Get-AzAdServicePrincipal -ApplicationId 00000003-0000-0000-c000-000000000000`
+
+Application permissions under the `appRoles` property correspond to `Role` in `-Type`.
+Delegated permissions under the `oauth2Permissions` property correspond to `Scope` in `-Type`.
+
+User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
 
 ### [Add-AzADGroupMember](Add-AzADGroupMember.md)
 Add member to group.
@@ -40,9 +50,6 @@ List key credentials and password credentials for an service principal.
 
 ### [Get-AzADUser](Get-AzADUser.md)
 List entities from users or get entity from users by key
-
-### [Get-AzAdUserSigned](Get-AzAdUserSigned.md)
-Represents current signed-in user object.
 
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Create key credentials or password credentials for an application.

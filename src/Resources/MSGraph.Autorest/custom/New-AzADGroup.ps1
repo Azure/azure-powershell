@@ -114,7 +114,7 @@ TRANSITIVEMEMBER <IMicrosoftGraphDirectoryObject[]>: .
 TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
   [DeletedDateTime <DateTime?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-AzADgroup
+https://docs.microsoft.com/powershell/module/az.resources/new-azadgroup
 #>
 function New-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]

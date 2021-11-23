@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-AzADapplication
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplication
 #>
 function Remove-AzADApplication {
     [OutputType([System.Boolean])]

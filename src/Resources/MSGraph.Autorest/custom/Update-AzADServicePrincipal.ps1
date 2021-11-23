@@ -156,7 +156,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
 TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
   [DeletedDateTime <DateTime?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-AzADserviceprincipal
+https://docs.microsoft.com/powershell/module/az.resources/update-azadserviceprincipal
 #>
 function Update-AzADServicePrincipal {
   [OutputType([System.Boolean])]

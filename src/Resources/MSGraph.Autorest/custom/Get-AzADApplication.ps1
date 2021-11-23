@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-AzADapplication
+https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]

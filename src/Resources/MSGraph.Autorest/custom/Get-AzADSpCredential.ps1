@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGra
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-AzADspcredential
+https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 
 function Get-AzADSpCredential {

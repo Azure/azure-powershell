@@ -34,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGra
 .Notes
 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-AzADuser
+https://docs.microsoft.com/powershell/module/az.resources/new-azaduser
 #>
 function New-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]

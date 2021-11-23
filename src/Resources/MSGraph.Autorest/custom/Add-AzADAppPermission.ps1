@@ -37,7 +37,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-AzADapppermission
+https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 #>
 
 function Add-AzADAppPermission {

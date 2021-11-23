@@ -24,7 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGra
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-AzADgroupmember
+https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 #>
 
 function Get-AzADGroupMember {

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-AzADapplication
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-AzADgroupmember
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 schema: 2.0.0
 ---
 

@@ -29,7 +29,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-AzADapppermission
+https://docs.microsoft.com/powershell/module/az.resources/get-azadapppermission
 #>
 
 function Get-AzADAppPermission {

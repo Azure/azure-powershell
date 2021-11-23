@@ -28,7 +28,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-AzADapppermission
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermission
 #>
 
 function Remove-AzADAppPermission {

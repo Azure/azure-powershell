@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-AzADserviceprincipal
+https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 #>
 function Get-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]

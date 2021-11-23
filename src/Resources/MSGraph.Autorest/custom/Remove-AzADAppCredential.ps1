@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGra
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/Remove-AzADappcredential
+https://docs.microsoft.com/powershell/module/az.resources/Remove-azadappcredential
 #>
 
 function Remove-AzADAppCredential {

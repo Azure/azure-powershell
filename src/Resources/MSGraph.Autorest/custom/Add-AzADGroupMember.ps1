@@ -25,7 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGra
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-AzADgroupmember
+https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzADGroupMember {
     [OutputType([System.Boolean])]
