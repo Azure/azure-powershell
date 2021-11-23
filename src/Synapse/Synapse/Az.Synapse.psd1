@@ -225,12 +225,6 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'New-AzSynapseSparkConfiguration',
                'Export-AzSynapseSparkConfiguration',
                'Remove-AzSynapseSparkConfiguration',
-               'New-AzSynapseLinkedServiceEncryptedCredential',
-               'Get-AzSynapseDataFlowDebugSession',
-               'Add-AzSynapseDataFlowDebugSessionPackage',
-               'Invoke-AzSynapseDataFlowDebugSessionCommand',
-               'Stop-AzSynapseDataFlowDebugSession',
-               'Start-AzSynapseDataFlowDebugSession',
                'New-AzSynapseKqlScript', 'Get-AzSynapseKqlScript',
                'Remove-AzSynapseKqlScript', 'Export-AzSynapseKqlScript'
 
@@ -256,7 +250,6 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                'Import-AzSynapseSqlScript',
                'Set-AzSynapseSparkConfiguration',
                'Import-AzSynapseSparkConfiguration',
-               'Set-AzSynapseManagedPrivateEndpoint', 
                'Set-AzSynapseKqlScript', 'Import-AzSynapseKqlScript'
 
 # DSC resources to export from this module

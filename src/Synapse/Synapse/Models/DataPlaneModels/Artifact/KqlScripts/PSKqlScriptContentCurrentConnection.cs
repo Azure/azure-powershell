@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSKqlScriptContentCurrentConnection(KqlScriptContentCurrentConnection kqlScriptContentCurrentConnection)
         {
-            this.Name = kqlScriptContentCurrentConnection?.Name;
-            this.Type = kqlScriptContentCurrentConnection?.Type;
+            this.KustoPoolName = kqlScriptContentCurrentConnection?.PoolName;
+            this.KustoDatabaseName = kqlScriptContentCurrentConnection?.DatabaseName;
         }
 
-        public string Name { get; set; }
+        public string KustoPoolName { get; set; }
 
-        public string Type { get; set; }
+        public string KustoDatabaseName { get; set; }
 
     }
 }
