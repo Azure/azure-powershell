@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Commands.Aks
         private ManagedClusterAADProfile GetAadProfile()
         {
             if (string.IsNullOrEmpty(AadProfileClientAppId) && string.IsNullOrEmpty(AadProfileServerAppId) &&
-                this.IsParameterBound(c => c.AadProfileServerAppSecret) && string.IsNullOrEmpty(AadProfileTenantId))
+                !this.IsParameterBound(c => c.AadProfileServerAppSecret) && string.IsNullOrEmpty(AadProfileTenantId))
             {
                 return null;
             }
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 aadProfile.ServerAppID = AadProfileServerAppId;
             }
-            if (!this.IsParameterBound(c => c.AadProfileServerAppSecret))
+            if (this.IsParameterBound(c => c.AadProfileServerAppSecret))
             {
                 aadProfile.ServerAppSecret = AadProfileServerAppSecret.ToString();
             }
