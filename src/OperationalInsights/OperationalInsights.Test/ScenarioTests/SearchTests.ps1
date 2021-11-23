@@ -59,7 +59,7 @@ function Test-SearchGetSchema
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data sources
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 	$schema = Get-AzOperationalInsightsSchema -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-NotNull $schema
 	Assert-NotNull $schema.Metadata
@@ -83,7 +83,7 @@ function Test-SearchGetSavedSearchesAndResults
     try
 	{
 		# Create a workspace to house the data sources
-		$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+		$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 
 		$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	

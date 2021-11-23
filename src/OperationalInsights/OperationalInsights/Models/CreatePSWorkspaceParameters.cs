@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public Guid? CustomerId { get; set; }
 
-        public string Sku { get; set; }
+        public PSWorkspaceSku Sku { get; set; }
 
         public bool Force { get; set; }
 
@@ -34,6 +35,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string PublicNetworkAccessForIngestion { get; set; }
 
         public string PublicNetworkAccessForQuery { get; set; }
+
+        public PSWorkspaceFeatures WsFeatures { get; set; }
+
+        public bool? ForceCmkForQuery { get; set; }
 
         public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
