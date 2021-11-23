@@ -26,22 +26,32 @@ Add-AzADAppPermission -ApiId <Guid> -ApplicationId <Guid> -PermissionId <String>
 
 ## DESCRIPTION
 Add an API permission.
+The list of available permissions of API is property of application represented by service principal in tenant.
+
+For instance, to get available permissions for Graph API:
+* Azure Active Directory Graph: `Get-AzAdServicePrincipal -ApplicationId 00000002-0000-0000-c000-000000000000`
+* Microsoft Graph: `Get-AzAdServicePrincipal -ApplicationId 00000003-0000-0000-c000-000000000000`
+
+Application permissions under the `appRoles` property correspond to `Role` in `-Type`.
+Delegated permissions under the `oauth2Permissions` property correspond to `Scope` in `-Type`.
+
+User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Add API Permission
 ```powershell
-{{ Add code here }}
+PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 ```
 
-{{ Add output here }}
+Add delegated permission "Group.Read.All" of Microsoft Graph API to AD Application (9cc74d5e-1162-4b90-8696-65f3d6a3f7d0)
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Add API Permission
 ```powershell
-{{ Add code here }}
+PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
 ```
 
-{{ Add output here }}
+Add application permission "Device.ReadWrite.All" of Microsoft Graph API to AD Application (9cc74d5e-1162-4b90-8696-65f3d6a3f7d0)
 
 ## PARAMETERS
 
@@ -122,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Specifies whether the id property references an oauth2PermissionScopes or an appRole.
+Specifies whether the id property references an oauth2PermissionScopes(Scope, delegated permission) or an appRole(Role, application permission).
 
 ```yaml
 Type: System.String

@@ -15,7 +15,16 @@
 .Synopsis
 Add an API permission.
 .Description
-Add an API permission.
+Add an API permission. The list of available permissions of API is property of application represented by service principal in tenant.
+
+For instance, to get available permissions for Graph API:
+* Azure Active Directory Graph: `Get-AzAdServicePrincipal -ApplicationId 00000002-0000-0000-c000-000000000000`
+* Microsoft Graph: `Get-AzAdServicePrincipal -ApplicationId 00000003-0000-0000-c000-000000000000`
+
+Application permissions under the `appRoles` property correspond to `Role` in `-Type`. Delegated permissions under the `oauth2Permissions` property correspond to `Scope` in `-Type`.
+
+User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
+
 .Example
 PS C:\> {{ Add code here }}
 
@@ -53,10 +62,10 @@ function Add-AzADAppPermission {
         [System.String]
         ${PermissionId},
 
-        [Parameter(HelpMessage = "Specifies whether the id property references an oauth2PermissionScopes or an appRole.")]
-        [ValidateNotNull()]
+        [Parameter(HelpMessage = "Specifies whether the id property references an oauth2PermissionScopes(Scope, delegated permission) or an appRole(Role, application permission).")]
+        [ValidateSet('Scope', 'Role')]
         [System.String]
-        ${Type},
+        ${Type} = 'Scope',
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -137,7 +146,7 @@ function Add-AzADAppPermission {
         $newRequiredResourceAccessItem.resourceAccess = @()
 
         foreach ($item in $foundRequiredResourceAccessItem.ResourceAccess) {
-            if($item.Id -eq $PermissionId) {
+            if($item.Id -eq $PermissionId -and $item.Type -eq $Type) {
                 Write-Error "API permission with id '$($PSBoundParameters['PermissionId'])' already exists."
                 return
             }
