@@ -2,7 +2,7 @@
 $constants = @{}
 $constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'Standard_GZRS')
 $constants["RequiredStorageEndpoints"] = @('PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
-$constants["DefaultFunctionsVersion"] = '3'
+$constants["DefaultFunctionsVersion"] = '4'
 $constants["RuntimeToFormattedName"] = @{
     'node' = 'Node'
     'dotnet' = 'DotNet'
