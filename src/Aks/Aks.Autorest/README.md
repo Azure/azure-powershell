@@ -74,6 +74,7 @@ directive:
       parameter-name: AgentPoolName
     set:
       parameter-name: NodePoolName
+      alias: AgentPoolName
   - where:
       subject: ManagedClusterUpgradeProfile
       verb: Get

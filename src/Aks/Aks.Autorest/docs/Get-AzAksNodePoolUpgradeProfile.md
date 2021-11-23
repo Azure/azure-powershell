@@ -93,7 +93,7 @@ The name of the agent pool.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: AgentPoolName
 
 Required: True
 Position: Named
