@@ -50,12 +50,12 @@ try {
 
     # Get all name and path of the cmdlets.
     Write-Debug "Get all cmdlets md file under the $Path folder."
-    $cmdLets = Get-ChildItem -Path $Path -Filter '*-*.md' | Select-Object -Property FullName, Name
+    $cmdlets = Get-ChildItem -Path $Path -Filter '*-*.md' | Select-Object -Property FullName, Name
 
     # Add Cmdlet, Verb, Noun property for sort object.
-    $cmdLets | Add-Member -NotePropertyName Cmdlet -NotePropertyValue $null
-    $cmdLets | Add-Member -NotePropertyName Verb -NotePropertyValue $null
-    $cmdLets | Add-Member -NotePropertyName Noun -NotePropertyValue $null
+    $cmdlets | Add-Member -NotePropertyName Cmdlet -NotePropertyValue $null
+    $cmdlets | Add-Member -NotePropertyName Verb -NotePropertyValue $null
+    $cmdlets | Add-Member -NotePropertyName Noun -NotePropertyValue $null
 
     # set priority for the specified cmdlets.
     if ($PSBoundParameters.ContainsKey("NounPriority")) {
@@ -66,20 +66,20 @@ try {
         }
     }
 
-    for ($index = 0; $index -lt $cmdLets.Length; $index++) {
-        # Join 0 prefix with New verb.
-        $verb = $cmdLets[$index].Name.Split("-")[0] -eq 'New' ? '0New' : $cmdLets[$index].Name.Split("-")[0]
+    for ($index = 0; $index -lt $cmdlets.Length; $index++) {
+        # Join 0 prefix with New verb so that make New verb as top item in the same Noun.
+        $verb = $cmdlets[$index].Name.Split("-")[0] -eq 'New' ? '0New' : $cmdlets[$index].Name.Split("-")[0]
         # Join priority with Noun.
-        $originNoun = $cmdLets[$index].Name.Split("-")[1].Split(".")[0];
+        $originNoun = $cmdlets[$index].Name.Split("-")[1].Split(".")[0];
         $Noun = $null -eq $NounPriorityHash ? $originNoun : ($null -eq $NounPriorityHash[$originNoun] ? $originNoun : $NounPriorityHash[$originNoun].ToString() + $originNoun)
     
-        $cmdLets[$index].Cmdlet = $cmdLets[$index].Name.Split(".")[0];
-        $cmdLets[$index].Verb = $verb
-        $cmdLets[$index].Noun = $Noun
+        $cmdlets[$index].Cmdlet = $cmdlets[$index].Name.Split(".")[0];
+        $cmdlets[$index].Verb = $verb
+        $cmdlets[$index].Noun = $Noun
     }
 
 
-    $sortedCmdlets = $cmdLets | Sort-Object -Property @{Expression = "Noun"; Descending = $false }, @{Expression = "Verb"; Descending = $false }
+    $sortedCmdlets = $cmdlets | Sort-Object -Property @{Expression = "Noun"; Descending = $false }, @{Expression = "Verb"; Descending = $false }
 
     "The sorted cmdles list : " | Write-Debug
     $sortedCmdlets | Out-String | Write-Debug
@@ -117,5 +117,4 @@ try {
 }
 catch {
     throw
-    return
 }
