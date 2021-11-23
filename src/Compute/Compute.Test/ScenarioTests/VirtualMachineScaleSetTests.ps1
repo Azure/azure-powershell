@@ -2982,12 +2982,12 @@ function Test-VirtualMachineScaleSetUserdata
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set Reimage with tempDisk
+Test Virtual Machine Scale Set DiffDiskPlacement feature. 
 #>
 function Test-VirtualMachineScaleSetDiffDiskPlacement
 {
     # Setup
-    $rgname = Get-ComputeTestResourceName
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -3004,6 +3004,7 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+        $diffDiskPlacement = "ResourceDisk";
 
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
@@ -3017,43 +3018,18 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -DiffDiskSetting 'Local';
+            -ImageReferencePublisher $imgRef.PublisherName -DiffDiskSetting 'Local' -DiffDiskPlacement $diffDiskPlacement;
 
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
-        Assert-AreEqual 2 $result.Sku.Capacity;
-        Assert-AreEqual 'Standard_DS1_v2' $result.Sku.Name;
-        Assert-AreEqual 'Manual' $result.UpgradePolicy.Mode;
+        # Validate DiffDiskPlacement value
+        Assert-AreEqual $result.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
 
-        # Validate Network Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
-        Assert-AreEqual $true $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
-        Assert-AreEqual $subnetId `
-            $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
-
-        # Validate OS Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.OsProfile.ComputerNamePrefix;
-        Assert-AreEqual $adminUsername $result.VirtualMachineProfile.OsProfile.AdminUsername;
-        Assert-Null $result.VirtualMachineProfile.OsProfile.AdminPassword;
-
-        # Validate Storage Profile
-        Assert-AreEqual 'FromImage' $result.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
-        Assert-AreEqual 'ReadOnly' $result.VirtualMachineProfile.StorageProfile.OsDisk.Caching;
-        Assert-AreEqual $imgRef.Offer $result.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
-        Assert-AreEqual $imgRef.Skus $result.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
-        Assert-AreEqual $imgRef.Version $result.VirtualMachineProfile.StorageProfile.ImageReference.Version;
-        Assert-AreEqual $imgRef.PublisherName $result.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;  
-
-        $vmssVMs = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
-        $id = $vmssVMs[0].InstanceId
-
-        # Reimage operation
-        Set-AzVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id -TempDisk;
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname;
     }
 }
 

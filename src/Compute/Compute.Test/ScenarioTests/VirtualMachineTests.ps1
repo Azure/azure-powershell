@@ -5330,12 +5330,12 @@ function Test-VMUserDataBase64Encoded
 
 <#
 .SYNOPSIS
-Test Virtual Machine Performance Maintenance
+Test Virtual Machine DiffDiskPlacement feature. 
 #>
 function Test-VirtualMachineDiffDiskPlacement
 {
     # Setup
-    $rgname = Get-ComputeTestResourceName
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -5376,10 +5376,12 @@ function Test-VirtualMachineDiffDiskPlacement
         # Get VM
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
 
+        # Validate DiffDiskPlacement
+        Assert-AreEqual $vm.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname;
     }
 }
