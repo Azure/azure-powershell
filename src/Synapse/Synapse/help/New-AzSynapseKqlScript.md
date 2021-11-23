@@ -45,7 +45,7 @@ The **New-AzSynapseKqlScript** cmdlet creates or updates a KQL script in a works
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\KqlScript.kql"
+PS C:\> New-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -DefinitionFile "C:\samples\KqlScript.kql"
 ```
 
 This command creates or updates a KQL script from Kusto query file KqlScript.kql in the workspace named ContosoWorkspace.
@@ -53,14 +53,14 @@ This command creates or updates a KQL script from Kusto query file KqlScript.kql
 ### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseKqlScript -DefinitionFile "C:\\samples\\KqlScript.kql"
+PS C:\> $ws | New-AzSynapseKqlScript -DefinitionFile "C:\samples\KqlScript.kql"
 ```
 
 This command creates or updates a KQL script from Kusto query file KqlScript.kql in the workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\KqlScript.kql" -KustoPoolName ContosoKustoPool -KustoPoolDatabaseName ContosoKustoPoolDatabase
+PS C:\> New-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -DefinitionFile "C:\samples\KqlScript.kql" -KustoPoolName ContosoKustoPool -KustoPoolDatabaseName ContosoKustoPoolDatabase
 ```
 
 This command creates or updates a KqlScript from Kusto query file KqlScript.kql which attaches to ContosoKustoPoolDatabase in the workspace named ContosoWorkspace.
