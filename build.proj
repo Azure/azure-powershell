@@ -216,6 +216,11 @@
     <Error Text="BinScope or PoliCheck failed. Please check the files in artifacts/BinScope, or Severity 1 issues in artifacts/PoliCheck-Scan.html" />
   </Target>
 
+  <Target Name="CopyAboutTopics" Condition="'$(SkipHelp)' == 'false'">
+    <Message Importance="high" Text="Copying about topics to culture folders..." />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)/CopyAboutTopics.ps1 -BuildConfig $(Configuration)&quot;" />
+  </Target>
+
   <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">
     <Message Importance="high" Text="Running help generation..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
@@ -225,7 +230,7 @@
   </Target>
 
   <!-- Everything except Publish -->
-  <Target Name="Full" DependsOnTargets="Clean;Build;OnPremChecks;GenerateHelp;StaticAnalysis;Test" />
+  <Target Name="Full" DependsOnTargets="Clean;Build;OnPremChecks;CopyAboutTopics;GenerateHelp;StaticAnalysis;Test" />
 
   <Target Name="StaticAnalysisBreakingChange" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for breaking change..." />
