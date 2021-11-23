@@ -148,6 +148,10 @@ directive:
     hide: true
 
   - where:
+      subject: UserSigned$
+    hide: true
+
+  - where:
       verb: Get
       variant: ^List(.*)
     set:
