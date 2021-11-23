@@ -446,6 +446,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - All
 - Get
@@ -480,6 +481,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToKeys
 Specifies an array of key operation permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - All
 - Decrypt
@@ -514,6 +516,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToSecrets
 Specifies an array of secret operation permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - All
 - Get
@@ -540,6 +543,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToStorage
 Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - all
 - get
