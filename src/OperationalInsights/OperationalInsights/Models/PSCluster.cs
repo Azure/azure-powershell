@@ -24,35 +24,33 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSCluster
     {
-        public PSCluster() {}
+        public PSCluster() { }
 
-        public PSCluster(string location, string id = default(string), string name = default(string), string type = default(string), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity), PSClusterSku sku = default(PSClusterSku), string nextLink = default(string), string clusterId = default(string), string provisioningState = default(string), PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties))
+        public PSCluster(string location, PSIdentity identity = default, PSClusterSku sku = default, string id = default, string provisioningState = default, bool isDoubleEncryptionEnabled = default, bool isAvailabilityZonesEnabled = default, string billingType = default, PSKeyVaultProperties keyVaultProperties = default, string lastModifiedDate = default, string createdDate = default, IList<AssociatedWorkspace> associatedWorkspaces = default, CapacityReservationProperties capacityReservationProperties = default, Hashtable tags = default, string name = default, string type = default, string nextLink = default, string clusterId = default)
         {
+            Identity = identity;
+            Sku = sku;
             Id = id;
+            ProvisioningState = provisioningState;
+            IsDoubleEncryptionEnabled = isDoubleEncryptionEnabled;
+            IsAvailabilityZonesEnabled = isAvailabilityZonesEnabled;
+            BillingType = billingType;
+            KeyVaultProperties = keyVaultProperties;
+            LastModifiedDate = lastModifiedDate;
+            CreatedDate = createdDate;
+            AssociatedWorkspaces = associatedWorkspaces;
+            CapacityReservationProperties = capacityReservationProperties;
+
+            Tags = tags;
             Location = location;
             Name = name;
             Type = type;
-            Tags = tags;
-            Identity = identity;
-            Sku = sku;
-            NextLink = nextLink;
             ClusterId = clusterId;
-            ProvisioningState = provisioningState;
-            KeyVaultProperties = keyVaultProperties;
             validateClusterName();
         }
 
         public PSCluster(Cluster cluster)
         {
-            this.Id = cluster.Id;
-            this.Location = cluster.Location;
-            this.Name = cluster.Name;
-            this.Type = cluster.Type;
-            if (cluster.Tags != null)
-            {
-                this.Tags = new Hashtable((IDictionary)cluster.Tags);
-            }           
-
             if (cluster.Identity != null)
             {
                 this.Identity = new PSIdentity(cluster.Identity);
@@ -62,38 +60,55 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             {
                 this.Sku = new PSClusterSku(cluster.Sku);
             }
-            this.NextLink = cluster.NextLink;
-            this.ClusterId = cluster.ClusterId;
+
+            this.ClusterId = cluster.ClusterId;//cluster's GUID
             this.ProvisioningState = cluster.ProvisioningState;
+            this.IsDoubleEncryptionEnabled = cluster.IsDoubleEncryptionEnabled;
+            this.IsAvailabilityZonesEnabled = cluster.IsAvailabilityZonesEnabled;
+            this.BillingType = cluster.BillingType;
+
             if (cluster.KeyVaultProperties != null)
             {
                 this.KeyVaultProperties = new PSKeyVaultProperties(cluster.KeyVaultProperties);
             }
 
+            this.LastModifiedDate = cluster.LastModifiedDate;
+            this.CreatedDate = cluster.CreatedDate;
+            this.AssociatedWorkspaces = cluster.AssociatedWorkspaces;
+            this.CapacityReservationProperties = cluster.CapacityReservationProperties;
+
+            if (cluster.Tags != null)
+            {
+                this.Tags = new Hashtable((IDictionary)cluster.Tags);
+            }
+
+            this.Location = cluster.Location;
+            this.Name = cluster.Name;
+            this.Type = cluster.Type;
+            this.Id = cluster.Id;//resource ID
+
             validateClusterName();
         }
 
         public PSIdentity Identity { get; set; }
-
         public PSClusterSku Sku { get; set; }
-
-        public string NextLink { get; set; }
-
         public string ClusterId { get; private set; }
-
         public string ProvisioningState { get; private set; }
-
+        public bool? IsDoubleEncryptionEnabled { get; set; }
+        public bool? IsAvailabilityZonesEnabled { get; set; }
+        public string BillingType { get; set; }
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
+        public string LastModifiedDate { get; set; }
+        public string CreatedDate { get; set; }
+        public IList<AssociatedWorkspace> AssociatedWorkspaces { get; set; }
+        public CapacityReservationProperties CapacityReservationProperties { get; set; }
 
         public string Location { get; set; }
-
         public string Id { get; set; }
-
         public string Name { get; set; }
-
         public string Type { get; set; }
-
         public Hashtable Tags { get; set; }
+        public string NextLink { get; set; }//this is not in use anymore - removing this will cause the build to fail
 
         private IDictionary<string, string> getTags()
         {
@@ -102,7 +117,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public Cluster getCluster()
         {
-            return new Cluster(location:this.Location, tags:this.getTags(), identity:this.Identity?.getIdentity(), sku:this.Sku?.geteClusterSku(), clusterId:this.ClusterId);
+            return new Cluster(
+                name: Name,
+                location: Location,
+                tags: getTags(),
+                identity: Identity?.getIdentity(),
+                sku: Sku?.getClusterSku(), 
+                isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
+                isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
+                billingType: BillingType,
+                keyVaultProperties: KeyVaultProperties.GetKeyVaultProperties()
+                );
         }
 
         private const string Pattern = "^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$";
@@ -115,7 +140,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 throw new PSArgumentException("ClusterName should starts/ends with numerical or alphabetical characters only");
             }
 
-            if (this.Name.Length < 4 || this.Name.Length >63)
+            if (this.Name.Length < 4 || this.Name.Length > 63)
             {
                 throw new PSArgumentException("length of ClusterName need to be in range ''");
             }

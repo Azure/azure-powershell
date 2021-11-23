@@ -16,11 +16,8 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -64,7 +61,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 customLogProperties = JsonConvert.DeserializeObject<PSCustomLogDataSourceProperties>(this.CustomLogRawJson);
             }
             catch (Exception ex) {
-                throw new ArgumentException(Resources.DataSourceCustomLogInvalidSchema, ex);
+                throw new PSArgumentException(Resources.DataSourceCustomLogInvalidSchema, ex);
             }
             CreatePSDataSourceWithProperties(customLogProperties);
         }

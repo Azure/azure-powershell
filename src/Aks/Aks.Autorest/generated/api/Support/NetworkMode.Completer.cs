@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "transparent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("transparent", "transparent", global::System.Management.Automation.CompletionResultType.ParameterValue, "transparent");
+                yield return new global::System.Management.Automation.CompletionResult("'transparent'", "transparent", global::System.Management.Automation.CompletionResultType.ParameterValue, "transparent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "bridge".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("bridge", "bridge", global::System.Management.Automation.CompletionResultType.ParameterValue, "bridge");
+                yield return new global::System.Management.Automation.CompletionResult("'bridge'", "bridge", global::System.Management.Automation.CompletionResultType.ParameterValue, "bridge");
             }
         }
     }
