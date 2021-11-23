@@ -100,6 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         Description = @"The name of the agent pool.",
         SerializedName = @"agentPoolName",
         PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("AgentPoolName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Path)]
         public string NodePoolName { get => this._nodePoolName; set => this._nodePoolName = value; }
 
