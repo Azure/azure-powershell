@@ -206,7 +206,7 @@ process {
             break
         }
         'SPNParameterSet' {
-            $PSBoundParameters['Filter'] = "ServicePrincipalName eq '$($PSBoundParameters['ServicePrincipalName'])'"
+            $PSBoundParameters['Filter'] = "ServicePrincipalNames/any(s:s eq $($PSBoundParameters['ServicePrincipalName']))'"
             $null = $PSBoundParameters.Remove('ServicePrincipalName')
             break
         }
