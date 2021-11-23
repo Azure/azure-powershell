@@ -141,6 +141,18 @@ namespace Microsoft.Azure.Commands.Aks
 
         private AcsServicePrincipal acsServicePrincipal;
 
+        [Parameter(Mandatory = false, HelpMessage = "The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.")]
+        public string AadProfileTenantId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The server AAD application secret.")]
+        public SecureString AadProfileServerAppSecret { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The client AAD application ID.")]
+        public string AadProfileClientAppId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The server AAD application ID.")]
+        public string AadProfileServerAppId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -465,13 +477,28 @@ namespace Microsoft.Azure.Commands.Aks
 
         private ManagedClusterAADProfile GetAadProfile()
         {
-            ManagedClusterAADProfile aadProfile = null;
-            //if (!string.IsNullOrEmpty(AadProfileClientAppId) || !string.IsNullOrEmpty(AadProfileServerAppId) ||
-            //    !string.IsNullOrEmpty(AadProfileServerAppSecret) || !string.IsNullOrEmpty(AadProfileTenantId))
-            //{
-            //    aadProfile = new ManagedClusterAADProfile(clientAppID: AadProfileClientAppId, serverAppID: AadProfileServerAppId,
-            //        serverAppSecret: AadProfileServerAppSecret, tenantID: AadProfileTenantId); 
-            //}
+            if (string.IsNullOrEmpty(AadProfileClientAppId) && string.IsNullOrEmpty(AadProfileServerAppId) &&
+                this.IsParameterBound(c => c.AadProfileServerAppSecret) && string.IsNullOrEmpty(AadProfileTenantId))
+            {
+                return null;
+            }
+            ManagedClusterAADProfile aadProfile = new ManagedClusterAADProfile();
+            if (!string.IsNullOrEmpty(AadProfileClientAppId))
+            {
+                aadProfile.ClientAppID = AadProfileClientAppId;
+            }
+            if (!string.IsNullOrEmpty(AadProfileServerAppId))
+            {
+                aadProfile.ServerAppID = AadProfileServerAppId;
+            }
+            if (!this.IsParameterBound(c => c.AadProfileServerAppSecret))
+            {
+                aadProfile.ServerAppSecret = AadProfileServerAppSecret.ToString();
+            }
+            if (!string.IsNullOrEmpty(AadProfileTenantId))
+            {
+                aadProfile.TenantID = AadProfileTenantId;
+            }
             return aadProfile;
         }
 
