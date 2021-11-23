@@ -40,6 +40,7 @@
     - `Update-AzVmss`
     - `Update-AzVmssVm`
   When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
+* Added the string parameter `DiffDiskPlacement` to the cmdlets `Set-AzVmOSDisk` and `Set-AzVmssStorageProfile`.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
