@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Models;
+﻿using Microsoft.Azure.Commands.KeyVault.Helpers;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Management.Automation;
@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// Create a new managed HSM.
     /// </summary>
-    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm", SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedHsm))]
     public class NewAzureManagedHsm : KeyVaultManagementCmdletBase

@@ -30,6 +30,14 @@ Note: If you see the error **The subscription is not registered to use namespace
 **Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"** and then rerun your
 **New-AzKeyVault** command. For more information, see Register-AzResourceProvider.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /me
+
 ## EXAMPLES
 
 ### Example 1: Create a Standard key vault
