@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
             };
             var providersToIgnore = new Dictionary<string, string>
             {
-                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2021_04_01"},
                 {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"},
                 {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01"}
             };
