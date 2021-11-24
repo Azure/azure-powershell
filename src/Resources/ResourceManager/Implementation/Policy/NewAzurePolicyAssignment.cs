@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Policy;
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.Azure.Commands.Common.Exceptions;
 
     /// <summary>
     /// Creates a policy assignment.
@@ -215,27 +216,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (this.AssignIdentity.IsPresent && this.IdentityType != null) 
             {
-                throw new PSInvalidOperationException("Cannot specify both IdentityType and AssignIdentity at the same time.");
+                throw new AzPSArgumentException("Cannot specify both IdentityType and AssignIdentity at the same time.", "IdentityType");
             }
 
             if (this.AssignIdentity.IsPresent && !string.IsNullOrEmpty(this.IdentityId))
             {
-                throw new PSInvalidOperationException("Cannot specify both AssignIdentity and IdentityId at the same time.");
+                throw new AzPSArgumentException("Cannot specify both AssignIdentity and IdentityId at the same time.", "IdentityId");
             }
 
             if (this.IdentityType != null & string.IsNullOrEmpty(this.Location) || this.AssignIdentity.IsPresent && string.IsNullOrEmpty(this.Location))
             {
-                throw new PSInvalidOperationException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.");
+                throw new AzPSArgumentException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.", "Location");
             }
 
             if (this.IdentityType == ManagedIdentityType.UserAssigned && string.IsNullOrEmpty(this.IdentityId))
             {
-                throw new PSInvalidOperationException("A user assigned identity id needs to be specified if the identity type is 'UserAssigned'.");
+                throw new AzPSArgumentException("A user assigned identity id needs to be specified if the identity type is 'UserAssigned'.", "IdentityId");
             }
 
             if (this.IdentityType == ManagedIdentityType.SystemAssigned && !string.IsNullOrEmpty(this.IdentityId))
             {
-                throw new PSInvalidOperationException("Cannot specify an identity ID if identity type is 'SystemAssigned'.");
+                throw new AzPSArgumentException("Cannot specify an identity ID if identity type is 'SystemAssigned'.", "IdentityId");
             }
 
             return true;
