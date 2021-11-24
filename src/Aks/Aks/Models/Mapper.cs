@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ResourceIdentityType, PSResourceIdentityType>().ReverseMap();
                 cfg.CreateMap<AgentPool, PSNodePool>().ReverseMap();
                 cfg.CreateMap<SubResource, PSSubResource>().ReverseMap();
+                cfg.CreateMap<RunCommandResult, PSRunCommandResult>().ReverseMap();
             });
             _instance = config.CreateMapper();
         }
