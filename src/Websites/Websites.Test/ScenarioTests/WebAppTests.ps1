@@ -658,15 +658,15 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-WebLocation
+	$location = 'East US 2'
 	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
+	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-    $containerRegistryUrl = "https://pstestacr.azurecr.io"
-    $containerRegistryUser = "pstestacr"
-    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser = "DotNetSDKTesting"
+    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|"
  	try
