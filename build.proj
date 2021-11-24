@@ -9,6 +9,8 @@
     Runs tests
   /t:Publish
     Creates local nuget packages and MSI
+  /t:CopyAboutTopics
+    Copys about topics to culture folders
 
   # Properties
   /p:CodeSign=True
@@ -216,9 +218,10 @@
     <Error Text="BinScope or PoliCheck failed. Please check the files in artifacts/BinScope, or Severity 1 issues in artifacts/PoliCheck-Scan.html" />
   </Target>
 
+  <!-- Copy about topics to culture folders -->
   <Target Name="CopyAboutTopics" Condition="'$(SkipHelp)' == 'false'">
     <Message Importance="high" Text="Copying about topics to culture folders..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)/CopyAboutTopics.ps1 -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)/Docs/CopyAboutTopics.ps1 -BuildConfig $(Configuration)&quot;" />
   </Target>
 
   <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">

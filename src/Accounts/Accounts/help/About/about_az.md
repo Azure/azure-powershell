@@ -1,16 +1,16 @@
 # About topic for Azure PowerShell - about_az 
 
-TOPIC
+## TOPIC
 
 about_Az
 
-SHORT DESCRIPTION
+## SHORT DESCRIPTION
 
 The Azure Az PowerShell module is a set of cmdlets for managing Azure
 resources directly from the PowerShell command line and in PowerShell
 scripts.
 
-LONG DESCRIPTION
+## LONG DESCRIPTION
 
 Azure PowerShell provides cross-platform cmdlets for managing Azure
 services. All Azure PowerShell cmdlets work on Windows PowerShell 5.1
@@ -38,16 +38,15 @@ Azure PowerShell is frequently updated to include bug fixes and service
 updates. It is recommended to plan to update to the most recent version
 regularly (a minimum of twice a year).
 
-GETTING STARTED
+## GETTING STARTED
 
-1.  Connect to Azure using 'Connect-AzAccount'
+1.  Connect to Azure using `Connect-AzAccount`
 
 2.  Run your first command. For example, create a resource group in the
     east US region.
-
-New-AzResourceGroup -Name "MyResoureGroup" -location "eastus"
-
-SEE ALSO
-
+    ```powershell
+    New-AzResourceGroup -Name "MyResoureGroup" -location "eastus"
+    ```
+## SEE ALSO
 Azure PowerShell documentation:
 https://docs.microsoft.com/powershell/azure
