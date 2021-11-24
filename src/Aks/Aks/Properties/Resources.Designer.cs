@@ -430,6 +430,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to execute the command on cluster {0}?.
+        /// </summary>
+        internal static string DoYouWantToExecuteCommandOnCluster {
+            get {
+                return ResourceManager.GetString("DoYouWantToExecuteCommandOnCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to import the Kubernetes config?.
         /// </summary>
         internal static string DoYouWantToImportTheKubernetesConfig {
@@ -444,6 +453,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string DoYouWantToOverwriteExistingFile {
             get {
                 return ResourceManager.GetString("DoYouWantToOverwriteExistingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executing command on cluster {0}..
+        /// </summary>
+        internal static string ExecutingCommandOnCluster {
+            get {
+                return ResourceManager.GetString("ExecutingCommandOnCluster", resourceCulture);
             }
         }
         

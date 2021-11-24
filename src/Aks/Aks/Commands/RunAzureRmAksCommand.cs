@@ -197,21 +197,27 @@ namespace Microsoft.Azure.Commands.Aks
                     }
             }
 
-            RunCmdLet(() =>
-            {
-                ManagedCluster cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
-                RunCommandRequest request = new RunCommandRequest
+            var msg = $"{Name} in {ResourceGroupName}";
+
+            ConfirmAction(Force.IsPresent,
+                string.Format(Resources.DoYouWantToExecuteCommandOnCluster, Name),
+                string.Format(Resources.ExecutingCommandOnCluster, Name),
+                msg,
+                () =>
                 {
-                    Command = Command,
-                    Context = GetCommandContext()
-                };
-                if (cluster.AadProfile != null && cluster.AadProfile.Managed != null)
-                {
-                    request.ClusterToken = GetClusterToken();
-                }
-                RunCommandResult response = Client.ManagedClusters.RunCommand(ResourceGroupName, Name, request);
-                WriteObject(PSMapper.Instance.Map<PSRunCommandResult>(response));
-            });
+                    ManagedCluster cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
+                    RunCommandRequest request = new RunCommandRequest
+                    {
+                        Command = Command,
+                        Context = GetCommandContext()
+                    };
+                    if (cluster.AadProfile != null && cluster.AadProfile.Managed != null)
+                    {
+                        request.ClusterToken = GetClusterToken();
+                    }
+                    RunCommandResult response = Client.ManagedClusters.RunCommand(ResourceGroupName, Name, request);
+                    WriteObject(PSMapper.Instance.Map<PSRunCommandResult>(response));
+                });
         }
     }
 }
