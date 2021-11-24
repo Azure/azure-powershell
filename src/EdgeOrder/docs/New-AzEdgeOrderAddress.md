@@ -38,10 +38,12 @@ Id                           : /subscriptions/SubscriptionId/resourceGroups/reso
 Location                     : eastus
 Name                         : TestPwAddress
 ShippingAddress              : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
-SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
+SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
 Type                         : Microsoft.EdgeOrder/addresses
 ```
+
+Creates a new address, to get insight on any failure you can set $debugPreference = "Continue" and run command again
 
 ## PARAMETERS
 

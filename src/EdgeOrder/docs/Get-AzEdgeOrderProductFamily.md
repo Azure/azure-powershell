@@ -14,7 +14,7 @@ This method provides the list of product families for the given subscription.
 
 ```
 Get-AzEdgeOrderProductFamily -FilterableProperty <Hashtable> [-SubscriptionId <String[]>] [-Expand <String>]
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,9 +34,9 @@ edgepr_base       azurestackedge    azurestackedge  azurestackedgepror
 edgemr_mini       azurestackedge    azurestackedge  azurestackedgeminir
 ```
 
-This command get insights of filtered family. Make sure you run registerProvider on Microsoft.EdgeOrder before running this command.
-Run Get-AzEdgeOrderConfiguration to get details of each configuration
-
+This command get insights of filtered family.
+Make sure you run registerProvider on Microsoft.EdgeOrder before running this command.
+You can run Get-AzEdgeOrderConfiguration to get details of each configuration
 
 ## PARAMETERS
 
@@ -79,21 +79,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-$skipToken is supported on list of product families, which provides the next page in the list of product families.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

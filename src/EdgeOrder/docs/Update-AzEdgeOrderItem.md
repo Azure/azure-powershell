@@ -12,21 +12,20 @@ Updates the properties of an existing order item.
 
 ## SYNTAX
 
-`### UpdateExpanded (Default)
+### UpdateExpanded (Default)
 ```
 Update-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
-  [-ForwardAddressContactDetail <IContactDetails>]
- [-ForwardAddressShippingAddress <IShippingAddress>] [-NotificationEmailList <String[]>]
- [-Preference <IPreferences>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ForwardAddressContactDetail <IContactDetails>] [-ForwardAddressShippingAddress <IShippingAddress>]
+ [-NotificationEmailList <String[]>] [-Preference <IPreferences>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeOrderItem -InputObject <IEdgeOrderIdentity> 
- [-ForwardAddressContactDetail <IContactDetails>] [-ForwardAddressShippingAddress <IShippingAddress>]
- [-NotificationEmailList <String[]>] [-Preference <IPreferences>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeOrderItem -InputObject <IEdgeOrderIdentity> [-ForwardAddressContactDetail <IContactDetails>]
+ [-ForwardAddressShippingAddress <IShippingAddress>] [-NotificationEmailList <String[]>]
+ [-Preference <IPreferences>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +46,8 @@ Mobile         :
 Phone          : 1234567891
 PhoneExtension :
 ```
+
+Update orderItem details
 
 ## PARAMETERS
 
@@ -112,19 +113,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfMatch
-Defines the If-Match condition.
-The patch will be performed only if the ETag of the order on the server matches this value.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +134,7 @@ The name of the order item
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: OrderItemName
 
 Required: True
@@ -195,7 +196,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -210,7 +211,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -272,6 +273,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
@@ -303,6 +306,15 @@ FORWARDADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the addre
   - `[StreetAddress2 <String>]`: Street Address line 2.
   - `[StreetAddress3 <String>]`: Street Address line 3.
   - `[ZipExtendedCode <String>]`: Extended Zip Code.
+
+INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
+  - `[AddressName <String>]`: The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[OrderItemName <String>]`: The name of the order item
+  - `[OrderName <String>]`: The name of the order
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 PREFERENCE <IPreferences>: Customer preference.
   - `[EncryptionPreference <IEncryptionPreferences>]`: Preferences related to the Encryption.

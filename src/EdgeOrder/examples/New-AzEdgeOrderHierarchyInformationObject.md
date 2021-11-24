@@ -8,3 +8,4 @@ ProductFamilyName : azurestackedge
 ProductLineName   : azurestackedge
 ProductName       : azurestackedgegpu
 ```
+Creates a in-memory hierarchy information object

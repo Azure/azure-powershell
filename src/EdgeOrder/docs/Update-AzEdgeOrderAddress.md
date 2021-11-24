@@ -15,15 +15,15 @@ Updates the properties of an existing address.
 ### UpdateExpanded (Default)
 ```
 Update-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
-  [-ContactDetail <IContactDetails>] [-ShippingAddress <IShippingAddress>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ContactDetail <IContactDetails>] [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeOrderAddress -InputObject <IEdgeOrderIdentity> 
- [-ContactDetail <IContactDetails>] [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeOrderAddress -InputObject <IEdgeOrderIdentity> [-ContactDetail <IContactDetails>]
+ [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,8 @@ PS C:\> $updatedContactInAddress = Update-AzEdgeOrderAddress -Name "TestPwAddres
 PS C:\> $updatedContactInAddress.ContactDetail.ContactName
 ContactName2
 ```
+
+Update address details
 
 ## PARAMETERS
 
@@ -87,19 +89,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfMatch
-Defines the If-Match condition.
-The patch will be performed only if the ETag of the job on the server matches this value.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,7 +111,7 @@ address names must be between 3 and 24 characters in length and use any alphanum
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: AddressName
 
 Required: True
@@ -140,7 +142,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -171,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -233,6 +235,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
@@ -252,6 +256,15 @@ CONTACTDETAIL <IContactDetails>: Contact details for the address
   - `Phone <String>`: Phone number of the contact person.
   - `[Mobile <String>]`: Mobile number of the contact person.
   - `[PhoneExtension <String>]`: Phone extension number of the contact person.
+
+INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
+  - `[AddressName <String>]`: The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[OrderItemName <String>]`: The name of the order item
+  - `[OrderName <String>]`: The name of the order
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 SHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   - `Country <String>`: Name of the Country.

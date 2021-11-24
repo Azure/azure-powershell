@@ -34,3 +34,4 @@ Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Mode
 Type                         : Microsoft.EdgeOrder/addresses
 ```
 
+Get address details

@@ -28,7 +28,7 @@ Create an in-memory object for ContactDetails.
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone
 
 ContactName    : random
-EmailList      : {abc@def.com}
+EmailList      : {"emailId"}
 Mobile         :
 Phone          : 1234567890
 PhoneExtension :

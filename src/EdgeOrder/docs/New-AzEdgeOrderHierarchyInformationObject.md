@@ -33,7 +33,7 @@ ProductLineName   : azurestackedge
 ProductName       : azurestackedgegpu
 ```
 
-Creates a in-memory  hierarchy information object.
+Creates a in-memory hierarchy information object
 
 ## PARAMETERS
 

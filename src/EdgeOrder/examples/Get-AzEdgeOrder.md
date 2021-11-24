@@ -15,4 +15,4 @@ OrderStageHistory            : {, }
 SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
 Type                         : Microsoft.EdgeOrder/orders
 ```
-
+Get order details

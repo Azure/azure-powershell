@@ -31,7 +31,7 @@ SupportedValue : {US}
 Type           : ShipToCountries
 ```
 
-Creates a in-memory filterable property object
+ShipToCountries is mandatory filterable type, SupportedValue can be list of 2 letter valid ISO country codes.
 
 ## PARAMETERS
 

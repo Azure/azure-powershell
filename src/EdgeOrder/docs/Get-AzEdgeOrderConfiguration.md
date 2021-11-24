@@ -14,7 +14,7 @@ This method provides the list of configurations for the given product family, pr
 
 ```
 Get-AzEdgeOrderConfiguration -ConfigurationFilter <IConfigurationFilters[]> [-SubscriptionId <String[]>]
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,8 @@ ImageInformation                             : {}
 Specification                                : {Usable compute, Usable memory, Usable storage}
 ```
 
-This command get insights of selected configuration. Make sure you run registerProvider on Microsoft.EdgeOrder before running this command.
+This command get insights of selected configuration.
+Make sure you run registerProvider on Microsoft.EdgeOrder before running this command.
 
 ## PARAMETERS
 
@@ -82,21 +83,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-$skipToken is supported on list of configurations, which provides the next page in the list of configurations.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

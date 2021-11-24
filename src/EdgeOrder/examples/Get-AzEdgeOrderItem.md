@@ -19,3 +19,5 @@ SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Mo
 Tag                            : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
 Type                           : Microsoft.EdgeOrder/orderItems
 ```
+
+Get orderItem details

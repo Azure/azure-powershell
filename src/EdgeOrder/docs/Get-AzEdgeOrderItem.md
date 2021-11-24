@@ -14,7 +14,7 @@ Gets an order item.
 
 ### List (Default)
 ```
-Get-AzEdgeOrderItem [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>] [-SkipToken <String>]
+Get-AzEdgeOrderItem [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Get-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 ### List1
 ```
 Get-AzEdgeOrderItem -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,19 +43,21 @@ PS C:\> $ordderItem | fl
 ForwardAddressContactDetail    : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 ForwardAddressShippingAddress  : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
 ForwardAddressValidationStatus : Valid
-Id                             : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/orderItems/pwOrderItem
+Id                             : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/orderItems/OrderItem-211115074927900249117427
 Location                       : eastus
-Name                           : pwOrderItem
-OrderId                        : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pworder1
+Name                           : OrderItem-211115074927900249117427
+OrderId                        : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/Order-211115074927650235470998
 OrderItemDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails
 ReturnAddressContactDetail     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 ReturnAddressShippingAddress   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
-ReturnAddressValidationStatus  :
-StartTime                      : 11/15/2021 11:35:36 AM
+ReturnAddressValidationStatus  : Valid
+StartTime                      : 11/15/2021 7:49:29 AM
 SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
 Tag                            : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
 Type                           : Microsoft.EdgeOrder/orderItems
 ```
+
+Get orderItem details
 
 ## PARAMETERS
 
@@ -132,21 +134,6 @@ Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-$skipToken is supported on Get list of order items, which provides the next page in the list of order items.
-
-```yaml
-Type: System.String
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

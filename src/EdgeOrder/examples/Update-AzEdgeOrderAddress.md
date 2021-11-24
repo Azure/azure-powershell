@@ -5,3 +5,4 @@ PS C:\> $updatedContactInAddress = Update-AzEdgeOrderAddress -Name "TestPwAddres
 PS C:\> $updatedContactInAddress.ContactDetail.ContactName
 ContactName2
 ```
+Update address details

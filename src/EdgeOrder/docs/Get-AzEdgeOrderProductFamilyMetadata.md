@@ -13,8 +13,8 @@ This method provides the list of product families metadata for the given subscri
 ## SYNTAX
 
 ```
-Get-AzEdgeOrderProductFamilyMetadata [-SubscriptionId <String[]>] [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzEdgeOrderProductFamilyMetadata [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,6 @@ This method provides the list of product families metadata for the given subscri
 
 ### Example 1: Gets available product families on procured subscription
 ```powershell
-PS C:\> Register-AzResourceProvider -ProviderNamespace Microsoft.EdgeOrder
 PS C:\> $productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
 PS C:\> $productFamilyMeta.HierarchyInformation
 
@@ -33,7 +32,9 @@ ConfigurationName ProductFamilyName ProductLineName ProductName
                   azurestackedge
                   azurestackhub
 ```
-This command gets product families available on procured subscription. 
+
+This command gets product families available on procured subscription.
+
 Make sure registerProvider on Microsoft.EdgeOrder is done before running this command.
 
 To get details of any family use Get-AzEdgeOrderProductFamily command
@@ -47,21 +48,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-$skipToken is supported on list of product families metadata, which provides the next page in the list of product families metadata.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

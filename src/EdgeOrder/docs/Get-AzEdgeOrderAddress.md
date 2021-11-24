@@ -14,8 +14,8 @@ Gets information about the specified address.
 
 ### List (Default)
 ```
-Get-AzEdgeOrderAddress [-SubscriptionId <String[]>] [-Filter <String>] [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEdgeOrderAddress [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -27,7 +27,7 @@ Get-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-Subscription
 ### List1
 ```
 Get-AzEdgeOrderAddress -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Type                         : Microsoft.EdgeOrder/addresses
 
 AddressValidationStatus      : Valid
 ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
-Id                           : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/addresses/TestPwAddress
+Id                           : /subscriptions/"SubscriptionId"/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/addresses/TestPwAddress
 Location                     : eastus
 Name                         : TestPwAddress
 ShippingAddress              : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
@@ -70,6 +70,8 @@ SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Mode
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
 Type                         : Microsoft.EdgeOrder/addresses
 ```
+
+Get address details
 
 ## PARAMETERS
 
@@ -130,21 +132,6 @@ Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-$skipToken is supported on Get list of addresses, which provides the next page in the list of addresses.
-
-```yaml
-Type: System.String
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

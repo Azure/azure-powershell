@@ -42,6 +42,8 @@ StreetAddress3  :
 ZipExtendedCode :
 ```
 
+Creates a in-memory shipping address object
+
 ## PARAMETERS
 
 ### -AddressType

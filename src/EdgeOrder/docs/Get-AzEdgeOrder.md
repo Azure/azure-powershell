@@ -14,8 +14,7 @@ Gets an order.
 
 ### List (Default)
 ```
-Get-AzEdgeOrder [-SubscriptionId <String[]>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzEdgeOrder [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -26,8 +25,8 @@ Get-AzEdgeOrder -Location <String> -Name <String> -ResourceGroupName <String> [-
 
 ### List1
 ```
-Get-AzEdgeOrder -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEdgeOrder -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +51,8 @@ OrderStageHistory            : {, }
 SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
 Type                         : Microsoft.EdgeOrder/orders
 ```
+
+Get order details
 
 ## PARAMETERS
 
@@ -110,21 +111,6 @@ Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-$skipToken is supported on Get list of order, which provides the next page in the list of order.
-
-```yaml
-Type: System.String
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

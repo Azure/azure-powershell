@@ -29,6 +29,9 @@ This method provides the list of product families for the given subscription.
 ### [Get-AzEdgeOrderProductFamilyMetadata](Get-AzEdgeOrderProductFamilyMetadata.md)
 This method provides the list of product families metadata for the given subscription.
 
+### [Invoke-AzEdgeOrderItemCancellation](Invoke-AzEdgeOrderItemCancellation.md)
+Cancel order item.
+
 ### [Invoke-AzEdgeOrderReturnOrderItem](Invoke-AzEdgeOrderReturnOrderItem.md)
 Return order item.
 
@@ -63,9 +66,6 @@ Deletes an address.
 
 ### [Remove-AzEdgeOrderItem](Remove-AzEdgeOrderItem.md)
 Deletes an order item.
-
-### [Stop-AzEdgeOrderItem](Stop-AzEdgeOrderItem.md)
-Cancel order item.
 
 ### [Update-AzEdgeOrderAddress](Update-AzEdgeOrderAddress.md)
 Updates the properties of an existing address.
