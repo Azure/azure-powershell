@@ -1041,7 +1041,7 @@ function GetRuntimeJsonDefinition
     if ($runtimeJsonDefinition.IsPreview)
     {
         # Write a verbose message to the user if the current runtime is in Preview
-        Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview." -Verbose
+        Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview for '$OSType'." -Verbose
     }
 
     return $runtimeJsonDefinition
