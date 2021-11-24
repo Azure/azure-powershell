@@ -448,6 +448,24 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EnableAad cannot be used together with AadClientAppId/AadServerAppId/AadServerAppSecret..
+        /// </summary>
+        internal static string EnableAadExcludeParameter {
+            get {
+                return ResourceManager.GetString("EnableAadExcludeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EnableAzureRbac can only be used together with EnableAad.
+        /// </summary>
+        internal static string EnableAzureRbacOnlyUsedWithEnableAad {
+            get {
+                return ResourceManager.GetString("EnableAzureRbacOnlyUsedWithEnableAad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to generate SSH key with detail error: {0}.\nPlease create one issue at https://github.com/Azure/azure-powershell/issues if issue remains..
         /// </summary>
         internal static string FailedToGenerateSshKey {

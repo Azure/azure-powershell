@@ -20,6 +20,19 @@ namespace Microsoft.Azure.Commands.Aks.Models
     /// </summary>
     public partial class PSManagedClusterAadProfile
     {
+        //
+        // Summary:
+        //     Gets or sets whether to enable managed AAD.
+        public bool? Managed { get; set; }
+        //
+        // Summary:
+        //     Gets or sets whether to enable Azure RBAC for Kubernetes authorization.
+        public bool? EnableAzureRBAC { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the list of AAD group object IDs that will have admin role of the
+        //     cluster.
+        public string[] AdminGroupObjectIDs { get; set; }
         /// <summary>
         /// Gets or sets the client AAD application ID.
         /// </summary>

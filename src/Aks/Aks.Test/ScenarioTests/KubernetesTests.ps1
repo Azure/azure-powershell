@@ -138,6 +138,31 @@ function Test-NewAzAks
     }
 }
 
+function Test-NewAzAksAad
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
+    $nodeVmSize = "Standard_D2_v2"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -EnableAad -EnableAzureRbac -AadProfileTenantId "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a"
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $true $cluster.AadProfile.Managed
+        Assert-AreEqual $true $cluster.AadProfile.EnableAzureRBAC
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
 function Test-NewAzAksByServicePrincipal
 {
     # Setup

@@ -444,4 +444,10 @@
   <data name="UpdateKubernetesVersionAndNodeImageOnlyConflict" xml:space="preserve">
     <value>Conflicting flags. Upgrading the Kubernetes version will also upgrade node image version. If you only want to upgrade the node version please use the "-NodeImageOnly" option only.</value>
   </data>
+  <data name="EnableAadExcludeParameter" xml:space="preserve">
+    <value>EnableAad cannot be used together with AadClientAppId/AadServerAppId/AadServerAppSecret.</value>
+  </data>
+  <data name="EnableAzureRbacOnlyUsedWithEnableAad" xml:space="preserve">
+    <value>EnableAzureRbac can only be used together with EnableAad</value>
+  </data>
 </root>

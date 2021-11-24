@@ -141,6 +141,15 @@ namespace Microsoft.Azure.Commands.Aks
 
         private AcsServicePrincipal acsServicePrincipal;
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Azure Role-Based Access")]
+        public SwitchParameter EnableAzureRbac { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable AAD")]
+        public SwitchParameter EnableAad { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Admin group object Id of AAD profile")]
+        public string[] AadProfileAdminGroupObjectID { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.")]
         public string AadProfileTenantId { get; set; }
 
@@ -477,27 +486,52 @@ namespace Microsoft.Azure.Commands.Aks
 
         private ManagedClusterAADProfile GetAadProfile()
         {
-            if (string.IsNullOrEmpty(AadProfileClientAppId) && string.IsNullOrEmpty(AadProfileServerAppId) &&
-                !this.IsParameterBound(c => c.AadProfileServerAppSecret) && string.IsNullOrEmpty(AadProfileTenantId))
-            {
-                return null;
-            }
             ManagedClusterAADProfile aadProfile = new ManagedClusterAADProfile();
-            if (!string.IsNullOrEmpty(AadProfileClientAppId))
+            if (EnableAad.IsPresent)
             {
-                aadProfile.ClientAppID = AadProfileClientAppId;
+                if (this.IsParameterBound(c => c.AadProfileClientAppId) ||
+                    this.IsParameterBound(c => c.AadProfileServerAppId) ||
+                    this.IsParameterBound(c => c.AadProfileServerAppSecret))
+                {
+                    throw new AzPSArgumentException(Resources.EnableAadExcludeParameter,
+                        nameof(EnableAad));
+                }
+                aadProfile.Managed = true;
+                aadProfile.EnableAzureRBAC = EnableAzureRbac;
+                aadProfile.AdminGroupObjectIDs = AadProfileAdminGroupObjectID;
+                if (!string.IsNullOrEmpty(AadProfileTenantId))
+                {
+                    aadProfile.TenantID = AadProfileTenantId;
+                }
             }
-            if (!string.IsNullOrEmpty(AadProfileServerAppId))
+            else
             {
-                aadProfile.ServerAppID = AadProfileServerAppId;
-            }
-            if (this.IsParameterBound(c => c.AadProfileServerAppSecret))
-            {
-                aadProfile.ServerAppSecret = AadProfileServerAppSecret.ToString();
-            }
-            if (!string.IsNullOrEmpty(AadProfileTenantId))
-            {
-                aadProfile.TenantID = AadProfileTenantId;
+                if (EnableAzureRbac.IsPresent)
+                {
+                    throw new AzPSArgumentException(Resources.EnableAzureRbacOnlyUsedWithEnableAad,
+                        nameof(EnableAzureRbac));
+                }
+                if (string.IsNullOrEmpty(AadProfileClientAppId) && string.IsNullOrEmpty(AadProfileServerAppId) &&
+                    !this.IsParameterBound(c => c.AadProfileServerAppSecret) && string.IsNullOrEmpty(AadProfileTenantId))
+                {
+                    return null;
+                }
+                if (!string.IsNullOrEmpty(AadProfileClientAppId))
+                {
+                    aadProfile.ClientAppID = AadProfileClientAppId;
+                }
+                if (!string.IsNullOrEmpty(AadProfileServerAppId))
+                {
+                    aadProfile.ServerAppID = AadProfileServerAppId;
+                }
+                if (this.IsParameterBound(c => c.AadProfileServerAppSecret))
+                {
+                    aadProfile.ServerAppSecret = AadProfileServerAppSecret.ConvertToString();
+                }
+                if (!string.IsNullOrEmpty(AadProfileTenantId))
+                {
+                    aadProfile.TenantID = AadProfileTenantId;
+                }
             }
             return aadProfile;
         }
