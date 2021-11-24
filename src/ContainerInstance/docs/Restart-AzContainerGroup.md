@@ -1,47 +1,49 @@
 ---
 external help file:
-Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/stop-azakscluster
+Module Name: Az.ContainerInstance
+online version: https://docs.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup
 schema: 2.0.0
 ---
 
-# Stop-AzAksCluster
+# Restart-AzContainerGroup
 
 ## SYNOPSIS
-Stops a Running Managed Cluster
+Restarts all containers in a container group in place.
+If container image has updates, new image will be downloaded.
 
 ## SYNTAX
 
-### Stop (Default)
+### Restart (Default)
 ```
-Stop-AzAksCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Restart-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### RestartViaIdentity
 ```
-Stop-AzAksCluster -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stops a Running Managed Cluster
+Restarts all containers in a container group in place.
+If container image has updates, new image will be downloaded.
 
 ## EXAMPLES
 
-### Example 1: Stop Aks cluster with resource group name and cluster name
+### Example 1: Restart all containers in a container group
 ```powershell
-PS C:\> Stop-AzAksCluster -ResourceGroupName group -Name myCluster
+PS C:\> Restart-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
 ```
 
-Stop Aks cluster with resource group name and cluster name.
+This command restarts all containers in a container group.
 
-### Example 2: Stop Aks cluster with pipeline
+### Example 2: Restart all containers in a container group by piping
 ```powershell
-PS C:\> Get-AzAksCluster -ResourceGroupName group -Name myCluster | Stop-AzAksCluster
+PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Restart-AzContainerGroup
 ```
 
-Stop Aks cluster with pipeline.
+This command restarts all containers in a container group by piping.
 
 ## PARAMETERS
 
@@ -80,8 +82,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: StopViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
+Parameter Sets: RestartViaIdentity
 Aliases:
 
 Required: True
@@ -92,12 +94,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the managed cluster resource.
+The name of the container group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
-Aliases: ClusterName
+Parameter Sets: Restart
+Aliases: ContainerGroupName
 
 Required: True
 Position: Named
@@ -141,7 +143,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Restart
 Aliases:
 
 Required: True
@@ -157,7 +159,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Restart
 Aliases:
 
 Required: False
@@ -203,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
 
 ## OUTPUTS
 
@@ -218,14 +220,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAksIdentity>: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
+INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+  - `[ContainerGroupName <String>]`: The name of the container group.
+  - `[ContainerName <String>]`: The name of the container instance.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[Location <String>]`: The identifier for the physical azure location.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
-  - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS

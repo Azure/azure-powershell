@@ -34,8 +34,8 @@ branch: e320555a456cbc894c5a89466defdfca45ca18a8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  # - $(this-folder)/custom/managedClusters.json
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2020-09-01/managedClusters.json
+  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-08-01/location.json
 
 title: Aks
 module-version: 0.1.0
@@ -74,6 +74,7 @@ directive:
       parameter-name: AgentPoolName
     set:
       parameter-name: NodePoolName
+      alias: AgentPoolName
   - where:
       subject: ManagedClusterUpgradeProfile
       verb: Get
@@ -100,4 +101,7 @@ directive:
           "description": "Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1.",
           "default": 1
         }
+  - where:
+      subject: ContainerServiceOrchestrator
+    hide: true
 ```
