@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="18" errors="0" failures="0" not-run="0" inconclusive="1" ignored="4" skipped="0" invalid="0" date="2021-11-23" time="09:30:46">
+  <environment os-version="5.10.60.1-microsoft-standard-WSL2" clr-version="Unknown" user-domain="" user="root" platform="Linux" nunit-version="2.5.8.0" cwd="/src/EdgeOrder" machine-name="8a459ac48a05" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="489.0048" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Cancel-AzEdgeOrderItem.Tests.ps1" executed="True" result="Ignored" success="True" time="3.5142" asserts="0" description="/src/EdgeOrder/test/Cancel-AzEdgeOrderItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Cancel-AzEdgeOrderItem" executed="True" result="Ignored" success="True" time="0.1615" asserts="0" description="Cancel-AzEdgeOrderItem">
+            <results>
+              <test-case description="CancelExpanded" name="Cancel-AzEdgeOrderItem.CancelExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CancelViaIdentityExpanded" name="Cancel-AzEdgeOrderItem.CancelViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Get-AzEdgeOrder.Tests.ps1" executed="True" result="Success" success="True" time="4.7678" asserts="0" description="/src/EdgeOrder/test/Get-AzEdgeOrder.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzEdgeOrder" executed="True" result="Success" success="True" time="0.869" asserts="0" description="Get-AzEdgeOrder">
+            <results>
+              <test-case description="Get" name="Get-AzEdgeOrder.Get" time="0.8149" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Get-AzEdgeOrderConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="5.4773" asserts="0" description="/src/EdgeOrder/test/Get-AzEdgeOrderConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzEdgeOrderConfiguration" executed="True" result="Success" success="True" time="1.3887" asserts="0" description="Get-AzEdgeOrderConfiguration">
+            <results>
+              <test-case description="ListExpanded" name="Get-AzEdgeOrderConfiguration.ListExpanded" time="1.3615" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Get-AzEdgeOrderItem.Tests.ps1" executed="True" result="Success" success="True" time="11.58" asserts="0" description="/src/EdgeOrder/test/Get-AzEdgeOrderItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzEdgeOrderItem" executed="True" result="Success" success="True" time="0.8858" asserts="0" description="Get-AzEdgeOrderItem">
+            <results>
+              <test-case description="Get" name="Get-AzEdgeOrderItem.Get" time="0.7332" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Get-AzEdgeOrderProductFamily.Tests.ps1" executed="True" result="Success" success="True" time="7.5863" asserts="0" description="/src/EdgeOrder/test/Get-AzEdgeOrderProductFamily.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzEdgeOrderProductFamily" executed="True" result="Success" success="True" time="0.8255" asserts="0" description="Get-AzEdgeOrderProductFamily">
+            <results>
+              <test-case description="ListExpanded" name="Get-AzEdgeOrderProductFamily.ListExpanded" time="0.7934" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Get-AzEdgeOrderProductFamilyMetadata.Tests.ps1" executed="True" result="Success" success="True" time="4.9657" asserts="0" description="/src/EdgeOrder/test/Get-AzEdgeOrderProductFamilyMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzEdgeOrderProductFamilyMetadata" executed="True" result="Success" success="True" time="1.0989" asserts="0" description="Get-AzEdgeOrderProductFamilyMetadata">
+            <results>
+              <test-case description="List" name="Get-AzEdgeOrderProductFamilyMetadata.List" time="1.0748" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Invoke-AzEdgeOrderReturnOrderItem.Tests.ps1" executed="True" result="Ignored" success="True" time="3.5496" asserts="0" description="/src/EdgeOrder/test/Invoke-AzEdgeOrderReturnOrderItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzEdgeOrderReturnOrderItem" executed="True" result="Ignored" success="True" time="0.0184" asserts="0" description="Invoke-AzEdgeOrderReturnOrderItem">
+            <results>
+              <test-case description="ReturnExpanded" name="Invoke-AzEdgeOrderReturnOrderItem.ReturnExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderAddress.Tests.ps1" executed="True" result="Success" success="True" time="28.2283" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderAddress.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderAddress" executed="True" result="Success" success="True" time="24.8946" asserts="0" description="New-AzEdgeOrderAddress">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzEdgeOrderAddress.CreateExpanded" time="24.8719" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderContactDetailsObject.Tests.ps1" executed="True" result="Success" success="True" time="2.9366" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderContactDetailsObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderContactDetailsObject" executed="True" result="Success" success="True" time="0.0261" asserts="0" description="New-AzEdgeOrderContactDetailsObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzEdgeOrderContactDetailsObject.__AllParameterSets" time="0.0081" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderFilterablePropertyObject.Tests.ps1" executed="True" result="Ignored" success="True" time="3.1377" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderFilterablePropertyObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderFilterablePropertyObject" executed="True" result="Ignored" success="True" time="0.0175" asserts="0" description="New-AzEdgeOrderFilterablePropertyObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzEdgeOrderFilterablePropertyObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderHierarchyInformationObject.Tests.ps1" executed="True" result="Success" success="True" time="3.409" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderHierarchyInformationObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderHierarchyInformationObject" executed="True" result="Success" success="True" time="0.0299" asserts="0" description="New-AzEdgeOrderHierarchyInformationObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzEdgeOrderHierarchyInformationObject.__AllParameterSets" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderItem.Tests.ps1" executed="True" result="Success" success="True" time="28.8131" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderItem" executed="True" result="Success" success="True" time="23.5137" asserts="0" description="New-AzEdgeOrderItem">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzEdgeOrderItem.CreateExpanded" time="23.4859" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderOrderItemDetailsObject.Tests.ps1" executed="True" result="Success" success="True" time="3.2215" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderOrderItemDetailsObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderOrderItemDetailsObject" executed="True" result="Success" success="True" time="0.0412" asserts="0" description="New-AzEdgeOrderOrderItemDetailsObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzEdgeOrderOrderItemDetailsObject.__AllParameterSets" time="0.0109" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderPreferencesObject.Tests.ps1" executed="True" result="Inconclusive" success="True" time="3.3839" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderPreferencesObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderPreferencesObject" executed="True" result="Inconclusive" success="True" time="0.0179" asserts="0" description="New-AzEdgeOrderPreferencesObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzEdgeOrderPreferencesObject.__AllParameterSets" time="0" asserts="0" success="True" result="Inconclusive" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/New-AzEdgeOrderShippingAddressObject.Tests.ps1" executed="True" result="Success" success="True" time="3.7609" asserts="0" description="/src/EdgeOrder/test/New-AzEdgeOrderShippingAddressObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzEdgeOrderShippingAddressObject" executed="True" result="Success" success="True" time="0.0392" asserts="0" description="New-AzEdgeOrderShippingAddressObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzEdgeOrderShippingAddressObject.__AllParameterSets" time="0.0134" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/NGet-AzEdgeOrderAddress.Tests.ps1" executed="True" result="Success" success="True" time="4.4939" asserts="0" description="/src/EdgeOrder/test/NGet-AzEdgeOrderAddress.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzEdgeOrderAddress" executed="True" result="Success" success="True" time="0.4962" asserts="0" description="Get-AzEdgeOrderAddress">
+            <results>
+              <test-case description="Get" name="Get-AzEdgeOrderAddress.Get" time="0.4685" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Update-AzEdgeOrderAddress.Tests.ps1" executed="True" result="Success" success="True" time="5.7425" asserts="0" description="/src/EdgeOrder/test/Update-AzEdgeOrderAddress.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzEdgeOrderAddress" executed="True" result="Success" success="True" time="2.0324" asserts="0" description="Update-AzEdgeOrderAddress">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzEdgeOrderAddress.UpdateExpanded" time="2.0086" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/Update-AzEdgeOrderItem.Tests.ps1" executed="True" result="Success" success="True" time="24.7592" asserts="0" description="/src/EdgeOrder/test/Update-AzEdgeOrderItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzEdgeOrderItem" executed="True" result="Success" success="True" time="21.8278" asserts="0" description="Update-AzEdgeOrderItem">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzEdgeOrderItem.UpdateExpanded" time="21.809" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/UUInvoke-AzEdgeOrderItemCancellation.Tests.ps1" executed="True" result="Success" success="True" time="5.685" asserts="0" description="/src/EdgeOrder/test/UUInvoke-AzEdgeOrderItemCancellation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzEdgeOrderItemCancellation" executed="True" result="Success" success="True" time="3.0052" asserts="0" description="Invoke-AzEdgeOrderItemCancellation">
+            <results>
+              <test-case description="CancelExpanded" name="Invoke-AzEdgeOrderItemCancellation.CancelExpanded" time="2.9856" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/VRemove-AzEdgeOrderAddress.Tests.ps1" executed="True" result="Success" success="True" time="6.4712" asserts="0" description="/src/EdgeOrder/test/VRemove-AzEdgeOrderAddress.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzEdgeOrderAddress" executed="True" result="Success" success="True" time="3.8748" asserts="0" description="Remove-AzEdgeOrderAddress">
+            <results>
+              <test-case description="Delete" name="Remove-AzEdgeOrderAddress.Delete" time="3.8582" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/EdgeOrder/test/VRemove-AzEdgeOrderItem.Tests.ps1" executed="True" result="Success" success="True" time="323.521" asserts="0" description="/src/EdgeOrder/test/VRemove-AzEdgeOrderItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzEdgeOrderItem" executed="True" result="Success" success="True" time="320.8262" asserts="0" description="Remove-AzEdgeOrderItem">
+            <results>
+              <test-case description="Delete" name="Remove-AzEdgeOrderItem.Delete" time="320.7785" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
