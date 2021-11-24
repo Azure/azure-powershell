@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                     Tags = this.Tag
                 },
-                    ActiveDirectoryClient,
+                    GraphClient,
                     NetworkRuleSet);
 
                 this.WriteObject(newVault);

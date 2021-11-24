@@ -518,11 +518,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                     || !string.IsNullOrWhiteSpace(this.EmailAddress))
                 {
                     var objId = this.ObjectId;
-                    if (!this.BypassObjectIdValidation.IsPresent && ActiveDirectoryClient != null)
+                    if (!this.BypassObjectIdValidation.IsPresent && GraphClient != null)
                     {
                         objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.EmailAddress, this.ServicePrincipalName);
                     }
-                    else if (ActiveDirectoryClient == null && objId == null)
+                    else if (GraphClient == null && objId == null)
                     {
                         throw new Exception(Resources.ActiveDirectoryClientNull);
                     }
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     vault.EnableRbacAuthorization,
                     vault.SoftDeleteRetentionInDays,
                     vault.NetworkAcls,
-                    ActiveDirectoryClient);
+                    GraphClient);
 
                 if (PassThru.IsPresent)
                     WriteObject(updatedVault);

@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 existingVault.EnableRbacAuthorization,
                 existingVault.SoftDeleteRetentionInDays,
                 updatedNetworkAcls,
-                ActiveDirectoryClient);
+                GraphClient);
         }
     }
 }
