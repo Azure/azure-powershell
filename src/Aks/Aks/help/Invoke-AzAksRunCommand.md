@@ -15,20 +15,20 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 ### GroupNameParameterSet (Default)
 ```
 Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -CommandString <String>
- [-CommandFile <String[]>] [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-CommandFile <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -CommandString <String> [-CommandFile <String[]>]
- [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Invoke-AzAksRunCommand [-Id] <String> -CommandString <String> [-CommandFile <String[]>] [-PassThru] [-AsJob]
+Invoke-AzAksRunCommand [-Id] <String> -CommandString <String> [-CommandFile <String[]>] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -171,21 +171,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-{{ Fill PassThru Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
