@@ -313,8 +313,6 @@ function Get-SqlPoolBackupTestEnvironmentParameters ($testSuffix)
 			  perfLevel = 'DW200c';
               location = "northeurope";
               restoredSqlPoolName = "dwrestore" + $testSuffix;
-              tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
-              storageAccountType = "GRS"
 		}
 }
 
