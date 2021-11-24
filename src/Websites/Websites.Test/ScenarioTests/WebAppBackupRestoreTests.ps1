@@ -606,7 +606,7 @@ function Test-RestoreDeletedWebAppToNew
         New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 
 		# Test piping the deleted app
-		$job = $deletedApp | Restore-AzDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName  -AsJob
+		$job = $deletedApp | Restore-AzDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName -Force -AsJob
 		$result = $job | Wait-Job
 		Assert-AreEqual "Completed" $result.State;
 
