@@ -18,8 +18,10 @@ using System.IO;
 using System.IO.Compression;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
+using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
@@ -81,11 +83,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = true, HelpMessage = "Gets or sets the command to run.")]
         [ValidateNotNullOrEmpty]
-        public string CommandString { get; set; }
+        public string Command { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Gets or sets a base64 encoded zip file containing the files required by the command.")]
         [ValidateNotNullOrEmpty]
-        public string[] CommandFile { get; set; }
+        public string[] CommandContextAttachment { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -95,30 +97,46 @@ namespace Microsoft.Azure.Commands.Aks
 
         private string GetCommandContext()
         {
-            if (CommandFile == null || CommandFile.Length == 0)
+            if (CommandContextAttachment == null || CommandContextAttachment.Length == 0)
             {
                 return "";
             }
             List<string> filesToAttach = new List<string>();
-            string currentDirectory = SessionState.Path.CurrentFileSystemLocation.ToString();
-            if (CommandFile.Length == 1 && CommandFile[0].Equals("."))
+            string rootDirectory = SessionState.Path.CurrentFileSystemLocation.ToString();
+            if (CommandContextAttachment.Length == 1)
             {
-                WriteDebug(string.Format("Will zip all the files under {0}.", currentDirectory));
-                Directory.GetFiles(currentDirectory, "*", SearchOption.AllDirectories).ForEach(filepath =>
+                string commandContextAttachmentPath = Path.GetFullPath(Path.Combine(rootDirectory, CommandContextAttachment[0]));
+                if ((File.GetAttributes(commandContextAttachmentPath) & FileAttributes.Directory) == FileAttributes.Directory)
                 {
-                    filesToAttach.Add(filepath);
-                });
+                    rootDirectory = commandContextAttachmentPath;
+                    WriteDebug(string.Format("Will zip all the files under {0}.", rootDirectory));
+                    Directory.GetFiles(rootDirectory, "*", SearchOption.AllDirectories).ForEach(filepath =>
+                    {
+                        filesToAttach.Add(filepath);
+                    });
+                }
+                else
+                {
+                    filesToAttach.Add(commandContextAttachmentPath);
+                }
             }
             else
             {
-                foreach (var filepath in CommandFile)
+                foreach (var filepath in CommandContextAttachment)
                 {
-                    filesToAttach.Add(Path.Combine(currentDirectory, filepath));
+                    string commandContextAttachmentPath = Path.GetFullPath(Path.Combine(rootDirectory, filepath));
+                    if ((File.GetAttributes(commandContextAttachmentPath) & FileAttributes.Directory) == FileAttributes.Directory)
+                    {
+                        throw new AzPSArgumentException(
+                            Resources.NeedSameParentFolder,
+                            nameof(CommandContextAttachment));
+                    }
+                    filesToAttach.Add(commandContextAttachmentPath);
                 }
             }
             if (filesToAttach.Count == 0)
             {
-                WriteDebug("There is no files to attach!");
+                WriteWarning("There is no files to attach!");
                 return "";
             }
             using (var memoryStream = new MemoryStream())
@@ -127,7 +145,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     foreach (string filepath in filesToAttach)
                     {
-                        var relativePath = filepath.Replace(currentDirectory, "").Trim('/').Trim('\\');
+                        var relativePath = filepath.Replace(rootDirectory, "").Trim('/').Trim('\\');
                         var memoryZipFile = archive.CreateEntry(relativePath);
                         var fileContent = File.ReadAllText(filepath);
                         using (var entryStream = memoryZipFile.Open())
@@ -184,7 +202,7 @@ namespace Microsoft.Azure.Commands.Aks
                 ManagedCluster cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
                 RunCommandRequest request = new RunCommandRequest
                 {
-                    Command = CommandString,
+                    Command = Command,
                     Context = GetCommandContext()
                 };
                 if (cluster.AadProfile != null && cluster.AadProfile.Managed != null)

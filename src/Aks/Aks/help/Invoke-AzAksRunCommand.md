@@ -14,21 +14,21 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 
 ### GroupNameParameterSet (Default)
 ```
-Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -CommandString <String>
- [-CommandFile <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -Command <String>
+ [-CommandContextAttachment <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -CommandString <String> [-CommandFile <String[]>]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -Command <String>
+ [-CommandContextAttachment <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Invoke-AzAksRunCommand [-Id] <String> -CommandString <String> [-CommandFile <String[]>] [-AsJob]
+Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 
 ### Example 1
 ```powershell
-Invoke-AzAksRunCommand -ResourceGroupName $resourceGroup -Name $clusterName -CommandString "kubectl get pods"
+Invoke-AzAksRunCommand -ResourceGroupName $resourceGroup -Name $clusterName -Command "kubectl get pods"
 
 Id                : a887ecf432ad4e22a517cf4b5fb4e194
 ProvisioningState : Succeeded
@@ -60,7 +60,7 @@ Get the pods in Aks cluster.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -71,26 +71,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CommandFile
-Gets or sets a base64 encoded zip file containing the files required by the command.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandString
+### -Command
 Gets or sets the command to run.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,11 +86,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommandContextAttachment
+Gets or sets a base64 encoded zip file containing the files required by the command.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Remove managed Kubernetes cluster without prompt
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Id of a managed Kubernetes cluster
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 A PSKubernetesCluster object, normally passed through the pipeline.
 
 ```yaml
-Type: PSKubernetesCluster
+Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Name of your managed Kubernetes cluster
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupNameParameterSet
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupNameParameterSet
 Aliases:
 
@@ -201,7 +201,7 @@ Overriding subscriptions only take effect during the lifecycle of the current cm
 It does not change the subscription in the context, and does not affect subsequent cmdlets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -232,7 +232,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

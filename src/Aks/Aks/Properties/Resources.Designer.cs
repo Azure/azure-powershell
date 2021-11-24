@@ -547,6 +547,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot attach folder with anothe file or folder at the same time. Please put them in a same parent folder..
+        /// </summary>
+        internal static string NeedSameParentFolder {
+            get {
+                return ResourceManager.GetString("NeedSameParentFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NetworkPlugin must be azure if you want to use Windows..
         /// </summary>
         internal static string NetworkPluginShouldBeAzure {
