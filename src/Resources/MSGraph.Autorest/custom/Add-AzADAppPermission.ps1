@@ -13,9 +13,9 @@
 
 <#
 .Synopsis
-Add an API permission.
+Adds an API permission.
 .Description
-Add an API permission. The list of available permissions of API is property of application represented by service principal in tenant.
+Adds an API permission. The list of available permissions of API is property of application represented by service principal in tenant.
 
 For instance, to get available permissions for Graph API:
 * Azure Active Directory Graph: `Get-AzAdServicePrincipal -ApplicationId 00000002-0000-0000-c000-000000000000`

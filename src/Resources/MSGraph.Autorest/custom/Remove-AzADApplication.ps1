@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Delete entity from applications
+Deletes entity from applications
 .Description
-Delete entity from applications
+Deletes entity from applications
 .Example
 PS C:\> {{ Add code here }}
 

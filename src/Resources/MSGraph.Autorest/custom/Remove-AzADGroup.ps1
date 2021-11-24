@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Delete entity from groups.
+Deletes entity from groups.
 .Description
-Delete entity from groups.
+Deletes entity from groups.
 .Example
 PS C:\> {{ Add code here }}
 

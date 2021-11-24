@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Add new entity to applications
+Adds new entity to applications
 .Description
-Add new entity to applications
+Adds new entity to applications
 .Example
 PS C:\> {{ Add code here }}
 

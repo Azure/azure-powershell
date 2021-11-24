@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Create key credentials or password credentials for an service principal.
+Creates key credentials or password credentials for an service principal.
 .Description
-Create key credentials or password credentials for an service principal.
+Creates key credentials or password credentials for an service principal.
 .Example
 PS C:\> {{ Add code here }}
 

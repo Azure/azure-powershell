@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADServicePrincipal
 
 ## SYNOPSIS
-Delete entity from service principal.
+Deletes entity from service principal.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Remove-AzADServicePrincipal -ServicePrincipalName <String> [-IfMatch <String>] [
 ```
 
 ## DESCRIPTION
-Delete entity from service principal.
+Deletes entity from service principal.
 
 ## EXAMPLES
 

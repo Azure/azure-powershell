@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADAppPermission
 
 ## SYNOPSIS
-Remove an API permission.
+Removes an API permission.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzADAppPermission -ApplicationId <Guid> -PermissionId <Guid> [-DefaultPro
 ```
 
 ## DESCRIPTION
-Remove an API permission.
+Removes an API permission.
 
 ## EXAMPLES
 

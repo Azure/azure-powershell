@@ -13,9 +13,9 @@
 
 <#
 .Synopsis
-Remove an API permission.
+Removes an API permission.
 .Description
-Remove an API permission.
+Removes an API permission.
 .Example
 PS C:\> {{ Add code here }}
 

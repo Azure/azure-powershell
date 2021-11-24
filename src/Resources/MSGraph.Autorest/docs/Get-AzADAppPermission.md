@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADAppPermission
 
 ## SYNOPSIS
-List API permissions the application has requested.
+Lists API permissions the application has requested.
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Get-AzADAppPermission -ApplicationId <Guid> [-DefaultProfile <PSObject>] [<Commo
 ```
 
 ## DESCRIPTION
-List API permissions the application has requested.
+Lists API permissions the application has requested.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzADAppPermission
 
 ## SYNOPSIS
-Add an API permission.
+Adds an API permission.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Add-AzADAppPermission -ApiId <Guid> -ApplicationId <Guid> -PermissionId <String>
 ```
 
 ## DESCRIPTION
-Add an API permission.
+Adds an API permission.
 The list of available permissions of API is property of application represented by service principal in tenant.
 
 For instance, to get available permissions for Graph API:

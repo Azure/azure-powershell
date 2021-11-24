@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADSpCredential
 
 ## SYNOPSIS
-List key credentials and password credentials for an service principal.
+Lists key credentials and password credentials for an service principal.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzADSpCredential -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
 ```
 
 ## DESCRIPTION
-List key credentials and password credentials for an service principal.
+Lists key credentials and password credentials for an service principal.
 
 ## EXAMPLES
 

@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Delete entity from users.
+Deletes entity from users.
 .Description
-Delete entity from users.
+Deletes entity from users.
 .Example
 PS C:\> {{ Add code here }}
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADAppCredential
 
 ## SYNOPSIS
-List key credentials and password credentials for an application.
+Lists key credentials and password credentials for an application.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzADAppCredential -DisplayName <String> [-DefaultProfile <PSObject>] [-Confi
 ```
 
 ## DESCRIPTION
-List key credentials and password credentials for an application.
+Lists key credentials and password credentials for an application.
 
 ## EXAMPLES
 

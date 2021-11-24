@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADGroup
 
 ## SYNOPSIS
-List entities from groups or get entity from groups by key
+Lists entities from groups or get entity from groups by key
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Get-AzADGroup -DisplayNameStartsWith <String> [-AppendSelected] [-ConsistencyLev
 ```
 
 ## DESCRIPTION
-List entities from groups or get entity from groups by key
+Lists entities from groups or get entity from groups by key
 
 ## EXAMPLES
 

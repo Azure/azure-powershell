@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-List entities from groups or get entity from groups by key
+Lists entities from groups or get entity from groups by key
 .Description
-List entities from groups or get entity from groups by key
+Lists entities from groups or get entity from groups by key
 .Example
 PS C:\> {{ Add code here }}
 

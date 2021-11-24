@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADServicePrincipal
 
 ## SYNOPSIS
-List entities from service principals or get entity from service principals by key
+Lists entities from service principals or get entity from service principals by key
 
 ## SYNTAX
 
@@ -56,7 +56,7 @@ Get-AzADServicePrincipal -ServicePrincipalName <String> [-Select <String[]>] [-A
 ```
 
 ## DESCRIPTION
-List entities from service principals or get entity from service principals by key
+Lists entities from service principals or get entity from service principals by key
 
 ## EXAMPLES
 

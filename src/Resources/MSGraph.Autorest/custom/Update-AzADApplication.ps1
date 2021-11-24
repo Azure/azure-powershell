@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Update entity in applications
+Updates entity in applications
 .Description
-Update entity in applications
+Updates entity in applications
 .Example
 PS C:\> {{ Add code here }}
 

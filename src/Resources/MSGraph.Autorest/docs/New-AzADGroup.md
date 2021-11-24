@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzADGroup
 
 ## SYNOPSIS
-Add new entity to groups
+Adds new entity to groups
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzADGroup -DisplayName <String> -MailNickname <String>
 ```
 
 ## DESCRIPTION
-Add new entity to groups
+Adds new entity to groups
 
 ## EXAMPLES
 

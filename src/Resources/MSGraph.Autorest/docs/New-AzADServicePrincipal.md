@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzADServicePrincipal
 
 ## SYNOPSIS
-Add new entity to servicePrincipals
+Adds new entity to servicePrincipals
 
 ## SYNTAX
 
@@ -27,8 +27,9 @@ New-AzADServicePrincipal [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-A
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-StartDate <DateTime>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -50,7 +51,7 @@ New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-Tag <String[]>]
  [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -73,8 +74,9 @@ New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> -CertVa
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-StartDate <DateTime>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -97,7 +99,7 @@ New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-Tag <String[]>]
  [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -120,8 +122,9 @@ New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-Accou
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-StartDate <DateTime>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -143,7 +146,7 @@ New-AzADServicePrincipal -ApplicationId <Guid> -KeyCredentials <IMicrosoftGraphK
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-Tag <String[]>]
  [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -166,8 +169,9 @@ New-AzADServicePrincipal -ApplicationId <Guid> -CertValue <String> [-AccountEnab
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-StartDate <DateTime>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -189,7 +193,7 @@ New-AzADServicePrincipal -ApplicationId <Guid> -PasswordCredentials <IMicrosoftG
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-Tag <String[]>]
  [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -212,7 +216,7 @@ New-AzADServicePrincipal -DisplayName <String> -KeyCredentials <IMicrosoftGraphK
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-Tag <String[]>]
  [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -235,8 +239,9 @@ New-AzADServicePrincipal -CertValue <String> -DisplayName <String> [-AccountEnab
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-StartDate <DateTime>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -258,7 +263,7 @@ New-AzADServicePrincipal -DisplayName <String> -PasswordCredentials <IMicrosoftG
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
  [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-SkipAssignment] [-Tag <String[]>]
  [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -266,7 +271,7 @@ New-AzADServicePrincipal -DisplayName <String> -PasswordCredentials <IMicrosoftG
 ```
 
 ## DESCRIPTION
-Add new entity to servicePrincipals
+Adds new entity to servicePrincipals
 
 ## EXAMPLES
 
@@ -926,6 +931,21 @@ For a service principal that represent a managed identity this is set as Managed
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipAssignment
+Skip role assignment for created sp, otherwise please provide roles and scopes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

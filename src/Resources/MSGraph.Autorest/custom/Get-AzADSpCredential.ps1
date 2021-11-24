@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-List key credentials and password credentials for an service principal.
+Lists key credentials and password credentials for an service principal.
 .Description
-List key credentials and password credentials for an service principal.
+Lists key credentials and password credentials for an service principal.
 .Example
 PS C:\> {{ Add code here }}
 

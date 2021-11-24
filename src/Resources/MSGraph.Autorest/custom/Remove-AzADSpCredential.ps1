@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Remove key credentials or password credentials for an service principal.
+Removes key credentials or password credentials for an service principal.
 .Description
-Remove key credentials or password credentials for an service principal.
+Removes key credentials or password credentials for an service principal.
 .Example
 PS C:\> {{ Add code here }}
 

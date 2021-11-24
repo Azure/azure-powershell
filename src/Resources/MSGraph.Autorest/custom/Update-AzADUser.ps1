@@ -8,9 +8,9 @@
 
 <#
 .Synopsis
-Update entity in users
+Updates entity in users
 .Description
-Update entity in users
+Updates entity in users
 .Example
 PS C:\> {{ Add code here }}
 

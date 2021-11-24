@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADSpCredential
 
 ## SYNOPSIS
-Remove key credentials or password credentials for an service principal.
+Removes key credentials or password credentials for an service principal.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-Default
 ```
 
 ## DESCRIPTION
-Remove key credentials or password credentials for an service principal.
+Removes key credentials or password credentials for an service principal.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADApplication
 
 ## SYNOPSIS
-Delete entity from applications
+Deletes entity from applications
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzADApplication -InputObject <IMicrosoftGraphApplication> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Delete entity from applications
+Deletes entity from applications
 
 ## EXAMPLES
 

@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Create key credentials or password credentials for an application.
+Creates key credentials or password credentials for an application.
 .Description
-Create key credentials or password credentials for an application.
+Creates key credentials or password credentials for an application.
 .Example
 PS C:\> {{ Add code here }}
 

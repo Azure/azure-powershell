@@ -7,9 +7,9 @@
 
 <#
 .Synopsis
-List members from group.
+Lists members from group.
 .Description
-List members from group.
+Lists members from group.
 .Example
 PS C:\> {{ Add code here }}
 

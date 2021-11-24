@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Add new entity to servicePrincipals
+Adds new entity to servicePrincipals
 .Description
-Add new entity to servicePrincipals
+Adds new entity to servicePrincipals
 .Example
 PS C:\> {{ Add code here }}
 
@@ -397,6 +397,12 @@ function New-AzADServicePrincipal {
     ${AccountEnabled},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Skip role assignment for created sp, otherwise please provide roles and scopes.
+    ${SkipAssignment},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
@@ -713,6 +719,16 @@ function New-AzADServicePrincipal {
       $spScope = $PSBoundParameters['Scope']
       $null = $PSBoundParameters.Remove('Scope')
     }
+
+    if ($PSBoundParameters.ContainsKey('SkipAssignment') -and $PSBoundParameters['SkipAssignment']) {
+      $skipAssignment = $PSBoundParameters['SkipAssignment']
+      $null = $PSBoundParameters.Remove('SkipAssignment')
+    }
+
+    if (!$skipAssignment -and !$spRole) {
+      Write-Error "Please provide '-SkipAssignment' if you wish to create serviceprincipal without role assignment, otherwise specify '-Role' and '-Scope'"
+      return
+    }
     
     if ($PSBoundParameters['ApplicationObject']) {
       $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
@@ -738,7 +754,7 @@ function New-AzADServicePrincipal {
     }
     Write-Output ($sp = MSGraph.internal\New-AzADServicePrincipal @param)
 
-    if ($spRole) {
+    if (!$skipAssignment -and $spRole) {
       $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole}
       if ($PSBoundParameters['Debug']) {
         $param['Debug'] = $PSBoundParameters['Debug']

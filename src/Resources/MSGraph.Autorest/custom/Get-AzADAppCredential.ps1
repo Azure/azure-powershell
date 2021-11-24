@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-List key credentials and password credentials for an application.
+Lists key credentials and password credentials for an application.
 .Description
-List key credentials and password credentials for an application.
+Lists key credentials and password credentials for an application.
 .Example
 PS C:\> {{ Add code here }}
 

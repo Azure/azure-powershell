@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzADApplication
 
 ## SYNOPSIS
-Update entity in applications
+Updates entity in applications
 
 ## SYNTAX
 
@@ -70,7 +70,7 @@ Update-AzADApplication -InputObject <IMicrosoftGraphApplication> [-AddIn <IMicro
 ```
 
 ## DESCRIPTION
-Update entity in applications
+Updates entity in applications
 
 ## EXAMPLES
 

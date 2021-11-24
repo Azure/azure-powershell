@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADUser
 
 ## SYNOPSIS
-Delete entity from users.
+Deletes entity from users.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Remove-AzADUser -UserPrincipalName <String> [-DefaultProfile <PSObject>] [-PassT
 ```
 
 ## DESCRIPTION
-Delete entity from users.
+Deletes entity from users.
 
 ## EXAMPLES
 

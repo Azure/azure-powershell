@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzADApplication
 
 ## SYNOPSIS
-Add new entity to applications
+Adds new entity to applications
 
 ## SYNTAX
 
@@ -108,7 +108,7 @@ New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
 ```
 
 ## DESCRIPTION
-Add new entity to applications
+Adds new entity to applications
 
 ## EXAMPLES
 

@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-List entities from applications or get entity from applications by key
+Lists entities from applications or get entity from applications by key
 .Description
-List entities from applications or get entity from applications by key
+Lists entities from applications or get entity from applications by key
 .Example
 PS C:\> {{ Add code here }}
 

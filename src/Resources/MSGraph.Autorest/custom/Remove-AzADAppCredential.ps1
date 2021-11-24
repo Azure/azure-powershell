@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Remove key credentials or password credentials for an application.
+Removes key credentials or password credentials for an application.
 .Description
-Remove key credentials or password credentials for an application.
+Removes key credentials or password credentials for an application.
 .Example
 PS C:\> {{ Add code here }}
 

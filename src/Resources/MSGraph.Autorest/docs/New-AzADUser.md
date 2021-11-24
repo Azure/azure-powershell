@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzADUser
 
 ## SYNOPSIS
-Add new entity to users
+Adds new entity to users
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ New-AzADUser -DisplayName <String> -MailNickname <String> -Password <SecureStrin
 ```
 
 ## DESCRIPTION
-Add new entity to users
+Adds new entity to users
 
 ## EXAMPLES
 

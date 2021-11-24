@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzADGroupMember
 
 ## SYNOPSIS
-Add member to group.
+Adds member to group.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <Micr
 ```
 
 ## DESCRIPTION
-Add member to group.
+Adds member to group.
 
 ## EXAMPLES
 

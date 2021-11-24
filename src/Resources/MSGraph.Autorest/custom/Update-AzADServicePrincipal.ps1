@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Update entity in service principal
+Updates entity in service principal
 .Description
-Update entity in service principal
+Updates entity in service principal
 .Example
 PS C:\> {{ Add code here }}
 

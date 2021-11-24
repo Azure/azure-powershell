@@ -8,9 +8,9 @@
 
 <#
 .Synopsis
-Add member to group.
+Adds member to group.
 .Description
-Add member to group.
+Adds member to group.
 .Example
 PS C:\> {{ Add code here }}
 

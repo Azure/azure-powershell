@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Delete entity from service principal.
+Deletes entity from service principal.
 .Description
-Delete entity from service principal.
+Deletes entity from service principal.
 .Example
 PS C:\> {{ Add code here }}
 

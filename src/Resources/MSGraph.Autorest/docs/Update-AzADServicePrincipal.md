@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzADServicePrincipal
 
 ## SYNOPSIS
-Update entity in service principal
+Updates entity in service principal
 
 ## SYNTAX
 
@@ -110,7 +110,7 @@ Update-AzADServicePrincipal -ServicePrincipalName <String> [-AccountEnabled] [-A
 ```
 
 ## DESCRIPTION
-Update entity in service principal
+Updates entity in service principal
 
 ## EXAMPLES
 

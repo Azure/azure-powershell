@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADUser
 
 ## SYNOPSIS
-List entities from users or get entity from users by key
+Lists entities from users or get entity from users by key
 
 ## SYNTAX
 
@@ -56,7 +56,7 @@ Get-AzADUser -UserPrincipalName <String> [-AppendSelected] [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-List entities from users or get entity from users by key
+Lists entities from users or get entity from users by key
 
 ## EXAMPLES
 

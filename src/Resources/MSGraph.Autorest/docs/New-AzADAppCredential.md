@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzADAppCredential
 
 ## SYNOPSIS
-Create key credentials or password credentials for an application.
+Creates key credentials or password credentials for an application.
 
 ## SYNTAX
 
@@ -94,7 +94,7 @@ New-AzADAppCredential -DisplayName <String> [-CustomKeyIdentifier <String>] [-En
 ```
 
 ## DESCRIPTION
-Create key credentials or password credentials for an application.
+Creates key credentials or password credentials for an application.
 
 ## EXAMPLES
 

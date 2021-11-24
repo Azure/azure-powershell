@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-List entities from service principals or get entity from service principals by key
+Lists entities from service principals or get entity from service principals by key
 .Description
-List entities from service principals or get entity from service principals by key
+Lists entities from service principals or get entity from service principals by key
 .Example
 PS C:\> {{ Add code here }}
 

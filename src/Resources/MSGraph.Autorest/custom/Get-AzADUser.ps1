@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-List entities from users or get entity from users by key
+Lists entities from users or get entity from users by key
 .Description
-List entities from users or get entity from users by key
+Lists entities from users or get entity from users by key
 .Example
 PS C:\> {{ Add code here }}
 

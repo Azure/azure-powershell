@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzADUser
 
 ## SYNOPSIS
-Update entity in users
+Updates entity in users
 
 ## SYNTAX
 
@@ -74,7 +74,7 @@ Update-AzADUser -UserPrincipalName <String> [-AgeGroup <String>] [-City <String>
 ```
 
 ## DESCRIPTION
-Update entity in users
+Updates entity in users
 
 ## EXAMPLES
 

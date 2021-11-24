@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzADSpCredential
 
 ## SYNOPSIS
-Create key credentials or password credentials for an service principal.
+Creates key credentials or password credentials for an service principal.
 
 ## SYNTAX
 
@@ -71,7 +71,7 @@ New-AzADSpCredential -ObjectId <String> [-KeyCredentials <MicrosoftGraphKeyCrede
 ```
 
 ## DESCRIPTION
-Create key credentials or password credentials for an service principal.
+Creates key credentials or password credentials for an service principal.
 
 ## EXAMPLES
 

@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Add new entity to users
+Adds new entity to users
 .Description
-Add new entity to users
+Adds new entity to users
 .Example
 PS C:\> {{ Add code here }}
 

@@ -8,9 +8,9 @@
 
 <#
 .Synopsis
-Add new entity to groups
+Adds new entity to groups
 .Description
-Add new entity to groups
+Adds new entity to groups
 .Example
 PS C:\> {{ Add code here }}
 

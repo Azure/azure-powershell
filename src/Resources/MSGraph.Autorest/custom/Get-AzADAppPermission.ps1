@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-List API permissions the application has requested.
+Lists API permissions the application has requested.
 .Description
-List API permissions the application has requested.
+Lists API permissions the application has requested.
 .Example
 PS C:\> {{ Add code here }}
 

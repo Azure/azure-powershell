@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADGroup
 
 ## SYNOPSIS
-Delete entity from groups.
+Deletes entity from groups.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzADGroup -InputObject <IMicrosoftGraphGroup> [-IfMatch <String>] [-Defau
 ```
 
 ## DESCRIPTION
-Delete entity from groups.
+Deletes entity from groups.
 
 ## EXAMPLES
 

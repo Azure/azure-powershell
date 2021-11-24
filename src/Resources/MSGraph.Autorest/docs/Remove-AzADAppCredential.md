@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzADAppCredential
 
 ## SYNOPSIS
-Remove key credentials or password credentials for an application.
+Removes key credentials or password credentials for an application.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-KeyId
 ```
 
 ## DESCRIPTION
-Remove key credentials or password credentials for an application.
+Removes key credentials or password credentials for an application.
 
 ## EXAMPLES
 

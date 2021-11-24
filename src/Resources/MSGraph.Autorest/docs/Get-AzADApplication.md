@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADApplication
 
 ## SYNOPSIS
-List entities from applications or get entity from applications by key
+Lists entities from applications or get entity from applications by key
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ Get-AzADApplication -DisplayNameStartWith <String> [-Select <String[]>] [-Append
 ```
 
 ## DESCRIPTION
-List entities from applications or get entity from applications by key
+Lists entities from applications or get entity from applications by key
 
 ## EXAMPLES
 

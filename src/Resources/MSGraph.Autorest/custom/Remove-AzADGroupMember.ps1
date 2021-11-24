@@ -8,13 +8,13 @@
 
 <#
 .Synopsis
-Delete member from group
+Deletes member from group
 Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
 Supports $expand.
 .Description
-Delete member from group
+Deletes member from group
 Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
