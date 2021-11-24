@@ -172,9 +172,17 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBMongoDBRestorableDatabase', 
                'Get-AzCosmosDBMongoDBRestorableCollection', 
                'Get-AzCosmosDBMongoDBRestorableResource', 
-               'Get-AzCosmosDBSqlContainerBackupInformation', 
-               'Get-AzCosmosDBMongoDBCollectionBackupInformation', 
-               'Get-AzCosmosDBLocation'
+               'Get-AzCosmosDBSqlContainerBackupInformation',
+               'Get-AzCosmosDBMongoDBCollectionBackupInformation',
+               'Get-AzCosmosDBLocation',
+               'New-AzManagedCassandraCluster',
+               'New-AzManagedCassandraDataCenter',
+               'Get-AzManagedCassandraCluster',
+               'Get-AzManagedCassandraDataCenter',
+               'Remove-AzManagedCassandraCluster',
+               'Remove-AzManagedCassandraDataCenter',
+               'Update-AzManagedCassandraCluster',
+               'Update-AzManagedCassandraDataCenter'
 
 # Variables to export from this module
 # VariablesToExport = @()
