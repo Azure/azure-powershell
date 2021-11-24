@@ -36,7 +36,6 @@ Gets an order.
 
 ### Example 1: Get order details
 ```powershell
-
 PS C:\> $order = Get-AzEdgeOrder -Name pwOrderItem11 -SubscriptionId "SubscriptionId" -Location "eastus" -ResourceGroupName "resourceGroupName"
 PS C:\> $order | fl
 
