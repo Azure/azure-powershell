@@ -112,6 +112,12 @@ directive:
     where: '$.paths.*.*'
     transform: '$.parameters = $.parameters.filter(x=> !(!!x.$ref && (x.$ref.endsWith("#/components/parameters/top") || x.$ref.endsWith("#/components/parameters/skip"))))'
 
+  # this directive is for transform subject-prefix 'Ad' to 'AD', when subject-prefix specified as 'AD', prefix will # be generated as 'Ad' for some reason.
+  - where:
+      subject-prefix: Ad
+    set:
+      subject-prefix: AD
+
     # Boolean value for count should be true or false in lower case
   - from: source-file-csharp
     where: $
