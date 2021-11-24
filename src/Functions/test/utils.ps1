@@ -181,6 +181,7 @@ function setupEnv() {
     $functionNameJava = "Functions-Java-" + (RandomString -len 10)
     $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
+    $functionAppTestPlanName= "Functions-MyTestPlan1-" + (RandomString -len 10)
 
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
@@ -190,6 +191,7 @@ function setupEnv() {
     $env.add('functionNameJava', $functionNameJava) | Out-Null
     $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
+    $env.add('functionAppTestPlanName', $functionAppTestPlanName) | Out-Null
 
     # Create user assigned identity
     Write-Host "Create user assigned managed identity" -ForegroundColor Yellow
