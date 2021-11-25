@@ -160,6 +160,8 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             IEnumerable<PSRoleAssignment> roleAssignments = null;
             if (this.IsParameterBound(c => c.InputObject))
             {

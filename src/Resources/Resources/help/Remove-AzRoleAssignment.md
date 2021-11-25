@@ -11,6 +11,14 @@ schema: 2.0.0
 ## SYNOPSIS
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
