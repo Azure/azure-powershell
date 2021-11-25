@@ -13,16 +13,6 @@ Microsoft Azure PowerShell: MSGraph cmdlets
 ## Az.Resources Cmdlets
 ### [Add-AzADAppPermission](Add-AzADAppPermission.md)
 Adds an API permission.
-The list of available permissions of API is property of application represented by service principal in tenant.
-
-For instance, to get available permissions for Graph API:
-* Azure Active Directory Graph: `Get-AzAdServicePrincipal -ApplicationId 00000002-0000-0000-c000-000000000000`
-* Microsoft Graph: `Get-AzAdServicePrincipal -ApplicationId 00000003-0000-0000-c000-000000000000`
-
-Application permissions under the `appRoles` property correspond to `Role` in `-Type`.
-Delegated permissions under the `oauth2Permissions` property correspond to `Scope` in `-Type`.
-
-User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
 
 ### [Add-AzADGroupMember](Add-AzADGroupMember.md)
 Adds member to group.
