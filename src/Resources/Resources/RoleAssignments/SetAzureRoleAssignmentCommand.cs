@@ -72,9 +72,8 @@ namespace Microsoft.Azure.Commands.Resources
 
             // Build the Update Request
             var Subscription = DefaultProfile.DefaultContext.Subscription.Id;
-            var RaIndex = InputObject.RoleAssignmentId.LastIndexOf("/") + 1;
             var scope = InputObject.Scope;
-            var RoleAssignmentGUID = RaIndex != -1 ? InputObject.RoleAssignmentId.Substring(RaIndex) : InputObject.RoleAssignmentId;
+            var RoleAssignmentGUID =InputObject.RoleAssignmentId.GuidFromFullyQualifiedId();
 
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.Resources
                 fetchedRole = InputObject;
             }
 
-            // Validate the requestk
+            // Validate the request
             AuthorizationClient.ValidateScope(parameters.Scope, false);
             bool isValidRequest = true;
 

@@ -112,7 +112,7 @@ Get-AzDenyAssignment -Scope <String> [-DefaultProfile <IAzureContextContainer>] 
 
 ### DenyAssignmentIdParameterSet
 ```
-Get-AzDenyAssignment [-Scope <String>] -Id <Guid> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDenyAssignment [-Scope <String>] -Id <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -386,7 +386,7 @@ Accept wildcard characters: False
 Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: DenyAssignmentIdParameterSet
 Aliases:
 

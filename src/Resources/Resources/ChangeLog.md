@@ -23,6 +23,7 @@
 * [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
 * Allowed parameter `Id` in `Get-AzDenyAssignment` to accept fully qualified ID
 * Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
+* Narrowed API permission when get information about active directory object for *-AzRoleAssignment [#16054]
 
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]

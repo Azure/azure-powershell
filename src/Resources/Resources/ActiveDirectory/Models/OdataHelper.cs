@@ -37,6 +37,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
 
         public const string AuthorizationDeniedException = "Authorization_RequestDenied";
-
     }
 }
