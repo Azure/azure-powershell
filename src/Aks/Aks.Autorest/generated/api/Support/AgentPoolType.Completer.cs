@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VirtualMachineScaleSets".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VirtualMachineScaleSets", "VirtualMachineScaleSets", global::System.Management.Automation.CompletionResultType.ParameterValue, "VirtualMachineScaleSets");
+                yield return new global::System.Management.Automation.CompletionResult("'VirtualMachineScaleSets'", "VirtualMachineScaleSets", global::System.Management.Automation.CompletionResultType.ParameterValue, "VirtualMachineScaleSets");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AvailabilitySet".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AvailabilitySet", "AvailabilitySet", global::System.Management.Automation.CompletionResultType.ParameterValue, "AvailabilitySet");
+                yield return new global::System.Management.Automation.CompletionResult("'AvailabilitySet'", "AvailabilitySet", global::System.Management.Automation.CompletionResultType.ParameterValue, "AvailabilitySet");
             }
         }
     }

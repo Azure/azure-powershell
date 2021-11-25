@@ -26,6 +26,7 @@
 * Added deprecation message for `AssignIdentity` parameter in `*-AzPolicyAssignment` cmdlets.
 * Added support for user assigned managed identities in policy assignments by adding `IdentityType` and `IdentityId` parameters to `*-AzPolicyAssignment` cmdlets.
 * Updated policy cmdlets to use new api version 2021-06-01 that introduces support for user assigned managed identities in policy assignments.
+* Narrowed API permission when get information about active directory object for *-AzRoleAssignment [#16054]
 
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]

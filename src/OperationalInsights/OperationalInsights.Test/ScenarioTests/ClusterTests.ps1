@@ -19,40 +19,35 @@ Test Cluster CRUD
 function Test-ClusterCRUD
 {
 	# setup
-	$rgName = Get-ResourceGroupName
-	$clusterName = Get-ResourceName
-	$loc = Get-ProviderLocation
-
-	$rgNameExisting = "azps-test-group"
-	$clusterNameExisting = "yabocluster7"
-	$kvNameExisting = "azps-test-kv8"
-	$keyNameExisting = "azps-test-key3"
-	$kvUri = "https://azps-test-kv8.vault.azure.net"
-	$version = "9ac53081c8fe45f0b26d9d476b29c017"
+	$rgNameExisting = "dabenham-dev"
+	$clusterNameExisting = "dabenhamCluster-dev"
 
 	try
 	{
+		# get all clusters for resourceGroup:
+		$allClusters = Get-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting
+		Assert-NotNull $allClusters
+		Assert-True {$allClusters.Count -gt 0}
+
 		# get cluster
 		$cluster = Get-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting
-
 		Assert-NotNull $cluster
 		Assert-AreEqual $clusterNameExisting $cluster.Name
 
 		# update cluster, clusters to be update require provisioning state to be "Succeeded", existing clusters were used in this Test
 		# kv used in this test case need to enable both softdelete and purge protection	
-
-		$job = Update-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting -SkuCapacity 1500 -KeyVaultUri $kvUri -KeyName $keyNameExisting -KeyVersion $version -AsJob
+		$job = Update-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting -SkuCapacity 1700 -AsJob
 		$job | Wait-Job
 		$cluster = $job | Receive-Job
 
 		Assert-NotNull $cluster
-		Assert-AreEqual 1500 $cluster.Sku.Capacity
+		Assert-AreEqual $keyNameExisting $cluster.KeyVaultProperties.KeyName
+		Assert-AreEqual 1700 $cluster.Sku.Capacity
 		Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	}
 	finally
 	{
 		# Cleanup
-        Clean-ResourceGroup $rgName
 	}
 	
 }

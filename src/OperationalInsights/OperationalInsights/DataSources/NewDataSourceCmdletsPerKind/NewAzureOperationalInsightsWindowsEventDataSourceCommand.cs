@@ -15,9 +15,7 @@
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
@@ -78,7 +76,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
             if (eventTypeInstances.Count == 0)
             {
-                throw new ArgumentException(Resources.DataSourceWindowsEventNoEventTypeSelected);
+                throw new PSArgumentException(Resources.DataSourceWindowsEventNoEventTypeSelected);
             }
 
             var auditLogProperties = new PSWindowsEventDataSourceProperties
