@@ -50,8 +50,10 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             // Build the new Role assignment
-            if(ParameterSetName == ParameterSet.InputFile)
+            if (ParameterSetName == ParameterSet.InputFile)
             {
                 string fileName = this.TryResolvePath(InputFile);
                 if (!(new FileInfo(fileName)).Exists)
