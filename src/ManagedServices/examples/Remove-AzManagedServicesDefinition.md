@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Removes Azure Lighthouse registration definition.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzManagedServicesDefinition -Name 158d82c0-d6c4-441f-a3a2-d8c230badd2c -Scope "/subscriptions/24ab6047-da91-48c0-88e5-20a8c6daafc8"
 
-{{ Add output here }}
+PS C:\>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Removes Azure Lighthouse registration definition at the given scope.
