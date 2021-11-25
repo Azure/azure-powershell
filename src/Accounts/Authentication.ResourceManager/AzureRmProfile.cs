@@ -500,8 +500,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool result = false;
             if (Contexts != null)
             {
-                string oldName = null;
-                if (TryFindContext(context, out oldName))
+                if (TryFindContext(context, out string oldName))
                 {
                     var oldContext = Contexts[oldName];
                     oldContext.Update(context);
