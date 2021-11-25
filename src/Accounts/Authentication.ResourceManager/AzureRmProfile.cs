@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 if (TryFindContext(context, out string oldName))
                 {
-                    var oldContext = Contexts[oldName];
+                    var oldContext = Contexts[oldName].DeepCopy();
                     oldContext.Update(context);
                     context = oldContext;
                 }

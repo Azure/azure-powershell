@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Removed `ServicePrincipalSecret` and `CertificatePassword` in Account of Context from display [#15427]
+* Removed `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount` [#15427]
 * Added optional parameter `MicrosoftGraphAccessToken` to `Connect-AzAccount`
 * Added optional parameters `MicrosoftGraphEndpointResourceId`, `MicrosoftGraphUrl` to `Add-AzEnvironment` and `Set-AzEnvironment`
 * Added `-AccountId` property to `UserWithSubscriptionId` parameter set of `Connect-AzAccount` which allows a user name to be pre-selected for interactive logins
