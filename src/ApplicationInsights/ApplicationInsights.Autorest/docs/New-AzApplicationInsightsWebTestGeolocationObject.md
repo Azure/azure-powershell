@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationInsightsWebTestGeolocationObject
 
 ## SYNOPSIS
-Create a in-memory object for WebTestGeolocation
+Create an in-memory object for WebTestGeolocation.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzApplicationInsightsWebTestGeolocationObject [-Location <String>] [<CommonP
 ```
 
 ## DESCRIPTION
-Create a in-memory object for WebTestGeolocation
+Create an in-memory object for WebTestGeolocation.
 
 ## EXAMPLES
 

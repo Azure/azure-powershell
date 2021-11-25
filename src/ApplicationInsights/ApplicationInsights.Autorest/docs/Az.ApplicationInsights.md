@@ -18,7 +18,7 @@ Get a specific Application Insights web test definition.
 Creates or updates an Application Insights web test definition.
 
 ### [New-AzApplicationInsightsWebTestGeolocationObject](New-AzApplicationInsightsWebTestGeolocationObject.md)
-Create a in-memory object for WebTestGeolocation
+Create an in-memory object for WebTestGeolocation.
 
 ### [New-AzApplicationInsightsWebTestHeaderFieldObject](New-AzApplicationInsightsWebTestHeaderFieldObject.md)
 Create a in-memory object for HeaderField

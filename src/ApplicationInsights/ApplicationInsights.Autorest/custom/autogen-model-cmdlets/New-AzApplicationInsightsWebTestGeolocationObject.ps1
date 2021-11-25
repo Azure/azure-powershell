@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a in-memory object for WebTestGeolocation
+Create an in-memory object for WebTestGeolocation.
 .Description
-Create a in-memory object for WebTestGeolocation
+Create an in-memory object for WebTestGeolocation.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.WebTestGeolocation
@@ -38,7 +38,9 @@ function New-AzApplicationInsightsWebTestGeolocationObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.WebTestGeolocation]::New()
 
-        $Object.Location = $Location
+        if ($PSBoundParameters.ContainsKey('Location')) {
+            $Object.Location = $Location
+        }
         return $Object
     }
 }
