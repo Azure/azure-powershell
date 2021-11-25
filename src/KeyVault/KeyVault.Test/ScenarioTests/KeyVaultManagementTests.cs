@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-         [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact(Skip = "Graph authentication blocks test passes")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
         {
