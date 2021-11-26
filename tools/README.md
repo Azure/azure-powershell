@@ -21,3 +21,5 @@ This folder contains the utilities for Azure PowerShell.
 ### Others
 
 **GenerateExternalContributors.ps1** generates the list of external contributors which is appended as part of release notes. It needs personal access token to Github with sufficient permission.
+
+**GenerateCmdletDesignMarkdown.ps1** generates the cmdlet design file for the azure module. Its file content can be use when creating [cmdlet review](https://github.com/Azure/azure-powershell-cmdlet-review-pr/issues)
