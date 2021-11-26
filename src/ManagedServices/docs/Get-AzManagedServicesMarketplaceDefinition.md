@@ -47,23 +47,18 @@ Get the marketplace registration definition for the marketplace identifier.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the Azure Lighthouse Marketplace registration definition offer details
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier marketplace_test.managed_offer.managed_plan1.1.0.1 | Format-List Id, PlanProduct, PlanPublisher, PlanName, PlanVersion
 
-{{ Add output here }}
+Id            : /providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/marketplace_test.managed_offer.managed_plan1.1.0.1
+PlanProduct   : managed_offer
+PlanPublisher : marketplace_test
+PlanName      : managed_plan1
+PlanVersion   : 1.0.1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the Azure Lighthouse Marketplace registration definition offer details.
 
 ## PARAMETERS
 

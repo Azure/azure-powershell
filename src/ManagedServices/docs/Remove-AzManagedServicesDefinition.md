@@ -29,23 +29,13 @@ Deletes the registration definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Removes Azure Lighthouse registration definition
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes Azure Lighthouse registration definition at the given scope.
 
 ## PARAMETERS
 

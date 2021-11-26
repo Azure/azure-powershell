@@ -22,23 +22,27 @@ Creates or updates a registration assignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create new Azure Lighthouse registration assignment at subscription scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzManagedServicesAssignment -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RegistrationDefinitionId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.ManagedServices/registrationDefinitions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-{{ Add output here }}
+Name                                 Type
+----                                 ----
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft.ManagedServices/registrationAssignments
 ```
 
-{{ Add description here }}
+Creates new Azure Lighthouse registration assignment at subscription scope with the registration definition.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create new Azure Lighthouse registration assignment at resource group scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzManagedServicesAssignment -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testgroup" -RegistrationDefinitionId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.ManagedServices/registrationDefinitions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-{{ Add output here }}
+Name                                 Type
+----                                 ----
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft.ManagedServices/registrationAssignments
 ```
 
-{{ Add description here }}
+Creates new Azure Lighthouse registration assignment at resource group scope with the registration definition.
 
 ## PARAMETERS
 

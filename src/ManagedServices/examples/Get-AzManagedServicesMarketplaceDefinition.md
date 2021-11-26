@@ -1,4 +1,4 @@
-### Example 1: Get the Azure Lighthouse Marketplace registration definition offer details.
+### Example 1: Get the Azure Lighthouse Marketplace registration definition offer details
 ```powershell
 PS C:\> Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier marketplace_test.managed_offer.managed_plan1.1.0.1 | Format-List Id, PlanProduct, PlanPublisher, PlanName, PlanVersion
 
