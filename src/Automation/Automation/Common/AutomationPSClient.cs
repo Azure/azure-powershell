@@ -390,22 +390,23 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             var moduleModel =
                 this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-            if (contentLinkUri != null)
+            if (moduleModel!=null && contentLinkUri != null)
             {
-                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
-
-                moduleUpdateParameters.Name = name;
-                moduleUpdateParameters.ContentLink = new AutomationManagement.Models.ContentLink();
-                moduleUpdateParameters.ContentLink.Uri = contentLinkUri.ToString();
-                moduleUpdateParameters.ContentLink.Version =
-                    (String.IsNullOrWhiteSpace(contentLinkVersion))
+                var updateModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                automationAccountName,
+                name,
+                new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+                {
+                    Name = name,
+                    ContentLink = new AutomationManagement.Models.ContentLink()
+                    {
+                        Uri = contentLinkUri.ToString(),
+                        ContentHash = null,
+                        Version = (String.IsNullOrWhiteSpace(contentLinkVersion))
                         ? Guid.NewGuid().ToString()
-                        : contentLinkVersion;
-
-                moduleUpdateParameters.Tags = moduleModel.Tags;
-
-                this.automationManagementClient.Module.Update(resourceGroupName, automationAccountName, name,
-                    moduleUpdateParameters);
+                        : contentLinkVersion
+                    },
+                });
             }
             var updatedModule =
                 this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
