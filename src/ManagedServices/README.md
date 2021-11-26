@@ -43,6 +43,8 @@ module-version: 3.0.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
 
