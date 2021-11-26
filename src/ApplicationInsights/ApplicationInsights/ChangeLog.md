@@ -19,7 +19,12 @@
 -->
 ## Upcoming Release
 * Added WebTest function. Below is the new cmdlet
-
+	* `Get-AzApplicationInsightsWebTest`
+	* `New-AzApplicationInsightsWebTest`
+	* `New-AzApplicationInsightsWebTestGeolocationObject`
+	* `New-AzApplicationInsightsWebTestHeaderFieldObject`
+	* `Remove-AzApplicationInsightsWebTest`
+	* `Update-AzApplicationInsightsWebTestTag`
 
 ## Version 1.2.0
 * Added read only property `ConnectionString` and `ApplicationId` to applicationinsights component
