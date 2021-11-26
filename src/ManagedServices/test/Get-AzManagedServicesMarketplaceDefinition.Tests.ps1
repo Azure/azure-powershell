@@ -15,27 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzManagedServicesMarketpl
 }
 
 Describe 'Get-AzManagedServicesMarketplaceDefinition' {
-    It 'List1' -skip {
+    It 'ListWithScope' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get1' -skip {
+    It 'GetWithScope' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity1' -skip {
+    It 'GetWithoutScope' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ListWithoutScope' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

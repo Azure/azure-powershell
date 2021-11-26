@@ -24,13 +24,13 @@ Get the marketplace registration definition for the marketplace identifier.
 Creates or updates a registration assignment.
 
 ### [New-AzManagedServicesAuthorizationObject](New-AzManagedServicesAuthorizationObject.md)
-Create a in-memory object for Authorization
+Create an in-memory object for Authorization.
 
 ### [New-AzManagedServicesDefinition](New-AzManagedServicesDefinition.md)
 Creates or updates a registration definition.
 
 ### [New-AzManagedServicesEligibleApproverObject](New-AzManagedServicesEligibleApproverObject.md)
-Create a in-memory object for EligibleApprover
+Create an in-memory object for EligibleApprover.
 
 ### [New-AzManagedServicesEligibleAuthorizationObject](New-AzManagedServicesEligibleAuthorizationObject.md)
 Create a in-memory object for EligibleAuthorization

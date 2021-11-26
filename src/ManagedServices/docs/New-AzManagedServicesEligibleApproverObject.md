@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzManagedServicesEligibleApproverObject
 
 ## SYNOPSIS
-Create a in-memory object for EligibleApprover
+Create an in-memory object for EligibleApprover.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzManagedServicesEligibleApproverObject -PrincipalId <String> [-PrincipalIdD
 ```
 
 ## DESCRIPTION
-Create a in-memory object for EligibleApprover
+Create an in-memory object for EligibleApprover.
 
 ## EXAMPLES
 

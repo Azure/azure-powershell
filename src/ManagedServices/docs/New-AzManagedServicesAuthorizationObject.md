@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzManagedServicesAuthorizationObject
 
 ## SYNOPSIS
-Create a in-memory object for Authorization
+Create an in-memory object for Authorization.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzManagedServicesAuthorizationObject -PrincipalId <String> -RoleDefinitionId
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Authorization
+Create an in-memory object for Authorization.
 
 ## EXAMPLES
 
