@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
-    /// <summary>Argument completer implementation for ConnectivityStatus.</summary>
+    /// <summary>Represents the connectivity status of the connected cluster.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ConnectivityStatusTypeConverter))]
     public partial struct ConnectivityStatus :
         System.Management.Automation.IArgumentCompleter
@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Connecting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Connecting", "Connecting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connecting");
+                yield return new global::System.Management.Automation.CompletionResult("'Connecting'", "Connecting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connecting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Connected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Connected", "Connected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connected");
+                yield return new global::System.Management.Automation.CompletionResult("'Connected'", "Connected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Offline".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Offline", "Offline", global::System.Management.Automation.CompletionResultType.ParameterValue, "Offline");
+                yield return new global::System.Management.Automation.CompletionResult("'Offline'", "Offline", global::System.Management.Automation.CompletionResultType.ParameterValue, "Offline");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Expired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Expired", "Expired", global::System.Management.Automation.CompletionResultType.ParameterValue, "Expired");
+                yield return new global::System.Management.Automation.CompletionResult("'Expired'", "Expired", global::System.Management.Automation.CompletionResultType.ParameterValue, "Expired");
             }
         }
     }

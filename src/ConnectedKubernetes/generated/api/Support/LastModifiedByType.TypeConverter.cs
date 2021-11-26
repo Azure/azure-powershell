@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
-    /// <summary>TypeConverter implementation for LastModifiedByType.</summary>
+    /// <summary>The type of identity that last modified the resource.</summary>
     public partial class LastModifiedByTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
