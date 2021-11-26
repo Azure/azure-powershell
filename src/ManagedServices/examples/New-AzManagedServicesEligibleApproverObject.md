@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates Azure Lighthouse eligible authorization approver object. 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  New-AzManagedServicesEligibleApproverObject -PrincipalId "3571937d-942e-4f6d-8b63-4ae855f685e1" -PrincipalIdDisplayName "Approvers group"
 
-{{ Add output here }}
+PrincipalId                          PrincipalIdDisplayName
+-----------                          ----------------------
+3571937d-942e-4f6d-8b63-4ae855f685e1 Approvers group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates Azure Lighthouse eligible authorization approver object.
