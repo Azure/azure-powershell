@@ -20,11 +20,15 @@
 
 ## Upcoming Release
 * [Breaking Change] Upgraded API version to 2021-09-01
+  - Changed the type of parameter `LogAnalyticWorkspaceResourceId` in `New-AzContainerGroup` from Hashtable to String
+  - Removed parameter `NetworkProfileId` in `New-AzContainerGroup`, Added `Subnet` and `Zone`
+  - Removed parameter `ReadinessProbeHttpGetHttpHeadersName` and `ReadinessProbeHttpGetHttpHeadersValue` in `New-AzContainerInstanceObject`, added `ReadinessProbeHttpGetHttpHeader` as their alternative
+  - Removed parameter `LivenessProbeHttpGetHttpHeadersName` and `LivenessProbeHttpGetHttpHeadersValue` in `New-AzContainerInstanceObject`, added `LivenessProbeHttpGetHttpHeader` as their alternative
 * For `Invoke-AzContainerInstanceCommand`
     - [Breaking Change] Displayed command execution result as the cmdlet output by connecting websocket in backend [#15754]
     - Added `-PassThru` to get last execution result when the command succeeds
     - Set default value for TerminalSizeCol and TerminalSizeRow by current PowerShell window size
-* Added new cmdlet: Restart-AzContainerGroup
+* Added `Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint` and `Restart-AzContainerGroup`
 
 ## Version 2.1.0
 * Removed the display of file share credential [#15224]
