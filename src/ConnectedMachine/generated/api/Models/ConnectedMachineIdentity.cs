@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string ExtensionName { get => this._extensionName; set => this._extensionName = value; }
 
+        /// <summary>Backing field for <see cref="GroupName" /> property.</summary>
+        private string _groupName;
+
+        /// <summary>The name of the private link resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string GroupName { get => this._groupName; set => this._groupName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -26,27 +33,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The location of the target resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="MachineName" /> property.</summary>
+        private string _machineName;
 
         /// <summary>The name of the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string Name { get => this._name; set => this._name = value; }
+        public string MachineName { get => this._machineName; set => this._machineName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateLinkScopeId" /> property.</summary>
+        private string _privateLinkScopeId;
+
+        /// <summary>The id (Guid) of the Azure Arc PrivateLinkScope resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string PrivateLinkScopeId { get => this._privateLinkScopeId; set => this._privateLinkScopeId = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ScopeName" /> property.</summary>
+        private string _scopeName;
+
+        /// <summary>The name of the Azure Arc PrivateLinkScope resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string ScopeName { get => this._scopeName; set => this._scopeName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -67,6 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"extensionName",
         PossibleTypes = new [] { typeof(string) })]
         string ExtensionName { get; set; }
+        /// <summary>The name of the private link resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private link resource.",
+        SerializedName = @"groupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GroupName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -75,30 +115,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The location of the target resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The location of the target resource.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>The name of the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"The name of the hybrid machine.",
-        SerializedName = @"name",
+        SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
-        string Name { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        string MachineName { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the private endpoint connection.",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The id (Guid) of the Azure Arc PrivateLinkScope resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The id (Guid) of the Azure Arc PrivateLinkScope resource.",
+        SerializedName = @"privateLinkScopeId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateLinkScopeId { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The name of the Azure Arc PrivateLinkScope resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The name of the Azure Arc PrivateLinkScope resource.",
+        SerializedName = @"scopeName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScopeName { get; set; }
+        /// <summary>The ID of the target subscription.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -109,16 +178,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
         /// <summary>The name of the machine extension.</summary>
         string ExtensionName { get; set; }
+        /// <summary>The name of the private link resource.</summary>
+        string GroupName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The location of the target resource.</summary>
+        string Location { get; set; }
         /// <summary>The name of the hybrid machine.</summary>
-        string Name { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        string MachineName { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The id (Guid) of the Azure Arc PrivateLinkScope resource.</summary>
+        string PrivateLinkScopeId { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The name of the Azure Arc PrivateLinkScope resource.</summary>
+        string ScopeName { get; set; }
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

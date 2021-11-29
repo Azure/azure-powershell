@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time = (global::System.DateTime?) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message, global::System.Convert.ToString);
+            if (content.Contains("Time"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time = (global::System.DateTime?) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType.CreateFrom);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time = (global::System.DateTime?) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message, global::System.Convert.ToString);
+            if (content.Contains("Time"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time = (global::System.DateTime?) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Time, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MSDeployLogEntryType.CreateFrom);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMSDeployLogEntryInternal)this).Message, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

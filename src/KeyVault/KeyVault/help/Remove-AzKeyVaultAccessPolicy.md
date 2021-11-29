@@ -125,6 +125,15 @@ The **Remove-AzKeyVaultAccessPolicy** cmdlet removes all permissions for a user 
 Even if you remove all permissions, the owner of the Azure subscription that contains the key vault can add permissions to the key vault.
 Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /users
+- GET /servicePrincipals/{id}
+- GET /servicePrincipals
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1: Remove permissions for a user

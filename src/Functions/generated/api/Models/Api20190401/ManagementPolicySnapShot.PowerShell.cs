@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDateAfterCreation) content.GetValueForProperty("Delete",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterCreationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            if (content.Contains("Delete"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDateAfterCreation) content.GetValueForProperty("Delete",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterCreationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeleteDaysAfterCreationGreaterThan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDateAfterCreation) content.GetValueForProperty("Delete",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterCreationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            if (content.Contains("Delete"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDateAfterCreation) content.GetValueForProperty("Delete",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).Delete, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.DateAfterCreationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeleteDaysAfterCreationGreaterThan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySnapShotInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
             AfterDeserializePSObject(content);
         }
 

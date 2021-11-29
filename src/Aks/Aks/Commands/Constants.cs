@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Aks
         internal const string DotNetApiParameterResourceName = "resourceName";
         internal const string DotNetApiParameterAgentPoolName = "agentPoolName";
 
-        public const string MSGraphMigrationMessage = @"This cmdlet is migrated from Azure Active Directory Graph to Microsoft Graph in Az 7.x and later.
-Visit https://go.microsoft.com/fwlink/?linkid=2174792 for migration guide and breaking changes.";
+        public const string MSGraphMigrationMessage = @"We have migrated the API calls for this cmdlet from Azure Active Directory Graph to Microsoft Graph.
+Visit https://go.microsoft.com/fwlink/?linkid=2181475 for troubleshooting information.";
     }
 }

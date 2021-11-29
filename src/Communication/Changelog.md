@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a new cmdlet `Test-AzCommunicationServiceNameAvailability`
+* Updated API version to 2020-08-20
 
 ## Version 0.1.0
 * First preview release for module Az.Communication

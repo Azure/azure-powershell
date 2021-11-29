@@ -47,17 +47,17 @@ jobs:
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_PS6_2_4_SmokeTest'
-    vmImage: 'macOS-10.15'
+    vmImage: 'macOS-11'
     psVersion: '6.2.4'
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_PS7_0_3_SmokeTest'
-    vmImage: 'macOS-10.15'
+    vmImage: 'macOS-11'
     psVersion: '7.0.3'
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_Latest_PS_SmokeTest'
-    vmImage: 'macOS-10.15'
+    vmImage: 'macOS-11'
     psVersion: 'latest'

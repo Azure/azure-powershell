@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
-    /// <summary>TypeConverter implementation for ResourceIdentityType.</summary>
+    /// <summary>
+    /// The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The
+    /// type 'None' means no identity is assigned to the connected cluster.
+    /// </summary>
     public partial class ResourceIdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

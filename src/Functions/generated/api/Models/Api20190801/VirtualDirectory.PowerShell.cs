@@ -104,8 +104,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            if (content.Contains("VirtualPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,8 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            if (content.Contains("VirtualPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).VirtualPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectoryInternal)this).PhysicalPath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

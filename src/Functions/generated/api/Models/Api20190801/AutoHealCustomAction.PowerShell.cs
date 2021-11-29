@@ -69,8 +69,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe = (string) content.GetValueForProperty("Exe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter = (string) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter, global::System.Convert.ToString);
+            if (content.Contains("Exe"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe = (string) content.GetValueForProperty("Exe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe, global::System.Convert.ToString);
+            }
+            if (content.Contains("Parameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter = (string) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,8 +94,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe = (string) content.GetValueForProperty("Exe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter = (string) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter, global::System.Convert.ToString);
+            if (content.Contains("Exe"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe = (string) content.GetValueForProperty("Exe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Exe, global::System.Convert.ToString);
+            }
+            if (content.Contains("Parameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter = (string) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)this).Parameter, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

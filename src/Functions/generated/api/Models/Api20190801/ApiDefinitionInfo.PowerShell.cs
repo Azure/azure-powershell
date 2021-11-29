@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url, global::System.Convert.ToString);
+            if (content.Contains("Url"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -84,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url, global::System.Convert.ToString);
+            if (content.Contains("Url"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IApiDefinitionInfoInternal)this).Url, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
