@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
 * [Breaking change] Migrated from AAD Graph to Microsoft Graph
 * [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
 * Allowed parameter `Id` in `Get-AzDenyAssignment` to accept fully qualified ID
