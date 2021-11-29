@@ -709,6 +709,6 @@
   },
   {
     "alias": "EdgeOrder",
-    "regex": "EdgeOrder"
+    "module": "EdgeOrder"
   }
 ]
