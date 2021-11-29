@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ServicePrincipal = Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Services
 {
