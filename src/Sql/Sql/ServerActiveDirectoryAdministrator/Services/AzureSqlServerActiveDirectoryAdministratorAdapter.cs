@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 if (_microsoftGraphClient == null)
                 {
                     _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.Endpoint.Graph);
+                    _microsoftGraphClient.TenantID = Context.Tenant.Id;
                 }
                 return _microsoftGraphClient;
             }
@@ -204,7 +205,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphServicePrincipal>(a => a.DisplayName == displayName);
             }
 
-            // var servicePrincipalList = MicrosoftGraphClient.FilterServicePrincipals(odataQueryFilter);
             var servicePrincipalList = MicrosoftGraphClient.FilterServicePrincipals(odataQueryFilter);
 
             if (servicePrincipalList != null && servicePrincipalList.Count() > 1)

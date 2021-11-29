@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 if (_microsoftGraphClient == null)
                 {
                     _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.Endpoint.Graph);
+                    _microsoftGraphClient.TenantID = Context.Tenant.Id;
                 }
                 return _microsoftGraphClient;
             }
