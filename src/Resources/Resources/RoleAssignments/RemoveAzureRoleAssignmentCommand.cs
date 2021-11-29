@@ -160,6 +160,8 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             IEnumerable<PSRoleAssignment> roleAssignments = null;
             if (this.IsParameterBound(c => c.InputObject))
             {
@@ -187,7 +189,6 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription.Id
                 },
-                ExcludeAssignmentsForDeletedPrincipals = false,
                 // we should never expand principal groups in the Delete scenario
                 ExpandPrincipalGroups = false,
                 // never include classic administrators in the Delete scenario

@@ -16,15 +16,18 @@ Updates a workspace.
 ### ByName (Default)
 ```
 Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [[-Sku] <String>]
- [[-Tag] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>] [<CommonParameters>]
+ [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [-RetentionInDays <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-PublicNetworkAccessForIngestion <String>]
+ [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>] [[-ForceCmkForQuery] <Boolean>]
+ [[-DisableLocalAuth] <Boolean>] [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Set-AzOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [[-Tag] <Hashtable>]
- [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>] [<CommonParameters>]
+Set-AzOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [-SkuCapacity <Int32>]
+ [[-Tag] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>]
+ [[-ForceCmkForQuery] <Boolean>] [[-DisableLocalAuth] <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +51,21 @@ This command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the works
 
 ## PARAMETERS
 
+### -DailyQuotaGb
+The daily volume cap for ingestion - number
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -58,6 +76,36 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceCmkForQuery
+Gets or sets indicates whether customer managed storage is mandatory for query management
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -139,25 +187,33 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specifies the service tier of the workspace.
-Valid values are: 
-- free
-- standard
-- premium
-- pernode
-- standalone
-- pergb2018
+The service tier of the workspace.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone, pergb2018
+Accepted values: free, standard, premium, pernode, standalone, pergb2018, capacityreservation, lacluster
 
 Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+Sku Capacity, value need to be multiple of 100 and above 0.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -202,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
