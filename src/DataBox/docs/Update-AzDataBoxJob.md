@@ -34,6 +34,17 @@ KekType         KekUrl                                           KekVaultResourc
 -------         ------                                           ------------------
 CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
 PS C:\> $DebugPreference = "Continue"
+# You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when update command fails.
+# {
+#   "Error": {
+#     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
+#     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
+#     "Details": [
+#       null
+#     ],
+#     "Target": null
+#   }
+# }
 PS C:\> Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
@@ -42,17 +53,6 @@ Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonSchedu
 ```
 
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
-Also you can use $DebugPreference = "Continue", with any example/usecase to get exact details of error in below format when command fails.
->{
->  "Error": {
->     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
->     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
->     "Details": [
->       null
->     ],
->     "Target": null
->   }
-> }
 
 ### Example 2: Update databox job encryption from microsoft managed to customer managed with system identities in 2 updates
 ```powershell

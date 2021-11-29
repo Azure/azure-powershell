@@ -1,10 +1,21 @@
 ### Example 1: Create a databox import job 
 ```powershell
-PS C:\> $DebugPreference = "Continue"
 PS C:\> $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 PS C:\>  $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 PS C:\> $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 PS C:\>  $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
+PS C:\> $DebugPreference = "Continue"
+# You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when creation command fails.
+# {
+#   "Error": {
+#     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
+#     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
+#     "Details": [
+#       null
+#     ],
+#     "Target": null
+#   }
+# } 
 PS C:\> $resource = New-AzDataBoxJob -Name "ImportTest" -SubscriptionId "SubscriptionId" -ResourceGroupName "resourceGroupName" -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox"
 PS C:\> $resource
 
@@ -40,17 +51,7 @@ AddressType City          CompanyName Country PostalCode StateOrProvince StreetA
 Commercial  San Francisco             US      94107      CA              101 TOWNSEND ST
 ```
 
-You can expand and visualize other object in similar way how details and shipping address expanded, Also you can use $DebugPreference = "Continue", with any example/usecase to get exact details of error in below format when command fails.
->{
->  "Error": {
->     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
->     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
->     "Details": [
->       null
->     ],
->     "Target": null
->   }
-> }
+You can expand and visualize other object in similar way how details and shipping address expanded.
 
 
 ### Example 2: Creates a databox export job
