@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled = (string) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategoryInternal)this).Enabled, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

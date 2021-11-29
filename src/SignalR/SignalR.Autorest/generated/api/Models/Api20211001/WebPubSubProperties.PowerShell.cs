@@ -104,31 +104,106 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubTlsSettings) content.GetValueForProperty("Tl",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubTlsSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfiguration) content.GetValueForProperty("LiveTraceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceConfigurationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfiguration) content.GetValueForProperty("ResourceLogConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogConfigurationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLs) content.GetValueForProperty("NetworkAcL",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubNetworkAcLsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP = (string) content.GetValueForProperty("ExternalIP",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort = (int?) content.GetValueForProperty("PublicPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort = (int?) content.GetValueForProperty("ServerPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[]) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[]) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix = (string) content.GetValueForProperty("HostNamePrefix",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth = (bool?) content.GetValueForProperty("DisableLocalAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth = (bool?) content.GetValueForProperty("DisableAadAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled = (string) content.GetValueForProperty("LiveTraceConfigurationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("LiveTraceConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("ResourceLogConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled = (bool?) content.GetValueForProperty("TlClientCertEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("NetworkAcLPublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("NetworkAcLDefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("NetworkAcLPrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            if (content.Contains("Tl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubTlsSettings) content.GetValueForProperty("Tl",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubTlsSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LiveTraceConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfiguration) content.GetValueForProperty("LiveTraceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceLogConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfiguration) content.GetValueForProperty("ResourceLogConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NetworkAcL"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLs) content.GetValueForProperty("NetworkAcL",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubNetworkAcLsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("ExternalIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP = (string) content.GetValueForProperty("ExternalIP",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort = (int?) content.GetValueForProperty("PublicPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ServerPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort = (int?) content.GetValueForProperty("ServerPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[]) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SharedPrivateLinkResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[]) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostNamePrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix = (string) content.GetValueForProperty("HostNamePrefix",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisableLocalAuth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth = (bool?) content.GetValueForProperty("DisableLocalAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DisableAadAuth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth = (bool?) content.GetValueForProperty("DisableAadAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LiveTraceConfigurationEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled = (string) content.GetValueForProperty("LiveTraceConfigurationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled, global::System.Convert.ToString);
+            }
+            if (content.Contains("LiveTraceConfigurationCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("LiveTraceConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ResourceLogConfigurationCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("ResourceLogConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("TlClientCertEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled = (bool?) content.GetValueForProperty("TlClientCertEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("NetworkAcLPublicNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("NetworkAcLPublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NetworkAcLDefaultAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("NetworkAcLDefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
+            }
+            if (content.Contains("NetworkAcLPrivateEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("NetworkAcLPrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("PublicNetworkAllow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
+            if (content.Contains("PublicNetworkDeny"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -146,31 +221,106 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubTlsSettings) content.GetValueForProperty("Tl",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubTlsSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfiguration) content.GetValueForProperty("LiveTraceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceConfigurationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfiguration) content.GetValueForProperty("ResourceLogConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogConfigurationTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLs) content.GetValueForProperty("NetworkAcL",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubNetworkAcLsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP = (string) content.GetValueForProperty("ExternalIP",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort = (int?) content.GetValueForProperty("PublicPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort = (int?) content.GetValueForProperty("ServerPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[]) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[]) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix = (string) content.GetValueForProperty("HostNamePrefix",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth = (bool?) content.GetValueForProperty("DisableLocalAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth = (bool?) content.GetValueForProperty("DisableAadAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled = (string) content.GetValueForProperty("LiveTraceConfigurationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("LiveTraceConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("ResourceLogConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled = (bool?) content.GetValueForProperty("TlClientCertEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("NetworkAcLPublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("NetworkAcLDefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("NetworkAcLPrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            if (content.Contains("Tl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubTlsSettings) content.GetValueForProperty("Tl",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Tl, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubTlsSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LiveTraceConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceConfiguration) content.GetValueForProperty("LiveTraceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceLogConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogConfiguration) content.GetValueForProperty("ResourceLogConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfiguration, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NetworkAcL"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLs) content.GetValueForProperty("NetworkAcL",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcL, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubNetworkAcLsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("ExternalIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP = (string) content.GetValueForProperty("ExternalIP",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ExternalIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort = (int?) content.GetValueForProperty("PublicPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ServerPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort = (int?) content.GetValueForProperty("ServerPort",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ServerPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection[]) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SharedPrivateLinkResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource[]) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).SharedPrivateLinkResource, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostNamePrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix = (string) content.GetValueForProperty("HostNamePrefix",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).HostNamePrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisableLocalAuth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth = (bool?) content.GetValueForProperty("DisableLocalAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableLocalAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DisableAadAuth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth = (bool?) content.GetValueForProperty("DisableAadAuth",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).DisableAadAuth, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LiveTraceConfigurationEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled = (string) content.GetValueForProperty("LiveTraceConfigurationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationEnabled, global::System.Convert.ToString);
+            }
+            if (content.Contains("LiveTraceConfigurationCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]) content.GetValueForProperty("LiveTraceConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).LiveTraceConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategoryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ResourceLogConfigurationCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]) content.GetValueForProperty("ResourceLogConfigurationCategory",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).ResourceLogConfigurationCategory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategoryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("TlClientCertEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled = (bool?) content.GetValueForProperty("TlClientCertEnabled",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).TlClientCertEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("NetworkAcLPublicNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("NetworkAcLPublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NetworkAcLDefaultAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("NetworkAcLDefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLDefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
+            }
+            if (content.Contains("NetworkAcLPrivateEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("NetworkAcLPrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).NetworkAcLPrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("PublicNetworkAllow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
+            if (content.Contains("PublicNetworkDeny"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubPropertiesInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

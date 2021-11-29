@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

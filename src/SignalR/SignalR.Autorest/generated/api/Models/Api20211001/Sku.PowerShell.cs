@@ -99,19 +99,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1 = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceSku) content.GetValueForProperty("Sku1",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceSkuTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuCapacityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("CapacityScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum = (int?) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum = (int?) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault = (int?) content.GetValueForProperty("CapacityDefault",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue = (int[]) content.GetValueForProperty("CapacityAllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            if (content.Contains("Sku1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1 = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceSku) content.GetValueForProperty("Sku1",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceSkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuCapacityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapacityScaleType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("CapacityScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier.CreateFrom);
+            }
+            if (content.Contains("Size"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size, global::System.Convert.ToString);
+            }
+            if (content.Contains("Family"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityMinimum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum = (int?) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityMaximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum = (int?) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityDefault"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault = (int?) content.GetValueForProperty("CapacityDefault",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityAllowedValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue = (int[]) content.GetValueForProperty("CapacityAllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,19 +168,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1 = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceSku) content.GetValueForProperty("Sku1",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceSkuTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuCapacityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("CapacityScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum = (int?) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum = (int?) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault = (int?) content.GetValueForProperty("CapacityDefault",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue = (int[]) content.GetValueForProperty("CapacityAllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            if (content.Contains("Sku1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1 = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceSku) content.GetValueForProperty("Sku1",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Sku1, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceSkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuCapacityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapacityScaleType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType?) content.GetValueForProperty("CapacityScaleType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityScaleType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ScaleType.CreateFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier.CreateFrom);
+            }
+            if (content.Contains("Size"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Size, global::System.Convert.ToString);
+            }
+            if (content.Contains("Family"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).Family, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityMinimum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum = (int?) content.GetValueForProperty("CapacityMinimum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityMaximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum = (int?) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityDefault"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault = (int?) content.GetValueForProperty("CapacityDefault",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityDefault, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CapacityAllowedValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue = (int[]) content.GetValueForProperty("CapacityAllowedValue",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuInternal)this).CapacityAllowedValue, __y => TypeConverterExtensions.SelectToArray<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
             AfterDeserializePSObject(content);
         }
 
