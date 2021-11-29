@@ -210,17 +210,17 @@
     {
       "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester?api-version=2020-01-13-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9tb2R1bGVzL1Blc3Rlcj9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
-      "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"contentLink\": {\r\n      \"uri\": \"https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg\",\r\n      \"version\": \"87920157-3e80-4877-97e3-95cc514a76f5\"\r\n    }\r\n  },\r\n  \"name\": \"Pester\",\r\n  \"tags\": {}\r\n}",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"contentLink\": {\r\n      \"uri\": \"https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg\"\r\n    }\r\n  },\r\n  \"name\": \"Pester\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b68fd72b-c8f2-4f64-b0c8-137573c6ca1b"
+          "73c64f74-c38d-4f9f-80af-ebf709079776"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
@@ -229,7 +229,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "246"
+          "173"
         ]
       },
       "ResponseHeaders": {
@@ -239,8 +239,17 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester?api-version=2020-01-13-preview"
+        ],
         "x-ms-request-id": [
-          "b68fd72b-c8f2-4f64-b0c8-137573c6ca1b"
+          "73c64f74-c38d-4f9f-80af-ebf709079776"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester?api-version=2020-01-13-preview"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester?api-version=2020-01-13-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -255,22 +264,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "4e721b99-17ac-49fc-9e3e-ea629d272ec9"
+          "515c208f-d328-4a8c-b7d3-56d82577ea4c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210421T143439Z:4e721b99-17ac-49fc-9e3e-ea629d272ec9"
+          "CENTRALINDIA:20210404T063905Z:515c208f-d328-4a8c-b7d3-56d82577ea4c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 21 Apr 2021 14:34:39 GMT"
+          "Sun, 04 Apr 2021 06:39:05 GMT"
         ],
         "Content-Length": [
-          "560"
+          "548"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -279,8 +288,8 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester\",\r\n  \"name\": \"Pester\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": \"3.0.3\",\r\n    \"sizeInBytes\": 74921,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2021-04-21T19:27:14.4733333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-21T19:29:46.1566667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester\",\r\n  \"name\": \"Pester\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2021-04-04T12:09:04.93+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T12:09:04.9633333+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "StatusCode": 201
     }
   ],
   "Names": {},
