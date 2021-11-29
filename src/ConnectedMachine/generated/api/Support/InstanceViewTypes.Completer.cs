@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "instanceView".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("instanceView", "instanceView", global::System.Management.Automation.CompletionResultType.ParameterValue, "instanceView");
+                yield return new global::System.Management.Automation.CompletionResult("'instanceView'", "instanceView", global::System.Management.Automation.CompletionResultType.ParameterValue, "instanceView");
             }
         }
     }
