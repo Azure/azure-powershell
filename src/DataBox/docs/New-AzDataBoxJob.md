@@ -70,18 +70,16 @@ Commercial  San Francisco             US      94107      CA              101 TOW
 ```
 
 You can expand and visualize other object in similar way how details and shipping address expanded, Also you can use $DebugPreference = "Continue", with any example/usecase to get exact details of error in below format when command fails.
-```json
-{
-  "Error": {
-    "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
-    "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
-    "Details": [
-      null
-    ],
-    "Target": null
-  }
-} 
-```
+>{
+>  "Error": {
+>     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
+>     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
+>     "Details": [
+>       null
+>     ],
+>     "Target": null
+>   }
+> }
 
 ### Example 2: Creates a databox export job
 ```powershell
