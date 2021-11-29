@@ -408,9 +408,14 @@
     "alias": "DevSpaces"
   },
   {
+    "module": "SignalR", 
     "regex": "SignalR",
-    "group": "SignalR",
     "alias": "SignalR"
+  },
+  {
+    "module": "SignalR", 
+    "regex": "WebPubSub",
+    "alias": "Web PubSub"
   },
   {
     "regex": "AzSearch",
@@ -697,11 +702,6 @@
   {
     "alias": "DiskPool",
     "regex": "DiskPool"
-  },
-  {
-    "regex": "WebPubSub",
-    "group": "SignalR",
-    "alias": "Web PubSub"
   },
   {
     "alias": "CustomLocation",
