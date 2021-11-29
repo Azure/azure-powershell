@@ -1,5 +1,6 @@
 ### Example 1: Create a databox import job 
 ```powershell
+PS C:\> $DebugPreference = "Continue"
 PS C:\> $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 PS C:\>  $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 PS C:\> $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
@@ -39,7 +40,19 @@ AddressType City          CompanyName Country PostalCode StateOrProvince StreetA
 Commercial  San Francisco             US      94107      CA              101 TOWNSEND ST
 ```
 
-{{You can expand and visualize other object in similar way how details and shipping address expanded
+You can expand and visualize other object in similar way how details and shipping address expanded, Also you can use $DebugPreference = "Continue", with any example/usecase to get exact details of error in below format when command fails.
+```
+{
+  "Error": {
+    "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
+    "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
+    "Details": [
+      null
+    ],
+    "Target": null
+  }
+} 
+```
 
 ### Example 2: Creates a databox export job
 ```powershell
@@ -55,7 +68,7 @@ Name      Location Status        TransferType    SkuName IdentityType DeliveryTy
 ExportTest WestUS   DeviceOrdered ExportFromAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
 ```
 
-Creates a databox export job 
+Creates a databox export job. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
 
 ### Example 3: Creates a databox import job with managed disk account
 ```powershell
@@ -70,7 +83,7 @@ Name            Location Status        TransferType  SkuName IdentityType Delive
 PwshManagedDisk WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
 ```
 
-{{Creates a databox import job with managed disk account 
+Creates a databox import job with managed disk account. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
 
 
 ### Example 4: Creates a databox import job with user assigned identity
@@ -87,7 +100,7 @@ Name          Location Status        TransferType  SkuName IdentityType Delivery
 PowershellMSI WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
 ```
 
-Creates a databox import job with user assigned identity 
+Creates a databox import job with user assigned identity. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
 
 ### Example 5: Creates a databox job with your own key
 ```powershell
@@ -102,7 +115,7 @@ Name           Location Status        TransferType  SkuName IdentityType Deliver
 PowershellBYOK WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
 ```
 
-Creates a databox job with your own key 
+Creates a databox job with your own key. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
 
 ### Example 6: Creates a databoxHeavy job with your own key
 ```powershell
@@ -117,7 +130,7 @@ Name    Location Status        TransferType  SkuName      IdentityType DeliveryT
 DbxHeavy WestUS  DeviceOrdered ImportToAzure DataBoxHeavy  None        NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxHeavyJobDetails
 ```
 
-Creates a databoxHeavy job with your own key 
+Creates a databoxHeavy job with your own key. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
 
 ### Example 7: Creates a databoxDisk job with your own Passkey
 ```powershell
@@ -132,7 +145,7 @@ Name     Location Status        TransferType  SkuName     IdentityType DeliveryT
 pwshDisk WestUS   DeviceOrdered ImportToAzure DataBoxDisk None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
 ```
 
-Creates a databoxDisky job with your own Passkey 
+Creates a databoxDisky job with your own Passkey. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
 
 ### Example 8: Creates a databox job with double encryption enabled
 ```powershell
@@ -147,4 +160,4 @@ Name        Location Status        TransferType  SkuName     IdentityType Delive
 pwshDoubEncy WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
 ```
 
-Creates a databox job with double encryption enabled 
+Creates a databox job with double encryption enabled. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 

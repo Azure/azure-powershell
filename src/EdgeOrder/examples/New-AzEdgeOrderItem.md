@@ -28,4 +28,31 @@ Type                           : Microsoft.EdgeOrder/orderItems
 
 ```
 
-Creates a new orderItem, to get insight on any failure you can set $debugPreference = "Continue" and run command again
+Creates a new orderItem, to get insight on any failure you can set $debugPreference = "Continue" and re-run command again to get exact details of error in below format when command fails.
+```
+{
+  "Error": {
+    "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
+    "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
+    "Details": [
+      null
+    ],
+    "Target": null
+  }
+} 
+```
+
+### Example 2: Creates a new orderItem with preference set for transport, encryption and management resource
+```powershell
+PS C:\> $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList $env.EmailList -Phone $env.Phone
+PS C:\> $ShippingDetails = New-AzEdgeOrderShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType
+PS C:\> $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
+PS C:\> $preference = New-AzEdgeOrderPreferencesObject -EncryptionPreference @{DoubleEncryptionStatus = "Disabled"} -TransportPreference @{PreferredShipmentType = "MicrosoftManaged"} -ManagementResourcePreference @{PreferredManagementResourceId = "/subscriptions/f100532e-283-4523-8ff6-8cebadb6e9d/resourceGroups/testRG/providers/Microsoft.DataBoxEdge/DataBoxEdgeDevices/1GPUtest"}
+PS C:\> $details = New-AzEdgeOrderOrderItemDetailsObject -OrderItemType "Purchase"  -ProductDetail  @{"HierarchyInformation"=$HierarchyInformation} -Preference $preference
+PS C:\> New-AzEdgeOrderItem -Name "OrderItemNameWithPref" -ResourceGroupName "dhja" -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/dhja/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwPrefOrder" -OrderItemDetail $details -SubscriptionId $env.SubscriptionId -ForwardShippingAddress $ShippingDetails
+
+Location Name                  Type
+-------- ----                  ----
+eastus   OrderItemNameWithPref Microsoft.EdgeOrder/orderItems
+```
+Creates a new orderItem with preference set for transport, encryption and management resource
