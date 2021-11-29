@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
+    using System;
 
     /// <summary>Starts a Stopped Managed Cluster</summary>
     /// <remarks>

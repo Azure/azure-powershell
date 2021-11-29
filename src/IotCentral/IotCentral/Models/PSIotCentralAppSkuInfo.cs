@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
     public class PSIotCentralAppSkuInfo
     {
         /// <summary>
-        /// Gets or sets the name of the SKU. Possible values include: 'S1', 'ST0', 'ST1', 'ST2'
+        /// Gets or sets the name of the SKU. Possible values include: 'ST0', 'ST1', 'ST2'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

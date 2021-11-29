@@ -543,10 +543,6 @@
     "alias": "SQL"
   },
   {
-    "regex": "Blockchain",
-    "alias": "Blockchain Service"
-  },
-  {
     "regex": "ImportExport",
     "alias": "Import/Export"
   },

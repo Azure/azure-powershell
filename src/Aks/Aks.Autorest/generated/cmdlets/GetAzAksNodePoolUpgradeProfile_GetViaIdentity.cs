@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.Debug:
