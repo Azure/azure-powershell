@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,13 +17,11 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
+    using System.Collections;
     using System.Linq;
 
     public class PSStorageInsight
     {
-        public PSStorageInsight()
-        {
-        }
 
         public PSStorageInsight(StorageInsight storageInsight, string resourceGroupName, string workspaceName)
         {
@@ -37,14 +34,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.WorkspaceName = workspaceName;
             this.Name = storageInsight.Name;
             this.ResourceId = storageInsight.Id;
-
-            if (storageInsight != null)
-            {
-                this.StorageAccountResourceId = storageInsight.StorageAccount != null ? storageInsight.StorageAccount.Id : null;
-                this.Tables = storageInsight.Tables.ToList();
-                this.Containers = storageInsight.Containers.ToList();
-                this.State = storageInsight.Status != null ? storageInsight.Status.State : null;
-            }
+            this.Type = storageInsight.Type;
+            this.StorageAccountResourceId = storageInsight.StorageAccount?.Id;
+            this.StorageAccountKey = storageInsight.StorageAccount?.Key;
+            this.Tables = storageInsight.Tables.ToList();
+            this.Containers = storageInsight.Containers.ToList();
+            this.State = storageInsight.Status?.State;
+            this.StateDescription = storageInsight.Status?.Description;
+            this.ETag = storageInsight.ETag;
+            this.Tags = storageInsight.Tags == null ? null : new Hashtable((IDictionary)storageInsight.Tags);
         }
 
         public string Name { get; set; }
@@ -55,12 +53,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string WorkspaceName { get; set; }
 
+        public string Type { get; set; }//added
+
         public string StorageAccountResourceId { get; set; }
 
+        public string StorageAccountKey { get; set; }// new prop
+
         public string State { get; set; }
+
+        public string StateDescription { get; set; }//new prop
 
         public List<string> Tables { get; set; }
 
         public List<string> Containers { get; set; }
+
+        public Hashtable Tags { get; set; } //new prop
+
+        public string ETag { get; set; }//new prop
     }
 }

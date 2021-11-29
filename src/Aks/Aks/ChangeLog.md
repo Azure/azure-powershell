@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `Invoke-AzAksRunCommand` to  support running a shell command (with kubectl, helm) on aks cluster. [#16104]
+* Added support of `EnableNodePublicIp` and `NodePublicIPPrefixID` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
+* Migrated the logic of creating service principal in `New-AzAksCluster` from `Azure Active Directory Graph` to `Microsoft Graph`.
+* Fixed the issue that `Set-AzAksCluster` can't upgrade cluster when node pool version doesn't match cluster version. [#14583]
+* Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]
+
+## Version 2.5.0
 * Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
 * Added warnings of upcoming breaking change of migrating to Microsoft Graph.
 * Added support for changing the number of nodes in a node pool. [#12379]

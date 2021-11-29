@@ -101,10 +101,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet = (string) content.GetValueForProperty("RemoteSubnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet, global::System.Convert.ToString);
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction.CreateFrom);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Order"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("RemoteSubnet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet = (string) content.GetValueForProperty("RemoteSubnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,10 +134,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet = (string) content.GetValueForProperty("RemoteSubnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet, global::System.Convert.ToString);
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessControlEntryAction.CreateFrom);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Order"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("RemoteSubnet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet = (string) content.GetValueForProperty("RemoteSubnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INetworkAccessControlEntryInternal)this).RemoteSubnet, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

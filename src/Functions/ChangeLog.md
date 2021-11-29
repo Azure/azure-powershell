@@ -18,7 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Enable function app creation for Functions V4 stacks [#15919]
+* [Breaking change] `Update-AzFunctionAppPlan` prompts for confirmation [#16490]
+* [Breaking change] `Remove-AzFunctionApp` does not delete ASP if it is the last app in the plan [#16487]
+* [Breaking change] Set the `FunctionsVersion` to 4 for FunctionApp creation [#16426]
+* [Breaking change] `Update-AzFunctionApp` prompts for confirmation [#14442]
+* Fixed an error creating function with `New-AzFunctionApp` on PowerShell 5.1 [#15430]
+* Supported storage account SKU `Standard_GZRS` [#14633]
+
+## Version 3.1.1
+* Set site config netFrameworkVersion for Windows V4 apps only
+* Enabled function app creation for Functions V4 stacks [#15919]
 
 ## Version 3.1.0
 * Added two additional app settings (WEBSITE_CONTENTSHARE and WEBSITE_CONTENTAZUREFILECONNECTIONSTRING) for Linux Consumption apps. [15124]

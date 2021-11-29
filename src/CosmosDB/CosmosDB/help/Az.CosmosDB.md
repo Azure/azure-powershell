@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.CosmosDB Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure CosmosDB in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB and Azure Managed Instance for Apache Cassandra in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
@@ -41,8 +41,14 @@ Gets the CosmosDB Gremlin Graph.
 ### [Get-AzCosmosDBGremlinGraphThroughput](Get-AzCosmosDBGremlinGraphThroughput.md)
 Gets the throughput of a CosmosDB Gremlin Graph.
 
+### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
+List Azure Cosmos DB locations and their properties. Get Azure Cosmos DB location properties for a specific location.
+
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
 Gets the CosmosDB MongoDB Collection.
+
+### [Get-AzCosmosDBMongoDBCollectionBackupInformation](Get-AzCosmosDBMongoDBCollectionBackupInformation.md)
+Retrieves the latest restorable timestamp for a mongodb collection.
 
 ### [Get-AzCosmosDBMongoDBCollectionThroughput](Get-AzCosmosDBMongoDBCollectionThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Collection.
@@ -53,8 +59,23 @@ Gets the CosmosDB MongoDB Database
 ### [Get-AzCosmosDBMongoDBDatabaseThroughput](Get-AzCosmosDBMongoDBDatabaseThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Database.
 
+### [Get-AzCosmosDBMongoDBRestorableCollection](Get-AzCosmosDBMongoDBRestorableCollection.md)
+Lists all the restorable Azure Cosmos DB MongoDB collection available for a specific database.
+
+### [Get-AzCosmosDBMongoDBRestorableDatabase](Get-AzCosmosDBMongoDBRestorableDatabase.md)
+Gets the list of all the restorable Azure Cosmos DB MongoDB databases available under the restorable account.
+
+### [Get-AzCosmosDBMongoDBRestorableResource](Get-AzCosmosDBMongoDBRestorableResource.md)
+Lists all the restorable Azure Cosmos DB MongoDB resources available for a specific database account at a given time and location.
+
+### [Get-AzCosmosDBRestorableDatabaseAccount](Get-AzCosmosDBRestorableDatabaseAccount.md)
+Gets the restorable database account object
+
 ### [Get-AzCosmosDBSqlContainer](Get-AzCosmosDBSqlContainer.md)
 Gets the CosmosDB Sql Container.
+
+### [Get-AzCosmosDBSqlContainerBackupInformation](Get-AzCosmosDBSqlContainerBackupInformation.md)
+Retrieves the latest restorable timestamp for a sql container.
 
 ### [Get-AzCosmosDBSqlContainerThroughput](Get-AzCosmosDBSqlContainerThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Container.
@@ -64,6 +85,15 @@ Gets the CosmosDB Sql Database.
 
 ### [Get-AzCosmosDBSqlDatabaseThroughput](Get-AzCosmosDBSqlDatabaseThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Database.
+
+### [Get-AzCosmosDBSqlRestorableContainer](Get-AzCosmosDBSqlRestorableContainer.md)
+Lists all the restorable Azure Cosmos DB SQL containers available for a specific database.
+
+### [Get-AzCosmosDBSqlRestorableDatabase](Get-AzCosmosDBSqlRestorableDatabase.md)
+Gets the list of all the restorable Azure Cosmos DB Sql databases available under the restorable account.
+
+### [Get-AzCosmosDBSqlRestorableResource](Get-AzCosmosDBSqlRestorableResource.md)
+Lists all the restorable Azure Cosmos DB SQL resources available for a specific database account at a given time and location.
 
 ### [Get-AzCosmosDBSqlRoleAssignment](Get-AzCosmosDBSqlRoleAssignment.md)
 Gets the CosmosDB Sql Role Assignment.
@@ -133,6 +163,9 @@ Creates a new CosmosDB Cassandra Schema.
 
 ### [New-AzCosmosDBCassandraTable](New-AzCosmosDBCassandraTable.md)
 Creates a new CosmosDB Cassandra Table.
+
+### [New-AzCosmosDBDatabaseToRestore](New-AzCosmosDBDatabaseToRestore.md)
+Creates a new CosmosDB Database to Restore object(PSDatabaseToRestore)
 
 ### [New-AzCosmosDBGremlinCompositePath](New-AzCosmosDBGremlinCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBGremlinGraph.
@@ -275,6 +308,9 @@ Deletes the CosmosDB Sql UserDefinedFunction.
 ### [Remove-AzCosmosDBTable](Remove-AzCosmosDBTable.md)
 Deletes the CosmosDB Table.
 
+### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
+Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
+
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 Update a CosmosDB account attributes.
 
@@ -353,3 +389,28 @@ Updates the CosmosDB Table. Performs a client side patch operation by reading th
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
 
+## Azure Managed Instance for Apache Cassandra Cmdlets
+
+### [Get-AzManagedCassandraCluster](Get-AzManagedCassandraCluster.md)
+Gets a managed Cassandra cluster.
+
+### [Get-AzManagedCassandraDataCenter](Get-AzManagedCassandraDataCenter.md)
+Gets a managed Cassandra data center.
+
+### [New-AzManagedCassandraCluster](New-AzManagedCassandraCluster.md)
+Creates a new managed Cassandra cluster.
+
+### [New-AzManagedCassandraDataCenter](New-AzManagedCassandraDataCenter.md)
+Creates a new managed Cassandra data center.
+
+### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
+Remove a managed Cassandra cluster.
+
+### [Remove-AzManagedCassandraDataCenter](Remove-AzManagedCassandraDataCenter.md)
+Remove a managed Cassandra data center.
+
+### [Update-AzManagedCassandraCluster](Update-AzManagedCassandraCluster.md)
+Update an existing managed Cassandra cluster.
+
+### [Update-AzManagedCassandraDataCenter](Update-AzManagedCassandraDataCenter.md)
+Update an existing managed Cassandra data center.

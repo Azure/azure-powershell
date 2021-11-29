@@ -177,6 +177,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
             VariantGroup = variantGroup;
         }
 
+        public string GetProcessCustomAttributesAtRuntime()
+        {
+            return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+        }
         public override string ToString() => $@"begin {{
 {Indent}try {{
 {Indent}{Indent}$outBuffer = $null
@@ -185,6 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
 {Indent}{Indent}}}
 {Indent}{Indent}$parameterSet = $PSCmdlet.ParameterSetName
 {GetParameterSetToCmdletMapping()}{GetDefaultValuesStatements()}
+{GetProcessCustomAttributesAtRuntime()}
 {Indent}{Indent}$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
 {Indent}{Indent}$scriptCmd = {{& $wrappedCmd @PSBoundParameters}}
 {Indent}{Indent}$steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -301,7 +306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
 
         public override string ToString() => !String.IsNullOrEmpty(Description)
             ? Description.ToDescriptionFormat(false).NormalizeNewLines()
-                .Split(new [] { Environment.NewLine }, StringSplitOptions.None)
+                .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .Aggregate(String.Empty, (c, n) => c + $"{Indent}# {n}{Environment.NewLine}")
             : String.Empty;
     }
@@ -377,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
         public Type ParameterType { get; }
         public bool IsMandatory { get; }
         public int? Position { get; }
-        
+
         public bool IncludeSpace { get; }
         public bool IncludeDash { get; }
 
@@ -443,7 +448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
         // https://stackoverflow.com/a/5284606/294804
         private static string RemoveEnd(this string text, string suffix) => text.EndsWith(suffix) ? text.Substring(0, text.Length - suffix.Length) : text;
 
-        public static string ToPsSingleLine(this string value, string replacer = " ") => value.ReplaceNewLines(replacer, new []{"<br>", "\r\n", "\n"});
+        public static string ToPsSingleLine(this string value, string replacer = " ") => value.ReplaceNewLines(replacer, new[] { "<br>", "\r\n", "\n" });
 
         public static string ToPsStringLiteral(this string value) => value?.Replace("'", "''").Replace("‘", "''").Replace("’", "''").ToPsSingleLine().Trim() ?? String.Empty;
 
@@ -510,7 +515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
 
         public static string ToNoteOutput(this ComplexInterfaceInfo complexInterfaceInfo, string currentIndent = "", bool includeDashes = false, bool includeBackticks = false, bool isFirst = true)
         {
-            string RenderProperty(ComplexInterfaceInfo info, string indent, bool dash, bool backtick) => 
+            string RenderProperty(ComplexInterfaceInfo info, string indent, bool dash, bool backtick) =>
                 $"{indent}{(dash ? "- " : String.Empty)}{(backtick ? "`" : String.Empty)}{info.ToPropertySyntaxOutput()}{(backtick ? "`" : String.Empty)}: {info.Description}";
 
             var nested = complexInterfaceInfo.NestedInfos.Select(ni =>

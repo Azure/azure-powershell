@@ -19,12 +19,12 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
  [-NetworkPlugin <String>] [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>]
  [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabel <Hashtable>]
- [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey]
- [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
+ [-NodePublicIPPrefixID <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
+ [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -175,6 +175,21 @@ Accept wildcard characters: False
 
 ### -EnableNodeAutoScaling
 Whether to enable auto-scaler
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNodePublicIp
+Whether to enable public IP for nodes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -446,6 +461,21 @@ Accept wildcard characters: False
 
 ### -NodePoolMode
 NodePoolMode represents mode of an node pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePublicIPPrefixID
+The resource Id of public IP prefix for node pool.
 
 ```yaml
 Type: System.String

@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+* Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
+* [Breaking change] Migrated from AAD Graph to Microsoft Graph
+* [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
+* Allowed parameter `Id` in `Get-AzDenyAssignment` to accept fully qualified ID
+* Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
+* Added deprecation message for `AssignIdentity` parameter in `*-AzPolicyAssignment` cmdlets.
+* Added support for user assigned managed identities in policy assignments by adding `IdentityType` and `IdentityId` parameters to `*-AzPolicyAssignment` cmdlets.
+* Updated policy cmdlets to use new api version 2021-06-01 that introduces support for user assigned managed identities in policy assignments.
+* Narrowed API permission when get information about active directory object for *-AzRoleAssignment [#16054]
+
+## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]
 * Added breaking change warnings for AAD cmdlets
 * Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.

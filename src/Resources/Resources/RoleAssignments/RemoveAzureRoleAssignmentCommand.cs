@@ -17,11 +17,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -29,7 +30,6 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a given role assignment.
     /// </summary>
-    [GenericBreakingChange(BreakingChangeMSGraphMigration)]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class RemoveAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
@@ -160,6 +160,8 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             IEnumerable<PSRoleAssignment> roleAssignments = null;
             if (this.IsParameterBound(c => c.InputObject))
             {
@@ -187,7 +189,6 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription.Id
                 },
-                ExcludeAssignmentsForDeletedPrincipals = false,
                 // we should never expand principal groups in the Delete scenario
                 ExpandPrincipalGroups = false,
                 // never include classic administrators in the Delete scenario

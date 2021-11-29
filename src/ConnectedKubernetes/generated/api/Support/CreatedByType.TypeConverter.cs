@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
-    /// <summary>TypeConverter implementation for CreatedByType.</summary>
+    /// <summary>The type of identity that created the resource.</summary>
     public partial class CreatedByTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

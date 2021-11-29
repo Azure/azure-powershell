@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated AAD Graph API to MSGraph API.
+* Added a message to `Set-AzKeyVaultAccessPolicy` stating that for the Permissions parameters, using the 'All' option will not include the 'Purge' permission.
+
+## Version 3.6.1
+* Added warning message of upcoming breaking change to `New-AzKeyVaultRoleDefinition` and `Get-AzKeyVaultRoleDefinition`.
+    - To comply with the syntax of `New-AzRoleDefinition` and `Get-AzRoleDefinition` we are going to rename some of the properties of `PSKeyVaultPermission` model, which might affect these two cmdlets.
 * Added warnings of upcoming breaking change of migrating to Microsoft Graph.
 
 ## Version 3.6.0

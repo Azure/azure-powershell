@@ -13,11 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights

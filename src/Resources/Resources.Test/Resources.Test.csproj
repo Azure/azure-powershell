@@ -11,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.8.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.13.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
   </ItemGroup>
@@ -33,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.14.0-preview" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.15.1-preview" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.9.0" />

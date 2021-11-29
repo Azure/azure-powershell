@@ -92,10 +92,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportTopicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -113,10 +125,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory = (string) content.GetValueForProperty("SubCategory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SubCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportTopicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId = (string) content.GetValueForProperty("SupportTopicId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDetectorInfoInternal)this).SupportTopicId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

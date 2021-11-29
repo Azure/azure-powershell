@@ -122,6 +122,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public SwitchParameter Identity { get; set; }
 
         /// <summary>
+        /// Indicates whether DisableLocalAuth is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
+        public SwitchParameter DisableLocalAuth { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
@@ -133,7 +140,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 try
                 {
-                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ClusterARMId, ZoneRedundant.IsPresent, Identity.IsPresent));
+                    WriteObject(Client.BeginCreateNamespace(
+                        ResourceGroupName,
+                        Name,
+                        Location,
+                        SkuName,
+                        SkuCapacity,
+                        tagDictionary,
+                        EnableAutoInflate.IsPresent,
+                        MaximumThroughputUnits,
+                        EnableKafka.IsPresent,
+                        ClusterARMId,
+                        ZoneRedundant.IsPresent,
+                        DisableLocalAuth.IsPresent,
+                        Identity.IsPresent));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

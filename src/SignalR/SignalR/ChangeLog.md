@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Added Web PubSub cmdlets
+  - `New-AzWebPubSub`
+  - `Get-AzWebPubSub`
+  - `Update-AzWebPubSub`
+  - `Restart-AzWebPubSub`
+  - `Remove-AzWebPubSub`
+  - `New-AzWebPubSubHub`
+  - `Get-AzWebPubSubHub`
+  - `Remove-AzWebPubSubHub`
+  - `New-AzWebPubSubKey`
+  - `Get-AzWebPubSubKey`
+  - `Get-AzWebPubSubSku`
+  - `Get-AzWebPubSubUsage`
+  - `Test-AzWebPubSubNameAvailability`
+
 ## Version 1.3.0
 * Changed to `Allow` and `Deny` parameters of `Update-AzSignalRNetworkAcl` cmdlet:
     - Accepted `Trace` as a valid value.

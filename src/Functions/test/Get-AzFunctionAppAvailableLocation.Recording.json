@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "69" ],
-        "x-ms-client-request-id": [ "62c1a89a-96a9-43ca-803d-96aea2fbe2e7" ],
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "115c3c1a-7b70-4d60-aa7d-6fe88a94dbb4" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppAvailableLocation" ],
         "FullCommandName": [ "Get-AzFunctionAppAvailableLocation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.0.6" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,15 +23,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a63963e6-b67d-47a3-8644-b28ce0a1e6b3" ],
+        "x-ms-request-id": [ "7ff2dc48-4467-45d1-9a73-2a3a93c188c8" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
-        "x-ms-correlation-request-id": [ "7f546a6c-4e5f-42b8-8fb6-62890233b450" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181135Z:7f546a6c-4e5f-42b8-8fb6-62890233b450" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
+        "x-ms-correlation-request-id": [ "ffaddf5f-8b02-431c-934f-b9d1faae5b09" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211125T032754Z:ffaddf5f-8b02-431c-934f-b9d1faae5b09" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:35 GMT" ]
+        "Date": [ "Thu, 25 Nov 2021 03:27:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "16508" ],
@@ -49,12 +49,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "70" ],
-        "x-ms-client-request-id": [ "dfddb88f-ecfa-4f54-a541-59dfb847efee" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "e19d8d8c-477c-4edc-bd84-f18ba1c9f865" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppAvailableLocation" ],
         "FullCommandName": [ "Get-AzFunctionAppAvailableLocation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.0.6" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -66,15 +66,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "78624d8a-271c-4c50-ac9f-a53f5a41ba04" ],
+        "x-ms-request-id": [ "55b1d49a-85d0-4a51-b8fd-95047928238d" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
-        "x-ms-correlation-request-id": [ "018c420b-e7c8-41bf-bce6-4523988e49cc" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181135Z:018c420b-e7c8-41bf-bce6-4523988e49cc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-correlation-request-id": [ "efa7607d-c434-4b0b-af68-05b21424f390" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211125T032754Z:efa7607d-c434-4b0b-af68-05b21424f390" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:35 GMT" ]
+        "Date": [ "Thu, 25 Nov 2021 03:27:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "15327" ],
@@ -92,12 +92,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "71" ],
-        "x-ms-client-request-id": [ "0759dde5-7379-4f56-b087-d1bc16f3c2ff" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "d0a0e32d-4697-4439-97ab-5f89dc856768" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppAvailableLocation" ],
         "FullCommandName": [ "Get-AzFunctionAppAvailableLocation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.0.6" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -109,15 +109,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "0fed81d4-256c-42ba-b50c-5da38c787735" ],
+        "x-ms-request-id": [ "15cb6ec3-68a4-4659-a718-8e6617d637d2" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
-        "x-ms-correlation-request-id": [ "a2596ef0-24d2-489f-a87b-6f12fc56f732" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181135Z:a2596ef0-24d2-489f-a87b-6f12fc56f732" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
+        "x-ms-correlation-request-id": [ "603ee49d-0de2-430e-995b-73c04d3950ea" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211125T032754Z:603ee49d-0de2-430e-995b-73c04d3950ea" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:35 GMT" ]
+        "Date": [ "Thu, 25 Nov 2021 03:27:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "16508" ],
@@ -135,12 +135,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "72" ],
-        "x-ms-client-request-id": [ "9ee37027-81f8-4b91-b6ef-26c97fa44188" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "11502a80-6ca8-4752-b989-593d0add1497" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppAvailableLocation" ],
         "FullCommandName": [ "Get-AzFunctionAppAvailableLocation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.0.6" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -152,15 +152,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c834c88a-3fa7-4c45-b546-3cfa39cc4c43" ],
+        "x-ms-request-id": [ "3ba099f6-06f2-4eba-8aa5-94f5eb84a689" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
-        "x-ms-correlation-request-id": [ "b5d771cd-7606-4953-93a5-d2a7c0b17f5c" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181135Z:b5d771cd-7606-4953-93a5-d2a7c0b17f5c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
+        "x-ms-correlation-request-id": [ "a384face-db78-4572-9004-8d0fd3c044e3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211125T032754Z:a384face-db78-4572-9004-8d0fd3c044e3" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:35 GMT" ]
+        "Date": [ "Thu, 25 Nov 2021 03:27:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "19268" ],
@@ -178,12 +178,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "73" ],
-        "x-ms-client-request-id": [ "dd6531da-cdf1-4730-a13e-19a15f5339b1" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "dc6e7b03-fbb0-4959-8311-f3bca7a7a222" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppAvailableLocation" ],
         "FullCommandName": [ "Get-AzFunctionAppAvailableLocation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.0.6" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -195,15 +195,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "7e8e382c-23bb-4164-a105-53778c37b3c5" ],
+        "x-ms-request-id": [ "71b03a72-0b38-4d83-8063-dd2d888cf7b5" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
-        "x-ms-correlation-request-id": [ "21bdb532-fb90-4b0a-ab1a-07bef244f2fd" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181136Z:21bdb532-fb90-4b0a-ab1a-07bef244f2fd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
+        "x-ms-correlation-request-id": [ "4b3b0f92-04eb-4975-a027-3e4115d204bd" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211125T032754Z:4b3b0f92-04eb-4975-a027-3e4115d204bd" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:36 GMT" ]
+        "Date": [ "Thu, 25 Nov 2021 03:27:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "17173" ],

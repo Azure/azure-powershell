@@ -102,9 +102,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension = (string) content.GetValueForProperty("Extension",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor = (string) content.GetValueForProperty("ScriptProcessor",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument = (string) content.GetValueForProperty("Argument",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument, global::System.Convert.ToString);
+            if (content.Contains("Extension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension = (string) content.GetValueForProperty("Extension",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScriptProcessor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor = (string) content.GetValueForProperty("ScriptProcessor",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor, global::System.Convert.ToString);
+            }
+            if (content.Contains("Argument"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument = (string) content.GetValueForProperty("Argument",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,9 +131,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension = (string) content.GetValueForProperty("Extension",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor = (string) content.GetValueForProperty("ScriptProcessor",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument = (string) content.GetValueForProperty("Argument",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument, global::System.Convert.ToString);
+            if (content.Contains("Extension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension = (string) content.GetValueForProperty("Extension",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Extension, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScriptProcessor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor = (string) content.GetValueForProperty("ScriptProcessor",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).ScriptProcessor, global::System.Convert.ToString);
+            }
+            if (content.Contains("Argument"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument = (string) content.GetValueForProperty("Argument",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHandlerMappingInternal)this).Argument, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Management.CosmosDB;
-using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore.Sql;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -52,6 +52,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             try
             {
+                CosmosDBManagementClient.DatabaseAccounts.Get(ResourceGroupName, AccountName);
+            }
+            catch (CloudException e)
+            {
+                throw e;
+            }
+
+            try
+            {
                 CosmosDBManagementClient.SqlResources.GetSqlDatabase(ResourceGroupName, AccountName, DatabaseName);
             }
             catch (CloudException e)
@@ -60,10 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, DatabaseName), innerException: e);
                 }
-                else
-                {
-                    throw e;
-                }
+                throw e;
             }
 
             try
@@ -76,10 +82,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, Name), innerException: e);
                 }
-                else
-                {
-                    throw e;
-                }
+                throw e;
             }
 
             ContinuousBackupRestoreLocation continuousBackupRestoreLocation = new ContinuousBackupRestoreLocation
