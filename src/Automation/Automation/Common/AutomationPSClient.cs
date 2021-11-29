@@ -402,7 +402,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
                         Uri = contentLinkUri.ToString(),
                         ContentHash = null,
-                        Version = (String.IsNullOrWhiteSpace(contentLinkVersion))
+                        Version = 
+                        (String.IsNullOrWhiteSpace(contentLinkVersion))
                         ? Guid.NewGuid().ToString()
                         : contentLinkVersion
                     },
