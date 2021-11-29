@@ -106,7 +106,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -167,7 +167,7 @@ key: id of servicePrincipal
 ```yaml
 Type: System.String
 Parameter Sets: ObjectIdParameterSet
-Aliases: ServicePrincipalId, Id
+Aliases: ServicePrincipalId, Id, PrincipalId
 
 Required: True
 Position: Named
@@ -197,7 +197,7 @@ key: service principal name
 ```yaml
 Type: System.String
 Parameter Sets: SPNParameterSet
-Aliases:
+Aliases: SPN
 
 Required: True
 Position: Named

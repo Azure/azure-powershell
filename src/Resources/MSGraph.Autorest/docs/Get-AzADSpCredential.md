@@ -55,7 +55,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -172,6 +172,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+GetADServicePrincipalCredential
 
 COMPLEX PARAMETER PROPERTIES
 

@@ -103,7 +103,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -133,7 +133,7 @@ Used to find groups that begin with the provided string.
 ```yaml
 Type: System.String
 Parameter Sets: SearchStringParameterSet
-Aliases:
+Aliases: SearchString
 
 Required: True
 Position: Named

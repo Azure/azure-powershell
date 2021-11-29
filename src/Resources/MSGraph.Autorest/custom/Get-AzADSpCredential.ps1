@@ -39,6 +39,7 @@ https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 function Get-AzADSpCredential {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Alias("GetADServicePrincipalCredential")]
     param(
         [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory, HelpMessage = "The object Id of service principal.")]
         [Alias('Id')]
@@ -62,7 +63,7 @@ function Get-AzADSpCredential {
         ${ServicePrincipalObject},
 
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]

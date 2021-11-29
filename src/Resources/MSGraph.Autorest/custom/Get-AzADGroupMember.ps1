@@ -33,6 +33,7 @@ function Get-AzADGroupMember {
     param(
         [Parameter(ParameterSetName="ObjectIdParameterSet", Mandatory, HelpMessage = "The object Id of target group.")]
         [System.String]
+        [Alias("Id", "ObjectId")]
         # key: id of group
         ${GroupObjectId},
 
@@ -85,7 +86,7 @@ function Get-AzADGroupMember {
         ${Skip},
     
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]

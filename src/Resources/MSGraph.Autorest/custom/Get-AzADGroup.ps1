@@ -43,6 +43,7 @@ function Get-AzADGroup {
 
         [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
         [System.String]
+        [Alias("SearchString")]
         # Used to find groups that begin with the provided string.
         ${DisplayNameStartsWith},
 
@@ -105,7 +106,7 @@ function Get-AzADGroup {
         ${AppendSelected},
 
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]

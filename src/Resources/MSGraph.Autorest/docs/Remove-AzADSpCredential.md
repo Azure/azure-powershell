@@ -14,26 +14,26 @@ Removes key credentials or password credentials for an service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyIdParameterSet
 ```
-Remove-AzADSpCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADSpCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectParameterSet
 ```
 Remove-AzADSpCredential -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-KeyId <Guid>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -111,6 +111,21 @@ Parameter Sets: ObjectIdWithKeyIdParameterSet
 Aliases: Id
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,6 +208,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Remove-AzADServicePrincipalCredential
 
 COMPLEX PARAMETER PROPERTIES
 

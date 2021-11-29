@@ -372,11 +372,12 @@ function New-AzADServicePrincipal {
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    [Alias("KeyCredentials")]
     # The collection of key credentials associated with the service principal.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
     # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
+    ${KeyCredential},
 
     [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
@@ -384,10 +385,11 @@ function New-AzADServicePrincipal {
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    [Alias("PasswordCredentials")]
     # The collection of password credentials associated with the service principal.
     # Not nullable.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
+    ${PasswordCredential},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -395,12 +397,6 @@ function New-AzADServicePrincipal {
     # true if the service principal account is enabled; otherwise, false.
     # Supports $filter (eq, ne, NOT, in).
     ${AccountEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Skip role assignment for created sp, otherwise please provide roles and scopes.
-    ${SkipAssignment},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -719,16 +715,6 @@ function New-AzADServicePrincipal {
       $spScope = $PSBoundParameters['Scope']
       $null = $PSBoundParameters.Remove('Scope')
     }
-
-    if ($PSBoundParameters.ContainsKey('SkipAssignment') -and $PSBoundParameters['SkipAssignment']) {
-      $skipAssignment = $PSBoundParameters['SkipAssignment']
-      $null = $PSBoundParameters.Remove('SkipAssignment')
-    }
-
-    if (!$skipAssignment -and !$spRole) {
-      Write-Error "Please provide '-SkipAssignment' if you wish to create serviceprincipal without role assignment, otherwise specify '-Role' and '-Scope'"
-      return
-    }
     
     if ($PSBoundParameters['ApplicationObject']) {
       $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
@@ -754,7 +740,7 @@ function New-AzADServicePrincipal {
     }
     Write-Output ($sp = MSGraph.internal\New-AzADServicePrincipal @param)
 
-    if (!$skipAssignment -and $spRole) {
+    if ($spRole) {
       $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole}
       if ($PSBoundParameters['Debug']) {
         $param['Debug'] = $PSBoundParameters['Debug']

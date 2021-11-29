@@ -45,7 +45,7 @@ param(
 
     [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [Alias('DisplayNameStartsWith')]
+    [Alias('DisplayNameStartsWith', "SearchString")]
     [System.String]
     # serviceprincipal display name starts with
     ${DisplayNameBeginsWith},
@@ -72,6 +72,7 @@ param(
     [Parameter(ParameterSetName='SPNParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
+    [Alias("SPN")]
     # serviceprincipal name
     ${ServicePrincipalName},
 
@@ -126,7 +127,7 @@ param(
     ${AppendSelected},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias("AzContext", "AzureRmContext", "AzureCredential")]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

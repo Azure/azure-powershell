@@ -14,26 +14,26 @@ Removes key credentials or password credentials for an application.
 
 ### ApplicationObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADAppCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzADAppCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
-Remove-AzADAppCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADAppCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithKeyIdParameterSet
 ```
-Remove-AzADAppCredential -ApplicationId <Guid> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADAppCredential -ApplicationId <Guid> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyIdParameterSet
 ```
 Remove-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-KeyId <Guid>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -142,6 +142,21 @@ Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet
 Aliases: Id
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
