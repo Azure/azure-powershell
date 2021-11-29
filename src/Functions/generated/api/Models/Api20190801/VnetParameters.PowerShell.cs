@@ -104,14 +104,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetParametersPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup = (string) content.GetValueForProperty("VnetResourceGroup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName = (string) content.GetValueForProperty("VnetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetParametersPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Kind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("VnetResourceGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup = (string) content.GetValueForProperty("VnetResourceGroup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("VnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VnetSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName = (string) content.GetValueForProperty("VnetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,14 +153,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetParametersPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup = (string) content.GetValueForProperty("VnetResourceGroup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName = (string) content.GetValueForProperty("VnetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetParametersPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Kind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("VnetResourceGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup = (string) content.GetValueForProperty("VnetResourceGroup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetResourceGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("VnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VnetSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName = (string) content.GetValueForProperty("VnetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersInternal)this).VnetSubnetName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

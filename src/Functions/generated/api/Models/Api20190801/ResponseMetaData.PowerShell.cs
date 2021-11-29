@@ -98,9 +98,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataSource) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataSourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction = (string[]) content.GetValueForProperty("DataSourceInstruction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[]) content.GetValueForProperty("DataSourceUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.NameValuePairTypeConverter.ConvertFrom));
+            if (content.Contains("DataSource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataSource) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataSourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataSourceInstruction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction = (string[]) content.GetValueForProperty("DataSourceInstruction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DataSourceUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[]) content.GetValueForProperty("DataSourceUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.NameValuePairTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,9 +127,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataSource) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataSourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction = (string[]) content.GetValueForProperty("DataSourceInstruction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[]) content.GetValueForProperty("DataSourceUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.NameValuePairTypeConverter.ConvertFrom));
+            if (content.Contains("DataSource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataSource) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSource, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataSourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataSourceInstruction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction = (string[]) content.GetValueForProperty("DataSourceInstruction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceInstruction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DataSourceUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair[]) content.GetValueForProperty("DataSourceUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResponseMetaDataInternal)this).DataSourceUri, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.NameValuePairTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
