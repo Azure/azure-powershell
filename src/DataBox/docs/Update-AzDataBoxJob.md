@@ -43,7 +43,7 @@ Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonSchedu
 
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
 Also you can use $DebugPreference = "Continue", with any example/usecase to get exact details of error in below format when command fails.
-```
+```json
 {
   "Error": {
     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",

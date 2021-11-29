@@ -41,7 +41,7 @@ Commercial  San Francisco             US      94107      CA              101 TOW
 ```
 
 You can expand and visualize other object in similar way how details and shipping address expanded, Also you can use $DebugPreference = "Continue", with any example/usecase to get exact details of error in below format when command fails.
-```
+```json
 {
   "Error": {
     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",

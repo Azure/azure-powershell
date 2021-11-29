@@ -48,7 +48,7 @@ PhoneExtension :
 ```
 
 Update orderItem details, to get insight on any failure you can set $debugPreference = "Continue" and re-run command again to get exact details of error in below format when command fails.
-```
+```json
 {
   "Error": {
     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
