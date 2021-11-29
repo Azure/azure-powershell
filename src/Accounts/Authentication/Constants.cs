@@ -12,10 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    internal static class Constants
+    public static class Constants
     {
+        public const string DefaultMsiAccountIdPrefix = "MSI@";
+
+        /// <summary>
+        /// Access token for Microsoft Graph service.
+        /// </summary>
+        public const string MicrosoftGraphAccessToken = "MicrosoftGraphAccessToken";
+
         public const string DefaultValue = "Default";
     }
 }
