@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
             }
 
-            PSServiceDiagnosticSettings DiagnosticSetting = new PSServiceDiagnosticSettings(id: GetTargetUri() + "/providers/microsoft.insights/diagnosticSettings/" + this.Name, name: this.Name)
+            PSServiceDiagnosticSettings DiagnosticSetting = new PSServiceDiagnosticSettings(id: GetTargetUri() + "/providers/Microsoft.Insights/diagnosticSettings/" + this.Name, name: this.Name)
             {
                 StorageAccountId = this.IsParameterBound(c => c.StorageAccountId) ? this.StorageAccountId : null,
                 ServiceBusRuleId = this.IsParameterBound(c => c.ServiceBusRuleId) ? this.ServiceBusRuleId : null,

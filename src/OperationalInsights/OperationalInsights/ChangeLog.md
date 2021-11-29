@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -18,6 +18,54 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Expanded DatasourceType with values `Query`, `Alerts` for cmdlets:
+  - `Get-AzOperationalInsightsLinkedStorageAccount`
+  - `New-AzOperationalInsightsLinkedStorageAccount`
+  - `Remove-AzOperationalInsightsLinkedStorageAccount`
+  - `Set-AzOperationalInsightsLinkedStorageAccount`
+* Files moved (without change):
+  - `Get-AzOperationalInsightsSavedSearch`
+  - `Get-AzOperationalInsightsSchema`
+  - `New-AzOperationalInsightsSavedSearch`
+  - `Remove-AzOperationalInsightsSavedSearch`
+  - `Set-AzOperationalInsightsSavedSearch`
+* CmdletParameterBreakingChange: rename `StorageAccountId` to `StorageAccountIds`
+  - `New-AzOperationalInsightsLinkedStorageAccount`
+* Changed return contract: Now returns `PSSavedSearch` instead of `HttpStatusCode`:
+  - `New-AzOperationalInsightsComputerGroup`
+* Changed return contract: Now returns `PSCluster` instead of `PSLinkedService`:
+  - `Update-AzOperationalInsightsCluster`
+* Expanded Sku with values `capacityreservation`, `lacluster` for cmdlets:
+  - `Set-AzOperationalInsightsWorkspace`
+  - `New-AzOperationalInsightsWorkspace`
+* Added new properties:`SkuCapacity`, `ForceCmkForQuery`, `DisableLocalAuth`  for cmdlets:
+  - `Set-AzOperationalInsightsWorkspace`
+  - `New-AzOperationalInsightsWorkspace`
+* Added new property: `DailyQuotaGb`:
+  - `Set-AzOperationalInsightsWorkspace`
+* Added new properties: `ETag`, `Tag` for cmdlets:
+  - `Set-AzOperationalInsightsStorageInsight`
+  - `New-AzOperationalInsightsStorageInsight`
+* Added new property `StorageAccountResourceId` to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added SupportsShouldProcess attribute to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added new cmdlets:
+  - `Get-AzOperationalInsightsTable`
+  - `Get-AzOperationalInsightsOperation`
+  - `Get-AzOperationalInsightsDataExport`
+  - `New-AzOperationalInsightsDataExport`
+  - `Remove-AzOperationalInsightsDataExport`
+  - `Update-AzOperationalInsightsDataExport`
+  - `Get-AzOperationalInsightsOperationStatus`
+  - `Update-AzOperationalInsightsWorkspaceSharedKey`
+  - `New-AzOperationalInsightsPurgeWorkspace`
+  - `Get-AzOperationalInsightsPurgeWorkspaceStatus`
+  - `Get-AzOperationalInsightsAvailableServiceTier`
+
+* Added `Error` property in the result of the `Invoke-AzOperationalInsightsQuery` to retrieve partial error when running a query [#16378]
+
+## Version 2.3.1
 * Fixed a bug in `Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing`
 
 ## Version 2.3.0

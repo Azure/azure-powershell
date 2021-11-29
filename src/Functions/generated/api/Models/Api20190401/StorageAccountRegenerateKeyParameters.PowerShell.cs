@@ -102,7 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName, global::System.Convert.ToString);
+            if (content.Contains("KeyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,7 +123,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName, global::System.Convert.ToString);
+            if (content.Contains("KeyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountRegenerateKeyParametersInternal)this).KeyName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

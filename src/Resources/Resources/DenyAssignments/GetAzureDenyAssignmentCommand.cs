@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Filters deny assignments
     /// </summary>
-    [GenericBreakingChange(BreakingChangeMSGraphMigration)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DenyAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSDenyAssignment))]
     public class GetAzureDenyAssignmentCommand : ResourcesBaseCmdlet
     {
@@ -140,9 +139,9 @@ namespace Microsoft.Azure.Commands.Resources
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentIdParameterSet, HelpMessage = "Deny assignment id.")]
-        [ValidateGuidNotEmpty]
-        public Guid Id { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentIdParameterSet, HelpMessage = "Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentNameParameterSet,
             HelpMessage = "Name of the deny assignment.")]
@@ -157,6 +156,8 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             var options = new FilterDenyAssignmentsOptions()
             {
                 DenyAssignmentId = Id,
@@ -177,7 +178,6 @@ namespace Microsoft.Azure.Commands.Resources
                     Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
-                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);

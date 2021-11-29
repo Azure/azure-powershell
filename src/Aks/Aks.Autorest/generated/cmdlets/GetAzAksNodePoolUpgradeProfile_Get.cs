@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.
@@ -33,20 +34,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>Backing field for <see cref="AgentPoolName" /> property.</summary>
-        private string _agentPoolName;
-
-        /// <summary>The name of the agent pool.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the agent pool.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the agent pool.",
-        SerializedName = @"agentPoolName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Path)]
-        public string AgentPoolName { get => this._agentPoolName; set => this._agentPoolName = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -101,6 +88,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
 
         /// <summary><see cref="IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="NodePoolName" /> property.</summary>
+        private string _nodePoolName;
+
+        /// <summary>The name of the agent pool.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the agent pool.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the agent pool.",
+        SerializedName = @"agentPoolName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("AgentPoolName")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Path)]
+        public string NodePoolName { get => this._nodePoolName; set => this._nodePoolName = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.HttpPipeline" /> that the remote call will use.
@@ -240,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.Debug:
@@ -323,13 +325,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.AgentPoolsGetUpgradeProfile(SubscriptionId, ResourceGroupName, ClusterName, AgentPoolName, onOk, onDefault, this, Pipeline);
+                        await this.Client.AgentPoolsGetUpgradeProfile(SubscriptionId, ResourceGroupName, ClusterName, NodePoolName, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,AgentPoolName=AgentPoolName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,NodePoolName=NodePoolName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -375,14 +377,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, AgentPoolName=AgentPoolName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, NodePoolName=NodePoolName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, AgentPoolName=AgentPoolName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, NodePoolName=NodePoolName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

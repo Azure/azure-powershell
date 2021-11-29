@@ -14,9 +14,6 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System;
-using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
@@ -48,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         {
             if (!OperationalInsightsClient.DeletedWorkspace(ResourceGroupName, Name))
             {
-                throw new ArgumentException("workspace: " + Name + " under resource group: " + ResourceGroupName + " is not available to restore");
+                throw new PSArgumentException("workspace: " + Name + " under resource group: " + ResourceGroupName + " is not available to restore");
             }
 
             CreatePSWorkspaceParameters parameters = new CreatePSWorkspaceParameters()

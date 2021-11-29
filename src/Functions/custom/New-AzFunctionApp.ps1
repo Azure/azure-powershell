@@ -89,7 +89,7 @@ function New-AzFunctionApp {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsVersionType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # FunctionsVersion type (2 or 3). Default Functions version is defined in HelperFunctions.ps1
+        # FunctionsVersion type (3 or 4). Default Functions version is defined in HelperFunctions.ps1
         ${FunctionsVersion},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Disable creating application insights resource during the function app creation. No logs will be available.')]
@@ -317,6 +317,13 @@ function New-AzFunctionApp {
                 foreach ($PropertyName in $runtimeJsonDefintion.SiteConfigPropertiesDictionary.Keys)
                 {
                     $value = $runtimeJsonDefintion.SiteConfigPropertiesDictionary[$PropertyName]
+
+                    if (($OSType -eq "Windows") -and ($FunctionsVersion -eq "3") -and ($PropertyName -eq "netFrameworkVersion"))
+                    {
+                        # For Functions V3 apps, do not set netFrameworkVersion.
+                        continue
+                    }
+
                     $siteCofig.$PropertyName = $value
                 }
             }            

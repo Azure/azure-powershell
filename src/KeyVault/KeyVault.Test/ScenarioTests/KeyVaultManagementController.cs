@@ -26,6 +26,7 @@ using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
-        public GraphRbacManagementClient GraphClient { get; private set; }
+        public IMicrosoftGraphClient GraphClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private GraphRbacManagementClient GetGraphClient(MockContext context)
+        private IMicrosoftGraphClient GetGraphClient(MockContext context)
         {
             var environment = TestEnvironmentFactory.GetTestEnvironment();
             string tenantId = null;
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 }
             }
 
-            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            var client = context.GetGraphServiceClient<MicrosoftGraphClient>(environment);
             client.TenantID = tenantId;
             if (AzureRmProfileProvider.Instance != null &&
                 AzureRmProfileProvider.Instance.Profile != null &&

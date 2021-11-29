@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The environment name")]
+        [EnvironmentCompleter()]
         public string Name { get; set; }
 
         protected override void BeginProcessing()

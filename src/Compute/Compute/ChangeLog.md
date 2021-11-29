@@ -20,8 +20,64 @@
 
 -->
 ## Upcoming Release
+* Contains updates to the following powershell cmdlets
+    - `SetAzVmssDiskEncryptionExtension` : Added extension parameters for the cmdlet to work with test extensions and parameter `EncryptFormatAll` for Virtual Machine Scale Sets
+    - `GetAzVmssVMDiskEncryptionStatus`	 : Modified the functionality of the cmdlet to properly display the encryption status of data disks of Virtual Machine Scale Sets
+    - `SetAzDiskEncryptionExtension`     : Fixed a bug in the cmdlet in the migrate scenario from 2pass to 1pass encryption
+* `Add-AzVhd` has the following new functionalities:
+    - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
+    - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
+    - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
+* Added `UserData` parameter to the following cmdlets:
+    - `Get-AzVm`
+    - `Get-AzVmss`
+    - `Get-AzVmssVm`
+    - `New-Azvm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzVmssVm`
+  When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
+* Added string parameter `PublicNetworkAccess` to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzSnapshotUpdateConfig`
+* Added boolean parameter `AcceleratedNetwork` to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSnapshotConfig`
+* Added `CompletionPercent` property to the PSSNapshot model so it is visible to the user.
+
+## Version 4.20.0
+* Added cmdlets to support gallery applications and versions:
+    - Get-AzGalleryApplication
+    - Get-AzGalleryApplicationVersion
+    - New-AzGalleryApplication
+    - New-AzGalleryApplicationVersion
+    - Remove-AzGalleryApplication
+    - Remove-AzGalleryApplicationVersion
+    - Update-AzGalleryApplication
+    - Update-AzGalleryApplicationVersion
+
+## Version 4.19.0
+* Update-AzVM will update ApplicationProfile.
+* Added new cmdlets:
+    - Add-AzVmssRunCommand
+    - Remove-AzVmssRunCommand
+
+## Version 4.18.0
+* Added cmdlets for adding VMGalleryApplication property to VM/VMSS
+    - New-AzVmGalleryApplication
+    - New-AzVmssGalleryApplication
+    - Add-AzVmGalleryApplication
+    - Add-AzVmssGalleryApplication
+    - Remove-AzVmGalleryApplication
+    - Remove-AzVmssGalleryApplication
 * Added support for proxy and debug settings for VM Extension for SAP (AEM)
-* Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TagetRegion' parameter. 
+* Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TargetRegion' parameter. 
 * Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
 * Edited New-AzVmss defaulting behavior when `OrchestrationMode` is set to Flexible.
     - Removed NAT Pool.

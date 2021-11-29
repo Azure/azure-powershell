@@ -75,5 +75,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public PSPurchasePlan PurchasePlan { get; set; }
         public bool? SupportsHibernation { get; set; }
         public DiskSecurityProfile SecurityProfile { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets possible values include: 'Enabled', 'Disabled'
+        public string PublicNetworkAccess { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets list of supported capabilities for the image from which the OS disk
+        //     was created.
+        public SupportedCapabilities SupportedCapabilities { get; set; }
     }
 }

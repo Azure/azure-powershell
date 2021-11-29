@@ -1,0 +1,43 @@
+{
+  "Get-AzAksVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/orchestrators?api-version=2019-08-01\u0026resource-type=managedClusters+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/orchestrators?api-version=2019-08-01\u0026resource-type=managedClusters",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "daf60044-75de-4829-a54d-b3933a9b3b8d" ],
+        "CommandName": [ "Az.Aks.internal\\Get-AzAksContainerServiceOrchestrator" ],
+        "FullCommandName": [ "Get-AzAksContainerServiceOrchestrator_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211119T091914Z:6a225942-c4b9-413c-b460-e6b6b35a0c17" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "6a225942-c4b9-413c-b460-e6b6b35a0c17" ],
+        "x-ms-request-id": [ "b4669d50-cc49-4471-be37-da45fbd21d4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "Date": [ "Fri, 19 Nov 2021 09:19:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2917" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/orchestrators\",\n  \"name\": \"default\",\n  \"type\": \"Microsoft.ContainerService/locations/orchestrators\",\n  \"properties\": {\n   \"orchestrators\": [\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.19.11\",\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.19.13\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.20.7\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.20.9\"\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.19.13\",\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.20.7\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.20.9\"\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.20.7\",\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.20.9\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.21.1\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.21.2\"\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.20.9\",\n     \"default\": true,\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.21.1\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.21.2\"\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.21.1\",\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.21.2\"\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.22.1\",\n       \"isPreview\": true\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.22.2\",\n       \"isPreview\": true\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.21.2\",\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.22.1\",\n       \"isPreview\": true\n      },\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.22.2\",\n       \"isPreview\": true\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.22.1\",\n     \"isPreview\": true,\n     \"upgrades\": [\n      {\n       \"orchestratorType\": \"Kubernetes\",\n       \"orchestratorVersion\": \"1.22.2\",\n       \"isPreview\": true\n      }\n     ]\n    },\n    {\n     \"orchestratorType\": \"Kubernetes\",\n     \"orchestratorVersion\": \"1.22.2\",\n     \"isPreview\": true\n    }\n   ]\n  }\n }",
+      "isContentBase64": false
+    }
+  }
+}

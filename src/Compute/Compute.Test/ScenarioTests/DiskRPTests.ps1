@@ -1584,3 +1584,87 @@ function Test-AutomaticKeyRotation
 		Clean-ResourceGroup $rgname
 	}
 }
+
+
+<#
+.SYNOPSIS
+Test AcceleratedNetwork and PublicNetworkAccess parameters for 
+Disk and Snapshot objects. 
+Also tested the CopyStart and CompletionPercent features for snapshots. 
+#>
+function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2euap';
+    $snapLoc = 'Central US';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup
+        $diskName = 'disk' + $rgname;
+        $snapName = "snap" + $rgname;
+        $diskAccountType = 'Premium_LRS';
+        $snapAccountType = 'Standard_LRS';
+        $publicNetworkAccess1 = 'Disabled';
+        $publicNetworkAccess2 = 'Enabled';
+        $acceleratedNetwork1 = $true;
+        $acceleratedNetwork2 = $false;
+        $createOption = 'Empty';
+        $diskSize = 32;
+        $snapSize = 5;
+
+        # Disks
+        $diskConfig = New-AzDiskConfig -Location $loc -AccountType $diskAccountType -CreateOption $createOption -DiskSizeGB 32 -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        Assert-AreEqual $disk.PublicNetworkAccess $publicNetworkAccess1;
+        Assert-AreEqual $disk.SupportedCapabilities.AcceleratedNetwork $acceleratedNetwork1;
+
+        $diskupdateconfig = New-AzDiskUpdateConfig -PublicNetworkAccess $publicNetworkAccess2 -AcceleratedNetwork $acceleratedNetwork2;
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskName -DiskUpdate $diskupdateconfig;
+        $diskUpdated = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        Assert-AreEqual $diskUpdated.PublicNetworkAccess $publicNetworkAccess2;
+        Assert-AreEqual $diskUpdated.SupportedCapabilities.AcceleratedNetwork $acceleratedNetwork2;
+
+        # Snapshots
+        $snapshotConfig = New-AzSnapshotConfig -Location $snapLoc -DiskSizeGB $snapSize -AccountType $snapAccountType -OsType Windows -CreateOption $createOption -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -Snapshot $snapshotConfig;
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName;
+        Assert-AreEqual $snapshot.PublicNetworkAccess $publicNetworkAccess1;
+        Assert-AreEqual $snapshot.SupportedCapabilities.AcceleratedNetwork $acceleratedNetwork1;
+
+        # Currently AcceleratedNetwork cannot be updated in the Snapshot resource because SupportedCapabilities has not been added to the SnapshotUpdate model.
+        # This oversight is being worked on.
+        $snapshotUpdateConfig = New-AzSnapshotUpdateConfig -PublicNetworkAccess $publicNetworkAccess2;
+        Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -SnapshotUpdate $snapshotUpdateConfig;
+        $snapshotUpdated = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName;
+        Assert-AreEqual $snapshotUpdated.PublicNetworkAccess $publicNetworkAccess2;
+
+        # CopyStart and CompletionPercent features in Snapshots
+        $baseRegion = "eastus2euap";
+        $otherRegion = "centraluseuap";
+        $diskName = "diskA" + $rgname;
+        $snapName = "snapB" + $rgname;
+        $snapName2 = "snapC" + $rgname;
+        $diskConfig = New-AzDiskConfig -Location $baseRegion  -AccountType $diskAccountType -CreateOption $createOption -DiskSizeGB $diskSize -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        $diskSourceId = $disk.Id.substring(1);
+        $snapshotconfigB = New-AzSnapshotConfig -Location $baseRegion -CreateOption Copy -Incremental -SourceResourceId $diskSourceId;
+
+        $snapB =New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -Snapshot $snapshotconfigB;
+        $snapSourceId = $snapB.Id.substring(1);
+        Assert-Null $snapB.CompletionPercent;
+
+        $snapshotconfigC = New-AzSnapshotConfig -Location $otherRegion -CreateOption CopyStart -Incremental -SourceResourceId $snapSourceId;
+        $snapC = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName2 -Snapshot $snapshotconfigC;
+        Assert-NotNull $snapC.CompletionPercent;
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}

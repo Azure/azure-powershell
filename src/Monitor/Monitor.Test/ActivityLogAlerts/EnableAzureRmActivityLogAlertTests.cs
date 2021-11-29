@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             Assert.True(this.body.Enabled);
             Assert.Null(this.body.Tags);
 
-            ActivityLogAlertResource resource = new ActivityLogAlertResource(location: "Global", scopes: null, condition: null, name: "andy0307rule", actions: null, id: "//subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule")
+            ActivityLogAlertResource resource = new ActivityLogAlertResource(location: "Global", scopes: null, condition: null, name: "andy0307rule", actions: null, id: "//subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/activityLogAlerts/andy0307rule")
             {
                 Enabled = false
             };
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             Assert.Null(this.body.Tags);
 
             cmdlet.InputObject = null;
-            cmdlet.ResourceId = "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/microsoft.insights/activityLogAlerts/andy0307rule";
+            cmdlet.ResourceId = "/subscriptions/07c0b09d-9f69-4e6e-8d05-f59f67299cb2/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/activityLogAlerts/andy0307rule";
             cmdlet.ExecuteCmdlet();
             Assert.NotNull(this.body);
             Assert.Equal("Default-ActivityLogAlerts", this.resourceGroup);

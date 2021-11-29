@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
+    /// <summary>Represents the connectivity status of the connected cluster.</summary>
     public partial struct ConnectivityStatus :
         System.IEquatable<ConnectivityStatus>
     {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
         /// <param name="value">the value to convert to an instance of <see cref="ConnectivityStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ConnectivityStatus(System.Convert.ToString(value));
+            return new ConnectivityStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ConnectivityStatus</summary>

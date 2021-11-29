@@ -46,17 +46,17 @@ Describe 'New-AzFunctionApp' {
     # Validate RuntimeVersion default values
     $expectedDefaultRuntimeVersion = @{
         "Linux" = @{
-            "3" =  @{
-                "Node" = "14"
-                "DotNet" = "3"
+            "4" =  @{
+                "Node" = "16"
+                "DotNet" = "6"
                 "Python" = "3.8"
                 "Java" = "8"
             }
         }
         "Windows" = @{
-            "3" =  @{
-                "Node" = "14"
-                "DotNet" = "3"
+            "4" =  @{
+                "Node" = "16"
+                "DotNet" = "6"
                 "PowerShell" = "7.0"
                 "Java" = "8"
             }
@@ -97,7 +97,7 @@ Describe 'New-AzFunctionApp' {
 
     foreach ($OSType in @("Linux", "Windows"))
     {
-        foreach ($functionsVersion in @("3"))
+        foreach ($functionsVersion in @("4"))
         {
             $testData = GetTestData -OSType $OSType
 
@@ -132,16 +132,7 @@ Describe 'New-AzFunctionApp' {
 
                         $logFileContent = Get-Content -Path $filePath -Raw
                         $expectectedRuntimeVersion = $expectedDefaultRuntimeVersion[$OSType][$functionsVersion][$runtime]
-
-                        if ($runtime -eq "DotNet")
-                        {
-                            $expectedMessage = "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$expectectedRuntimeVersion'."
-                        }
-                        else
-                        {
-                            $expectedMessage = "RuntimeVersion not specified. Setting default runtime version for '$runtime' to '$expectectedRuntimeVersion'."
-                        }
-
+                        $expectedMessage = "RuntimeVersion not specified. Setting default runtime version for '$runtime' to '$expectectedRuntimeVersion'."
                         $logFileContent | Should Match $expectedMessage
                     }
                     finally
@@ -199,7 +190,7 @@ Describe 'New-AzFunctionApp' {
         },
         @{
             "Runtime" = "Node"
-            "RuntimeVersion" = "12"
+            "RuntimeVersion" = "14"
             "StorageAccountName" = $env.storageAccountWindows
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "Location" = $env.location
@@ -224,7 +215,7 @@ Describe 'New-AzFunctionApp' {
         $storageAccountName = $testCase["StorageAccountName"]
 
         $expectedOSType = $testCase["ExpectedOSType"]
-        $expectedFunctionsVersion = "3"
+        $expectedFunctionsVersion = "4"
 
         It "Validate New-AzFunctionApp default OSType and FunctionsVersion for $runtime" {
 
@@ -268,13 +259,13 @@ Describe 'New-AzFunctionApp' {
     # For these scenarios, the runtime is supported for the os type, but the runtime version is invalid.
     $runtimeVersionNotSupported = @{
         "Linux" = @{
-            "3" =  @{
+            "4" =  @{
                 "Node" = "10"
                 "Python" = "3.6"
             }
         }
         "Windows" = @{
-            "3" =  @{
+            "4" =  @{
                 "Node" = "10"
                 "PowerShell" = "6.2"
             }
@@ -408,7 +399,7 @@ Describe 'New-AzFunctionApp' {
                               -StorageAccount $env.storageAccountWindows `
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
-                              -FunctionsVersion 3 `
+                              -FunctionsVersion 4 `
                               -Tag $tags `
                               -AppSetting $appSetting
 
@@ -553,13 +544,13 @@ Describe 'New-AzFunctionApp' {
                               -Location $env.location `
                               -StorageAccount $env.storageAccountLinux  `
                               -Runtime DotNet `
-                              -FunctionsVersion 3 `
+                              -FunctionsVersion 4 `
                               -OSType Linux
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxConsumption
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "DotNet"
-            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "dotnet|3.1"
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "dotnet|6.0"
         }
         finally
         {
@@ -582,7 +573,7 @@ Describe 'New-AzFunctionApp' {
                               -PlanName $env.planNameWorkerTypeWindows `
                               -StorageAccount $env.storageAccountWindows  `
                               -Runtime PowerShell `
-                              -FunctionsVersion 3 `
+                              -FunctionsVersion 4 `
                               -DisableApplicationInsights
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
@@ -891,6 +882,20 @@ Describe 'New-AzFunctionApp' {
                             $functionApp.ApplicationSettings[$appSettingName] | Should -Be $expectedAppSettingValue
                         }
                     }
+
+                    # Validate SiteConfig.NetFrameworkVersion for Windows apps
+                    if ($OSType -eq "Windows")
+                    {
+                        if ($functionsVersion -eq "3")
+                        {
+                            $functionApp.SiteConfig.NetFrameworkVersion | Should -Be "v4.0"
+                        }
+                        elseif ($functionsVersion -eq "4")
+                        {
+                            $functionApp.SiteConfig.NetFrameworkVersion | Should -Be "v6.0"
+                        }
+                    }
+
                 }
                 finally
                 {

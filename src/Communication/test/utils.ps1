@@ -23,9 +23,13 @@ function setupEnv() {
     $env.Add("resourceGroup", $resourceGroup)
     New-AzResourceGroup -Name $resourceGroup -Location eastus
 
-    # Create the resource name
+    # Create the resource name for New-AzCommunicationService
     $resourceName = "acsResource" + $rstr1
     $env.Add("resourceName", $resourceName)
+
+    # Create an unused resource name for Test-AzCommunicationServiceNameAvailability
+    $resourceNameAvailable = "acsResource" + $rstr2
+    $env.Add("resourceNameAvailable", $resourceNameAvailable)
 
     # Add location values
     $dataLocation = "UnitedStates"
