@@ -94,7 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId = (string) content.GetValueForProperty("OwnershipId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId, global::System.Convert.ToString);
+            if (content.Contains("OwnershipId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId = (string) content.GetValueForProperty("OwnershipId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -112,7 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId = (string) content.GetValueForProperty("OwnershipId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId, global::System.Convert.ToString);
+            if (content.Contains("OwnershipId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId = (string) content.GetValueForProperty("OwnershipId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)this).OwnershipId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

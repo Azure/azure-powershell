@@ -104,19 +104,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId = (string) content.GetValueForProperty("ServerFarmId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker = (bool?) content.GetValueForProperty("NeedLinuxWorker",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot = (bool?) content.GetValueForProperty("IsSpot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment = (string) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon = (bool?) content.GetValueForProperty("IsXenon",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl = (string) content.GetValueForProperty("ContainerRegistryBaseUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername = (string) content.GetValueForProperty("ContainerRegistryUsername",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword = (string) content.GetValueForProperty("ContainerRegistryPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository = (string) content.GetValueForProperty("ContainerImageRepository",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag = (string) content.GetValueForProperty("ContainerImageTag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform = (string) content.GetValueForProperty("ContainerImagePlatform",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform, global::System.Convert.ToString);
+            if (content.Contains("ServerFarmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId = (string) content.GetValueForProperty("ServerFarmId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NeedLinuxWorker"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker = (bool?) content.GetValueForProperty("NeedLinuxWorker",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsSpot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot = (bool?) content.GetValueForProperty("IsSpot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("HostingEnvironment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment = (string) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsXenon"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon = (bool?) content.GetValueForProperty("IsXenon",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ContainerRegistryBaseUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl = (string) content.GetValueForProperty("ContainerRegistryBaseUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerRegistryUsername"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername = (string) content.GetValueForProperty("ContainerRegistryUsername",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerRegistryPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword = (string) content.GetValueForProperty("ContainerRegistryPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerImageRepository"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository = (string) content.GetValueForProperty("ContainerImageRepository",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerImageTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag = (string) content.GetValueForProperty("ContainerImageTag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerImagePlatform"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform = (string) content.GetValueForProperty("ContainerImagePlatform",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -134,19 +173,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId = (string) content.GetValueForProperty("ServerFarmId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker = (bool?) content.GetValueForProperty("NeedLinuxWorker",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot = (bool?) content.GetValueForProperty("IsSpot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment = (string) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon = (bool?) content.GetValueForProperty("IsXenon",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl = (string) content.GetValueForProperty("ContainerRegistryBaseUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername = (string) content.GetValueForProperty("ContainerRegistryUsername",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword = (string) content.GetValueForProperty("ContainerRegistryPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository = (string) content.GetValueForProperty("ContainerImageRepository",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag = (string) content.GetValueForProperty("ContainerImageTag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform = (string) content.GetValueForProperty("ContainerImagePlatform",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform, global::System.Convert.ToString);
+            if (content.Contains("ServerFarmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId = (string) content.GetValueForProperty("ServerFarmId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ServerFarmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NeedLinuxWorker"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker = (bool?) content.GetValueForProperty("NeedLinuxWorker",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).NeedLinuxWorker, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsSpot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot = (bool?) content.GetValueForProperty("IsSpot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsSpot, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("HostingEnvironment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment = (string) content.GetValueForProperty("HostingEnvironment",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).HostingEnvironment, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsXenon"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon = (bool?) content.GetValueForProperty("IsXenon",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).IsXenon, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ContainerRegistryBaseUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl = (string) content.GetValueForProperty("ContainerRegistryBaseUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryBaseUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerRegistryUsername"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername = (string) content.GetValueForProperty("ContainerRegistryUsername",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryUsername, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerRegistryPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword = (string) content.GetValueForProperty("ContainerRegistryPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerRegistryPassword, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerImageRepository"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository = (string) content.GetValueForProperty("ContainerImageRepository",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageRepository, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerImageTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag = (string) content.GetValueForProperty("ContainerImageTag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImageTag, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerImagePlatform"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform = (string) content.GetValueForProperty("ContainerImagePlatform",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidatePropertiesInternal)this).ContainerImagePlatform, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

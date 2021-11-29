@@ -40,9 +40,6 @@ Describe 'Get-AzFunctionApp' {
         }
     }
 
-    <#
-    These tests need to be re-enabled for the Az.Function module release. For more info, please see https://github.com/Azure/azure-powershell/issues/15361
-
     It 'ByLocation' {
         $functionApps = @(Get-AzFunctionApp -Location "$($env.location)")
         $functionApps.Count | Should -BeGreaterThan 0
@@ -51,5 +48,4 @@ Describe 'Get-AzFunctionApp' {
             $_.Location | Should Be $env.location
         }
     }
-    #>
 }
