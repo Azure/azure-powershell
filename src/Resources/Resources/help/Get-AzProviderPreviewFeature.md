@@ -18,13 +18,13 @@ Get-AzProviderPreviewFeature [-Name <String>] -ProviderNamespace <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzProviderPreviewFeaturen** cmdlet gets a feature registration in your account.
+The **Get-AzProviderPreviewFeature** cmdlet gets a feature registration in your account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzProviderPreviewFeaturen -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+PS C:\>Get-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This gets the AllowApplicationSecurityGroups feature for Microsoft.Network in your account.
@@ -85,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.ResourceManager.Models.SubscriptionFeatureRegistration
+### Microsoft.Azure.Management.ResourceManager.Models.PSSubscriptionFeatureRegistration
 
 ## NOTES
 
