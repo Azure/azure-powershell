@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureBlob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureBlob", "AzureBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureBlob");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureBlob'", "AzureBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureBlob");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureFile".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureFile", "AzureFile", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFile");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureFile'", "AzureFile", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFile");
             }
         }
     }

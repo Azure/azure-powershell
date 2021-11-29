@@ -22,7 +22,7 @@ This method gets the unencrypted secrets related to the job.
 
 ## EXAMPLES
 
-### Example 1: {{ Get databoxHeavy job credential }}
+### Example 1: Get databoxHeavy job credential
 ```powershell
 PS C:\> Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
 
@@ -58,7 +58,7 @@ Type                                    : DataBoxHeavy
 PS C:\> $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 ```
 
-{{ Get databoxHeavy job credential }}
+Get databoxHeavy job credential
 
 ## PARAMETERS
 

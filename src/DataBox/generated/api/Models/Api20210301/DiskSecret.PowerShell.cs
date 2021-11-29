@@ -92,8 +92,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey = (string) content.GetValueForProperty("BitLockerKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey, global::System.Convert.ToString);
+            if (content.Contains("DiskSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("BitLockerKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey = (string) content.GetValueForProperty("BitLockerKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -111,8 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey = (string) content.GetValueForProperty("BitLockerKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey, global::System.Convert.ToString);
+            if (content.Contains("DiskSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).DiskSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("BitLockerKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey = (string) content.GetValueForProperty("BitLockerKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskSecretInternal)this).BitLockerKey, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
