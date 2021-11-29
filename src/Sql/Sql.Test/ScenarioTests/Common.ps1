@@ -231,25 +231,16 @@ Creates the basic test environment needed to perform the Sql data security tests
 #>
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 {
-	New-AzureRmResourceGroup -Name $params.rgname -Location $location
-
-	# Setup VNET
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-	$credentials = Get-ServerCredential
- 	$licenseType = "BasePrice"
-  	$storageSizeInGB = 32
- 	$vCore = 16
- 	$skuName = "GP_Gen5"
 	$collation = "SQL_Latin1_General_CP1_CI_AS"
+	$dbName = "sql-va-cmdlet-db" + Get-DatabaseName
+	$rg = New-AzResourceGroup -Name $params.rgname -Location $location
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	$db = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.Name -Name $dbName -Collation $collation
 
-	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
- 			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-Vcore $vCore -SkuName $skuName
-
-	New-AzureRmSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
+	return @{
+		serverName = $managedInstance.Name;
+		databaseName = $dbName;
+	}
 }
 
 <#
@@ -978,7 +969,7 @@ function Get-DefaultManagedInstanceParameters()
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup, $vCore)
+function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId)
 {
 	if($vCore -eq $null)
 	{
@@ -1003,8 +994,13 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore)
 		$resourceGroup = $resourceGroup.ResourceGroupName
 	}
 
+	if ($subnetId -eq $null)
+	{
+		$subnetId = $params.subnet;
+	}
+
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup -Name $managedInstanceName `
- 			-Location $params.location -AdministratorCredential $credentials -SubnetId $params.subnet `
+ 			-Location $params.location -AdministratorCredential $credentials -SubnetId $subnetId `
  			-Vcore $vCore -SkuName $skuName
 
 	# The previous command keeps polling until managed instance becomes ready. However, it can happen that the managed instance

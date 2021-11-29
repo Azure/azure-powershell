@@ -14,11 +14,11 @@
 
 <#
 	.SYNOPSIS
-	Tests Getting a VirtualCluster
+	Tests Getting and Removing a VirtualCluster
 	.DESCRIPTION
 	SmokeTest
 #>
-function Test-GetVirtualCluster
+function Test-GetRemoveVirtualCluster
 {
 	# Setup
 	$location = Get-ProviderLocation "Microsoft.Sql/virtualclusters"
@@ -32,7 +32,7 @@ function Test-GetVirtualCluster
 	$virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rgName
 	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg 4 $subnetId
 
 	try
 	{
@@ -51,40 +51,9 @@ function Test-GetVirtualCluster
 		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
 		Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
 		Assert-AreEqual $subnetId $virtualCluster.SubnetId
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
 
-<#
-	.SYNOPSIS
-	Tests Removing a VirtualCluster
-	.DESCRIPTION
-	SmokeTest
-#>
-function Test-RemoveVirtualCluster
-{
-	# Setup
-	$location = Get-ProviderLocation "Microsoft.Sql/virtualclusters"
-	$rg = Create-ResourceGroupForTest $location
-
-	$rgName = $rg.ResourceGroupName
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-
-	# Setup VNET 
-	$virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rgName
-	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-	try
-	{
-		$virtualClusterList = Get-AzSqlVirtualCluster -ResourceGroupName $rgName
-		$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $subnetId})
-		$virtualClusterName = $virtualCluster.VirtualClusterName
+		# Test remove virtual cluster #
+		###############################
 
 		# Remove the managed instance first
 		$managedInstance | Remove-AzSqlInstance -Force
