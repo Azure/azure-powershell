@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (filesToAttach.Count == 0)
             {
-                WriteWarning("There is no files to attach!");
+                WriteWarning("Could not find any file to attach. The command will be run without attachments.");
                 return "";
             }
             using (var memoryStream = new MemoryStream())
