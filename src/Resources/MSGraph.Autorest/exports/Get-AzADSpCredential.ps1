@@ -155,6 +155,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 function Get-AzADSpCredential {
+[Alias('Get-ADServicePrincipalCredential')]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -185,7 +186,7 @@ param(
     ${ServicePrincipalObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

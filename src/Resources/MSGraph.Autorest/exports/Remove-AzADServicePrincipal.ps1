@@ -289,7 +289,7 @@ function Remove-AzADServicePrincipal {
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
-    [Alias('ServicePrincipalId', 'Id')]
+    [Alias('ServicePrincipalId', 'Id', 'PrincipalId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
@@ -303,6 +303,7 @@ param(
     ${ApplicationId},
 
     [Parameter(ParameterSetName='SPNParameterSet', Mandatory)]
+    [Alias('SPN')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: service principal name
@@ -335,7 +336,7 @@ param(
     ${IfMatch},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

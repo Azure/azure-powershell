@@ -194,7 +194,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

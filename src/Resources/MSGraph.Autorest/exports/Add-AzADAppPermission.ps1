@@ -41,7 +41,7 @@ https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 #>
 function Add-AzADAppPermission {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [ValidateNotNull()]
@@ -116,7 +116,7 @@ param(
     ${ApplicationId},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

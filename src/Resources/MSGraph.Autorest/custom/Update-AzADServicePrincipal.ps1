@@ -161,9 +161,10 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azadserviceprin
 function Update-AzADServicePrincipal {
   [OutputType([System.Boolean])]
   [CmdletBinding(DefaultParameterSetName = 'SpObjectIdWithDisplayNameParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  [Alias('Set-AzADServicePrincipal')]
   param(
     [Parameter(ParameterSetName = 'SpObjectIdWithDisplayNameParameterSet', Mandatory)]
-    [Alias('ServicePrincipalId', 'Id')]
+    [Alias('ServicePrincipalId', 'Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
@@ -189,6 +190,7 @@ function Update-AzADServicePrincipal {
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
+    [Alias('SPN')]
     # Contains the list of identifiersUris, copied over from the associated application.
     # Additional values can be added to hybrid applications.
     # These values can be used to identify the permissions exposed by this app within Azure AD.
@@ -504,7 +506,7 @@ function Update-AzADServicePrincipal {
     ${TransitiveMemberOf},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias("AzContext", "AzureRmContext", "AzureCredential")]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

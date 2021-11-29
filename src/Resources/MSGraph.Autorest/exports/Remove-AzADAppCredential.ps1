@@ -200,7 +200,7 @@ param(
     ${ApplicationObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -212,6 +212,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]

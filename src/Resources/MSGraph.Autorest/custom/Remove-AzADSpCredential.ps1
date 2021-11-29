@@ -38,6 +38,7 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azadspcredentia
 function Remove-AzADSpCredential {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdWithKeyIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Alias('Remove-AzADServicePrincipalCredential')]
     param(
         [Parameter(ParameterSetName='ObjectIdWithKeyIdParameterSet', Mandatory, HelpMessage = "The object Id of service principal.")]
         [Alias('Id')]
@@ -66,7 +67,7 @@ function Remove-AzADSpCredential {
         ${KeyId},
 
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]
@@ -78,6 +79,12 @@ function Remove-AzADSpCredential {
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]

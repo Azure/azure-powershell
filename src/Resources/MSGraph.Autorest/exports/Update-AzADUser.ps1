@@ -90,6 +90,7 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
 https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
 #>
 function Update-AzADUser {
+[Alias('Set-AzADUser')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -422,7 +423,7 @@ param(
     ${UserPrincipalName},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

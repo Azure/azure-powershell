@@ -143,6 +143,7 @@ param(
     ${ObjectId},
 
     [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
+    [Alias('SearchString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Used to find groups that begin with the provided string.
@@ -155,7 +156,7 @@ param(
     ${DisplayName},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

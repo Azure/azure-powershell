@@ -165,7 +165,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -195,7 +195,7 @@ serviceprincipal display name starts with
 ```yaml
 Type: System.String
 Parameter Sets: SearchStringParameterSet
-Aliases: DisplayNameStartsWith
+Aliases: DisplayNameStartsWith, SearchString
 
 Required: True
 Position: Named
@@ -300,7 +300,7 @@ serviceprincipal name
 ```yaml
 Type: System.String
 Parameter Sets: SPNParameterSet
-Aliases:
+Aliases: SPN
 
 Required: True
 Position: Named

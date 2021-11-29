@@ -278,17 +278,19 @@ TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
 https://docs.microsoft.com/powershell/module/az.resources/update-azadserviceprincipal
 #>
 function Update-AzADServicePrincipal {
+[Alias('Set-AzADServicePrincipal')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='SpObjectIdWithDisplayNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SpObjectIdWithDisplayNameParameterSet', Mandatory)]
-    [Alias('ServicePrincipalId', 'Id')]
+    [Alias('ServicePrincipalId', 'Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
     ${ObjectId},
 
     [Parameter()]
+    [Alias('SPN')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -623,7 +625,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

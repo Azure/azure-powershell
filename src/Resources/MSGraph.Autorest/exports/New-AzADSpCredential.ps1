@@ -179,13 +179,14 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/new-azadspcredential
 #>
 function New-AzADSpCredential {
+[Alias('New-AzADServicePrincipalCredential')]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
-    [Alias('Id')]
+    [Alias('Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The object Id of application.
@@ -247,6 +248,7 @@ param(
     [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
+    [Alias('SPN')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The service principal name.
@@ -262,7 +264,7 @@ param(
     ${ServicePrincipalObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

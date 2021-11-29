@@ -60,7 +60,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -151,7 +151,7 @@ The object Id of target group.
 ```yaml
 Type: System.String
 Parameter Sets: ObjectIdParameterSet
-Aliases:
+Aliases: Id, ObjectId
 
 Required: True
 Position: Named

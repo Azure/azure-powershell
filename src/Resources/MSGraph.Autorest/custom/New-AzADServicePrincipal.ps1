@@ -372,11 +372,12 @@ function New-AzADServicePrincipal {
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    [Alias("KeyCredentials")]
     # The collection of key credentials associated with the service principal.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
     # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
+    ${KeyCredential},
 
     [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
@@ -384,10 +385,11 @@ function New-AzADServicePrincipal {
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    [Alias("PasswordCredentials")]
     # The collection of password credentials associated with the service principal.
     # Not nullable.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
+    ${PasswordCredential},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -657,7 +659,7 @@ function New-AzADServicePrincipal {
     ${TransitiveMemberOf},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias("AzContext", "AzureRmContext", "AzureCredential")]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

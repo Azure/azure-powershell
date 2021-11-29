@@ -124,7 +124,7 @@ function Get-AzADUser {
         ${ConsistencyLevel},
     
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.

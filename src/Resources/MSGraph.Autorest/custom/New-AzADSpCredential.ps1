@@ -39,11 +39,12 @@ https://docs.microsoft.com/powershell/module/az.resources/new-azadspcredential
 function New-AzADSpCredential {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
     [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Alias("New-AzADServicePrincipalCredential")]
     param(
         [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
         [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
         [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
-        [Alias('Id')]
+        [Alias('Id', 'ServicePrincipalObjectId')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ObjectId},
@@ -53,6 +54,7 @@ function New-AzADSpCredential {
         [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory, HelpMessage = "The service principal name.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
+        [Alias('SPN')]
         ${ServicePrincipalName},
 
         [Parameter(ParameterSetName='ServicePrincipalObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
@@ -104,7 +106,7 @@ function New-AzADSpCredential {
         ${EndDate},
 
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]

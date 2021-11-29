@@ -42,7 +42,7 @@ https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 
 function Add-AzADAppPermission {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', SupportsShouldProcess, PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory, HelpMessage = "The unique identifier in Azure AD.")]
         [System.Guid]
@@ -68,7 +68,7 @@ function Add-AzADAppPermission {
         ${Type} = 'Scope',
 
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]

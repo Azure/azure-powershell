@@ -14,14 +14,14 @@ Removes an API permission.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADAppPermission -ObjectId <Guid> -PermissionId <Guid> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzADAppPermission -ObjectId <Guid> -PermissionId <Guid> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### AppIdParameterSet
 ```
-Remove-AzADAppPermission -ApplicationId <Guid> -PermissionId <Guid> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzADAppPermission -ApplicationId <Guid> -PermissionId <Guid> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -92,6 +92,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

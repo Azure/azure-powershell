@@ -230,7 +230,7 @@ INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
   [SupportUrl <String>]: Link to the application's support page. For example, https://www.contoso.com/app/support
   [TermsOfServiceUrl <String>]: Link to the application's terms of service statement. For example, https://www.contoso.com/app/termsofservice
 
-KEYCREDENTIALS <IMicrosoftGraphKeyCredential[]>: key credentials associated with the service principal.
+KEYCREDENTIAL <IMicrosoftGraphKeyCredential[]>: key credentials associated with the service principal.
   [CustomKeyIdentifier <Byte[]>]: Custom key identifier
   [DisplayName <String>]: Friendly name for the key. Optional.
   [EndDateTime <DateTime?>]: The date and time at which the credential expires.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -251,7 +251,7 @@ OAUTH2PERMISSIONSCOPE <IMicrosoftGraphPermissionScope[]>: The delegated permissi
   [UserConsentDisplayName <String>]: A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
   [Value <String>]: Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
 
-PASSWORDCREDENTIALS <IMicrosoftGraphPasswordCredential[]>: Password credentials associated with the service principal.
+PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential[]>: Password credentials associated with the service principal.
   [CustomKeyIdentifier <Byte[]>]: Do not use.
   [DisplayName <String>]: Friendly name for the password. Optional.
   [EndDateTime <DateTime?>]: The date and time at which the password expires represented using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
@@ -641,22 +641,24 @@ param(
     [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [Alias('KeyCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # key credentials associated with the service principal.
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
+    # To construct, see NOTES section for KEYCREDENTIAL properties and create a hash table.
+    ${KeyCredential},
 
     [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [Alias('PasswordCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the service principal.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
+    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
+    ${PasswordCredential},
 
     [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
@@ -669,7 +671,7 @@ param(
     ${ApplicationObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

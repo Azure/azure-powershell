@@ -256,6 +256,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
 https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
 #>
 function Update-AzADApplication {
+[Alias('Set-AzADApplication')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -288,7 +289,7 @@ param(
     ${HomePage},
 
     [Parameter()]
-    [Alias('WebRedirectUri')]
+    [Alias('ReplyUrls', 'WebRedirectUri')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     # The application reply Urls.
@@ -385,6 +386,7 @@ param(
     ${HomeRealmDiscoveryPolicy},
 
     [Parameter()]
+    [Alias('IdentifierUris')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -517,7 +519,7 @@ param(
     ${TokenLifetimePolicy},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

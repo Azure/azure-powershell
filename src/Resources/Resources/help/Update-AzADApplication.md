@@ -209,7 +209,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -340,7 +340,7 @@ Supports $filter (eq, ne, ge, le, startsWith).
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: IdentifierUris
 
 Required: False
 Position: Named
@@ -545,7 +545,7 @@ The application reply Urls.
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases: WebRedirectUri
+Aliases: ReplyUrls, WebRedirectUri
 
 Required: False
 Position: Named
@@ -718,6 +718,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Set-AzADApplication
 
 COMPLEX PARAMETER PROPERTIES
 

@@ -54,6 +54,7 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
 function Update-AzADUser {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Alias('Set-AzADUser')]
     param(
         [Parameter(ParameterSetName='UPNOrObjectIdParameterSet', Mandatory)]
         [System.String]
@@ -373,7 +374,7 @@ function Update-AzADUser {
         ${UserType},
     
         [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
+        [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
         [System.Management.Automation.PSObject]

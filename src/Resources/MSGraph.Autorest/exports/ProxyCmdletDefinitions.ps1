@@ -41,7 +41,7 @@ https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 #>
 function Add-AzADAppPermission {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [ValidateNotNull()]
@@ -116,7 +116,7 @@ param(
     ${ApplicationId},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -271,7 +271,7 @@ param(
     ${TargetGroupObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -547,7 +547,7 @@ param(
     ${ApplicationObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -743,7 +743,7 @@ param(
     ${AppendSelected},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -907,7 +907,7 @@ param(
     ${ApplicationId},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -1083,6 +1083,7 @@ param(
     ${ObjectId},
 
     [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
+    [Alias('SearchString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Used to find groups that begin with the provided string.
@@ -1095,7 +1096,7 @@ param(
     ${DisplayName},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -1212,6 +1213,7 @@ function Get-AzADGroupMember {
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
+    [Alias('Id', 'ObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The object Id of target group.
@@ -1276,7 +1278,7 @@ param(
     ${GroupObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -1556,7 +1558,7 @@ param(
     ${Search},
 
     [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
-    [Alias('DisplayNameStartsWith')]
+    [Alias('DisplayNameStartsWith', 'SearchString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
     # serviceprincipal display name starts with
@@ -1583,6 +1585,7 @@ param(
     ${ApplicationObject},
 
     [Parameter(ParameterSetName='SPNParameterSet', Mandatory)]
+    [Alias('SPN')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
     # serviceprincipal name
@@ -1614,7 +1617,7 @@ param(
     ${AppendSelected},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -1846,6 +1849,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 function Get-AzADSpCredential {
+[Alias('Get-ADServicePrincipalCredential')]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1876,7 +1880,7 @@ param(
     ${ServicePrincipalObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -2050,7 +2054,7 @@ param(
     ${ConsistencyLevel},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.PSObject]
@@ -2456,7 +2460,7 @@ param(
     ${ApplicationObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -2959,7 +2963,7 @@ param(
     ${EndDate},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -3322,7 +3326,7 @@ param(
     ${Visibility},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -3623,7 +3627,7 @@ INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
   [SupportUrl <String>]: Link to the application's support page. For example, https://www.contoso.com/app/support
   [TermsOfServiceUrl <String>]: Link to the application's terms of service statement. For example, https://www.contoso.com/app/termsofservice
 
-KEYCREDENTIALS <IMicrosoftGraphKeyCredential[]>: key credentials associated with the service principal.
+KEYCREDENTIAL <IMicrosoftGraphKeyCredential[]>: key credentials associated with the service principal.
   [CustomKeyIdentifier <Byte[]>]: Custom key identifier
   [DisplayName <String>]: Friendly name for the key. Optional.
   [EndDateTime <DateTime?>]: The date and time at which the credential expires.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -3644,7 +3648,7 @@ OAUTH2PERMISSIONSCOPE <IMicrosoftGraphPermissionScope[]>: The delegated permissi
   [UserConsentDisplayName <String>]: A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
   [Value <String>]: Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
 
-PASSWORDCREDENTIALS <IMicrosoftGraphPasswordCredential[]>: Password credentials associated with the service principal.
+PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential[]>: Password credentials associated with the service principal.
   [CustomKeyIdentifier <Byte[]>]: Do not use.
   [DisplayName <String>]: Friendly name for the password. Optional.
   [EndDateTime <DateTime?>]: The date and time at which the password expires represented using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
@@ -3761,12 +3765,6 @@ param(
     # true if the service principal account is enabled; otherwise, false.
     # Supports $filter (eq, ne, NOT, in).
     ${AccountEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Skip role assignment for created sp, otherwise please provide roles and scopes.
-    ${SkipAssignment},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -4040,22 +4038,24 @@ param(
     [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [Alias('KeyCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # key credentials associated with the service principal.
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
+    # To construct, see NOTES section for KEYCREDENTIAL properties and create a hash table.
+    ${KeyCredential},
 
     [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [Alias('PasswordCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the service principal.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
+    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
+    ${PasswordCredential},
 
     [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
@@ -4068,7 +4068,7 @@ param(
     ${ApplicationObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -4328,13 +4328,14 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/new-azadspcredential
 #>
 function New-AzADSpCredential {
+[Alias('New-AzADServicePrincipalCredential')]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
-    [Alias('Id')]
+    [Alias('Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The object Id of application.
@@ -4396,6 +4397,7 @@ param(
     [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
+    [Alias('SPN')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The service principal name.
@@ -4411,7 +4413,7 @@ param(
     ${ServicePrincipalObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -4916,7 +4918,7 @@ param(
     ${ForceChangePasswordNextLogin},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -5187,7 +5189,7 @@ param(
     ${ApplicationObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -5199,6 +5201,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
@@ -5455,7 +5463,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -5564,7 +5572,7 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermissi
 #>
 function Remove-AzADAppPermission {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [ValidateNotNull()]
@@ -5625,7 +5633,7 @@ param(
     ${ApplicationId},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -5765,7 +5773,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -5973,7 +5981,7 @@ param(
     ${GroupObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -6345,7 +6353,7 @@ function Remove-AzADServicePrincipal {
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
-    [Alias('ServicePrincipalId', 'Id')]
+    [Alias('ServicePrincipalId', 'Id', 'PrincipalId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
@@ -6359,6 +6367,7 @@ param(
     ${ApplicationId},
 
     [Parameter(ParameterSetName='SPNParameterSet', Mandatory)]
+    [Alias('SPN')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: service principal name
@@ -6391,7 +6400,7 @@ param(
     ${IfMatch},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -6628,6 +6637,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/remove-azadspcredential
 #>
 function Remove-AzADSpCredential {
+[Alias('Remove-AzADServicePrincipalCredential')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='ObjectIdWithKeyIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -6664,7 +6674,7 @@ param(
     ${ServicePrincipalObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -6676,6 +6686,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
@@ -6855,7 +6871,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -7192,6 +7208,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
 https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
 #>
 function Update-AzADApplication {
+[Alias('Set-AzADApplication')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -7224,7 +7241,7 @@ param(
     ${HomePage},
 
     [Parameter()]
-    [Alias('WebRedirectUri')]
+    [Alias('ReplyUrls', 'WebRedirectUri')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     # The application reply Urls.
@@ -7321,6 +7338,7 @@ param(
     ${HomeRealmDiscoveryPolicy},
 
     [Parameter()]
+    [Alias('IdentifierUris')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -7453,7 +7471,7 @@ param(
     ${TokenLifetimePolicy},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -7810,17 +7828,19 @@ TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
 https://docs.microsoft.com/powershell/module/az.resources/update-azadserviceprincipal
 #>
 function Update-AzADServicePrincipal {
+[Alias('Set-AzADServicePrincipal')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='SpObjectIdWithDisplayNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SpObjectIdWithDisplayNameParameterSet', Mandatory)]
-    [Alias('ServicePrincipalId', 'Id')]
+    [Alias('ServicePrincipalId', 'Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
     ${ObjectId},
 
     [Parameter()]
+    [Alias('SPN')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -8155,7 +8175,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -8325,6 +8345,7 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
 https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
 #>
 function Update-AzADUser {
+[Alias('Set-AzADUser')]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -8657,7 +8678,7 @@ param(
     ${UserPrincipalName},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

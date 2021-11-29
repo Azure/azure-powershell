@@ -165,6 +165,7 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
 function Update-AzADApplication {
   [OutputType([System.Boolean])]
   [CmdletBinding(DefaultParameterSetName = 'ApplicationObjectIdWithUpdateParamsParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  [Alias('Set-AzADApplication')]
   param(
     [Parameter(ParameterSetName = 'ApplicationObjectIdWithUpdateParamsParameterSet', Mandatory)]
     [Alias('Id')]
@@ -197,6 +198,7 @@ function Update-AzADApplication {
     [Alias('WebRedirectUri')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
+    [Alias('ReplyUrls')]
     ${ReplyUrl},
 
     [Parameter(HelpMessage = "The value specifying whether the application is a single tenant or a multi-tenant. Is equivalent to '-SignInAudience AzureADMultipleOrgs' when switch is on")]
@@ -291,6 +293,7 @@ function Update-AzADApplication {
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
+    [Alias('IdentifierUris')]
     # The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
     # For more information, see Application Objects and Service Principal Objects.
     # The any operator is required for filter expressions on multi-valued properties.
@@ -420,7 +423,7 @@ function Update-AzADApplication {
     ${TokenLifetimePolicy},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
+    [Alias("AzContext", "AzureRmContext", "AzureCredential")]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]

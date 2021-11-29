@@ -118,7 +118,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -166,7 +166,7 @@ The object Id of application.
 ```yaml
 Type: System.String
 Parameter Sets: SpObjectIdWithCertValueParameterSet, SpObjectIdWithCredentialParameterSet, SpObjectIdWithPasswordParameterSet
-Aliases: Id
+Aliases: Id, ServicePrincipalObjectId
 
 Required: True
 Position: Named
@@ -197,7 +197,7 @@ The service principal name.
 ```yaml
 Type: System.String
 Parameter Sets: SPNWithCertValueParameterSet, SPNWithCredentialParameterSet, SPNWithPasswordParameterSet
-Aliases:
+Aliases: SPN
 
 Required: True
 Position: Named
@@ -286,6 +286,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+New-AzADServicePrincipalCredential
 
 COMPLEX PARAMETER PROPERTIES
 
