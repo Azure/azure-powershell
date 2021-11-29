@@ -81,6 +81,20 @@ Content    : {
 
 Get log analytics workspace by path
 
+### Example 2
+```powershell
+Invoke-AzRestMethod -Uri https://graph.microsoft.com/v1.0/me
+```
+```output
+Headers    : {[Date, System.String[]], [Cache-Control, System.String[]], [Transfer-Encoding, System.String[]], [Strict-Transport-Security, System.String[]]…}
+Version    : 1.1
+StatusCode : 200
+Method     : GET
+Content    : {"@odata.context":"https://graph.microsoft.com/v1.0/$metadata#users/$entity","businessPhones":["......}
+```
+
+Get current signed in user via MicrosoftGraph API. This example is equivalent to `Get-AzADUser -SignedIn`.
+
 ## PARAMETERS
 
 ### -ApiVersion
