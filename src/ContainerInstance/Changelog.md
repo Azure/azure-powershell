@@ -28,7 +28,7 @@
     - [Breaking Change] Displayed command execution result as the cmdlet output by connecting websocket in backend [#15754]
     - Added `-PassThru` to get last execution result when the command succeeds
     - Set default value for TerminalSizeCol and TerminalSizeRow by current PowerShell window size
-* Added `Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint` and `Restart-AzContainerGroup`
+* Added `Restart-AzContainerGroup`, `Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint` and `New-AzContainerInstanceHttpHeaderObject`
 
 ## Version 2.1.0
 * Removed the display of file share credential [#15224]
