@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                     {
                         //Default certName is HostName
                         certName = Name != null ? Name : HostName;
-                        createdCertdetails = WebsitesClient.CreateCertificate(ResourceGroupName, certName, certificate);
+                        createdCertdetails = (PSCertificate)WebsitesClient.CreateCertificate(ResourceGroupName, certName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {
