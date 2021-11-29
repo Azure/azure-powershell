@@ -18,7 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrate the project to Autorest. Below is the new cmdlet
+    - `Get-AzManagedServicesMarketplaceDefinition`
+    - `New-AzManagedServicesAuthorizationObject`
+    - `New-AzManagedServicesEligibleAuthorizationObject`
+    - `New-AzManagedServicesEligibleApproverObject`
 
-## Version 0.1.0
-* First preview release for module Az.ManagedServices
+## Version 2.0.0
+* [Breaking Change] Updated parameters naming conventions and associated examples
 
+## Version 1.1.1
+* Updated breaking change warnings on cmdlets of managed services assignment and definition
+
+## Version 1.1.0
+* Added breaking change warnings on cmdlets of managed services assignment and definition
+
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+* Added support for api version 2019-06-01 (GA)
+
+## Version 0.0.1
+* Initial version of the ManagedServices PowerShell interface
