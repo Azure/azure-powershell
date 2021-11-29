@@ -6,12 +6,13 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Delete a connected cluster, removing the tracked resource in Azure Resource Manager (ARM).
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ConnectedCluster_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzConnectedKubernetes_DeleteViaIdentity", SupportsShouldProcess = true)]
