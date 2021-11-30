@@ -101,14 +101,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("PreferenceTransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("PreferenceEncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferencePreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("Preference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeviceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
+            if (content.Contains("PreferenceTransportPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("PreferenceTransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreferenceEncryptionPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("PreferenceEncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreferencePreferredDataCenterRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferencePreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("EncryptionPreferenceDoubleEncryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            }
+            if (content.Contains("TransportPreferencePreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,14 +150,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("PreferenceTransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("PreferenceEncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferencePreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("Preference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeviceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
+            if (content.Contains("PreferenceTransportPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("PreferenceTransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceTransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreferenceEncryptionPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("PreferenceEncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferenceEncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreferencePreferredDataCenterRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferencePreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).PreferencePreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("EncryptionPreferenceDoubleEncryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            }
+            if (content.Contains("TransportPreferencePreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesValidationRequestInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

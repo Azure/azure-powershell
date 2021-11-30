@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.SkuTypeConverter.ConvertFrom));
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.SkuTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.SkuTypeConverter.ConvertFrom));
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageSkuListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.SkuTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2021-05-20
+    - Added cmdlets for private link scope scenarios
+        - `New-AzConnectedPrivateLinkScope`
+        - `Get-AzConnectedPrivateLinkScope`
+        - `Set-AzConnectedPrivateLinkScope`
+        - `Remove-AzConnectedPrivateLinkScope`
+        - `Update-AzConnectedPrivateLinkScopeTag`
+    - Added cmdlets for extension upgrade
+        - `Update-AzConnectedExtension`
 
 ## Version 0.2.0
 * Bug fix

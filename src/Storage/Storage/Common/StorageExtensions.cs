@@ -287,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
                 userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
                     expiresOn: sasBuilder.ExpiresOn.ToUniversalTime());
 
                 sasToken = sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();

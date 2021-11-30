@@ -4767,13 +4767,13 @@ Updates a function app.
 .Description
 Updates a function app.
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
@@ -4972,6 +4972,12 @@ param(
     ${PlanName},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Forces the cmdlet to update the function app without prompting for confirmation.
+    ${Force},
+
+    [Parameter()]
     [Alias('AppInsightsName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
@@ -5125,7 +5131,8 @@ Updates a function app service plan.
 PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                                  -Name MyPremiumPlan `
                                  -MaximumWorkerCount 20 `
-                                 -Sku EP2
+                                 -Sku EP2 `
+                                 -Force
 
 
 .Inputs
@@ -5215,6 +5222,12 @@ param(
     [System.Int32]
     # The minimum number of workers for the app service plan.
     ${MinimumWorkerCount},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Forces the cmdlet to update the function app plan without prompting for confirmation.
+    ${Force},
 
     [Parameter()]
     [ValidateNotNull()]

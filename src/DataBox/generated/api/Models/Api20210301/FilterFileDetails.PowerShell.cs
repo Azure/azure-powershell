@@ -92,8 +92,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType) content.GetValueForProperty("FilterFileType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath = (string) content.GetValueForProperty("FilterFilePath",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath, global::System.Convert.ToString);
+            if (content.Contains("FilterFileType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType) content.GetValueForProperty("FilterFileType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType.CreateFrom);
+            }
+            if (content.Contains("FilterFilePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath = (string) content.GetValueForProperty("FilterFilePath",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -111,8 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType) content.GetValueForProperty("FilterFileType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath = (string) content.GetValueForProperty("FilterFilePath",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath, global::System.Convert.ToString);
+            if (content.Contains("FilterFileType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType) content.GetValueForProperty("FilterFileType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFileType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.FilterFileType.CreateFrom);
+            }
+            if (content.Contains("FilterFilePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath = (string) content.GetValueForProperty("FilterFilePath",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetailsInternal)this).FilterFilePath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of 'Az.CloudService' module
 
 ## Version 0.5.0
 * Fixed the issue that RemoteDesktopExtension password is wrong setted.

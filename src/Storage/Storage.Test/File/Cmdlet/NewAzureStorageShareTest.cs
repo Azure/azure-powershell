@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Storage.File;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
+using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Storage.File;
-using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
-using Microsoft.WindowsAzure.Management.Storage.Test.Common;
-using Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Constants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {

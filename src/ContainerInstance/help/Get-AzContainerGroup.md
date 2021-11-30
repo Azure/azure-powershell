@@ -46,10 +46,10 @@ The operation returns the properties of each container group including container
 ```powershell
 PS C:\> Get-AzContainerGroup
 
-Location Name           Type
--------- ----           ----
-eastus   bez-cg1         Microsoft.ContainerInstance/containerGroups
-eastus   bez-cg2        Microsoft.ContainerInstance/containerGroups
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+eastus   test-cg2      test-rg
 ```
 
 This command gets all container groups in the current subscription.
@@ -100,6 +100,7 @@ Name                           : test-cg1
 NetworkProfileId               :
 OSType                         : Linux
 ProvisioningState              : Succeeded
+ResourceGroupName              : test-rg
 RestartPolicy                  : Never
 Sku                            : Standard
 Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
@@ -114,10 +115,10 @@ The command gets the specified container group.
 ```powershell
 PS C:\> Get-AzContainerGroup -ResourceGroupName test-rg
 
-Location Name           Type
--------- ----           ----
-eastus   bez-cg1         Microsoft.ContainerInstance/containerGroups
-eastus   bez-cg2        Microsoft.ContainerInstance/containerGroups
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+eastus   test-cg2      test-rg
 ```
 
 The command gets the container groups in the resource group `test-rg`.
@@ -126,9 +127,9 @@ The command gets the container groups in the resource group `test-rg`.
 ```powershell
 PS C:\> Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"="value"} | Get-AzContainerGroup
 
-Location Name   Type
--------- ----   ----
-eastus   test-cg1 Microsoft.ContainerInstance/containerGroups
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
 ```
 
 The command gets the updated container group by piping.
@@ -221,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
 
 ## NOTES
 

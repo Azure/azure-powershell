@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxStorageAccountDetailsObject
 
 ## SYNOPSIS
-Create a in-memory object for StorageAccountDetails
+Create an in-memory object for StorageAccountDetails.
 
 ## SYNTAX
 
@@ -18,11 +18,11 @@ New-AzDataBoxStorageAccountDetailsObject -DataAccountType <DataAccountType> -Sto
 ```
 
 ## DESCRIPTION
-Create a in-memory object for StorageAccountDetails
+Create an in-memory object for StorageAccountDetails.
 
 ## EXAMPLES
 
-### Example 1: {{ {Storage account in-memory object }}
+### Example 1: Storage account in-memory object 
 ```powershell
 PS C:\> $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 PS C:\> $dataAccount
@@ -32,7 +32,7 @@ DataAccountType SharePassword StorageAccountId
 StorageAccount                /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName
 ```
 
-{{ Storage account in-memory object }}
+Storage account in-memory object
 
 ## PARAMETERS
 

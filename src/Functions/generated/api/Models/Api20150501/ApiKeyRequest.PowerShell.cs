@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkedReadProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LinkedWriteProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkedReadProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty = (string[]) content.GetValueForProperty("LinkedReadProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedReadProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LinkedWriteProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty = (string[]) content.GetValueForProperty("LinkedWriteProperty",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApiKeyRequestInternal)this).LinkedWriteProperty, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

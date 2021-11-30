@@ -156,6 +156,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -170,8 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -238,10 +238,15 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path
-  - `[Name <String>]`: The name of the hybrid machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[Location <String>]`: The location of the target resource.
+  - `[MachineName <String>]`: The name of the hybrid machine.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

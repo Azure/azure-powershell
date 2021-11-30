@@ -66,6 +66,7 @@
         ".ci-config.json",
         "tools/PrepareAutorestModule.ps1",
         "tools/SyncFromMainBranch.ps1",
+        "tools/CheckAssemblies.ps1",
         "tools/GeneratedModuleList.txt"
       ],
       "phases": []

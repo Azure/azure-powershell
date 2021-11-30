@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SMB".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SMB", "SMB", global::System.Management.Automation.CompletionResultType.ParameterValue, "SMB");
+                yield return new global::System.Management.Automation.CompletionResult("'SMB'", "SMB", global::System.Management.Automation.CompletionResultType.ParameterValue, "SMB");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NFS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NFS", "NFS", global::System.Management.Automation.CompletionResultType.ParameterValue, "NFS");
+                yield return new global::System.Management.Automation.CompletionResult("'NFS'", "NFS", global::System.Management.Automation.CompletionResultType.ParameterValue, "NFS");
             }
         }
     }

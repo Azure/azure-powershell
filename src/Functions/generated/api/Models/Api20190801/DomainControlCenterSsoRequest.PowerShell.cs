@@ -94,9 +94,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey = (string) content.GetValueForProperty("PostParameterKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue = (string) content.GetValueForProperty("PostParameterValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue, global::System.Convert.ToString);
+            if (content.Contains("Url"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostParameterKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey = (string) content.GetValueForProperty("PostParameterKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostParameterValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue = (string) content.GetValueForProperty("PostParameterValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -114,9 +123,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey = (string) content.GetValueForProperty("PostParameterKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue = (string) content.GetValueForProperty("PostParameterValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue, global::System.Convert.ToString);
+            if (content.Contains("Url"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).Url, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostParameterKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey = (string) content.GetValueForProperty("PostParameterKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostParameterValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue = (string) content.GetValueForProperty("PostParameterValue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainControlCenterSsoRequestInternal)this).PostParameterValue, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

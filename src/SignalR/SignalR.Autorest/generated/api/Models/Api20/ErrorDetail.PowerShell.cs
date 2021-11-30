@@ -92,11 +92,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorDetailTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -114,11 +129,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorDetailTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorDetailInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

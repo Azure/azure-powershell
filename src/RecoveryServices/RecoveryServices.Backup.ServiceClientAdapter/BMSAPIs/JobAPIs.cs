@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             crrJobRequest.ResourceId = vaultId;
             
             Func<RestAzureNS.IPage<JobResource>> listAsync =
-                () => BmsAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest, queryFilter,  cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;   //  , crrJobRequest , queryFilter
+                () => BmsAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest, queryFilter,  cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<JobResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.BackupJobs.ListNextWithHttpMessagesAsync(

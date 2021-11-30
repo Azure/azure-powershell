@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ContainerInsights".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ContainerInsights", "ContainerInsights", global::System.Management.Automation.CompletionResultType.ParameterValue, "ContainerInsights");
+                yield return new global::System.Management.Automation.CompletionResult("'ContainerInsights'", "ContainerInsights", global::System.Management.Automation.CompletionResultType.ParameterValue, "ContainerInsights");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ContainerInstanceLogs".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ContainerInstanceLogs", "ContainerInstanceLogs", global::System.Management.Automation.CompletionResultType.ParameterValue, "ContainerInstanceLogs");
+                yield return new global::System.Management.Automation.CompletionResult("'ContainerInstanceLogs'", "ContainerInstanceLogs", global::System.Management.Automation.CompletionResultType.ParameterValue, "ContainerInstanceLogs");
             }
         }
     }

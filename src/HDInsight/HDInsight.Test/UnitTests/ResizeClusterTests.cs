@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanResizeCluster()
         {
-            var cluster = new Cluster(id: "id", name: ClusterName + "1")
+            var cluster = new Cluster(id: "id", name: ClusterName + "1", location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 },
             };
 

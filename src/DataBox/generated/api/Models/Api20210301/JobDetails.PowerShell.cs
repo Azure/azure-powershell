@@ -99,22 +99,70 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages[]) content.GetValueForProperty("JobStage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobStagesTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("DeliveryPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("ReturnPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails[]) content.GetValueForProperty("CopyLogDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CopyLogDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey = (string) content.GetValueForProperty("ReverseShipmentLabelSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey = (string) content.GetValueForProperty("ChainOfCustodySasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte = (int?) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode[]) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJob) content.GetValueForProperty("LastMitigationActionOnJob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJobTypeConverter.ConvertFrom);
+            if (content.Contains("JobStage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages[]) content.GetValueForProperty("JobStage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobStagesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ContactDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ShippingAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeliveryPackage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("DeliveryPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ReturnPackage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("ReturnPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataImportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DataExportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
+            if (content.Contains("Preference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CopyLogDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails[]) content.GetValueForProperty("CopyLogDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CopyLogDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ReverseShipmentLabelSasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey = (string) content.GetValueForProperty("ReverseShipmentLabelSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("ChainOfCustodySasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey = (string) content.GetValueForProperty("ChainOfCustodySasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyEncryptionKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ExpectedDataSizeInTeraByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte = (int?) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode[]) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom));
+            }
+            if (content.Contains("LastMitigationActionOnJob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJob) content.GetValueForProperty("LastMitigationActionOnJob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJobTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -132,22 +180,70 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages[]) content.GetValueForProperty("JobStage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobStagesTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("DeliveryPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("ReturnPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails[]) content.GetValueForProperty("CopyLogDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CopyLogDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey = (string) content.GetValueForProperty("ReverseShipmentLabelSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey = (string) content.GetValueForProperty("ChainOfCustodySasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte = (int?) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode[]) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJob) content.GetValueForProperty("LastMitigationActionOnJob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJobTypeConverter.ConvertFrom);
+            if (content.Contains("JobStage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages[]) content.GetValueForProperty("JobStage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).JobStage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStages>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobStagesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ContactDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ShippingAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeliveryPackage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("DeliveryPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DeliveryPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ReturnPackage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetails) content.GetValueForProperty("ReturnPackage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReturnPackage, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataImportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DataExportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
+            if (content.Contains("Preference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences) content.GetValueForProperty("Preference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Preference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CopyLogDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails[]) content.GetValueForProperty("CopyLogDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).CopyLogDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CopyLogDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ReverseShipmentLabelSasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey = (string) content.GetValueForProperty("ReverseShipmentLabelSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ReverseShipmentLabelSasKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("ChainOfCustodySasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey = (string) content.GetValueForProperty("ChainOfCustodySasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ChainOfCustodySasKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyEncryptionKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ExpectedDataSizeInTeraByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte = (int?) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode[]) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).Action, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom));
+            }
+            if (content.Contains("LastMitigationActionOnJob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJob) content.GetValueForProperty("LastMitigationActionOnJob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetailsInternal)this).LastMitigationActionOnJob, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJobTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

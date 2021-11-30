@@ -1,14 +1,15 @@
 {
   "Entries": [
     {
-      "RequestUri": "/Subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/Subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v5.5.0",
-          "PSVersion/v6.2.4"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -24,26 +25,29 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus2:96a15d3b-1b3a-4700-8c02-3b6884652726"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
+        "x-ms-request-id": [
+          "562a0b04-9e9f-4f11-bcb1-111f197896c3"
+        ],
         "x-ms-correlation-request-id": [
-          "6d4aee39-e0ab-4c8d-9395-c4ab8fffe891"
+          "562a0b04-9e9f-4f11-bcb1-111f197896c3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20210310T084924Z:6d4aee39-e0ab-4c8d-9395-c4ab8fffe891"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "NORTHCENTRALUS:20211118T230944Z:562a0b04-9e9f-4f11-bcb1-111f197896c3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Mar 2021 08:49:23 GMT"
+          "Thu, 18 Nov 2021 23:09:43 GMT"
         ],
         "Expires": [
           "-1"
@@ -56,14 +60,15 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v5.5.0",
-          "PSVersion/v6.2.4"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -79,26 +84,29 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus2:72f16067-0294-48d1-8d27-0f7a31583794"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
+        "x-ms-request-id": [
+          "a45c4539-f07c-4a5d-a331-911ed122865a"
+        ],
         "x-ms-correlation-request-id": [
-          "a06c88bf-83db-415e-8db5-90faaf599ab2"
+          "a45c4539-f07c-4a5d-a331-911ed122865a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20210310T084924Z:a06c88bf-83db-415e-8db5-90faaf599ab2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "NORTHCENTRALUS:20211118T230944Z:a45c4539-f07c-4a5d-a331-911ed122865a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Mar 2021 08:49:24 GMT"
+          "Thu, 18 Nov 2021 23:09:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -111,14 +119,15 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lFeGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lFeGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v5.5.0",
-          "PSVersion/v6.2.4"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -134,26 +143,29 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus2:6c5a3482-ec64-4484-b95b-f83fbe441408"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
+        "x-ms-request-id": [
+          "8723d249-cfd9-48a0-abc0-2b7690d755c1"
+        ],
         "x-ms-correlation-request-id": [
-          "23bd2061-e1a2-4370-9485-d0bb23ea7590"
+          "8723d249-cfd9-48a0-abc0-2b7690d755c1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20210310T084925Z:23bd2061-e1a2-4370-9485-d0bb23ea7590"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "NORTHCENTRALUS:20211118T230945Z:8723d249-cfd9-48a0-abc0-2b7690d755c1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Mar 2021 08:49:24 GMT"
+          "Thu, 18 Nov 2021 23:09:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -168,6 +180,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f67cc918-f64f-4c3f-aa24-a855465f9d41"
+    "SubscriptionId": "2c2f67af-09f9-4d60-b051-c5d956d2c9a7"
   }
 }

@@ -23,6 +23,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         protected const string ByWorkspaceObject = "ByWorkspaceObject";
         protected const string ByName = "ByName";
         protected const string ByObject = "ByObject";
+        protected const string GetByNameParameterSet = "GetByNameParameterSet";
+        protected const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
+        protected const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+        protected const string ListParameterSet = "ListParameterSet";
+        protected const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
+        protected const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
+        protected const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
+        protected const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
+        protected const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
+        protected const string DeleteByResourceIdParameterSet = "DeleteByResourceIdParameterSet";
+        protected const string CreateByNameParameterSet = "CreateByNameParameterSet";
+        protected const string CreateByObjectParameterSet = "CreateByObjectParameterSet";
+        protected const string AllParameterSet = "AllParameterSet";
 
         private OperationalInsightsClient operationalInsightsClient;
 

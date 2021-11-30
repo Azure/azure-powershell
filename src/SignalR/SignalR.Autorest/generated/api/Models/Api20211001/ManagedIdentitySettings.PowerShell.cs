@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource, global::System.Convert.ToString);
+            if (content.Contains("Resource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource, global::System.Convert.ToString);
+            if (content.Contains("Resource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettingsInternal)this).Resource, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

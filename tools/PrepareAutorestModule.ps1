@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("ContainerInstance")
+$SKIP_MODULES = @("Resources")
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -95,6 +95,11 @@ foreach ($Module in $ModuleList)
     # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
     # We need to redirect output stream to file to avoid the mistake.
     npx autorest --max-memory-size=8192 > "$AutorestOutputDir\$Module.log"
+    # Exit if generation fails
+    if ($lastexitcode -ne 0)
+    {
+        exit $lastexitcode
+    }
     
     ./build-module.ps1
     Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
