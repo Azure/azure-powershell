@@ -38,8 +38,7 @@ input-file:
   - $(repo)/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2020-02-01-preview/managedservices.json
 
 title: ManagedServices
-# version should be 3.0.0-preview
-module-version: 3.0.0
+module-version: 2.0.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
