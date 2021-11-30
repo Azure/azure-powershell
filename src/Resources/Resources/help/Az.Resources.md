@@ -105,6 +105,9 @@ Gets information about Azure provider features.
 ### [Get-AzProviderOperation](Get-AzProviderOperation.md)
 Gets the operations for an Azure resource provider that are securable using Azure RBAC.
 
+### [Get-AzProviderPreviewFeature](Get-AzProviderPreviewFeature.md)
+Gets a feature registration in your account.
+
 ### [Get-AzResource](Get-AzResource.md)
 Gets resources.
 
@@ -239,6 +242,9 @@ Publishes a Bicep file to a registry.
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
+
+### [Register-AzProviderPreviewFeature](Register-AzProviderPreviewFeature.md)
+Creates a feature registration in your account.
 
 ### [Register-AzResourceProvider](Register-AzResourceProvider.md)
 Registers a resource provider.
@@ -407,6 +413,9 @@ Validates a deployment at tenant scope.
 
 ### [Unregister-AzProviderFeature](Unregister-AzProviderFeature.md)
 Unregisters an Azure provider feature in your account.
+
+### [Unregister-AzProviderPreviewFeature](Unregister-AzProviderPreviewFeature.md)
+Removes a feature registration from your account.
 
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.

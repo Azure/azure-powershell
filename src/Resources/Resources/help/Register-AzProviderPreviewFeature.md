@@ -13,8 +13,8 @@ Creates a feature registration in your account.
 ## SYNTAX
 
 ```
-Register-AzProviderPreviewFeature -Name <String> -ProviderNamespace <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Register-AzProviderPreviewFeature -Name <String> -ProviderNamespace <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
