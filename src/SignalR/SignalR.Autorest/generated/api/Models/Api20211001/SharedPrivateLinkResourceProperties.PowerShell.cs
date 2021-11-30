@@ -101,11 +101,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId = (string) content.GetValueForProperty("PrivateLinkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage = (string) content.GetValueForProperty("RequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus.CreateFrom);
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId = (string) content.GetValueForProperty("PrivateLinkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("RequestMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage = (string) content.GetValueForProperty("RequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,11 +138,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId = (string) content.GetValueForProperty("PrivateLinkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage = (string) content.GetValueForProperty("RequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus.CreateFrom);
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId = (string) content.GetValueForProperty("PrivateLinkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).PrivateLinkResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("RequestMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage = (string) content.GetValueForProperty("RequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).RequestMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISharedPrivateLinkResourcePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.SharedPrivateLinkResourceStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 
