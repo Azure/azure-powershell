@@ -81,7 +81,8 @@ PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Sched
 ```
 
 The first command initializes a $TimeZone variable with value `Europe/Paris`
-The second command creates a schedule that runs one time on the current date at 11:00 PM in the specified time zone.
+The second command creates a schedule that runs one time on the current date at 23:00 UTC in the specified time zone.
+> Note: Schedule `StartTime` is calculated by adding the TimeZone Offset to provided `StartTime`
 
 ### Example 3: Create a recurring schedule
 ```
@@ -100,7 +101,7 @@ The final command creates a daily schedule named Schedule02 to begin at the time
 ```
 PS C:\> $StartTime = (Get-Date "13:00:00").AddDays(1)
 PS C:\> [System.DayOfWeek[]]$WeekDays = @([System.DayOfWeek]::Monday..[System.DayOfWeek]::Friday)
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime - WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
+PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
@@ -354,6 +355,7 @@ Accept wildcard characters: False
 ### -StartTime
 Specifies the start time of a schedule as a **DateTimeOffset** object.
 You can specify a string that can be converted to a valid **DateTimeOffset**.
+If the `TimeZone` is provided, `StartTime` is calculated by adding the Offset of Input `TimeZone`.
 
 ```yaml
 Type: System.DateTimeOffset
