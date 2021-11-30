@@ -99,15 +99,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.OperationDisplayTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction = (bool?) content.GetValueForProperty("IsDataAction",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription, global::System.Convert.ToString);
+            if (content.Contains("Display"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.OperationDisplayTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Origin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsDataAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction = (bool?) content.GetValueForProperty("IsDataAction",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DisplayProvider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,15 +152,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.OperationDisplayTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction = (bool?) content.GetValueForProperty("IsDataAction",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription, global::System.Convert.ToString);
+            if (content.Contains("Display"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.OperationDisplayTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Origin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).Origin, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsDataAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction = (bool?) content.GetValueForProperty("IsDataAction",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).IsDataAction, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DisplayProvider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayProvider, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayResource, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperationInternal)this).DisplayDescription, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

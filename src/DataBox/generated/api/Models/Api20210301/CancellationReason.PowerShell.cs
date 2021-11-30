@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason = (string) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason, global::System.Convert.ToString);
+            if (content.Contains("Reason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason = (string) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -84,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason = (string) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason, global::System.Convert.ToString);
+            if (content.Contains("Reason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason = (string) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReasonInternal)this).Reason, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -111,5 +111,6 @@ function Cleanup-Vault(
 		-Force;
 	Unregister-AzRecoveryServicesBackupContainer `
 	-VaultId $vault.ID `
-	-Container $container
+	-Container $container `
+	-Force;
 }

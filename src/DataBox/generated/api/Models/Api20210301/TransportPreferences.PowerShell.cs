@@ -104,7 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("PreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("PreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("PreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,7 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("PreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("PreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("PreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal)this).PreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

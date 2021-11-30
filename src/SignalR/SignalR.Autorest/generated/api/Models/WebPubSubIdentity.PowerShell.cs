@@ -103,14 +103,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName = (string) content.GetValueForProperty("HubName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName = (string) content.GetValueForProperty("SharedPrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HubName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName = (string) content.GetValueForProperty("HubName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName = (string) content.GetValueForProperty("SharedPrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,14 +152,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName = (string) content.GetValueForProperty("HubName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName = (string) content.GetValueForProperty("SharedPrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HubName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName = (string) content.GetValueForProperty("HubName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).HubName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName = (string) content.GetValueForProperty("SharedPrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).SharedPrivateLinkResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

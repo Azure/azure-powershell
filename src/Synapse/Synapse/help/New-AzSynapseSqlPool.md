@@ -15,15 +15,15 @@ Creates a Synapse Analytics SQL pool.
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
- [-Tag <Hashtable>] -PerformanceLevel <String> [-Collation <String>] [-AsJob]
+ [-Tag <Hashtable>] -PerformanceLevel <String> [-Collation <String>] [-StorageAccountType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzSynapseSqlPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Version <Int32>] [-Tag <Hashtable>]
- -PerformanceLevel <String> [-Collation <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -PerformanceLevel <String> [-Collation <String>] [-StorageAccountType <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,13 @@ PS C:\> New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPoo
 ```
 
 This command creates an Azure Synapse Analytics SQL pool.
+
+### Example 2
+```powershell
+PS C:\> New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PerformanceLevel DW200c -StorageAccountType LRS
+```
+
+This command creates an Azure Synapse Analytics SQL pool with specified storage account type.
 
 ## PARAMETERS
 
@@ -123,6 +130,21 @@ Resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: CreateByNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

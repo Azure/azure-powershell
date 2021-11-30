@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Allow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Deny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            if (content.Contains("Allow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Allow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
+            if (content.Contains("Deny"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Deny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Allow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Deny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            if (content.Contains("Allow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Allow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Allow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
+            if (content.Contains("Deny"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("Deny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAclInternal)this).Deny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

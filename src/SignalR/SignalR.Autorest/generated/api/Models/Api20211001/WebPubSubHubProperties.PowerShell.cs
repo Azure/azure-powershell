@@ -104,8 +104,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]) content.GetValueForProperty("EventHandler",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.EventHandlerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy = (string) content.GetValueForProperty("AnonymousConnectPolicy",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy, global::System.Convert.ToString);
+            if (content.Contains("EventHandler"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]) content.GetValueForProperty("EventHandler",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.EventHandlerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AnonymousConnectPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy = (string) content.GetValueForProperty("AnonymousConnectPolicy",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,8 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]) content.GetValueForProperty("EventHandler",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.EventHandlerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy = (string) content.GetValueForProperty("AnonymousConnectPolicy",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy, global::System.Convert.ToString);
+            if (content.Contains("EventHandler"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]) content.GetValueForProperty("EventHandler",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).EventHandler, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.EventHandlerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AnonymousConnectPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy = (string) content.GetValueForProperty("AnonymousConnectPolicy",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHubPropertiesInternal)this).AnonymousConnectPolicy, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

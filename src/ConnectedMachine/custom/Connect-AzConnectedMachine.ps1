@@ -64,7 +64,7 @@ function Connect-AzConnectedMachine {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IUpdateResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -241,7 +241,7 @@ function Connect-AzConnectedMachine {
     # Handle show result by getting the name and getting the machine object
     $showResult | ForEach-Object {
         # Get name of machine registered
-        $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+:(?<resourceName>.*)\n"
+        $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+: (?<resourceName>.*)\n"
         $Name = $selectStrResult.Matches.Groups |
             Where-Object Name -EQ resourceName |
             Select-Object -ExpandProperty Value

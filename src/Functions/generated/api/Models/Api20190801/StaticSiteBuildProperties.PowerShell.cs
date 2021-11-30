@@ -101,9 +101,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation = (string) content.GetValueForProperty("AppLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation = (string) content.GetValueForProperty("ApiLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation = (string) content.GetValueForProperty("AppArtifactLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation, global::System.Convert.ToString);
+            if (content.Contains("AppLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation = (string) content.GetValueForProperty("AppLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApiLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation = (string) content.GetValueForProperty("ApiLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppArtifactLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation = (string) content.GetValueForProperty("AppArtifactLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,9 +130,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation = (string) content.GetValueForProperty("AppLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation = (string) content.GetValueForProperty("ApiLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation = (string) content.GetValueForProperty("AppArtifactLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation, global::System.Convert.ToString);
+            if (content.Contains("AppLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation = (string) content.GetValueForProperty("AppLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApiLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation = (string) content.GetValueForProperty("ApiLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).ApiLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppArtifactLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation = (string) content.GetValueForProperty("AppArtifactLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteBuildPropertiesInternal)this).AppArtifactLocation, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

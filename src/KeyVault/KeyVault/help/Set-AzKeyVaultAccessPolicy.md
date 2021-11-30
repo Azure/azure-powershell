@@ -149,6 +149,15 @@ If you register an application in a directory other than the default directory, 
 The application must be in the default directory.
 Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /users
+- GET /servicePrincipals/{id}
+- GET /servicePrincipals
+- GET /groups/{id}
+
 > [!NOTE]
 > When using a service principal to grant access policy permissions, you must use the `-BypassObjectIdValidation` parameter.
 

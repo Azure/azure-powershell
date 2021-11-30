@@ -103,9 +103,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName = (string[]) content.GetValueForProperty("ConnectionStringName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName = (string[]) content.GetValueForProperty("AppSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName = (string[]) content.GetValueForProperty("AzureStorageConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("ConnectionStringName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName = (string[]) content.GetValueForProperty("ConnectionStringName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AppSettingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName = (string[]) content.GetValueForProperty("AppSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureStorageConfigName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName = (string[]) content.GetValueForProperty("AzureStorageConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,9 +132,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName = (string[]) content.GetValueForProperty("ConnectionStringName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName = (string[]) content.GetValueForProperty("AppSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName = (string[]) content.GetValueForProperty("AzureStorageConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("ConnectionStringName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName = (string[]) content.GetValueForProperty("ConnectionStringName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).ConnectionStringName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AppSettingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName = (string[]) content.GetValueForProperty("AppSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AppSettingName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureStorageConfigName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName = (string[]) content.GetValueForProperty("AzureStorageConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISlotConfigNamesInternal)this).AzureStorageConfigName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
