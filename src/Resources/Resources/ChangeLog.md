@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.
 * Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
 * [Breaking change] Migrated from AAD Graph to Microsoft Graph
 * [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
