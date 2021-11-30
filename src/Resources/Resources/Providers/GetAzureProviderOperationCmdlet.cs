@@ -124,15 +124,17 @@ namespace Microsoft.Azure.Commands.Resources
 
         private static IEnumerable<PSResourceProviderOperation> GetPSOperationsFromProviderOperationsMetadata(ProviderOperationsMetadata providerOperationsMetadata)
         {
-            IEnumerable<PSResourceProviderOperation> operations = providerOperationsMetadata.Operations.Where(op => GetAzureProviderOperationCommand.IsUserOperation(op))
+            /*IEnumerable<PSResourceProviderOperation> operations = providerOperationsMetadata.Operations.Where(op => GetAzureProviderOperationCommand.IsUserOperation(op))
                         .Select(op => ToPSResourceProviderOperation(op, providerOperationsMetadata.DisplayName));
             if (providerOperationsMetadata.ResourceTypes != null)
             {
                 operations = operations.Concat(providerOperationsMetadata.ResourceTypes.SelectMany(rt => rt.Operations.Where(op => GetAzureProviderOperationCommand.IsUserOperation(op))
                     .Select(op => ToPSResourceProviderOperation(op, providerOperationsMetadata.DisplayName, rt.DisplayName))));
-            }
+            }*/
+            var operationsList = providerOperationsMetadata.Operations?.Select(op => ToPSResourceProviderOperation(op, providerOperationsMetadata.DisplayName)) ?? new PSResourceProviderOperation[0];
+            var ResourceTypeOperationsList = providerOperationsMetadata.ResourceTypes?.SelectMany(rt => rt.Operations.Select(op => ToPSResourceProviderOperation(op, providerOperationsMetadata.DisplayName, rt.DisplayName))) ?? new PSResourceProviderOperation[0];
 
-            return operations;
+            return operationsList.Concat(ResourceTypeOperationsList);
         }
 
         private static bool IsUserOperation(ProviderOperation operation)
