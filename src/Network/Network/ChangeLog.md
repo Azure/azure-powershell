@@ -22,13 +22,13 @@
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
-* Support for new Match Variables in WAF Exclusions
+* Added support for new Match Variables in WAF Exclusions
 * Onboard Virtual Network Encryption to Virtual Network Cmdlets
-* Support for NAT port range parameters in VPN NAT rule resources
-	- `New-AzVpnGatewayNatRule.md`
-	- `Update-AzVpnGatewayNatRule.md`
-	- `New-AzVirtualNetworkGatewayNatRule.md`
-	- `Update-AzVirtualNetworkGatewayNatRule.md`
+* Added support for NAT port range parameters in VPN NAT rule resources
+    - `New-AzVpnGatewayNatRule.md`
+    - `Update-AzVpnGatewayNatRule.md`
+    - `New-AzVirtualNetworkGatewayNatRule.md`
+    - `Update-AzVirtualNetworkGatewayNatRule.md`
 * Added new cmdlets to support Per Rule Exclusions for Application Gateway WAF
     - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet`
     - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup`
