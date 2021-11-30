@@ -126,6 +126,8 @@ directive:
       - Device
   #  The generated cmdlet need to Re-Name 
   # - model-cmdlet:
+  #     - NetworkInterface
+  #     - NetworkInterfaceIPConfiguration
   #     - AzureStackEdgeFormat
   #     - NetworkFunctionUserConfiguration
   #     - NetworkFunctionVendorConfiguration

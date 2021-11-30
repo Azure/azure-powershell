@@ -61,6 +61,12 @@ Create a in-memory object for NetworkFunctionUserConfiguration
 ### [New-AzConnectedNetworkFunctionVendorConfigurationObject](New-AzConnectedNetworkFunctionVendorConfigurationObject.md)
 Create a in-memory object for NetworkFunctionVendorConfiguration
 
+### [New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject](New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject.md)
+Create a in-memory object for NetworkInterfaceIPConfiguration
+
+### [New-AzConnectedNetworkNetworkInterfaceObject](New-AzConnectedNetworkNetworkInterfaceObject.md)
+Create a in-memory object for NetworkInterface
+
 ### [New-AzConnectedNetworkVendor](New-AzConnectedNetworkVendor.md)
 Creates or updates a vendor.
 
