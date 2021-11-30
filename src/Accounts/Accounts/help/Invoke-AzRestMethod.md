@@ -27,7 +27,7 @@ Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-R
 
 ### ByURI
 ```
-Invoke-AzRestMethod -Uri <Uri> [-ResourceId <Uri>] [-Method <String>] [-Payload <String>] [-AsJob]
+Invoke-AzRestMethod [-Uri] <Uri> [-ResourceId <Uri>] [-Method <String>] [-Payload <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,8 +83,9 @@ Get log analytics workspace by path
 
 ### Example 2
 ```powershell
-Invoke-AzRestMethod -Uri https://graph.microsoft.com/v1.0/me
+Invoke-AzRestMethod https://graph.microsoft.com/v1.0/me
 ```
+
 ```output
 Headers    : {[Date, System.String[]], [Cache-Control, System.String[]], [Transfer-Encoding, System.String[]], [Strict-Transport-Security, System.String[]]…}
 Version    : 1.1
@@ -287,7 +288,7 @@ Parameter Sets: ByURI
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
