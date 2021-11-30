@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ValidateNotNullOrEmpty]
         public Uri ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies the method used for the web request.")]
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the method used for the web request. Defaults to GET.")]
         [ValidateSet("GET", "POST", "PUT", "PATCH", "DELETE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Method { get; set; } = "GET";
@@ -125,7 +125,8 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                     && context.Environment.ActiveDirectoryServiceEndpointResourceId.Equals(resourceId) 
                     && !HasSameEndpoint(Uri.Authority, context.Environment.ResourceManagerUrl))
                 {
-                    throw new AzPSArgumentException("The resource id of Azure Resource Manager cannot be used to other endpoint", nameof(ResourceId));
+                    throw new AzPSArgumentException("The resource ID of Azure Resource Manager cannot be used for other endpoint. Please make sure to input the correct resource ID that matches the request URI.",
+                        nameof(ResourceId));
                 }
                 var targetResourceId = string.IsNullOrEmpty(resourceId) ? MatchResourceId(context, Uri.Authority, out targetResourceIdKey) : resourceId;
                 if (string.IsNullOrWhiteSpace(targetResourceId))
@@ -247,7 +248,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             {
                 return false;
             }
-            return sourceAuthority.EndsWith(targetSuffix);
+            return sourceAuthority.EndsWith(targetSuffix, StringComparison.OrdinalIgnoreCase);
         }
 
         private bool HasSameEndpoint(string sourceAuthority, string targetUri)
@@ -259,7 +260,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             try
             {
                 var targetAuthority = (new Uri(targetUri)).Authority;
-                return sourceAuthority.Equals(targetAuthority);
+                return sourceAuthority.Equals(targetAuthority, StringComparison.OrdinalIgnoreCase);
             }
             catch
             {

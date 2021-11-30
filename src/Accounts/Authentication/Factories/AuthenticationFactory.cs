@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             if (string.Equals(targetEndpoint, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                tokenKey = account.GetProperty(Constants.MicrosoftGraphAccessToken);
+                tokenKey = Constants.MicrosoftGraphAccessToken;
             }
             if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.Graph, StringComparison.OrdinalIgnoreCase))
             {
