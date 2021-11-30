@@ -66,16 +66,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AddressValidationPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus?) content.GetValueForProperty("ValidationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress[]) content.GetValueForProperty("AlternateAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AddressValidationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
+            if (content.Contains("ValidationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus?) content.GetValueForProperty("ValidationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus.CreateFrom);
+            }
+            if (content.Contains("AlternateAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress[]) content.GetValueForProperty("AlternateAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -93,16 +123,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AddressValidationPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus?) content.GetValueForProperty("ValidationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress[]) content.GetValueForProperty("AlternateAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AddressValidationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
+            if (content.Contains("ValidationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus?) content.GetValueForProperty("ValidationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).ValidationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressValidationStatus.CreateFrom);
+            }
+            if (content.Contains("AlternateAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress[]) content.GetValueForProperty("AlternateAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AlternateAddress, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAddressValidationOutputInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

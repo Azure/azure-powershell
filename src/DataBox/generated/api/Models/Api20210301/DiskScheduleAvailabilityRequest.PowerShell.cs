@@ -94,10 +94,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte = (int) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation = (string) content.GetValueForProperty("StorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country, global::System.Convert.ToString);
+            if (content.Contains("ExpectedDataSizeInTeraByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte = (int) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation = (string) content.GetValueForProperty("StorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +127,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte = (int) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation = (string) content.GetValueForProperty("StorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country, global::System.Convert.ToString);
+            if (content.Contains("ExpectedDataSizeInTeraByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte = (int) content.GetValueForProperty("ExpectedDataSizeInTeraByte",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDiskScheduleAvailabilityRequestInternal)this).ExpectedDataSizeInTeraByte, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation = (string) content.GetValueForProperty("StorageLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).StorageLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IScheduleAvailabilityRequestInternal)this).Country, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink = (string) content.GetValueForProperty("ErrorLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink = (string) content.GetValueForProperty("VerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            if (content.Contains("DiskSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ErrorLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink = (string) content.GetValueForProperty("ErrorLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("VerboseLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink = (string) content.GetValueForProperty("VerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink = (string) content.GetValueForProperty("ErrorLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink = (string) content.GetValueForProperty("VerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            if (content.Contains("DiskSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber = (string) content.GetValueForProperty("DiskSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).DiskSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ErrorLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink = (string) content.GetValueForProperty("ErrorLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).ErrorLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("VerboseLogLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink = (string) content.GetValueForProperty("VerboseLogLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyLogDetailsInternal)this).VerboseLogLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyLogDetailsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

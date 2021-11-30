@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DevicePrepared".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DevicePrepared", "DevicePrepared", global::System.Management.Automation.CompletionResultType.ParameterValue, "DevicePrepared");
+                yield return new global::System.Management.Automation.CompletionResult("'DevicePrepared'", "DevicePrepared", global::System.Management.Automation.CompletionResultType.ParameterValue, "DevicePrepared");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dispatched".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dispatched", "Dispatched", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dispatched");
+                yield return new global::System.Management.Automation.CompletionResult("'Dispatched'", "Dispatched", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dispatched");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Delivered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Delivered", "Delivered", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delivered");
+                yield return new global::System.Management.Automation.CompletionResult("'Delivered'", "Delivered", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delivered");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PickedUp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PickedUp", "PickedUp", global::System.Management.Automation.CompletionResultType.ParameterValue, "PickedUp");
+                yield return new global::System.Management.Automation.CompletionResult("'PickedUp'", "PickedUp", global::System.Management.Automation.CompletionResultType.ParameterValue, "PickedUp");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AtAzureDC".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AtAzureDC", "AtAzureDC", global::System.Management.Automation.CompletionResultType.ParameterValue, "AtAzureDC");
+                yield return new global::System.Management.Automation.CompletionResult("'AtAzureDC'", "AtAzureDC", global::System.Management.Automation.CompletionResultType.ParameterValue, "AtAzureDC");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataCopy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DataCopy", "DataCopy", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataCopy");
+                yield return new global::System.Management.Automation.CompletionResult("'DataCopy'", "DataCopy", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataCopy");
             }
         }
     }

@@ -104,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferFilterDetails) content.GetValueForProperty("TransferFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferFilterDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetails) content.GetValueForProperty("TransferAllDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferAllDetailsTypeConverter.ConvertFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType.CreateFrom);
+            }
+            if (content.Contains("TransferFilterDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferFilterDetails) content.GetValueForProperty("TransferFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferFilterDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TransferAllDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetails) content.GetValueForProperty("TransferAllDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferAllDetailsTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferFilterDetails) content.GetValueForProperty("TransferFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferFilterDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetails) content.GetValueForProperty("TransferAllDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferAllDetailsTypeConverter.ConvertFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType.CreateFrom);
+            }
+            if (content.Contains("TransferFilterDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferFilterDetails) content.GetValueForProperty("TransferFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferFilterDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TransferAllDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetails) content.GetValueForProperty("TransferAllDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationInternal)this).TransferAllDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfigurationTransferAllDetailsTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

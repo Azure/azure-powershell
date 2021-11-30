@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetails) content.GetValueForProperty("AccountDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataAccountDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("AccountDetailDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword = (string) content.GetValueForProperty("AccountDetailSharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword, global::System.Convert.ToString);
+            if (content.Contains("AccountDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetails) content.GetValueForProperty("AccountDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataAccountDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AccountDetailDataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("AccountDetailDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("AccountDetailSharePassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword = (string) content.GetValueForProperty("AccountDetailSharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetails) content.GetValueForProperty("AccountDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataAccountDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("AccountDetailDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword = (string) content.GetValueForProperty("AccountDetailSharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword, global::System.Convert.ToString);
+            if (content.Contains("AccountDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetails) content.GetValueForProperty("AccountDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataAccountDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AccountDetailDataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("AccountDetailDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("AccountDetailSharePassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword = (string) content.GetValueForProperty("AccountDetailSharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetailsInternal)this).AccountDetailSharePassword, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
