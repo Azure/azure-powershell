@@ -12,8 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Stop-AzAksCluster' {
-    It 'Stop' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Stop' {
+        Stop-AzAksCluster -ResourceGroupName $env.ResourceGroupName -Name $env.AksName
     }
 
     It 'StopViaIdentity' -skip {

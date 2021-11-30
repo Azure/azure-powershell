@@ -10,6 +10,14 @@ schema: 2.0.0
 ## SYNOPSIS
 Update an existing Role Assignment.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ## SYNTAX
 
 ### RoleAssignmentParameterSet (Default)

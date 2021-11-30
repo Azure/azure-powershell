@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed creating container SAS token failed from an access policy without expire time, and set SAS token expire time [#16266]
+    -  `New-AzStorageContainerSASToken` 
+* Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
+    - `Get-AzRmStorageShare`
 * Supported create or migrate container to enable immutable Storage with versioning.
     -  `New-AzRmStorageContainer`
     -  `Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration`

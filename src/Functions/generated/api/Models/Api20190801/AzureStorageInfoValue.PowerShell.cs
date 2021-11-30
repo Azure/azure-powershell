@@ -66,12 +66,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey = (string) content.GetValueForProperty("AccessKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath = (string) content.GetValueForProperty("MountPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState.CreateFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType.CreateFrom);
+            }
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccessKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey = (string) content.GetValueForProperty("AccessKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("MountPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath = (string) content.GetValueForProperty("MountPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,12 +107,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey = (string) content.GetValueForProperty("AccessKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath = (string) content.GetValueForProperty("MountPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState.CreateFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageType.CreateFrom);
+            }
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).ShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccessKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey = (string) content.GetValueForProperty("AccessKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).AccessKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("MountPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath = (string) content.GetValueForProperty("MountPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).MountPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureStorageInfoValueInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

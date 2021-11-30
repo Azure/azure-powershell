@@ -90,7 +90,8 @@ namespace Commands.HDInsight.Test.ScenarioTests
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Network", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.OperationalInsights", null}
             };
 
             var providerToIgnore = new Dictionary<string, string>

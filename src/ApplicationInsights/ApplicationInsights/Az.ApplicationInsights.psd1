@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.ApplicationInsights.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.ApplicationInsights.dll', 'ApplicationInsights.Autorest\bin\Az.ApplicationInsights.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -65,13 +65,15 @@ RequiredAssemblies = 'Microsoft.Azure.Management.ApplicationInsights.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ApplicationInsights.format.ps1xml'
+FormatsToProcess = 'ApplicationInsights.format.ps1xml', 'ApplicationInsights.Autorest\Az.ApplicationInsights.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll', 'ApplicationInsights.Autorest\Az.ApplicationInsights.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzApplicationInsightsWebTest', 'New-AzApplicationInsightsWebTest', 
+                    'New-AzApplicationInsightsWebTestGeolocationObject', 'New-AzApplicationInsightsWebTestHeaderFieldObject', 
+                    'Remove-AzApplicationInsightsWebTest', 'Update-AzApplicationInsightsWebTestTag'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzApplicationInsights', 'New-AzApplicationInsights', 

@@ -47,6 +47,7 @@
   <ItemGroup>
     <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="help\About\*.help.txt" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
