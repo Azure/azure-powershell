@@ -35,6 +35,7 @@
     - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRule`
     - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
         - `New-AzApplicationGatewayFirewallPolicyExclusion`
+* Bug Fix in Application Gateway Trusted Client Certificate cmdlets to load the entire cert chain from file.
 
 ## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
