@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public static KeyVaultPermission ToSdkType(this PSKeyVaultPermission psPermission)
         {
             var sdkPermission = new KeyVaultPermission();
-            foreach (var x in psPermission.AllowedActions)
+            foreach (var x in psPermission.Actions)
             {
                 sdkPermission.Actions.Add(x);
             }
-            foreach (var x in psPermission.DeniedActions)
+            foreach (var x in psPermission.NotActions)
             {
                 sdkPermission.NotActions.Add(x);
             }
-            foreach (var x in psPermission.AllowedDataActions)
+            foreach (var x in psPermission.DataActions)
             {
                 sdkPermission.DataActions.Add(x);
             }
-            foreach (var x in psPermission.DeniedDataActions)
+            foreach (var x in psPermission.NotDataActions)
             {
                 sdkPermission.NotDataActions.Add(x);
             }
