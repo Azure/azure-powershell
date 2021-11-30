@@ -15,27 +15,13 @@
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using System;
 using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [CmdletOutputBreakingChange(typeof(PSKeyVaultRoleDefinition),
-        DeprecatedOutputProperties = new string[] {
-            "Permissions.AllowedActions",
-            "Permissions.DeniedActions",
-            "Permissions.AllowedDataActions",
-            "Permissions.DeniedDataActions"},
-        NewOutputProperties = new string[] {
-            "Permissions.Actions",
-            "Permissions.NotActions",
-            "Permissions.DataActions",
-            "Permissions.NotDataActions",
-        })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleDefinition, DefaultParameterSetName = InputObjectParameterSet, SupportsShouldProcess = true)]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleDefinition)]
     [OutputType(typeof(PSKeyVaultRoleDefinition))]

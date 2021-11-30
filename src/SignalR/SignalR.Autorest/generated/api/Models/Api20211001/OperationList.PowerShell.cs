@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperationListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

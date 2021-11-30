@@ -65,8 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
             {_communicationServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString>("communicationServiceName"), out var __jsonCommunicationServiceName) ? (string)__jsonCommunicationServiceName : (string)CommunicationServiceName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -105,8 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._communicationServiceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString(this._communicationServiceName.ToString()) : null, "communicationServiceName" ,container.Add );
-            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
-            AddIf( null != (((object)this._operationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString(this._operationId.ToString()) : null, "operationId" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

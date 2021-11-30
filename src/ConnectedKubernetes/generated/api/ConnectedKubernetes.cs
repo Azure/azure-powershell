@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
 
     /// <summary>
     /// Low-level API implementation for the ConnectedKubernetes service.
+    /// Azure Connected Cluster Resource Provider API for adopting any Kubernetes Cluster
     /// </summary>
     public partial class ConnectedKubernetes
     {
@@ -28,15 +29,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterCreate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterCreate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourcegroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -44,19 +45,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + global::System.Uri.EscapeDataString(clusterName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterCreate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -75,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -94,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var clusterName = _match.Groups["clusterName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourcegroups/"
                         + resourceGroupName
@@ -103,19 +105,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + clusterName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterCreate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -131,22 +134,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
-                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
 
                         // get the delay before polling. (default to 30 seconds if not present)
@@ -172,33 +176,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
 
                         // check for cancellation
                         if( eventListener.Token.IsCancellationRequested ) { return; }
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
 
                         // make the polling call
                         _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // if we got back an OK, take a peek inside and see if it's done
                         if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
                         {
+                            var error = false;
                             try {
                                 if( Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonObject json)
                                 {
                                     var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonString>("status");
                                     if( state is null )
                                     {
-                                      // the body doesn't contain any information that has the state of the LRO
-                                      // we're going to just get out, and let the consumer have the result
-                                      break;
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
                                     }
-                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                                     switch( state?.ToString()?.ToLower() )
                                     {
-                                      case "succeeded":
                                       case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
                                       case "canceled":
                                         // we're done polling.
                                         break;
@@ -212,6 +218,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                             } catch {
                                 // if we run into a problem peeking into the result,
                                 // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.UndeclaredResponseException(_response);
                             }
                         }
 
@@ -238,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -271,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -280,7 +289,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -304,13 +312,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedClusterDelete(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourcegroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -318,15 +326,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + global::System.Uri.EscapeDataString(clusterName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -347,7 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedClusterDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -364,8 +373,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var clusterName = _match.Groups["clusterName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourcegroups/"
                         + resourceGroupName
@@ -373,15 +382,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + clusterName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -405,8 +415,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
@@ -414,7 +425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
-                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
 
                         // get the delay before polling. (default to 30 seconds if not present)
@@ -440,33 +451,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
 
                         // check for cancellation
                         if( eventListener.Token.IsCancellationRequested ) { return; }
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
 
                         // make the polling call
                         _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // if we got back an OK, take a peek inside and see if it's done
                         if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
                         {
+                            var error = false;
                             try {
                                 if( Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonObject json)
                                 {
                                     var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonString>("status");
                                     if( state is null )
                                     {
-                                      // the body doesn't contain any information that has the state of the LRO
-                                      // we're going to just get out, and let the consumer have the result
-                                      break;
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
                                     }
-                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                                     switch( state?.ToString()?.ToLower() )
                                     {
-                                      case "succeeded":
                                       case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
                                       case "canceled":
                                         // we're done polling.
                                         break;
@@ -480,6 +493,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                             } catch {
                                 // if we run into a problem peeking into the result,
                                 // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.UndeclaredResponseException(_response);
                             }
                         }
 
@@ -553,7 +569,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
             }
         }
@@ -573,15 +588,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourcegroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -589,15 +604,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + global::System.Uri.EscapeDataString(clusterName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -616,9 +632,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -635,8 +651,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var clusterName = _match.Groups["clusterName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourcegroups/"
                         + resourceGroupName
@@ -644,15 +660,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + clusterName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -668,15 +685,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -685,7 +703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -726,7 +744,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
             }
         }
@@ -742,30 +759,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourcegroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
                         + "/providers/Microsoft.Kubernetes/connectedClusters"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -781,9 +799,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -799,23 +817,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourcegroups/"
                         + resourceGroupName
                         + "/providers/Microsoft.Kubernetes/connectedClusters"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -831,15 +850,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -848,7 +868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -888,7 +908,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
             }
         }
 
@@ -902,28 +921,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/providers/Microsoft.Kubernetes/connectedClusters"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterListBySubscription_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -939,9 +959,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -956,21 +976,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 // replace URI parameters with values from identity
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/providers/Microsoft.Kubernetes/connectedClusters"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterListBySubscription_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -986,15 +1007,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1003,7 +1025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1042,6 +1064,196 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
             }
         }
 
+        /// <summary>
+        /// Gets cluster user credentials of the connected cluster with a specified resource group and name.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kubernetes cluster on which get is called.</param>
+        /// <param name="body">ListClusterUserCredential properties</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IListClusterUserCredentialProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourcegroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kubernetes/connectedClusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/listClusterUserCredential"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ConnectedClusterListClusterUserCredential_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets cluster user credentials of the connected cluster with a specified resource group and name.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">ListClusterUserCredential properties</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredentialViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IListClusterUserCredentialProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kubernetes/connectedClusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}/listClusterUserCredential'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourcegroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kubernetes/connectedClusters/"
+                        + clusterName
+                        + "/listClusterUserCredential"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ConnectedClusterListClusterUserCredential_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="ConnectedClusterListClusterUserCredential" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.CredentialResults.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ConnectedClusterListClusterUserCredential" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kubernetes cluster on which get is called.</param>
+        /// <param name="body">ListClusterUserCredential properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IListClusterUserCredentialProperties body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>API to update certain properties of the connected cluster resource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1055,15 +1267,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourcegroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -1071,19 +1283,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + global::System.Uri.EscapeDataString(clusterName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1100,9 +1313,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1119,8 +1332,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var clusterName = _match.Groups["clusterName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourcegroups/"
                         + resourceGroupName
@@ -1128,19 +1341,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         + clusterName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ConnectedClusterUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1156,15 +1370,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1173,7 +1388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1206,7 +1421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedClusterPatch body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatch body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1215,7 +1430,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -1231,26 +1445,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.Kubernetes/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Kubernetes/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1266,9 +1481,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2021-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1282,19 +1497,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
 
                 // replace URI parameters with values from identity
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.Kubernetes/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Kubernetes/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1310,15 +1526,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1327,7 +1544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.OperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.OperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:

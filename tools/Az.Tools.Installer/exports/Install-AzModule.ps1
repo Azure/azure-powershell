@@ -24,7 +24,7 @@ function Install-AzModule {
     .Example
         C:\PS> Install-AzModule -Repository PSGallery
     .Example
-        C:\PS> Install-AzModule Storage,Compute,Network,Blockchain -Repository PSGallery -AllowPrerelease
+        C:\PS> Install-AzModule Storage,Compute,Network -Repository PSGallery -AllowPrerelease
     .Example
         C:\PS> Install-AzModule -Path https://my.repo.com/Az.Accounts.2.5.0.nupkg
 #>

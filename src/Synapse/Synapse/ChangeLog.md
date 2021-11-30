@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Updated `New-AzSynapseSqlPool` to support new parameter [-StorageAccountType]
+* Updated `Restore-AzSynapseSqlPool` to support new parameter [-Tag] and [-StorageAccountType]
 * Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
 * Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
 * Added cmdlets for Synapse Spark Configuration

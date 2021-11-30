@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode = (string) content.GetValueForProperty("ReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode = (string) content.GetValueForProperty("ForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode, global::System.Convert.ToString);
+            if (content.Contains("ReverseDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode = (string) content.GetValueForProperty("ReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ForwardDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode = (string) content.GetValueForProperty("ForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode = (string) content.GetValueForProperty("ReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode = (string) content.GetValueForProperty("ForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode, global::System.Convert.ToString);
+            if (content.Contains("ReverseDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode = (string) content.GetValueForProperty("ReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ReverseDcAccessCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ForwardDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode = (string) content.GetValueForProperty("ForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCodeInternal)this).ForwardDcAccessCode, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

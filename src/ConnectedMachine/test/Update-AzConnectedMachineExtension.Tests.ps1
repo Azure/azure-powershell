@@ -15,7 +15,7 @@ Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'Update-AzConnectedMachineExtension' {
     BeforeAll {
-        $machineName = $env.MachineName1
+        $machineName = $env.MachineName
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
             Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
@@ -51,7 +51,7 @@ Describe 'Update-AzConnectedMachineExtension' {
     }
 
     It 'UpdateExpanded parameter set' {
-        $newCommand = "UpdateExpanded"
+        $newCommand = "hostname"
 
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
@@ -67,7 +67,7 @@ Describe 'Update-AzConnectedMachineExtension' {
 
     It 'Update parameter set' {
         $currentExtension = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
-        $newCommand = "Update"
+        $newCommand = "powershell.exe echo hi"
         $currentExtension.Setting.commandToExecute = $newCommand
 
         $splat = @{
@@ -81,7 +81,7 @@ Describe 'Update-AzConnectedMachineExtension' {
 
     It 'UpdateViaIdentityExpanded parameter set' {
         $currentExtension = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
-        $newCommand = "UpdateViaIdentityExpanded"
+        $newCommand = "powershell.exe pwd"
         $currentExtension.Setting.commandToExecute = $newCommand
 
         # Tests include -SubscriptionId automatically but it causes
@@ -101,7 +101,7 @@ Describe 'Update-AzConnectedMachineExtension' {
 
     It 'UpdateViaIdentity parameter set' {
         $currentExtension = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
-        $newCommand = "UpdateViaIdentity"
+        $newCommand = "powershell.exe man"
         $currentExtension.Setting.commandToExecute = $newCommand
 
         # Tests include -SubscriptionId automatically but it causes
@@ -115,5 +115,5 @@ Describe 'Update-AzConnectedMachineExtension' {
         } finally {
             $PSDefaultParameterValues["*:SubscriptionId"] = $before
         }
-    }
+    }   
 }

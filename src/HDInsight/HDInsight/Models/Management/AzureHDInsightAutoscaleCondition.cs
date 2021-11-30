@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     MinInstanceCount = WorkerNodeCount,
                     MaxInstanceCount = WorkerNodeCount
                 },
-                Days = Days.Select(day => (DaysOfWeek?)Enum.Parse(typeof(DaysOfWeek), day.ToString())).ToList()
+                Days = Days.Select(day => day.ToString()).ToList()
             };
         }
 

@@ -338,5 +338,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
 
         }
+
+        public static PSSubscriptionFeatureRegistration ToPSSubscriptionFeatureRegistration(this SubscriptionFeatureRegistration feature)
+        {
+            return new PSSubscriptionFeatureRegistration
+            {
+                Id = feature.Id,
+                Name = feature.Name,
+                Properties = feature.Properties
+            };
+        }
     }
 }

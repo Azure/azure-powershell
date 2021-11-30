@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomerManaged".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CustomerManaged", "CustomerManaged", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomerManaged");
+                yield return new global::System.Management.Automation.CompletionResult("'CustomerManaged'", "CustomerManaged", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomerManaged");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MicrosoftManaged".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MicrosoftManaged", "MicrosoftManaged", global::System.Management.Automation.CompletionResultType.ParameterValue, "MicrosoftManaged");
+                yield return new global::System.Management.Automation.CompletionResult("'MicrosoftManaged'", "MicrosoftManaged", global::System.Management.Automation.CompletionResultType.ParameterValue, "MicrosoftManaged");
             }
         }
     }

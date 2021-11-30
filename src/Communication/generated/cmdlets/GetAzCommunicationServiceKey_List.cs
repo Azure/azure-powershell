@@ -6,13 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Extensions;
+    using System;
 
     /// <summary>Get the access keys of the CommunicationService resource.</summary>
     /// <remarks>
     /// [OpenAPI] ListKeys=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/listKeys"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCommunicationServiceKey_List", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Description(@"Get the access keys of the CommunicationService resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Generated]
     public partial class GetAzCommunicationServiceKey_List : global::System.Management.Automation.PSCmdlet,
@@ -110,15 +111,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API
-        /// or the portal.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Path)]
@@ -127,15 +125,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(
@@ -150,24 +145,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -227,7 +222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.Debug:
@@ -342,12 +337,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -364,7 +359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, CommunicationServiceName=CommunicationServiceName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -382,12 +377,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys> response)
         {
             using( NoSynchronizationContext )
             {
@@ -399,7 +394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
                 WriteObject((await response));
             }
         }

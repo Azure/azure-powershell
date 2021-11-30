@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Promoted Az.StackHCI to GA
 
 ## Version 0.10.0
 * Added Support for AzureStack HCI Attestation (Azure Benefits)

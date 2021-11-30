@@ -23,7 +23,8 @@ Description for Creates or updates an App Service Plan.
 PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                                  -Name MyPremiumPlan `
                                  -MaximumWorkerCount 20 `
-                                 -Sku EP2
+                                 -Sku EP2 `
+                                 -Force
 
 
 .Inputs

@@ -2,7 +2,7 @@
 function Update-AzFunctionApp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app.')]
-    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true)]
+    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName="ByName", HelpMessage='The Azure subscription ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -29,6 +29,10 @@ function Update-AzFunctionApp {
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${PlanName},
+
+        [Parameter(HelpMessage='Forces the cmdlet to update the function app without prompting for confirmation.')]
+        [System.Management.Automation.SwitchParameter]
+        ${Force},
 
         [Parameter(HelpMessage='Name of the existing App Insights project to be added to the function app.')]
         [ValidateNotNullOrEmpty()]
@@ -309,7 +313,19 @@ function Update-AzFunctionApp {
 
             try
             {
-                Az.Functions.internal\Set-AzFunctionApp @PSBoundParameters
+                if ($PsCmdlet.ShouldProcess($Name, "Updating function app"))
+                {
+                    if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Update function app '$Name'?", "Updating function app"))
+                    {
+                        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                        if ($PSBoundParameters.ContainsKey("Force"))
+                        {
+                            $PSBoundParameters.Remove("Force")  | Out-Null
+                        }
+
+                        Az.Functions.internal\Set-AzFunctionApp @PSBoundParameters
+                    }
+                }
             }
             catch
             {

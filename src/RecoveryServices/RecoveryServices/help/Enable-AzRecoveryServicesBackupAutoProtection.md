@@ -51,7 +51,7 @@ The class of resources being protected. Currently the values supported for this 
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, MAB, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
 
 Required: True
 Position: 1

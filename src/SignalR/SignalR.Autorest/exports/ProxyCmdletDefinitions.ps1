@@ -206,7 +206,7 @@ PS C:\> Get-AzWebPubSubKey -ResourceGroupName psdemo -ResourceName psdemo-wps  |
 
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 .Example
 PS C:\> $wps = Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
@@ -214,7 +214,7 @@ PS C:\> $wps | Get-AzWebPubSubKey | Format-List
 
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 
 .Inputs
@@ -835,8 +835,7 @@ Create or update a hub setting.
 .Description
 Create or update a hub setting.
 .Example
-PS C:\> $eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
-@{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
+PS C:\> $eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; }
 
 PS C:\> New-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps -EventHandler $eventHandler
 
@@ -2091,7 +2090,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
-https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsub
+https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
 #>
 function New-AzWebPubSub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]
@@ -2365,7 +2364,7 @@ PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps 
 
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 .Example
 PS C:\>  $wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
@@ -2373,7 +2372,7 @@ PS C:\> $wps | New-AzWebPubSubKey -KeyType Primary | Format-List
 
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 
 .Inputs
@@ -2395,7 +2394,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsubkey
+https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys])]

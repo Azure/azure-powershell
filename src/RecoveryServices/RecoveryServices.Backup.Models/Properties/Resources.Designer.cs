@@ -1612,7 +1612,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
+        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MAB or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
         /// </summary>
         public static string UnsupportedContainerException
         {
@@ -2069,6 +2069,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("IdentityIdRequiredForCMK", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting server's registration is a destructive operation and cannot be undone. All backup data (recovery points required to restore the data) and Backup items associated with protected server will be permanently deleted. Learn more about deleting your protected servers at https://aka.ms/deletebkp.
+        /// </summary>
+        public static string DeleteContainerRegistration
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteContainerRegistration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unregister container
+        /// </summary>
+        public static string UnregisterContainer
+        {
+            get
+            {
+                return ResourceManager.GetString("UnregisterContainer", resourceCulture);
             }
         }
 
