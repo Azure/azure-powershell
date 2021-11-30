@@ -30,7 +30,7 @@
     -  `Remove-AzStorageBlobImmutabilityPolicy`
 * Supported enable/disable legal hold on a Storage blob.
     -  `Set-AzStorageBlobLegalHold`
-* Supported create storage account with enable account level immutability with versioning, and create/udpate storage account with account level immutability policy.
+* Supported create storage account with enable account level immutability with versioning, and create/update storage account with account level immutability policy.
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
 
