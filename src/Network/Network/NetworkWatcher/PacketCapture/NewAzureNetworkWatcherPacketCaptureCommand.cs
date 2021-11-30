@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The target virtual machine ID.")]
         [ValidateNotNullOrEmpty]
-        public string TargetVirtualMachineId { get; set; }
+        public string TargetId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -127,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "Filters for packet capture session.")]
         [ValidateNotNull]
         public PSPacketCaptureFilter[] Filter { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The target machine IDs of the VMSS Instances.")]
+        [ValidateNotNull]
+        public string[] Machines { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -194,7 +200,7 @@ namespace Microsoft.Azure.Commands.Network
                 packetCaptureProperties.TimeLimitInSeconds = this.TimeLimitInSeconds;
             }
 
-            packetCaptureProperties.Target = this.TargetVirtualMachineId;
+            packetCaptureProperties.Target = this.TargetId;
 
             packetCaptureProperties.StorageLocation = new MNM.PacketCaptureStorageLocation();
             packetCaptureProperties.StorageLocation.FilePath = this.LocalFilePath;
@@ -208,6 +214,15 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     MNM.PacketCaptureFilter filterMNM = NetworkResourceManagerProfile.Mapper.Map<MNM.PacketCaptureFilter>(filter);
                     packetCaptureProperties.Filters.Add(filterMNM);
+                }
+            }
+
+            if (this.Machines != null)
+            {
+                packetCaptureProperties.Machines = new List<string>();
+                foreach (string machine in this.Machines)
+                {
+                    packetCaptureProperties.Machines.Add(machine);
                 }
             }
 
