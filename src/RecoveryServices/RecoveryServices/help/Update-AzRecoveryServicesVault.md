@@ -12,7 +12,7 @@ Updates MSIdentity to the recovery services vault.
 
 ## SYNTAX
 
-### AzureRSVaultAddMSIdentity
+### AzureRSVaultAddMSIdentity (Default)
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
  [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,8 +52,8 @@ UserAssignedIdentities : {[/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
                          Microsoft.Azure.Management.RecoveryServices.Models.UserIdentity],
                          [/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserIdentity2,
                          Microsoft.Azure.Management.RecoveryServices.Models.UserIdentity]}
-
 ```
+
 The first cmdlet fetches the recovery services vault.
 The second and third cmdlet fetches the user created MSIs.
 The fourth cmdlet adds the user MSIs to the vault.

@@ -85,7 +85,7 @@ The class of resources being protected. The acceptable values for this parameter
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: GetItemsForVault
 Aliases:
-Accepted values: AzureVM, MARS, AzureStorage, AzureWorkload
+Accepted values: AzureVM, MAB, AzureStorage, AzureWorkload
 
 Required: True
 Position: 1
@@ -286,7 +286,7 @@ Workload type of the resource. The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: GetItemsForContainer, GetItemsForVault
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL, FileFolder
+Accepted values: AzureVM, AzureFiles, MSSQL, FileFolder, SAPHanaDatabase
 
 Required: True
 Position: 5

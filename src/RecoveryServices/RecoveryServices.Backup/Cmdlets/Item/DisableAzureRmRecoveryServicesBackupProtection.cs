@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if(DeleteBackupData)
                         {
-                            #region Archived RPS 
+                            #region Archived RPs 
                             // Fetch RecoveryPoints in Archive Tier, if yes throw warning and confirmation prompt
                             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(Item.Id);
                             string containerUri = HelperUtils.GetContainerUri(uriDict, Item.Id);
@@ -118,8 +118,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                queryFilter,
                                vaultName: vaultName,
                                resourceGroupName: resourceGroupName);
-                            
-                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);                            
+
+                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);
+
                             recoveryPointList = RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, RecoveryPointTier.VaultArchive);
 
                             #endregion
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             else
                             {
                                 var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
-                                Logger.Instance.WriteDebug("item Response " + JsonConvert.SerializeObject(itemResponse));
+                             
                                 // Track Response and display job details
                                 HandleCreatedJob(
                                         itemResponse,
