@@ -11,8 +11,11 @@ Locale: en-US
 This topic displays help topics for the Azure Resource Manager Cmdlets.
 
 ## Az.Resources Cmdlets
+### [Add-AzADAppPermission](Add-AzADAppPermission.md)
+Adds an API permission.
+
 ### [Add-AzADGroupMember](Add-AzADGroupMember.md)
-Adds a user to an existing AD group.
+Adds member to group.
 
 ### [Export-AzResourceGroup](Export-AzResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
@@ -21,25 +24,28 @@ Captures a resource group as a template and saves it to a file.
 Exports a Template Spec to the local filesystem
 
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
-Retrieves a list of credentials associated with an application.
+Lists key credentials and password credentials for an application.
 
 ### [Get-AzADApplication](Get-AzADApplication.md)
-Lists existing azure active directory applications.
+Lists entities from applications or get entity from applications by key
+
+### [Get-AzADAppPermission](Get-AzADAppPermission.md)
+Lists API permissions the application has requested.
 
 ### [Get-AzADGroup](Get-AzADGroup.md)
-Filters active directory groups.
+Lists entities from groups or get entity from groups by key
 
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
-Lists members of an AD group in the current tenant.
+Lists members from group.
 
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
-Filters active directory service principals.
+Lists entities from service principals or get entity from service principals by key
 
 ### [Get-AzADSpCredential](Get-AzADSpCredential.md)
-Retrieves a list of credentials associated with a service principal.
+Lists key credentials and password credentials for an service principal.
 
 ### [Get-AzADUser](Get-AzADUser.md)
-Filters active directory users.
+Lists entities from users or get entity from users by key
 
 ### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
 Lists Azure RBAC deny assignments at the specified scope.
@@ -156,22 +162,22 @@ Invokes an action on a resource.
 Moves a resource to a different resource group or subscription.
 
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
-Adds a credential to an existing application.
+Creates key credentials or password credentials for an application.
 
 ### [New-AzADApplication](New-AzADApplication.md)
-Creates a new azure active directory application.
+Adds new entity to applications
 
 ### [New-AzADGroup](New-AzADGroup.md)
-Creates a new active directory group.
+Adds new entity to groups
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
-Creates a new Azure active directory service principal.
+Adds new entity to servicePrincipals
 
 ### [New-AzADSpCredential](New-AzADSpCredential.md)
-Adds a credential to an existing service principal.
+Creates key credentials or password credentials for an service principal.
 
 ### [New-AzADUser](New-AzADUser.md)
-Creates a new active directory user.
+Adds new entity to users
 
 ### [New-AzDeployment](New-AzDeployment.md)
 Create a deployment
@@ -244,25 +250,32 @@ Registers an Azure provider feature in your account.
 Registers a resource provider.
 
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
-Removes a credential from an application.
+Removes key credentials or password credentials for an application.
 
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
-Deletes the azure active directory application.
+Deletes entity from applications
+
+### [Remove-AzADAppPermission](Remove-AzADAppPermission.md)
+Removes an API permission.
 
 ### [Remove-AzADGroup](Remove-AzADGroup.md)
-Deletes an active directory group.
+Deletes entity from groups.
 
 ### [Remove-AzADGroupMember](Remove-AzADGroupMember.md)
-Removes a user from an AD group.
+Deletes member from group
+Users, contacts, and groups that are members of this group.
+HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
+Nullable.
+Supports $expand.
 
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
-Deletes the azure active directory service principal.
+Deletes entity from service principal.
 
 ### [Remove-AzADSpCredential](Remove-AzADSpCredential.md)
-Removes a credential from a service principal.
+Removes key credentials or password credentials for an service principal.
 
 ### [Remove-AzADUser](Remove-AzADUser.md)
-Deletes an active directory user.
+Deletes entity from users.
 
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations
@@ -412,13 +425,13 @@ Unregisters an Azure provider feature in your account.
 Unregisters a resource provider.
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
-Updates an existing azure active directory application.
+Updates entity in applications
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
-Updates an existing azure active directory service principal.
+Updates entity in service principal
 
 ### [Update-AzADUser](Update-AzADUser.md)
-Updates an existing active directory user.
+Updates entity in users
 
 ### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
