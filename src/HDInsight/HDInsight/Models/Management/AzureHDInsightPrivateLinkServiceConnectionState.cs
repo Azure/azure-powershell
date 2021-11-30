@@ -15,16 +15,26 @@
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 
-namespace Microsoft.Azure.Commands.HDInsight.Models.Management
+namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class AzureHDInsightVmSizesCapability
+    public class AzureHDInsightPrivateLinkServiceConnectionState
     {
-        public AzureHDInsightVmSizesCapability(IList<string> VmSizes)
+        public AzureHDInsightPrivateLinkServiceConnectionState(PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
         {
-            this.Available = VmSizes;
+            Status = privateLinkServiceConnectionState.Status;
+            Description = privateLinkServiceConnectionState.Description;
+            ActionsRequired = privateLinkServiceConnectionState.ActionsRequired;
         }
-        public IList<string> Available { get; set; }
+
+        public string Status { get; set; }
+
+        public string Description { get; set; }
+
+        public string ActionsRequired { get; set; }
     }
 }

@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightVmSizeCompatibilityFilter
     {
-        public AzureHDInsightVmSizeCompatibilityFilter(VmSizeCompatibilityFilter vmSizeCompatibilityFilter)
+        public AzureHDInsightVmSizeCompatibilityFilter(VmSizeCompatibilityFilterV2 vmSizeCompatibilityFilter)
         {
             this.FilterMode = vmSizeCompatibilityFilter?.FilterMode;
             this.Regions = vmSizeCompatibilityFilter?.Regions;
             this.ClusterFlavors = vmSizeCompatibilityFilter?.ClusterFlavors;
             this.NodeTypes = vmSizeCompatibilityFilter?.NodeTypes;
             this.ClusterVersions = vmSizeCompatibilityFilter?.ClusterVersions;
-            this.Vmsizes = vmSizeCompatibilityFilter?.VMSizes;
+            this.Vmsizes = vmSizeCompatibilityFilter?.VmSizes;
         }
         public string FilterMode { get; set; }
         public IList<string> Regions { get; set; }

@@ -15,16 +15,23 @@
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 
-namespace Microsoft.Azure.Commands.HDInsight.Models.Management
+namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class AzureHDInsightVmSizesCapability
+    public class AzureHDInsightPrivateEndpoint
     {
-        public AzureHDInsightVmSizesCapability(IList<string> VmSizes)
+        public AzureHDInsightPrivateEndpoint(PrivateEndpoint privateEndpoint)
         {
-            this.Available = VmSizes;
+            Id = privateEndpoint.Id;
         }
-        public IList<string> Available { get; set; }
+
+        /// <summary>
+        /// The private endpoint resource id.
+        /// </summary>
+        public string Id { get; set; }
     }
 }
