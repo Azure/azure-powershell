@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added some breaking changes in `Get-AzAksVersion`.
-    * Removed `DefaultProfile`'s alias `AzContext` and `AzureRmContext`.
+* Introduced breaking changes to `Get-AzAksVersion`.
+    * Removed two aliases `AzContext` and `AzureRmContext` of parameter `DefaultProfile`.
     * Changed output type from `Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile` to `Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.OrchestratorProfile`
 * Added `Invoke-AzAksRunCommand` to support running a shell command (with kubectl, helm) on aks cluster. [#16104]
 * Added support of `EnableNodePublicIp` and `NodePublicIPPrefixID` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
