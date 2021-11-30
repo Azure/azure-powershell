@@ -66,11 +66,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            if (content.Contains("DataExportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DataImportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeviceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,11 +103,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            if (content.Contains("DataExportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]) content.GetValueForProperty("DataExportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataExportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataExportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DataImportDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]) content.GetValueForProperty("DataImportDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DataImportDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeviceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataTransferDetailsValidationRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

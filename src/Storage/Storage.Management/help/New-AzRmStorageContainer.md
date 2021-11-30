@@ -15,30 +15,31 @@ Creates a Storage blob container
 ### AccountName (Default)
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-RootSquash <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning]
+ [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountNameEncryptionScope
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning] [-RootSquash <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning] [-RootSquash <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObjectEncryptionScope
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
  -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
- [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableImmutableStorageWithVersioning] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,11 +64,11 @@ This command creates a Storage blob container with Storage account object and co
 
 ### Example 3: Create a storage container with EncryptionScope setting
 ```
-PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
+PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
 
 PS C:\> $c
 
-   ResourceGroupName: myResourceGroup, StorageAccountName: myStorageAccount
+   ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
 
 Name          PublicAccess LastModified HasLegalHold HasImmutabilityPolicy
 ----          ------------ ------------ ------------ ---------------------
@@ -96,6 +97,22 @@ False
 
 This command creates a storage container, with RootSquash property set as AllSquash.  RootSquash only works on a storage account that enabled NfsV3.
 
+### Example 5: Create a storage container and enable immutable Storage with versioning
+```
+PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -EnableImmutableStorageWithVersioning
+
+PS C:\> $c
+
+   ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
+
+Name          PublicAccess LastModified         HasLegalHold HasImmutabilityPolicy Deleted VersionId ImmutableStorageWithVersioning
+----          ------------ ------------         ------------ --------------------- ------- --------- ------------------------------
+testcontainer None         2021-07-19 08:26:19Z False        False                 False             True
+```
+
+This command creates a storage container and enable immutable Storage with versioning.
+The command only works when the Storage account has already enabled blob versioning.
+
 ## PARAMETERS
 
 ### -DefaultEncryptionScope
@@ -120,6 +137,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableImmutableStorageWithVersioning
+Enable immutable Storage with versioning at the container level.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

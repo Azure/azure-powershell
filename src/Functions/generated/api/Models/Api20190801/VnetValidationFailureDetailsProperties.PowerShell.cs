@@ -107,8 +107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed = (bool?) content.GetValueForProperty("Failed",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure[]) content.GetValueForProperty("FailedTest",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetValidationTestFailureTypeConverter.ConvertFrom));
+            if (content.Contains("Failed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed = (bool?) content.GetValueForProperty("Failed",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FailedTest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure[]) content.GetValueForProperty("FailedTest",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetValidationTestFailureTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,8 +132,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed = (bool?) content.GetValueForProperty("Failed",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure[]) content.GetValueForProperty("FailedTest",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetValidationTestFailureTypeConverter.ConvertFrom));
+            if (content.Contains("Failed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed = (bool?) content.GetValueForProperty("Failed",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).Failed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FailedTest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure[]) content.GetValueForProperty("FailedTest",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationFailureDetailsPropertiesInternal)this).FailedTest, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetValidationTestFailure>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VnetValidationTestFailureTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

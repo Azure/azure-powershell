@@ -15,15 +15,15 @@
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Updates an existing role assignment.
     /// </summary>
-    [GenericBreakingChange(BreakingChangeMSGraphMigration)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.RoleAssignment), OutputType(typeof(PSRoleAssignment))]
     public class SetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
@@ -51,8 +50,10 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             // Build the new Role assignment
-            if(ParameterSetName == ParameterSet.InputFile)
+            if (ParameterSetName == ParameterSet.InputFile)
             {
                 string fileName = this.TryResolvePath(InputFile);
                 if (!(new FileInfo(fileName)).Exists)
@@ -73,9 +74,8 @@ namespace Microsoft.Azure.Commands.Resources
 
             // Build the Update Request
             var Subscription = DefaultProfile.DefaultContext.Subscription.Id;
-            var RaIndex = InputObject.RoleAssignmentId.LastIndexOf("/") + 1;
             var scope = InputObject.Scope;
-            var RoleAssignmentGUID = RaIndex != -1 ? InputObject.RoleAssignmentId.Substring(RaIndex) : InputObject.RoleAssignmentId;
+            var RoleAssignmentGUID =InputObject.RoleAssignmentId.GuidFromFullyQualifiedId();
 
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Resources
                 fetchedRole = InputObject;
             }
 
-            // Validate the requestk
+            // Validate the request
             AuthorizationClient.ValidateScope(parameters.Scope, false);
             bool isValidRequest = true;
 

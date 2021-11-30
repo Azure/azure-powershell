@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation = (string) content.GetValueForProperty("DataLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation = (string) content.GetValueForProperty("ServiceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation, global::System.Convert.ToString);
+            if (content.Contains("DataLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation = (string) content.GetValueForProperty("DataLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation = (string) content.GetValueForProperty("ServiceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation = (string) content.GetValueForProperty("DataLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation = (string) content.GetValueForProperty("ServiceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation, global::System.Convert.ToString);
+            if (content.Contains("DataLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation = (string) content.GetValueForProperty("DataLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).DataLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation = (string) content.GetValueForProperty("ServiceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMapInternal)this).ServiceLocation, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

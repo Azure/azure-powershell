@@ -16,8 +16,8 @@ Creates a configurable snapshot update object.
 New-AzSnapshotUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
  [[-Tag] <Hashtable>] [-SupportsHibernation <Boolean>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-PublicNetworkAccess <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +169,21 @@ Accepted values: Windows, Linux
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Policy for controlling export on the disk.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

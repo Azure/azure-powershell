@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode) content.GetValueForProperty("CustomerResolutionCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            if (content.Contains("CustomerResolutionCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode) content.GetValueForProperty("CustomerResolutionCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode) content.GetValueForProperty("CustomerResolutionCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            if (content.Contains("CustomerResolutionCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode) content.GetValueForProperty("CustomerResolutionCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IMitigateJobRequestInternal)this).CustomerResolutionCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -104,18 +104,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets) content.GetValueForProperty("JobSecret",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobSecretsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCode) content.GetValueForProperty("JobSecretDcAccessSecurityCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DcAccessSecurityCodeTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("JobSecretError",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("JobSecretJobSecretsType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            if (content.Contains("JobSecret"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets) content.GetValueForProperty("JobSecret",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobSecretsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSecretDcAccessSecurityCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCode) content.GetValueForProperty("JobSecretDcAccessSecurityCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DcAccessSecurityCodeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSecretError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("JobSecretError",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSecretJobSecretsType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("JobSecretJobSecretsType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
+            if (content.Contains("DcAccessSecurityCodeReverseDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("DcAccessSecurityCodeForwardDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,18 +169,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets) content.GetValueForProperty("JobSecret",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobSecretsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCode) content.GetValueForProperty("JobSecretDcAccessSecurityCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DcAccessSecurityCodeTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("JobSecretError",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("JobSecretJobSecretsType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            if (content.Contains("JobSecret"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets) content.GetValueForProperty("JobSecret",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecret, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobSecretsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSecretDcAccessSecurityCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDcAccessSecurityCode) content.GetValueForProperty("JobSecretDcAccessSecurityCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretDcAccessSecurityCode, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DcAccessSecurityCodeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSecretError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("JobSecretError",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretError, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSecretJobSecretsType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator) content.GetValueForProperty("JobSecretJobSecretsType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).JobSecretJobSecretsType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator.CreateFrom);
+            }
+            if (content.Contains("DcAccessSecurityCodeReverseDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeReverseDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeReverseDcAccessCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("DcAccessSecurityCodeForwardDcAccessCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode = (string) content.GetValueForProperty("DcAccessSecurityCodeForwardDcAccessCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).DcAccessSecurityCodeForwardDcAccessCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentialsInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

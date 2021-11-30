@@ -99,15 +99,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCapacityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap[]) content.GetValueForProperty("DataLocationToServiceLocationMap",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataLocationToServiceLocationMapTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost[]) content.GetValueForProperty("Cost",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCostTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion = (string[]) content.GetValueForProperty("ApiVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason?) content.GetValueForProperty("DisabledReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage = (string) content.GetValueForProperty("DisabledReasonMessage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature = (string) content.GetValueForProperty("RequiredFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable = (string) content.GetValueForProperty("CapacityUsable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum = (string) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum, global::System.Convert.ToString);
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCapacityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataLocationToServiceLocationMap"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap[]) content.GetValueForProperty("DataLocationToServiceLocationMap",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataLocationToServiceLocationMapTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Cost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost[]) content.GetValueForProperty("Cost",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCostTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ApiVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion = (string[]) content.GetValueForProperty("ApiVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DisabledReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason?) content.GetValueForProperty("DisabledReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason.CreateFrom);
+            }
+            if (content.Contains("DisabledReasonMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage = (string) content.GetValueForProperty("DisabledReasonMessage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequiredFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature = (string) content.GetValueForProperty("RequiredFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapacityUsable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable = (string) content.GetValueForProperty("CapacityUsable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapacityMaximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum = (string) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,15 +152,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCapacityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap[]) content.GetValueForProperty("DataLocationToServiceLocationMap",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataLocationToServiceLocationMapTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost[]) content.GetValueForProperty("Cost",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCostTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion = (string[]) content.GetValueForProperty("ApiVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason?) content.GetValueForProperty("DisabledReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage = (string) content.GetValueForProperty("DisabledReasonMessage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature = (string) content.GetValueForProperty("RequiredFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable = (string) content.GetValueForProperty("CapacityUsable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum = (string) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum, global::System.Convert.ToString);
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacity) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Capacity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCapacityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataLocationToServiceLocationMap"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap[]) content.GetValueForProperty("DataLocationToServiceLocationMap",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DataLocationToServiceLocationMap, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataLocationToServiceLocationMap>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataLocationToServiceLocationMapTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Cost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost[]) content.GetValueForProperty("Cost",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).Cost, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCost>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuCostTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ApiVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion = (string[]) content.GetValueForProperty("ApiVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).ApiVersion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DisabledReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason?) content.GetValueForProperty("DisabledReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReason, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuDisabledReason.CreateFrom);
+            }
+            if (content.Contains("DisabledReasonMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage = (string) content.GetValueForProperty("DisabledReasonMessage",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).DisabledReasonMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequiredFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature = (string) content.GetValueForProperty("RequiredFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).RequiredFeature, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapacityUsable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable = (string) content.GetValueForProperty("CapacityUsable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityUsable, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapacityMaximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum = (string) content.GetValueForProperty("CapacityMaximum",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuPropertiesInternal)this).CapacityMaximum, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

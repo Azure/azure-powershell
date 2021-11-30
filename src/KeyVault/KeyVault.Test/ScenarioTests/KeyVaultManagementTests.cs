@@ -23,6 +23,9 @@ using System.Reflection;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
@@ -248,8 +251,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyBySPN()
         {
-            Application app = null;
-            ServicePrincipal principal = null;
+            MicrosoftGraphApplication app = null;
+            MicrosoftGraphServicePrincipal principal = null;
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
@@ -260,9 +263,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 app = CreateNewAdApp(controller);
                 principal = CreateNewAdServicePrincipal(controller, app.AppId);
                 return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyBySPN",
-                    _data.PreCreatedVault,
-                    _data.ResourceGroupName,
-                    principal.ServicePrincipalNames.Where(s => s.StartsWith("http")).FirstOrDefault()) };
+                     _data.PreCreatedVault,
+                     _data.ResourceGroupName,
+                     principal.ServicePrincipalNames.Where(s => s.StartsWith("http")).FirstOrDefault()) };
             },
             // cleanup
             () =>
@@ -412,9 +415,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
-                var user = controllerAdmin.GraphClient.Users.Get(upn);
-                HttpMockServer.Variables["ObjectId"] = user.ObjectId;
-                return user.ObjectId;
+                var user = controllerAdmin.GraphClient.Users.GetUser(upn);
+                HttpMockServer.Variables["ObjectId"] = user.Id;
+                return user.Id;
             }
             else
             {
@@ -422,46 +425,43 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
 
-        private Application CreateNewAdApp(KeyVaultManagementController controllerAdmin)
+        private MicrosoftGraphApplication CreateNewAdApp(KeyVaultManagementController controllerAdmin)
         {
             var appName = TestUtilities.GenerateName("adApplication");
             var url = string.Format("http://{0}/home", appName);
-            var appParam = new ApplicationCreateParameters
+            var app = new MicrosoftGraphApplication()
             {
-                AvailableToOtherTenants = false,
                 DisplayName = appName,
-                Homepage = url,
-                IdentifierUris = new[] { url },
-                ReplyUrls = new[] { url }
+                IdentifierUris = new[] { url }
             };
 
-            return controllerAdmin.GraphClient.Applications.Create(appParam);
+            return controllerAdmin.GraphClient.Applications.CreateApplication(app);
         }
 
-        private ServicePrincipal CreateNewAdServicePrincipal(KeyVaultManagementController controllerAdmin, string appId)
+        private MicrosoftGraphServicePrincipal CreateNewAdServicePrincipal(KeyVaultManagementController controllerAdmin, string appId)
         {
-            var spParam = new ServicePrincipalCreateParameters
+            var sp = new MicrosoftGraphServicePrincipal
             {
                 AppId = appId,
                 AccountEnabled = true
             };
 
-            return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);
+            return controllerAdmin.GraphClient.ServicePrincipals.CreateServicePrincipal(sp);
         }
 
-        private void DeleteAdApp(KeyVaultManagementController controllerAdmin, Application app)
+        private void DeleteAdApp(KeyVaultManagementController controllerAdmin, MicrosoftGraphApplication app)
         {
             if (app != null)
             {
-                controllerAdmin.GraphClient.Applications.Delete(app.ObjectId);
+                controllerAdmin.GraphClient.Applications.DeleteApplication(app.Id);
             }
         }
 
-        private void DeleteAdServicePrincipal(KeyVaultManagementController controllerAdmin, ServicePrincipal newServicePrincipal)
+        private void DeleteAdServicePrincipal(KeyVaultManagementController controllerAdmin, MicrosoftGraphServicePrincipal newServicePrincipal)
         {
             if (newServicePrincipal != null)
             {
-                controllerAdmin.GraphClient.ServicePrincipals.Delete(newServicePrincipal.ObjectId);
+                controllerAdmin.GraphClient.ServicePrincipals.DeleteServicePrincipal(newServicePrincipal.Id);
             }
         }
         #endregion

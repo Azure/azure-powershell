@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly BigDataPoolsClient _bigDataPoolsClient;
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
         private readonly SqlScriptClient _sqlScriptClient;
+        private readonly SparkConfigurationClient _sparkConfigurationClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -67,6 +68,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
             _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
+            _sparkConfigurationClient = new SparkConfigurationClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -390,6 +392,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             return _sqlScriptClient.StartCreateOrUpdateSqlScript(sqlScriptName, resource).Poll().Value;
         }
+        #endregion
+
+        #region Spark Configuration
+
+        public SparkConfigurationResource CreateOrUpdateSparkConfiguration(string sparkConfigurationName, string rawJsonContent)
+        {
+            SparkConfigurationResource sparkConfigurationResource = new SparkConfigurationResource(JsonConvert.DeserializeObject<SparkConfiguration>(rawJsonContent));
+            return _sparkConfigurationClient.StartCreateOrUpdateSparkConfiguration(sparkConfigurationName, sparkConfigurationResource).Poll().Value;
+        }
+
+        public SparkConfigurationResource GetSparkConfiguration(string sparkConfigurationName)
+        {
+            return _sparkConfigurationClient.GetSparkConfiguration(sparkConfigurationName).Value;
+        }
+
+        public Pageable<SparkConfigurationResource> GetSparkConfigurationByWorkspace()
+        {
+            return _sparkConfigurationClient.GetSparkConfigurationsByWorkspace();
+        }
+
+        public void DeleteSparkConfiguration(string sparkConfigurationName)
+        {
+            _sparkConfigurationClient.StartDeleteSparkConfiguration(sparkConfigurationName).Poll();
+        }
+
         #endregion
 
         #region helpers

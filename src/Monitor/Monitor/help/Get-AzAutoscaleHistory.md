@@ -32,7 +32,7 @@ This command gets all of the Autoscale-related events associated with the curren
 
 ### Example 2: GetAutoscaleHistory for a particular resource
 ```
-PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
+PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
 Authorization        : 
 Caller               : Microsoft.Insights/autoscaleSettings
 Claims               :  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/autoscaleSettings
@@ -42,11 +42,11 @@ Description          : The autoscale engine attempting to scale resource '/subsc
                        from 1 instances count to 2 instances count. 
 EventDataId          : c554f7ed-514c-449c-9338-13e15b4b56a3
 EventName            : AutoscaleAction
-EventSource          : microsoft.insights/autoscalesettings
+EventSource          : Microsoft.Insights/autoscalesettings
 EventTimestamp       : 2/10/2015 2:38:19 AM
 HttpRequest          : 
 Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS/events/c554f7ed-514c-4
+                       Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS/events/c554f7ed-514c-4
                        49c-9338-13e15b4b56a3/ticks/635591326997519815
 Level                : Informational
 OperationId          : ac5b03ca-05d4-4811-9c27-0314a145f785
@@ -158,9 +158,9 @@ ActiveAutoscaleProfile: {
                          ] 
                        }
 ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.insights
+ResourceProviderName : Microsoft.Insights
 ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
+                       Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
 Status               : Succeeded
 SubmissionTimestamp  : 2/10/2015 2:38:19 AM
 SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f

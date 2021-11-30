@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>HDInsight</PsModuleName>
@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
-    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="8.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.11.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.6.0" />
-    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.24.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

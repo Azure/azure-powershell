@@ -349,7 +349,7 @@ Refreshes (Refresh server) the information received from the Azure Site Recovery
 Update discovery details for a registered vCenter.
 
 ### [Update-AzRecoveryServicesVault](Update-AzRecoveryServicesVault.md)
-Updates MSI to the recovery services vault.
+Updates MSIdentity to the recovery services vault.
 
 ### [Wait-AzRecoveryServicesBackupJob](Wait-AzRecoveryServicesBackupJob.md)
 Waits for a Backup job to finish.

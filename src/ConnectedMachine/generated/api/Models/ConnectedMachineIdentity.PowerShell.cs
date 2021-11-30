@@ -65,11 +65,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName = (string) content.GetValueForProperty("ExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExtensionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName = (string) content.GetValueForProperty("ExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScopeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ScopeName = (string) content.GetValueForProperty("ScopeName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ScopeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkScopeId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateLinkScopeId = (string) content.GetValueForProperty("PrivateLinkScopeId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateLinkScopeId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GroupName = (string) content.GetValueForProperty("GroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,11 +122,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName = (string) content.GetValueForProperty("ExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExtensionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName = (string) content.GetValueForProperty("ExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ExtensionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScopeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ScopeName = (string) content.GetValueForProperty("ScopeName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ScopeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkScopeId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateLinkScopeId = (string) content.GetValueForProperty("PrivateLinkScopeId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateLinkScopeId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GroupName = (string) content.GetValueForProperty("GroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

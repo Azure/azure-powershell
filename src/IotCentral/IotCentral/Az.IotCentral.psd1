@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update our Azure PowerShell command to use our latest released .NET package with the version of 3.1.0.'
+        ReleaseNotes = '* Update our Azure PowerShell command to use our latest released .NET package with the version of 4.0.0.'
 
         # Prerelease string of this module
         # Prerelease = ''

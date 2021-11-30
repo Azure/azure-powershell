@@ -90,7 +90,7 @@ Description of an Azure Notification Hub to link to the communication service
 To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
 Parameter Sets: Link
 Aliases:
 
@@ -117,8 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -133,8 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -184,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
 
 ## OUTPUTS
 

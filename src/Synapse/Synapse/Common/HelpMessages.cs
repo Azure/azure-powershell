@@ -544,5 +544,11 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string SparkConfigurationFolderPath = "The folder that this Spark job definition is in. If specify a multi-level path such as [rootFolder/subFolder], the Spark job definition will appear at the bottom level. If not specified, this Spark job definition will appear at the root level.";
 
         public const string NoteBookFolderPath = "The folder that this notebook is in. If specify a multi-level path such as [rootFolder/subFolder], the notebook will appear at the bottom level. If not specified, this notebook will appear at the root level.";
+
+        public const string SparkConfigurationName = "The Spark Configuration name.";
+
+        public const string SparkConfigurationObject = "The Spark configuration object.";
+
+        public const string StorageAccountType = "The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.";
     }
 }

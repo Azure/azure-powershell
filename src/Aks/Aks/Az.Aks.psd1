@@ -74,7 +74,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Aks.dll',
                'Aks.Autorest\Az.Aks.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 
+FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 
                'Start-AzAksCluster', 'Stop-AzAksCluster'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -82,8 +82,8 @@ CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster',
                'Import-AzAksCredential', 'Start-AzAksDashboard', 
                'Stop-AzAksDashboard', 'Set-AzAksCluster', 'New-AzAksNodePool', 
                'Update-AzAksNodePool', 'Remove-AzAksNodePool', 'Get-AzAksNodePool', 
-               'Install-AzAksKubectl', 'Get-AzAksVersion', 'Enable-AzAksAddOn', 
-               'Disable-AzAksAddOn', 'Set-AzAksClusterCredential'
+               'Install-AzAksKubectl', 'Enable-AzAksAddOn', 
+               'Disable-AzAksAddOn', 'Set-AzAksClusterCredential', 'Invoke-AzAksRunCommand'
 
 # Variables to export from this module
 # VariablesToExport = @()

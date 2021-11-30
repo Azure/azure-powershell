@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataBox".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DataBox", "DataBox", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBox");
+                yield return new global::System.Management.Automation.CompletionResult("'DataBox'", "DataBox", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBox");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataBoxDisk".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DataBoxDisk", "DataBoxDisk", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBoxDisk");
+                yield return new global::System.Management.Automation.CompletionResult("'DataBoxDisk'", "DataBoxDisk", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBoxDisk");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataBoxHeavy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DataBoxHeavy", "DataBoxHeavy", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBoxHeavy");
+                yield return new global::System.Management.Automation.CompletionResult("'DataBoxHeavy'", "DataBoxHeavy", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBoxHeavy");
             }
         }
     }

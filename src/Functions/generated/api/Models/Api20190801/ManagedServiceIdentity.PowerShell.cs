@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType.CreateFrom);
+            }
+            if (content.Contains("TenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType.CreateFrom);
+            }
+            if (content.Contains("TenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`..
+        ///   Looks up a localized string similar to Please make sure you have sufficient permissions in Microsoft Graph to get and list directory objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`..
         /// </summary>
         internal static string ADGraphPermissionWarning {
             get {
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Retrieving object ID from Azure Active Directory failed. {0}
         ///
-        ///Please provide object ID for the user or service principle to set a vault access policy.
+        ///Please provide object ID for the user or service principal to set a vault access policy.
         ///You can find the object ID using Azure Active Directory Module for Windows PowerShell..
         /// </summary>
         internal static string ADObjectIDRetrievalFailed {
