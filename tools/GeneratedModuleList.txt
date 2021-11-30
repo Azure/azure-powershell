@@ -28,6 +28,7 @@ Az.ImportExport
 Az.KubernetesConfiguration
 Az.Kusto
 Az.Logz
+Az.ManagedServices
 Az.Maps
 Az.MariaDb
 Az.Migrate
