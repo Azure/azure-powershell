@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId = (string) content.GetValueForProperty("MeterId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType = (string) content.GetValueForProperty("MeterType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier = (double?) content.GetValueForProperty("Multiplier",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            if (content.Contains("MeterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId = (string) content.GetValueForProperty("MeterId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MeterType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType = (string) content.GetValueForProperty("MeterType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Multiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier = (double?) content.GetValueForProperty("Multiplier",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId = (string) content.GetValueForProperty("MeterId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType = (string) content.GetValueForProperty("MeterType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier = (double?) content.GetValueForProperty("Multiplier",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            if (content.Contains("MeterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId = (string) content.GetValueForProperty("MeterId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MeterType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType = (string) content.GetValueForProperty("MeterType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).MeterType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Multiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier = (double?) content.GetValueForProperty("Multiplier",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCostInternal)this).Multiplier, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -19,7 +19,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.IotCentral;
 using Microsoft.Azure.Management.IotCentral.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.IotCentral

@@ -28,7 +28,7 @@ function Test-StorageInsightCreateUpdateDelete
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the storage insight
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 
     # Create a storage insight
     $storageinsight = New-AzOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable", "LinuxSyslogVer2v0") -Containers @("wad-iis-logfiles") -StorageAccountResourceId $said -StorageAccountKey "fakekey"
@@ -76,11 +76,14 @@ function Test-StorageInsightCreateUpdateDelete
     Assert-AreEqual 0 ($storageinsights | Where {$_.Name -eq $sinametwo}).Count
 
     # Perform an update on the storage insight
-    $storageinsight = Set-AzOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable") -Containers @() -StorageAccountKey "anotherfakekey"
+    $storageinsight = Set-AzOperationalInsightsStorageInsight -ResourceGroupName $rgname -WorkspaceName $wsname -Name $siname -Tables @("WADWindowsEventLogsTable") -Containers @() -StorageAccountKey "anotherfakekey" -StorageAccountResourceId $said
     Assert-AreEqualArray @("WADWindowsEventLogsTable") $storageInsight.Tables
     Assert-AreEqualArray @() $storageInsight.Containers
+    Assert-AreEqual $siname $storageInsight.Name
+    Assert-AreEqual $rgname $storageInsight.ResourceGroupName
+    Assert-AreEqual $wsname $storageInsight.WorkspaceName
 
-    $storageinsight = $storageinsight | Set-AzOperationalInsightsStorageInsight -Tables @() -Containers @("wad-iis-logfiles") -StorageAccountKey "anotherfakekey"
+    $storageinsight = $storageinsight | Set-AzOperationalInsightsStorageInsight -Tables @() -Containers @("wad-iis-logfiles") -StorageAccountKey "anotherfakekey" -StorageAccountResourceId $said
     Assert-AreEqualArray @() $storageInsight.Tables
     Assert-AreEqualArray @("wad-iis-logfiles") $storageInsight.Containers
 

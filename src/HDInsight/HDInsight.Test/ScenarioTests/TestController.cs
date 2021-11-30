@@ -31,6 +31,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
@@ -46,6 +48,9 @@ namespace Commands.HDInsight.Test.ScenarioTests
         public KeyVaultClient KeyVaultClient { get; private set; }
         public ManagedServiceIdentityClient ManagedServiceIdentityClient { get; private set; }
         public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public MicrosoftGraphClient GraphManagementClient { get; private set; }
+
         public static TestHelper TestHelper { get; private set; }
         public static TestController NewInstance => new TestController();
         
@@ -63,7 +68,8 @@ namespace Commands.HDInsight.Test.ScenarioTests
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             ManagedServiceIdentityClient = GetManagedServiceIdentityClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
-            _helper.SetupManagementClients(ResourceManagementClient, HDInsightManagementClient, StorageManagementClient, OperationalInsightsManagementClient, KeyVaultManagementClient, ManagedServiceIdentityClient);
+            GraphManagementClient = GetGraphManagementClient(context);
+            _helper.SetupManagementClients(ResourceManagementClient, HDInsightManagementClient, StorageManagementClient, OperationalInsightsManagementClient, KeyVaultManagementClient, ManagedServiceIdentityClient, NetworkManagementClient, GraphManagementClient);
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -90,7 +96,8 @@ namespace Commands.HDInsight.Test.ScenarioTests
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Network", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.OperationalInsights", null}
             };
 
             var providerToIgnore = new Dictionary<string, string>
@@ -173,6 +180,11 @@ namespace Commands.HDInsight.Test.ScenarioTests
         private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static MicrosoftGraphClient GetGraphManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<MicrosoftGraphClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private TestHelper GetTestHelper()

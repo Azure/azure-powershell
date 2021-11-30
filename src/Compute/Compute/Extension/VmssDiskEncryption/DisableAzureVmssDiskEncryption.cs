@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             ext.ProtectedSettings = null;
                             ext.ForceUpdateTag = this.ForceUpdate.IsPresent ? Guid.NewGuid().ToString() : null;
 
+                            if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))
+                            {
+                                this.ExtensionName = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
+                            }
+                            else if (OperatingSystemTypes.Linux.Equals(this.CurrentOSType))
+                            {
+                                this.ExtensionName = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                            }
+
                             VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
                                 this.ResourceGroupName,
                                 this.VMScaleSetName,

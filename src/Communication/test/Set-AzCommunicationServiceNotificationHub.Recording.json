@@ -1,14 +1,14 @@
 {
-  "Set-AzCommunicationServiceNotificationHub+[NoContext]+LinkExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/linkNotificationHub?api-version=2020-08-20-preview+1": {
+  "Set-AzCommunicationServiceNotificationHub+[NoContext]+LinkExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/linkNotificationHub?api-version=2020-08-20+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjsza5y/providers/Microsoft.Communication/communicationServices/persistentResourceNamejsza5y/linkNotificationHub?api-version=2020-08-20-preview",
-      "Content": "{\r\n  \"connectionString\": \"Endpoint=sb://contosonotificationhubnamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=\",\r\n  \"resourceId\": \"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/linkNotificationHub?api-version=2020-08-20",
+      "Content": "{\r\n  \"resourceId\": \"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/testgroup8wn6lz/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\",\r\n  \"connectionString\": \"Endpoint=sb://contosonotificationhubnamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "447" ]
+        "Content-Length": [ "421" ]
       }
     },
     "Response": {
@@ -17,32 +17,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
-        "x-ms-request-id": [ "548ad1e0-ca52-4cc5-9349-7688d14c6456" ],
-        "x-ms-correlation-request-id": [ "64c397b6-2b12-4d5c-99f9-e77af632198e" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214635Z:64c397b6-2b12-4d5c-99f9-e77af632198e" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:46:35 GMT" ]
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7d76483c-3fdf-4edb-b406-84f080d43fd6" ],
+        "x-ms-correlation-request-id": [ "7d8c0419-3c2c-404b-ba04-fcb1bf3033e0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T220736Z:7d8c0419-3c2c-404b-ba04-fcb1bf3033e0" ],
+        "Date": [ "Thu, 28 Oct 2021 22:07:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "228" ],
+        "Content-Length": [ "206" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"resourceId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}"
+      "Content": "{\"resourceId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/testgroup8wn6lz/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}"
     }
   },
-  "Set-AzCommunicationServiceNotificationHub+[NoContext]+Link+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/linkNotificationHub?api-version=2020-08-20-preview+1": {
+  "Set-AzCommunicationServiceNotificationHub+[NoContext]+Link+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/linkNotificationHub?api-version=2020-08-20+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjsza5y/providers/Microsoft.Communication/communicationServices/persistentResourceNamejsza5y/linkNotificationHub?api-version=2020-08-20-preview",
-      "Content": "{\r\n  \"connectionString\": \"Endpoint=sb://contosonotificationhubnamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=\",\r\n  \"resourceId\": \"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/linkNotificationHub?api-version=2020-08-20",
+      "Content": "{\r\n  \"resourceId\": \"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/testgroup8wn6lz/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\",\r\n  \"connectionString\": \"Endpoint=sb://contosonotificationhubnamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "447" ]
+        "Content-Length": [ "421" ]
       }
     },
     "Response": {
@@ -51,20 +52,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
-        "x-ms-request-id": [ "48356e37-e89f-4a32-8703-79ef38c0399b" ],
-        "x-ms-correlation-request-id": [ "a5bc58b3-b9e1-46e1-9db3-05ade8d6c0ef" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214636Z:a5bc58b3-b9e1-46e1-9db3-05ade8d6c0ef" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:46:36 GMT" ]
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "526fcb23-dd0e-40ce-af9b-937a76b49073" ],
+        "x-ms-correlation-request-id": [ "280f132f-e7b7-4a91-a18f-2153b92caecd" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T220737Z:280f132f-e7b7-4a91-a18f-2153b92caecd" ],
+        "Date": [ "Thu, 28 Oct 2021 22:07:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "228" ],
+        "Content-Length": [ "206" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"resourceId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}"
+      "Content": "{\"resourceId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/testgroup8wn6lz/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}"
     }
   }
 }

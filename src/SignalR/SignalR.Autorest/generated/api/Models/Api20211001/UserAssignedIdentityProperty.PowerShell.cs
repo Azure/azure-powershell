@@ -106,8 +106,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId, global::System.Convert.ToString);
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,8 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId, global::System.Convert.ToString);
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUserAssignedIdentityPropertyInternal)this).ClientId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

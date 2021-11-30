@@ -102,14 +102,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName = (string) content.GetValueForProperty("ActionHostName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage = (double?) content.GetValueForProperty("ReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep = (double?) content.GetValueForProperty("ChangeStep",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute = (int?) content.GetValueForProperty("ChangeIntervalInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage = (double?) content.GetValueForProperty("MinReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage = (double?) content.GetValueForProperty("MaxReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl = (string) content.GetValueForProperty("ChangeDecisionCallbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name, global::System.Convert.ToString);
+            if (content.Contains("ActionHostName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName = (string) content.GetValueForProperty("ActionHostName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReroutePercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage = (double?) content.GetValueForProperty("ReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ChangeStep"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep = (double?) content.GetValueForProperty("ChangeStep",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ChangeIntervalInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute = (int?) content.GetValueForProperty("ChangeIntervalInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MinReroutePercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage = (double?) content.GetValueForProperty("MinReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("MaxReroutePercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage = (double?) content.GetValueForProperty("MaxReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ChangeDecisionCallbackUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl = (string) content.GetValueForProperty("ChangeDecisionCallbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,14 +151,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName = (string) content.GetValueForProperty("ActionHostName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage = (double?) content.GetValueForProperty("ReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep = (double?) content.GetValueForProperty("ChangeStep",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute = (int?) content.GetValueForProperty("ChangeIntervalInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage = (double?) content.GetValueForProperty("MinReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage = (double?) content.GetValueForProperty("MaxReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl = (string) content.GetValueForProperty("ChangeDecisionCallbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name, global::System.Convert.ToString);
+            if (content.Contains("ActionHostName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName = (string) content.GetValueForProperty("ActionHostName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ActionHostName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReroutePercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage = (double?) content.GetValueForProperty("ReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ChangeStep"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep = (double?) content.GetValueForProperty("ChangeStep",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeStep, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ChangeIntervalInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute = (int?) content.GetValueForProperty("ChangeIntervalInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeIntervalInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MinReroutePercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage = (double?) content.GetValueForProperty("MinReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MinReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("MaxReroutePercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage = (double?) content.GetValueForProperty("MaxReroutePercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).MaxReroutePercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ChangeDecisionCallbackUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl = (string) content.GetValueForProperty("ChangeDecisionCallbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).ChangeDecisionCallbackUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRuleInternal)this).Name, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

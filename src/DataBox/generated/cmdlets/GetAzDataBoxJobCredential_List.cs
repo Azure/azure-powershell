@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Extensions;
+    using System;
 
     /// <summary>This method gets the unencrypted secrets related to the job.</summary>
     /// <remarks>

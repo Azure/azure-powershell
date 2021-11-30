@@ -4,7 +4,6 @@
 
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -15,7 +14,7 @@
         public PsPolicyAssignment(JToken input)
         {
             var resource = input.ToResource();
-            Identity = resource.Identity?.ToJToken().ToPsObject();
+            Identity = resource.Identity == null ? null : new PsPolicyIdentity(resource.Identity.ToJToken());
             Location = resource.Location;
             Name = resource.Name;
             PolicyAssignmentId = resource.Id;
@@ -28,7 +27,7 @@
             SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
         }
 
-        public PSObject Identity { get; set; }
+        public PsPolicyIdentity Identity { get; set; }
         public string Location { get; set; }
         public string Name { get; set; }
         public string ResourceId { get; set; }

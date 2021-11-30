@@ -94,12 +94,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob = (string) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue = (string) content.GetValueForProperty("Queue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table = (string) content.GetValueForProperty("Table",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File = (string) content.GetValueForProperty("File",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web = (string) content.GetValueForProperty("Web",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df = (string) content.GetValueForProperty("Df",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df, global::System.Convert.ToString);
+            if (content.Contains("Blob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob = (string) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Queue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue = (string) content.GetValueForProperty("Queue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue, global::System.Convert.ToString);
+            }
+            if (content.Contains("Table"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table = (string) content.GetValueForProperty("Table",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table, global::System.Convert.ToString);
+            }
+            if (content.Contains("File"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File = (string) content.GetValueForProperty("File",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File, global::System.Convert.ToString);
+            }
+            if (content.Contains("Web"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web = (string) content.GetValueForProperty("Web",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web, global::System.Convert.ToString);
+            }
+            if (content.Contains("Df"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df = (string) content.GetValueForProperty("Df",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,12 +135,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob = (string) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue = (string) content.GetValueForProperty("Queue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table = (string) content.GetValueForProperty("Table",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File = (string) content.GetValueForProperty("File",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web = (string) content.GetValueForProperty("Web",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df = (string) content.GetValueForProperty("Df",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df, global::System.Convert.ToString);
+            if (content.Contains("Blob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob = (string) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Blob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Queue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue = (string) content.GetValueForProperty("Queue",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Queue, global::System.Convert.ToString);
+            }
+            if (content.Contains("Table"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table = (string) content.GetValueForProperty("Table",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Table, global::System.Convert.ToString);
+            }
+            if (content.Contains("File"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File = (string) content.GetValueForProperty("File",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).File, global::System.Convert.ToString);
+            }
+            if (content.Contains("Web"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web = (string) content.GetValueForProperty("Web",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Web, global::System.Convert.ToString);
+            }
+            if (content.Contains("Df"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df = (string) content.GetValueForProperty("Df",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEndpointsInternal)this).Df, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

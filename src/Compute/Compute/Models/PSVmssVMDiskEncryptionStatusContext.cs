@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public VirtualMachineExtensionInstanceView Extension { get; set; }
         public EncryptionStatus OsVolumeEncrypted { get; set; }
         public EncryptionStatus DataVolumesEncrypted { get; set; }
+        public string DataVolumesEncryptionStatus { get; set; }
         public string DiskEncryptionStatus { get; set; }
-
         public PSVmssVMDiskEncryptionStatusContext()
         {
             OsVolumeEncrypted = EncryptionStatus.Unknown;

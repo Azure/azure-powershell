@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Valid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Valid", "Valid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Valid");
+                yield return new global::System.Management.Automation.CompletionResult("'Valid'", "Valid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Valid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ambiguous".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ambiguous", "Ambiguous", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ambiguous");
+                yield return new global::System.Management.Automation.CompletionResult("'Ambiguous'", "Ambiguous", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ambiguous");
             }
         }
     }

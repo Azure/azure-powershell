@@ -99,12 +99,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState?) content.GetValueForProperty("SslState",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate = (bool?) content.GetValueForProperty("ToUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType?) content.GetValueForProperty("HostType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType.CreateFrom);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SslState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState?) content.GetValueForProperty("SslState",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState.CreateFrom);
+            }
+            if (content.Contains("VirtualIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("Thumbprint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint, global::System.Convert.ToString);
+            }
+            if (content.Contains("ToUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate = (bool?) content.GetValueForProperty("ToUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("HostType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType?) content.GetValueForProperty("HostType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,12 +140,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState?) content.GetValueForProperty("SslState",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate = (bool?) content.GetValueForProperty("ToUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType?) content.GetValueForProperty("HostType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType.CreateFrom);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SslState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState?) content.GetValueForProperty("SslState",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).SslState, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslState.CreateFrom);
+            }
+            if (content.Contains("VirtualIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP = (string) content.GetValueForProperty("VirtualIP",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).VirtualIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("Thumbprint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).Thumbprint, global::System.Convert.ToString);
+            }
+            if (content.Contains("ToUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate = (bool?) content.GetValueForProperty("ToUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).ToUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("HostType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType?) content.GetValueForProperty("HostType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslStateInternal)this).HostType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

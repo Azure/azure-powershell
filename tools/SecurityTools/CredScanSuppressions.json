@@ -614,6 +614,14 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithAvailabilityZones.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithPrivateLinkConfiguration.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
       "_justification": "Resource creation is mocked"
     },

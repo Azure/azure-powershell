@@ -101,10 +101,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember = (string[]) content.GetValueForProperty("RequiredMember",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName = (string[]) content.GetValueForProperty("RequiredZoneName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType[]) content.GetValueForProperty("ShareablePrivateLinkResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceTypeTypeConverter.ConvertFrom));
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequiredMember"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember = (string[]) content.GetValueForProperty("RequiredMember",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RequiredZoneName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName = (string[]) content.GetValueForProperty("RequiredZoneName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ShareablePrivateLinkResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType[]) content.GetValueForProperty("ShareablePrivateLinkResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceTypeTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,10 +134,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember = (string[]) content.GetValueForProperty("RequiredMember",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName = (string[]) content.GetValueForProperty("RequiredZoneName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType[]) content.GetValueForProperty("ShareablePrivateLinkResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceTypeTypeConverter.ConvertFrom));
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequiredMember"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember = (string[]) content.GetValueForProperty("RequiredMember",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredMember, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RequiredZoneName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName = (string[]) content.GetValueForProperty("RequiredZoneName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).RequiredZoneName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ShareablePrivateLinkResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType[]) content.GetValueForProperty("ShareablePrivateLinkResourceType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateLinkResourcePropertiesInternal)this).ShareablePrivateLinkResourceType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IShareablePrivateLinkResourceType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceTypeTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory = (string) content.GetValueForProperty("ValidationCategory",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest[]) content.GetValueForProperty("IndividualRequestDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputRequestTypeConverter.ConvertFrom));
+            if (content.Contains("ValidationCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory = (string) content.GetValueForProperty("ValidationCategory",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("IndividualRequestDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest[]) content.GetValueForProperty("IndividualRequestDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputRequestTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory = (string) content.GetValueForProperty("ValidationCategory",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest[]) content.GetValueForProperty("IndividualRequestDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputRequestTypeConverter.ConvertFrom));
+            if (content.Contains("ValidationCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory = (string) content.GetValueForProperty("ValidationCategory",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).ValidationCategory, global::System.Convert.ToString);
+            }
+            if (content.Contains("IndividualRequestDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest[]) content.GetValueForProperty("IndividualRequestDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationRequestInternal)this).IndividualRequestDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequest>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputRequestTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

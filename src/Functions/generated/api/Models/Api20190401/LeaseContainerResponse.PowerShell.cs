@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            if (content.Contains("LeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LeaseTimeSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            if (content.Contains("LeaseId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId = (string) content.GetValueForProperty("LeaseId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LeaseTimeSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond = (string) content.GetValueForProperty("LeaseTimeSecond",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ILeaseContainerResponseInternal)this).LeaseTimeSecond, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -236,34 +236,34 @@ function Test-PolicyDefinitionMode
 
     # test policy with data plane mode
     # make a policy definition with data plane mode, get it back and validate
-    $expected = New-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SampleDataCatalogDataPolicyDefinition.json" -Mode 'Microsoft.DataCatalog.Data' -Description $description
+    $expected = New-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Mode 'Microsoft.KeyVault.Data' -Description $description
     $actual = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
     Assert-NotNull $actual
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
     Assert-NotNull($actual.Properties.PolicyRule)
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
 
     # update the same policy definition without touching mode, get it back and validate
-    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SampleDataCatalogDataPolicyDefinition.json" -Metadata $metadata
+    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Metadata $metadata
     $expected = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
 
     # update the same policy definition explicitly providing the same mode, get it back and validate
-    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'Microsoft.DataCatalog.Data' -Description $updatedDescription -Policy "$TestOutputRoot\SampleDataCatalogDataPolicyDefinition.json" -Metadata $metadata
+    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'Microsoft.KeyVault.Data' -Description $updatedDescription -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Metadata $metadata
     $expected = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
 
     # clean up
     $remove = Remove-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Force
@@ -378,72 +378,81 @@ function Test-PolicyAssignmentCRUD
     $rgname = Get-ResourceGroupName
     $policyName = Get-ResourceName
 
-    # make a new resource group and policy definition
-    $rg = New-AzResourceGroup -Name $rgname -Location "west us"
-    $policy = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+	$policySetDefName = Get-ResourceName
+	$policyDefName1 = Get-ResourceName
+	$policyDefName2 = Get-ResourceName
 
-    $nonComplianceMessages = @(@{ Message = "General message" })
+	# make a new resource group and policy definition
+	$rg = New-AzResourceGroup -Name $rgname -Location "west us"
+	$policyDefinition1 = New-AzPolicyDefinition -Name $policyDefName1 -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+	$policyDefinition2 = New-AzPolicyDefinition -Name $policyDefName2 -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+	$policySetString = "[{""policyDefinitionId"":""" + $policyDefinition1.PolicyDefinitionId + """}, {""policyDefinitionId"":""" + $policyDefinition2.PolicyDefinitionId + """}]"
+	$policySet = New-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySetString -Description $description -Metadata $metadata
+	$policyDefinitionReferenceId1 = $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId
+	$policyDefinitionReferenceId2 = $policySet.Properties.PolicyDefinitions[1].policyDefinitionReferenceId
 
-    # assign the policy definition to the resource group, get the assignment back and validate
-    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages
-    $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
-    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
-    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
-    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
-    Assert-AreEqual 1 $expected.Properties.NonComplianceMessages.Length
-    Assert-AreEqual "General message" $expected.Properties.NonComplianceMessages[0].Message
+	$nonComplianceMessages = @(@{ Message = "General message" })
 
-    # get it back by id and validate
-    $actualId = Get-AzPolicyAssignment -Id $actual.ResourceId
-    Assert-AreEqual $actual.ResourceId $actualId.ResourceId
-    Assert-AreEqual 1 $actualId.Properties.NonComplianceMessages.Length
-    Assert-AreEqual "General message" $actualId.Properties.NonComplianceMessages[0].Message
+	# assign the policy definition to the resource group, get the assignment back and validate
+	$actual = New-AzPolicyAssignment -Name testPA -PolicySetDefinition $policySet -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages
+	$expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+	Assert-AreEqual $expected.Name $actual.Name
+	Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+	Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+	Assert-AreEqual $expected.Properties.PolicyDefinitionId $policySet.ResourceId
+	Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+	Assert-AreEqual 1 $expected.Properties.NonComplianceMessages.Length
+	Assert-AreEqual "General message" $expected.Properties.NonComplianceMessages[0].Message
 
-    $nonComplianceMessages += @{
-        Message = "Specific message 1"
-        PolicyDefinitionReferenceId = "ref1"
-    }
+	# get it back by id and validate
+	$actualId = Get-AzPolicyAssignment -Id $actual.ResourceId
+	Assert-AreEqual $actual.ResourceId $actualId.ResourceId
+	Assert-AreEqual 1 $actualId.Properties.NonComplianceMessages.Length
+	Assert-AreEqual "General message" $actualId.Properties.NonComplianceMessages[0].Message
 
-    # create it again with two non-compliance messages
-    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages
-    $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
-    Assert-AreEqual 2 $expected.Properties.NonComplianceMessages.Length
-    Assert-AreEqual "Specific message 1" $expected.Properties.NonComplianceMessages[1].Message
-    Assert-AreEqual "ref1" $expected.Properties.NonComplianceMessages[1].PolicyDefinitionReferenceId
+	$nonComplianceMessages += @{
+		Message = "Specific message 1"
+		PolicyDefinitionReferenceId = $policyDefinitionReferenceId1
+	}
 
-    # update the policy assignment, validate the result
-    $set = Set-AzPolicyAssignment -Id $actualId.ResourceId -DisplayName testDisplay
-    Assert-AreEqual testDisplay $set.Properties.DisplayName
+	# create it again with two non-compliance messages
+	$actual = New-AzPolicyAssignment -Name testPA -PolicySetDefinition $policySet -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages
+	$expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+	Assert-AreEqual 2 $expected.Properties.NonComplianceMessages.Length
+	Assert-AreEqual "Specific message 1" $expected.Properties.NonComplianceMessages[1].Message
+	Assert-AreEqual $policyDefinitionReferenceId1 $expected.Properties.NonComplianceMessages[1].PolicyDefinitionReferenceId
 
-    $nonComplianceMessages = @(@{ Message = "General non-compliance message" })
+	# update the policy assignment, validate the result
+	$set = Set-AzPolicyAssignment -Id $actualId.ResourceId -DisplayName testDisplay
+	Assert-AreEqual testDisplay $set.Properties.DisplayName
 
-    # update the policy assignment's non-compliance messages with one new general message
-    $set = Set-AzPolicyAssignment -Id $actualId.ResourceId -NonComplianceMessage $nonComplianceMessages
-    Assert-AreEqual 1 $set.Properties.NonComplianceMessages.Length
-    Assert-AreEqual "General non-compliance message" $set.Properties.NonComplianceMessages[0].Message
-    Assert-Null $set.Properties.NonComplianceMessages[0].PolicyDefinitionReferenceId
+	$nonComplianceMessages = @(@{ Message = "General non-compliance message" })
 
-    $nonComplianceMessages = @(
-        @{
-            Message = "Specific message 1"
-            PolicyDefinitionReferenceId = "ref1"
-        },
-        @{
-            Message = "Specific message 2"
-            PolicyDefinitionReferenceId = "ref2"
-        }
-    )
+	# update the policy assignment's non-compliance messages with one new general message
+	$set = Set-AzPolicyAssignment -Id $actualId.ResourceId -NonComplianceMessage $nonComplianceMessages
+	Assert-AreEqual 1 $set.Properties.NonComplianceMessages.Length
+	Assert-AreEqual "General non-compliance message" $set.Properties.NonComplianceMessages[0].Message
+	Assert-Null $set.Properties.NonComplianceMessages[0].PolicyDefinitionReferenceId
+
+	$nonComplianceMessages = @(
+	@{
+		Message = "Specific message 1"
+		PolicyDefinitionReferenceId = $policyDefinitionReferenceId1
+	},
+	@{
+		Message = "Specific message 2"
+		PolicyDefinitionReferenceId = $policyDefinitionReferenceId2
+	}
+	)
 
     # update the policy assignment's non-compliance message with two specific messages
     $set = Set-AzPolicyAssignment -Id $actualId.ResourceId -NonComplianceMessage $nonComplianceMessages
     Assert-AreEqual 2 $set.Properties.NonComplianceMessages.Length
     Assert-AreEqual "Specific message 2" $set.Properties.NonComplianceMessages[1].Message
-    Assert-AreEqual "ref2" $set.Properties.NonComplianceMessages[1].PolicyDefinitionReferenceId
+	Assert-AreEqual $policyDefinitionReferenceId2 $set.Properties.NonComplianceMessages[1].PolicyDefinitionReferenceId
 
-    # make another policy assignment, ensure both are present in resource group scope listing
-    $expected = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+	# make another policy assignment, ensure both are present in resource group scope listing
+    $expected = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policyDefinition1 -Description $description
     $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @('testPA', 'test2') }
     Assert-AreEqual 2 @($list).Count
 
@@ -462,8 +471,14 @@ function Test-PolicyAssignmentCRUD
     $remove = Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId
     Assert-AreEqual True $remove
 
-    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
-    Assert-AreEqual True $remove
+	$remove = Remove-AzPolicySetDefinition -Name $policySetDefName -Force
+	Assert-AreEqual True $remove
+
+	$remove = Remove-AzPolicyDefinition -Name $policyDefName1 -Force
+	Assert-AreEqual True $remove
+
+	$remove = Remove-AzPolicyDefinition -Name $policyDefName2 -Force
+	Assert-AreEqual True $remove
 
     $remove = Remove-AzResourceGroup -Name $rgname -Force
     Assert-AreEqual True $remove
@@ -471,9 +486,9 @@ function Test-PolicyAssignmentCRUD
 
 <#
 .SYNOPSIS
-Tests Policy assignment operations with a resource identity
+Tests Policy assignment operations with a system assigned resource identity
 #>
-function Test-PolicyAssignmentIdentity
+function Test-PolicyAssignmentAssignIdentity
 {
     # setup
     $rgname = Get-ResourceGroupName
@@ -492,7 +507,7 @@ function Test-PolicyAssignmentIdentity
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
-    Assert-AreEqual "SystemAssigned" $expected.Identity.Type
+    Assert-AreEqual "SystemAssigned" $expected.Identity.IdentityType
     Assert-NotNull($expected.Identity.PrincipalId)
     Assert-NotNull($expected.Identity.TenantId)
     Assert-AreEqual $location $actual.Location
@@ -501,7 +516,7 @@ function Test-PolicyAssignmentIdentity
     # get it back by id and validate
     $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId
     Assert-AreEqual $actual.ResourceId $actualById.ResourceId
-    Assert-AreEqual "SystemAssigned" $actualById.Identity.Type
+    Assert-AreEqual "SystemAssigned" $actualById.Identity.IdentityType
     Assert-NotNull($actualById.Identity.PrincipalId)
     Assert-NotNull($actualById.Identity.TenantId)
     Assert-AreEqual $location $actualById.Location
@@ -509,7 +524,7 @@ function Test-PolicyAssignmentIdentity
     # update the policy assignment, validate it still has an identity
     $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay"
     Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
-    Assert-AreEqual "SystemAssigned" $setResult.Identity.Type
+    Assert-AreEqual "SystemAssigned" $setResult.Identity.IdentityType
     Assert-NotNull($setResult.Identity.PrincipalId)
     Assert-NotNull($setResult.Identity.TenantId)
     Assert-AreEqual $location $setResult.Location
@@ -521,14 +536,14 @@ function Test-PolicyAssignmentIdentity
 
     # add an identity to the new assignment using the SET cmdlet
     $setResult = Set-AzPolicyAssignment -Id $withoutIdentityResult.ResourceId -AssignIdentity -Location $location
-    Assert-AreEqual "SystemAssigned" $setResult.Identity.Type
+    Assert-AreEqual "SystemAssigned" $setResult.Identity.IdentityType
     Assert-NotNull($setResult.Identity.PrincipalId)
     Assert-NotNull($setResult.Identity.TenantId)
     Assert-AreEqual $location $setResult.Location
 
     # verify identity is returned in collection GET
     $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @('testPA', 'test2') }
-    Assert-AreEqual "SystemAssigned" ($list.Identity.Type | Select -Unique)
+    Assert-AreEqual "SystemAssigned" ($list.Identity.IdentityType | Select -Unique)
     Assert-AreEqual 2 @($list.Identity.PrincipalId | Select -Unique).Count
     Assert-AreEqual 1 @($list.Identity.TenantId | Select -Unique).Count
     Assert-NotNull($list.Identity.TenantId | Select -Unique)
@@ -544,6 +559,179 @@ function Test-PolicyAssignmentIdentity
     $remove = Remove-AzPolicyDefinition -Name $policyName -Force
     Assert-AreEqual True $remove
 
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy assignment operations with a system assigned resource identity
+#>
+function Test-PolicyAssignmentSystemAssignedIdentity
+{
+    # setup
+    $rgname = Get-ResourceGroupName
+    $policyName = Get-ResourceName
+    $location = "westus"
+
+    # make a new resource group and policy definition
+    $rg = New-AzResourceGroup -Name $rgname -Location $location
+    $policy = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+
+    # assign the policy definition to the resource group, get the assignment back and validate
+    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -IdentityType "SystemAssigned" -Location $location
+    $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual "SystemAssigned" $expected.Identity.IdentityType
+    Assert-NotNull($expected.Identity.PrincipalId)
+    Assert-NotNull($expected.Identity.TenantId)
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual $expected.Location $actual.Location
+
+    # get it back by id and validate
+    $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId
+    Assert-AreEqual $actual.ResourceId $actualById.ResourceId
+    Assert-AreEqual "SystemAssigned" $actualById.Identity.IdentityType
+    Assert-NotNull($actualById.Identity.PrincipalId)
+    Assert-NotNull($actualById.Identity.TenantId)
+    Assert-AreEqual $location $actualById.Location
+
+    # update the policy assignment, validate it still has an identity
+    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay"
+    Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
+    Assert-AreEqual "SystemAssigned" $setResult.Identity.IdentityType
+    Assert-NotNull($setResult.Identity.PrincipalId)
+    Assert-NotNull($setResult.Identity.TenantId)
+    Assert-AreEqual $location $setResult.Location
+
+    # make another policy assignment without an identity
+    $withoutIdentityResult = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+    Assert-Null($withoutIdentityResult.Identity)
+    Assert-Null($withoutIdentityResult.Location)
+
+    # add an identity to the new assignment using the SET cmdlet
+    $setResult = Set-AzPolicyAssignment -Id $withoutIdentityResult.ResourceId -IdentityType 'SystemAssigned' -Location $location
+    Assert-AreEqual "SystemAssigned" $setResult.Identity.IdentityType
+    Assert-NotNull($setResult.Identity.PrincipalId)
+    Assert-NotNull($setResult.Identity.TenantId)
+    Assert-AreEqual $location $setResult.Location
+
+    # verify identity is returned in collection GET
+    $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @('testPA', 'test2') }
+    Assert-AreEqual "SystemAssigned" ($list.Identity.IdentityType | Select -Unique)
+    Assert-AreEqual 2 @($list.Identity.PrincipalId | Select -Unique).Count
+    Assert-AreEqual 1 @($list.Identity.TenantId | Select -Unique).Count
+    Assert-NotNull($list.Identity.TenantId | Select -Unique)
+    Assert-AreEqual $location ($list.Location | Select -Unique)
+
+    # clean up
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy assignment operations with a user assigned resource identity
+#>
+function Test-PolicyAssignmentUserAssignedIdentity
+{
+    # setup
+    $rgname = Get-ResourceGroupName
+    $policyName = Get-ResourceName
+    $location = "westus"
+    $userassignedidentityname = "test-user-msi"
+    
+    # make a new resource group and policy definition
+    $rg = New-AzResourceGroup -Name $rgname -Location $location
+    $policy = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+    $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $userassignedidentityname -Location $location
+    $userassignedidentityid = $userassignedidentity.Id
+    
+    # assign the policy definition to the resource group, get the assignment back and validate
+    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location
+    $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual "UserAssigned" $expected.Identity.IdentityType
+    
+    $actualuserassignedidentitieshashtable = $expected.Identity.UserAssignedIdentities
+    $actualuserassignedidentityid = $($actualuserassignedidentitieshashtable.keys)
+    $actualuserassignedidentityresource = $($actualuserassignedidentitieshashtable.values)[0]
+    Assert-AreEqual $actualuserassignedidentityid $userassignedidentityid
+    Assert-NotNull ($actualuserassignedidentityresource.PrincipalId)
+    Assert-NotNull ($actualuserassignedidentityresource.ClientId)
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual $expected.Location $actual.Location
+    
+    # get it back by id and validate
+    $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId
+    Assert-AreEqual $actual.ResourceId $actualById.ResourceId
+    Assert-AreEqual "UserAssigned" $actualById.Identity.IdentityType
+    
+    $actualbyiduserassignedidentityresource = $($expected.Identity.UserAssignedIdentities.values)[0]
+    Assert-NotNull($actualbyiduserassignedidentityresource.PrincipalId)
+    Assert-NotNull($actualbyiduserassignedidentityresource.ClientId)
+    Assert-AreEqual $location $actualById.Location
+    
+    # update the policy assignment, validate it still has an identity
+    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay"
+    Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
+    Assert-AreEqual "UserAssigned" $setResult.Identity.IdentityType
+    $setresultuserassignedidentityresource = $($setresult.Identity.UserAssignedIdentities.values)[0]
+    Assert-NotNull($setresultuserassignedidentityresource.PrincipalId)
+    Assert-NotNull($setresultuserassignedidentityresource.ClientId)
+    Assert-AreEqual $location $setResult.Location
+    
+    # make another policy assignment without an identity
+    $withoutIdentityResult = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+    Assert-Null($withoutIdentityResult.Identity)
+    Assert-Null($withoutIdentityResult.Location)
+    
+    # add an identity to the new assignment using the SET cmdlet
+    $setResult = Set-AzPolicyAssignment -Id $withoutIdentityResult.ResourceId -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location
+    Assert-AreEqual "UserAssigned" $setResult.Identity.IdentityType
+    $setresultuserassignedidentityresource = $($setresult.Identity.UserAssignedIdentities.values)[0]
+    Assert-NotNull($setresultuserassignedidentityresource.PrincipalId)
+    Assert-NotNull($setresultuserassignedidentityresource.ClientId)
+    Assert-AreEqual $location $setResult.Location
+    
+    # verify identity is returned in collection GET
+    $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | Where-Object{ $_.Name -in @('testPA', 'test2') }
+    $userassignedidentityobject = ($list.Identity.UserAssignedIdentities | Select -Unique)    
+    Assert-AreEqual "UserAssigned" ($list.Identity.IdentityType | Select -Unique)
+    Assert-AreEqual 1 @(($($userassignedidentityobject.values)[0]).PrincipalId | Select -Unique).Count
+    Assert-AreEqual 1 @(($($userassignedidentityobject.values)[0]).ClientId | Select -Unique).Count
+    Assert-AreEqual $location ($list.Location | Select -Unique)
+    
+    # clean up
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+    
+    $remove = Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $deleteJob = Remove-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname -Force
+    $deleteJob | Wait-Job s
+    
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+    
     $remove = Remove-AzResourceGroup -Name $rgname -Force
     Assert-AreEqual True $remove
 }
@@ -1535,6 +1723,7 @@ except for:
 $someName = 'someName'
 $someScope = 'someScope'
 $someId = 'someId'
+$someIdentityId = 'someIdentityId'
 $someManagementGroup = 'someManagementGroup'
 $someJsonSnippet = "{ 'someThing': 'someOtherThing' }"
 $someJsonArray = "[$someJsonSnippet]"
@@ -1551,6 +1740,8 @@ $onlyDefinitionOrSetDefinition = 'Only one of PolicyDefinition or PolicySetDefin
 $policyAssignmentNotFound = 'PolicyAssignmentNotFound : '
 $policySetDefinitionNotFound = 'PolicySetDefinitionNotFound : '
 $policyDefinitionNotFound = 'PolicyDefinitionNotFound : '
+$policyAssignmentMissingLocation  = 'Location needs to be specified if a managed identity is to be assigned to the policy assignment.'
+$policyAssignmentMissingIdentityId  = 'A user assigned identity id needs to be specified if the identity type is ''UserAssigned''.'
 $policyExemptionNotFound = 'PolicyExemptionNotFound : '
 $invalidRequestContent = 'InvalidRequestContent : The request content was invalid and could not be deserialized: '
 $missingSubscription = 'MissingSubscription : The request did not have a subscription or a valid tenant level resource provider.'
@@ -1682,6 +1873,7 @@ function Test-SetPolicyAssignmentParameters
     $subscriptionId = (Get-AzContext).Subscription.Id
     $goodScope = "/subscriptions/$subscriptionId"
     $goodId = "$goodScope/providers/Microsoft.Authorization/policyAssignments/$someName"
+    $goodIdentityId = "$goodScope/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$someIdentityId"
     $someParameters = '{ "someKindaParameter": { "value": [ "Mmmm", "Doh!" ] } }'
 	$someLocation = 'west us'
 	$someNotScope = 'not scope'
@@ -1699,8 +1891,11 @@ function Test-SetPolicyAssignmentParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Metadata $metadata } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -PolicyParameterObject $someParameterObject } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -PolicyParameter $someParameters } $policyAssignmentNotFound
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -AssignIdentity } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Location $someLocation } $policyAssignmentNotFound
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Id $someId } $parameterSetError
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -DisplayName $someDisplayName } $missingSubscription
@@ -1708,7 +1903,10 @@ function Test-SetPolicyAssignmentParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Id $someId } $parameterSetError
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName } $missingSubscription
@@ -1716,29 +1914,48 @@ function Test-SetPolicyAssignmentParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -PolicyParameter $someParameters } $parameterSetError
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity -Location $someLocation } $missingSubscription
-
-	#validation parameter combinations starting with -Id
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'SystemAssigned' -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -IdentityId $goodIdentityId -Location $someLocation } $missingSubscription
+    
+    #validation parameter combinations starting with -Id
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $goodId } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -DisplayName $someDisplayName } $missingSubscription
@@ -1746,34 +1963,56 @@ function Test-SetPolicyAssignmentParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -Description $description } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameter $someParameters } $missingSubscription
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -PolicyParameter $someParameters } $parameterSetError
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'SystemAssigned' } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -Location $someLocation } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'SystemAssigned' -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -IdentityId $goodIdentityId } $policyAssignmentMissingLocation
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -Location $someLocation } $policyAssignmentMissingIdentityId
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -IdentityType 'UserAssigned' -IdentityId $goodIdentityId -Location $someLocation } $missingSubscription
 }
 
 <#
@@ -1860,7 +2099,7 @@ function Test-RemovePolicyDefinitionParameters
     $subscriptionId = (Get-AzContext).Subscription.Id
     $goodScope = "/subscriptions/$subscriptionId"
     $goodId = "$goodScope/providers/Microsoft.Authorization/policyDefinitions/$someName"
-    $goodObject = Get-AzPolicyDefinition -Builtin | select -First 1
+    $goodObject = Get-AzPolicyDefinition -Builtin | ?{ $_.Name -like '*test*' -or $_.Properties.Description -like '*test*' } | select -First 1
 
     # validate with no parameters
     Assert-ThrowsContains { Remove-AzPolicyDefinition } $missingParameters
@@ -2119,7 +2358,7 @@ function Test-NewPolicyExemptionParameters
 {
     $subscriptionId = (Get-AzContext).Subscription.Id
     $goodScope = "/subscriptions/$subscriptionId"
-    $goodPolicyAssignment = Get-AzPolicyAssignment | select -First 1
+    $goodPolicyAssignment = Get-AzPolicyAssignment | ?{ $_.Name -like '*test*' -or $_.Properties.Description -like '*test*' } | select -First 1
 
     # validate with no parameters
     Assert-ThrowsContains { New-AzPolicyExemption } $missingParameters
