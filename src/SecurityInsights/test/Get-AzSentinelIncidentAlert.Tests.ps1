@@ -18,6 +18,6 @@ Describe 'Get-AzSentinelIncidentAlert' {
     It 'List' {
         $incident | Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where {$_.Title -eq "Sign-ins from IPs that attempt sign-ins to disabled accounts"}
         $incidentAlerts = Get-AzSentinelIncidentAlert -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $incident[0].Name
-        $incidentAlerts | Should -BeGreaterorEqual 1
+        $incidentAlerts.Count | Should -BeGreaterorEqual 1
     }
 }

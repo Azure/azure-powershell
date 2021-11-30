@@ -14,7 +14,7 @@ Creates or updates the alert rule.
 
 ### FusionMLTI (Default)
 ```
-New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -AlertRuleTemplateName <String>
+New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -AlertRuleTemplate <String>
  -Kind <AlertRuleKind> [-OperationalInsightsResourceProvider <String>] [-RuleId <String>]
  [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -192,15 +192,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AlertRuleTemplate
+
+
+```yaml
+Type: System.String
+Parameter Sets: FusionMLTI
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AlertRuleTemplateName
 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MicrosoftSecurityIncidentCreation, NRT, Scheduled
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

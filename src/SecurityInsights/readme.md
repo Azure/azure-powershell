@@ -111,6 +111,10 @@ directive:
   - where:
       subject: Operation
     hide: true
+   # Hide OfficeConsent API
+  - where:
+      subject: OfficeConsent
+    hide: true
   # Fix Action to be AlertRuleAction
   - where: 
       subject: Action
@@ -276,7 +280,7 @@ directive:
     hide: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$
+      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$
     remove: true
   # fix Equals that conflicts with inhertied property
   - where:

@@ -16,17 +16,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelAlertRuleAction
 
 Describe 'Get-AzSentinelAlertRuleAction' {
     It 'List' {
-        $alertRuleActions = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -AlertRuleId $env.GetAlertRuleActionRuleId
+        $alertRuleActions = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId
         $alertRuleActions.Count | Should -BeGreaterorEqual 1
     }
 
     It 'Get' {
-        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -AlertRuleId $env.GetAlertRuleActionRuleId -ActionId $env.GetAlertRuleActionId
+        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId -Id $env.GetAlertRuleActionId
         $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
     }
 
     It 'GetViaIdentity' {
-        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -AlertRuleId $env.GetAlertRuleActionRuleId -ActionId $env.GetAlertRuleActionId
+        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId -Id $env.GetAlertRuleActionId
         $alertRuleActionviaId = $alertRuleAction | Get-AzSentinelAlertRuleAction
         $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
     }

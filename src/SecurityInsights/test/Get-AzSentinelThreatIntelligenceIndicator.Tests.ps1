@@ -25,7 +25,7 @@ Describe 'Get-AzSentinelThreatIntelligenceIndicator' {
         $threatIntelligenceIndicator.Name | Should -Be $env.GetthreatIntelligenceIndicatorId
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $threatIntelligenceIndicator = Get-AzSentinelthreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.GetthreatIntelligenceIndicatorId
         $threatIntelligenceIndicatorViaId = $threatIntelligenceIndicator | Get-AzSentinelonboardingState
         $threatIntelligenceIndicatorViaId.Name | Should -Be $env.GetthreatIntelligenceIndicatorId

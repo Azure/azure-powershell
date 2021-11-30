@@ -55,7 +55,8 @@ function setupEnv() {
         $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"    
         $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header    
         $null = $env.Add('workspaceId', ($deployResult.properties.outputs.workspaceId.value))
-        $null = $env.Add('workspaceKey', ($deployResult.properties.outputs.workspaceKey.value))
+        #$null = $env.Add('workspaceKey', ($deployResult.properties.outputs.workspaceKey.value))
+        $workspaceKey = ($deployResult.properties.outputs.workspaceKey.value)
         $null = $env.Add('workspaceResourceId', ($deployResult.properties.outputs.workspaceResourceId.value))
     }
     
@@ -66,7 +67,7 @@ function setupEnv() {
     foreach($file in $Files){
         $fileToImport = $file.FullName
         $tableName = ($file.Name).Replace('.csv','')
-        $status = SendToLogA -eventsTableName $tableName -EventsTableFile $fileToImport -CustomerId $env.workspaceId -SharedKey $env.workspaceKey
+        $status = SendToLogA -eventsTableName $tableName -EventsTableFile $fileToImport -CustomerId $env.workspaceId -SharedKey $workspaceKey
         Write-Host "$TableName results: $status"
     }
     write-Host "Starting sleep to allow time for ingestion"
@@ -192,6 +193,7 @@ function setupEnv() {
     Create-Bookmark -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
     Create-Bookmark -PSVerb Update -WorkspaceName $env.workspaceName
     Create-Bookmark -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
+    Create-Bookmark -PSVerb Expand -WorkspaceName $env.workspaceName
 
     #Bookmark Expansion
     $bookmarkExpansionId = (New-Guid).Guid

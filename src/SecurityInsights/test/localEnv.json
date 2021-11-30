@@ -107,7 +107,6 @@
   "UpdateAlertRuleActionId": "8954a3f2-86a1-428c-8b64-7e178b7a3250",
   "UpdateViaIdAutomationRule": "UpdateViaIdAutomationRuleasu1f5",
   "Playbook3LogicAppResourceId": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstesta91bo6/providers/Microsoft.Logic/workflows/Confirm-AADRiskyUser-Alert",
-  "workspaceKey": "J/k3TFydP3A11apEM3fpXqGW6DgQIV/I//Dtu33Y84E5zhK1G8O6jOMI2glLscR+4RGAULizw24rbneQNkwgAg==",
   "UpdateAutomationRuleId": "f25205fa-4a4b-4a57-817a-e90d0452a424",
   "UpdateViaIdAlertRuleId": "29db3cbb-eb3c-49c2-9236-141c4115e80e",
   "RemoveViaIdincidentRelationId": "cd75fc0d-e59b-429d-aeb2-dca012aa5305",

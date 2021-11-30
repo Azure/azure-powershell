@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelIncidentComment
 
 Describe 'Get-AzSentinelIncidentComment' {
     It 'List' {
-        $incidentComments = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.incidentId
+        $incidentComments = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentCommentIncidentId
         $incidentComments.Count | Should -BeGreaterorEqual 1
     }
 
@@ -25,7 +25,7 @@ Describe 'Get-AzSentinelIncidentComment' {
         $incidentComment.Name | Should -Be $env.GetincidentCommentId
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $incidentComment = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentCommentIncidentId -Id $env.GetincidentCommentId
         $incidentCommentViaId = $incidentComment | Get-AzSentinelincident
         $incidentCommentViaId.Name | Should -Be $env.GetincidentCommentId

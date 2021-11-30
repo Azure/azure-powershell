@@ -18,12 +18,6 @@ Describe 'Get-AzSentinelEntityActivity' {
     It 'Queries' {
         $entities = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $queries = Get-AzSentinelEntityActivity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -EntityId $entities[0].Name
-        $queries | Should -BeGreaterorEqual 1
-    }
-
-    It 'QueriesViaIdentity' {
-        $entities = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $queries = $entities[0] | Get-AzSentinelEntityActivity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $queries | Should -BeGreaterorEqual 1
+        $queries.Count | Should -BeGreaterorEqual 1
     }
 }

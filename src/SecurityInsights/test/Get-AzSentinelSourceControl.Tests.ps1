@@ -15,17 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelSourceControl')
 }
 
 Describe 'Get-AzSentinelSourceControl' {
-    It 'List' {
+    It 'List' -skip {
         $sourceControls = Get-AzSentinelsourceControl -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $sourceControls.Count | Should -BeGreaterorEqual 1
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $sourceControl = Get-AzSentinelsourceControl -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetsourceControlId
         $sourceControl.Name | Should -Be $env.GetsourceControlId
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $sourceControl = Get-AzSentinelsourceControl -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetsourceControlId
         $sourceControlViaId = $sourceControl | Get-AzSentinelonboardingState
         $sourceControlViaId.Name | Should -Be $env.GetsourceControlId

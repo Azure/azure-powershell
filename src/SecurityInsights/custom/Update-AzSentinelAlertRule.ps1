@@ -24,7 +24,7 @@ https://docs.microsoft.com/powershell/module/az.securityinsights/Update-azsentin
 #>
 function Update-AzSentinelAlertRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateFusionMLTI', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateScheduled', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
@@ -85,7 +85,7 @@ function Update-AzSentinelAlertRule {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(ParameterSetName = 'FusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -97,7 +97,7 @@ function Update-AzSentinelAlertRule {
         [System.String]
         ${AlertRuleTemplateName},
         
-        [Parameter(ParameterSetName = 'FusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -109,7 +109,7 @@ function Update-AzSentinelAlertRule {
         [Switch]
         ${Enabled},
 
-        [Parameter(ParameterSetName = 'FusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]

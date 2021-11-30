@@ -22,10 +22,10 @@ Describe 'Get-AzSentinelEntityQuery' {
 
     It 'Get' {
         $entityQuery = Get-AzSentinelentityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetentityQueryActivityId
-        $entityQuery.Name | Should -Be $env.entityQueryActivityId
+        $entityQuery.Name | Should -Be $env.GetentityQueryActivityId
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $entityQuery = Get-AzSentinelentityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetentityQueryActivityId
         $entityQueryViaId = $entityQuery | Get-AzSentinelentityQuery
         $entityQueryViaId.Name | Should -Be $env.GetentityQueryActivityId

@@ -92,9 +92,6 @@ Gets an incident relation.
 ### [Get-AzSentinelMetadata](Get-AzSentinelMetadata.md)
 Get a Metadata.
 
-### [Get-AzSentinelOfficeConsent](Get-AzSentinelOfficeConsent.md)
-Gets an office365 consent.
-
 ### [Get-AzSentinelOnboardingState](Get-AzSentinelOnboardingState.md)
 Get Sentinel onboarding state
 
@@ -193,9 +190,6 @@ Delete the incident relation.
 
 ### [Remove-AzSentinelMetadata](Remove-AzSentinelMetadata.md)
 Delete a Metadata.
-
-### [Remove-AzSentinelOfficeConsent](Remove-AzSentinelOfficeConsent.md)
-Delete the office365 consent.
 
 ### [Remove-AzSentinelOnboardingState](Remove-AzSentinelOnboardingState.md)
 Delete Sentinel onboarding state

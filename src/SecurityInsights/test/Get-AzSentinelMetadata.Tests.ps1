@@ -17,17 +17,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelMetadata'))
 Describe 'Get-AzSentinelMetadata' {
     It 'List'  {
        $metadatas = Get-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-       $metadatas.Count | | Should -BeGreaterorEqual 1 
+       $metadatas.Count | Should -BeGreaterorEqual 1 
     }
 
     It 'Get' {
         $metadata = Get-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.metadataName
-        $metadata.Name | | Should -Be $env.metadataName
+        $metadata.Name | Should -Be $env.metadataName
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $metadata = Get-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -name $env.metadataName
         $metadataViaIdentity = $metadata | Get-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $metadataViaIdentity.Name | | Should -Be $env.metadataName
+        $metadataViaIdentity.Name | Should -Be $env.metadataName
     }
 }

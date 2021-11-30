@@ -237,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityIsPreview
-
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 
 ```yaml
 Type: System.Boolean
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityStatus
-
+[Parameter(ParameterSetName = 'APIPolling')]
 
 ```yaml
 Type: System.Int32
@@ -342,6 +342,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigConnectivityCriterion
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 To construct, see NOTES section for CONNECTORUICONFIGCONNECTIVITYCRITERION properties and create a hash table.
 
 ```yaml
@@ -357,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigCustomImage
-
+[Parameter(ParameterSetName = 'APIPolling')]
 
 ```yaml
 Type: System.String
@@ -372,6 +373,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigDataType
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 To construct, see NOTES section for CONNECTORUICONFIGDATATYPE properties and create a hash table.
 
 ```yaml
@@ -387,7 +389,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigDescriptionMarkdown
-
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 
 ```yaml
 Type: System.String
@@ -402,7 +404,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigGraphQueriesTableName
-
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 
 ```yaml
 Type: System.String
@@ -417,6 +419,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigGraphQuery
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 To construct, see NOTES section for CONNECTORUICONFIGGRAPHQUERY properties and create a hash table.
 
 ```yaml
@@ -432,6 +435,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigInstructionStep
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 To construct, see NOTES section for CONNECTORUICONFIGINSTRUCTIONSTEP properties and create a hash table.
 
 ```yaml
@@ -447,7 +451,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigPublisher
-
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 
 ```yaml
 Type: System.String
@@ -462,6 +466,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigSampleQuery
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 To construct, see NOTES section for CONNECTORUICONFIGSAMPLEQUERY properties and create a hash table.
 
 ```yaml
@@ -477,7 +482,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectorUiConfigTitle
-
+[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
 
 ```yaml
 Type: System.String
@@ -717,6 +722,7 @@ Accept wildcard characters: False
 ```
 
 ### -PermissionCustom
+[Parameter(ParameterSetName = 'APIPolling')]
 To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
 
 ```yaml
@@ -732,6 +738,7 @@ Accept wildcard characters: False
 ```
 
 ### -PermissionResourceProvider
+[Parameter(ParameterSetName = 'APIPolling')]
 To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
 
 ```yaml
@@ -961,35 +968,35 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONNECTORUICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
+CONNECTORUICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[Type <ConnectivityType?>]`: type of connectivity
   - `[Value <String[]>]`: Queries for checking connectivity
 
-CONNECTORUICONFIGDATATYPE <LastDataReceivedDataType[]>: 
+CONNECTORUICONFIGDATATYPE <LastDataReceivedDataType[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
   - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
 
-CONNECTORUICONFIGGRAPHQUERY <GraphQueries[]>: 
+CONNECTORUICONFIGGRAPHQUERY <GraphQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[BaseQuery <String>]`: The base query for the graph
   - `[Legend <String>]`: The legend for the graph
   - `[MetricName <String>]`: the metric that the query is checking
 
-CONNECTORUICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
+CONNECTORUICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[Description <String>]`: Instruction step description
   - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
     - `Type <SettingType>`: The kind of the setting
     - `[Parameter <IAny>]`: The parameters for the setting
   - `[Title <String>]`: Instruction step title
 
-CONNECTORUICONFIGSAMPLEQUERY <SampleQueries[]>: 
+CONNECTORUICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[Description <String>]`: The sample query description
   - `[Query <String>]`: the sample query
 
-PERMISSIONCUSTOM <PermissionsCustomsItem[]>: 
+PERMISSIONCUSTOM <PermissionsCustomsItem[]>: [Parameter(ParameterSetName = 'APIPolling')]
   - `[Description <String>]`: Customs permissions description
   - `[Name <String>]`: Customs permissions name
 
-PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: 
+PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: [Parameter(ParameterSetName = 'APIPolling')]
   - `[PermissionsDisplayText <String>]`: Permission description text
   - `[Provider <ProviderName?>]`: Provider name
   - `[ProviderDisplayName <String>]`: Permission provider display name

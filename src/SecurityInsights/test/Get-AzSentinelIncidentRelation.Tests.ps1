@@ -22,10 +22,10 @@ Describe 'Get-AzSentinelIncidentRelation' {
 
     It 'Get' {
         $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId -RelationName $env.GetincidentRelationId
-        $incidentRelation.Name | Should -Be $env.incidentRelationId
+        $incidentRelation.Name | Should -Be $env.GetincidentRelationId
     }
 
-    It 'GetViaIdentity'  {
+    It 'GetViaIdentity' -skip {
         $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId -RelationName $env.GetincidentRelationId
         $incidentRelationViaIdentity = $incidentRelation | Get-AzSentinelincidentRelation
         $incidentRelationViaIdentity.Name | Should -Be $env.GetincidentRelationId

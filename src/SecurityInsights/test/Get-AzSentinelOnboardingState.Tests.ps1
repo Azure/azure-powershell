@@ -25,7 +25,7 @@ Describe 'Get-AzSentinelOnboardingState' {
         $onboardingState.Name | Should -Be "default"
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $onboardingState = Get-AzSentinelonboardingState -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name "default"
         $onboardingStateViaId = $onboardingState | Get-AzSentinelonboardingState -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $onboardingStateViaId.Name | Should -Be "default"

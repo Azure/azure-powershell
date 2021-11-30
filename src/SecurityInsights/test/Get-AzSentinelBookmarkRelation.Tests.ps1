@@ -15,17 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelBookmarkRelatio
 }
 
 Describe 'Get-AzSentinelBookmarkRelation' {
-    It 'List' {
+    It 'List' -skip {
         $bookmarkRelations = Get-AzSentinelbookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -BookmarkId $env.GetbookmarkRelationBookmarkId
         $bookmarkRelations.Count | Should -BeGreaterorEqual 1
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $bookmarkRelation = Get-AzSentinelbookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -BookmarkId $env.GetbookmarkRelationBookmarkId -RelationName $env.GetbookmarkRelationId
         $bookmarkRelation.Name | Should -Be $env.GetbookmarkRelationId
     }
 
-    It 'GetViaIdentity'  {
+    It 'GetViaIdentity' -skip {
         $bookmarkRelation = Get-AzSentinelbookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -BookmarkId $env.GetbookmarkRelationBookmarkId -RelationName $env.GetbookmarkRelationId
         $bookmarkRelationViaIdentity = $bookmarkRelation | Get-AzSentinelbookmarkRelation
         $bookmarkRelationViaIdentity.Name | Should -Be $env.GetbookmarkRelationId

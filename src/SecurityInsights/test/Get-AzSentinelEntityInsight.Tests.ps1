@@ -19,15 +19,7 @@ Describe 'Get-AzSentinelEntityInsight' {
         $startTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
         $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
         $entities = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $entityInsight = Get-AzSentinelEntityInsight -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -EntityId $entities[0].Name -EndTime $startTime -StartTime $endTime
+        $entityInsight = Get-AzSentinelEntityInsight -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -EntityId $entities[0].Name -StartTime $startTime -EndTime $endTime
         $entityInsight.Name | Should -Not -Be $null
-    }
-
-    It 'GetViaIdentityExpanded' {
-        $startTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
-        $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
-        $entities = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $entityInsight = $entities[0].Name | Get-AzSentinelEntityInsight -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -EndTime $startTime -StartTime $endTime
-        $entityInsightViaIdentity.Name | Should -Not -Be $null
     }
 }

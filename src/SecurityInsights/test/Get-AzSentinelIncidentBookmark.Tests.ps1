@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelIncidentBookmar
 
 Describe 'Get-AzSentinelIncidentBookmark' {
     It 'List' {
-        $incidentBookmarks = Get-AzSentinelIncidentBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.bookmarkRelationIncidentId
-        $incidentBookmarks | Should -BeGreaterorEqual 1
+        $incidentBookmarks = Get-AzSentinelIncidentBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId
+        $incidentBookmarks.Count | Should -BeGreaterorEqual 1
     }
 }

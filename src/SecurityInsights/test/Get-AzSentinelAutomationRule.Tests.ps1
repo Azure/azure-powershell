@@ -25,7 +25,7 @@ Describe 'Get-AzSentinelAutomationRule' {
         $automationRule.Name | Should -Be $env.GetAutomationRuleId
     }
 
-    It 'GetViaIdentity'  {
+    It 'GetViaIdentity' -skip {
         $automationRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetAutomationRuleId
         $automationRuleViaIdentity = $automationRule | Get-AzSentinelAutomationRule
         $automationRuleViaIdentity.Name | Should -Be $env.GetAutomationRuleId

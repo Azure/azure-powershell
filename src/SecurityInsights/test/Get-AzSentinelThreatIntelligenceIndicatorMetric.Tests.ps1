@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelThreatIntellige
 Describe 'Get-AzSentinelThreatIntelligenceIndicatorMetric' {
     It 'List' {
         $threatIntelligenceIndicatorMetrics = Get-AzSentinelthreatIntelligenceIndicatorMetric -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
-        $threatIntelligenceIndicatorMetrics.PatternTypeMetric | Should -Not -BeNullOrEmpty
+        $threatIntelligenceIndicatorMetrics | Should -Not -BeNullOrEmpty
     }
 }

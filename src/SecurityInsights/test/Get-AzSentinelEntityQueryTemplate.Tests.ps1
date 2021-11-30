@@ -26,7 +26,7 @@ Describe 'Get-AzSentinelEntityQueryTemplate' {
         $entityQueryTemplate.Name | Should -Be $entityQueryTemplates[0].Name
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $entityQueryTemplates = Get-AzSentinelentityQueryTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $entityQueryTemplate = Get-AzSentinelentityQueryTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $entityQueryTemplates[0].Name
         $entityQueryTemplateViaId = $entityQueryTemplate | Get-AzSentinelentityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
