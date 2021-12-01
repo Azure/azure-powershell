@@ -50,6 +50,7 @@
     - `New-AzDiskUpdateConfig`
     - `New-AzSnapshotConfig`
 * Added `CompletionPercent` property to the PSSNapshot model so it is visible to the user.
+* Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
