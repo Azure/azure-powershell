@@ -217,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static string OrderBlobPermission(string rawPermission)
         {
-            string fullBlobPermission = "racwdxlt";
+            string fullBlobPermission = "racwdxlti";
             string OrderedPermission = "";
             int rawLength = rawPermission.Length;
             foreach (char c in fullBlobPermission)
