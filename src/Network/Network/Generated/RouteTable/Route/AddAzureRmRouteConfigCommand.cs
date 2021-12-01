@@ -78,18 +78,19 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
+             // Routes
+            if (this.RouteTable.Routes == null)
+            {
+                this.RouteTable.Routes = new List<PSRoute>();
+            }
+            
             var existingRoute = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
             if (existingRoute != null)
             {
                 throw new ArgumentException("Route with the specified name already exists");
             }
 
-            // Routes
-            if (this.RouteTable.Routes == null)
-            {
-                this.RouteTable.Routes = new List<PSRoute>();
-            }
+           
 
             var vRoutes = new PSRoute();
 
