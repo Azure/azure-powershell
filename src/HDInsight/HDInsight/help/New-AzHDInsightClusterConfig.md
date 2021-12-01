@@ -17,7 +17,7 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 New-AzHDInsightClusterConfig [-StorageAccountResourceId <String>] [-StorageAccountKey <String>]
  [-StorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
  [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
- [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
+ [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <String>]
  [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-MinSupportedTlsVersion <String>]
  [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
@@ -173,7 +173,7 @@ The default value is Standard.
 The Premium tier can only be used with Linux clusters, and it enables the use of some new features.
 
 ```yaml
-Type: Microsoft.Azure.Management.HDInsight.Models.Tier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Premium

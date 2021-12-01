@@ -32,7 +32,7 @@
     - `Get-AzVm`
     - `Get-AzVmss`
     - `Get-AzVmssVm`
-    - `New-Azvm`
+    - `New-AzVm`
     - `New-AzVmConfig`
     - `New-AzVmss`
     - `New-AzVmssConfig`
@@ -40,6 +40,7 @@
     - `Update-AzVmss`
     - `Update-AzVmssVm`
   When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
+  When UserData is set to null, the Base64 encoding will not occur.
 * Added string parameter `PublicNetworkAccess` to the following cmdlets:
     - `New-AzDiskConfig`
     - `New-AzDiskUpdateConfig`
@@ -49,7 +50,7 @@
     - `New-AzDiskConfig`
     - `New-AzDiskUpdateConfig`
     - `New-AzSnapshotConfig`
-* Added `CompletionPercent` property to the PSSNapshot model so it is visible to the user.
+* Added `CompletionPercent` property to the PSSnapshot model so it is visible to the user.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:

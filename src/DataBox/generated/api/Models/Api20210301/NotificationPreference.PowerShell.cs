@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification = (bool) content.GetValueForProperty("SendNotification",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("StageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName.CreateFrom);
+            }
+            if (content.Contains("SendNotification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification = (bool) content.GetValueForProperty("SendNotification",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification = (bool) content.GetValueForProperty("SendNotification",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("StageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName.CreateFrom);
+            }
+            if (content.Contains("SendNotification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification = (bool) content.GetValueForProperty("SendNotification",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreferenceInternal)this).SendNotification, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

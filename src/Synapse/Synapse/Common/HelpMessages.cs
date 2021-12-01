@@ -548,5 +548,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string SparkConfigurationName = "The Spark Configuration name.";
 
         public const string SparkConfigurationObject = "The Spark configuration object.";
+
+        public const string StorageAccountType = "The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.";
     }
 }

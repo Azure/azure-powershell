@@ -15,6 +15,8 @@ function Test-SynapseSqlPool
         $workspaceName = $params.WorkspaceName
         $location = $params.location
         $sqlPoolName = $params.sqlPoolName
+        $tags = $params.tags
+        $storageAccountType = $params.storageAccountType
 
         # In loop to check if SQL pool exists
         for ($i = 0; $i -le 60; $i++)
@@ -25,7 +27,14 @@ function Test-SynapseSqlPool
                 Assert-AreEqual $sqlPoolName $sqlPoolGet[0].Name
                 Assert-AreEqual $location $sqlPoolGet[0].Location
                 Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolGet[0].Type
-                Assert-True {$sqlPoolGet.Id -like "*$resourceGroupName*"}
+                Assert-True {$sqlPoolGet.Id -like "*$resourceGroupName*"} 
+                
+                Assert-NotNull $sqlPoolGet.Tags "Tags do not exists"
+                Assert-NotNull $sqlPoolGet.Tags["NewSqlPoolTag"] "The tag 'NewSqlPoolTag' does not exist"
+                Assert-AreEqual $sqlPoolGet.Tags["NewSqlPoolTag"] $tags["NewSqlPoolTag"]
+
+                Assert-NotNull $sqlPoolGet.StorageAccountType "StorageAccountType do not exists"
+                Assert-AreEqual $sqlPoolGet.StorageAccountType $storageAccountType
                 break
             }
 
@@ -190,7 +199,7 @@ Creates the test environment needed to perform the tests
 function Create-SqlPoolTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
-	Create-SqlTestEnvironmentWithParams $params $params.location
+    Create-SqlTestEnvironmentWithParams $params $params.location	
 }
 
 <#
@@ -208,7 +217,9 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
               location = "canadacentral";
-		}
+              tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
+              storageAccountType = "LRS" 
+	}
 }
 
 <#

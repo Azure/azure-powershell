@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Expanded DatasourceType with values `Query`, `Alerts` for cmdlets:
+* Expanded DataSourceType with values `Query`, `Alerts` for cmdlets:
   - `Get-AzOperationalInsightsLinkedStorageAccount`
   - `New-AzOperationalInsightsLinkedStorageAccount`
   - `Remove-AzOperationalInsightsLinkedStorageAccount`
