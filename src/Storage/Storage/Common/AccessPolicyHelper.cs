@@ -205,7 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 "Policy",
                 (identifier).GetType().GetProperty("Id").GetValue(identifier),
                 "Permissions",
-                (accessPolicy).GetType().GetProperty("Permissions").GetValue(accessPolicy).ToString(),
+                (accessPolicy).GetType().GetProperty("Permissions").GetValue(accessPolicy) is null ? null: (accessPolicy).GetType().GetProperty("Permissions").GetValue(accessPolicy).ToString(),
                 "StartTime",
                 (accessPolicy).GetType().GetProperty("PolicyStartsOn").GetValue(accessPolicy),
                 "ExpiryTime",
