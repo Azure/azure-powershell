@@ -5332,7 +5332,7 @@ function Test-VMUserDataBase64Encoded
 .SYNOPSIS
 Test Virtual Machine creation process does not create a Public IP Address when it is 
 not provided as a parameter. 
-When usinga VM Config object, this already occurs. 
+When using a VM Config object, this problem does not occur. 
 #>
 function Test-VMNoPublicIPAddress
 {

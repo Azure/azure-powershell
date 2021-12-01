@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             string name,
             string edgeZone,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            //ResourceConfig<PublicIPAddress> publicIPAddress,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null,
             bool enableAcceleratedNetworking = false)
             => Strategy.CreateResourceConfig(
@@ -81,8 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = name,
-                            Subnet = engine.GetReference(subnet) ,
-                            //PublicIPAddress = engine.GetReference(publicIPAddress)
+                            Subnet = engine.GetReference(subnet)
                         }
                     },
                     NetworkSecurityGroup = networkSecurityGroup == null
