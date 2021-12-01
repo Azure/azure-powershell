@@ -25,6 +25,7 @@ using System.Management.Automation;
 using System.Globalization;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -148,6 +149,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
 
+        /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database. This property is only settable for Hyperscale edition databases.")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
@@ -233,6 +241,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType, // note: default license type is LicenseIncluded
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

@@ -23,6 +23,7 @@
 ## Version 3.5.1
 
 * Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
+* Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases
 
 ## Version 3.5.0
 * Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
