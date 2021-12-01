@@ -5359,7 +5359,7 @@ function Test-VirtualMachineDiffDiskPlacement
 
         # OS & Image
         $user = "Foo12";
-        $password = $PLACEHOLDER;
+        $password = Get-PasswordForVM;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -5370,7 +5370,9 @@ function Test-VirtualMachineDiffDiskPlacement
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred `
              | Set-AzVMOSDisk -DiffDiskSetting "Local" -DiffDiskPlacement $diffDiskPlacement -Caching 'ReadOnly' -CreateOption FromImage;
 
+        # error of "Cannot index into a null array" occurs on this next line. 
         $imgRef = Get-DefaultCRPImage -loc $loc;
+
         $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
 
         # Get VM
