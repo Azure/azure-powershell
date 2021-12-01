@@ -32,7 +32,7 @@
     - `Get-AzVm`
     - `Get-AzVmss`
     - `Get-AzVmssVm`
-    - `New-Azvm`
+    - `New-AzVm`
     - `New-AzVmConfig`
     - `New-AzVmss`
     - `New-AzVmssConfig`
@@ -50,7 +50,7 @@
     - `New-AzDiskConfig`
     - `New-AzDiskUpdateConfig`
     - `New-AzSnapshotConfig`
-* Added `CompletionPercent` property to the PSSNapshot model so it is visible to the user.
+* Added `CompletionPercent` property to the PSSnapshot model so it is visible to the user.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
