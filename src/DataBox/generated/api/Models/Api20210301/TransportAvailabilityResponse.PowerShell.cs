@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails[]) content.GetValueForProperty("TransportAvailabilityDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("TransportAvailabilityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails[]) content.GetValueForProperty("TransportAvailabilityDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails[]) content.GetValueForProperty("TransportAvailabilityDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("TransportAvailabilityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails[]) content.GetValueForProperty("TransportAvailabilityDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityResponseInternal)this).TransportAvailabilityDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportAvailabilityDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportAvailabilityDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

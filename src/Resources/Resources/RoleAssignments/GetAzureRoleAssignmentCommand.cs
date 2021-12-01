@@ -222,6 +222,8 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
                 Scope = Scope,
@@ -243,7 +245,6 @@ namespace Microsoft.Azure.Commands.Resources
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
-                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);

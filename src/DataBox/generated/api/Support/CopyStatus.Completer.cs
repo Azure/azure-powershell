@@ -28,47 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotStarted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotStarted", "NotStarted", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotStarted");
+                yield return new global::System.Management.Automation.CompletionResult("'NotStarted'", "NotStarted", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotStarted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Completed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Completed", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
+                yield return new global::System.Management.Automation.CompletionResult("'Completed'", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CompletedWithErrors".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CompletedWithErrors", "CompletedWithErrors", global::System.Management.Automation.CompletionResultType.ParameterValue, "CompletedWithErrors");
+                yield return new global::System.Management.Automation.CompletionResult("'CompletedWithErrors'", "CompletedWithErrors", global::System.Management.Automation.CompletionResultType.ParameterValue, "CompletedWithErrors");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotReturned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotReturned", "NotReturned", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotReturned");
+                yield return new global::System.Management.Automation.CompletionResult("'NotReturned'", "NotReturned", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotReturned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HardwareError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HardwareError", "HardwareError", global::System.Management.Automation.CompletionResultType.ParameterValue, "HardwareError");
+                yield return new global::System.Management.Automation.CompletionResult("'HardwareError'", "HardwareError", global::System.Management.Automation.CompletionResultType.ParameterValue, "HardwareError");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeviceFormatted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeviceFormatted", "DeviceFormatted", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeviceFormatted");
+                yield return new global::System.Management.Automation.CompletionResult("'DeviceFormatted'", "DeviceFormatted", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeviceFormatted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeviceMetadataModified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeviceMetadataModified", "DeviceMetadataModified", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeviceMetadataModified");
+                yield return new global::System.Management.Automation.CompletionResult("'DeviceMetadataModified'", "DeviceMetadataModified", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeviceMetadataModified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StorageAccountNotAccessible".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StorageAccountNotAccessible", "StorageAccountNotAccessible", global::System.Management.Automation.CompletionResultType.ParameterValue, "StorageAccountNotAccessible");
+                yield return new global::System.Management.Automation.CompletionResult("'StorageAccountNotAccessible'", "StorageAccountNotAccessible", global::System.Management.Automation.CompletionResultType.ParameterValue, "StorageAccountNotAccessible");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnsupportedData".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnsupportedData", "UnsupportedData", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedData");
+                yield return new global::System.Management.Automation.CompletionResult("'UnsupportedData'", "UnsupportedData", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedData");
             }
         }
     }

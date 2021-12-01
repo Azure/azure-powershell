@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
 * Support for new Match Variables in WAF Exclusions

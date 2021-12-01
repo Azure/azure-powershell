@@ -249,6 +249,36 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Locations.ListBillingSpecs(location);
         }
 
+        public virtual IList<PrivateLinkResource> GetPrivateLinkResources(string resourceGroupName, string clusterName, string privateLinkResourceName)
+        {
+            var result = HdInsightManagementClient.PrivateLinkResources.ListByCluster(resourceGroupName, clusterName)?.Value;
+            if (privateLinkResourceName != null)
+            {
+                result=result?.Where(item => item.Name.Equals(privateLinkResourceName))?.ToList();
+            }
+            return result;
+        }
+
+        public virtual IList<PrivateEndpointConnection> GetPrivateEndpointConnections(string resourceGroupName, string clusterName, string privateEndpointConnectionName)
+        {
+            var result = HdInsightManagementClient.PrivateEndpointConnections.ListByCluster(resourceGroupName, clusterName).ToList();
+            if (privateEndpointConnectionName != null)
+            {
+                result = result?.Where(item => item.Name.Equals(privateEndpointConnectionName)).ToList();
+            }
+            return result;
+        }
+
+        public virtual void DeletePrivateEndpointConnection(string resourceGroupName, string clusterName, string privateEndpointConnectionName)
+        {
+            HdInsightManagementClient.PrivateEndpointConnections.Delete(resourceGroupName, clusterName, privateEndpointConnectionName);
+        }
+
+        public virtual PrivateEndpointConnection UpdatePrivateEndpointConnection(string resourceGroupName, string clusterName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnectionParameter)
+        {
+            return HdInsightManagementClient.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, clusterName, privateEndpointConnectionName, privateEndpointConnectionParameter);
+        }
+
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
         {
             var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;

@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnknownType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnknownType", "UnknownType", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnknownType");
+                yield return new global::System.Management.Automation.CompletionResult("'UnknownType'", "UnknownType", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnknownType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HCS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HCS", "HCS", global::System.Management.Automation.CompletionResultType.ParameterValue, "HCS");
+                yield return new global::System.Management.Automation.CompletionResult("'HCS'", "HCS", global::System.Management.Automation.CompletionResultType.ParameterValue, "HCS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BlockBlob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BlockBlob", "BlockBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlockBlob");
+                yield return new global::System.Management.Automation.CompletionResult("'BlockBlob'", "BlockBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlockBlob");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PageBlob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PageBlob", "PageBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "PageBlob");
+                yield return new global::System.Management.Automation.CompletionResult("'PageBlob'", "PageBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "PageBlob");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureFile".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureFile", "AzureFile", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFile");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureFile'", "AzureFile", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFile");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ManagedDisk".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ManagedDisk", "ManagedDisk", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagedDisk");
+                yield return new global::System.Management.Automation.CompletionResult("'ManagedDisk'", "ManagedDisk", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagedDisk");
             }
         }
     }

@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated ADF .Net SDK version to 4.27.0
+* Updated ADF .Net SDK version to 4.28.0
 
 ## Version 1.16.0
 * Added PublicNetworkAccess to Update_AzDataFactoryV2 Command

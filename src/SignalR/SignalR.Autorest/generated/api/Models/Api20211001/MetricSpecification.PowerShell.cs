@@ -99,14 +99,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType = (string) content.GetValueForProperty("AggregationType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero = (string) content.GetValueForProperty("FillGapWithZero",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension[]) content.GetValueForProperty("Dimension",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.DimensionTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("Unit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit, global::System.Convert.ToString);
+            }
+            if (content.Contains("AggregationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType = (string) content.GetValueForProperty("AggregationType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("FillGapWithZero"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero = (string) content.GetValueForProperty("FillGapWithZero",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("Dimension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension[]) content.GetValueForProperty("Dimension",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.DimensionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,14 +148,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType = (string) content.GetValueForProperty("AggregationType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero = (string) content.GetValueForProperty("FillGapWithZero",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension[]) content.GetValueForProperty("Dimension",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.DimensionTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).DisplayDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("Unit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Unit, global::System.Convert.ToString);
+            }
+            if (content.Contains("AggregationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType = (string) content.GetValueForProperty("AggregationType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).AggregationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("FillGapWithZero"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero = (string) content.GetValueForProperty("FillGapWithZero",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).FillGapWithZero, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category = (string) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Category, global::System.Convert.ToString);
+            }
+            if (content.Contains("Dimension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension[]) content.GetValueForProperty("Dimension",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecificationInternal)this).Dimension, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IDimension>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.DimensionTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

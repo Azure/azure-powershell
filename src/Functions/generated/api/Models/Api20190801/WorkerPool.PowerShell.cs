@@ -104,11 +104,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId = (int?) content.GetValueForProperty("WorkerSizeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize = (string) content.GetValueForProperty("WorkerSize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount = (int?) content.GetValueForProperty("WorkerCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName = (string[]) content.GetValueForProperty("InstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("WorkerSizeId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId = (int?) content.GetValueForProperty("WorkerSizeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
+            }
+            if (content.Contains("WorkerSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize = (string) content.GetValueForProperty("WorkerSize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkerCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount = (int?) content.GetValueForProperty("WorkerCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName = (string[]) content.GetValueForProperty("InstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,11 +141,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId = (int?) content.GetValueForProperty("WorkerSizeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize = (string) content.GetValueForProperty("WorkerSize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount = (int?) content.GetValueForProperty("WorkerCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName = (string[]) content.GetValueForProperty("InstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("WorkerSizeId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId = (int?) content.GetValueForProperty("WorkerSizeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSizeId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions?) content.GetValueForProperty("ComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).ComputeMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptions.CreateFrom);
+            }
+            if (content.Contains("WorkerSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize = (string) content.GetValueForProperty("WorkerSize",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkerCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount = (int?) content.GetValueForProperty("WorkerCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).WorkerCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName = (string[]) content.GetValueForProperty("InstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IWorkerPoolInternal)this).InstanceName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
     }

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedKubernetes servic
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,45 +47,42 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 84ff2538067e14b09c3f6e0984929f740c707cb5
+branch: 9a19506631005d0ff1e3f394c86a9ce10cf51910
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-03-01/connectedClusters.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/connectedClusters.json
+
 title: ConnectedKubernetes
 module-version: 0.1.0
-subject-prefix: ''
+subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   - where:
-      subject: ConnectedCluster
+      subject: ^ConnectedCluster(.*)
     set:
-      subject: ConnectedKubernetes
+      subject: $1
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: ConnectedKubernetes
+      subject-prefix: ConnectedKubernetes
     remove: true
   - where:
-      subject: ConnectedKubernetes
+      subject-prefix: ConnectedKubernetes
       parameter-name: ClusterName
     set:
       alias: Name
   - where:
-      verb: New|Update|Remove
-      subject: ConnectedKubernetes
+      verb: Update
+      subject-prefix: ConnectedKubernetes
+      parameter-name: Property
     hide: true
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
   - where:
-      verb: Get
-      subject: ConnectedClusterUserCredentials
-    remove: true
-  - from: swagger-document
-    where: $.definitions["ConnectedClusterAADProfile"].required
-    # remove: true
-    transform: >-
-        return undefined
+      verb: New|Update|Remove
+      subject-prefix: ConnectedKubernetes
+    hide: true
+
 ```

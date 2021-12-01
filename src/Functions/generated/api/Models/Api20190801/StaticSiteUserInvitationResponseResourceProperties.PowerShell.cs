@@ -102,8 +102,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn = (global::System.DateTime?) content.GetValueForProperty("ExpiresOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl = (string) content.GetValueForProperty("InvitationUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl, global::System.Convert.ToString);
+            if (content.Contains("ExpiresOn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn = (global::System.DateTime?) content.GetValueForProperty("ExpiresOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("InvitationUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl = (string) content.GetValueForProperty("InvitationUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,8 +127,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn = (global::System.DateTime?) content.GetValueForProperty("ExpiresOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl = (string) content.GetValueForProperty("InvitationUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl, global::System.Convert.ToString);
+            if (content.Contains("ExpiresOn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn = (global::System.DateTime?) content.GetValueForProperty("ExpiresOn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).ExpiresOn, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("InvitationUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl = (string) content.GetValueForProperty("InvitationUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteUserInvitationResponseResourcePropertiesInternal)this).InvitationUrl, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

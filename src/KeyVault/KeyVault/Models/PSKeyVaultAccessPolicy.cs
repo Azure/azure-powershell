@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
+
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using System;
 using System.Collections.Generic;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
@@ -26,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSKeyVaultAccessPolicy
     {
-        public PSKeyVaultAccessPolicy( Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates, string[] permissionsToStorage )
+        public PSKeyVaultAccessPolicy(Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates, string[] permissionsToStorage)
         {
             TenantId = tenantId;
             ObjectId = objectId;
@@ -34,20 +30,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToSecrets = permissionsToSecrets == null ? new List<string>() : new List<string>(permissionsToSecrets);
             PermissionsToKeys = permissionsToKeys == null ? new List<string>() : new List<string>(permissionsToKeys);
             PermissionsToCertificates = permissionsToCertificates == null ? new List<string>() : new List<string>(permissionsToCertificates);
-            PermissionsToStorage = permissionsToStorage == null ? new List<string>() : new List<string>( permissionsToStorage );
+            PermissionsToStorage = permissionsToStorage == null ? new List<string>() : new List<string>(permissionsToStorage);
         }
 
-        public PSKeyVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, ActiveDirectoryClient adClient)
+        public PSKeyVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, IMicrosoftGraphClient graphClient)
         {
             ObjectId = s.ObjectId;
-            DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, adClient);
+            DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, graphClient);
             ApplicationId = s.ApplicationId;
             TenantId = s.TenantId;
             TenantName = s.TenantId.ToString();
             PermissionsToSecrets = s.Permissions.Secrets == null ? new List<string>() : new List<string>(s.Permissions.Secrets);
             PermissionsToKeys = s.Permissions.Keys == null ? new List<string>() : new List<string>(s.Permissions.Keys);
             PermissionsToCertificates = s.Permissions.Certificates == null ? new List<string>() : new List<string>(s.Permissions.Certificates);
-            PermissionsToStorage = s.Permissions.Storage == null ? new List<string>() : new List<string>( s.Permissions.Storage );
+            PermissionsToStorage = s.Permissions.Storage == null ? new List<string>() : new List<string>(s.Permissions.Storage);
         }
 
         public Guid TenantId { get; private set; }
@@ -75,6 +71,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public List<string> PermissionsToStorage { get; private set; }
 
-        public string PermissionsToStorageStr { get { return string.Join( ", ", PermissionsToStorage ); } }
+        public string PermissionsToStorageStr { get { return string.Join(", ", PermissionsToStorage); } }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
@@ -38,6 +39,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string TenantId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure Active Directory tenant ID that contains the assigned identity.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public Dictionary<string, UserAssignedIdentityResource> UserAssignedIdentities { get; set; }
     }
 }
 

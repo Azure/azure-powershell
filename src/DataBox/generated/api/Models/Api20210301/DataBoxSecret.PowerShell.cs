@@ -66,11 +66,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber = (string) content.GetValueForProperty("DeviceSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword = (string) content.GetValueForProperty("DevicePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration[]) content.GetValueForProperty("NetworkConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ApplianceNetworkConfigurationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey = (string) content.GetValueForProperty("EncodedValidationCertPubKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails[]) content.GetValueForProperty("AccountCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AccountCredentialDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("DeviceSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber = (string) content.GetValueForProperty("DeviceSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("DevicePassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword = (string) content.GetValueForProperty("DevicePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration[]) content.GetValueForProperty("NetworkConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ApplianceNetworkConfigurationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("EncodedValidationCertPubKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey = (string) content.GetValueForProperty("EncodedValidationCertPubKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountCredentialDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails[]) content.GetValueForProperty("AccountCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AccountCredentialDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,11 +103,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber = (string) content.GetValueForProperty("DeviceSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword = (string) content.GetValueForProperty("DevicePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration[]) content.GetValueForProperty("NetworkConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ApplianceNetworkConfigurationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey = (string) content.GetValueForProperty("EncodedValidationCertPubKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails[]) content.GetValueForProperty("AccountCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AccountCredentialDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("DeviceSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber = (string) content.GetValueForProperty("DeviceSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DeviceSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("DevicePassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword = (string) content.GetValueForProperty("DevicePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).DevicePassword, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration[]) content.GetValueForProperty("NetworkConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).NetworkConfiguration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApplianceNetworkConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ApplianceNetworkConfigurationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("EncodedValidationCertPubKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey = (string) content.GetValueForProperty("EncodedValidationCertPubKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).EncodedValidationCertPubKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountCredentialDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails[]) content.GetValueForProperty("AccountCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxSecretInternal)this).AccountCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AccountCredentialDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

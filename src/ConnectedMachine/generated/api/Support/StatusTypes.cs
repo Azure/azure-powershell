@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
 {
 
+    /// <summary>The status of the hybrid machine agent.</summary>
     public partial struct StatusTypes :
         System.IEquatable<StatusTypes>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
         /// <param name="value">the value to convert to an instance of <see cref="StatusTypes" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new StatusTypes(System.Convert.ToString(value));
+            return new StatusTypes(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type StatusTypes</summary>

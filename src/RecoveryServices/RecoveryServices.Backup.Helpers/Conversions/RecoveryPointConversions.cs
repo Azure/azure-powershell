@@ -403,8 +403,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerName = IdUtils.GetNameFromUri(containerUri);
             string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
 
-            ServiceClientModel.AzureWorkloadSQLRecoveryPoint recoveryPoint =
-                        rp.Properties as ServiceClientModel.AzureWorkloadSQLRecoveryPoint;
+            ServiceClientModel.AzureWorkloadRecoveryPoint recoveryPoint;
+            if (item.WorkloadType == WorkloadType.SAPHanaDatabase)
+            {
+                recoveryPoint = rp.Properties as ServiceClientModel.AzureWorkloadSAPHanaRecoveryPoint;
+            }   
+            else
+            {
+                recoveryPoint = rp.Properties as ServiceClientModel.AzureWorkloadSQLRecoveryPoint;
+            }
 
             DateTime recoveryPointTime = DateTime.MinValue;
 
@@ -428,9 +435,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RecoveryPointType = recoveryPoint.Type,
                 Id = rp.Id,
                 WorkloadType = item.WorkloadType,
-                DataDirectoryPaths = recoveryPoint.ExtendedInfo != null ? recoveryPoint.ExtendedInfo.DataDirectoryPaths : null,
                 RehydrationExpiryTime = (DateTime?)null
             };
+
+            if (item.WorkloadType == WorkloadType.MSSQL)
+            {
+                rpBase.DataDirectoryPaths = ((ServiceClientModel.AzureWorkloadSQLRecoveryPoint)recoveryPoint).ExtendedInfo != null ? ((ServiceClientModel.AzureWorkloadSQLRecoveryPoint)recoveryPoint).ExtendedInfo.DataDirectoryPaths : null;
+            }
 
             if (recoveryPoint.RecoveryPointTierDetails != null)
             {
@@ -493,18 +504,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
-
             if (recoveryPoint.RecoveryPointMoveReadinessInfo != null)
             {
                 rpBase.RecoveryPointMoveReadinessInfo = new Dictionary<string, RecoveryPointMoveReadinessInfo>();
 
                 foreach (var moveInfo in recoveryPoint.RecoveryPointMoveReadinessInfo)
                 {
-                    RecoveryPointMoveReadinessInfo AzureVmMoveInfo = new RecoveryPointMoveReadinessInfo();
-                    AzureVmMoveInfo.IsReadyForMove = moveInfo.Value.IsReadyForMove;
-                    AzureVmMoveInfo.AdditionalInfo = moveInfo.Value.AdditionalInfo;
+                    RecoveryPointMoveReadinessInfo AzureWorkloadMoveInfo = new RecoveryPointMoveReadinessInfo();
+                    AzureWorkloadMoveInfo.IsReadyForMove = moveInfo.Value.IsReadyForMove;
+                    AzureWorkloadMoveInfo.AdditionalInfo = moveInfo.Value.AdditionalInfo;
 
-                    rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureVmMoveInfo);
+                    rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureWorkloadMoveInfo);
                 }
             }
 

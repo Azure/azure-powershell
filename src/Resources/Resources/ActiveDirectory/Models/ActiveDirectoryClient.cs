@@ -208,10 +208,18 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
 
         /// <summary>
+        /// Get object by ObjectId
+        /// </summary>
+        public PSADObject GetObjectByObjectId(string objectId)
+        {
+            return GraphClient.DirectoryObjects.GetDirectoryObject(objectId)?.ToPSADObject();
+        }
+
+        /// <summary>
         /// The graph getobjectsbyObjectId API supports 1000 objectIds per call.
         /// Due to this we are batching objectIds by chunk size of 1000 per APi call if it exceeds 1000
         /// </summary>
-        public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
+        public List<PSADObject> GetObjectsByObjectIds(List<string> objectIds)
         {
             // todo: do we want to use 1000 as batch count in msgraph API?
             List<PSADObject> result = new List<PSADObject>();
@@ -238,13 +246,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         }).Value;
                     result.AddRange(adObjects.Select(o => o.ToPSADObject()));
                 }
-                catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe) when (objectIds.Count == 1 && oe.Request.RequestUri.AbsolutePath.StartsWith("//"))
+                catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
                 {
-                    // absorb malformed string
-                    // this is a quirk from how strings are formed when requesting an RA from an SP
-                    var errorGeneratedUser = new PSErrorHelperObject(ErrorTypeEnum.MalformedQuery);
-                    result.Add(errorGeneratedUser);
-
+                    // Swallow OdataErroException
                 }
             }
             return result;
@@ -257,7 +261,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 try
                 {
                     // use GetObjectsByObjectId to handle Redirects in the CSP scenario
-                    PSADGroup group = this.GetObjectsByObjectId(new List<string> { options.Id }).FirstOrDefault() as PSADGroup;
+                    PSADGroup group = GetObjectByObjectId(options.Id) as PSADGroup;
                     if (group != null)
                     {
                         return new List<PSADGroup> { group };

@@ -26,37 +26,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
-        /// <summary>Backing field for <see cref="Location" /> property.</summary>
-        private string _location;
-
-        /// <summary>The Azure region</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Owned)]
-        public string Location { get => this._location; set => this._location = value; }
-
-        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
-        private string _operationId;
-
-        /// <summary>The ID of an ongoing async operation</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Owned)]
-        public string OperationId { get => this._operationId; set => this._operationId = value; }
-
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API
-        /// or the portal.
-        /// </summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -85,41 +65,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The Azure region</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure region",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
-        /// <summary>The ID of an ongoing async operation</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ID of an ongoing async operation",
-        SerializedName = @"operationId",
-        PossibleTypes = new [] { typeof(string) })]
-        string OperationId { get; set; }
-        /// <summary>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API
-        /// or the portal.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -132,19 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
         string CommunicationServiceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The Azure region</summary>
-        string Location { get; set; }
-        /// <summary>The ID of an ongoing async operation</summary>
-        string OperationId { get; set; }
-        /// <summary>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API
-        /// or the portal.
-        /// </summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

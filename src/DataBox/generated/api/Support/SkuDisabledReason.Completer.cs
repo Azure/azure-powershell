@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Country".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Country", "Country", global::System.Management.Automation.CompletionResultType.ParameterValue, "Country");
+                yield return new global::System.Management.Automation.CompletionResult("'Country'", "Country", global::System.Management.Automation.CompletionResultType.ParameterValue, "Country");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Region".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Region", "Region", global::System.Management.Automation.CompletionResultType.ParameterValue, "Region");
+                yield return new global::System.Management.Automation.CompletionResult("'Region'", "Region", global::System.Management.Automation.CompletionResultType.ParameterValue, "Region");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Feature".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Feature", "Feature", global::System.Management.Automation.CompletionResultType.ParameterValue, "Feature");
+                yield return new global::System.Management.Automation.CompletionResult("'Feature'", "Feature", global::System.Management.Automation.CompletionResultType.ParameterValue, "Feature");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OfferType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OfferType", "OfferType", global::System.Management.Automation.CompletionResultType.ParameterValue, "OfferType");
+                yield return new global::System.Management.Automation.CompletionResult("'OfferType'", "OfferType", global::System.Management.Automation.CompletionResultType.ParameterValue, "OfferType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoSubscriptionInfo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoSubscriptionInfo", "NoSubscriptionInfo", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoSubscriptionInfo");
+                yield return new global::System.Management.Automation.CompletionResult("'NoSubscriptionInfo'", "NoSubscriptionInfo", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoSubscriptionInfo");
             }
         }
     }

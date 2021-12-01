@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus?) content.GetValueForProperty("StageStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime = (global::System.DateTime?) content.GetValueForProperty("StageTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("JobStageDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
+            if (content.Contains("StageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StageStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus?) content.GetValueForProperty("StageStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus.CreateFrom);
+            }
+            if (content.Contains("StageTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime = (global::System.DateTime?) content.GetValueForProperty("StageTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("JobStageDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("JobStageDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus?) content.GetValueForProperty("StageStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime = (global::System.DateTime?) content.GetValueForProperty("StageTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("JobStageDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
+            if (content.Contains("StageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("StageName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StageStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus?) content.GetValueForProperty("StageStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageStatus, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus.CreateFrom);
+            }
+            if (content.Contains("StageTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime = (global::System.DateTime?) content.GetValueForProperty("StageTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).StageTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("JobStageDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IAny) content.GetValueForProperty("JobStageDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobStagesInternal)this).JobStageDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.AnyTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

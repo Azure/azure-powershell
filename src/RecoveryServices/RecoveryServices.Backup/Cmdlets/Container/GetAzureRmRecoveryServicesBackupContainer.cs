@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -26,7 +25,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [GenericBreakingChange("Please avoid using BackupManagementType MARS, it will be removed in upcoming breaking change release, instead use BackupManagementType MAB", "5.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer"), OutputType(typeof(ContainerBase))]
     public class GetAzureRmRecoveryServicesBackupContainer : RSBackupVaultCmdletBase
     {
@@ -42,8 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, Position = 2,
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("AzureVM", "MARS", "AzureStorage", "AzureWorkload", "MAB")]
+        [ValidateSet("AzureVM", "AzureStorage", "AzureWorkload", "MAB")]
         public string BackupManagementType { get; set; }
 
         /// <summary>
