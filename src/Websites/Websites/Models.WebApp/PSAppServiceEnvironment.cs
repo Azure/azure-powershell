@@ -22,13 +22,11 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         public PSAppServiceEnvironment(AppServiceEnvironmentResource other)
         {
             this.Location = other.Location;
-            this.ResourceGroupName = other.ResourceGroup;
             this.Name = other.Name;
             this.Kind = other.Kind;
             this.ProvisioningState = other.ProvisioningState;
             this.Status = other.Status;
             this.Id = other.Id;
-            this.EnvironmentIsHealthy = other.EnvironmentIsHealthy;
         }
 
         public string Id { get; set; }
