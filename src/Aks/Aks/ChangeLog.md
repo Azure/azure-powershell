@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Remove alias `New-AzAks`, `Get-AzAks`, `Set-AzAks` and `Remove-AzAks`.
 * [Breaking Change] Updated parameter alias and output type of `Get-AzAksVersion`
 * Added `Invoke-AzAksRunCommand` to support running a shell command (with kubectl, helm) on aks cluster. [#16104]
 * Added support of `EnableNodePublicIp` and `NodePublicIPPrefixID` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
