@@ -31,7 +31,7 @@
   - `Set-AzOperationalInsightsStorageInsight`
 * Added SupportsShouldProcess attribute to cmdlet:
   - `Set-AzOperationalInsightsStorageInsight`
-* Added new cmdlets to support Table, DataExport, WorkspaceShareKey, PurgeWorkspace, and AvailableServiceTier:
+* Added new cmdlets to support Table, DataExport, WorkspaceShareKey, PurgeWorkspace, and AvailableServiceTier
 * Added `Error` property in the result of the `Invoke-AzOperationalInsightsQuery` to retrieve partial error when running a query [#16378]
 
 ## Version 2.3.1
