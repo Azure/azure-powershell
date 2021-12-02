@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             regenParam.Key = keyValue;
 
-            regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, regenParam.KeyType);
+            regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, regenParam.KeyType, regenParam.Key);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
