@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed get container access policy fail when permission is null [#15644]
-    -  `Get-AzStorageContainerStoredAccessPolicy` 
+* Fixed the failure of `Get-AzStorageContainerStoredAccessPolicy` when permission is null [#15644]
 * Supported create blob service Sas token or account Sas token with permission i
     -  `New-AzStorageBlobSASToken` 
     -  `New-AzStorageContainerSASToken` 
