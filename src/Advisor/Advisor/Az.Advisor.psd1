@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Advisor.dll'
@@ -72,8 +72,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Advisor.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzAdvisorRecommendation', 'Enable-AzAdvisorRecommendation', 
-               'Disable-AzAdvisorRecommendation', 'Get-AzAdvisorConfiguration', 
+CmdletsToExport = 'Get-AzAdvisorRecommendation', 'Enable-AzAdvisorRecommendation',
+               'Disable-AzAdvisorRecommendation', 'Get-AzAdvisorConfiguration',
                'Set-AzAdvisorConfiguration'
 
 # Variables to export from this module

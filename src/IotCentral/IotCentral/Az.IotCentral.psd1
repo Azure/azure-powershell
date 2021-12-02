@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.IotCentral.dll'
@@ -74,7 +74,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.IotCentral.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzIotCentralApp', 'Get-AzIotCentralApp', 'Set-AzIotCentralApp', 
+CmdletsToExport = 'New-AzIotCentralApp', 'Get-AzIotCentralApp', 'Set-AzIotCentralApp',
                'Remove-AzIotCentralApp'
 
 # Variables to export from this module
@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Stable release version, updated to IoT Central .NET Management Plane SDK version 4.0.0. 
+        ReleaseNotes = '* Stable release version, updated to IoT Central .NET Management Plane SDK version 4.0.0.
 * This change introduces support for System-Assigned Managed Identities, removes support for geographic locations (e.g., ''unitedstates''), and removes support for legacy S1 sku.'
 
         # Prerelease string of this module

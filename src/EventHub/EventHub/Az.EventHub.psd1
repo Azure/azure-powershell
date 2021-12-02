@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.EventHub.dll'
@@ -74,27 +74,27 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace', 
-               'Set-AzEventHubNamespace', 'Remove-AzEventHubNamespace', 
-               'New-AzEventHubAuthorizationRule', 
-               'Get-AzEventHubAuthorizationRule', 
-               'Set-AzEventHubAuthorizationRule', 
-               'Remove-AzEventHubAuthorizationRule', 'Get-AzEventHubKey', 
-               'New-AzEventHubKey', 'New-AzEventHub', 'Get-AzEventHub', 
-               'Set-AzEventHub', 'Remove-AzEventHub', 'New-AzEventHubConsumerGroup', 
-               'Get-AzEventHubConsumerGroup', 'Set-AzEventHubConsumerGroup', 
-               'Remove-AzEventHubConsumerGroup', 
-               'New-AzEventHubGeoDRConfiguration', 
-               'Get-AzEventHubGeoDRConfiguration', 
-               'Remove-AzEventHubGeoDRConfiguration', 
-               'Set-AzEventHubGeoDRConfigurationBreakPair', 
-               'Set-AzEventHubGeoDRConfigurationFailOver', 'Test-AzEventHubName', 
-               'Remove-AzEventHubIPRule', 'Add-AzEventHubIPRule', 
-               'Remove-AzEventHubVirtualNetworkRule', 
-               'Add-AzEventHubVirtualNetworkRule', 'Get-AzEventHubNetworkRuleSet', 
-               'Remove-AzEventHubNetworkRuleSet', 'Set-AzEventHubNetworkRuleSet', 
-               'New-AzEventHubAuthorizationRuleSASToken', 'New-AzEventHubCluster', 
-               'Set-AzEventHubCluster', 'Get-AzEventHubCluster', 
+CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace',
+               'Set-AzEventHubNamespace', 'Remove-AzEventHubNamespace',
+               'New-AzEventHubAuthorizationRule',
+               'Get-AzEventHubAuthorizationRule',
+               'Set-AzEventHubAuthorizationRule',
+               'Remove-AzEventHubAuthorizationRule', 'Get-AzEventHubKey',
+               'New-AzEventHubKey', 'New-AzEventHub', 'Get-AzEventHub',
+               'Set-AzEventHub', 'Remove-AzEventHub', 'New-AzEventHubConsumerGroup',
+               'Get-AzEventHubConsumerGroup', 'Set-AzEventHubConsumerGroup',
+               'Remove-AzEventHubConsumerGroup',
+               'New-AzEventHubGeoDRConfiguration',
+               'Get-AzEventHubGeoDRConfiguration',
+               'Remove-AzEventHubGeoDRConfiguration',
+               'Set-AzEventHubGeoDRConfigurationBreakPair',
+               'Set-AzEventHubGeoDRConfigurationFailOver', 'Test-AzEventHubName',
+               'Remove-AzEventHubIPRule', 'Add-AzEventHubIPRule',
+               'Remove-AzEventHubVirtualNetworkRule',
+               'Add-AzEventHubVirtualNetworkRule', 'Get-AzEventHubNetworkRuleSet',
+               'Remove-AzEventHubNetworkRuleSet', 'Set-AzEventHubNetworkRuleSet',
+               'New-AzEventHubAuthorizationRuleSASToken', 'New-AzEventHubCluster',
+               'Set-AzEventHubCluster', 'Get-AzEventHubCluster',
                'Remove-AzEventHubCluster', 'Get-AzEventHubClustersAvailableRegion'
 
 # Variables to export from this module

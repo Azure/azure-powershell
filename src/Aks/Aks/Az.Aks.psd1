@@ -53,11 +53,11 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'YamlDotNet.dll', 'AutoMapper.dll', 
-               'Microsoft.Azure.Management.ContainerService.dll', 
+RequiredAssemblies = 'YamlDotNet.dll', 'AutoMapper.dll',
+               'Microsoft.Azure.Management.ContainerService.dll',
                'Aks.Autorest\bin\Az.Aks.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -70,19 +70,19 @@ RequiredAssemblies = 'YamlDotNet.dll', 'AutoMapper.dll',
 FormatsToProcess = 'Aks.Autorest\Az.Aks.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Aks.dll', 
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Aks.dll',
                'Aks.Autorest\Az.Aks.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 
+FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile',
                'Get-AzAksVersion', 'Start-AzAksCluster', 'Stop-AzAksCluster'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster', 
-               'Import-AzAksCredential', 'Start-AzAksDashboard', 
-               'Stop-AzAksDashboard', 'Set-AzAksCluster', 'New-AzAksNodePool', 
-               'Update-AzAksNodePool', 'Remove-AzAksNodePool', 'Get-AzAksNodePool', 
-               'Install-AzAksKubectl', 'Enable-AzAksAddOn', 'Disable-AzAksAddOn', 
+CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster',
+               'Import-AzAksCredential', 'Start-AzAksDashboard',
+               'Stop-AzAksDashboard', 'Set-AzAksCluster', 'New-AzAksNodePool',
+               'Update-AzAksNodePool', 'Remove-AzAksNodePool', 'Get-AzAksNodePool',
+               'Install-AzAksKubectl', 'Enable-AzAksAddOn', 'Disable-AzAksAddOn',
                'Set-AzAksClusterCredential', 'Invoke-AzAksRunCommand'
 
 # Variables to export from this module

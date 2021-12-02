@@ -53,11 +53,11 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.HDInsight.dll', 
-               'Microsoft.Azure.Management.HDInsight.Job.dll', 
+RequiredAssemblies = 'Microsoft.Azure.Management.HDInsight.dll',
+               'Microsoft.Azure.Management.HDInsight.Job.dll',
                'Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -76,37 +76,37 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition', 
-               'Wait-AzHDInsightJob', 
-               'New-AzHDInsightStreamingMapReduceJobDefinition', 
-               'New-AzHDInsightMapReduceJobDefinition', 
-               'New-AzHDInsightPigJobDefinition', 
-               'New-AzHDInsightHiveJobDefinition', 'Get-AzHDInsightJobOutput', 
-               'Invoke-AzHDInsightHiveJob', 'Use-AzHDInsightCluster', 
-               'Stop-AzHDInsightJob', 'Start-AzHDInsightJob', 
-               'Add-AzHDInsightComponentVersion', 'Add-AzHDInsightSecurityProfile', 
-               'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage', 
-               'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore', 
-               'Add-AzHDInsightConfigValue', 'Get-AzHDInsightProperty', 
-               'Set-AzHDInsightGatewayCredential', 'New-AzHDInsightClusterConfig', 
-               'Remove-AzHDInsightCluster', 'Set-AzHDInsightClusterSize', 
-               'Get-AzHDInsightPersistedScriptAction', 
-               'Get-AzHDInsightScriptActionHistory', 
-               'Remove-AzHDInsightPersistedScriptAction', 
-               'Set-AzHDInsightPersistedScriptAction', 
-               'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster', 
-               'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
-               'Enable-AzHDInsightMonitoring', 'Disable-AzHDInsightMonitoring', 
-               'Get-AzHDInsightMonitoring', 
-               'Set-AzHDInsightClusterDiskEncryptionKey', 'Get-AzHDInsightHost', 
-               'Restart-AzHDInsightHost', 
-               'New-AzHDInsightClusterAutoscaleScheduleCondition', 
-               'Get-AzHDInsightClusterAutoscaleConfiguration', 
-               'New-AzHDInsightClusterAutoscaleConfiguration', 
-               'Set-AzHDInsightClusterAutoscaleConfiguration', 
-               'Remove-AzHDInsightClusterAutoscaleConfiguration', 
-               'Get-AzHDInsightAzureMonitor', 'Enable-AzHDInsightAzureMonitor', 
-               'Disable-AzHDInsightAzureMonitor', 'New-AzHDInsightIPConfiguration', 
+CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
+               'Wait-AzHDInsightJob',
+               'New-AzHDInsightStreamingMapReduceJobDefinition',
+               'New-AzHDInsightMapReduceJobDefinition',
+               'New-AzHDInsightPigJobDefinition',
+               'New-AzHDInsightHiveJobDefinition', 'Get-AzHDInsightJobOutput',
+               'Invoke-AzHDInsightHiveJob', 'Use-AzHDInsightCluster',
+               'Stop-AzHDInsightJob', 'Start-AzHDInsightJob',
+               'Add-AzHDInsightComponentVersion', 'Add-AzHDInsightSecurityProfile',
+               'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage',
+               'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore',
+               'Add-AzHDInsightConfigValue', 'Get-AzHDInsightProperty',
+               'Set-AzHDInsightGatewayCredential', 'New-AzHDInsightClusterConfig',
+               'Remove-AzHDInsightCluster', 'Set-AzHDInsightClusterSize',
+               'Get-AzHDInsightPersistedScriptAction',
+               'Get-AzHDInsightScriptActionHistory',
+               'Remove-AzHDInsightPersistedScriptAction',
+               'Set-AzHDInsightPersistedScriptAction',
+               'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster',
+               'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity',
+               'Enable-AzHDInsightMonitoring', 'Disable-AzHDInsightMonitoring',
+               'Get-AzHDInsightMonitoring',
+               'Set-AzHDInsightClusterDiskEncryptionKey', 'Get-AzHDInsightHost',
+               'Restart-AzHDInsightHost',
+               'New-AzHDInsightClusterAutoscaleScheduleCondition',
+               'Get-AzHDInsightClusterAutoscaleConfiguration',
+               'New-AzHDInsightClusterAutoscaleConfiguration',
+               'Set-AzHDInsightClusterAutoscaleConfiguration',
+               'Remove-AzHDInsightClusterAutoscaleConfiguration',
+               'Get-AzHDInsightAzureMonitor', 'Enable-AzHDInsightAzureMonitor',
+               'Disable-AzHDInsightAzureMonitor', 'New-AzHDInsightIPConfiguration',
                'New-AzHDInsightPrivateLinkConfiguration'
 
 # Variables to export from this module
