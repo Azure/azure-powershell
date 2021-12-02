@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed get container access policy fail when permission is null [#15644]
+    -  `Get-AzStorageContainerStoredAccessPolicy` 
+* Supported create blob service Sas token or account Sas token with permission i
+    -  `New-AzStorageBlobSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageAccountSASToken`
 * Fixed creating container SAS token failed from an access policy without expire time, and set SAS token expire time [#16266]
     -  `New-AzStorageContainerSASToken` 
 * Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
