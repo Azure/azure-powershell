@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed for Issue #16362 : New-AzEventHubKey always generates a new primary key instead of a secondary key since version 1.9.0
+* Fixed the issue that `New-AzEventHubKey` always generates a new primary key instead of a secondary key since version 1.9.0 [#16362]
 
 ## Version 1.9.0
 * Added support for Premium sku and namesapce and optional switch parameter 'DisableLocalAuth' to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` 
