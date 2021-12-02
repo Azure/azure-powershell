@@ -55,7 +55,7 @@ function Test-NewAzAksWithAcr
         Assert-NotNull $cluster.DnsPrefix
         Assert-AreEqual 1 $cluster.AgentPoolProfiles.Length
         Assert-AreEqual 3 $cluster.AgentPoolProfiles[0].Count;
-        $cluster = $cluster | Set-AzAks -NodeCount 2
+        $cluster = $cluster | Set-AzAksCluster -NodeCount 2
         Assert-AreEqual 2 $cluster.AgentPoolProfiles[0].Count;
         $cluster | Import-AzAksCredential -Force
         $cluster | Remove-AzAksCluster -Force
