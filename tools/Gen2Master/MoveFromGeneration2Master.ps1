@@ -280,7 +280,7 @@ Function Move-Generation2MasterHybrid {
             #EndRegion
 
             # Generate csproj file and add the dependency in the solution file
-            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath $DestPath -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName
+            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName
 
             $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
 
@@ -317,6 +317,11 @@ Function Move-Generation2MasterHybrid {
             }
             New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
         }
+
+        #update module page
+        dotnet build "$DestPath\$ModuleName.sln"
+        Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+        Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
     }
 }
 
