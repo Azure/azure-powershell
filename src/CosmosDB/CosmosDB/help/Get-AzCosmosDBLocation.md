@@ -8,8 +8,8 @@ schema: 2.0.0
 # Get-AzCosmosDBLocation
 
 ## SYNOPSIS
-List Azure CosmosDB locations and their properties.
-Get Azure CosmosDB location properties for a specific location.
+List Azure Cosmos DB locations and their properties.
+Get Azure Cosmos DB location properties for a specific location.
 
 ## SYNTAX
 
@@ -18,13 +18,13 @@ Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-List Azure CosmosDB locations with their location properties. It includes Location Id, Name, Type, SupportsAvailabilityZone, IsResidencyRestricted and BackupStorageRedundancies.
+List Azure Cosmos DB locations with their location properties. It includes Location Id, Name, Type, SupportsAvailabilityZone, IsResidencyRestricted and BackupStorageRedundancies.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get Azure CosmosDB Account Location Properties for Given Location
+Get Azure Cosmos DB Account Location Properties for Given Location
 
 PS C:\> Get-AzCosmosDBLocation -Location "Central US"
 
@@ -52,7 +52,7 @@ PS C:\> Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
 
 ### Example 2
 ```powershell
-List Azure CosmosDB Account Locations and their properties
+List Azure Cosmos DB Account Locations and their properties
 
 PS C:\> Get-AzCosmosDBLocation
 
