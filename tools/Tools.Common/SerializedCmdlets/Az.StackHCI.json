@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StackHCI",
-  "ModuleVersion": "0.10.0",
+  "ModuleVersion": "1.0.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -1183,7 +1183,7 @@
           "Type": {
             "Namespace": "",
             "Name": "DiagnosticLevel",
-            "AssemblyQualifiedName": "DiagnosticLevel, PowerShell Class Assembly, Version=1.0.0.2, Culture=neutral, PublicKeyToken=null"
+            "AssemblyQualifiedName": "DiagnosticLevel, PowerShell Class Assembly, Version=1.0.0.3, Culture=neutral, PublicKeyToken=null"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1321,7 +1321,7 @@
                 "Type": {
                   "Namespace": "",
                   "Name": "DiagnosticLevel",
-                  "AssemblyQualifiedName": "DiagnosticLevel, PowerShell Class Assembly, Version=1.0.0.2, Culture=neutral, PublicKeyToken=null"
+                  "AssemblyQualifiedName": "DiagnosticLevel, PowerShell Class Assembly, Version=1.0.0.3, Culture=neutral, PublicKeyToken=null"
                 },
                 "ValidateNotNullOrEmpty": false
               },

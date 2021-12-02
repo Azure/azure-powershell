@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.21.0
 * Contains updates to the following powershell cmdlets
     - `SetAzVmssDiskEncryptionExtension` : Added extension parameters for the cmdlet to work with test extensions and parameter `EncryptFormatAll` for Virtual Machine Scale Sets
     - `GetAzVmssVMDiskEncryptionStatus`	 : Modified the functionality of the cmdlet to properly display the encryption status of data disks of Virtual Machine Scale Sets
