@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
 * Contains updates to the following powershell cmdlets
     - `SetAzVmssDiskEncryptionExtension` : Added extension parameters for the cmdlet to work with test extensions and parameter `EncryptFormatAll` for Virtual Machine Scale Sets
     - `GetAzVmssVMDiskEncryptionStatus`	 : Modified the functionality of the cmdlet to properly display the encryption status of data disks of Virtual Machine Scale Sets
@@ -50,7 +51,6 @@
     - `New-AzDiskUpdateConfig`
     - `New-AzSnapshotConfig`
 * Added `CompletionPercent` property to the PSSNapshot model so it is visible to the user.
-* Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
