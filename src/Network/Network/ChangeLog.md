@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
@@ -35,11 +36,9 @@
     - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRule`
     - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
         - `New-AzApplicationGatewayFirewallPolicyExclusion`
-* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
-
 ## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
- `   - ``New-AzBastion`
+    - `New-AzBastion`
     - `Set-AzBastion`
 * Onboard Azure Resource Manager to Private Link Common Cmdlets
 * Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
