@@ -82,13 +82,20 @@ directive:
       parameter-name: NetworkFunctionTemplateNetworkFunctionRoleConfiguration
     set:
       parameter-name: NetworkFunctionRoleConfigurationType
+  # - from: swagger-document 
+  #   where: $.definitions.VendorNetworkFunctionPropertiesFormat.properties.vendorProvisioningState
+  #   transform: >-
+  #     return {
+  #         "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/VendorProvisioningState",
+  #         "description": "The vendor controlled provisioning state of the vendor network function.",
+  #         "readOnly": true
+  #     }
   - from: swagger-document 
-    where: $.definitions.VendorNetworkFunctionPropertiesFormat.properties.vendorProvisioningState
+    where: $.definitions.VendorNetworkFunctionPropertiesFormat.properties.skuType
     transform: >-
       return {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/VendorProvisioningState",
-          "description": "The vendor controlled provisioning state of the vendor network function.",
-          "readOnly": true
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/SkuType",
+          "description": "The sku type."
       }
   - from: swagger-document 
     where: $.definitions.NetworkFunctionPropertiesFormat.properties.managedApplicationParameters
@@ -126,9 +133,9 @@ directive:
       - Device
   #  The generated cmdlet need to Re-Name 
   # - model-cmdlet:
+  #     - AzureStackEdgeFormat
   #     - NetworkInterface
   #     - NetworkInterfaceIPConfiguration
-  #     - AzureStackEdgeFormat
   #     - NetworkFunctionUserConfiguration
   #     - NetworkFunctionVendorConfiguration
   #     - NetworkFunctionRoleConfiguration

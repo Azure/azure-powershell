@@ -23,9 +23,9 @@ Create a in-memory object for NetworkInterfaceIPConfiguration
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkNetworkInterfaceIPConfigurationObject
+https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
 #>
-function New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject {
+function New-AzConnectedNetworkInterfaceIPConfigurationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

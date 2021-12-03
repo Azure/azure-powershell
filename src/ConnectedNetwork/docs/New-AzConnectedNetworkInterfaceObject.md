@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkNetworkInterfaceObject
+online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 schema: 2.0.0
 ---
 
-# New-AzConnectedNetworkNetworkInterfaceObject
+# New-AzConnectedNetworkInterfaceObject
 
 ## SYNOPSIS
 Create a in-memory object for NetworkInterface
@@ -13,7 +13,7 @@ Create a in-memory object for NetworkInterface
 ## SYNTAX
 
 ```
-New-AzConnectedNetworkNetworkInterfaceObject [-IPConfiguration <INetworkInterfaceIPConfiguration[]>]
+New-AzConnectedNetworkInterfaceObject [-IPConfiguration <INetworkInterfaceIPConfiguration[]>]
  [-MacAddress <String>] [-Name <String>] [-VMSwitchType <VMSwitchType>] [<CommonParameters>]
 ```
 

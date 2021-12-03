@@ -23,9 +23,9 @@ Create a in-memory object for NetworkInterface
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkNetworkInterfaceObject
+https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 #>
-function New-AzConnectedNetworkNetworkInterfaceObject {
+function New-AzConnectedNetworkInterfaceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -23,9 +23,9 @@ Create a in-memory object for AzureStackEdgeFormat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeFormatObject
+https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
 #>
-function New-AzConnectedNetworkAzureStackEdgeFormatObject {
+function New-AzConnectedNetworkAzureStackEdgeObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

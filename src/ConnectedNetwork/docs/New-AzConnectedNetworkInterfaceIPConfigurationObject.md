@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkNetworkInterfaceIPConfigurationObject
+online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
 schema: 2.0.0
 ---
 
-# New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject
+# New-AzConnectedNetworkInterfaceIPConfigurationObject
 
 ## SYNOPSIS
 Create a in-memory object for NetworkInterfaceIPConfiguration
@@ -13,7 +13,7 @@ Create a in-memory object for NetworkInterfaceIPConfiguration
 ## SYNTAX
 
 ```
-New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject [-DnsServer <String[]>] [-Gateway <String>]
+New-AzConnectedNetworkInterfaceIPConfigurationObject [-DnsServer <String[]>] [-Gateway <String>]
  [-IPAddress <String>] [-IPAllocationMethod <IPAllocationMethod>] [-IPVersion <IPVersion>] [-Subnet <String>]
  [<CommonParameters>]
 ```

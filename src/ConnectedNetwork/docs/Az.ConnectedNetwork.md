@@ -41,7 +41,7 @@ Gets information about the specified sku.
 ### [Get-AzConnectedNetworkVendorSkuPreview](Get-AzConnectedNetworkVendorSkuPreview.md)
 Gets the preview information of a vendor sku.
 
-### [New-AzConnectedNetworkAzureStackEdgeFormatObject](New-AzConnectedNetworkAzureStackEdgeFormatObject.md)
+### [New-AzConnectedNetworkAzureStackEdgeObject](New-AzConnectedNetworkAzureStackEdgeObject.md)
 Create a in-memory object for AzureStackEdgeFormat
 
 ### [New-AzConnectedNetworkDevice](New-AzConnectedNetworkDevice.md)
@@ -61,10 +61,10 @@ Create a in-memory object for NetworkFunctionUserConfiguration
 ### [New-AzConnectedNetworkFunctionVendorConfigurationObject](New-AzConnectedNetworkFunctionVendorConfigurationObject.md)
 Create a in-memory object for NetworkFunctionVendorConfiguration
 
-### [New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject](New-AzConnectedNetworkNetworkInterfaceIPConfigurationObject.md)
+### [New-AzConnectedNetworkInterfaceIPConfigurationObject](New-AzConnectedNetworkInterfaceIPConfigurationObject.md)
 Create a in-memory object for NetworkInterfaceIPConfiguration
 
-### [New-AzConnectedNetworkNetworkInterfaceObject](New-AzConnectedNetworkNetworkInterfaceObject.md)
+### [New-AzConnectedNetworkInterfaceObject](New-AzConnectedNetworkInterfaceObject.md)
 Create a in-memory object for NetworkInterface
 
 ### [New-AzConnectedNetworkVendor](New-AzConnectedNetworkVendor.md)

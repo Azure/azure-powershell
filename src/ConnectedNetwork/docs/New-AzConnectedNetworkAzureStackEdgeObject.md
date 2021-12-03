@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeFormatObject
+online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
 schema: 2.0.0
 ---
 
-# New-AzConnectedNetworkAzureStackEdgeFormatObject
+# New-AzConnectedNetworkAzureStackEdgeObject
 
 ## SYNOPSIS
 Create a in-memory object for AzureStackEdgeFormat
@@ -13,7 +13,7 @@ Create a in-memory object for AzureStackEdgeFormat
 ## SYNTAX
 
 ```
-New-AzConnectedNetworkAzureStackEdgeFormatObject [-AzureStackEdgeId <String>] [<CommonParameters>]
+New-AzConnectedNetworkAzureStackEdgeObject [-AzureStackEdgeId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
