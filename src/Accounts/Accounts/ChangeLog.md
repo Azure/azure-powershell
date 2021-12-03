@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.7.0
 * Removed `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount` [#15427]
 * Added optional parameter `MicrosoftGraphAccessToken` to `Connect-AzAccount`
 * Added optional parameters `MicrosoftGraphEndpointResourceId`, `MicrosoftGraphUrl` to `Add-AzEnvironment` and `Set-AzEnvironment`

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.0.0
 * Azure Backup updated validate sets for supported BackupManagementType in `Get-AzRecoveryServicesBackupItem`, `Get-AzRecoveryServicesBackupContainer`, Get-AzRecoveryServicesBackupJob cmdlets.
 * Azure Backup added support for SAPHanaDatabase for `Disable-AzRecoveryServicesBackupProtection`, `Unregister-AzRecoveryServicesBackupContainer`, `Get-AzRecoveryServicesBackupItem`, `Get-AzRecoveryServicesBackupContainer` cmdlets.
 * Breaking Change: `Get-AzRecoveryServicesBackupJob`, `Get-AzRecoveryServicesBackupContainer` and `Get-AzRecoveryServicesBackupItem` commands will only support `BackupManagementType MAB` instead of `MARS`.

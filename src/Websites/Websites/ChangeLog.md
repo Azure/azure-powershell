@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.9.0
 * Updated the Microsoft.Azure.Management.Websites SDK to 3.1.2
 ## Version 2.8.3
 * Updated `Import-AzWebAppKeyVaultCertificate1` to set the default name with combination of keyvault name and cert name 

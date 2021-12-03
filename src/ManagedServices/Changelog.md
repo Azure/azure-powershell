@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * [Breaking Change] Updated API version to 2020-02-01-preview
 
 ## Version 2.0.0

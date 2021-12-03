@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets
 * [Breaking Change] rename `StorageAccountId` to `StorageAccountIds`
   - `New-AzOperationalInsightsLinkedStorageAccount`
