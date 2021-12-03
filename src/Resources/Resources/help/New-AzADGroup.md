@@ -8,9 +8,7 @@ schema: 2.0.0
 # New-AzADGroup
 
 ## SYNOPSIS
-Adds new entity to groups. Please note user may need to specify `-GroupType` explicitly per tenant configuration 
-even though it is optional parameter. For details, see 
-[Group types](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=/azure/active-directory/enterprise-users/context/ugr-context#group-types)
+Adds new entity to groups
 
 ## SYNTAX
 
@@ -29,7 +27,9 @@ New-AzADGroup -DisplayName <String> -MailNickname <String>
 ```
 
 ## DESCRIPTION
-Adds new entity to groups. 
+Adds new entity to groups. Please note user may need to specify `-GroupType` explicitly per tenant configuration 
+even though it is optional parameter. For details, see 
+[Group types](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=/azure/active-directory/enterprise-users/context/ugr-context#group-types)
 
 ## EXAMPLES
 
