@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * Promoted Az.StackHCI to GA
 
 ## Version 0.10.0

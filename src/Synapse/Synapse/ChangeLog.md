@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.19.0
 * Added support for Synapse KQL script
     - Added `Get-AzSynapseKqlScript` cmdlet
     - Added `Export-AzSynapseKqlScript` cmdlet

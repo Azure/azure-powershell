@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.0
 * Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]
 
 * Moved SQL Server and SQL Instance AAD from ActiveDirectoryClient to MicrosoftGraphClient 
