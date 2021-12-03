@@ -64,21 +64,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         [Alias("Key")]
         public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
-        /// <summary>
-        /// Key version.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "Key version.")]
-        [Alias("KeyVersion")]
-        public string Version { get; set; }
-
         #endregion Input Parameter Definitions
 
-        internal void NormalizeParameterSets()
+        internal virtual void NormalizeParameterSets()
         {
             if (InputObject != null) { 
                 Name = InputObject.Name;
-                Version = Version ?? InputObject.Version;
 
                 if (InputObject.IsHsm)
                 {
