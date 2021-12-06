@@ -47,6 +47,7 @@ Subscriptions   0b1f6471-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 Property `Upgrades` in output changed to `Upgrade`.
 
 #### Before
+```powershell
 (Get-AzAksVersion -location eastus).Upgrades
 
 OrchestratorType OrchestratorVersion IsPreview
@@ -67,6 +68,7 @@ Kubernetes       1.22.2              True
 Kubernetes       1.22.1              True
 Kubernetes       1.22.2              True
 Kubernetes       1.22.2              True
+```
 #### After
 (Get-AzAksVersion -location eastus).Upgrade
 
@@ -96,7 +98,9 @@ Kubernetes       1.22.2              True
 Upgraded API version from 2021-03-01 to 2021-09-01, no change in usage
 
 #### Before
+```powershell
 API version 2021-03-01
+```
 #### After
 API version 2021-09-01
 
@@ -105,12 +109,14 @@ API version 2021-09-01
 Removed parameter `ReadinessProbeHttpGetHttpHeadersName` and `ReadinessProbeHttpGetHttpHeadersValue`, added `ReadinessProbeHttpGetHttpHeader` as their alternative
 
 #### Before
+```powershell
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -ReadinessProbeHttpGetHttpHeadersName "foo" -ReadinessProbeHttpGetHttpHeadersValue "bar" -ReadinessProbeHttpGetPort 8000
 
 not deserialize the current JSON object (e.g. {"name":"value"}) into type 'Microsoft.Azure.CloudConsole.Providers.Data.Definition.HttpHeaderDefinition[]' because the type requires a JSON array (e.g. [1,2,3]) to deserialize correctly.
 To fix this error either change the JSON to a JSON array (e.g. [1,2,3]) or change the deserialized type so that it is a normal .NET type (e.g. not a primitive type like integer, not a collection type like an array or List<T>) that can be deserialized from a JSON object. JsonObjectAttribute can also be added to the type to force it to deserialize from a JSON object.
 
 The usage is broken
+```
 #### After
 PS C:\> $header= New-AzContainerInstanceHttpHeaderObject -Name foo  -Value bar
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -ReadinessProbeHttpGetHttpHeader $header-ReadinessProbeHttpGetPort 8000
@@ -126,12 +132,14 @@ foo  bar
 Removed parameter `LivenessProbeHttpGetHttpHeadersName` and `LivenessProbeHttpGetHttpHeadersValue`, added `LivenessProbeHttpGetHttpHeader` as their alternative
 
 #### Before
+```powershell
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -LivenesssProbeHttpGetHttpHeadersName "foo" -LivenessProbeHttpGetHttpHeadersValue "bar" -LivenessProbeHttpGetPort 8000
 
 not deserialize the current JSON object (e.g. {"name":"value"}) into type 'Microsoft.Azure.CloudConsole.Providers.Data.Definition.HttpHeaderDefinition[]' because the type requires a JSON array (e.g. [1,2,3]) to deserialize correctly.
 To fix this error either change the JSON to a JSON array (e.g. [1,2,3]) or change the deserialized type so that it is a normal .NET type (e.g. not a primitive type like integer, not a collection type like an array or List<T>) that can be deserialized from a JSON object. JsonObjectAttribute can also be added to the type to force it to deserialize from a JSON object.
 
 The usage is broken
+```
 #### After
 PS C:\> $header= New-AzContainerInstanceHttpHeaderObject -Name foo  -Value bar
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -LivenessProbeHttpGetHttpHeader $header-LivenessProbeHttpGetPort 8000
@@ -148,10 +156,12 @@ foo  bar
 Removed parameter NetworkProfileId, added SubnetId as its alternative
 
 #### Before
+```powershell
 PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -NetworkProfileId "/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
 PS C:\> $containerGroup.NetworkProfileId 
 
 /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
+```
 #### After
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType 'Private' -SubnetId @{"Id"="/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"; "Name"="subnet"}
@@ -165,12 +175,14 @@ Name : subnet
 Changed the type of parameter LogAnalyticWorkspaceResourceId from Hashtable to String
 
 #### Before
+```powershell
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public -LogAnalyticWorkspaceId /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace/{workspacename} -LogAnalyticWorkspaceKey {key} -LogAnalyticWorkspaceResourceId @{"Id"="/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"} 
 
 Az.ContainerInstance.internal\New-AzContainerGroup : The request content was invalid and could not be deserialized: 'Unexpected character encountered while parsing value: {. Path 'properties.diagnostics.logAnalytics.workspaceResourceId'
 
 The usage is broken
+```
 #### After
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx  
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public -LogAnalyticWorkspaceId /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace/{workspacename} -LogAnalyticWorkspaceKey {key} -LogAnalyticWorkspaceResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"
@@ -184,6 +196,7 @@ PS C:\> $containerGroup.LogAnalyticWorkspaceResourceId
 Displayed command execution result as the cmdlet output by connecting websocket in backend
 
 #### Before
+```powershell
 PS C:\> $websocket = Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello" -TerminalSizeCol 12 -TerminalSizeRow 12
 PS C:\> $websocket
 
@@ -192,6 +205,7 @@ Password                                           WebSocketUri
 ****************** wss://bridge-linux-xx.eastus.management.azurecontainer.io/exec/caas-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/bridge-xxxxxxxxxxxxxxx?rows=12&cols=12api-version=2018-02-01-preview
 
 User needs connect websocket using password to fetch command execution result
+```
 #### After
 PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello"
 
@@ -217,7 +231,9 @@ Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResource
 If `FunctionsVersion` parameter is not specified when executing the `New-AzFunctionApp` cmdlet, then the default Functions version will be set to `4`.
 
 #### Before
+```powershell
 There is no change to the usage.
+```
 #### After
 
 
@@ -226,7 +242,9 @@ There is no change to the usage.
 If this is the last app in the app service plan, then the plan will not be deleted. Before this release, the app plan will also be deleted.
 
 #### Before
+```powershell
 There is no change to the usage.
+```
 #### After
 
 
@@ -237,7 +255,9 @@ There is no change to the usage.
 Changed  the type of parameter "OSType" from `Microsoft.Azure.Management.HDInsight.Models.OSType` to `System.string`
 
 #### Before
+```powershell
 There is no change to the usage.
+```
 #### After
 
 
@@ -246,7 +266,9 @@ There is no change to the usage.
 Changed  the type of parameter "ClusterTier" from `Microsoft.Azure.Management.HDInsight.Models.ClusterTier` to `System.string`
 
 #### Before
+```powershell
 There is no change to the usage.
+```
 #### After
 
 
@@ -255,7 +277,9 @@ There is no change to the usage.
 The output type has changed from 'Microsoft.Azure.Management.HDInsight.Models.Cluster' to 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster'.
 
 #### Before
+```powershell
 All properties remain the same, so there is no change to the usage.
+```
 #### After
 
 
@@ -264,7 +288,9 @@ All properties remain the same, so there is no change to the usage.
 The type of property 'AssignedIdentity' has changed from 'Microsoft.Azure.Management.HDInsight.Models.ClusterIdentity' to 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightClusterIdentity'.
 
 #### Before
+```powershell
 All properties remain the same, so there is no change to the usage.
+```
 #### After
 
 
@@ -351,6 +377,7 @@ New-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Regi
 The type of the properties 'EventName', 'Category', 'ResourceProviderName', 'OperationName', 'Status', 'SubStatus has changed from 'Microsoft.Azure.Management.Monitor.Models.LocalizableString' to 'System.String'
 
 #### Before
+```powershell
 $log = Get-AzLog -MaxRecord 1
 
 $eventName = $log.EventName.LocalizedValue
@@ -364,6 +391,7 @@ $operationName = $log.OperationName.LocalizedValue
 $status = $log.Status.LocalizedValue
 
 $subStatus = $log.SubStatus.LocalizedValue
+```
 #### After
 $log = Get-AzLog -MaxRecord 1
 
@@ -384,7 +412,9 @@ $subStatus = $log.SubStatus
 The type of property 'Unit' has changed to 'System.String'
 
 #### Before
+```powershell
 There is no change to the usage.
+```
 #### After
 
 
@@ -393,7 +423,9 @@ There is no change to the usage.
 The type of property 'TimeAggregation' has changed to System.String'
 
 #### Before
+```powershell
 There is no change to the usage.
+```
 #### After
 
 
@@ -404,7 +436,9 @@ There is no change to the usage.
 Made "list" the default parameter set.
 
 #### Before
+```powershell
 There is no default parameter set.
+```
 #### After
 Default parameter set is now "list", when providing resource group name - return all clusters for the given resource group.
 
@@ -413,7 +447,9 @@ Default parameter set is now "list", when providing resource group name - return
 Made "UpdateByNameParameterSet" the default parameter set.
 
 #### Before
+```powershell
 There is no default parameter set.
+```
 #### After
 Default parameter set is now "UpdateByNameParameterSet".
 
@@ -424,7 +460,9 @@ Default parameter set is now "UpdateByNameParameterSet".
 Changed the BackupManagementType from MARS to MAB. Functionality remains same, this is to bring consistency across cmdlets.
 
 #### Before
+```powershell
 $containers = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
+```
 #### After
 $cont = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
 
@@ -433,7 +471,9 @@ $cont = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupMana
 	Changed the BackupManagementType from MARS to MAB. Functionality remains same, this is to bring consistency across cmdlets
 
 #### Before
+```powershell
 Get-AzRecoveryServicesBackupItem -BackupManagementType MARS -VaultId $vault.ID -WorkloadType FileFolder
+```
 #### After
 Get-AzRecoveryServicesBackupItem -BackupManagementType MAB -VaultId $vault.ID -WorkloadType FileFolder
 
@@ -442,7 +482,9 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType MAB -VaultId $vault.ID -W
 Changed the BackupManagementType from MARS to MAB. Functionality remains same, this is to bring consistency across cmdlets
 
 #### Before
+```powershell
 Get-AzRecoveryServicesBackupJob -BackupManagementType MARS -VaultId $vault.ID
+```
 #### After
 Get-AzRecoveryServicesBackupJob -BackupManagementType MAB -VaultId $vault.ID
 
@@ -456,8 +498,10 @@ Get-AzRecoveryServicesBackupJob -BackupManagementType MAB -VaultId $vault.ID
 The type of property 'Identity' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment' has changed from 'System.Management.Automation.PSObject' to 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyIdentity'.
 
 #### Before
+```powershell
 PS C:\> $v = Get-AzPolicyAssignment -Id $someId
 PS C:\> Write-Host $v.type, $v.principalId, $v.tenantId
+```
 #### After
 PS C:\> $v = Get-AzPolicyAssignment -Id $someId
 PS C:\> Write-Host $v.IdentityType, $v.PrincipalId, $v.TenantId, $v.UserAssignedIdentities
@@ -469,7 +513,9 @@ PS C:\> Write-Host $v.IdentityType, $v.PrincipalId, $v.TenantId, $v.UserAssigned
 Parameter "Name" has been removed from parameter set "ShareResourceId", since name can be inferred from the resource ID.
 
 #### Before
+```powershell
 $StorageShare = Get-AzRmStorageShare -ResourceId "/subscriptions/..." -Name "MyStorageShare"
+```
 #### After
 $StorageShare = Get-AzRmStorageShare -ResourceId "/subscriptions/..."
 
