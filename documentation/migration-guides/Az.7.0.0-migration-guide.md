@@ -51,7 +51,7 @@ Property `Upgrades` in output changed to `Upgrade`.
 
 #### Before
 ```powershell
-C:\> (Get-AzAksVersion -location eastus).Upgrades
+PS C:\> (Get-AzAksVersion -location eastus).Upgrades
 
 OrchestratorType OrchestratorVersion IsPreview
 ---------------- ------------------- ---------
@@ -74,7 +74,7 @@ Kubernetes       1.22.2              True
 ```
 #### After
 ```powershell
-C:\> (Get-AzAksVersion -location eastus).Upgrade
+PS C:\> (Get-AzAksVersion -location eastus).Upgrade
 
 OrchestratorType OrchestratorVersion IsPreview
 ---------------- ------------------- ---------
@@ -272,12 +272,12 @@ The `-DisplayName` parameter was removed.
 
 #### Before
 ```powershell
-C:\> New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -PrincipalId 714160ec-87d5-42bb-8b17-287c0dd7417d
+PS C:\> New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -PrincipalId 714160ec-87d5-42bb-8b17-287c0dd7417d
 ```
 #### After
 ```powershell
-C:\> $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Test user" -DelegatedRoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-C:\> New-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -RegistrationDefinitionName "Test definition" -ManagedByTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Authorization $permantAuth -Description "Test definition desc" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PS C:\> $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Test user" -DelegatedRoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PS C:\> New-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -RegistrationDefinitionName "Test definition" -ManagedByTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Authorization $permantAuth -Description "Test definition desc" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 
@@ -289,23 +289,23 @@ The type of the properties 'EventName', 'Category', 'ResourceProviderName', 'Ope
 
 #### Before
 ```powershell
-C:\> $log = Get-AzLog -MaxRecord 1
-C:\> $eventName = $log.EventName.LocalizedValue
-C:\> $category = $log.Category.LocalizedValue
-C:\> $resourceProviderName = $log.ResourceProviderName.LocalizedValue
-C:\> $operationName = $log.OperationName.LocalizedValue
-C:\> $status = $log.Status.LocalizedValue
-C:\> $subStatus = $log.SubStatus.LocalizedValue
+PS C:\> $log = Get-AzLog -MaxRecord 1
+PS C:\> $eventName = $log.EventName.LocalizedValue
+PS C:\> $category = $log.Category.LocalizedValue
+PS C:\> $resourceProviderName = $log.ResourceProviderName.LocalizedValue
+PS C:\> $operationName = $log.OperationName.LocalizedValue
+PS C:\> $status = $log.Status.LocalizedValue
+PS C:\> $subStatus = $log.SubStatus.LocalizedValue
 ```
 #### After
 ```powershell
-C:\> $log = Get-AzLog -MaxRecord 1
-C:\> $eventName = $log.EventName
-C:\> $category = $log.Category
-C:\> $resourceProviderName = $log.ResourceProviderName
-C:\> $operationName = $log.OperationName
-C:\> $status = $log.Status
-C:\> $subStatus = $log.SubStatus
+PS C:\> $log = Get-AzLog -MaxRecord 1
+PS C:\> $eventName = $log.EventName
+PS C:\> $category = $log.Category
+PS C:\> $resourceProviderName = $log.ResourceProviderName
+PS C:\> $operationName = $log.OperationName
+PS C:\> $status = $log.Status
+PS C:\> $subStatus = $log.SubStatus
 ```
 
 
