@@ -2,7 +2,9 @@
 
 ## Az.Accounts
 
-### `Affect output of the cmdlets:
+### Context and account cmdlets
+
+Output of the following cmdlets have been changed:
 - Get-AzContext
 - Remove-AzContext
 - Rename-AzContext
@@ -10,7 +12,8 @@
 - Connect-AzAccount
 - Disconnect-AzAccount
 - Import-AzContext
-- Save-AzContext`
+- Save-AzContext
+
 Removed `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount`
 
 #### Before
@@ -21,7 +24,7 @@ PS C:\> (Get-AzContext).Account.ExtendedProperties
 
 Key                    Value
 ---                    -----
-CertificatePath        C:\certficate.pfx
+CertificatePath        C:\certificate.pfx
 CertificatePassword    password****
 Tenants                54826b22-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ServicePrincipalSecret 7QK7Q********************************
@@ -35,7 +38,7 @@ PS C:\> (Get-AzContext).Account.ExtendedProperties
 
 Key             Value
 ---             -----
-CertificatePath C:\certficate.pfx
+CertificatePath C:\certificate.pfx
 Tenants         54826b22-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 Subscriptions   0b1f6471-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
@@ -48,7 +51,7 @@ Property `Upgrades` in output changed to `Upgrade`.
 
 #### Before
 ```powershell
-(Get-AzAksVersion -location eastus).Upgrades
+C:\> (Get-AzAksVersion -location eastus).Upgrades
 
 OrchestratorType OrchestratorVersion IsPreview
 ---------------- ------------------- ---------
@@ -71,7 +74,7 @@ Kubernetes       1.22.2              True
 ```
 #### After
 ```powershell
-(Get-AzAksVersion -location eastus).Upgrade
+C:\> (Get-AzAksVersion -location eastus).Upgrade
 
 OrchestratorType OrchestratorVersion IsPreview
 ---------------- ------------------- ---------
@@ -96,77 +99,13 @@ Kubernetes       1.22.2              True
 
 ## Az.ContainerInstance
 
-### `All`
-Upgraded API version from 2021-03-01 to 2021-09-01, no change in usage
-
-#### Before
-```powershell
-API version 2021-03-01
-```
-#### After
-```powershell
-API version 2021-09-01
-```
-
-
-### `New-AzContainerInstanceObject`
-Removed parameter `ReadinessProbeHttpGetHttpHeadersName` and `ReadinessProbeHttpGetHttpHeadersValue`, added `ReadinessProbeHttpGetHttpHeader` as their alternative
-
-#### Before
-```powershell
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -ReadinessProbeHttpGetHttpHeadersName "foo" -ReadinessProbeHttpGetHttpHeadersValue "bar" -ReadinessProbeHttpGetPort 8000
-
-not deserialize the current JSON object (e.g. {"name":"value"}) into type 'Microsoft.Azure.CloudConsole.Providers.Data.Definition.HttpHeaderDefinition[]' because the type requires a JSON array (e.g. [1,2,3]) to deserialize correctly.
-To fix this error either change the JSON to a JSON array (e.g. [1,2,3]) or change the deserialized type so that it is a normal .NET type (e.g. not a primitive type like integer, not a collection type like an array or List<T>) that can be deserialized from a JSON object. JsonObjectAttribute can also be added to the type to force it to deserialize from a JSON object.
-
-The usage is broken
-```
-#### After
-```powershell
-PS C:\> $header= New-AzContainerInstanceHttpHeaderObject -Name foo  -Value bar
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -ReadinessProbeHttpGetHttpHeader $header-ReadinessProbeHttpGetPort 8000
-PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName bez-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
-PS C:\> $containerGroup.Container.ReadinessProbeHttpGetHttpHeader 
-
-Name Value
----- -----
-foo  bar
-```
-
-
-### `New-AzContainerInstanceObject`
-Removed parameter `LivenessProbeHttpGetHttpHeadersName` and `LivenessProbeHttpGetHttpHeadersValue`, added `LivenessProbeHttpGetHttpHeader` as their alternative
-
-#### Before
-```powershell
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -LivenesssProbeHttpGetHttpHeadersName "foo" -LivenessProbeHttpGetHttpHeadersValue "bar" -LivenessProbeHttpGetPort 8000
-
-not deserialize the current JSON object (e.g. {"name":"value"}) into type 'Microsoft.Azure.CloudConsole.Providers.Data.Definition.HttpHeaderDefinition[]' because the type requires a JSON array (e.g. [1,2,3]) to deserialize correctly.
-To fix this error either change the JSON to a JSON array (e.g. [1,2,3]) or change the deserialized type so that it is a normal .NET type (e.g. not a primitive type like integer, not a collection type like an array or List<T>) that can be deserialized from a JSON object. JsonObjectAttribute can also be added to the type to force it to deserialize from a JSON object.
-
-The usage is broken
-```
-#### After
-```powershell
-PS C:\> $header= New-AzContainerInstanceHttpHeaderObject -Name foo  -Value bar
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -LivenessProbeHttpGetHttpHeader $header-LivenessProbeHttpGetPort 8000
-PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName bez-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
-PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName bez-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
-PS C:\> $containerGroup.Container.LivenessProbeHttpGetHttpHeader 
-
-Name Value
----- -----
-foo  bar
-```
-
-
 ### `New-AzContainerGroup`
 Removed parameter NetworkProfileId, added SubnetId as its alternative
 
 #### Before
 ```powershell
 PS C:\>  $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -NetworkProfileId "/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
-PS C:\> $containerGroup.NetworkProfileId 
+PS C:\> $containerGroup.NetworkProfileId
 
 /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 ```
@@ -178,29 +117,6 @@ PS C:\> $containerGroup.SubnetId | fl
 
 Id :  /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 Name : subnet
-```
-
-
-### `New-AzContainerGroup`
-Changed the type of parameter LogAnalyticWorkspaceResourceId from Hashtable to String
-
-#### Before
-```powershell
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx
-PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public -LogAnalyticWorkspaceId /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace/{workspacename} -LogAnalyticWorkspaceKey {key} -LogAnalyticWorkspaceResourceId @{"Id"="/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"} 
-
-Az.ContainerInstance.internal\New-AzContainerGroup : The request content was invalid and could not be deserialized: 'Unexpected character encountered while parsing value: {. Path 'properties.diagnostics.logAnalytics.workspaceResourceId'
-
-The usage is broken
-```
-#### After
-```powershell
-PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx  
-PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public -LogAnalyticWorkspaceId /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace/{workspacename} -LogAnalyticWorkspaceKey {key} -LogAnalyticWorkspaceResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"
-
-PS C:\> $containerGroup.LogAnalyticWorkspaceResourceId
-
-"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"
 ```
 
 
@@ -244,69 +160,51 @@ Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResource
 ### `New-AzFunctionApp`
 If `FunctionsVersion` parameter is not specified when executing the `New-AzFunctionApp` cmdlet, then the default Functions version will be set to `4`.
 
-#### Before
-```powershell
+```
 There is no change to the usage.
 ```
-#### After
-
-
 
 ### `Remove-AzFunctionApp`
 If this is the last app in the app service plan, then the plan will not be deleted. Before this release, the app plan will also be deleted.
 
-#### Before
-```powershell
+```
 There is no change to the usage.
 ```
-#### After
-
-
 
 ## Az.HDInsight
 
 ### `New-AzHDInsightCluster`
 Changed  the type of parameter "OSType" from `Microsoft.Azure.Management.HDInsight.Models.OSType` to `System.string`
 
-#### Before
-```powershell
+```
 There is no change to the usage.
 ```
-#### After
-
 
 
 ### `New-AzHDInsightCluster, New-AzHDInsightClusterConfig`
 Changed  the type of parameter "ClusterTier" from `Microsoft.Azure.Management.HDInsight.Models.ClusterTier` to `System.string`
 
-#### Before
-```powershell
+```
 There is no change to the usage.
 ```
-#### After
-
 
 
 ### `Set-AzHDInsightClusterDiskEncryptionKey, Set- AzHDInsightClusterSize`
 The output type has changed from 'Microsoft.Azure.Management.HDInsight.Models.Cluster' to 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster'.
 
-#### Before
-```powershell
+```
 All properties remain the same, so there is no change to the usage.
 ```
-#### After
 
 
 
-### `All cmdlets that returns type 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster'`
+### `Cluster cmdlets`
 The type of property 'AssignedIdentity' has changed from 'Microsoft.Azure.Management.HDInsight.Models.ClusterIdentity' to 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightClusterIdentity'.
 
-#### Before
-```powershell
+
+```
 All properties remain the same, so there is no change to the usage.
 ```
-#### After
-
 
 
 ### `Get-AzHDInsightProperties`
@@ -374,75 +272,58 @@ The `-DisplayName` parameter was removed.
 
 #### Before
 ```powershell
-New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -PrincipalId 714160ec-87d5-42bb-8b17-287c0dd7417d
+C:\> New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -PrincipalId 714160ec-87d5-42bb-8b17-287c0dd7417d
 ```
 #### After
 ```powershell
-$permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Test user" -DelegatedRoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-New-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -RegistrationDefinitionName "Test definition" -ManagedByTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Authorization $permantAuth -Description "Test definition desc" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" 
+C:\> $permantAuth = New-AzManagedServicesAuthorizationObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Test user" -DelegatedRoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+C:\> New-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -RegistrationDefinitionName "Test definition" -ManagedByTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Authorization $permantAuth -Description "Test definition desc" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 
 ## Az.Monitor
 
 ### `Get-AzLog`
-	
+
 The type of the properties 'EventName', 'Category', 'ResourceProviderName', 'OperationName', 'Status', 'SubStatus has changed from 'Microsoft.Azure.Management.Monitor.Models.LocalizableString' to 'System.String'
 
 #### Before
 ```powershell
-$log = Get-AzLog -MaxRecord 1
-
-$eventName = $log.EventName.LocalizedValue
-
-$category = $log.Category.LocalizedValue
-
-$resourceProviderName = $log.ResourceProviderName.LocalizedValue
-
-$operationName = $log.OperationName.LocalizedValue
-
-$status = $log.Status.LocalizedValue
-
-$subStatus = $log.SubStatus.LocalizedValue
+C:\> $log = Get-AzLog -MaxRecord 1
+C:\> $eventName = $log.EventName.LocalizedValue
+C:\> $category = $log.Category.LocalizedValue
+C:\> $resourceProviderName = $log.ResourceProviderName.LocalizedValue
+C:\> $operationName = $log.OperationName.LocalizedValue
+C:\> $status = $log.Status.LocalizedValue
+C:\> $subStatus = $log.SubStatus.LocalizedValue
 ```
 #### After
 ```powershell
-$log = Get-AzLog -MaxRecord 1
-
-$eventName = $log.EventName
-
-$category = $log.Category
-
-$resourceProviderName = $log.ResourceProviderName
-
-$operationName = $log.OperationName
-
-$status = $log.Status
-
-$subStatus = $log.SubStatus
+C:\> $log = Get-AzLog -MaxRecord 1
+C:\> $eventName = $log.EventName
+C:\> $category = $log.Category
+C:\> $resourceProviderName = $log.ResourceProviderName
+C:\> $operationName = $log.OperationName
+C:\> $status = $log.Status
+C:\> $subStatus = $log.SubStatus
 ```
 
 
 ### `Get-AzMetric,Get-AzMetricDefinition`
 The type of property 'Unit' has changed to 'System.String'
 
-#### Before
-```powershell
+```
 There is no change to the usage.
 ```
-#### After
 
 
 
 ### `New-AzMetricAlertRuleV2Criteria`
 The type of property 'TimeAggregation' has changed to System.String'
 
-#### Before
-```powershell
+```
 There is no change to the usage.
 ```
-#### After
 
 
 
@@ -490,7 +371,7 @@ $cont = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupMana
 
 
 ### `Get-AzRecoveryServicesBackupItem`
-	Changed the BackupManagementType from MARS to MAB. Functionality remains same, this is to bring consistency across cmdlets
+Changed the BackupManagementType from MARS to MAB. Functionality remains same, this is to bring consistency across cmdlets
 
 #### Before
 ```powershell
@@ -517,8 +398,8 @@ Get-AzRecoveryServicesBackupJob -BackupManagementType MAB -VaultId $vault.ID
 
 ## Az.Resources
 
-### `MSGraph (don't forget to add link)`
-
+### `AzAD cmdlets`
+Please refer to (placeholder) for the migration guide of Active Directory cmdlets.
 
 ### `PolicyAssignment cmdlets`
 The type of property 'Identity' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment' has changed from 'System.Management.Automation.PSObject' to 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyIdentity'.
