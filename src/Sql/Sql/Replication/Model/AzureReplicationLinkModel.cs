@@ -131,5 +131,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the number of high availability replicas for the database
         /// </summary>
         public int? HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zone redundant option of the database.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
     }
 }

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Remove isUser operation filter from GetAzureProviderOperation Cmdlet
 
 ## Version 5.1.0
 * Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.

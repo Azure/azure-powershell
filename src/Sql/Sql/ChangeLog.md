@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases
 
 ## Version 3.6.0
 * Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]
@@ -25,7 +26,6 @@
 * Moved SQL Server and SQL Instance AAD from ActiveDirectoryClient to MicrosoftGraphClient 
 
 ## Version 3.5.1
-
 * Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
 
 ## Version 3.5.0

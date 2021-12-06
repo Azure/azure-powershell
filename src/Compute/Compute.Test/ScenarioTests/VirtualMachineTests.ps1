@@ -5327,3 +5327,41 @@ function Test-VMUserDataBase64Encoded
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine creation process does not create a Public IP Address when it is 
+not provided as a parameter. 
+When using a VM Config object, this problem does not occur. 
+#>
+function Test-VMNoPublicIPAddress
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+
+        # Check that no PublicIPAddress resource was created. 
+        $publicIPAddress = Get-AzPublicIpAddress -ResourceGroupName $rgname;
+        Assert-Null $publicIPAddress;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

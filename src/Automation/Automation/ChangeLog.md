@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* `New-AzAutomationSchedule` allows defnining StartTime with offsets.
 
 ## Version 1.7.2
 * Fixed example in reference doc for `Remove-AzAutomationHybridWorkerGroup`
