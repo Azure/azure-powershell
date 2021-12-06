@@ -70,6 +70,7 @@ Kubernetes       1.22.2              True
 Kubernetes       1.22.2              True
 ```
 #### After
+```powershell
 (Get-AzAksVersion -location eastus).Upgrade
 
 OrchestratorType OrchestratorVersion IsPreview
@@ -90,6 +91,7 @@ Kubernetes       1.22.2              True
 Kubernetes       1.22.1              True
 Kubernetes       1.22.2              True
 Kubernetes       1.22.2              True
+```
 
 
 ## Az.ContainerInstance
@@ -102,7 +104,9 @@ Upgraded API version from 2021-03-01 to 2021-09-01, no change in usage
 API version 2021-03-01
 ```
 #### After
+```powershell
 API version 2021-09-01
+```
 
 
 ### `New-AzContainerInstanceObject`
@@ -118,6 +122,7 @@ To fix this error either change the JSON to a JSON array (e.g. [1,2,3]) or chang
 The usage is broken
 ```
 #### After
+```powershell
 PS C:\> $header= New-AzContainerInstanceHttpHeaderObject -Name foo  -Value bar
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -ReadinessProbeHttpGetHttpHeader $header-ReadinessProbeHttpGetPort 8000
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName bez-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
@@ -126,6 +131,7 @@ PS C:\> $containerGroup.Container.ReadinessProbeHttpGetHttpHeader
 Name Value
 ---- -----
 foo  bar
+```
 
 
 ### `New-AzContainerInstanceObject`
@@ -141,6 +147,7 @@ To fix this error either change the JSON to a JSON array (e.g. [1,2,3]) or chang
 The usage is broken
 ```
 #### After
+```powershell
 PS C:\> $header= New-AzContainerInstanceHttpHeaderObject -Name foo  -Value bar
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx -LivenessProbeHttpGetHttpHeader $header-LivenessProbeHttpGetPort 8000
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName bez-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
@@ -150,6 +157,7 @@ PS C:\> $containerGroup.Container.LivenessProbeHttpGetHttpHeader
 Name Value
 ---- -----
 foo  bar
+```
 
 
 ### `New-AzContainerGroup`
@@ -163,12 +171,14 @@ PS C:\> $containerGroup.NetworkProfileId
 /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 ```
 #### After
+```powershell
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType 'Private' -SubnetId @{"Id"="/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"; "Name"="subnet"}
 PS C:\> $containerGroup.SubnetId | fl
 
 Id :  /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 Name : subnet
+```
 
 
 ### `New-AzContainerGroup`
@@ -184,12 +194,14 @@ Az.ContainerInstance.internal\New-AzContainerGroup : The request content was inv
 The usage is broken
 ```
 #### After
+```powershell
 PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image nginx  
 PS C:\> $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public -LogAnalyticWorkspaceId /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace/{workspacename} -LogAnalyticWorkspaceKey {key} -LogAnalyticWorkspaceResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"
 
 PS C:\> $containerGroup.LogAnalyticWorkspaceResourceId
 
 "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace"
+```
 
 
 ### `Invoke-AzContainerInstanceCommand`
@@ -207,9 +219,11 @@ Password                                           WebSocketUri
 User needs connect websocket using password to fetch command execution result
 ```
 #### After
+```powershell
 PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello"
 
 hello
+```
 
 
 ## Az.Functions
@@ -393,6 +407,7 @@ $status = $log.Status.LocalizedValue
 $subStatus = $log.SubStatus.LocalizedValue
 ```
 #### After
+```powershell
 $log = Get-AzLog -MaxRecord 1
 
 $eventName = $log.EventName
@@ -406,6 +421,7 @@ $operationName = $log.OperationName
 $status = $log.Status
 
 $subStatus = $log.SubStatus
+```
 
 
 ### `Get-AzMetric,Get-AzMetricDefinition`
@@ -440,7 +456,9 @@ Made "list" the default parameter set.
 There is no default parameter set.
 ```
 #### After
+```powershell
 Default parameter set is now "list", when providing resource group name - return all clusters for the given resource group.
+```
 
 
 ### `Update-AzOperationalInsightsCluster`
@@ -451,7 +469,9 @@ Made "UpdateByNameParameterSet" the default parameter set.
 There is no default parameter set.
 ```
 #### After
+```powershell
 Default parameter set is now "UpdateByNameParameterSet".
+```
 
 
 ## Az.RecoveryServices
@@ -464,7 +484,9 @@ Changed the BackupManagementType from MARS to MAB. Functionality remains same, t
 $containers = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
 ```
 #### After
+```powershell
 $cont = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
+```
 
 
 ### `Get-AzRecoveryServicesBackupItem`
@@ -475,7 +497,9 @@ $cont = Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupMana
 Get-AzRecoveryServicesBackupItem -BackupManagementType MARS -VaultId $vault.ID -WorkloadType FileFolder
 ```
 #### After
+```powershell
 Get-AzRecoveryServicesBackupItem -BackupManagementType MAB -VaultId $vault.ID -WorkloadType FileFolder
+```
 
 
 ### `Get-AzRecoveryServicesBackupJob`
@@ -486,7 +510,9 @@ Changed the BackupManagementType from MARS to MAB. Functionality remains same, t
 Get-AzRecoveryServicesBackupJob -BackupManagementType MARS -VaultId $vault.ID
 ```
 #### After
+```powershell
 Get-AzRecoveryServicesBackupJob -BackupManagementType MAB -VaultId $vault.ID
+```
 
 
 ## Az.Resources
@@ -503,8 +529,10 @@ PS C:\> $v = Get-AzPolicyAssignment -Id $someId
 PS C:\> Write-Host $v.type, $v.principalId, $v.tenantId
 ```
 #### After
+```powershell
 PS C:\> $v = Get-AzPolicyAssignment -Id $someId
 PS C:\> Write-Host $v.IdentityType, $v.PrincipalId, $v.TenantId, $v.UserAssignedIdentities
+```
 
 
 ## Az.Storage
@@ -517,6 +545,8 @@ Parameter "Name" has been removed from parameter set "ShareResourceId", since na
 $StorageShare = Get-AzRmStorageShare -ResourceId "/subscriptions/..." -Name "MyStorageShare"
 ```
 #### After
+```powershell
 $StorageShare = Get-AzRmStorageShare -ResourceId "/subscriptions/..."
+```
 
 
