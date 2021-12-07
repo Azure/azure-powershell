@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             InMemoryTokenCacheOptions = new InMemoryTokenCacheOptions();
         }
 
-        protected override void RegisterCache(IPublicClientApplication client)
+        public override void RegisterCache(IPublicClientApplication client)
         {
         }
 

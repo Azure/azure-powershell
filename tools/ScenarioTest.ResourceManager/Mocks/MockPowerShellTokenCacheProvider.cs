@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Mocks
             return null;
         }
 
-        protected override void RegisterCache(IPublicClientApplication client)
+        public override void RegisterCache(IPublicClientApplication client)
         {
             throw new NotImplementedException();
         }

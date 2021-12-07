@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 AzureSession.Instance.ClientFactory.GetCustomHandlers());
         }
 
-        protected abstract void RegisterCache(IPublicClientApplication client);
+        public abstract void RegisterCache(IPublicClientApplication client);
 
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {

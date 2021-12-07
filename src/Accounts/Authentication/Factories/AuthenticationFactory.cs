@@ -22,6 +22,7 @@ using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private Func<IAuthenticatorBuilder> _getAuthenticator;
         internal IAuthenticatorBuilder Builder => _getAuthenticator();
-       
+
         public ITokenProvider TokenProvider { get; set; }
 
         /// <summary>
@@ -167,7 +168,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static bool IsTransientException(Exception e)
         {
             var msalException = e.InnerException as MsalServiceException;
-            if(msalException != null)
+            if (msalException != null)
             {
                 return msalException.ErrorCode == MsalError.RequestTimeout ||
                     msalException.ErrorCode == MsalError.ServiceNotAvailable;
@@ -178,12 +179,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static AzPSAuthenticationFailedException AnalyzeMsalException(Exception exception, IAzureEnvironment environment, string tenantId, string resourceId)
         {
             var originalException = exception;
-            while(exception != null)
+            while (exception != null)
             {
-                if(exception is MsalUiRequiredException msalUiRequiredException)
+                if (exception is MsalUiRequiredException msalUiRequiredException)
                 {
                     //There's no official error message for requiring MFA permission, so have to compare UGLY error message
-                    if(msalUiRequiredException.ErrorCode == "invalid_grant" &&
+                    if (msalUiRequiredException.ErrorCode == "invalid_grant" &&
                         msalUiRequiredException.Message.Contains("you must use multi-factor authentication to access"))
                     {
                         string errorMessage;
@@ -334,7 +335,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
-            if(context == null)
+            if (context == null)
             {
                 throw new AzPSApplicationException("Azure context is empty");
             }
@@ -352,7 +353,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new RenewingTokenCredential(new ExternalAccessToken (GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint)));
+                    return new RenewingTokenCredential(new ExternalAccessToken(GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint)));
             }
 
 
