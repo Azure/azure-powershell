@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
         public bool IsValidResourceId(ResourceIdentifier id, string expectedResourceType, bool validateParent = false, string expectedParentType = null)
         {
             if (id == null || string.IsNullOrEmpty(id.ResourceName) || string.IsNullOrEmpty(id.ResourceGroupName) || string.IsNullOrEmpty(id.Subscription) 
-                || !string.Equals(id.ResourceType, expectedResourceType))
+                || !string.Equals(id.ResourceType, expectedResourceType, StringComparison.OrdinalIgnoreCase))
             {
                 return false;
             }
