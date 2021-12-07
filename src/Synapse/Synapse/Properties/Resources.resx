@@ -794,4 +794,13 @@ Failed: {2}.</value>
   <data name="SettingSynapseSparkConfiguration" xml:space="preserve">
     <value>Setting Synapse spark configuration '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="RemoveSynapseKqlScript" xml:space="preserve">
+    <value>Are you sure you want to remove KQL script '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseKqlScript" xml:space="preserve">
+    <value>Deleting KQL script '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseKqlScript" xml:space="preserve">
+    <value>Setting KQL script '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

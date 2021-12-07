@@ -18,11 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Migrate the project to Autorest. Below is the new cmdlet
-    - `Get-AzManagedServicesMarketplaceDefinition`
-    - `New-AzManagedServicesAuthorizationObject`
-    - `New-AzManagedServicesEligibleAuthorizationObject`
-    - `New-AzManagedServicesEligibleApproverObject`
+
+## Version 3.0.0
+* [Breaking Change] Updated API version to 2020-02-01-preview
 
 ## Version 2.0.0
 * [Breaking Change] Updated parameters naming conventions and associated examples
