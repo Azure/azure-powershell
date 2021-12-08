@@ -129,6 +129,11 @@ directive:
           "additionalProperties": true,
           "description": "The template for the managed application deployment."
       }
+  
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/vendorSkus\//g, "vendorskus/")
+
   - no-inline:
       - Device
   #  The generated cmdlet need to Re-Name 
