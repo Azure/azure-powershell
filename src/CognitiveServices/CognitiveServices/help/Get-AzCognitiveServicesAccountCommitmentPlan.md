@@ -12,9 +12,16 @@ Get CommitmentPlan of a Cognitive Services account
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 Get-AzCognitiveServicesAccountCommitmentPlan [[-ResourceGroupName] <String>] [-Name] <String>
  [[-CommitmentPlanName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzCognitiveServicesAccountCommitmentPlan [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,8 +42,8 @@ Get CommitmentPlan of a Cognitive Services account
 Cognitive Services CommitmentPlan Name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
@@ -50,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -65,8 +72,8 @@ Accept wildcard characters: False
 Cognitive Services Account Name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DefaultParameterSet
 Aliases: CognitiveServicesAccountName, AccountName
 
 Required: True
@@ -80,11 +87,26 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)

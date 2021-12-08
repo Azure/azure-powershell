@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -27,6 +28,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     public class GetAzureCognitiveServicesAccountDeploymentCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string DefaultParameterSet = "DefaultParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Position = 0,
@@ -63,6 +74,22 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
+                switch (ParameterSetName)
+                {
+                    case ResourceIdParameterSet:
+                        if (!CognitiveServices.ResourceId.TryParse(ResourceId, out CognitiveServices.ResourceId resourceId))
+                        {
+                            WriteError(new ErrorRecord(new Exception("Failed to parse ResourceId"), string.Empty, ErrorCategory.NotSpecified, null));
+                        }
+
+                        ResourceGroupName = resourceId.ResourceGroupName;
+                        Name = resourceId.GetAccountName();
+                        DeploymentName = resourceId.GetAccountSubResourceName();
+                        break;
+                    case DefaultParameterSet:
+                        break;
+                }
+
                 if (string.IsNullOrEmpty(this.DeploymentName))
                 {
                     var createAccountResponse = new List<Deployment>(CognitiveServicesClient.Deployments.List(ResourceGroupName, Name));

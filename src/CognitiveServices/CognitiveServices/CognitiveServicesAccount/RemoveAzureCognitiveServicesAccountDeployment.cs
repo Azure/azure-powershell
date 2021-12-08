@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
+using Microsoft.Azure.Management.CognitiveServices.Models;
+using System;
 using System.Globalization;
 using System.Management.Automation;
 
@@ -23,10 +25,30 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Delete a Cognitive Services.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountDeployment", DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountDeployment", DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureCognitiveServicesAccountDeploymentCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string DefaultParameterSet = "DefaultParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        protected const string InputObjectParameterSet = "InputObjectParameterSet";
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "InputObject.")]
+        [ValidateNotNullOrEmpty]
+        public Deployment InputObject { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Position = 0,
@@ -59,6 +81,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -70,7 +95,31 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 RunCmdLet(() =>
                 {
+                    switch (ParameterSetName)
+                    {
+                        case InputObjectParameterSet:
+                            ResourceId = InputObject.Id;
+                            goto case ResourceIdParameterSet;
+                        case ResourceIdParameterSet:
+                            if (!CognitiveServices.ResourceId.TryParse(ResourceId, out CognitiveServices.ResourceId resourceId))
+                            {
+                                WriteError(new ErrorRecord(new Exception("Failed to parse ResourceId"), string.Empty, ErrorCategory.NotSpecified, null));
+                            }
+
+                            ResourceGroupName = resourceId.ResourceGroupName;
+                            Name = resourceId.GetAccountName();
+                            DeploymentName = resourceId.GetAccountSubResourceName();
+                            break;
+                        case DefaultParameterSet:
+                            break;
+                    }
+
                     this.CognitiveServicesClient.Deployments.Delete(ResourceGroupName, Name, DeploymentName);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 });
             }
         }
