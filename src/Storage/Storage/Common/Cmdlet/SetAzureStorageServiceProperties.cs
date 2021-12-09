@@ -17,10 +17,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using StorageClient = Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// Modify Azure Storage service properties
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
         [Parameter(Mandatory = false, HelpMessage = "Default Service Version to Set")]
         [ValidateNotNullOrEmpty]
-        public string DefaultServiceVersion { get; set; }        
+        public string DefaultServiceVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public UpdateAzureStorageServicePropertyCommand()
         {
             EnableMultiThread = false;
-        }       
+        }
 
         /// <summary>
         /// Execute command
@@ -61,32 +61,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     StorageClient.ServiceProperties serviceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
 
-                serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                    serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
 
-                Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
-                    GetRequestOptions(ServiceType), OperationContext);
+                    Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
+                        GetRequestOptions(ServiceType), OperationContext);
 
-                if (PassThru)
-                {
-                    WriteObject(new PSSeriviceProperties(serviceProperties));
+                    if (PassThru)
+                    {
+                        WriteObject(new PSSeriviceProperties(serviceProperties));
                     }
                 }
                 else //Table use old XSCL
                 {
                     StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
 
-                    if (!string.IsNullOrEmpty(DefaultServiceVersion))
+                    if (tableChannel.IsTokenCredential)
                     {
-                        serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                        throw new ArgumentException("Updating default service version is not supported while using OAuth.");
                     }
-
-                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                        GetTableRequestOptions(), TableOperationContext);
-
-                    if (PassThru)
+                    else
                     {
-                        WriteObject(new PSSeriviceProperties(serviceProperties));
+                        XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+
+                        if (!string.IsNullOrEmpty(DefaultServiceVersion))
+                        {
+                            serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
+                        }
+
+                        tableChannel.SetStorageTableServiceProperties(serviceProperties,
+                            GetTableRequestOptions(), TableOperationContext);
+
+                        if (PassThru)
+                        {
+                            WriteObject(new PSSeriviceProperties(serviceProperties));
+                        }
                     }
                 }
             }

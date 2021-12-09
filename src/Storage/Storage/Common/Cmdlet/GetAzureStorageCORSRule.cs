@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Storage.Shared.Protocol;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using XTable = Microsoft.Azure.Cosmos.Table;
+
     /// <summary>
     /// Show azure storage CORS rule properties
     /// </summary>
@@ -55,8 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             else //Table use old XSCL
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-                WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+
+                if (tableChannel.IsTokenCredential)
+                {
+                    TableServiceProperties currentServiceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
+                    WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+                }
+                else
+                {
+                    XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                    WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+                }
             }
         }
     }

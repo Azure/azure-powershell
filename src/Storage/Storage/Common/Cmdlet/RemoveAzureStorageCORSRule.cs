@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Storage.Shared.Protocol;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using XTable = Microsoft.Azure.Cosmos.Table;
+
     /// <summary>
     /// Remove all azure storage CORS rules
     /// </summary>
@@ -51,20 +53,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 serviceProperties.Cors = currentServiceProperties.Cors;
                 serviceProperties.Cors.CorsRules.Clear();
 
-                Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
-                    GetRequestOptions(ServiceType), OperationContext);
+                Channel.SetStorageServiceProperties(ServiceType, serviceProperties, GetRequestOptions(ServiceType), OperationContext);
             }
             else //Table use old XSCL
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-                XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = currentServiceProperties.Cors;
-                serviceProperties.Cors.CorsRules.Clear();
+                if (tableChannel.IsTokenCredential)
+                {
+                    throw new ArgumentException("Removing CORS rule is not supported while using OAuth.");
+                }
+                else
+                {
+                    XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                    XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
+                    serviceProperties.Clean();
+                    serviceProperties.Cors = currentServiceProperties.Cors;
+                    serviceProperties.Cors.CorsRules.Clear();
 
-                tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                    GetTableRequestOptions(), TableOperationContext);
+                    tableChannel.SetStorageTableServiceProperties(serviceProperties, GetTableRequestOptions(), TableOperationContext);
+                }
             }
         }
     }

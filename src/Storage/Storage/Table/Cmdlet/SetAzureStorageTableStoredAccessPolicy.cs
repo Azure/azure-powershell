@@ -14,14 +14,18 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
@@ -72,13 +76,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             EnableMultiThread = false;
         }
 
-        internal string SetAzureTableStoredAccessPolicy(IStorageTableManagement localChannel, string tableName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
+        internal string SetAzureTableStoredAccessPolicy(
+            IStorageTableManagement localChannel,
+            string tableName,
+            string policyName,
+            DateTime? startTime,
+            DateTime? expiryTime,
+            string permission,
+            bool noStartTime,
+            bool noExpiryTime)
         {
-            DateTime? startTimeToSet = startTime;
-            DateTime? expiryTimetoSet = expiryTime;
-
             //Get existing permissions
-            CloudTable table = localChannel.GetTableReference(Table);
+            CloudTable table = localChannel.GetTableReference(tableName);
             TablePermissions tablePermissions = localChannel.GetTablePermissions(table, this.RequestOptions, this.TableOperationContext);
 
             //Set the policy with new value
@@ -94,6 +103,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             //Set permission back to table
             localChannel.SetTablePermissions(table, tablePermissions, null, TableOperationContext);
             WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessTablePolicy>(tablePermissions.SharedAccessPolicies, policyName));
+            return policyName;
+        }
+
+        internal string SetAzureTableStoredAccessPolicyV2(
+            IStorageTableManagement localChannel,
+            string tableName,
+            string policyName,
+            DateTime? startTime,
+            DateTime? expiryTime,
+            string permission,
+            bool noStartTime,
+            bool noExpiryTime)
+        {
+            // get existing permissions
+            Dictionary<string, TableSignedIdentifier> identifiers = localChannel.GetAccessPolicies(tableName, this.CmdletCancellationToken)
+                .ToDictionary(p => p.Id, p => p);
+
+            if (!identifiers.ContainsKey(policyName))
+            {
+                throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+            }
+
+            // set the policy with new value
+            TableSignedIdentifier identifier = identifiers[policyName];
+            this.SetupAclStartAndExpiryTime(identifier.AccessPolicy, startTime, expiryTime, noStartTime, noExpiryTime);
+            identifier.AccessPolicy.Permission = permission;
+
+            //Set permission back to table
+            identifiers[policyName] = identifier;
+            localChannel.SetAccessPolicies(tableName, identifiers.Values, this.CmdletCancellationToken);
+
+            WriteObject(PowerShellUtilities.ConstructPSObject(typeof(PSObject).FullName,
+                "Policy", policyName,
+                "Permissions", identifier.AccessPolicy.Permission,
+                "StartTime", identifier.AccessPolicy.StartsOn,
+                "ExpiryTime", identifier.AccessPolicy.ExpiresOn));
             return policyName;
         }
 
@@ -114,10 +159,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
+            // when user is using oauth credential, the current code uses track 2 sdk, which fails with 404.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Access Policy operations are not supported while using OAuth.");
+            }
+
             if (ShouldProcess(Policy, "Set"))
             {
-                SetAzureTableStoredAccessPolicy(Channel, Table, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+                if (this.Channel.IsTokenCredential)
+                {
+                    SetAzureTableStoredAccessPolicyV2(Channel, Table, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+                }
+                else
+                {
+                    SetAzureTableStoredAccessPolicy(Channel, Table, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+                }
             }
+        }
+
+        private void SetupAclStartAndExpiryTime(TableAccessPolicy acl, DateTime? startTime, DateTime? expiryTime, bool noStartTime, bool noExpiryTime)
+        {
+            if (noStartTime ^ startTime == null)
+            {
+                throw new ArgumentException(Resources.StartTimeParameterConflict);
+            }
+
+            if (noExpiryTime ^ expiryTime == null)
+            {
+                throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
+            }
+
+            DateTimeOffset? accessStartTime;
+            DateTimeOffset? accessExpiryTime;
+            AccessPolicyHelper.SetupAccessPolicyLifeTime(startTime, expiryTime, out accessStartTime, out accessExpiryTime);
+
+            acl.StartsOn = accessStartTime;
+            acl.ExpiresOn = accessExpiryTime;
         }
     }
 }

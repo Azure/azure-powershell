@@ -14,13 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
@@ -124,14 +123,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (String.IsNullOrEmpty(Name)) return;
+            if (String.IsNullOrEmpty(Name))
+            {
+                return;
+            }
+
+            // when user is using oauth credential, the current code uses track 2 sdk, which is why this needs to be blocked here.
+            // reimplement when we deprecate legacy table sdk, probably by adding a new AccountKey cmdlet parameter.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Create Shared Access Signature is not supported while using OAuth.");
+            }
+
             CloudTable table = Channel.GetTableReference(Name);
             SharedAccessTablePolicy policy = new SharedAccessTablePolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateTableAccessPolicy(Channel, table.Name, policy, accessPolicyIdentifier);
             SetupAccessPolicy(policy, shouldSetExpiryTime);
             ValidatePkAndRk(StartPartitionKey, StartRowKey, EndPartitionKey, EndRowKey);
-            string sasToken = table.GetSharedAccessSignature(policy, accessPolicyIdentifier, StartPartitionKey,
-                                StartRowKey, EndPartitionKey, EndRowKey, Protocol, Util.SetupTableIPAddressOrRangeForSAS(IPAddressOrRange));
+            string sasToken = table.GetSharedAccessSignature(
+                policy,
+                accessPolicyIdentifier,
+                StartPartitionKey,
+                StartRowKey,
+                EndPartitionKey,
+                EndRowKey,
+                Protocol,
+                Util.SetupTableIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {

@@ -14,13 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
-    using Microsoft.Azure.Storage.Shared.Protocol;
-    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Show azure storage service properties
@@ -72,19 +74,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             else //Table use old XSCL
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
 
-                // Premium Account not support classic metrics and logging
-                if (serviceProperties.Logging == null)
+                if (tableChannel.IsTokenCredential)
                 {
-                    AccountProperties accountProperties = Channel.GetAccountProperties();
-                    if (accountProperties.SkuName.Contains("Premium"))
-                    {
-                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
-                    }
-                }
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
 
-                WriteObject(serviceProperties.Logging);
+                    // Premium Account not support classic metrics and logging
+                    if (serviceProperties.Logging == null)
+                    {
+                        this.ThrowIfPremium("This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}");
+                    }
+
+                    WriteObject(PSSeriviceProperties.ConvertLoggingProperties(serviceProperties.Logging));
+                }
+                else
+                {
+
+
+                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+
+                    // Premium Account not support classic metrics and logging
+                    if (serviceProperties.Logging == null)
+                    {
+                        this.ThrowIfPremium("This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}");
+                    }
+
+                    WriteObject(serviceProperties.Logging);
+                }
             }
         }
     }

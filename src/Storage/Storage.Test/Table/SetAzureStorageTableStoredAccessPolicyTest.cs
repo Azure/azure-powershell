@@ -14,13 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-    using Microsoft.Azure.Cosmos.Table;
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
 
     [TestClass]
     public class SetAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
@@ -39,13 +37,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestCleanup]
         public void CleanCommand()
         {
-            command = null;
+            this.clearTest();
+            this.command = null;
         }
 
         [TestMethod]
         public void SetStoredAccessPolicyNotExistsTest()
         {
-            clearTest();
             string policyName = "Policy" + Guid.NewGuid();
             string tableName = "sampleTable";
 
@@ -53,16 +51,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             command.Policy = policyName;
             AssertThrows<ArgumentException>(() => command.SetAzureTableStoredAccessPolicy(command.Channel, tableName, policyName, null, null, null, false, false),
                 string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName)); 
-
-            clearTest();
         }
 
 
         [TestMethod]
         public void SetStoredAccessPolicySuccessTest()
         {
-            AddTestStoredAccessPolicy();
-            string policyName = TestPolicy1;
+            ClearAndAddTestStoredAccessPolicies();
+            string policyName = PolicyName1;
             string tableName = "sampleTable";
 
             string permission = "u";

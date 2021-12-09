@@ -14,14 +14,17 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(String))]
     public class NewAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
@@ -67,9 +70,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             EnableMultiThread = false;
         }
 
-        internal string CreateAzureTableStoredAccessPolicy(IStorageTableManagement localChannel, string tableName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission)
+        internal string CreateAzureTableStoredAccessPolicy(
+            IStorageTableManagement localChannel,
+            string tableName,
+            string policyName,
+            DateTime? startTime,
+            DateTime? expiryTime,
+            string permission)
         {
-
             if (!NameUtil.IsValidStoredAccessPolicyName(policyName))
             {
                 throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
@@ -94,6 +102,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             return policyName;
         }
 
+        internal string CreateAzureTableStoredAccessPolicyV2(
+            IStorageTableManagement localChannel,
+            string tableName,
+            string policyName,
+            DateTime? startTime,
+            DateTime? expiryTime,
+            string permission)
+        {
+            if (!NameUtil.IsValidStoredAccessPolicyName(policyName))
+            {
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
+            }
+
+            // get existing permissions
+            Dictionary<string, TableSignedIdentifier> identifiers = localChannel.GetAccessPolicies(tableName, this.CmdletCancellationToken)
+                .ToDictionary(p => p.Id, p => p);
+
+            // add new policy
+            if (identifiers.ContainsKey(policyName))
+            {
+                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
+            }
+
+            // PowerShell will convert q to r in genreate table SAS. Add this to avoid regression
+            string convertedPermission = permission.Replace('q', 'r');
+            TableAccessPolicy policy = new TableAccessPolicy(startTime, expiryTime, convertedPermission);
+            identifiers.Add(policyName, new TableSignedIdentifier(policyName, policy));
+
+            // set permissions back to table
+            localChannel.SetAccessPolicies(tableName, identifiers.Values, this.CmdletCancellationToken);
+            return policyName;
+        }
+
         /// <summary>
         /// Execute command
         /// </summary>
@@ -101,7 +142,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Table) || String.IsNullOrEmpty(Policy)) return;
-            string resultPolicy = CreateAzureTableStoredAccessPolicy(Channel, Table, Policy, StartTime, ExpiryTime, Permission);
+
+            // when user is using oauth credential, the current code uses track 2 sdk, which fails with 404.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Access Policy operations are not supported while using OAuth.");
+            }
+
+            string resultPolicy = this.Channel.IsTokenCredential ?
+                CreateAzureTableStoredAccessPolicyV2(Channel, Table, Policy, StartTime, ExpiryTime, Permission) :
+                CreateAzureTableStoredAccessPolicy(Channel, Table, Policy, StartTime, ExpiryTime, Permission);
             WriteObject(resultPolicy);
         }
     }

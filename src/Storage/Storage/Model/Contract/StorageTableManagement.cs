@@ -14,21 +14,22 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Cosmos.Table;
-    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using global::Azure.Core;
+    using global::Azure.Data.Tables;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Storage table management
     /// </summary>
-    public class StorageTableManagement : IStorageTableManagement
+    public partial class StorageTableManagement : IStorageTableManagement
     {
         /// <summary>
-        /// Cloud table client
+        /// Cloud table client from track 1 sdk
         /// </summary>
         private CloudTableClient tableClient;
 
@@ -48,6 +49,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             }
         }
 
+        public bool IsTokenCredential
+        {
+            get
+            {
+                return internalStorageContext.StorageAccount.Credentials.IsToken;
+            }
+        }
+
         /// <summary>
         /// Storage table management constructor
         /// </summary>
@@ -55,7 +64,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public StorageTableManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
-            tableClient = internalStorageContext.TableStorageAccount.CreateCloudTableClient();
+
+            TableClientOptions clientOptions = new TableClientOptions();
+            clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+
+            if (context.StorageAccount.Credentials.IsToken)
+            {
+                tableServiceClient = new TableServiceClient(context.StorageAccount.TableEndpoint, context.Track2OauthToken, clientOptions);
+            }
+            else
+            {
+                tableClient = context.TableStorageAccount.CreateCloudTableClient();
+            }
         }
 
         /// <summary>
@@ -67,6 +87,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of tables that begin with the specified prefix</returns>
         public IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
         {
+            EnsureCloudTableClient();
+
             //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
             TableContinuationToken continuationToken = null;
             var results = new List<CloudTable>();
@@ -93,6 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>Cloud table object</returns>
         public CloudTable GetTableReference(string name)
         {
+            EnsureCloudTableClient();
             return tableClient.GetTableReference(name);
         }
 
@@ -253,6 +276,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             catch (AggregateException e) when (e.InnerException is XTable.StorageException)
             {
                 throw e.InnerException;
+            }
+        }
+
+        private void EnsureCloudTableClient()
+        {
+            if (tableClient == null)
+            {
+                throw new ApplicationException($"{nameof(tableClient)} is not initialized");
             }
         }
     }

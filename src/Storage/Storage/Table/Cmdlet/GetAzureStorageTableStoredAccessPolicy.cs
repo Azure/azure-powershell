@@ -14,15 +14,18 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Table;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(SharedAccessTablePolicy))]
     public class GetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
@@ -59,7 +62,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
         internal async Task GetAzureTableStoredAccessPolicyAsync(long taskId, IStorageTableManagement localChannel, string tableName, string policyName)
         {
-            SharedAccessTablePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, tableName, policyName).ConfigureAwait(false);
+            CloudTable table = localChannel.GetTableReference(tableName);
+            TablePermissions tablePermissions = await localChannel.GetTablePermissionsAsync(table, null, TableOperationContext).ConfigureAwait(false);
+            SharedAccessTablePolicies shareAccessPolicies = tablePermissions.SharedAccessPolicies;
 
             if (!String.IsNullOrEmpty(policyName))
             {
@@ -81,11 +86,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             }
         }
 
-        internal async Task<SharedAccessTablePolicies> GetPoliciesAsync(IStorageTableManagement localChannel, string tableName, string policyName)
+        internal async Task GetAzureTableStoredAccessPolicyV2Async(long taskId, IStorageTableManagement localChannel, string tableName, string policyName)
         {
-            CloudTable table = localChannel.GetTableReference(tableName);
-            TablePermissions tablePermissions = await localChannel.GetTablePermissionsAsync(table, null, TableOperationContext).ConfigureAwait(false);
-            return tablePermissions.SharedAccessPolicies;
+            IEnumerable<TableSignedIdentifier> identifiers = await localChannel.GetAccessPoliciesAsync(tableName, this.CmdletCancellationToken);
+            Dictionary<string, TableAccessPolicy> accessPolicies = identifiers.ToDictionary(identifier => identifier.Id, identifier => identifier.AccessPolicy);
+
+            if (!String.IsNullOrEmpty(policyName))
+            {
+                if (accessPolicies.Keys.Contains(policyName))
+                {
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<TableAccessPolicy>(accessPolicies, policyName));
+                }
+                else
+                {
+                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                }
+            }
+            else
+            {
+                foreach (string key in accessPolicies.Keys)
+                {
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<TableAccessPolicy>(accessPolicies, key));
+                }
+            }
         }
 
         /// <summary>
@@ -95,7 +118,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Table)) return;
-            Func<long, Task> taskGenerator = (taskId) => GetAzureTableStoredAccessPolicyAsync(taskId, Channel, Table, Policy);
+
+            // when user is using oauth credential, the current code uses track 2 sdk, which fails with 404.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Access Policy operations are not supported while using OAuth.");
+            }
+
+            Func<long, Task> taskGenerator = (taskId) => this.Channel.IsTokenCredential ?
+                GetAzureTableStoredAccessPolicyV2Async(taskId, Channel, Table, Policy) :
+                GetAzureTableStoredAccessPolicyAsync(taskId, Channel, Table, Policy);
             RunTask(taskGenerator);
         }
     }

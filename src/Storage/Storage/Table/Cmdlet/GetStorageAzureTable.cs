@@ -14,15 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Commands.Common.Storage.ResourceModel;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// list azure tables
@@ -40,6 +41,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// </summary>
         private const string PrefixParameterSet = "TablePrefix";
 
+        /// <summary>
+        /// query parameter set name
+        /// </summary>
+        private const string QueryParameterSet = "TableQuery";
+
         [Alias("N", "Table")]
         [Parameter(Position = 0, HelpMessage = "Table name",
             ValueFromPipeline = true,
@@ -52,6 +58,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             ParameterSetName = PrefixParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Prefix { get; set; }
+
+        [Parameter(HelpMessage = "Table Query",
+            ParameterSetName = QueryParameterSet, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string Query { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageTableCommand class.
@@ -121,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
 
         /// <summary>
-        /// list azure queues by prefix
+        /// list azure tables by prefix
         /// </summary>
         /// <param name="prefix">table prefix</param>
         /// <returns>An enumerable collection of CloudTable object</returns>
@@ -138,20 +149,95 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
 
         /// <summary>
-        /// write cloud table with storage context
+        /// list azure table clients by full name or simple regular expression
         /// </summary>
-        /// <param name="tableList">An enumerable collection of CloudTable object</param>
-        internal void WriteTablesWithStorageContext(IEnumerable<CloudTable> tableList)
+        /// <param name="tableName">table name or simple regular expression</param>
+        /// <returns></returns>
+        internal IEnumerable<AzureStorageTable> ListTablesByNameV2(IStorageTableManagement localChannel, string tableName)
+        {
+            if (String.IsNullOrEmpty(tableName) || WildcardPattern.ContainsWildcardCharacters(tableName))
+            {
+                WildcardPattern wildcard = null;
+                if (!string.IsNullOrEmpty(tableName))
+                {
+                    wildcard = new WildcardPattern(tableName, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
+                }
+
+                foreach (AzureStorageTable table in this.ListTablesByQueryV2(localChannel, query: null))
+                {
+                    if (wildcard == null || wildcard.IsMatch(table.Name))
+                    {
+                        yield return table;
+                    }
+                }
+            }
+            else
+            {
+                if (!NameUtil.IsValidTableName(tableName))
+                {
+                    throw new ArgumentException(String.Format(Resources.InvalidTableName, tableName));
+                }
+
+                string query = $"TableName eq '{tableName}'";
+                List<AzureStorageTable> tables = this.ListTablesByQueryV2(localChannel, query).ToList();
+                if (tables.Count == 0)
+                {
+                    throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, tableName));
+                }
+
+                foreach (AzureStorageTable table in tables)
+                {
+                    yield return table;
+                }
+            }
+        }
+
+        /// <summary>
+        /// list azure table clients by prefix using track2 sdk
+        /// </summary>
+        /// <param name="prefix">table prefix</param>
+        /// <returns></returns>
+        internal IEnumerable<AzureStorageTable> ListTablesByPrefixV2(IStorageTableManagement localChannel, string prefix)
+        {
+            if (!NameUtil.IsValidTablePrefix(prefix))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidTableName, prefix));
+            }
+
+            // append '{' as upper bound as it is the first ASCII char after the largest legal table name character
+            string query = $"TableName ge '{prefix}' and TableName lt '{prefix}{{'";
+            return this.ListTablesByQueryV2(localChannel, query);
+        }
+
+        /// <summary>
+        /// list azure table clients by query
+        /// </summary>
+        /// <param name="localChannel"></param>
+        /// <param name="query">table query string</param>
+        /// <returns></returns>
+        internal IEnumerable<AzureStorageTable> ListTablesByQueryV2(IStorageTableManagement localChannel, string query)
+        {
+            IEnumerable<TableItem> tableItems = localChannel.QueryTables(query, this.CmdletCancellationToken);
+            foreach (TableItem tableItem in tableItems)
+            {
+                yield return localChannel.GetAzureStorageTable(tableItem.Name);
+            }
+        }
+
+        /// <summary>
+        /// write table with storage context
+        /// </summary>
+        /// <param name="tableList">An enumerable collection of AzureStorageTable object</param>
+        internal void WriteTablesWithStorageContext(IEnumerable<AzureStorageTable> tableList)
         {
             if (null == tableList)
             {
                 return;
             }
 
-            foreach (CloudTable table in tableList)
+            foreach (AzureStorageTable table in tableList)
             {
-                AzureStorageTable azureTable = new AzureStorageTable(table);
-                WriteObjectWithStorageContext(azureTable);
+                WriteObjectWithStorageContext(table);
             }
         }
 
@@ -161,18 +247,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            IEnumerable<CloudTable> tableList = null;
-
-            if (PrefixParameterSet == ParameterSetName)
+            if (this.Channel.IsTokenCredential)
             {
-                tableList = ListTablesByPrefix(Prefix);
+                IEnumerable<AzureStorageTable> tableList = null;
+
+                if (PrefixParameterSet == ParameterSetName)
+                {
+                    tableList = this.ListTablesByPrefixV2(Channel, Prefix);
+                }
+                else if (QueryParameterSet == ParameterSetName)
+                {
+                    tableList = this.ListTablesByQueryV2(Channel, Query);
+                }
+                else
+                {
+                    tableList = ListTablesByNameV2(Channel, Name);
+                }
+
+                WriteTablesWithStorageContext(tableList);
             }
             else
             {
-                tableList = ListTablesByName(Name);
-            }
+                IEnumerable<CloudTable> tableList = null;
 
-            WriteTablesWithStorageContext(tableList);
+                if (PrefixParameterSet == ParameterSetName)
+                {
+                    tableList = ListTablesByPrefix(Prefix);
+                }
+                else if (QueryParameterSet == ParameterSetName)
+                {
+                    throw new ArgumentException($"{QueryParameterSet} is only supported while using OAuth");
+                }
+                else
+                {
+                    tableList = ListTablesByName(Name);
+                }
+
+                WriteTablesWithStorageContext(tableList.Select(t => new AzureStorageTable(t, this.Channel.StorageContext, this.tableClientOptions)));
+            }
         }
     }
 }

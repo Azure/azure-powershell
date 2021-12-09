@@ -12,20 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Net;
-using System.Security.Permissions;
-using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Security.Permissions;
+    using global::Azure;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Shared.Protocol;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
+
     /// <summary>
     /// Define cmdlet to set azure storage CORS rules to service, it will overwrite all of the CORS rules in the service.
     /// </summary>
@@ -100,40 +102,67 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else //Table use old XSCL
             {
-                XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = new XTable.CorsProperties();
+                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                foreach (var corsRuleObject in this.CorsRules)
+                if (tableChannel.IsTokenCredential)
                 {
-                    XTable.CorsRule corsRule = new XTable.CorsRule();
-                    corsRule.AllowedHeaders = corsRuleObject.AllowedHeaders;
-                    corsRule.AllowedOrigins = corsRuleObject.AllowedOrigins;
-                    corsRule.ExposedHeaders = corsRuleObject.ExposedHeaders;
-                    corsRule.MaxAgeInSeconds = corsRuleObject.MaxAgeInSeconds;
-                    this.SetAllowedMethods(corsRule, corsRuleObject.AllowedMethods);
-                    serviceProperties.Cors.CorsRules.Add(corsRule);
-                }
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
 
-                try
-                {
-                    StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                        GetTableRequestOptions(), TableOperationContext);
-                }
-                catch (XTable.StorageException se)
-                {
-                    if ((null != se.RequestInformation) &&
-                        ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
-                        (null != se.RequestInformation.ExtendedErrorInformation) &&
-                        (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
-                        string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
+                    foreach (var corsRule in this.CorsRules)
+                    {
+                        serviceProperties.Cors.Add(new TableCorsRule(
+                            string.Join(",", corsRule.AllowedOrigins),
+                            string.Join(",", corsRule.AllowedMethods),
+                            string.Join(",", corsRule.AllowedHeaders),
+                            string.Join(",", corsRule.ExposedHeaders),
+                            corsRule.MaxAgeInSeconds));
+                    }
+
+                    try
+                    {
+                        tableChannel.SetProperties(serviceProperties, this.CmdletCancellationToken);
+                    }
+                    catch (RequestFailedException)
                     {
                         throw new InvalidOperationException(Resources.CORSRuleError);
                     }
-                    else
+                }
+                else
+                {
+                    XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
+                    serviceProperties.Clean();
+                    serviceProperties.Cors = new XTable.CorsProperties();
+
+                    foreach (var corsRuleObject in this.CorsRules)
                     {
-                        throw;
+                        XTable.CorsRule corsRule = new XTable.CorsRule();
+                        corsRule.AllowedHeaders = corsRuleObject.AllowedHeaders;
+                        corsRule.AllowedOrigins = corsRuleObject.AllowedOrigins;
+                        corsRule.ExposedHeaders = corsRuleObject.ExposedHeaders;
+                        corsRule.MaxAgeInSeconds = corsRuleObject.MaxAgeInSeconds;
+                        this.SetAllowedMethods(corsRule, corsRuleObject.AllowedMethods);
+                        serviceProperties.Cors.CorsRules.Add(corsRule);
+                    }
+
+                    try
+                    {
+                        tableChannel.SetStorageTableServiceProperties(serviceProperties,
+                            GetTableRequestOptions(), TableOperationContext);
+                    }
+                    catch (XTable.StorageException se)
+                    {
+                        if ((null != se.RequestInformation) &&
+                            ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
+                            (null != se.RequestInformation.ExtendedErrorInformation) &&
+                            (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            throw new InvalidOperationException(Resources.CORSRuleError);
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
             }

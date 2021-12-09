@@ -14,14 +14,17 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
 
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
@@ -63,13 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         internal bool RemoveAzureTableStoredAccessPolicy(IStorageTableManagement localChannel, string tableName, string policyName)
         {
             bool success = false;
-            string result = string.Empty;
 
-            //Get existing permissions
+            // get existing permissions
             CloudTable table = localChannel.GetTableReference(tableName);
             TablePermissions tablePermissions = localChannel.GetTablePermissions(table, this.RequestOptions, this.TableOperationContext);
 
-            //remove the specified policy
+            // remove the specified policy
             if (!tablePermissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
@@ -85,6 +87,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             return success;
         }
 
+        internal bool RemoveAzureTableStoredAccessPolicyV2(IStorageTableManagement localChannel, string tableName, string policyName)
+        {
+            // get existing permissions
+            Dictionary<string, TableSignedIdentifier> identifiers = localChannel.GetAccessPolicies(tableName, this.CmdletCancellationToken)
+                .ToDictionary(p => p.Id, p => p);
+
+            // remove the specified policy
+            if (!identifiers.ContainsKey(policyName))
+            {
+                throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+            }
+
+            if (ShouldProcess(policyName, "Remove policy"))
+            {
+                identifiers.Remove(policyName);
+                localChannel.SetAccessPolicies(tableName, identifiers.Values, this.CmdletCancellationToken);
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Execute command
         /// </summary>
@@ -92,7 +116,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Table) || String.IsNullOrEmpty(Policy)) return;
-            bool success = RemoveAzureTableStoredAccessPolicy(Channel, Table, Policy);
+
+            // when user is using oauth credential, the current code uses track 2 sdk, which fails with 404.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Access Policy operations are not supported while using OAuth.");
+            }
+
+            bool success = this.Channel.IsTokenCredential ?
+                RemoveAzureTableStoredAccessPolicyV2(Channel, Table, Policy) :
+                RemoveAzureTableStoredAccessPolicy(Channel, Table, Policy);
             string result = string.Empty;
 
             if (success)

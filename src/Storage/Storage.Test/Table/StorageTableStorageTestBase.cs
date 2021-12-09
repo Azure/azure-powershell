@@ -11,21 +11,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Storage.Table;
-using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Cosmos.Table;
-using System;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
+    using System;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+    using Microsoft.WindowsAzure.Commands.Storage.Table;
+    using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
+
     public class StorageTableStorageTestBase : StorageTestBase
     {
-        public MockStorageTableManagement tableMock = null;
-        public const string TestPolicy1 = "TestPolicy1";
-        public const string TestPolicy2 = "TestPolicy2";
+        protected MockStorageTableManagement tableMock = null;
+
+        protected const string PolicyName1 = "TestPolicy1";
+        protected const string PolicyName2 = "TestPolicy2";
+        protected const string PolicyName3 = "TestPolicy3";
+        protected const string PolicyName4 = "TestPolicy4";
 
         protected StorageCloudTableCmdletBase CurrentTableCmd { get; set; }
 
@@ -52,29 +55,46 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             tableMock.tableList.Add(new CloudTable(new Uri(textUri)));
         }
 
-        public void AddTestStoredAccessPolicy()
+        public void ClearAndAddTestStoredAccessPolicies()
         {
+            DateTime startTime = DateTime.UtcNow;
+            DateTime expiryTime = startTime.AddDays(1);
+
             tableMock.tablePermissions.SharedAccessPolicies.Clear();
 
             SharedAccessTablePolicy testPolicy1 = new SharedAccessTablePolicy();
             testPolicy1.Permissions = SharedAccessTablePermissions.None;
             testPolicy1.Permissions |= SharedAccessTablePermissions.Query;
-            testPolicy1.SharedAccessStartTime = DateTime.Today.ToUniversalTime();
-            testPolicy1.SharedAccessExpiryTime = DateTime.Today.AddDays(1).ToUniversalTime();
-            tableMock.tablePermissions.SharedAccessPolicies.Add(TestPolicy1, testPolicy1);
+            testPolicy1.SharedAccessStartTime = startTime;
+            testPolicy1.SharedAccessExpiryTime = expiryTime;
+            tableMock.tablePermissions.SharedAccessPolicies.Add(PolicyName1, testPolicy1);
 
             SharedAccessTablePolicy testPolicy2 = new SharedAccessTablePolicy();
             testPolicy1.Permissions = SharedAccessTablePermissions.None;
             testPolicy1.Permissions |= SharedAccessTablePermissions.Query;
-            testPolicy1.SharedAccessStartTime = DateTime.Today.ToUniversalTime();
-            testPolicy1.SharedAccessExpiryTime = DateTime.Today.AddDays(1).ToUniversalTime();
-            tableMock.tablePermissions.SharedAccessPolicies.Add(TestPolicy2, testPolicy2);
+            testPolicy1.SharedAccessStartTime = startTime;
+            testPolicy1.SharedAccessExpiryTime = expiryTime;
+            tableMock.tablePermissions.SharedAccessPolicies.Add(PolicyName2, testPolicy2);
+
+            tableMock.ClearAndAddTestSignedIdentifiers(
+                new Tuple<string, TableAccessPolicy>(PolicyName1, new TableAccessPolicy(startTime, expiryTime, "raud")),
+                new Tuple<string, TableAccessPolicy>(PolicyName2, new TableAccessPolicy(startTime, null, "r")),
+                new Tuple<string, TableAccessPolicy>(PolicyName3, new TableAccessPolicy(null, expiryTime, "au")),
+                new Tuple<string, TableAccessPolicy>(PolicyName4, new TableAccessPolicy(null, null, "aud")));
         }
 
-        public void clearTest()
+        protected void clearTest()
         {
-            tableMock.tableList.Clear();
-            tableMock.tablePermissions.SharedAccessPolicies.Clear();
+            if (tableMock != null)
+            {
+                tableMock.tableList.Clear();
+                tableMock.tablePermissions.SharedAccessPolicies.Clear();
+
+                tableMock.ClearAndAddTestSignedIdentifiers();
+                tableMock.ClearAndAddTestTableV2();
+            }
+
+            MockCmdRunTime?.ResetPipelines();
         }
 
         /// <summary>

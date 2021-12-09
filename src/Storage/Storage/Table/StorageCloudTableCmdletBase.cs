@@ -14,11 +14,17 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
+    using System.Threading;
+    using global::Azure.Core;
+    using global::Azure.Data.Tables;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using TableEntity = global::Azure.Data.Tables.TableEntity;
+
     /// <summary>
     /// base class for table cmdlet
     /// </summary>
@@ -28,6 +34,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+
+        protected TableClientOptions tableClientOptions;
+
+        protected StorageCloudTableCmdletBase()
+        {
+            this.tableClientOptions = new TableClientOptions();
+            tableClientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+        }
 
         /// <summary>
         /// create table storage service management channel.
@@ -74,6 +88,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
                 {
                     return !(result.MoveNext() && result.Current != null);
                 }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        protected bool IsTableEmpty(IStorageTableManagement channel, string tableName, CancellationToken cancellationToken)
+        {
+            try
+            {
+                IEnumerable<TableEntity> entities = channel.QueryTableEntities<TableEntity>(
+                    tableName,
+                    filter: null,
+                    maxPerPage: 1,
+                    selects: null,
+                    cancellationToken);
+                foreach (TableEntity p in entities)
+                {
+                    return false;
+                }
+
+                return true;
             }
             catch (Exception)
             {
