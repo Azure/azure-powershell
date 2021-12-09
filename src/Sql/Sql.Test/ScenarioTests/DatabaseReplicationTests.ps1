@@ -424,7 +424,7 @@ function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
 function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 {
 	# Setup
-    $location = "southeastasia"
+    $location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server

@@ -33,7 +33,7 @@ function Test-CreateManagedInstance
  	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
- 	$vCore = 16
+ 	$vCore = 4
  	$skuName = "GP_Gen5"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
@@ -43,8 +43,7 @@ function Test-CreateManagedInstance
  	try
  	{
 		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "newprovisioningtest"
-		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+		$subnetId = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-mi-tooling/subnets/ManagedInstance"
 
  		# With SKU name specified
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
@@ -67,7 +66,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
-		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
+		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
 
