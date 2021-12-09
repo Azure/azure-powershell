@@ -16,16 +16,22 @@ using Microsoft.Azure.Management.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSVirtualNetworkProfile
+    public class PSKekIdentityProperties
     {
-        public PSVirtualNetworkProfile(VirtualNetworkProfile virtualNetworkProfile)
+        public PSKekIdentityProperties(KekIdentityProperties KekIdentity)
         {
-            this.ComputeSubnetId = virtualNetworkProfile?.ComputeSubnetId;
+            this.UserAssignedIdentity = KekIdentity?.UserAssignedIdentity;
+            this.UseSystemAssignedIdentity = KekIdentity?.UseSystemAssignedIdentity;
         }
 
         /// <summary>
-        /// Gets or sets subnet ID used for computes in workspace
+        /// Gets or sets user assigned identity resource Id
         /// </summary>
-        public string ComputeSubnetId { get; set; }
+        public string UserAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets boolean specifying whether to use system assigned identity or not
+        /// </summary>
+        public object UseSystemAssignedIdentity { get; set; }
     }
 }
