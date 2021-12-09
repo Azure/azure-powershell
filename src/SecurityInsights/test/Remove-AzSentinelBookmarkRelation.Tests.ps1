@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelBookmarkRela
 }
 
 Describe 'Remove-AzSentinelBookmarkRelation' {
-    It 'Delete' {
+    It 'Delete' -skip {
         { Remove-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -BookmarkId $env.RemovebookmarkRelationBookmarkId -RelationName $env.RemoveBookmarkRelationId } | Should -Not -Throw
     }
 

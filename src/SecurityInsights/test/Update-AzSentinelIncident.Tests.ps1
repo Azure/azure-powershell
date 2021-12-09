@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelIncident'))
 
 Describe 'Update-AzSentinelIncident' {
     It 'UpdateExpanded' {
-        $incident | Update-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+        $incident = Update-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.UpdateincidentId -Status "Active"
         $incident.Status | Should -Be "Active"
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $incident | Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+    It 'UpdateViaIdentityExpanded' -skip {
+        $incident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.UpdateViaincidentId 
         $incidentUpdate = $incident | Update-AzSentinelIncident -Status "Active"
         $incidentUpdate.Status | Should -Be "Active"

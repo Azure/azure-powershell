@@ -19,7 +19,7 @@ Describe 'Remove-AzSentinelIncidentComment' {
         { Remove-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.RemoveincidentCommentIncidentId -Id $env.RemoveincidentCommentId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $incidentComment = Get--AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -IncidentId $env.RemoveViaIdincidentCommentIncidentId -Id $env.RemoveViaIdincidentCommentId 
         { $incidentComment | Remove-AzSentinelIncidentComment } | Should -Not -Throw

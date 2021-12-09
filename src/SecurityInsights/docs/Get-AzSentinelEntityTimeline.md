@@ -14,9 +14,8 @@ Timeline for an entity.
 
 ```
 Get-AzSentinelEntityTimeline -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -EndTime <DateTime> -StartTime <DateTime> [-OperationalInsightsResourceProvider <String>]
- [-SubscriptionId <String[]>] [-Kind <EntityTimelineKind[]>] [-NumberOfBucket <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -EndTime <DateTime> -StartTime <DateTime> [-SubscriptionId <String[]>] [-Kind <EntityTimelineKind[]>]
+ [-NumberOfBucket <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,21 +107,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

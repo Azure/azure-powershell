@@ -115,9 +115,8 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
 ### UpdateOfficeIRM
 ```
 Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Alerts <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateThreatIntelligence
@@ -138,46 +137,44 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
 
 ### UpdateViaIdentityAmazonWebServicesCloudTrail
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-AWSRoleArn <String>] [-Logs <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-AWSRoleArn <String>]
+ [-Logs <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAmazonWebServicesS3
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-AWSRoleArn <String>] [-DetinationTable <String>]
- [-Logs <String>] [-SQSURLs <String[]>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-AWSRoleArn <String>]
+ [-DetinationTable <String>] [-Logs <String>] [-SQSURLs <String[]>] [-TenantId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAzureActiveDirectory
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAzureAdvancedThreatProtection
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAzureSecurityCenter
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-ASCSubscriptionId <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-ASCSubscriptionId <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityDynamics365
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-CommonDataServiceActivities <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CommonDataServiceActivities <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityGenericUI
@@ -195,48 +192,46 @@ Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-Availability
 
 ### UpdateViaIdentityMicrosoftCloudAppSecurity
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-DiscoveryLogs <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-DiscoveryLogs <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftThreatIntelligence
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-BingSafetyPhishingUrlLookbackPeriod <String>]
- [-BingSafetyPhishinURL <String>] [-MicrosoftEmergingThreatFeed <String>]
- [-MicrosoftEmergingThreatFeedLookbackPeriod <String>] [-TenantId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityMicrosoftThreatProtection
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Incidents <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityOffice365
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>]
+ [-BingSafetyPhishingUrlLookbackPeriod <String>] [-BingSafetyPhishinURL <String>]
+ [-MicrosoftEmergingThreatFeed <String>] [-MicrosoftEmergingThreatFeedLookbackPeriod <String>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityMicrosoftThreatProtection
+```
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Incidents <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityOffice365
+```
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Exchange <String>]
+ [-SharePoint <String>] [-Teams <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityOfficeATP
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOfficeIRM
@@ -248,18 +243,17 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts
 
 ### UpdateViaIdentityThreatIntelligence
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-Indicators <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Indicators <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityThreatIntelligenceTaxii
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-OperationalInsightsResourceProvider <String>] [-CollectionId <String>] [-FriendlyName <String>]
- [-Password <String>] [-PollingFrequency <PollingFrequency>] [-TaxiiLookbackPeriod <String>]
- [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-CollectionId <String>]
+ [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <PollingFrequency>]
+ [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -801,22 +795,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
- The name of Operational Insights Resource Provider.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateOfficeIRM, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Password
 
 
@@ -1122,7 +1100,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateVi
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

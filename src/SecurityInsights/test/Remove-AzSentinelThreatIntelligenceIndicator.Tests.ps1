@@ -19,7 +19,7 @@ Describe 'Remove-AzSentinelThreatIntelligenceIndicator' {
         { Remove-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.RemovethreatIntelligenceIndicatorId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $threatIntelligenceIndicator =  Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Name $env.RemoveViaIdthreatIntelligenceIndicatorId
         { $threatIntelligenceIndicator | Remove-AzSentinelThreatIntelligenceIndicator } | Should -Not -Throw

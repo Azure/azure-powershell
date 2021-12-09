@@ -21,7 +21,7 @@ Describe 'Update-AzSentinelSetting' {
         $setting.IsEnabled | Should -Be $false
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $setting = Get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -SettingsName EntityAnalytics 
         $settingUpdate = $setting | Update-AzSentinelSetting -Disabled

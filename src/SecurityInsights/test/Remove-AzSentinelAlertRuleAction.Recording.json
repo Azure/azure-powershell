@@ -1,0 +1,42 @@
+{
+  "Remove-AzSentinelAlertRuleAction+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/alertRules/5c682d5d-5ab4-482f-91b5-a9dbafdf9994/actions/7c246db1-6a3c-4592-8de0-c6fe925ab09c?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/alertRules/5c682d5d-5ab4-482f-91b5-a9dbafdf9994/actions/7c246db1-6a3c-4592-8de0-c6fe925ab09c?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "208" ],
+        "x-ms-client-request-id": [ "3192feb1-970c-48b9-92f1-493890968417" ],
+        "CommandName": [ "Remove-AzSentinelAlertRuleAction" ],
+        "FullCommandName": [ "Remove-AzSentinelAlertRuleAction_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "008096a0-1036-4b6b-bef4-97499eef58c9" ],
+        "x-ms-correlation-request-id": [ "008096a0-1036-4b6b-bef4-97499eef58c9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211206T172530Z:008096a0-1036-4b6b-bef4-97499eef58c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 06 Dec 2021 17:25:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

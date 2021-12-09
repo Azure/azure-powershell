@@ -12,11 +12,18 @@ Creates or updates the action of alert rule.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleId <String>
- -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-LogicAppResourceId <String>] [-TriggerUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleId <String>
+ -WorkspaceName <String> -Action <IActionRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +43,22 @@ PS C:\> New-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroup" -Work
 This command creates an Alert Rule Action using the Logic App properties.
 
 ## PARAMETERS
+
+### -Action
+Action for alert rule.
+To construct, see NOTES section for ACTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionRequest
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -72,27 +95,12 @@ Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -148,7 +156,7 @@ Logic App Callback URL for this specific workflow.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -209,6 +217,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionRequest
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse
@@ -216,6 +226,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+ACTION <IActionRequest>: Action for alert rule.
+  - `[Etag <String>]`: Etag of the azure resource
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[LogicAppResourceId <String>]`: Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
+  - `[TriggerUri <String>]`: Logic App Callback URL for this specific workflow.
 
 ## RELATED LINKS
 

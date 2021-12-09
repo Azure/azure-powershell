@@ -12,10 +12,18 @@ Creates the bookmark relation.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSentinelBookmarkRelation -BookmarkId <String> -RelationName <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-RelatedResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-RelatedResourceId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzSentinelBookmarkRelation -BookmarkId <String> -RelationName <String> -ResourceGroupName <String>
+ -WorkspaceName <String> -Relation <IRelation> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,33 +73,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RelatedResourceId
 The resource ID of the related resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Relation
+Represents a relation between two resources
+To construct, see NOTES section for RELATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -192,6 +201,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
@@ -199,6 +210,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+RELATION <IRelation>: Represents a relation between two resources
+  - `[Etag <String>]`: Etag of the azure resource
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[RelatedResourceId <String>]`: The resource ID of the related resource
 
 ## RELATED LINKS
 

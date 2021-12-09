@@ -22,7 +22,7 @@ Describe 'New-AzSentinelAutomationRule' {
        $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook2LogicAppResourceId
         $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
        $automationRule = New-AzSentinelAutomationRule -Id ((New-Guid).Guid) -ResourceGroupName $env.resourceGroupName `
-        -WorkspaceName $env.workspaceName -Action $automationRuleAction -DisplayName "NewARPSTest" -Order 2 `
+        -WorkspaceName $env.workspaceName -Action $automationRuleAction -DisplayName "NewAutomationRulePSTest" -Order 2 `
         -TriggeringLogicIsEnabled
         $automationRule.DisplayName | Should -Be "NewAutomationRulePSTest"
     }

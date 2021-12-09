@@ -29,7 +29,7 @@ Describe 'Update-AzSentinelMetadata' {
         $metadataUpdate.Version | Should -Be "1.0.4"
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $metadata = New-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Name "azuresentinel.azure-sentinel-solution-mitreattck" -AuthorEmail "UpdateViaIdMetadataPSTest@test.com" -AuthorName "UpdateviaIdMetadataPSTest" `
             -CategoryDomain (@('Security - Threat Protection"')) -ContentId "azuresentinel.azure-sentinel-solution-mitreattck" `

@@ -21,7 +21,7 @@ Describe 'Remove-AzSentinelDataConnector' {
         { Remove-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $dataConnector.Name } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $dataConnector = New-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -DataConnectorId ((New-Guid).Guid) -Kind 'MicrosoftCloudAppSecurity' -Alerts "Enabled"
         { $dataConnector | Remove-AzSentinelDataConnector } | Should -Not -Throw

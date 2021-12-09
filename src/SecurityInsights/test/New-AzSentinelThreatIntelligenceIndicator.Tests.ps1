@@ -19,6 +19,6 @@ Describe 'New-AzSentinelThreatIntelligenceIndicator' {
         $threatIntelligenceIndicator =  New-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Confidence 10 -DisplayName "NewTIPSTest" -Pattern "[ipv4-addr:value = '8.8.8.8']" -PatternType "ipv4-addr" `
             -ValidFrom ((get-date).ToUniversalTime() | Get-Date -Format "ddd, dd MMM yyyy hh:00:00 'GMT'")  -Source "Azure Sentinel" -ThreatType (@("Unknown"))
-        $threatIntelligenceIndicator.DisplayName | Should -Be "NewTIPSTest"
+        $threatIntelligenceIndicator | Should -Not -Be $null
     }
 }

@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelEnrichment'))
 }
 
 Describe 'Get-AzSentinelEnrichment' {
-    It 'Get'  {
+    It 'Get_IP'  {
         $IPEnrichment = Get-AzSentinelEnrichment -ResourceGroupName $env.resourceGroupName -IPAddress 8.8.8.8 
         $IPEnrichment.ipAddr | Should -Be '8.8.8.8'
     }
 
-    It 'Get1' {
+    It 'Get_Domain' {
         $DomainEnrichment = Get-AzSentinelEnrichment -ResourceGroupName $env.resourceGroupName -Domain "google.com"
         $DomainEnrichment.domain | Should -Be 'google.com'
     }

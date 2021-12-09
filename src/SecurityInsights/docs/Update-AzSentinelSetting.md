@@ -15,29 +15,29 @@ Updates setting.
 ### UpdateExpandedAnomalies (Default)
 ```
 Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEntityAnalytics
 ```
 Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEyesOn
 ```
 Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedUeba
 ```
 Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-DataSource <UebaDataSources[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DataSource <UebaDataSources[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedAnomalies
@@ -195,21 +195,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The name of Operational Insights Resource Provider.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateExpandedUeba
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The Resource Group Name.
 
@@ -338,7 +323,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

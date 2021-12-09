@@ -14,11 +14,10 @@ Creates or updates the entity query.
 
 ```
 New-AzSentinelEntityQuery -ResourceGroupName <String> -WorkspaceName <String> -InputEntityType <EntityType>
- -Kind <Object> -Title <String> [-EntityQueryId <String>] [-OperationalInsightsResourceProvider <String>]
- [-SubscriptionId <String>] [-Content <String>] [-Description <String>]
- [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-QueryDefinitionQuery <String>]
- [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Kind <Object> -Title <String> [-EntityQueryId <String>] [-SubscriptionId <String>] [-Content <String>]
+ [-Description <String>] [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>]
+ [-QueryDefinitionQuery <String>] [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,21 +177,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OperationalInsightsResourceProvider
-The name of Operational Insights Resource Provider.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

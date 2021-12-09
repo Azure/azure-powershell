@@ -19,8 +19,8 @@ Describe 'Update-AzSentinelEntityQuery' {
         $entityQuery = Update-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -EntityQueryId $env.UpdateentityQueryActivityId -Title "UpdateEntityQueryPSTest"
         $entityQuery.Title | Should -Be "UpdateEntityQueryPSTest"
-
-    It 'UpdateViaIdentityExpanded' {
+    }
+    It 'UpdateViaIdentityExpanded' -skip {
         $entityQuery = Get-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -EntityQueryId $env.UpdateViaIdentityQueryActivityId 
         $entityQueryUpdate = $entityQuery | Update-AzSentinelEntityQuery -Title "UpdateEntityQueryPSTest"

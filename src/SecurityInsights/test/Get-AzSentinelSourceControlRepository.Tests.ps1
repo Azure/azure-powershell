@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelSourceControlRe
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzSentinelSourceControlRepository' -skip {
+Describe 'Get-AzSentinelSourceControlRepository' {
     It 'List' -skip {
         $repositories = Get-AzSentinelSourceControlRepository -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceNam
         $repositories | Should -BeGreaterorEqual 1

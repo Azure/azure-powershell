@@ -156,7 +156,7 @@ Create a Metadata.
 Create Sentinel onboarding state
 
 ### [New-AzSentinelThreatIntelligenceIndicator](New-AzSentinelThreatIntelligenceIndicator.md)
-Update a threat Intelligence indicator.
+Create a new threat intelligence indicator.
 
 ### [Remove-AzSentinelAlertRule](Remove-AzSentinelAlertRule.md)
 Delete the alert rule.

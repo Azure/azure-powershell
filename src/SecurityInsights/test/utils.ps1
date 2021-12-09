@@ -43,9 +43,13 @@ function setupEnv() {
 
     # Create the Workspace+Sentinel
     $workspaceName = "asptest" + (RandomString -allChars $false -len 6)
+    $newOnboardingStateWS = "asptest" + (RandomString -allChars $false -len 6)
+    $removeOnboardingStateWS = "asptest" + (RandomString -allChars $false -len 6)
     Write-Host "Start to create test workspace" $workspaceName
     $workspaceParams = Get-Content .\test\deployment-templates\workspace\template.parameters.json | ConvertFrom-Json
     $workspaceParams.parameters.workspaceName.value = $workspaceName
+    $workspaceParams.parameters.newOnboardingStateWS.value = $newOnboardingStateWS
+    $workspaceParams.parameters.removeOnboardingStateWS.value = $removeOnboardingStateWS
     set-content -Path .\test\deployment-templates\workspace\template.parameters.json -Value (ConvertTo-Json $workspaceParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\workspace\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\workspace\template.parameters.json).FullName
@@ -58,6 +62,8 @@ function setupEnv() {
         #$null = $env.Add('workspaceKey', ($deployResult.properties.outputs.workspaceKey.value))
         $workspaceKey = ($deployResult.properties.outputs.workspaceKey.value)
         $null = $env.Add('workspaceResourceId', ($deployResult.properties.outputs.workspaceResourceId.value))
+        $null = $env.Add("newOnboardingStateWS", $newOnboardingStateWS)
+        $null = $env.Add("removeOnboardingStateWS", $removeOnboardingStateWS)
     }
     
 
@@ -286,30 +292,27 @@ function setupEnv() {
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add('metadataName', 'azuresentinel.azure-sentinel-solution-zerotrust')
     }
+    
     #OfficeConsent
-    #??
+    #cant pre-create to test.
 
     #OnboardingState
-    #create additonal workspaces?
+    #create additonal workspaces in first template    
     
     #Setting
     #Nothing to create
 
     #SourceControl
     #SourceControlRepository
-    #need to talk to the team.
-    #Write-Host "Start to create test source control"
-    #Create-SourceControl -PSVerb Get -WorkspaceName $env.workspaceName -Url "https://github.com/dicolanl/gettest"
-    #Create-SourceControl -PSVerb Remove -WorkspaceName $env.workspaceName -Url "https://github.com/dicolanl/removetest"
-    #Create-SourceControl -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -Url "https://github.com/dicolanl/removeviaidtest"
+    #nothing to create
     
     #ThreatIntelligeneceIndicator
     Write-Host "Start to create test threat intelligence indicator"
-    #Create-ThreatIntelligenceIndicator -PSVerb Get -WorkspaceName $env.workspaceName -IP "8.8.8.1"
-    #Create-ThreatIntelligenceIndicator -PSVerb Remove -WorkspaceName $env.workspaceName -IP "8.8.8.2"
-    #Create-ThreatIntelligenceIndicator -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -IP "8.8.8.3"
-    #Create-ThreatIntelligenceIndicator -PSVerb Update -WorkspaceName $env.workspaceName -IP "8.8.8.4"
-    #Create-ThreatIntelligenceIndicator -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -IP "8.8.8.5"
+    Create-ThreatIntelligenceIndicator -PSVerb Get -WorkspaceName $env.workspaceName -IP "8.8.8.1"
+    Create-ThreatIntelligenceIndicator -PSVerb Remove -WorkspaceName $env.workspaceName -IP "8.8.8.2"
+    Create-ThreatIntelligenceIndicator -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -IP "8.8.8.3"
+    Create-ThreatIntelligenceIndicator -PSVerb Update -WorkspaceName $env.workspaceName -IP "8.8.8.4"
+    Create-ThreatIntelligenceIndicator -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -IP "8.8.8.5"
 
     #ThreatIntelligeneceIndicatorMetric
     #nothing to create

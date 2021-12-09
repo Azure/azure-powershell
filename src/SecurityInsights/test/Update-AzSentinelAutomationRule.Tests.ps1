@@ -21,11 +21,12 @@ Describe 'Update-AzSentinelAutomationRule' {
         $automationRuleAction.ActionType = "RunPlaybook"
         $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
         $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
-        $automationRule = Update-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId -Action $automationRuleAction
+        $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId
+        $automationRule = $getrule | Update-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId -Action $automationRuleAction
         $automationRule.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
         $automationRuleAction.Order = 1
         $automationRuleAction.ActionType = "RunPlaybook"

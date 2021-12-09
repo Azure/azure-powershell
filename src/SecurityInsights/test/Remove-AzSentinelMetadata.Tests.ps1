@@ -27,7 +27,7 @@ Describe 'Remove-AzSentinelMetadata' {
         { Remove-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $metadata.Name} | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $metadata = New-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Name "azuresentinel.azure-sentinel-solution-insiderriskmanagement" -AuthorEmail "RemoveViaIdMetadataPSTest@test.com" -AuthorName "RemoveViaIdMetadataPSTest" `
             -CategoryDomain (@('Security - Insider Threat')) -ContentId "azuresentinel.azure-sentinel-solution-insiderriskmanagement" `

@@ -1,0 +1,38 @@
+{
+  "New-AzSentinelMetadata+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-cybersecuritymaturitymodel?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-cybersecuritymaturitymodel?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"source\": {\n      \"kind\": \"Solution\",\n      \"name\": \"CybersecurityMaturityModelCertification(CMMC)\",\n      \"sourceId\": \"azuresentinel.azure-sentinel-solution-cybersecuritymaturitymodel\"\n    },\n    \"author\": {\n      \"name\": \"NMPSTest\",\n      \"email\": \"NMPSTest@test.com\"\n    },\n    \"support\": {\n      \"tier\": \"Microsoft\",\n      \"name\": \"Microsoft Corporation\",\n      \"email\": \"support@microsoft.com\",\n      \"link\": \"https://support.microsoft.com\"\n    },\n    \"dependencies\": {\n      \"contentId\": \"CybersecurityMaturityModelCertificationCMMC_workbook\",\n      \"kind\": \"Workbook\",\n      \"version\": \"1.0.0\",\n      \"operator\": \"And\"\n    },\n    \"categories\": {\n      \"domains\": [ \"Compliance\" ]\n    },\n    \"contentId\": \"azuresentinel.azure-sentinel-solution-cybersecuritymaturitymodel\",\n    \"parentId\": \"azuresentinel.azure-sentinel-solution-cybersecuritymaturitymodel\",\n    \"version\": \"1.0.0\",\n    \"kind\": \"Solution\",\n    \"providers\": [ \"Microsoft\" ],\n    \"firstPublishDate\": \"2021-10-20\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1011" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "86816c69-8cab-47e4-9f26-f69c69e34821" ],
+        "x-ms-correlation-request-id": [ "86816c69-8cab-47e4-9f26-f69c69e34821" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211206T172323Z:86816c69-8cab-47e4-9f26-f69c69e34821" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 06 Dec 2021 17:23:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "157" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequestException\",\"message\":\"Invalid data model - solutions expect properties.dependencies.criteria to have list of solution contents\"}}",
+      "isContentBase64": false
+    }
+  }
+}

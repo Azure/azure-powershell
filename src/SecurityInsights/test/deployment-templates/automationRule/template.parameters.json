@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "automationRuleName": {
-      "value": "UpdateViaIdAutomationRuleasu1f5"
+      "value": "UpdateViaIdAutomationRulev05qgs"
     },
     "automationRuleId": {
-      "value": "7336d974-c212-4c9d-bd63-5731b50435de"
+      "value": "c12b261d-5736-4806-abf3-b6a7b5aa4c6e"
     },
     "workspaceName": {
-      "value": "asptestvsud46"
+      "value": "asptestf380lm"
     },
     "logicAppResourceId": {
-      "value": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstesta91bo6/providers/Microsoft.Logic/workflows/Block-AADUser-Incident"
+      "value": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestaxyc3t/providers/Microsoft.Logic/workflows/Block-AADUser-Incident"
     }
   }
 }

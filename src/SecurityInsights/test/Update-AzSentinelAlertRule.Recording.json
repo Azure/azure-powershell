@@ -1,0 +1,43 @@
+{
+  "Update-AzSentinelAlertRule+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/alertRules/bda8639f-4d82-429b-9bc4-4bc0bc3fabea?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/alertRules/bda8639f-4d82-429b-9bc4-4bc0bc3fabea?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "220" ],
+        "x-ms-client-request-id": [ "88a89202-c3b5-4662-82d8-3d22c16af5b6" ],
+        "CommandName": [ "Get-AzSentinelAlertRule" ],
+        "FullCommandName": [ "Get-AzSentinelAlertRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "53c58f4d-cfc8-4191-afc6-9a527d94650e" ],
+        "x-ms-correlation-request-id": [ "53c58f4d-cfc8-4191-afc6-9a527d94650e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211206T173233Z:53c58f4d-cfc8-4191-afc6-9a527d94650e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 06 Dec 2021 17:32:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1180" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestwuqysj/providers/Microsoft.OperationalInsights/workspaces/asptesthlpib1/providers/Microsoft.SecurityInsights/alertRules/bda8639f-4d82-429b-9bc4-4bc0bc3fabea\",\"name\":\"bda8639f-4d82-429b-9bc4-4bc0bc3fabea\",\"etag\":\"\\\"850412d2-0000-0100-0000-61ae3bc80000\\\"\",\"type\":\"Microsoft.SecurityInsights/alertRules\",\"kind\":\"Scheduled\",\"properties\":{\"incidentConfiguration\":{\"createIncident\":true,\"groupingConfiguration\":{\"enabled\":false,\"reopenClosedIncident\":false,\"lookbackDuration\":\"PT5H\",\"matchingMethod\":\"AllEntities\",\"groupByEntities\":[],\"groupByAlertDetails\":null,\"groupByCustomDetails\":null}},\"queryFrequency\":\"P1D\",\"queryPeriod\":\"P1D\",\"triggerOperator\":\"GreaterThan\",\"triggerThreshold\":0,\"eventGroupingSettings\":{\"aggregationKind\":\"SingleAlert\"},\"severity\":\"Informational\",\"query\":\"SecurityEvent\\n| take 1\",\"suppressionDuration\":\"PT5H\",\"suppressionEnabled\":false,\"tactics\":[\"Execution\"],\"displayName\":\"UpdateViaIdAlertRuleuemkh9\",\"enabled\":true,\"description\":\"UpdateViaIdAlertRuleuemkh9 bda8639f-4d82-429b-9bc4-4bc0bc3fabea\",\"alertRuleTemplateName\":null,\"lastModifiedUtc\":\"2021-12-06T16:35:19.3964191Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

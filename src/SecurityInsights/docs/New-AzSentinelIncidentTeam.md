@@ -12,11 +12,18 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -TeamName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-GroupId <String[]>] [-MemberId <String[]>] [-TeamDescription <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TeamName <String> [-SubscriptionId <String>] [-GroupId <String[]>] [-MemberId <String[]>]
+ [-TeamDescription <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -TeamProperty <ITeamProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +63,7 @@ List of group IDs to add their members to the team
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -86,27 +93,12 @@ List of member IDs to add to the team
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -147,7 +139,7 @@ The description of the team
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -162,13 +154,29 @@ The name of the team
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TeamProperty
+Describes team properties
+To construct, see NOTES section for TEAMPROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamProperties
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -223,6 +231,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamProperties
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation
@@ -230,6 +240,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+TEAMPROPERTY <ITeamProperties>: Describes team properties
+  - `TeamName <String>`: The name of the team
+  - `[GroupId <String[]>]`: List of group IDs to add their members to the team
+  - `[MemberId <String[]>]`: List of member IDs to add to the team
+  - `[TeamDescription <String>]`: The description of the team
 
 ## RELATED LINKS
 

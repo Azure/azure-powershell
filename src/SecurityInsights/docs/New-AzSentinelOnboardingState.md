@@ -12,9 +12,17 @@ Create Sentinel onboarding state
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSentinelOnboardingState -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-CustomerManagedKey]
+ [-SubscriptionId <String>] [-CustomerManagedKey] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzSentinelOnboardingState -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -SentinelOnboardingStateParameter <ISentinelOnboardingState> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,7 +56,7 @@ Flag that indicates the status of the CMK setting
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -89,21 +97,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -117,6 +110,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SentinelOnboardingStateParameter
+Sentinel onboarding state
+To construct, see NOTES section for SENTINELONBOARDINGSTATEPARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -186,6 +195,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
@@ -193,6 +204,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+SENTINELONBOARDINGSTATEPARAMETER <ISentinelOnboardingState>: Sentinel onboarding state
+  - `[Etag <String>]`: Etag of the azure resource
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[CustomerManagedKey <Boolean?>]`: Flag that indicates the status of the CMK setting
 
 ## RELATED LINKS
 

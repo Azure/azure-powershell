@@ -15,22 +15,21 @@ Update an existing Metadata.
 ### UpdateExpanded (Default)
 ```
 Update-AzSentinelMetadata -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-AuthorEmail <String>]
- [-AuthorLink <String>] [-AuthorName <String>] [-CategoryDomain <String[]>] [-CategoryVertical <String[]>]
- [-ContentId <String>] [-DependencyContentId <String>] [-DependencyCriterion <IMetadataDependencies[]>]
- [-DependencyKind <Kind>] [-DependencyName <String>] [-DependencyOperator <Operator>]
- [-DependencyVersion <String>] [-FirstPublishDate <DateTime>] [-Kind <Kind>] [-LastPublishDate <DateTime>]
- [-ParentId <String>] [-Provider <String[]>] [-SourceId <String>] [-SourceKind <SourceKind>]
- [-SourceName <String>] [-SupportEmail <String>] [-SupportLink <String>] [-SupportName <String>]
- [-SupportTier <SupportTier>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AuthorEmail <String>] [-AuthorLink <String>] [-AuthorName <String>]
+ [-CategoryDomain <String[]>] [-CategoryVertical <String[]>] [-ContentId <String>]
+ [-DependencyContentId <String>] [-DependencyCriterion <IMetadataDependencies[]>] [-DependencyKind <Kind>]
+ [-DependencyName <String>] [-DependencyOperator <Operator>] [-DependencyVersion <String>]
+ [-FirstPublishDate <DateTime>] [-Kind <Kind>] [-LastPublishDate <DateTime>] [-ParentId <String>]
+ [-Provider <String[]>] [-SourceId <String>] [-SourceKind <SourceKind>] [-SourceName <String>]
+ [-SupportEmail <String>] [-SupportLink <String>] [-SupportName <String>] [-SupportTier <SupportTier>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzSentinelMetadata -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -MetadataPatch <IMetadataPatch> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -MetadataPatch <IMetadataPatch> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -366,21 +365,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParentId
 Full parent resource ID of the content item the metadata is for.
 This is the full resource ID including the scope (subscription and resource group)
@@ -660,7 +644,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

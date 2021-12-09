@@ -8,17 +8,16 @@ schema: 2.0.0
 # New-AzSentinelThreatIntelligenceIndicator
 
 ## SYNOPSIS
-Update a threat Intelligence indicator.
+Create a new threat intelligence indicator.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzSentinelThreatIntelligenceIndicator -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Confidence <Int32>]
- [-Created <String>] [-CreatedByRef <String>] [-Defanged] [-Description <String>] [-DisplayName <String>]
- [-Extension <Hashtable>] [-ExternalId <String>] [-ExternalLastUpdatedTimeUtc <String>]
- [-ExternalReference <IThreatIntelligenceExternalReference[]>]
+ [-SubscriptionId <String>] [-Confidence <Int32>] [-Created <String>] [-CreatedByRef <String>] [-Defanged]
+ [-Description <String>] [-DisplayName <String>] [-Extension <Hashtable>] [-ExternalId <String>]
+ [-ExternalLastUpdatedTimeUtc <String>] [-ExternalReference <IThreatIntelligenceExternalReference[]>]
  [-GranularMarking <IThreatIntelligenceGranularMarkingModel[]>] [-IndicatorType <String[]>]
  [-KillChainPhase <IThreatIntelligenceKillChainPhase[]>] [-Label <String[]>] [-Language <String>]
  [-LastUpdatedTimeUtc <String>] [-Modified <String>] [-ObjectMarkingRef <String[]>]
@@ -28,16 +27,22 @@ New-AzSentinelThreatIntelligenceIndicator -ResourceGroupName <String> -Workspace
  [-WhatIf] [<CommonParameters>]
 ```
 
+### Create
+```
+New-AzSentinelThreatIntelligenceIndicator -ResourceGroupName <String> -WorkspaceName <String>
+ -ThreatIntelligenceProperty <IThreatIntelligenceIndicatorModelForRequestBody> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Create1
 ```
 New-AzSentinelThreatIntelligenceIndicator -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -ThreatIntelligenceProperty <IThreatIntelligenceIndicatorModelForRequestBody>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ThreatIntelligenceProperty <IThreatIntelligenceIndicatorModelForRequestBody> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a threat Intelligence indicator.
+Create a new threat intelligence indicator.
 
 ## EXAMPLES
 
@@ -364,21 +369,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParsedPattern
 Parsed patterns
 To construct, see NOTES section for PARSEDPATTERN properties and create a hash table.
@@ -507,7 +497,7 @@ To construct, see NOTES section for THREATINTELLIGENCEPROPERTY properties and cr
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceIndicatorModelForRequestBody
-Parameter Sets: Create1
+Parameter Sets: Create, Create1
 Aliases:
 
 Required: True

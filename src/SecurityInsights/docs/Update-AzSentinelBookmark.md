@@ -15,9 +15,8 @@ Creates or updates the bookmark.
 ### UpdateExpanded (Default)
 ```
 Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Created <DateTime>]
- [-CreatedByObjectId <String>] [-DisplayName <String>] [-EventTime <DateTime>]
- [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
+ [-SubscriptionId <String>] [-Created <DateTime>] [-CreatedByObjectId <String>] [-DisplayName <String>]
+ [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
  [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
  [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
  [-Updated <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -27,8 +26,8 @@ Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceNam
 ### Update
 ```
 Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Bookmark <IBookmark> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Bookmark <IBookmark> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -279,21 +278,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Query
 The query of the bookmark.
 
@@ -523,7 +507,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

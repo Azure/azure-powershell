@@ -190,7 +190,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

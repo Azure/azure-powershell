@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelIncidentEntity'
 
 Describe 'Get-AzSentinelIncidentEntity' {
     It 'List' {
-       $incident | Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where {$_.Title -eq "Sign-ins from IPs that attempt sign-ins to disabled accounts"}
+       $incident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where {$_.Title -eq "Sign-ins from IPs that attempt sign-ins to disabled accounts"}
        $incidentEntity = Get-AzSentinelIncidentEntity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $incident.Name
        $incidentEntity | Should -Not -Be $null
     }

@@ -19,8 +19,9 @@ Describe 'Remove-AzSentinelAlertRule' {
         { Remove-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.RemoveAlertRuleId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.RemoveViaIdAlertRuleId
         { $alertRule | Remove-AzSentinelAlertRule } | Should -Not -Throw
     }
 }
+ 

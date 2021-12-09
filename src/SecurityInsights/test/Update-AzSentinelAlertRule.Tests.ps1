@@ -20,7 +20,7 @@ Describe 'Update-AzSentinelAlertRule' {
         $alertRule.Enabled | Should -Be $true
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateViaIdAlertRuleId
         $alertRuleUpdate = $alertRule | Update-AzSentinelAlertRule -Enabled
         $alertRuleUpdate.Enabled | Should -Be $true

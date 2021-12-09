@@ -15,8 +15,7 @@ Updates the entity query.
 ### UpdateActivity (Default)
 ```
 Update-AzSentinelEntityQuery -EntityQueryId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-Content <String>]
- [-Description <String>] [-Disabled] [-Enabled]
+ [-SubscriptionId <String>] [-Content <String>] [-Description <String>] [-Disabled] [-Enabled]
  [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-InputEntityType <EntityType>]
  [-QueryDefinitionQuery <String>] [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>]
  [-Title <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -222,21 +221,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The name of Operational Insights Resource Provider.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateActivity
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -QueryDefinitionQuery
 
 
@@ -413,7 +397,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

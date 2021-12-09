@@ -34,13 +34,6 @@ function New-AzSentinelDataConnector {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
          
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]
@@ -447,9 +440,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
                 
-                If($PSBoundParameters['BingSafetyPhishinURL']){
-                    $DataConnector.BingSafetyPhishingUrlState = $PSBoundParameters['BingSafetyPhishinURL']
-                    $null = $PSBoundParameters.Remove('BingSafetyPhishinURL')
+                If($PSBoundParameters['BingSafetyPhishingURL']){
+                    $DataConnector.BingSafetyPhishingUrlState = $PSBoundParameters['BingSafetyPhishingURL']
+                    $null = $PSBoundParameters.Remove('BingSafetyPhishingURL')
                 }
 
                 If($PSBoundParameters['BingSafetyPhishingUrlLookbackPeriod']){
@@ -705,6 +698,7 @@ function New-AzSentinelDataConnector {
             $DataConnector.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
+            $null = $PSBoundParameters.Remove('DataConnector')
             $null = $PSBoundParameters.Add('DataConnector', $DataConnector)
 
             Az.SecurityInsights.internal\New-AzSentinelDataConnector @PSBoundParameters

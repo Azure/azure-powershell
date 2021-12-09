@@ -20,6 +20,6 @@ Describe 'Get-AzSentinelEntityInsight' {
         $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
         $entities = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $entityInsight = Get-AzSentinelEntityInsight -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -EntityId $entities[0].Name -StartTime $startTime -EndTime $endTime
-        $entityInsight.Name | Should -Not -Be $null
+        $entityInsight.MetaDataTotalCount | Should -BeGreaterorEqual 1
     }
 }

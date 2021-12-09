@@ -37,16 +37,6 @@ function Update-AzSentinelAlertRule {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-        [Parameter(ParameterSetName = 'UpdateNRT')]
-        [Parameter(ParameterSetName = 'UpdateScheduled')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(ParameterSetName = 'UpdateFusionMLTI', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateNRT', Mandatory)]
@@ -249,7 +239,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'AllEntities')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"AllEntities"')]
         [ValidateSet('AllEntities', 'AnyAlert', 'Selected')]
         [System.String]
         ${GroupingConfigurationMatchingMethod},

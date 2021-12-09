@@ -48,28 +48,6 @@ function Update-AzSentinelDataConnector {
         # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
-        
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesCloudTrail')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureActiveDirectory')]    
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureAdvancedThreatProtection')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureSecurityCenter')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityDynamics365')]
-        #[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftCloudAppSecurity')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftThreatIntelligence')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftThreatProtection')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityOffice365')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityOfficeATP')]
-        [Parameter(ParameterSetName = 'UpdateOfficeIRM')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityThreatIntelligence')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityThreatIntelligenceTaxii')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
 
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3', Mandatory)]

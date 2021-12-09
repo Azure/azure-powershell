@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelOnboardingSt
 }
 
 Describe 'Remove-AzSentinelOnboardingState' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzSentinelOnboardingState -Name "default" -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.removeOnboardingStateWS } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

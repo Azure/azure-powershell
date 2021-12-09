@@ -1,0 +1,79 @@
+{
+  "Get-AzSentinelEntityInsight+[NoContext]+GetExpanded+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "162" ],
+        "x-ms-client-request-id": [ "e69c2d3d-d028-404f-9f31-f9a28ee1cb99" ],
+        "CommandName": [ "Get-AzSentinelentity" ],
+        "FullCommandName": [ "Get-AzSentinelEntity_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-request-id": [ "aef81f98-792e-421b-8e31-d25d10422fda" ],
+        "x-ms-correlation-request-id": [ "aef81f98-792e-421b-8e31-d25d10422fda" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211208T033244Z:aef81f98-792e-421b-8e31-d25d10422fda" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Dec 2021 03:32:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "461" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d\",\"name\":\"f76e8451-9f40-544f-61e4-33a50dca269d\",\"type\":\"Microsoft.SecurityInsights/entities\",\"kind\":\"Ip\",\"properties\":{\"address\":\"175.45.176.99\",\"additionalData\":{\"AlertCount\":\"6\"},\"friendlyName\":\"175.45.176.99\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelEntityInsight+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getInsights?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getInsights?api-version=2021-09-01-preview",
+      "Content": "{\n  \"startTime\": \"2021-12-07T03:00:00.0000000+00:00\",\n  \"endTime\": \"2021-12-08T03:00:00.0000000+00:00\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "104" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-request-id": [ "87137d36-4c64-426f-834e-23d5dd16f6a2" ],
+        "x-ms-correlation-request-id": [ "87137d36-4c64-426f-834e-23d5dd16f6a2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211208T033250Z:87137d36-4c64-426f-834e-23d5dd16f6a2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Dec 2021 03:32:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1719" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"tableQueryResults\":{\"columns\":[{\"name\":\"Direction\",\"type\":\"string\"},{\"name\":\"IPAddress\",\"type\":\"string\"},{\"name\":\"RemoteIP\",\"type\":\"string\"},{\"name\":\"Total\",\"type\":\"long\"},{\"name\":\"InternalOrder\",\"type\":\"long\"},{\"name\":\"Index\",\"type\":\"long\"}],\"rows\":[]},\"chartQueryResults\":[],\"queryTimeInterval\":{\"startTime\":\"2021-12-07T03:00:00+00:00\",\"endTime\":\"2021-12-08T03:00:00+00:00\"},\"queryId\":\"b8e2df44-f98f-4c95-bcbe-f8210f3e0f23\"},{\"tableQueryResults\":{\"columns\":[{\"name\":\"Direction\",\"type\":\"string\"},{\"name\":\"IPAddress\",\"type\":\"string\"},{\"name\":\"RemoteIP\",\"type\":\"string\"},{\"name\":\"ThreatType\",\"type\":\"string\"},{\"name\":\"InternalOrder\",\"type\":\"long\"},{\"name\":\"Index\",\"type\":\"long\"}],\"rows\":[]},\"chartQueryResults\":[{\"columns\":[{\"name\":\"Time\",\"type\":\"datetime\"},{\"name\":\"RemoteIPAddress\",\"type\":\"string\"},{\"name\":\"Count\",\"type\":\"long\"}],\"rows\":[]},{\"columns\":[{\"name\":\"Time\",\"type\":\"datetime\"},{\"name\":\"RemoteIPAddress\",\"type\":\"string\"},{\"name\":\"Count\",\"type\":\"long\"}],\"rows\":[]},{\"columns\":[{\"name\":\"Time\",\"type\":\"datetime\"},{\"name\":\"RemoteIPAddress\",\"type\":\"string\"},{\"name\":\"Count\",\"type\":\"long\"}],\"rows\":[]}],\"queryTimeInterval\":{\"startTime\":\"2021-12-07T03:00:00+00:00\",\"endTime\":\"2021-12-08T03:00:00+00:00\"},\"queryId\":\"340e5f6f-d218-4a11-8638-09e1af7847cc\"},{\"tableQueryResults\":{\"columns\":[{\"name\":\"Watchlist Insight\",\"type\":\"string\"},{\"name\":\"Additional Data\",\"type\":\"string\"},{\"name\":\"Tags\",\"type\":\"string\"},{\"name\":\"InternalOrder\",\"type\":\"long\"},{\"name\":\"Index\",\"type\":\"long\"}],\"rows\":[]},\"chartQueryResults\":[],\"queryTimeInterval\":{\"startTime\":\"2021-12-07T03:00:00+00:00\",\"endTime\":\"2021-12-08T03:00:00+00:00\"},\"queryId\":\"3834647e-ac3e-4fb4-a5f8-0dd50ba2b66c\"}],\"metaData\":{\"totalCount\":3,\"errors\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

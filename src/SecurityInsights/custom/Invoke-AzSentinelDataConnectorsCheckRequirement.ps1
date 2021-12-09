@@ -34,13 +34,6 @@ function Invoke-AzSentinelDataConnectorsCheckRequirement {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]

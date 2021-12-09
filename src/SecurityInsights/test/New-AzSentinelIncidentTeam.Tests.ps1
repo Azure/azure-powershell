@@ -19,7 +19,7 @@ Describe 'New-AzSentinelIncidentTeam' {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "NITPSTest"
         $team = New-AzSentinelIncidentTeam -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -TeamName "NITPSTest"
-        $team.TeamName | Should -Be "NITPSTest"
+            -TeamName "NITPSTest" -IncidentId $incident.Name
+        $team.Name | Should -Be "NITPSTest"
     }
 }

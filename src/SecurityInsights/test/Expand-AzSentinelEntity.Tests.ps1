@@ -19,15 +19,4 @@ Describe 'Expand-AzSentinelEntity' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Expand' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ExpandViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ExpandViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

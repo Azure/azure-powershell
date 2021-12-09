@@ -19,7 +19,7 @@ Describe 'Remove-AzSentinelIncidentRelation' {
         { Remove-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.RemoveincidentCommentIncidentId -RelationName $env.RemoveincidentRelationId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $incidentRelation = Get-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -IncidentId $env.RemoveViaIdincidentCommentIncidentId -RelationName $env.RemoveViaIdincidentRelationId
         { $incidentRelation | Remove-AzSentinelIncidentRelation } | Should -Not -Throw

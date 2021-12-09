@@ -18,7 +18,7 @@ Describe 'Update-AzSentinelBookmarkRelation' {
     It 'UpdateExpanded' {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "UpdateBookmarkRelationPSTest"
-        $bookmarkRelation = Update-BookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+        $bookmarkRelation = Update-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -BookmarkId $env.UpdatebookmarkRelationBookmarkId -RelationName $env.UpdateBookmarkRelationId -RelatedResourceId $incident.Id
         $bookmarkRelation.RelatedResourceId | Should -Be $incident.Id
     }

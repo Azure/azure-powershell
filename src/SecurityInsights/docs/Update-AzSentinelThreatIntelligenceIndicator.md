@@ -15,10 +15,10 @@ Update a threat Intelligence indicator.
 ### UpdateExpanded (Default)
 ```
 Update-AzSentinelThreatIntelligenceIndicator -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-Confidence <Int32>] [-Created <String>] [-CreatedByRef <String>] [-Defanged] [-Description <String>]
- [-DisplayName <String>] [-Extension <Hashtable>] [-ExternalId <String>]
- [-ExternalLastUpdatedTimeUtc <String>] [-ExternalReference <IThreatIntelligenceExternalReference[]>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-Confidence <Int32>] [-Created <String>]
+ [-CreatedByRef <String>] [-Defanged] [-Description <String>] [-DisplayName <String>] [-Extension <Hashtable>]
+ [-ExternalId <String>] [-ExternalLastUpdatedTimeUtc <String>]
+ [-ExternalReference <IThreatIntelligenceExternalReference[]>]
  [-GranularMarking <IThreatIntelligenceGranularMarkingModel[]>] [-IndicatorType <String[]>]
  [-KillChainPhase <IThreatIntelligenceKillChainPhase[]>] [-Label <String[]>] [-Language <String>]
  [-LastUpdatedTimeUtc <String>] [-Modified <String>] [-ObjectMarkingRef <String[]>]
@@ -387,21 +387,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParsedPattern
 Parsed patterns
 To construct, see NOTES section for PARSEDPATTERN properties and create a hash table.
@@ -678,7 +663,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

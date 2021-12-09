@@ -16,11 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelIncidentRelatio
 
 Describe 'New-AzSentinelIncidentRelation' {
     It 'CreateExpanded' {
-        $queryStartTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
-        $queryEndTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
         $bookmark = New-AzSentinelBookmark  -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id ((New-Guid).Guid) -DisplayName "NewIncidentRelationPSTest" -Query "SecurityEvent\n| take 1" `
-            -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime
+            -QueryStartTime (get-date).AddDays(-1).ToUniversalTime() -QueryEndTime (get-date).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "NewIncidentRelationPSTest"
         $incidentRelation = New-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `

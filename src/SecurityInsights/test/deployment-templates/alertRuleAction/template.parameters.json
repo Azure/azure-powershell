@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "alertRuleActionRuleId": {
-      "value": "ab8bcf40-ae24-4684-8af0-524f83f9d1ab"
+      "value": "6f6888de-89ac-4051-87e8-bfdbacba2f25"
     },
     "alertRuleActionRuleName": {
-      "value": "UpdateViaIdalertRuleActionRuleNameekzqog"
+      "value": "UpdateViaIdalertRuleActionRuleNamex40nti"
     },
     "alertRuleActionId": {
-      "value": "5cb5ef2d-a93a-4b34-a6af-b8a67c787ccd"
+      "value": "ca1a795b-2707-4061-a275-8efdeae9680f"
     },
     "workspaceName": {
-      "value": "asptestvsud46"
+      "value": "asptestf380lm"
     },
     "logicAppResourceId": {
-      "value": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstesta91bo6/providers/Microsoft.Logic/workflows/Block-AADUser-Alert"
+      "value": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestaxyc3t/providers/Microsoft.Logic/workflows/Block-AADUser-Alert"
     },
     "triggerUrl": {
-      "value": "https://prod-01.centralus.logic.azure.com:443/workflows/b488f06e1b784081a351f9e12125ad7a/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=iIfKndIFZ-s-sQyJry7taGU0iMv-oO__wYNXT7FHMCc"
+      "value": "https://prod-24.centralus.logic.azure.com:443/workflows/47540cbe395941278b6704c8317216c8/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=kWfpA9f58wU_KxNs6Oc0ou-xMBGpbwyBJ62pTFqooKM"
     }
   }
 }

@@ -51,23 +51,23 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AutomationRules.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Bookmarks.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Enrichment.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Entities.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueries.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueryTemplates.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Incidents.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Metadata.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OnboardingStates.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Settings.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/SourceControls.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/ThreatIntelligence.json
-  #- https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Watchlists.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/dataConnectors.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/Microsoft.SecurityInsights-2021-09-01-preview-rebased/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AutomationRules.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Bookmarks.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Enrichment.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Entities.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueries.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueryTemplates.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Incidents.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Metadata.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OnboardingStates.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Settings.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/SourceControls.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/ThreatIntelligence.json
+  #- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Watchlists.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/dataConnectors.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
 
 module-version: 1.2.0
 title: SecurityInsights
@@ -89,24 +89,7 @@ directive:
             1
           ]
         }
-  #- from: Bookmarks.json
-  #  where: $.definitions.Bookmark
-  #  transform: $['required'] = ['properties']
-  #- from: Bookmarks.json
-  #  where: $.definitions.BookmarkProperties
-  #  transform: $['required'] = ['displayName', 'query', 'eventTime']
-  #- from: AlertRules.json
-  #  where: $.definitions.ActionRequest
-  #  transform: $['required'] = ['properties']
   # Customize
-  # OperationalInsightsResourceProvider is parameter, its always Microsoft.OperationalInsights to making a default value to save user prompt.
-  - where:
-      parameter-name: OperationalInsightsResourceProvider
-    set:
-      default:
-        name: OperationalInsightsResourceProvider Default
-        description: The default string for OperationalInsightsResourceProvider.
-        script: '"Microsoft.OperationalInsights"'
   # Hide Operation API
   - where:
       subject: Operation
@@ -198,13 +181,6 @@ directive:
       subject: EntityTimeline
       variant: List
     remove: true
-  # Fix duplicate WatchlistAlias
-  - where:
-      verb: Update
-      subject: Watchlist
-      parameter-name: Alias
-    set:
-      parameter-name: WatchlistAlias
   # add Aliases for user expierence
   - where:
       subject: AlertRuleAction
@@ -259,7 +235,7 @@ directive:
   # Remove source control create/update/delete (requires OAUTH tokens)
   - where:
       subject: SourceControl
-      variant: ^CreateExpanded$|^Delete$|^DeleteViaIdentity$
+      variant: ^Create$|^CreateExpanded$|^Delete$|^DeleteViaIdentity$
     remove: true
   #Custom Built Commands
   - where:
@@ -280,7 +256,7 @@ directive:
     hide: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$
+      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$|^UpdateViaIdentity$
     remove: true
   # fix Equals that conflicts with inhertied property
   - where:

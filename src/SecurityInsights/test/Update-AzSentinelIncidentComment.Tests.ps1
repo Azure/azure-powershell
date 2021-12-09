@@ -21,7 +21,7 @@ Describe 'Update-AzSentinelIncidentComment' {
         $incidentComment.Message | Should -Be "UpdateIncidentCommentPSTest"
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $incidentComment = Get-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -IncidentId $env.UpdateincidentCommentIncidentId -Id $env.UpdateincidentCommentId 
         $incidentCommentUpdate = $incidentComment | Update-AzSentinelIncidentComment -Message "UpdateIncidentCommentPSTest"

@@ -1,0 +1,79 @@
+{
+  "Get-AzSentinelEntityTimeline+[NoContext]+ListExpanded+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "169" ],
+        "x-ms-client-request-id": [ "2a660d1c-821b-4e70-9c9f-2def987eddcb" ],
+        "CommandName": [ "Get-AzSentinelentity" ],
+        "FullCommandName": [ "Get-AzSentinelEntity_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "7983628c-dc98-4fb7-b186-8f8e59c60b6f" ],
+        "x-ms-correlation-request-id": [ "7983628c-dc98-4fb7-b186-8f8e59c60b6f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211208T033432Z:7983628c-dc98-4fb7-b186-8f8e59c60b6f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Dec 2021 03:34:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "461" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d\",\"name\":\"f76e8451-9f40-544f-61e4-33a50dca269d\",\"type\":\"Microsoft.SecurityInsights/entities\",\"kind\":\"Ip\",\"properties\":{\"address\":\"175.45.176.99\",\"additionalData\":{\"AlertCount\":\"6\"},\"friendlyName\":\"175.45.176.99\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelEntityTimeline+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getTimeline?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getTimeline?api-version=2021-09-01-preview",
+      "Content": "{\n  \"startTime\": \"2021-12-07T03:00:00.0000000+00:00\",\n  \"endTime\": \"2021-12-08T03:00:00.0000000+00:00\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "104" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-request-id": [ "2ab61ee0-4dff-44d7-8094-049c713f0de6" ],
+        "x-ms-correlation-request-id": [ "2ab61ee0-4dff-44d7-8094-049c713f0de6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211208T033436Z:2ab61ee0-4dff-44d7-8094-049c713f0de6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Dec 2021 03:34:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "152" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"metaData\":{\"aggregations\":[{\"kind\":\"Activity\",\"count\":0},{\"kind\":\"Bookmark\",\"count\":0},{\"kind\":\"SecurityAlert\",\"count\":0}],\"totalCount\":0}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -34,13 +34,6 @@ function New-AzSentinelAlertRule {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]
@@ -194,7 +187,7 @@ function New-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'NRT')]
         [Parameter(ParameterSetName = 'Scheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'AllEntities')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"AllEntities"')]
         [ValidateSet('AllEntities', 'AnyAlert', 'Selected')]
         [System.String]
         ${GroupingConfigurationMatchingMethod},

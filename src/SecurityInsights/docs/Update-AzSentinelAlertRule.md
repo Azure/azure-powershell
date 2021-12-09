@@ -15,12 +15,12 @@ Updates the alert rule.
 ### UpdateScheduled (Default)
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
- [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping>] [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>]
- [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
+ [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
+ [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
+ [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
+ [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupingConfigurationEnabled]
+ [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
  [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
  [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
@@ -33,29 +33,27 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ### UpdateFusionMLTI
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-AlertRuleTemplateName <String>]
- [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Disabled] [-Enabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftSecurityIncidentCreation
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>]
- [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
+ [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled]
+ [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>] [-Enabled]
+ [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateNRT
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
- [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping>] [-GroupingConfigurationEnabled]
- [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
+ [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
+ [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
+ [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
+ [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
  [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
  [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
@@ -448,7 +446,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: AllEntities
+Default value: "AllEntities"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -510,21 +508,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OperationalInsightsResourceProvider
-The name of Operational Insights Resource Provider.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -828,7 +811,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

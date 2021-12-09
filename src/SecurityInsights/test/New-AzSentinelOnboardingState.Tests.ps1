@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelOnboardingState
 
 Describe 'New-AzSentinelOnboardingState' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { New-AzSentinelOnboardingState -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.newOnboardingStateWS -Name "default" } | Should -Not -Throw
     }
 }
+ 

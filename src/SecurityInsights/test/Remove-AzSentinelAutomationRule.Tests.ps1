@@ -19,7 +19,7 @@ Describe 'Remove-AzSentinelAutomationRule' {
         { Remove-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveAutomationRuleId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $automationRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.RemoveViaIdAutomationRuleId
         {$automationRule | Remove-AzSentinelAutomationRule } | Should -Not -Throw

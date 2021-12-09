@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "alertRuleName": {
-      "value": "UpdateViaIdAlertRuleavpg8b"
+      "value": "UpdateViaIdAlertRuleg140am"
     },
     "alertRuleId": {
-      "value": "29db3cbb-eb3c-49c2-9236-141c4115e80e"
+      "value": "d5ca0b42-1326-4c81-af77-a22c65a6baba"
     },
     "workspaceName": {
-      "value": "asptestvsud46"
+      "value": "asptestf380lm"
     }
   }
 }

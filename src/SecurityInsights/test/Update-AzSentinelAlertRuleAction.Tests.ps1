@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAlertRuleAct
 }
 
 Describe 'Update-AzSentinelAlertRuleAction' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $alertRuleAction = Update-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName `
             -RuleId $env.UpdateAlertRuleActionRuleId -Id $env.UpdateAlertRuleActionId -LogicAppResourceId $env.Playbook3LogicAppResourceId -TriggerUri $env.Playbook3TriggerUrl
         $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook3LogicAppResourceId
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName `
             -RuleId $env.UpdateViaIdAlertRuleActionRuleId -Id $env.UpdateViaIdAlertRuleActionId
         $alertRuleAction | Update-AzSentinelAlertRuleAction -LogicAppResourceId $env.Playbook3LogicAppResourceId -TriggerUri $env.Playbook3TriggerUrl

@@ -153,6 +153,37 @@ Function SendToLogA ($eventsTableName, $EventsTableFile, $CustomerId, $SharedKey
     return $postLAStatus
 }
 
+Function Prepare-LogATables{
+    [cmdletbinding()]
+    Param(
+        [Parameter(Mandatory = $true, Position = 0)]
+        [datetime]$SubscriptionId,
+        [parameter(Mandatory = $true, Position = 1)]
+        [string]$ResourceGroup,
+        [Parameter(Mandatory = $true, Position = 2)]
+        [psobject]$WorkspaceName,
+        [Parameter(Mandatory = $true, Position = 3)]
+        [psobject]$Tables
+
+    )
+
+    ForEach($Table in $Tables){
+        $tableParams = @'
+{
+    "properties": {
+        "schema": {
+            "name": "LAQueryLogs",
+            "columns": [
+            ]
+        }
+    }
+}
+'@
+        Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourcegroups/$ResourceGroup/providers/microsoft.operationalinsights/workspaces/$WorkspaceName/tables/LAQueryLogs?api-version=2021-03-01-privatepreview" -Method PUT -payload $tableParams
+
+    }
+}
+
 Function Create-AlertRule{
     [cmdletbinding()]
     Param(
@@ -481,10 +512,41 @@ Function Create-ThreatIntelligenceIndicator{
     set-content -Path .\test\deployment-templates\threatIntelligenceIndicator\template.parameters.json -Value (ConvertTo-Json $threatIntelligenceIndicatorParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\threatIntelligenceIndicator\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\threatIntelligenceIndicator\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"threatIntelligenceIndicator") -ResourceGroupName $resourceGroupName
-    if($result.ProvisioningState -eq "Succeeded"){
+    #ARM doesnt work use API
+    #$result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"threatIntelligenceIndicator") -ResourceGroupName $resourceGroupName
+    #if($result.ProvisioningState -eq "Succeeded"){
+    #    $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorName'), $threatIntelligenceIndicatorName)
+    #    $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorId'), $threatIntelligenceIndicatorId)
+    #    $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorIP'), $IP)
+    #}
+    $tiToken = (Get-AzAccessToken).Token
+    $tiHeaders = @{
+        Authorization="Bearer $tiToken"
+        Content='application/json'
+    }
+    $tiBody = @{
+            "kind" = "indicator"
+            "properties" = @{
+                "confidence" = 0
+                "threatTypes"= @(
+                    "unknown"
+                )
+                "displayName" = "$threatIntelligenceIndicatorName"
+                "pattern" = "[ipv4-addr:value = '8.8.8.8']"
+                "patternType" = "ipv4-addr"
+                "revoked" = $false
+                "validFrom" = "$threatIntelligenceIndicatorDate"
+                "validUntil" = $null
+                "source" = "Azure Sentinel"
+                "threatIntelligenceTags" = @()
+            }
+    }
+    $tiBody = $tiBody | Convertto-json
+    $uri = "https://management.azure.com/subscriptions/"+ $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.OperationalInsights/workspaces/" + $env.workspaceName + "/providers/Microsoft.SecurityInsights/threatIntelligence/main/createIndicator?api-version=2021-09-01-preview"
+    $indicator = Invoke-RestMethod -Method POST -Uri $Uri -Headers $tiHeaders -body $tiBody -ContentType Application/json
+    #if($indicator.Kind -eq "indicator"){
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorName'), $threatIntelligenceIndicatorName)
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorId'), $threatIntelligenceIndicatorId)
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorIP'), $IP)
-    }
+    #}
 }

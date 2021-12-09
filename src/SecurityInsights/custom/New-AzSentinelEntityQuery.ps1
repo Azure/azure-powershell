@@ -34,13 +34,6 @@ function New-AzSentinelEntityQuery {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]
@@ -211,7 +204,7 @@ function New-AzSentinelEntityQuery {
                 }
             }
     
-            $EntityQuery.Kind = $PSBoundParameters['Kind']
+            #$EntityQuery.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
             $null = $PSBoundParameters.Add('EntityQuery', $EntityQuery)

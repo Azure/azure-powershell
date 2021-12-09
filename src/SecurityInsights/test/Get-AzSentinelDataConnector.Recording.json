@@ -1,0 +1,84 @@
+{
+  "Get-AzSentinelDataConnector+[NoContext]+List+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "153" ],
+        "x-ms-client-request-id": [ "17513f5a-dc5b-488c-ab67-0722649e17a0" ],
+        "CommandName": [ "Get-AzSentineldataConnector" ],
+        "FullCommandName": [ "Get-AzSentinelDataConnector_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "26e292db-2b5d-4812-91bd-476d7c563cf9" ],
+        "x-ms-correlation-request-id": [ "26e292db-2b5d-4812-91bd-476d7c563cf9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211208T033110Z:26e292db-2b5d-4812-91bd-476d7c563cf9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Dec 2021 03:31:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1122" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors/7489df79-0233-459b-a6a7-e1f4eb39a17d\",\"name\":\"7489df79-0233-459b-a6a7-e1f4eb39a17d\",\"etag\":\"f5da2983-91d7-4d47-aeea-62f7a6c25d76\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"AzureSecurityCenter\",\"properties\":{\"subscriptionId\":\"1c61ccbf-70b3-45a3-a1fb-848ce46d70a6\",\"dataTypes\":{\"alerts\":{\"state\":\"enabled\"}}}},{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors/1c3b58c0-669a-4b6e-a0f8-99b37996fdfb\",\"name\":\"1c3b58c0-669a-4b6e-a0f8-99b37996fdfb\",\"etag\":\"67ff80ae-44ff-4c0c-bf5e-5d6357829466\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"Office365\",\"properties\":{\"dataTypes\":{\"sharePoint\":{\"state\":\"disabled\"},\"exchange\":{\"state\":\"enabled\"},\"teams\":{\"state\":\"disabled\"}},\"tenantId\":\"5f1060f2-d9a4-4f59-bf9c-1dd8f3604a4b\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelDataConnector+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors/7489df79-0233-459b-a6a7-e1f4eb39a17d?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors/7489df79-0233-459b-a6a7-e1f4eb39a17d?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "154" ],
+        "x-ms-client-request-id": [ "ac844be1-bcc2-46a8-abdd-f4bd137d0285" ],
+        "CommandName": [ "Get-AzSentineldataConnector" ],
+        "FullCommandName": [ "Get-AzSentinelDataConnector_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "d295962e-ccce-43d7-9e50-7f2047b355ef" ],
+        "x-ms-correlation-request-id": [ "d295962e-ccce-43d7-9e50-7f2047b355ef" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211208T033111Z:d295962e-ccce-43d7-9e50-7f2047b355ef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 08 Dec 2021 03:31:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "530" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstestczyn3o/providers/Microsoft.OperationalInsights/workspaces/asptestoqlerp/providers/Microsoft.SecurityInsights/dataConnectors/7489df79-0233-459b-a6a7-e1f4eb39a17d\",\"name\":\"7489df79-0233-459b-a6a7-e1f4eb39a17d\",\"etag\":\"f5da2983-91d7-4d47-aeea-62f7a6c25d76\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"AzureSecurityCenter\",\"properties\":{\"subscriptionId\":\"1c61ccbf-70b3-45a3-a1fb-848ce46d70a6\",\"dataTypes\":{\"alerts\":{\"state\":\"enabled\"}}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -15,10 +15,10 @@ Connects a data connector.
 ### ConnectExpanded (Default)
 ```
 Connect-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>] [-ApiKey <String>]
- [-AuthorizationCode <String>] [-ClientId <String>] [-ClientSecret <String>] [-Kind <ConnectAuthKind>]
- [-Password <String>] [-RequestConfigUserInputValue <IAny[]>] [-UserName <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ApiKey <String>] [-AuthorizationCode <String>] [-ClientId <String>]
+ [-ClientSecret <String>] [-Kind <ConnectAuthKind>] [-Password <String>]
+ [-RequestConfigUserInputValue <IAny[]>] [-UserName <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ConnectViaIdentityExpanded
@@ -171,21 +171,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: ConnectExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -362,7 +347,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[IncidentId <String>]`: Incident ID
   - `[MetadataName <String>]`: The Metadata name.
   - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[OperationalInsightsResourceProvider <String>]`: The namespace of workspaces resource provider- Microsoft.OperationalInsights.
   - `[RelationName <String>]`: Relation Name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleId <String>]`: Alert rule ID

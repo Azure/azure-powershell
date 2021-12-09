@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSentinelThreatIntell
 }
 
 Describe 'Invoke-AzSentinelThreatIntelligenceIndicatorQuery' {
-    It 'QueryExpanded' -skip {
+    It 'QueryExpanded' {
         $threatIntelligenceIndicators = Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.WorkspaceName -IncludeDisabled -PageSize 10
         $threatIntelligenceIndicators | Should -Not -Be $null
     }

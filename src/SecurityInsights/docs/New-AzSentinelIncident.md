@@ -12,16 +12,22 @@ Creates or updates the incident.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-OperationalInsightsResourceProvider <String>] [-SubscriptionId <String>]
- [-Classification <IncidentClassification>] [-ClassificationComment <String>]
+ [-SubscriptionId <String>] [-Classification <IncidentClassification>] [-ClassificationComment <String>]
  [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
  [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
  [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
  [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>] [-ProviderName <String>]
  [-Severity <IncidentSeverity>] [-Status <IncidentStatus>] [-Title <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -Incident <IIncident>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +51,7 @@ The reason the incident was closed
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -60,7 +66,7 @@ Describes the reason the incident was closed
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -75,7 +81,7 @@ The classification reason the incident was closed with
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -105,7 +111,7 @@ The description of the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -120,7 +126,7 @@ The time of the first activity in the incident
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -145,13 +151,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Incident
+Represents an incident in Azure Security Insights.
+To construct, see NOTES section for INCIDENT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Label
 List of labels relevant to this incident
 To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -166,7 +188,7 @@ The time of the last activity in the incident
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -176,27 +198,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationalInsightsResourceProvider
-The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Microsoft.OperationalInsights"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -OwnerAssignedTo
 The name of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -211,7 +218,7 @@ The email of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -226,7 +233,7 @@ The object id of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,7 +248,7 @@ The user principal name of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -256,7 +263,7 @@ The incident ID assigned by the incident provider
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -271,7 +278,7 @@ The name of the source provider that generated the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -302,7 +309,7 @@ The severity of the incident
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -317,7 +324,7 @@ The status of the incident
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -347,7 +354,7 @@ The title of the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -408,6 +415,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
@@ -420,6 +429,32 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
+  - `[Etag <String>]`: Etag of the azure resource
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[Classification <IncidentClassification?>]`: The reason the incident was closed
+  - `[ClassificationComment <String>]`: Describes the reason the incident was closed
+  - `[ClassificationReason <IncidentClassificationReason?>]`: The classification reason the incident was closed with
+  - `[Description <String>]`: The description of the incident
+  - `[FirstActivityTimeUtc <DateTime?>]`: The time of the first activity in the incident
+  - `[Label <IIncidentLabel[]>]`: List of labels relevant to this incident
+    - `LabelName <String>`: The name of the label
+  - `[LastActivityTimeUtc <DateTime?>]`: The time of the last activity in the incident
+  - `[OwnerAssignedTo <String>]`: The name of the user the incident is assigned to.
+  - `[OwnerEmail <String>]`: The email of the user the incident is assigned to.
+  - `[OwnerObjectId <String>]`: The object id of the user the incident is assigned to.
+  - `[OwnerUserPrincipalName <String>]`: The user principal name of the user the incident is assigned to.
+  - `[ProviderIncidentId <String>]`: The incident ID assigned by the incident provider
+  - `[ProviderName <String>]`: The name of the source provider that generated the incident
+  - `[Severity <IncidentSeverity?>]`: The severity of the incident
+  - `[Status <IncidentStatus?>]`: The status of the incident
+  - `[Title <String>]`: The title of the incident
 
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident
   - `LabelName <String>`: The name of the label

@@ -37,16 +37,6 @@ function Update-AzSentinelSetting {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics')]
-        [Parameter(ParameterSetName = 'UpdateExpandedUeba')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(ParameterSetName = 'UpdateExpandedAnomalies', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEyesOn', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics', Mandatory)]

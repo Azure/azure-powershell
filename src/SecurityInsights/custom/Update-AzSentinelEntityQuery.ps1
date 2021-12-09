@@ -34,13 +34,6 @@ function Update-AzSentinelEntityQuery {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter(ParameterSetName = 'UpdateActivity')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"Microsoft.OperationalInsights"')]
-        [System.String]
-        # The name of Operational Insights Resource Provider.
-        ${OperationalInsightsResourceProvider},
-
         [Parameter(ParameterSetName = 'UpdateActivity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]

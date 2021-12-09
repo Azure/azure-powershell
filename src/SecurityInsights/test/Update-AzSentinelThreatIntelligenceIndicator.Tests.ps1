@@ -21,7 +21,7 @@ Describe 'Update-AzSentinelThreatIntelligenceIndicator' {
         $threatIntelligenceIndicator.Confidence | Should -Be 20
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $threatIntelligenceIndicator = Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Name $env.UpdateViaIdthreatIntelligenceIndicatorId 
         threatIntelligenceIndicatorUpdate = threatIntelligenceIndicator | Update-AzSentinelThreatIntelligenceIndicator -Confidence 20
