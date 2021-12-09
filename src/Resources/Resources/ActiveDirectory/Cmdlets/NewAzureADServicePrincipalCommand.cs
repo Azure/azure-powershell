@@ -333,6 +333,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     DisplayName = DisplayName,
                     HomePage = "http://" + HttpUtility.UrlEncode(DisplayName.Trim()),
+                    IdentifierUris = new string[] { },
                     PasswordCredentials = new PSADPasswordCredential[]
                     {
                         passwordCredential
