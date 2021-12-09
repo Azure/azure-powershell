@@ -33,6 +33,24 @@
 * Supported create storage account with enable account level immutability with versioning, and create/udpate storage account with account level immutability policy.
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
+* Supported AAD oauth storage context in storage table cmdlets.
+    - `Get-AzStorageCORSRule`
+    - `Get-AzStorageServiceLoggingProperty`
+    - `Get-AzStorageServiceMetricsProperty`
+    - `Get-AzStorageServiceProperty`
+    - `Get-AzStorageTable`
+    - `Get-AzStorageTableStoredAccessPolicy`
+    - `New-AzStorageTable`
+    - `New-AzStorageTableSASToken`
+    - `New-AzStorageTableStoredAccessPolicy`
+    - `Remove-AzStorageCORSRule`
+    - `Remove-AzStorageTableStoredAccessPolicy`
+    - `Set-AzStorageCORSRule`
+    - `Set-AzStorageServiceLoggingProperty`
+    - `Set-AzStorageServiceMetricsProperty`
+    - `Set-AzStorageServiceProperty`
+    - `Set-AzStorageTable`
+    - `Set-AzStorageTableStoredAccessPolicy`
 
 ## Version 3.12.0
 * Upgraded Azure.Storage.Blobs to 12.10.0
