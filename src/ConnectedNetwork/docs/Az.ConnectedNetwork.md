@@ -23,9 +23,6 @@ Gets information about the specified network function resource.
 ### [Get-AzConnectedNetworkFunctionVendor](Get-AzConnectedNetworkFunctionVendor.md)
 Lists all the available vendor and sku information.
 
-### [Get-AzConnectedNetworkFunctionVendorSku](Get-AzConnectedNetworkFunctionVendorSku.md)
-Lists all network function vendor sku details in a vendor.
-
 ### [Get-AzConnectedNetworkVendor](Get-AzConnectedNetworkVendor.md)
 Gets information about the specified vendor.
 
