@@ -112,7 +112,11 @@ Create key credentials for application
 
 ### Example 2: Create password credentials for application
 ```powershell
-
+PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" `
+                                 -Property @{'KeyID' = (new-guid).Guid ;
+                                 'EndDateTime'       = [DateTime]::UtcNow.AddYears(1)
+                                 }
+PS C:\> New-AzADAppCredential -ObjectId $Id -PasswordCredentials $credential
 ```
 
 Create password credentials for application
