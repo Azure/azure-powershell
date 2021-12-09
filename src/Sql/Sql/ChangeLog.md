@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Output braking change for Managed Instance CRUD commands
+    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy
+
 
 ## Version 3.5.0
 * Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
