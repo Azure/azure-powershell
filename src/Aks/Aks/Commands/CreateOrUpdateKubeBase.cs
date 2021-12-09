@@ -126,6 +126,38 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The desired number of allocated SNAT ports per VM.")]
+        [ValidateRange(0, 64000)]
+        public int LoadBalancerAllocatedOutboundPort { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired managed outbound IPs count for the cluster load balancer.")]
+        public int LoadBalancerManagedOutboundIpCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP Prefix resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIpPrefix { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes.")]
+        [ValidateRange(4, 120)]
+        public int LoadBalancerIdleTimeoutInMinute { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The IP ranges authorized to access the Kubernetes API server.")]
+        public string[] ApiServerAccessAuthorizedIpRange { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create the cluster as a private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateCluster { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The private DNS zone mode for the cluster.")]
+        public string ApiServerAccessPrivateDnsZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create additional public FQDN for private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateClusterPublicFQDN { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The FQDN subdomain of the private cluster with custom private dns zone.")]
+        public string FqdnSubdomain { get; set; }
+
         protected void BeforeBuildNewCluster()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
@@ -468,6 +500,71 @@ namespace Microsoft.Azure.Commands.Aks
 
             var subPart = string.Join("", DefaultContext.Subscription.Id.Take(4));
             return $"{namePart}{subPart}";
+        }
+    
+        protected ManagedClusterLoadBalancerProfile CreateOrUpdateLoadBalancerProfile(ManagedClusterLoadBalancerProfile loadBalancerProfile)
+        {
+            if ((this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
+                this.IsParameterBound(c => c.LoadBalancerOutboundIp) ||
+                this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix) ||
+                this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort) ||
+                this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute)) &&
+                loadBalancerProfile == null)
+            {
+                loadBalancerProfile = new ManagedClusterLoadBalancerProfile();
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount))
+            {
+                loadBalancerProfile.ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs(LoadBalancerManagedOutboundIpCount);
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerOutboundIp))
+            {
+                loadBalancerProfile.OutboundIPs = new ManagedClusterLoadBalancerProfileOutboundIPs(LoadBalancerOutboundIp.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix))
+            {
+                loadBalancerProfile.OutboundIPPrefixes = new ManagedClusterLoadBalancerProfileOutboundIPPrefixes(LoadBalancerOutboundIpPrefix.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort))
+            {
+                loadBalancerProfile.AllocatedOutboundPorts = LoadBalancerAllocatedOutboundPort;
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute))
+            {
+                loadBalancerProfile.IdleTimeoutInMinutes = LoadBalancerIdleTimeoutInMinute;
+            }
+
+            return loadBalancerProfile;
+        }
+
+        protected ManagedClusterAPIServerAccessProfile CreateOrUpdateApiServerAccessProfile(ManagedClusterAPIServerAccessProfile apiServerAccessProfile)
+        {
+            if ((this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange) ||
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster) ||
+                this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone) ||
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN)) &&
+                apiServerAccessProfile == null)
+            {
+                apiServerAccessProfile = new ManagedClusterAPIServerAccessProfile();
+            }
+            if (this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange))
+            {
+                apiServerAccessProfile.AuthorizedIPRanges = ApiServerAccessAuthorizedIpRange;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster))
+            {
+                apiServerAccessProfile.EnablePrivateCluster = EnableApiServerAccessPrivateCluster;
+            }
+            if (this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone))
+            {
+                apiServerAccessProfile.PrivateDNSZone = ApiServerAccessPrivateDnsZone;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN))
+            {
+                apiServerAccessProfile.EnablePrivateClusterPublicFQDN = EnableApiServerAccessPrivateClusterPublicFQDN;
+            }
+
+            return apiServerAccessProfile;
         }
     }
 }
