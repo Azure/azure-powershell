@@ -1,73 +1,75 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Get-AzWvdScalingPlan
+# Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Get a scaling plan.
+Get a private endpoint connection.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzWvdScalingPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity1
 ```
-Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List2
+### List1
 ```
-Get-AzWvdScalingPlan -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a scaling plan.
+Get a private endpoint connection.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Scaling Plan by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
+PS C:\> {{ Add code here }}
 
-Location      Name             Type
---------      ----             ----
-westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
+{{ Add output here }}
 ```
 
-This command gets a Windows Virtual Desktop Scaling Plan in a Resource Group.
+{{ Add description here }}
 
-### Example 2: List Windows Virtual Desktop Scaling Plans
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
+PS C:\> {{ Add code here }}
 
-Location      Name             Type
---------      ----             ----
-westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
-westcentralus scalingPlan2     Microsoft.DesktopVirtualization/scalingplans
+{{ Add output here }}
 ```
 
-This command lists all the Windows Virtual Desktop Scaling Plans in a Resource Group.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -91,7 +93,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: List2
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -107,7 +109,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -118,12 +120,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the scaling plan.
+The name of the private endpoint connection associated with the Azure resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ScalingPlanName
+Parameter Sets: Get, Get1
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
@@ -138,7 +140,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
@@ -153,12 +155,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+The name of the workspace
+
+```yaml
+Type: System.String
+Parameter Sets: Get1, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -172,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210903Preview.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210903Preview.IPrivateEndpointConnectionWithSystemData
 
 ## NOTES
 
