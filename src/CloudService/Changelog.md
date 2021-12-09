@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability of 'Az.CloudService' module
 
 ## Version 0.5.0

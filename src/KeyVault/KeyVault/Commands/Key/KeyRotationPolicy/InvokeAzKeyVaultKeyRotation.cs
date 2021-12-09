@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key.KeyRotationPolicy
     /// </summary>
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotation", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
-    class InvokeAzKeyVaultKeyRotation : KeyVaultKeyCmdletBase
+    public class InvokeAzKeyVaultKeyRotation : KeyVaultKeyCmdletBase
     {
         public override void ExecuteCmdlet()
         {
