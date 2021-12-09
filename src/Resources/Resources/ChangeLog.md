@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Formatted the output format of DeploymentVariable
 * Remove isUser operation filter from GetAzureProviderOperation Cmdlet
 
 ## Version 5.1.0
