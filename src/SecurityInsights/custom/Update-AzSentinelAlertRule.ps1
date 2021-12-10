@@ -414,7 +414,6 @@ function Update-AzSentinelAlertRule {
                 $GetPSBoundParameters.Add('InputObject', $PSBoundParameters['InputObject'])
             }
             else {
-                $GetPSBoundParameters.Add('OperationalInsightsResourceProvider', $PSBoundParameters['OperationalInsightsResourceProvider'])
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('RuleId', $PSBoundParameters['RuleId'])
@@ -660,7 +659,7 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('DisplayName')
                 }
 
-                If($PSBoundParameters['SupressionDuration']){
+                If($PSBoundParameters['SuppressionDuration']){
                     $AlertRule.SuppressionDuration = $PSBoundParameters['SuppressionDuration']
                     $null = $PSBoundParameters.Remove('SuppressionDuration')
                 }
@@ -800,7 +799,7 @@ function Update-AzSentinelAlertRule {
                 }
             }
             
-            $null = $PSBoundParameters.Add('AlertRule', $Parameter) 
+            $null = $PSBoundParameters.Add('AlertRule', $AlertRule) 
 
             Az.SecurityInsights.internal\Update-AzSentinelAlertRule @PSBoundParameters
         }

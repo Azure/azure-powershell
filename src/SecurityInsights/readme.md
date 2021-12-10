@@ -227,11 +227,6 @@ directive:
       subject: ^Enrichment$
       variant: ^GetViaIdenity$|^GetViaIdenity1$
     remove: true
-  #remove Remove Setting as user would just update
-  - where:
-      subject: Setting
-      variant: ^Delete$|^DeleteViaIdentity$
-    remove: true
   # Remove source control create/update/delete (requires OAUTH tokens)
   - where:
       subject: SourceControl
@@ -247,12 +242,22 @@ directive:
       variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
     hide: true
   - where:
-      verb: Update
+      verb: ^Update$|^Remove$
       subject: Setting
     hide: true
   # Hide Etag as it isnt used
   - where:
       parameter-name: Etag
+    hide: true
+  # Update TI API not useful
+  - where:
+      verb: Update
+      subject: ThreatIntelligenceIndicator
+    hide: true
+  # CCP
+  - where:
+      verb: ^Connect$|^Disconnect$
+      subject: DataConnector
     hide: true
   # Remove the unexpanded parameter set
   - where:

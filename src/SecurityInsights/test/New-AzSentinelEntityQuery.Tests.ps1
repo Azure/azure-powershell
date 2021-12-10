@@ -16,10 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelEntityQuery'))
 
 Describe 'New-AzSentinelEntityQuery' {
     It 'CreateExpanded' {
-        $requiredInputFieldsSet = @(
-            @("Account_Name","Account_UPNSuffix"),
-            @("Account_AadUserId")
-        )
         $query = 'let UserConsentToApplication = (Account_Name:string, Account_UPNSuffix:string, Account_AadUserId:string){
             let account_upn = iff(Account_Name != "" and Account_UPNSuffix != "", strcat(Account_Name,"@",Account_UPNSuffix),"" );
             AuditLogs
@@ -35,8 +31,7 @@ Describe 'New-AzSentinelEntityQuery' {
             -EntityQueryId ((New-Guid).Guid) -Kind Activity -Title "The user consented to OAuth application" `
             -InputEntityType "Account" -Content "The user consented to the OAuth application named {{Target_CloudApplication_Name}} {{Count}} time(s)" `
             -Description "This activity lists user's consents to an OAuth applications." `
-            -QueryDefinitionQuery $query `
-            -RequiredInputFieldsSet $requiredInputFieldsSet
+            -QueryDefinitionQuery $query
         $entityQuery.InputEntityType | Should -Be "Account"
     }
 }

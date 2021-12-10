@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelThreatIntell
 }
 
 Describe 'Update-AzSentinelThreatIntelligenceIndicator' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         $threatIntelligenceIndicator = Update-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Name $env.UpdatethreatIntelligenceIndicatorId -Confidence 20
         $threatIntelligenceIndicator.Confidence | Should -Be 20

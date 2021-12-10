@@ -12,21 +12,7 @@ Updates setting.
 
 ## SYNTAX
 
-### UpdateExpandedAnomalies (Default)
-```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpandedEntityAnalytics
-```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpandedEyesOn
+### UpdateExpandedAnomaliesEyesOnEntityAnalytics (Default)
 ```
 Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
  [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -40,19 +26,7 @@ Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -Se
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpandedAnomalies
-```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedEntityAnalytics
-```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedEyesOn
+### UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 ```
 Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-Disabled] [-Enabled]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -139,7 +113,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateViaIdentityExpandedAnomalies, UpdateViaIdentityExpandedEntityAnalytics, UpdateViaIdentityExpandedEyesOn
+Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 Aliases:
 
 Required: False
@@ -154,7 +128,7 @@ Anomalies
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateViaIdentityExpandedAnomalies, UpdateViaIdentityExpandedEntityAnalytics, UpdateViaIdentityExpandedEyesOn
+Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 Aliases:
 
 Required: False
@@ -170,7 +144,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: UpdateViaIdentityExpandedAnomalies, UpdateViaIdentityExpandedEntityAnalytics, UpdateViaIdentityExpandedEyesOn, UpdateViaIdentityExpandedUeba
+Parameter Sets: UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics, UpdateViaIdentityExpandedUeba
 Aliases:
 
 Required: True
@@ -200,7 +174,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateExpandedUeba
+Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateExpandedUeba
 Aliases:
 
 Required: True
@@ -215,7 +189,7 @@ The setting Name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateExpandedUeba
+Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateExpandedUeba
 Aliases:
 
 Required: True
@@ -231,7 +205,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateExpandedUeba
+Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateExpandedUeba
 Aliases:
 
 Required: False
@@ -247,7 +221,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedAnomalies, UpdateExpandedEntityAnalytics, UpdateExpandedEyesOn, UpdateExpandedUeba
+Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateExpandedUeba
 Aliases:
 
 Required: True

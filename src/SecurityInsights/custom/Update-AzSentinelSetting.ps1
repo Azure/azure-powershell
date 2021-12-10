@@ -24,11 +24,9 @@ https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentin
 #>
 function Update-AzSentinelSetting {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.Settings])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpandedAnomalies', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics')]
+        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
         [Parameter(ParameterSetName = 'UpdateExpandedUeba')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
@@ -37,18 +35,14 @@ function Update-AzSentinelSetting {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
         
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedUeba', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]
         # The Resource Group Name.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedUeba', Mandatory)]
         #[Alias('DataConnectionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -56,19 +50,15 @@ function Update-AzSentinelSetting {
         # The name of the workspace.
         ${WorkspaceName},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedUeba', Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.SettingKind])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        # The setting Name
+        # The setting Name 
         ${SettingsName},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomalies', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEyesOn', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEntityAnalytics', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedUeba', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
@@ -79,22 +69,14 @@ function Update-AzSentinelSetting {
         #Anomalies
          #.EyesOn
          #.EntityAnalytics
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomalies')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEyesOn')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEntityAnalytics')]
+        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Switch]
         ${Enabled},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomalies')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEyesOn')]
-        [Parameter(ParameterSetName = 'UpdateExpandedEntityAnalytics')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomalies')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEyesOn')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEntityAnalytics')]
+        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Switch]
         ${Disabled},
@@ -172,60 +154,90 @@ function Update-AzSentinelSetting {
              #Handle Get
              $GetPSBoundParameters = @{}
              if($PSBoundParameters['InputObject']){
-                 $GetPSBoundParameters.Add('InputObject', $PSBoundParameters['InputObject'])
+                $GetPSBoundParameters.Add('ResourceGroupName', ($PSBoundParameters['InputObject']).Id.Split('/')[4])
+                $GetPSBoundParameters.Add('WorkspaceName', ($PSBoundParameters['InputObject']).Id.Split('/')[8])
+                $Name = ($PSBoundParameters['InputObject']).Name
+            }
+            else {
+                $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
+                $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
+                $Name = $PSBoundParameters['SettingsName']
              }
-             else {
-                 $GetPSBoundParameters.Add('OperationalInsightsResourceProvider', $PSBoundParameters['OperationalInsightsResourceProvider'])
-                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
-                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
-                 $GetPSBoundParameters.Add('Kind', $PSBoundParameters['Kind'])
-             }
-             $Setting = Az.SecurityInsights\Get-AzSentinelSetting @GetPSBoundParameters
+            if($Name -eq 'Ueba'){
+                $GetPSBoundParameters.Add('SettingsName', 'Ueba')
+                $ueba = Az.SecurityInsights\Get-AzSentinelSetting @GetPSBoundParameters
+            }
+            else{
+                $Settings = Az.SecurityInsights\Get-AzSentinelSetting @GetPSBoundParameters
+            }
+            
  
-            if ($Setting.Kind -eq 'Anomalies'){
+            if ($Name -eq 'Anomalies'){
                 If($PSBoundParameters['Enabled']){
-                    $Setting.IsEnabled = $true
-                    $null = $PSBoundParameters.Remove('Enabled')
+                    if($Settings.Name -contains 'Anomalies'){
+                        Write-Host "$Name is already Enabled!" -ForegroundColor Green
+                    }
+                    else{
+                        Az.SecurityInsights.internal\Update-AzSentinelSetting -ResourceGroupName $GetPSBoundParameters['ResourceGroupName'] -WorkspaceName $GetPSBoundParameters['WorkspaceName'] -SettingsName $Name -Kind $Name
+                    }
                 }
-                
+              
                 If($PSBoundParameters['Disabled']){
-                    $Setting.IsEnabled = $false
-                    $null = $PSBoundParameters.Remove('Disabled')
+                    if($Settings.Name -contains 'Anomalies'){
+                        Az.SecurityInsights.internal\Remove-AzSentinelSetting -ResourceGroupName $GetPSBoundParameters['ResourceGroupName'] -WorkspaceName $GetPSBoundParameters['WorkspaceName'] -SettingsName $Name
+                    }
+                    else{
+                        Write-Host "$Name is already Disabled!" -ForegroundColor Green
+                    }
                 }
             }
-            if ($Setting.Kind -eq 'EyesOn'){
+            if ($Name -eq 'EyesOn'){
                 If($PSBoundParameters['Enabled']){
-                    $Setting.IsEnabled = $true
-                    $null = $PSBoundParameters.Remove('Enabled')
+                    if($Settings.Name -contains 'EyesOn'){
+                        Write-Host "$Name is already Enabled!" -ForegroundColor Green
+                    }
+                    else{
+                        Az.SecurityInsights.internal\Update-AzSentinelSetting -ResourceGroupName $GetPSBoundParameters['ResourceGroupName'] -WorkspaceName $GetPSBoundParameters['WorkspaceName'] -SettingsName $Name -Kind $Name
+                    }                   
                 }
                 
                 If($PSBoundParameters['Disabled']){
-                    $Setting.IsEnabled = $false
-                    $null = $PSBoundParameters.Remove('Disabled')
+                    if($Settings.Name -contains 'EyesOn'){
+                        Az.SecurityInsights.internal\Remove-AzSentinelSetting -ResourceGroupName $GetPSBoundParameters['ResourceGroupName'] -WorkspaceName $GetPSBoundParameters['WorkspaceName'] -SettingsName $Name
+                    }
+                    else{
+                        Write-Host "$Name is already Disabled!" -ForegroundColor Green
+                    }
                 }
             }
-            if ($Setting.Kind -eq 'EntityAnalytics'){
+            if ($Name -eq 'EntityAnalytics'){
                 If($PSBoundParameters['Enabled']){
-                    $Setting.IsEnabled = $true
-                    $null = $PSBoundParameters.Remove('Enabled')
+                    if($Settings.Name -contains 'EntityAnalytics'){
+                        Write-Host "$Name is already Enabled!" -ForegroundColor Green
+                    }
+                    else{
+                        Az.SecurityInsights.internal\Update-AzSentinelSetting -ResourceGroupName $GetPSBoundParameters['ResourceGroupName'] -WorkspaceName $GetPSBoundParameters['WorkspaceName'] -SettingsName $Name -Kind $Name
+                    }                   
                 }
                 
                 If($PSBoundParameters['Disabled']){
-                    $Setting.IsEnabled = $false
-                    $null = $PSBoundParameters.Remove('Disabled')
+                    if($Settings.Name -contains 'EntityAnalytics'){
+                        Az.SecurityInsights.internal\Remove-AzSentinelSetting -ResourceGroupName $GetPSBoundParameters['ResourceGroupName'] -WorkspaceName $GetPSBoundParameters['WorkspaceName'] -SettingsName $Name
+                    }
+                    else{
+                        Write-Host "$Name is already Disabled!" -ForegroundColor Green
+                    }
                 }
             }
 
-            if ($Setting.Kind -eq 'Ueba'){
+            if ($Name -eq 'Ueba'){
                 If($PSBoundParameters['DataSource']){
-                    $Setting.DataSource = $PSBoundParameters['DataSource']
+                    $ueba.DataSource = $PSBoundParameters['DataSource']
                     $null = $PSBoundParameters.Remove('DataSource')
                 }
+                $null = $PSBoundParameters.Add('Setting', $Setting)
+                Az.SecurityInsights.internal\Update-AzSentinelSetting @PSBoundParameters
             }
-    
-            $null = $PSBoundParameters.Add('Setting', $Setting)
-            
-            Az.SecurityInsights.internal\Update-AzSentinelSetting @PSBoundParameters
         }
         catch {
             throw

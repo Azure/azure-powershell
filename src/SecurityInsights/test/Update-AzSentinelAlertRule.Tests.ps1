@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAlertRule'))
 
 Describe 'Update-AzSentinelAlertRule' {
     It 'UpdateExpanded' {
-        $alertRule = Update-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateAlertRuleId -Enabled
+        $alertRule = Update-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateAlertRuleId -Disabled
         $alertRule.Enabled | Should -Be $true
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
         $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateViaIdAlertRuleId
-        $alertRuleUpdate = $alertRule | Update-AzSentinelAlertRule -Enabled
+        $alertRuleUpdate = $alertRule | Update-AzSentinelAlertRule -Disabled
         $alertRuleUpdate.Enabled | Should -Be $true
     }
 }

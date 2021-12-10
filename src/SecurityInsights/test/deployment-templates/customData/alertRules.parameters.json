@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "solarigateRuleGuid": {
-      "value": "6027670c-30dc-4ca7-9e56-859d848dbff7"
+      "value": "1a4c05ac-7dce-40e6-8305-22548045b398"
     },
     "disabledRuleGuid": {
-      "value": "8da14834-9091-4051-9e3b-854fa6526119"
+      "value": "91b64153-c446-4996-90b0-9831bc46368c"
     },
     "mlRuleGuid": {
-      "value": "e8849548-4655-4f22-a9de-128f5f6a13ca"
+      "value": "11847c2b-2408-490c-8ccf-119da7266c52"
     },
     "workspaceName": {
-      "value": "asptestf380lm"
+      "value": "asptestpnu4xc"
     }
   }
 }

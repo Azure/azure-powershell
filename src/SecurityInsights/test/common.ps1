@@ -498,7 +498,7 @@ Function Create-ThreatIntelligenceIndicator{
         [Parameter(Mandatory = $true, Position = 1)]
         [string]$WorkspaceName,
         [Parameter(Mandatory = $true, Position = 2)]
-        [string]$IP
+        [string]$IP 
     )
     $threatIntelligenceIndicatorName = $PSVerb+"threatIntelligenceIndicator"+ (RandomString -allChars $false -len 6)
     $threatIntelligenceIndicatorId = (New-Guid).Guid
@@ -532,7 +532,7 @@ Function Create-ThreatIntelligenceIndicator{
                     "unknown"
                 )
                 "displayName" = "$threatIntelligenceIndicatorName"
-                "pattern" = "[ipv4-addr:value = '8.8.8.8']"
+                "pattern" = "[ipv4-addr:value = '$ip']"
                 "patternType" = "ipv4-addr"
                 "revoked" = $false
                 "validFrom" = "$threatIntelligenceIndicatorDate"
@@ -546,7 +546,7 @@ Function Create-ThreatIntelligenceIndicator{
     $indicator = Invoke-RestMethod -Method POST -Uri $Uri -Headers $tiHeaders -body $tiBody -ContentType Application/json
     #if($indicator.Kind -eq "indicator"){
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorName'), $threatIntelligenceIndicatorName)
-        $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorId'), $threatIntelligenceIndicatorId)
+        $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorId'), ($indicator.Name))
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorIP'), $IP)
     #}
 }

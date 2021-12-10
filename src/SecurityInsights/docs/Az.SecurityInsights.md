@@ -14,12 +14,6 @@ Microsoft Azure PowerShell: SecurityInsights cmdlets
 ### [Add-AzSentinelThreatIntelligenceIndicatorTag](Add-AzSentinelThreatIntelligenceIndicatorTag.md)
 Append tags to a threat intelligence indicator.
 
-### [Connect-AzSentinelDataConnector](Connect-AzSentinelDataConnector.md)
-Connects a data connector.
-
-### [Disconnect-AzSentinelDataConnector](Disconnect-AzSentinelDataConnector.md)
-Disconnect a data connector.
-
 ### [Expand-AzSentinelBookmark](Expand-AzSentinelBookmark.md)
 Expand an bookmark
 
@@ -232,9 +226,6 @@ Update an existing Metadata.
 
 ### [Update-AzSentinelSetting](Update-AzSentinelSetting.md)
 Updates setting.
-
-### [Update-AzSentinelThreatIntelligenceIndicator](Update-AzSentinelThreatIntelligenceIndicator.md)
-Update a threat Intelligence indicator.
 
 ### [Update-AzSentinelThreatIntelligenceIndicatorTag](Update-AzSentinelThreatIntelligenceIndicatorTag.md)
 Replace tags added to a threat intelligence indicator.

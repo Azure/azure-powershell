@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelBookmark'))
 Describe 'Update-AzSentinelBookmark' {
     It 'UpdateExpanded' {
         $getBookmark = Get-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateBookmarkId
-        $bookmark = $getBookmark | Update-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+        $bookmark = Update-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.UpdateBookmarkId -DisplayName "UpdateBookmarkPSTest"
         $bookmark.DisplayName | Should -Be "UpdateBookmarkPSTest"
     }
@@ -25,7 +25,7 @@ Describe 'Update-AzSentinelBookmark' {
     It 'UpdateViaIdentityExpanded' -skip {
         $bookmark = Update-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.UpdateBookmarkId
-        $bookmarkUpdate = $bookmark | Update-AzSentinelBookmark -DisplayName "UpdateBookmarkPSTest"
+        $bookmarkUpdate = Update-AzSentinelBookmark -InputObject $bookmark -DisplayName "UpdateBookmarkPSTest"
         $bookmarkUpdate.DisplayName | Should -Be "UpdateBookmarkPSTest"
     }
 }

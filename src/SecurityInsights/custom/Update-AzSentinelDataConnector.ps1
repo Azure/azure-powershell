@@ -502,7 +502,6 @@ function Update-AzSentinelDataConnector {
                 $GetPSBoundParameters.Add('InputObject', $PSBoundParameters['InputObject'])
             }
             else {
-                $GetPSBoundParameters.Add('OperationalInsightsResourceProvider', $PSBoundParameters['OperationalInsightsResourceProvider'])
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('DataConnectorId', $PSBoundParameters['DataConnectorId'])

@@ -22,7 +22,7 @@ Describe 'Update-AzSentinelAutomationRule' {
         $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
         $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
         $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId
-        $automationRule = $getrule | Update-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId -Action $automationRuleAction
+        $automationRule = Update-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId -Action $automationRuleAction -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
         $automationRule.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 
@@ -33,7 +33,7 @@ Describe 'Update-AzSentinelAutomationRule' {
         $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
         $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
         $automationRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateViaIdAutomationRuleId
-        $automationRuleUpdate = $automationRule | Update-AzSentinelAutomationRule -Action $automationRuleAction
+        $automationRuleUpdate = Update-AzSentinelAutomationRule -InputObject $automationRule -Action $automationRuleAction -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
         $automationRuleUpdate.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 }

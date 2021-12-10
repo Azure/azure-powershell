@@ -3,19 +3,19 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "threatIntelligenceIndicatorId": {
-      "value": "7db9e01a-c746-4bb2-9ddd-1e11b9d0ca1e"
+      "value": "750bd7bd-7a3b-4367-984d-706bf5e3950e"
     },
     "threatIntelligenceIndicatorName": {
-      "value": "UpdateViaIdthreatIntelligenceIndicatorsp6a94"
+      "value": "UpdateViaIdthreatIntelligenceIndicator1boku7"
     },
     "threatIntelligenceIndicatorDate": {
-      "value": "Wed, 08 Dec 2021 04:00:00 GMT"
+      "value": "Fri, 10 Dec 2021 04:00:00 GMT"
     },
     "ip": {
       "value": "8.8.8.5"
     },
     "workspaceName": {
-      "value": "asptestf380lm"
+      "value": "asptestpnu4xc"
     }
   }
 }

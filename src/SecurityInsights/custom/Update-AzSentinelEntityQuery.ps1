@@ -189,7 +189,6 @@ function Update-AzSentinelEntityQuery {
                 $GetPSBoundParameters.Add('InputObject', $PSBoundParameters['InputObject'])
             }
             else {
-                $GetPSBoundParameters.Add('OperationalInsightsResourceProvider', $PSBoundParameters['OperationalInsightsResourceProvider'])
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('EntityQueryId', $PSBoundParameters['EntityQueryId'])
@@ -217,8 +216,10 @@ function Update-AzSentinelEntityQuery {
                     $null = $PSBoundParameters.Remove('QueryDefinitionQuery')
                 }
 
-                $EntityQuery.InputEntityType = $PSBoundParameters['InputEntityType']
-                $null = $PSBoundParameters.Remove('InputEntityType')
+                If($PSBoundParameters['InputEntityType']){
+                    $EntityQuery.InputEntityType = $PSBoundParameters['InputEntityType']
+                    $null = $PSBoundParameters.Remove('InputEntityType')
+                }
                 
                 If($PSBoundParameters['RequiredInputFieldsSet']){
                     $EntityQuery.RequiredInputFieldsSet = $PSBoundParameters['RequiredInputFieldsSet']
@@ -246,9 +247,6 @@ function Update-AzSentinelEntityQuery {
                 }
             }
     
-            $EntityQuery.Kind = $PSBoundParameters['Kind']
-            $null = $PSBoundParameters.Remove('Kind')
-
             $null = $PSBoundParameters.Add('EntityQuery', $EntityQuery)
 
             Az.SecurityInsights.internal\Update-AzSentinelEntityQuery @PSBoundParameters

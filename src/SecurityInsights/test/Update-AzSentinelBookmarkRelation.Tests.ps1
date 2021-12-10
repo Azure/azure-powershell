@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelBookmarkRela
 }
 
 Describe 'Update-AzSentinelBookmarkRelation' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "UpdateBookmarkRelationPSTest"
         $bookmarkRelation = Update-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
