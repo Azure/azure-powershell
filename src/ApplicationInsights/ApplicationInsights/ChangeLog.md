@@ -19,15 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Added WebTest function. Below is the new cmdlet
+    * `Get-AzApplicationInsightsWebTest`
+    * `New-AzApplicationInsightsWebTest`
+    * `New-AzApplicationInsightsWebTestGeolocationObject`
+    * `New-AzApplicationInsightsWebTestHeaderFieldObject`
+    * `Remove-AzApplicationInsightsWebTest`
+    * `Update-AzApplicationInsightsWebTestTag`
+
 ## Version 1.2.0
 * Added read only property `ConnectionString` and `ApplicationId` to applicationinsights component
 
 ## Version 1.1.1
 * Fixed issue that `ResourcegroupName` is missed when executing below cmdlets with `InputObject` parameter [#14848]
-  * `Get-AzApplicationInsightsLinkedStorageAccount`
-  * `New-AzApplicationInsightsLinkedStorageAccount`
-  * `Update-AzApplicationInsightsLinkedStorageAccount`
-  * `Remove-AzApplicationInsightsLinkedStorageAccount` 
+    * `Get-AzApplicationInsightsLinkedStorageAccount`
+    * `New-AzApplicationInsightsLinkedStorageAccount`
+    * `Update-AzApplicationInsightsLinkedStorageAccount`
+    * `Remove-AzApplicationInsightsLinkedStorageAccount` 
 
 ## Version 1.1.0
 * Added Parameters: `RetentionInDays` `PublicNetworkAccessForIngestion` `PublicNetworkAccessForQuery` for `New-AzApplicationInsights`

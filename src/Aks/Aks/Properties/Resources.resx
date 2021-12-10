@@ -444,4 +444,13 @@
   <data name="UpdateKubernetesVersionAndNodeImageOnlyConflict" xml:space="preserve">
     <value>Conflicting flags. Upgrading the Kubernetes version will also upgrade node image version. If you only want to upgrade the node version please use the "-NodeImageOnly" option only.</value>
   </data>
+  <data name="NeedSameParentFolder" xml:space="preserve">
+    <value>Cannot attach folder with anothe file or folder at the same time. Please put them in a same parent folder.</value>
+  </data>
+  <data name="DoYouWantToExecuteCommandOnCluster" xml:space="preserve">
+    <value>Do you want to execute the command on cluster {0}?</value>
+  </data>
+  <data name="ExecutingCommandOnCluster" xml:space="preserve">
+    <value>Executing command on cluster {0}.</value>
+  </data>
 </root>

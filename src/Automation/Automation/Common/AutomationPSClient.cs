@@ -452,10 +452,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Schedule CreateSchedule(string resourceGroupName, string automationAccountName, Schedule schedule)
         {
-            var scheduleCreateOrUpdateParameters = new AutomationManagement.Models.ScheduleCreateOrUpdateParameters
+            var scheduleCreateOrUpdateParameters = new ScheduleCreateOrUpdateParameters
             {
                Name = schedule.Name,
-               StartTime = schedule.StartTime.DateTime,
+               StartTime = schedule.StartTime,
                ExpiryTime = schedule.ExpiryTime,
                Description = schedule.Description,
                Interval = schedule.Interval,

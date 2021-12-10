@@ -33,15 +33,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Always".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Always", "Always", global::System.Management.Automation.CompletionResultType.ParameterValue, "Always");
+                yield return new global::System.Management.Automation.CompletionResult("'Always'", "Always", global::System.Management.Automation.CompletionResultType.ParameterValue, "Always");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OnFailure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OnFailure", "OnFailure", global::System.Management.Automation.CompletionResultType.ParameterValue, "OnFailure");
+                yield return new global::System.Management.Automation.CompletionResult("'OnFailure'", "OnFailure", global::System.Management.Automation.CompletionResultType.ParameterValue, "OnFailure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Never".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Never", "Never", global::System.Management.Automation.CompletionResultType.ParameterValue, "Never");
+                yield return new global::System.Management.Automation.CompletionResult("'Never'", "Never", global::System.Management.Automation.CompletionResultType.ParameterValue, "Never");
             }
         }
     }

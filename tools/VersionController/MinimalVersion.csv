@@ -1,3 +1,5 @@
 "Module","Minimal Version"
 "Az.Security","1.1.1"
 "Az.CloudService","1.0.0"
+"Az.Functions","4.0.0"
+"Az.StackHCI","1.0.0"

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxTransferConfigurationObject
 
 ## SYNOPSIS
-Create a in-memory object for TransferConfiguration
+Create an in-memory object for TransferConfiguration.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzDataBoxTransferConfigurationObject -Type <TransferConfigurationType>
 ```
 
 ## DESCRIPTION
-Create a in-memory object for TransferConfiguration
+Create an in-memory object for TransferConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ In-memory object for export job transfer configuration }}
+### Example 1: In-memory object for export job transfer configuration 
 ```powershell
 PS C:\>  $transferConfigurationType = New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
 ```
 
-{{ Create a in-memory object for export jobs TransferConfiguration }}
+Create a in-memory object for export jobs TransferConfiguration
 
 ## PARAMETERS
 

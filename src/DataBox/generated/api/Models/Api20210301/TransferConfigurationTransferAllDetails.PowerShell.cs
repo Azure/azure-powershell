@@ -110,10 +110,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferAllDetails) content.GetValueForProperty("Include",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferAllDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("IncludeDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob = (bool?) content.GetValueForProperty("IncludeTransferAllBlob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile = (bool?) content.GetValueForProperty("IncludeTransferAllFile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Include"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferAllDetails) content.GetValueForProperty("Include",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferAllDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IncludeDataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("IncludeDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("IncludeTransferAllBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob = (bool?) content.GetValueForProperty("IncludeTransferAllBlob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IncludeTransferAllFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile = (bool?) content.GetValueForProperty("IncludeTransferAllFile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,10 +143,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferAllDetails) content.GetValueForProperty("Include",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferAllDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("IncludeDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob = (bool?) content.GetValueForProperty("IncludeTransferAllBlob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile = (bool?) content.GetValueForProperty("IncludeTransferAllFile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Include"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferAllDetails) content.GetValueForProperty("Include",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).Include, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferAllDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IncludeDataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("IncludeDataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeDataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("IncludeTransferAllBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob = (bool?) content.GetValueForProperty("IncludeTransferAllBlob",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllBlob, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IncludeTransferAllFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile = (bool?) content.GetValueForProperty("IncludeTransferAllFile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferConfigurationTransferAllDetailsInternal)this).IncludeTransferAllFile, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
     }

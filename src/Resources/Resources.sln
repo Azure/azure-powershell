@@ -4,6 +4,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSGraph", "MSGraph.Autorest\MSGraph.csproj", "{8C3B3618-CBF3-43BC-98FA-286A83207BCC}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Test", "Resources.Test\Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
@@ -76,6 +78,10 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

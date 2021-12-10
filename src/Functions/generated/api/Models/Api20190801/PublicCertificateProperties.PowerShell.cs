@@ -101,9 +101,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob = (byte[]) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob, i => i);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation?) content.GetValueForProperty("PublicCertificateLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint, global::System.Convert.ToString);
+            if (content.Contains("Blob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob = (byte[]) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob, i => i);
+            }
+            if (content.Contains("PublicCertificateLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation?) content.GetValueForProperty("PublicCertificateLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation.CreateFrom);
+            }
+            if (content.Contains("Thumbprint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,9 +130,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob = (byte[]) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob, i => i);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation?) content.GetValueForProperty("PublicCertificateLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint, global::System.Convert.ToString);
+            if (content.Contains("Blob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob = (byte[]) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Blob, i => i);
+            }
+            if (content.Contains("PublicCertificateLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation?) content.GetValueForProperty("PublicCertificateLocation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).PublicCertificateLocation, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation.CreateFrom);
+            }
+            if (content.Contains("Thumbprint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint = (string) content.GetValueForProperty("Thumbprint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)this).Thumbprint, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

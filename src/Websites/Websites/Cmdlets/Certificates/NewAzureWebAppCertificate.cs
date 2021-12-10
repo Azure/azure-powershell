@@ -78,9 +78,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                 string certName = null;
                 HttpStatusCode statusCode = HttpStatusCode.OK;
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, Slot));
-                var location = webApp.Location;
-
-                Certificate createdCertdetails = new Certificate();
+                var location = webApp.Location;             
 
                 var certificate = new Certificate(
                     webApp.Location,
@@ -88,13 +86,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                     canonicalName: HostName,
                     password: "",
                     serverFarmId: webApp.ServerFarmId);
+
+                PSCertificate createdCertdetails = new PSCertificate(certificate);
+
                 if (this.ShouldProcess(this.WebAppName, string.Format($"Creating an App service managed certificate for Web App '{WebAppName}'")))
                 {
                     try
                     {
                         //Default certName is HostName
                         certName = Name != null ? Name : HostName;
-                        createdCertdetails = (PSCertificate)WebsitesClient.CreateCertificate(ResourceGroupName, certName, certificate);
+                        createdCertdetails = new PSCertificate(WebsitesClient.CreateCertificate(ResourceGroupName, certName, certificate));
                     }
                     catch (DefaultErrorResponseException e)
                     {
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
 
                         }
                     }
-                    createdCertdetails = WebsitesClient.GetCertificate(ResourceGroupName, certName);
+                    createdCertdetails = new PSCertificate(WebsitesClient.GetCertificate(ResourceGroupName, certName));
 
                     //Add only when user is opted for Binding
                     if (AddBinding)

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
-    /// <summary>TypeConverter implementation for ConnectivityStatus.</summary>
+    /// <summary>Represents the connectivity status of the connected cluster.</summary>
     public partial class ConnectivityStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

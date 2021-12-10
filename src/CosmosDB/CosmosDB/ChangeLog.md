@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.5.0
 * Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.
 * Added support for managed Cassandra.
 
