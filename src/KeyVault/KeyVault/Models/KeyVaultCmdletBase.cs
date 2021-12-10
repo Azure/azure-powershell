@@ -21,6 +21,7 @@ using Azure.Core.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Track2sdk = Azure.ResourceManager.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
