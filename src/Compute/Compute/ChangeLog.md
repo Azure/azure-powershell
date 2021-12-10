@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-Feature` parameter for `New-AzGalleryImageDefinition`
 * Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
 * Contains updates to the following powershell cmdlets
     - `SetAzVmssDiskEncryptionExtension` : Added extension parameters for the cmdlet to work with test extensions and parameter `EncryptFormatAll` for Virtual Machine Scale Sets
