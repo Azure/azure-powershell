@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
 
 ## Version 2.7.0
 * Removed `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount` [#15427]
