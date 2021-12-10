@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSVirtualNetworkProfile(VirtualNetworkProfile virtualNetworkProfile)
         {
-            this.ComputeSubnetId = virtualNetworkProfile?.ComputeSubnetId;
+            this.VirtualNetworkProfileComputeSubnetId = virtualNetworkProfile?.ComputeSubnetId;
         }
 
         /// <summary>
         /// Gets or sets subnet ID used for computes in workspace
         /// </summary>
-        public string ComputeSubnetId { get; set; }
+        public string VirtualNetworkProfileComputeSubnetId { get; set; }
     }
 }

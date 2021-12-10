@@ -22,26 +22,26 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSManagedIdentity(ManagedIdentity identity)
         {
+            this.IdentityType = identity?.Type?.ToString();
             this.PrincipalId = identity?.PrincipalId;
-            this.TenantId = identity?.TenantId;
-            this.Type = identity?.Type;
+            this.TenantId = identity?.TenantId.ToString();
             this.UserAssignedIdentities = identity?.UserAssignedIdentities;
         }
 
         /// <summary>
+        /// Gets or sets the type of managed identity for the workspace.Possible values include: 'None', 'SystemAssigned','SystemAssigned,UserAssigned'
+        /// </summary>
+        public string IdentityType { get; set; }
+
+        /// <summary>
         /// Gets the principal ID of the workspace managed identity
         /// </summary>
-        public string PrincipalId { get; }
+        public string PrincipalId { get; set; }
 
         /// <summary>
         /// Gets the tenant ID of the workspace managed identity
         /// </summary>
-        public Guid? TenantId { get; }
-
-        /// <summary>
-        /// Gets or sets the type of managed identity for the workspace.Possible values include: 'None', 'SystemAssigned','SystemAssigned,UserAssigned'
-        /// </summary>
-        public ResourceIdentityType? Type { get; set; }
+        public string TenantId { get; set; }
 
         /// <summary>
         ///  Gets or sets the user assigned managed identities.

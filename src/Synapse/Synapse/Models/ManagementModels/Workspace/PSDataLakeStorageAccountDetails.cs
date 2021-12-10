@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSDataLakeStorageAccountDetails(DataLakeStorageAccountDetails defaultDataLakeStorage)
         {
-            this.AccountUrl = defaultDataLakeStorage?.AccountUrl;
-            this.Filesystem = defaultDataLakeStorage?.Filesystem;
+            this.DefaultDataLakeStorageAccountUrl = defaultDataLakeStorage?.AccountUrl;
+            this.DefaultDataLakeStorageFilesystem = defaultDataLakeStorage?.Filesystem;
             this.ResourceId = defaultDataLakeStorage?.ResourceId;
             this.CreateManagedPrivateEndpoint = defaultDataLakeStorage?.CreateManagedPrivateEndpoint;
         }
@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets account URL
         /// </summary>
-        public string AccountUrl { get; set; }
+        public string DefaultDataLakeStorageAccountUrl { get; set; }
 
         /// <summary>
         /// Gets or sets filesystem name
         /// </summary>
-        public string Filesystem { get; set; }
+        public string DefaultDataLakeStorageFilesystem { get; set; }
 
         /// <summary>
         /// Gets or sets ARM resource Id of this storage account
