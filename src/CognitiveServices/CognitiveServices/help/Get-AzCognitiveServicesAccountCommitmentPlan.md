@@ -14,8 +14,8 @@ Get CommitmentPlan of a Cognitive Services account
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzCognitiveServicesAccountCommitmentPlan [[-ResourceGroupName] <String>] [-Name] <String>
- [[-CommitmentPlanName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCognitiveServicesAccountCommitmentPlan [[-ResourceGroupName] <String>] [-AccountName] <String>
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -31,23 +31,23 @@ Get CommitmentPlan of a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -Name resource-name -Type Face -SkuName S0 -Location 'WestUS'
+PS C:\> Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
 ```
 
 Get CommitmentPlan of a Cognitive Services account
 
 ## PARAMETERS
 
-### -CommitmentPlanName
-Cognitive Services CommitmentPlan Name.
+### -AccountName
+Cognitive Services Account Name.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameterSet
-Aliases:
+Aliases: CognitiveServicesAccountName
 
-Required: False
-Position: 2
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -74,10 +74,10 @@ Cognitive Services Account Name.
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameterSet
-Aliases: CognitiveServicesAccountName, AccountName
+Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

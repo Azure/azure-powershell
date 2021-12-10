@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Cognitive Services Account Name.")]
-        [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
+        [Alias(CognitiveServicesAccountNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AccountName { get; set; }
 
         [Parameter(
             Position = 2,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services CommitmentPlan Name.")]
         [ValidateNotNullOrEmpty]
-        public string CommitmentPlanName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,21 +83,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
 
                         ResourceGroupName = resourceId.ResourceGroupName;
-                        Name = resourceId.GetAccountName();
-                        CommitmentPlanName = resourceId.GetAccountSubResourceName();
+                        AccountName = resourceId.GetAccountName();
+                        Name = resourceId.GetAccountSubResourceName();
                         break;
                     case DefaultParameterSet:
                         break;
                 }
 
-                if (string.IsNullOrEmpty(this.CommitmentPlanName))
+                if (string.IsNullOrEmpty(this.Name))
                 {
-                    var createAccountResponse = new List<CommitmentPlan>(CognitiveServicesClient.CommitmentPlans.List(ResourceGroupName, Name));
+                    var createAccountResponse = new List<CommitmentPlan>(CognitiveServicesClient.CommitmentPlans.List(ResourceGroupName, AccountName));
                     WriteObject(createAccountResponse);
                 }
                 else
                 {
-                    var createAccountResponse = CognitiveServicesClient.CommitmentPlans.Get(ResourceGroupName, Name, CommitmentPlanName);
+                    var createAccountResponse = CognitiveServicesClient.CommitmentPlans.Get(ResourceGroupName, AccountName, Name);
 
                     WriteObject(createAccountResponse);
                 }

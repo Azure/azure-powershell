@@ -24,10 +24,10 @@ Create a Cognitive Services Object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesObject -Type Deployment
+PS C:\> New-AzCognitiveServicesObject -Type DeploymentProperties
 ```
 
-Create a Cognitive Services Deployment Object
+Create a Cognitive Services DeploymentProperties Object
 
 ## PARAMETERS
 
@@ -53,7 +53,7 @@ Cognitive Services Object Type.
 Type: Microsoft.Azure.Commands.Management.CognitiveServices.CognitiveServicesObjectType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Deployment, CommitmentPlan
+Accepted values: DeploymentProperties, CommitmentPlanProperties
 
 Required: True
 Position: 0
@@ -102,9 +102,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.CognitiveServices.Models.Deployment
+### Microsoft.Azure.Management.CognitiveServices.Models.DeploymentProperties
 
-### Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlan
+### Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlanProperties
 
 ## NOTES
 

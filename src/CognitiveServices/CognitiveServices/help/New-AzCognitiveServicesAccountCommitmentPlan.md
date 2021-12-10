@@ -13,9 +13,9 @@ Create a CommitmentPlan for a Cognitive Services account
 ## SYNTAX
 
 ```
-New-AzCognitiveServicesAccountCommitmentPlan [-ResourceGroupName] <String> [-Name] <String>
- [-CommitmentPlanName] <String> [-CommitmentPlan] <CommitmentPlan> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzCognitiveServicesAccountCommitmentPlan [-ResourceGroupName] <String> [-AccountName] <String>
+ [-Name] <String> [-Properties] <CommitmentPlanProperties> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,39 +25,24 @@ Create a CommitmentPlan for a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -Name resource-name -CommitmentPlanName "plan" -CommitmentPlan $plan
+PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan" -Properties $properties
 ```
 
 Create a CommitmentPlan for a Cognitive Services account
-You can use `New-AzCognitiveServicesObject` to create a CommitmentPlan object
+You can use `New-AzCognitiveServicesObject` to create a CommitmentPlanProperties object
 
 ## PARAMETERS
 
-### -CommitmentPlan
-Cognitive Services CommitmentPlan.
-
-```yaml
-Type: Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlan
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommitmentPlanName
-Cognitive Services CommitmentPlan Name.
+### -AccountName
+Cognitive Services Account Name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: CognitiveServicesAccountName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -84,10 +69,25 @@ Cognitive Services Account Name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: CognitiveServicesAccountName, AccountName
+Aliases:
 
 Required: True
-Position: 1
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Properties
+Cognitive Services CommitmentPlan Properties.
+
+```yaml
+Type: Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlanProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

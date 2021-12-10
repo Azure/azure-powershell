@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// Generate Cognitive Services Object by Type.
     /// Some commands need complex objects, this command is used to generate these objects with default parameters.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesObject", SupportsShouldProcess = true), OutputType(typeof(Deployment), typeof(CommitmentPlan))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesObject", SupportsShouldProcess = true), OutputType(typeof(DeploymentProperties), typeof(CommitmentPlanProperties))]
     public class NewAzureCognitiveServicesObjectCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -36,21 +36,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             switch (Type)
             {
-                case CognitiveServicesObjectType.Deployment:
+                case CognitiveServicesObjectType.DeploymentProperties:
                     {
-                        var obj = new Deployment();
-                        obj.Properties = new DeploymentProperties();
-                        obj.Properties.Model = new DeploymentModel();
-                        obj.Properties.ScaleSettings = new DeploymentScaleSettings();
+                        var obj = new DeploymentProperties();
+                        obj.Model = new DeploymentModel();
+                        obj.ScaleSettings = new DeploymentScaleSettings();
                         WriteObject(obj);
                     }
                     break;
-                case CognitiveServicesObjectType.CommitmentPlan:
+                case CognitiveServicesObjectType.CommitmentPlanProperties:
                     {
-                        var obj = new CommitmentPlan();
-                        obj.Properties = new CommitmentPlanProperties();
-                        obj.Properties.Current = new CommitmentPeriod();
-                        obj.Properties.Next = new CommitmentPeriod();
+                        var obj = new CommitmentPlanProperties();
+                        obj.Current = new CommitmentPeriod();
+                        obj.Next = new CommitmentPeriod();
                         WriteObject(obj);
                     }
                     break;
@@ -60,7 +58,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
     public enum CognitiveServicesObjectType
     {
-        Deployment,
-        CommitmentPlan
+        DeploymentProperties,
+        CommitmentPlanProperties
     }
 }

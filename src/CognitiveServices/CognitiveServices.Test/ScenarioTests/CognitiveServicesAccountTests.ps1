@@ -1533,19 +1533,19 @@ function Test-CommitmentPlan
         Get-AzCognitiveServicesCommitmentTier -Location westus
 
 
-        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname
+        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -AccountName $accountname
 
-        $plan = New-AzCognitiveServicesObject -Type CommitmentPlan
-        $plan.Properties.HostingModel = "Web"
-        $plan.Properties.AutoRenew = $false
-        $plan.Properties.PlanType = "TA"
-        $plan.Properties.Current.Tier = "T1"
-        $plan.Properties.Next = $null
+        $properties = New-AzCognitiveServicesObject -Type CommitmentPlanProperties
+        $properties.HostingModel = "Web"
+        $properties.AutoRenew = $false
+        $properties.PlanType = "TA"
+        $properties.Current.Tier = "T1"
+        $properties.Next = $null
 
-        New-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname -CommitmentPlanName plan -CommitmentPlan $plan
-        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname
-        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname -CommitmentPlanName plan
-        Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -Name $accountname -CommitmentPlanName plan
+        New-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -AccountName $accountname -Name plan -Properties $properties
+        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -AccountName $accountname -Name plan
+        Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName $rgname -AccountName $accountname -Name plan
     }
     finally
     {
@@ -1576,19 +1576,19 @@ function Test-Deployment
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
         Assert-NotNull $createdAccount;
         
-        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname
+        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname
 
-        $dpy = New-AzCognitiveServicesObject -Type Deployment
-        $dpy.Properties.Model.Format = "OpenAI"
-        $dpy.Properties.Model.Name = "ada"
-        $dpy.Properties.Model.Version = "1"
-        $dpy.Properties.ScaleSettings.Capacity = 1
-        $dpy.Properties.ScaleSettings.ScaleType = "Manual"
+        $properties = New-AzCognitiveServicesObject -Type DeploymentProperties
+        $properties.Model.Format = "OpenAI"
+        $properties.Model.Name = "ada"
+        $properties.Model.Version = "1"
+        $properties.ScaleSettings.Capacity = 1
+        $properties.ScaleSettings.ScaleType = "Manual"
 
-        New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname -DeploymentName dpy -Deployment $dpy
-        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname
-        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname -DeploymentName dpy
-        Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -Name $accountname -DeploymentName dpy
+        New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy -Properties $properties
+        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy
+        Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy
     }
     finally
     {

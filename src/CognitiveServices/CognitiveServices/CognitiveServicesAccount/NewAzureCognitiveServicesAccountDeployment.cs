@@ -43,25 +43,26 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Name.")]
-        [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
+        [Alias(CognitiveServicesAccountNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AccountName { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Cognitive Services CommitmentPlan Name.")]
+            HelpMessage = "Cognitive Services Deployment Name.")]
         [ValidateNotNullOrEmpty]
-        public string DeploymentName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Position = 3,
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Cognitive Services CommitmentPlan.")]
-        public Deployment Deployment { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Cognitive Services Deployment Properties.")]
+        public DeploymentProperties Properties { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -69,11 +70,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
-                    var createAccountResponse = CognitiveServicesClient.Deployments.BeginCreateOrUpdate(
+                var deployment = new Deployment()
+                {
+                    Properties = Properties
+                };
+
+                var createAccountResponse = CognitiveServicesClient.Deployments.BeginCreateOrUpdate(
                                     ResourceGroupName,
+                                    AccountName,
                                     Name,
-                                    DeploymentName,
-                                    Deployment);
+                                    deployment);
 
                     WriteObject(createAccountResponse);
             });

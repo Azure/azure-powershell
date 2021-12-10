@@ -14,8 +14,8 @@ Get Deployment of a Cognitive Services account
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzCognitiveServicesAccountDeployment [[-ResourceGroupName] <String>] [-Name] <String>
- [[-DeploymentName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCognitiveServicesAccountDeployment [[-ResourceGroupName] <String>] [-AccountName] <String>
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -31,12 +31,27 @@ Get Deployment of a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -Name resource-name -Type Face -SkuName S0 -Location 'WestUS'
+PS C:\> Get-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
 ```
 
 Get Deployment of a Cognitive Services account
 
 ## PARAMETERS
+
+### -AccountName
+Cognitive Services Account Name.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameterSet
+Aliases: CognitiveServicesAccountName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -53,8 +68,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentName
-Cognitive Services Deployment Name.
+### -Name
+Cognitive Services Account Name.
 
 ```yaml
 Type: System.String
@@ -63,21 +78,6 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Cognitive Services Account Name.
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameterSet
-Aliases: CognitiveServicesAccountName, AccountName
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

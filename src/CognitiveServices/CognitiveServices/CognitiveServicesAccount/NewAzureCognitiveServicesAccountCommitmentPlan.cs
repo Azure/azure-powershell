@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Name.")]
-        [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
+        [Alias(CognitiveServicesAccountNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AccountName { get; set; }
 
         [Parameter(
             Position = 2,
@@ -54,14 +54,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services CommitmentPlan Name.")]
         [ValidateNotNullOrEmpty]
-        public string CommitmentPlanName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Position = 3,
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            HelpMessage = "Cognitive Services CommitmentPlan.")]
-        public CommitmentPlan CommitmentPlan { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Cognitive Services CommitmentPlan Properties.")]
+        public CommitmentPlanProperties Properties { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -69,11 +70,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
-                    var createAccountResponse = CognitiveServicesClient.CommitmentPlans.CreateOrUpdate(
+                var commitmentPlan = new CommitmentPlan()
+                {
+                    Properties = Properties
+                };
+
+                var createAccountResponse = CognitiveServicesClient.CommitmentPlans.CreateOrUpdate(
                                     ResourceGroupName,
+                                    AccountName,
                                     Name,
-                                    CommitmentPlanName,
-                                    CommitmentPlan);
+                                    commitmentPlan);
 
                     WriteObject(createAccountResponse);
             });

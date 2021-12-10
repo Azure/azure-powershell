@@ -14,9 +14,9 @@ Delete a Deployment from a Cognitive Services account
 
 ### DefaultParameterSet (Default)
 ```
-Remove-AzCognitiveServicesAccountDeployment [-ResourceGroupName] <String> [-Name] <String>
- [-DeploymentName] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzCognitiveServicesAccountDeployment [-ResourceGroupName] <String> [-AccountName] <String>
+ [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -38,12 +38,27 @@ Delete a Deployment from a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -Name resource-name -CommitmentPlanName "plan"
+PS C:\> Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan"
 ```
 
 Delete a Deployment from a Cognitive Services account
 
 ## PARAMETERS
+
+### -AccountName
+Cognitive Services Account Name.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameterSet
+Aliases: CognitiveServicesAccountName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -57,21 +72,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentName
-Cognitive Services CommitmentPlan Name.
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameterSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -114,7 +114,7 @@ Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

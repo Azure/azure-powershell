@@ -66,8 +66,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Name.")]
+        [Alias(CognitiveServicesAccountNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AccountName { get; set; }
 
         [Parameter(
             Position = 2,
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services CommitmentPlan Name.")]
         [ValidateNotNullOrEmpty]
-        public string CommitmentPlanName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             base.ExecuteCmdlet();
 
             if (ShouldProcess(
-                this.Name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, this.Name))
+                this.AccountName, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, this.AccountName))
                 ||
                 Force.IsPresent)
             {
@@ -107,14 +108,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                             }
 
                             ResourceGroupName = resourceId.ResourceGroupName;
-                            Name = resourceId.GetAccountName();
-                            CommitmentPlanName = resourceId.GetAccountSubResourceName();
+                            AccountName = resourceId.GetAccountName();
+                            Name = resourceId.GetAccountSubResourceName();
                             break;
                         case DefaultParameterSet:
                             break;
                     }
 
-                    this.CognitiveServicesClient.CommitmentPlans.Delete(ResourceGroupName, Name, CommitmentPlanName);
+                    this.CognitiveServicesClient.CommitmentPlans.Delete(ResourceGroupName, AccountName, Name);
 
                     if (PassThru.IsPresent)
                     {

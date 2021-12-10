@@ -13,9 +13,9 @@ Create a Deployment for a Cognitive Services account
 ## SYNTAX
 
 ```
-New-AzCognitiveServicesAccountDeployment [-ResourceGroupName] <String> [-Name] <String>
- [-DeploymentName] <String> [-Deployment] <Deployment> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzCognitiveServicesAccountDeployment [-ResourceGroupName] <String> [-AccountName] <String> [-Name] <String>
+ [-Properties] <DeploymentProperties> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +25,28 @@ Create a Deployment for a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -Name resource-name -DeploymentName "deployment" -Deployment $deployment
+PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "deployment" -Properties $properties
 ```
 
 Create a Deployment for a Cognitive Services account
-You can use `New-AzCognitiveServicesObject` to create a Deployment object
+You can use `New-AzCognitiveServicesObject` to create a DeploymentProperties object
 
 ## PARAMETERS
+
+### -AccountName
+Cognitive Services Account Name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: CognitiveServicesAccountName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -48,23 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Deployment
-Cognitive Services CommitmentPlan.
-
-```yaml
-Type: Microsoft.Azure.Management.CognitiveServices.Models.Deployment
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentName
-Cognitive Services CommitmentPlan Name.
+### -Name
+Cognitive Services Account Name.
 
 ```yaml
 Type: System.String
@@ -78,16 +78,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Cognitive Services Account Name.
+### -Properties
+Cognitive Services Deployment Properties.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Management.CognitiveServices.Models.DeploymentProperties
 Parameter Sets: (All)
-Aliases: CognitiveServicesAccountName, AccountName
+Aliases:
 
 Required: True
-Position: 1
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

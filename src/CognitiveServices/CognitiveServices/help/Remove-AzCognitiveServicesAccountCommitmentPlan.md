@@ -14,9 +14,9 @@ Delete a CommitmentPlan from a Cognitive Services account
 
 ### DefaultParameterSet (Default)
 ```
-Remove-AzCognitiveServicesAccountCommitmentPlan [-ResourceGroupName] <String> [-Name] <String>
- [-CommitmentPlanName] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzCognitiveServicesAccountCommitmentPlan [-ResourceGroupName] <String> [-AccountName] <String>
+ [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -38,23 +38,23 @@ Delete a CommitmentPlan from a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -Name resource-name -CommitmentPlanName "plan"
+PS C:\> Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan"
 ```
 
 Delete a CommitmentPlan from a Cognitive Services account
 
 ## PARAMETERS
 
-### -CommitmentPlanName
-Cognitive Services CommitmentPlan Name.
+### -AccountName
+Cognitive Services Account Name.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameterSet
-Aliases:
+Aliases: CognitiveServicesAccountName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -114,7 +114,7 @@ Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

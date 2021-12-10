@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Cognitive Services Account Name.")]
-        [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
+        [Alias(CognitiveServicesAccountNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AccountName { get; set; }
 
         [Parameter(
             Position = 2,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Deployment Name.")]
         [ValidateNotNullOrEmpty]
-        public string DeploymentName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,21 +83,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
 
                         ResourceGroupName = resourceId.ResourceGroupName;
-                        Name = resourceId.GetAccountName();
-                        DeploymentName = resourceId.GetAccountSubResourceName();
+                        AccountName = resourceId.GetAccountName();
+                        Name = resourceId.GetAccountSubResourceName();
                         break;
                     case DefaultParameterSet:
                         break;
                 }
 
-                if (string.IsNullOrEmpty(this.DeploymentName))
+                if (string.IsNullOrEmpty(this.Name))
                 {
-                    var createAccountResponse = new List<Deployment>(CognitiveServicesClient.Deployments.List(ResourceGroupName, Name));
+                    var createAccountResponse = new List<Deployment>(CognitiveServicesClient.Deployments.List(ResourceGroupName, AccountName));
                     WriteObject(createAccountResponse);
                 }
                 else
                 {
-                    var createAccountResponse = CognitiveServicesClient.Deployments.Get(ResourceGroupName, Name, DeploymentName);
+                    var createAccountResponse = CognitiveServicesClient.Deployments.Get(ResourceGroupName, AccountName, Name);
                     WriteObject(createAccountResponse);
                 }
 
