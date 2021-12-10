@@ -16,7 +16,9 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
 using System.IO;
 using System.Management.Automation;
 

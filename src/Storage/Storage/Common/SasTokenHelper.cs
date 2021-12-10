@@ -328,7 +328,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 if (StartTime != null)
                 {
-                    if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue)
+                    if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.StartsOn != null)
                     {
                         throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
                     }
@@ -340,7 +340,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 if (ExpiryTime != null)
                 {
-                    if (signedIdentifier.AccessPolicy.PolicyExpiresOn != DateTimeOffset.MinValue)
+                    if (signedIdentifier.AccessPolicy.PolicyExpiresOn != DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.PolicyExpiresOn != null)
                     {
                         throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
                     }
@@ -349,9 +349,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
                     }
                 }
-                else if (signedIdentifier.AccessPolicy.PolicyExpiresOn == DateTimeOffset.MinValue)
+                else if (signedIdentifier.AccessPolicy.PolicyExpiresOn == DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.PolicyExpiresOn != null)
                 {
-                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue && sasBuilder.StartsOn != null)
                     {
                         sasBuilder.ExpiresOn = sasBuilder.StartsOn.ToUniversalTime().AddHours(1);
                     }
@@ -453,6 +453,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     case 'x':
                         permission = permission | BlobContainerSasPermissions.DeleteBlobVersion;
                         break;
+                    case 'i':
+                        permission = permission | BlobContainerSasPermissions.SetImmutabilityPolicy;
+                        break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string
                         sasBuilder.SetPermissions(rawPermission);
@@ -480,7 +483,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
                 userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
                     expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
                     cancellationToken: cancelToken);
 
@@ -518,7 +521,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                if (sasBuilder.StartsOn != DateTimeOffset.MinValue && sasBuilder.StartsOn != null)
                 {
                     sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
                 }
@@ -633,6 +636,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         break;
                     case 'x':
                         permission = permission | AccountSasPermissions.DeleteVersion;
+                        break;
+                    case 'i':
+                        permission = permission | AccountSasPermissions.SetImmutabilityPolicy;
                         break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string

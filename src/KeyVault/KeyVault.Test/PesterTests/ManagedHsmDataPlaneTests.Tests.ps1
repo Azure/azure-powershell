@@ -4,7 +4,7 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 
 . $PSScriptRoot/ManagedHsmDataPlaneTests.ps1
 # ImportModules
-$hsmName = 'bezmhsm'
+$hsmName = 'yeminghsm112901'
 $signInName = 'yeliu@microsoft.com'
 $storageAccount = 'bezstorageaccount'
 $containerName = 'backup'
@@ -171,24 +171,24 @@ Describe "BackupAndRestoreAzManagedHsmKey" {
 Describe "BackupAndRestoreAzManagedHsm" {
     $script:backupUri = ''
     $containerUri = "https://$storageAccount.blob.core.windows.net/$containerName"
-    It "Backup then restore a managed HSM" {
+    It "Backup a managed HSM" {
         $script:backupUri = Backup-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -SasToken $sasToken
         $script:backupUri | Should -Not -Be $null
     }
 
-    It "Selective restore a managed HSM"{
+    It "Selective restore a key to managed HSM" {
         $script:backupUri = [System.Uri]::new($script:backupUri)
         $backupFolder = $script:backupUri.Segments[$script:backupUri.Segments.Length - 1]
         $restoreResult = Restore-AzKeyVault -HsmName $hsmName -KeyName $keyName -StorageContainerUri $containerUri -BackupFolder $backupFolder -SasToken $sasToken -PassThru
         $restoreResult | Should -Be $True
     }
 
-    It "Restore a managed HSM" {
+    It "Restore whole managed HSM" {
         $script:backupUri = [System.Uri]::new($script:backupUri)
         $backupFolder = $script:backupUri.Segments[$script:backupUri.Segments.Length - 1]
         # Clean hsm
         Get-AzKeyVaultKey -HsmName $hsmName | Remove-AzKeyVaultKey -Force
-        Get-AzKeyVaultKey -HsmName $hsmName -InRemovedState| Remove-AzKeyVaultKey -InRemovedState -Force
+        Get-AzKeyVaultKey -HsmName $hsmName -InRemovedState | Remove-AzKeyVaultKey -InRemovedState -Force
         $restoreResult = Restore-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -BackupFolder $backupFolder -SasToken $sasToken -PassThru
         $restoreResult | Should -Be $True
     }
@@ -201,16 +201,16 @@ Describe "GetAzManagedHsmRoleDefinition" {
     }
 
     It "Get a specific role" {
-        $backupRole = Get-AzKeyVaultRoleDefinition -HsmName $hsmName -RoleDefinitionName "managed hsm backup"
+        $backupRole = Get-AzKeyVaultRoleDefinition -HsmName $hsmName -RoleDefinitionName "Managed HSM Backup User"
         $backupRole | Should -Not -Be $null
         $backupRole.Permissions | Should -Not -Be $null
-        $backupRole.Permissions.AllowedDataActions | Should -Not -Be $null
+        $backupRole.Permissions.DataActions | Should -Not -Be $null
     }
 }
 
 Describe "NewAzManagedHsmRoleAssignment" {
     BeforeEach {
-        $roleDefinitionName = "Managed HSM Backup"
+        $roleDefinitionName = "Managed HSM Backup User"
         # Clean role
         $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         if ($roleAssignment) {
@@ -229,7 +229,7 @@ Describe "NewAzManagedHsmRoleAssignment" {
 Describe "RemoveAzManagedHsmRoleAssignment" {
     BeforeEach {
         # Assign role
-        $roleDefinitionName = "Managed HSM Backup"
+        $roleDefinitionName = "Managed HSM Backup User"
         $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         if (!$roleAssignment) {
             $roleAssignment = New-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
@@ -246,7 +246,7 @@ Describe "RemoveAzManagedHsmRoleAssignment" {
 Describe "GetAzManagedHsmRoleAssignment" {
     BeforeEach {
         # Assign role
-        $roleDefinitionName = "Managed HSM Backup"
+        $roleDefinitionName = "Managed HSM Backup User"
         $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         if (!$roleAssignment) {
             $roleAssignment = New-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
@@ -276,4 +276,34 @@ Describe 'Export Import Security domain' {
 
     # Cannot test importing because it needs another HSM
     #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
+}
+
+Describe 'Custom Role Definition' {
+    $roleName = "my custom role"
+    $roleDesc = "description for my role"
+    $roleAction = @("Microsoft.KeyVault/managedHsm/roleAssignments/write/action", "Microsoft.KeyVault/managedHsm/roleAssignments/delete/action")
+    It 'Can create' {
+        # 0 custom role
+        Get-AzKeyVaultRoleDefinition -HsmName $hsmName -Custom | Should -BeNullOrEmpty
+
+        # create by object
+        $role = Get-AzKeyVaultRoleDefinition -HsmName $hsmName -RoleDefinitionName 'Managed HSM Crypto User'
+        $role.Name = $null
+        $role.RoleName = $roleName
+        $role.Description = $roleDesc
+        $role.Permissions[0].DataActions = $roleAction
+        New-AzKeyVaultRoleDefinition -HsmName $hsmName -Role $role
+
+        # 1 custom role
+        $actual = Get-AzKeyVaultRoleDefinition -HsmName $hsmName -Custom
+        $actual | Should -Not -BeNullOrEmpty
+        $actual.RoleName | Should -Be $roleName
+        $actual.Description | Should -Be $roleDesc
+        $actual.Permissions[0].DataActions | Should -Be $roleAction
+    }
+
+    It 'Can remove' {
+        Remove-AzKeyVaultRoleDefinition -HsmName $hsmName -RoleName $roleName -Force
+        Get-AzKeyVaultRoleDefinition -HsmName $hsmName -Custom | Should -BeNullOrEmpty
+    }
 }

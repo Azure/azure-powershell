@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "provisioning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("provisioning", "provisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "provisioning");
+                yield return new global::System.Management.Automation.CompletionResult("'provisioning'", "provisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "provisioning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "deprovisioning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("deprovisioning", "deprovisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "deprovisioning");
+                yield return new global::System.Management.Automation.CompletionResult("'deprovisioning'", "deprovisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "deprovisioning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("succeeded", "succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "succeeded");
+                yield return new global::System.Management.Automation.CompletionResult("'succeeded'", "succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "succeeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("failed", "failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "failed");
+                yield return new global::System.Management.Automation.CompletionResult("'failed'", "failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "networkSourceDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("networkSourceDeleted", "networkSourceDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "networkSourceDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'networkSourceDeleted'", "networkSourceDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "networkSourceDeleted");
             }
         }
     }

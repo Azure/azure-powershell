@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.ResourceManager;
@@ -26,6 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
     using System.Collections.Generic;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using Commands.Common.Authentication.Abstractions;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Helper client for performing operations on features
@@ -153,6 +153,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public PSProviderFeature UnregisterProviderFeature(string providerName, string featureName)
         {
             return this.FeaturesManagementClient.Features.Unregister(providerName, featureName).ToPSProviderFeature();
+        }
+
+        /// <summary>
+        /// Lists the feature registrations on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public PSSubscriptionFeatureRegistration[] ListFeatureRegistrations(string providerName = null, string featureName = null)
+        {
+            var returnList = new List<SubscriptionFeatureRegistration>();
+
+            if (string.IsNullOrEmpty(featureName))
+            {
+                returnList.AddRange(this.FeaturesManagementClient.SubscriptionFeatureRegistrations.ListBySubscription(providerNamespace: providerName));
+            }
+            else
+            {
+                returnList.Add(this.FeaturesManagementClient.SubscriptionFeatureRegistrations.Get(providerNamespace: providerName, featureName: featureName));
+            }
+
+            return returnList
+                .Select(val => val.ToPSSubscriptionFeatureRegistration())
+                .ToArray();
+        }
+
+        /// <summary>
+        /// Creates a feature registration on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public PSSubscriptionFeatureRegistration CreateFeatureRegistration(string providerName, string featureName)
+        {
+            return this.FeaturesManagementClient.SubscriptionFeatureRegistrations
+                .CreateOrUpdate(providerNamespace: providerName, featureName: featureName, subscriptionFeatureRegistrationType: new SubscriptionFeatureRegistration(id: Guid.NewGuid()
+                .ToString())).ToPSSubscriptionFeatureRegistration();
+        }
+
+        /// <summary>
+        /// Deletes a feature registration on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public void DeleteFeatureRegistration(string providerName, string featureName)
+        {
+            this.FeaturesManagementClient.SubscriptionFeatureRegistrations.Delete(providerNamespace: providerName, featureName: featureName);
         }
 
         /// <summary>

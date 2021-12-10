@@ -47,6 +47,12 @@
               <ListItem>
                 <PropertyName>ServiceBusEndpoint</PropertyName>
               </ListItem>
+              <ListItem>
+                <PropertyName>ZoneRedundant</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DisableLocalAuth</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
+    /// <summary>
+    /// The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The
+    /// type 'None' means no identity is assigned to the connected cluster.
+    /// </summary>
     public partial struct ResourceIdentityType :
         System.IEquatable<ResourceIdentityType>
     {
@@ -20,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
         /// <param name="value">the value to convert to an instance of <see cref="ResourceIdentityType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ResourceIdentityType(System.Convert.ToString(value));
+            return new ResourceIdentityType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ResourceIdentityType</summary>

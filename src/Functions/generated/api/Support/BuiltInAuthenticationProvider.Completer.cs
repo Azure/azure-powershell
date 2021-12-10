@@ -32,23 +32,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureActiveDirectory".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureActiveDirectory", "AzureActiveDirectory", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureActiveDirectory");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureActiveDirectory'", "AzureActiveDirectory", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureActiveDirectory");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Facebook".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Facebook", "Facebook", global::System.Management.Automation.CompletionResultType.ParameterValue, "Facebook");
+                yield return new global::System.Management.Automation.CompletionResult("'Facebook'", "Facebook", global::System.Management.Automation.CompletionResultType.ParameterValue, "Facebook");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Google".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Google", "Google", global::System.Management.Automation.CompletionResultType.ParameterValue, "Google");
+                yield return new global::System.Management.Automation.CompletionResult("'Google'", "Google", global::System.Management.Automation.CompletionResultType.ParameterValue, "Google");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MicrosoftAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MicrosoftAccount", "MicrosoftAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "MicrosoftAccount");
+                yield return new global::System.Management.Automation.CompletionResult("'MicrosoftAccount'", "MicrosoftAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "MicrosoftAccount");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Twitter".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Twitter", "Twitter", global::System.Management.Automation.CompletionResultType.ParameterValue, "Twitter");
+                yield return new global::System.Management.Automation.CompletionResult("'Twitter'", "Twitter", global::System.Management.Automation.CompletionResultType.ParameterValue, "Twitter");
             }
         }
     }

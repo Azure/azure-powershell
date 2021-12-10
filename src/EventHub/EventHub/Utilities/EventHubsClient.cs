@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isIdentity)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth, bool isIdentity)
         {
             EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
@@ -107,15 +107,26 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (isZoneRedundant)
                 parameter.ZoneRedundant = isZoneRedundant;
 
+            if (isDisableLocalAuth)
+                parameter.DisableLocalAuth = isDisableLocalAuth;
+
             if (isIdentity)
-                parameter.Identity = new Identity() { Type = IdentityType.SystemAssigned };
+                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned};
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
         // Update Namespace                                                     (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
-        public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties)
+        public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName,
+            string namespaceName,
+            string location,
+            string skuName,
+            int? skuCapacity,
+            Dictionary<string, string> tags,
+            bool isAutoInflateEnabled,
+            int? maximumThroughputUnits,
+            bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties, bool isDisableLocalAuth)
         {          
 
             EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
@@ -157,7 +168,11 @@ namespace Microsoft.Azure.Commands.Eventhub
                 parameter.KafkaEnabled = isKafkaEnabled;
 
             if (isIdentity)
-                parameter.Identity = new Identity() { Type = IdentityType.SystemAssigned };
+                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+
+            if (isDisableLocalAuth)
+                parameter.DisableLocalAuth = isDisableLocalAuth;
+
 
             //IdentityUserDefined, KeySource, KeyProperties
             if (!String.IsNullOrEmpty(identityUserDefined) && identityUserDefined.ToLower() == "none")
@@ -302,7 +317,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 Rights = parameter.Rights.ToList()
             };
-            var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authorizationRuleName, parameter1);
+            var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authorizationRuleName, parameter1.Rights);
             return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
@@ -335,7 +350,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             regenParam.Key = keyValue;
 
-            regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, regenParam);
+            regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, regenParam.KeyType, regenParam.Key);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
@@ -491,7 +506,7 @@ namespace Microsoft.Azure.Commands.Eventhub
                 Rights = parameters.Rights.ToList()
             };
 
-            var response = Client.EventHubs.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameter1);
+            var response = Client.EventHubs.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameter1.Rights);
             return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
@@ -525,7 +540,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             regenParam.Key = keyValue;
 
-            regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, regenParam);
+            regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, regenParam.KeyType, regenParam.Key);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
 
@@ -557,7 +572,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (!string.IsNullOrEmpty(parameter.AlternateName))
                 Parameter1.AlternateName = parameter.AlternateName;
 
-            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias,Parameter1.PartnerNamespace, Parameter1.AlternateName);
 
             return new PSEventHubDRConfigurationAttributes(response);
         }
@@ -607,7 +622,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 UserMetadata = parameter.UserMetadata
             };
-            var response = Client.ConsumerGroups.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, consumerGroupName, Parameter1);
+            var response = Client.ConsumerGroups.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, consumerGroupName, Parameter1.UserMetadata);
             return new PSConsumerGroupAttributes(response);
         }
 
@@ -666,13 +681,13 @@ namespace Microsoft.Azure.Commands.Eventhub
         #region CheckNameAvailability
         public PSCheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
         {
-            var response = Client.Namespaces.CheckNameAvailability(new CheckNameAvailabilityParameter(namespaceName));
+            var response = Client.Namespaces.CheckNameAvailability(namespaceName);
             return new PSCheckNameAvailabilityResultAttributes(response);
         }
 
         public PSCheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
         {
-            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup,namespaceName, new CheckNameAvailabilityParameter(aliasName));
+            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup,namespaceName, aliasName);
             return new PSCheckNameAvailabilityResultAttributes(response);
         }
 

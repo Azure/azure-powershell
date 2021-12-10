@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Windows".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Windows", "Windows", global::System.Management.Automation.CompletionResultType.ParameterValue, "Windows");
+                yield return new global::System.Management.Automation.CompletionResult("'Windows'", "Windows", global::System.Management.Automation.CompletionResultType.ParameterValue, "Windows");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Linux".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Linux", "Linux", global::System.Management.Automation.CompletionResultType.ParameterValue, "Linux");
+                yield return new global::System.Management.Automation.CompletionResult("'Linux'", "Linux", global::System.Management.Automation.CompletionResultType.ParameterValue, "Linux");
             }
         }
     }

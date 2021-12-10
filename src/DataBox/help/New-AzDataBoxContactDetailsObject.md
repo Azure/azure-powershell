@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxContactDetailsObject
 
 ## SYNOPSIS
-Create a in-memory object for ContactDetails
+Create an in-memory object for ContactDetails.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ New-AzDataBoxContactDetailsObject -ContactName <String> -EmailList <String[]> -P
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ContactDetails
+Create an in-memory object for ContactDetails.
 
 ## EXAMPLES
 
-### Example 1: {{ Create a in-memory object for ContactDetails }}
+### Example 1: Create a in-memory object for ContactDetails 
 ```powershell
 PS C:\> $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 PS C:\>  $contactDetail
@@ -33,7 +33,7 @@ ContactName EmailList            Mobile Phone      PhoneExtension
 random      {emailId}        1234567891
 ```
 
-{{ Create a in-memory object for ContactDetails }}
+Create a in-memory object for ContactDetails
 
 ## PARAMETERS
 

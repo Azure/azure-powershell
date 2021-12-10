@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PsModuleName>SignalR</PsModuleName>
+    <PsRootModuleName>SignalR</PsRootModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.hybrid.props" />
+</Project>

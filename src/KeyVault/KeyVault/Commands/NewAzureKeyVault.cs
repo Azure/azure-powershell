@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -114,6 +116,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
                 if (VaultExistsInCurrentSubscription(Name))
@@ -176,7 +180,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                     Tags = this.Tag
                 },
-                    ActiveDirectoryClient,
+                    GraphClient,
                     NetworkRuleSet);
 
                 this.WriteObject(newVault);

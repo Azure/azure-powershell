@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3MvTUNBUz9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3MvTUNBUz9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "785f4953-c544-4497-8df9-8d28d77da262"
+          "00c95812-5aa7-4716-88f8-7d33d4d84b76"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -26,29 +26,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "b83c553a-d564-4125-bacc-cd68a8f14a8f"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "749"
-        ],
-        "x-ms-correlation-request-id": [
-          "be144d5f-3987-4373-a1ba-cc2501cf04ac"
-        ],
-        "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200507T214017Z:be144d5f-3987-4373-a1ba-cc2501cf04ac"
+          "748"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "api-supported-versions": [
+          "1.0"
+        ],
+        "x-ms-request-id": [
+          "bd1c617c-a3fd-4d6b-b187-4779ab695dc3"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "5b5a4230-6849-4e46-a54a-eb3819adf3d8"
+        ],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210831T191114Z:5b5a4230-6849-4e46-a54a-eb3819adf3d8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 May 2020 21:40:16 GMT"
+          "Tue, 31 Aug 2021 19:11:13 GMT"
         ],
         "Content-Length": [
           "212"

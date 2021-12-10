@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Promoted Az.StackHCI to GA
+
+## Version 0.10.0
+* Added Support for AzureStack HCI Attestation (Azure Benefits)
+    - New cmdlets: Enable-AzStackHCIAttestation, Disable-AzStackHCIAttestation, Add-AzStackHCIVMAttestation, Remove-AzStackHCIVMAttestation, Get-AzStackHCIVMAttestation
+* Added Support for Windows Server Subscription
+    - New cmdlet: Set-AzStackHCI
+
+## Version 0.9.1
+* Added Support for AzureUSGovernment cloud
+    - EnvironmentName parameter in Register-AzStackHCI, Unregister-AzStackHCI and Test-AzStackHCIConnection now supports a new value "AzureUSGovernment"
 ## Version 0.9.0
 * Made changes to show Arc not supported error on 20H2 only if intent to enable Arc is specified by user.
     - Show Arc not supported error on 20H2 only if -EnableAzureArc:$true is specified in registration Cmdlet.

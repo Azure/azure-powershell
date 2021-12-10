@@ -1,0 +1,78 @@
+{
+  "Test-AzWebPubSubNameAvailability+[NoContext]+CheckExpanded with existing name, returns False+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2021-10-01",
+      "Content": "{\r\n  \"type\": \"Microsoft.SignalRService/webPubSub\",\r\n  \"name\": \"azwps-1\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "74" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "ae0f5b59-a97c-46a9-adfd-7b977fa54157" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "c3f9df87-4c97-4be9-9ac6-5e4b99d386c7" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "151789f9-a862-400c-a576-dd6f5e1d15be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T091900Z:151789f9-a862-400c-a576-dd6f5e1d15be" ],
+        "Date": [ "Mon, 18 Oct 2021 09:19:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "116" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"The name is already taken. Please try a different name.\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzWebPubSubNameAvailability+[NoContext]+CheckExpanded with non-existing name, returns false+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2021-10-01",
+      "Content": "{\r\n  \"type\": \"Microsoft.SignalRService/webPubSub\",\r\n  \"name\": \"ilt\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "70" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "0ef00aa0-703e-4eb0-ba83-249d5a54e6bf" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "5a8b209c-4d68-4a47-bac5-d0772293dfff" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "b5271009-1ef4-4bc8-b7bb-1d759a0fc050" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T091901Z:b5271009-1ef4-4bc8-b7bb-1d759a0fc050" ],
+        "Date": [ "Mon, 18 Oct 2021 09:19:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

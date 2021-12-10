@@ -26,7 +26,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -44,8 +46,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
+ [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -253,6 +256,33 @@ True
 ```
 
 The command create account with EnableNfsV3 as true, and then show the EnableNfsV3 property of the created account 
+
+### Example 14: Create account with disable PublicNetworkAccess
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -PublicNetworkAccess Disabled
+
+PS C:\> $account.PublicNetworkAccess
+Disabled
+```
+
+The command creates account with disable PublicNetworkAccess of the account.
+
+### Example 15: Create account with account level  mmutability policy
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked
+
+PS C:\> $account.ImmutableStorageWithVersioning.Enabled
+True
+
+PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
+
+ImmutabilityPeriodSinceCreationInDays State    
+------------------------------------- -----    
+                                    1 Unlocked 
+```
+
+The command creates an account and enable account level immutability with versioning by '-EnableAccountLevelImmutability', then all the containers under this account will have object-level immutability enabled by default.
+The account is also created with a default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. 
 
 ## PARAMETERS
 
@@ -503,6 +533,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAccountLevelImmutability
+Enables account-level immutability, then all the containers under this account will have object-level immutability enabled by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableActiveDirectoryDomainServicesForFile
 Enable Azure Files Active Directory Domain Service Authentication for the storage account.
 
@@ -640,6 +685,41 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityPeriod
+The immutability period for the blobs in the container since the policy creation in days. 
+This property can only be only be specified with '-EnableAccountLevelImmutability'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityPolicyState
+The mode of the policy. Possible values include: 'Unlocked', 'Disabled. 
+Disabled state disablesthe policy. 
+Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. 
+A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states.
+This property can only be specified with '-EnableAccountLevelImmutability'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -797,6 +877,21 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -160,15 +160,15 @@ function NamespaceAuthTests
 	Assert-True {$namespaceRegenerateKeysDefault.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$namespaceRegenerateKeys = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
-	Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $namespaceListKeys.PrimaryKey
+	Assert-True { $namespaceRegenerateKeys.PrimaryKey -eq $namespaceListKeys.PrimaryKey }
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
-	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
+	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
+	Assert-True { $namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey }
 	
 	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
-	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey}
+	Assert-AreEqual $namespaceRegenerateKeys1.PrimaryKey  $namespaceRegenerateKeys.PrimaryKey
 
 	# Cleanup
     Write-Debug "Delete the created Namespace AuthorizationRule"
@@ -190,10 +190,11 @@ Tests New Parameter for EventHub Namespace Create List Remove operations.
 function NamespaceTests
 {
     # Setup    
-    $location = Get-Location	
-	$locationKafka = "westus"
+    $location = "eastus"	
+	$locationKafka = "eastus"
 	$namespaceName = getAssetName "Eventhub-Namespace1-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
+    $namespaceName3 = getAssetName "Eventhub-Namespace3-"
     $resourceGroupName = getAssetName "RGName1-"
 	$secondResourceGroup = getAssetName "RGName2-"
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
@@ -214,15 +215,32 @@ function NamespaceTests
 
 	Write-Debug " Create new Eventhub Kafka namespace"
     Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
-    $resultkafka = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka
+    $resultkafka = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka -DisableLocalAuth
 	Assert-AreEqual $resultkafka.Name $namespaceNameKafka "Namespace created earlier is not found."
-	Assert-True {$resultkafka.KafkaEnabled}
+	Assert-True {$resultkafka.KafkaEnabled}    
+    Assert-True {$resultkafka.DisableLocalAuth}
     
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
 	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
 	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+
+    Write-Debug " Create new eventHub premium namespace"
+    Write-Debug "NamespaceName : $namespaceName3" 
+    $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName3 -Location $location -SkuName "Premium" -DisableLocalAuth
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"    
+    Assert-True { $result.DisableLocalAuth }
+    Assert-AreEqual $result.Sku.Name "Premium" "Namespace Premium"
+
+
+    $result = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName3 -Identity -Location $location
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"    
+    Assert-True { $result.DisableLocalAuth }
+    Assert-True { $result.Identity }
+    Assert-AreEqual $result.Sku.Name "Premium" "Namespace Premium"
 	
 	# Assert 
 	Assert-AreEqual $result.ProvisioningState "Succeeded"

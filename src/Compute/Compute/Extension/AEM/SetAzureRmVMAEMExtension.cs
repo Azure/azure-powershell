@@ -109,6 +109,22 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Install the new extension.")]
         public SwitchParameter InstallNewExtension { get; set; }
 
+        [Parameter(
+                Mandatory = false,
+                Position = 7,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Configures the proxy URI that should be used by the VM Extension for SAP.")]
+        public string ProxyURI { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 8,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Enable debug mode for the VM Extension.")]
+        public SwitchParameter DebugExtension { get; set; }
+
         private IAuthorizationManagementClient _authClient;
 
         protected IAuthorizationManagementClient AuthClient =>
@@ -304,12 +320,26 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            var sapmonPublicConfig = new List<KeyValuePair>();
+            if (!String.IsNullOrEmpty(this.ProxyURI))
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "proxy", Value = this.ProxyURI });
+            }
+            if (this.DebugExtension.IsPresent)
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "debug", Value = "1" });
+            }
+
+            ExtensionConfig jsonPublicConfig = new ExtensionConfig();
+            jsonPublicConfig.Config = sapmonPublicConfig;
+
             var vmExtensionConfig = new VirtualMachineExtension()
             {
                 Publisher = AEMExtensionConstants.AEMExtensionPublisherv2[OSType],
                 VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionTypev2[OSType],
                 TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersionv2[OSType].ToString(2),
                 Location = selectedVM.Location,
+                Settings = jsonPublicConfig,
                 AutoUpgradeMinorVersion = true,
                 ForceUpdateTag = DateTime.Now.Ticks.ToString()
             };

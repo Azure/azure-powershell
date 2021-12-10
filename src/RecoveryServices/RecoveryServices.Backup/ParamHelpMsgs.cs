@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ResourceId = "ID of the Azure Resource containing items to be protected by Azure Backup service. Currently, only Azure VM resource IDs are supported.";
             public const string ContainerObj = "Container object that needs to be re registered.";
             public const string ForceOption = "Force registers container (prevents confirmation dialog). This parameter is optional.";
+            public const string ForceUnregister = "Force unregisters container (prevents confirmation dialog). This parameter is optional.";
         }
 
         internal static class Common
@@ -216,6 +217,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string DES = "The disk encryption set is used to encrypt disks at rest when they are created from vault-based recovery points. Please ensure that the disk encryption" +
                 " set also has access to the relevant key vault. For instant restores, where data is restored from snapshot recovery points, the currently active disk encryption set is automatically" +
                 " used to encrypt newly created disks.";
+            public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
+            public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
         }
     }
 }

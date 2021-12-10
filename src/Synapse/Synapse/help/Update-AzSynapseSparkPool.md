@@ -18,7 +18,7 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-Tag <Hashtable>] [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>]
  [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>]
  [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
- [-PackageAction <PackageActionType>]
+ [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +28,8 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
 Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>]
  [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-PackageAction <PackageActionType>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -38,7 +39,7 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
 Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-PackageAction <PackageActionType>]
+ [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -48,7 +49,7 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
 Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-PackageAction <PackageActionType>]
+ [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -122,7 +123,7 @@ PS C:\> $packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspac
 PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $packages
 ```
 
-The first command retrieves workspace packages. The second command links these workspaces packages to an Apache Spark pool in Azure Synapse Analytics.
+The first command retrieves workspace packages. The second command links these workspace packages to an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 10
 ```powershell
@@ -130,7 +131,22 @@ PS C:\> $package = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
 PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Remove -Package $package
 ```
 
-The first command retrieves workspace packages named ContosoPackage. The second command removes the workspaces package from an Apache Spark pool in Azure Synapse Analytics.
+The first command retrieves workspace packages named ContosoPackage. The second command removes the workspace package from an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 11
+```powershell
+PS C:\> $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+PS C:\> $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages
+```
+
+The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool.
+
+### Example 11
+```powershell
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium -SparkConfigFilePath "c:\sparkconfig.txt"
+```
+
+This command updates an Apache Spark pool in Azure Synapse Analytics and upload a spark configuration file for the spark pool.
 
 ## PARAMETERS
 
@@ -373,6 +389,21 @@ Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkConfigFilePath
+Spark pool properties configuration file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

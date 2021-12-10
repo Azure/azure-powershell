@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem",
         DefaultParameterSetName = NoFilterParamSet), OutputType(typeof(ProtectableItemBase))]
     public class GetAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
-    {        
+    {
         internal const string NoFilterParamSet = "NoFilterParamSet";
         internal const string FilterParamSet = "FilterParamSet";
         internal const string IdParamSet = "IdParamSet";
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.ProtectableItem.ServerName, ValueFromPipelineByPropertyName = false)]
         [Parameter(Mandatory = false, ParameterSetName = IdParamSet,
             HelpMessage = ParamHelpMsgs.ProtectableItem.ServerName, ValueFromPipelineByPropertyName = false)]
-        public string ServerName { get; set; }
+        public string ServerName { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string backupManagementType = "";
                 string workloadType = "";
                 ODataQuery<BMSPOQueryObject> queryParam = null;
+
                 if (ParameterSetName == IdParamSet)
                 {
                     string containerName = "";
@@ -150,9 +151,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
                 WriteDebug("Successfully got response from service");
+
                 List<ProtectableItemBase> itemModels = ConversionHelpers.GetProtectableItemModelList(protectableItems);
 
-                if (ParameterSetName == FilterParamSet)
+                if (ParameterSetName == FilterParamSet || ParameterSetName == IdParamSet)
                 {
                     if (ItemType != 0)
                     {
@@ -179,8 +181,68 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }).ToList();
                     }
                 }
+
+                FetchNodesListAndAutoProtectionPolicy(itemModels, vaultName, resourceGroupName);
+
                 WriteObject(itemModels, enumerateCollection: true);
+
             });
+        }
+
+        public void FetchNodesListAndAutoProtectionPolicy(List<ProtectableItemBase> itemModels, string vaultName, string resourceGroupName)
+        {
+            foreach (var itemModel in itemModels)
+            {
+                AzureWorkloadProtectableItem protectableItem = ((AzureWorkloadProtectableItem)itemModel);
+
+                string itemType = "";
+                string itemName = "";
+                string containerUri = "";
+                string backupManagementType = "";
+
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(protectableItem.Id);
+
+                itemType = HelperUtils.GetProtectableItemUri(keyValueDict, protectableItem.Id).Split(';')[0];
+                itemName = HelperUtils.GetProtectableItemUri(keyValueDict, protectableItem.Id).Split(';')[1];
+                containerUri = HelperUtils.GetContainerUri(keyValueDict, protectableItem.Id);
+
+                // fetch AutoProtectionPolicy for non DBs 
+                if (protectableItem.ProtectableItemType != "SQLDataBase")
+                {
+                    // fetch the policy using backup intent 
+                    ODataQuery<ServiceClientModel.ProtectionIntentQueryObject> queryParams = null;
+                    backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
+
+                    queryParams = new ODataQuery<ServiceClientModel.ProtectionIntentQueryObject>(
+                    q => q.ItemType == itemType &&
+                    q.ItemName == itemName &&
+                    q.ParentName == containerUri &&
+                    q.BackupManagementType == backupManagementType);
+
+                    var intentList = ServiceClientAdapter.ListProtectionIntent(
+                        queryParams,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
+
+                    foreach (var intent in intentList)
+                    {
+                        protectableItem.AutoProtectionPolicy = intent.Properties.PolicyId;
+                    }
+                }
+
+                //  fetch Nodelist for SQLAGs 
+                if (protectableItem.ProtectableItemType == "SQLAvailabilityGroup")
+                {
+                    // add the NodeList
+                    ProtectionContainerResource cont = ServiceClientAdapter.GetContainer(vaultName, resourceGroupName, containerUri);
+                    AzureSQLAGWorkloadContainerProtectionContainer protectionContainer = (AzureSQLAGWorkloadContainerProtectionContainer)cont.Properties;
+
+                    if(protectionContainer.ExtendedInfo != null)
+                    {
+                        protectableItem.NodesList = protectionContainer.ExtendedInfo.NodesList;
+                    }
+                }
+            }
         }
     }
 }

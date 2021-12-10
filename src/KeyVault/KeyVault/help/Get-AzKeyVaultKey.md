@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzKeyVaultKey
 
 ## SYNOPSIS
-Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a key in a certain version.
+Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a specific key version.
 
 ## SYNTAX
 
@@ -435,7 +435,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -447,7 +447,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -OutFile

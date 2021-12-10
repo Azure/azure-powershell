@@ -12,21 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Security;
-using System.Threading.Tasks;
-
-using Azure.Identity;
-
 using Hyak.Common;
-
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
+using System;
+using System.Linq;
+using System.Security;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -337,6 +333,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
+            if(context == null)
+            {
+                throw new AzPSApplicationException("Azure context is empty");
+            }
+            return GetServiceClientCredentials(context, targetEndpoint, context.Environment.GetTokenAudience(targetEndpoint));
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, string resourceId)
+        {
             if (context.Account == null)
             {
                 throw new AzPSArgumentException(Resources.ArmAccountNotFound, "context.Account", ErrorKind.UserError);
@@ -380,7 +385,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.ManagedService:
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
-                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint));
+                    case "ClientAssertion":
+                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, resourceId);
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
@@ -393,7 +399,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             catch (Exception ex)
             {
                 TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
-                throw new ArgumentException(Resources.InvalidArmContext, ex);
+                throw new AzPSArgumentException(Resources.InvalidArmContext + System.Environment.NewLine + ex.Message, ex);
             }
         }
 
@@ -461,13 +467,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private string GetEndpointToken(IAzureAccount account, string targetEndpoint)
         {
             string tokenKey = AzureAccount.Property.AccessToken;
-            if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.Graph, StringComparison.OrdinalIgnoreCase))
-            {
-                tokenKey = AzureAccount.Property.GraphAccessToken;
-            }
             if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 tokenKey = AzureAccount.Property.KeyVaultAccessToken;
+            }
+            if (string.Equals(targetEndpoint, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                tokenKey = Constants.MicrosoftGraphAccessToken;
+            }
+            if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.Graph, StringComparison.OrdinalIgnoreCase))
+            {
+                tokenKey = AzureAccount.Property.GraphAccessToken;
             }
             return account.GetProperty(tokenKey);
         }
@@ -544,8 +554,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                         {
                             return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
                         }
-
-                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, promptAction);
+                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
                     }
 
                     return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
@@ -565,6 +574,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     return new ManagedServiceIdentityParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 case AzureAccount.AccountType.AccessToken:
                     return new AccessTokenParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
+                case "ClientAssertion":
+                    password = password ?? ConvertToSecureString(account.GetProperty("ClientAssertion"));
+                    return new ClientAssertionParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password);
                 default:
                     return null;
             }

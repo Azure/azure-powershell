@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -287,6 +288,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             if (ShouldProcess(VaultName, Properties.Resources.RemoveVaultAccessPolicy))
             {
                 if (InputObject != null)
@@ -332,7 +335,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     if (string.IsNullOrWhiteSpace(this.ObjectId))
                     {
-                        if (ActiveDirectoryClient == null)
+                        if (GraphClient == null)
                         {
                             throw new Exception(Resources.ActiveDirectoryClientNull);
                         }
@@ -353,7 +356,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingVault.EnableRbacAuthorization,
                     existingVault.SoftDeleteRetentionInDays,
                     existingVault.NetworkAcls,
-                    ActiveDirectoryClient);
+                    GraphClient);
 
                 if (PassThru.IsPresent)
                     WriteObject(updatedVault);

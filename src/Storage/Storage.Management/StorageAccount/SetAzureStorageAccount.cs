@@ -451,6 +451,37 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string DefaultSharePermission { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The immutability period for the blobs in the container since the policy creation in days. This property can only be changed when account is created with '-EnableAccountLevelImmutability'.")]
+        public int ImmutabilityPeriod
+        {
+            get
+            {
+                return immutabilityPeriod is null ? 0 : immutabilityPeriod.Value;
+            }
+            set
+            {
+                immutabilityPeriod = value;
+            }
+        }
+        private int? immutabilityPeriod;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. " +
+            "Disabled state disablesthe policy. " +
+            "Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. " +
+            "Locked state only allows the increase of the immutability retention time. " +
+            "A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. " +
+            "This property can only be changed when account is created with '-EnableAccountLevelImmutability'.")]
+        [PSArgumentCompleter("Disabled", "Unlocked", "Locked")]
+        [ValidateNotNullOrEmpty]
+        public string ImmutabilityPolicyState { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -682,6 +713,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (allowCrossTenantReplication != null)
                     {
                         updateParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
+                    }
+                    if (this.PublicNetworkAccess != null)
+                    {
+                        updateParameters.PublicNetworkAccess = this.PublicNetworkAccess;
+                    }
+                    if(this.immutabilityPeriod !=null ||  this.ImmutabilityPolicyState != null)
+                    {
+                        updateParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
+                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
+                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
+                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

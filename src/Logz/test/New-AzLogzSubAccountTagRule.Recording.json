@@ -1,0 +1,40 @@
+{
+  "New-AzLogzSubAccountTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/accounts/subAccountaov1sl/tagRules/default?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/accounts/subAccountaov1sl/tagRules/default?api-version=2020-10-01-preview",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"02005f33-0000-0800-0000-614440890000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a19c2b46-653e-4f67-945d-d74fbcd9f88c" ],
+        "x-ms-correlation-request-id": [ "9a89c96e-daca-4fc3-949a-e0b3558a6d0b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071522Z:9a89c96e-daca-4fc3-949a-e0b3558a6d0b" ],
+        "Date": [ "Fri, 17 Sep 2021 07:15:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "635" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/accounts/subAccountaov1sl/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.logz/monitors/accounts/tagrules\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:59:08.1475196Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T05:59:08.1475196Z\"},\"properties\":{\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

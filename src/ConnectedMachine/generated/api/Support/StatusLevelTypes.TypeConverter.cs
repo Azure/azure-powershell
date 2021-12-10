@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
 {
 
-    /// <summary>TypeConverter implementation for StatusLevelTypes.</summary>
+    /// <summary>The level code.</summary>
     public partial class StatusLevelTypesTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

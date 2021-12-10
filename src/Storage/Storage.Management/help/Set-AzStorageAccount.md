@@ -23,7 +23,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +39,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +57,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -315,6 +318,34 @@ False
 ```
 
 This command updates a Storage account by set AllowCrossTenantReplication to false, then show the updated account related properties.
+
+### Example 18: Update a Storage account by enable PublicNetworkAccess
+```powershell
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PublicNetworkAccess Enabled
+
+PS C:\> $account.PublicNetworkAccess
+Enabled
+```
+
+This command updates a Storage account by set PublicNetworkAccess as enabled.
+
+### Example 19: Update account level  mmutability policy
+```
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
+
+PS C:\> $account.ImmutableStorageWithVersioning.Enabled
+True
+
+PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
+
+ImmutabilityPeriodSinceCreationInDays State    
+------------------------------------- -----    
+                                    2 Unlocked 
+```
+
+The command updates account-level immutability policy properties on an existing storage account, and show the result. 
+The storage account must be created with enable account level immutability with versioning.
+The account-level immutability policy will be inherited and applied to objects that do not possess an explicit immutability policy at the object level.
 
 ## PARAMETERS
 
@@ -644,6 +675,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityPeriod
+The immutability period for the blobs in the container since the policy creation in days. 
+This property can only be changed when account is created with '-EnableAccountLevelImmutability'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityPolicyState
+The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. 
+Disabled state disablesthe policy. 
+Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. 
+Locked state only allows the increase of the immutability retention time. 
+A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. 
+This property can only be changed when account is created with '-EnableAccountLevelImmutability'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyExpirationPeriodInDay
 The Key expiration period of this account, it is accurate to days.
 
@@ -771,6 +838,21 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -991,7 +1073,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

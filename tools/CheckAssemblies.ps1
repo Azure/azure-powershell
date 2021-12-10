@@ -23,17 +23,19 @@ function Get-PreloadAssemblies{
         [string] $ModuleFolder
     )
 
-    $preloadAssemblies = @()
     if($PSEdition -eq 'Core') {
-        $preloadFolderName = "NetCoreAssemblies"
+        $preloadFolderName = @("NetCoreAssemblies", "AzSharedAlcAssemblies")
     } else {
         $preloadFolderName = "PreloadAssemblies"
     }
-    $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $preloadFolderName)
-    if(Test-Path $preloadFolder){
-        $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
+    $preloadFolderName | ForEach-Object {
+        $preloadAssemblies = @()
+        $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $_)
+        if(Test-Path $preloadFolder){
+            $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
+        }
+        $preloadAssemblies
     }
-    $preloadAssemblies
 }
 
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
@@ -52,6 +54,10 @@ $ModuleManifestFiles = $ProjectPaths | ForEach-Object { Get-ChildItem -Path $_ -
 foreach ($ModuleManifest in $ModuleManifestFiles) {
     Write-Host "checking $($ModuleManifest.Fullname)"
     $ModuleName = $ModuleManifest.Name.Replace(".psd1", "")
+    if ("Az.Resources" -eq $ModuleName)
+    {
+        Continue;
+    }
     $Assemblies = $DependencyMap | Where-Object { $_.Directory.EndsWith($ModuleName) }
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifest.DirectoryName -FileName $ModuleManifest.Name
 

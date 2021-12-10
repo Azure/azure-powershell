@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Netwo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateDns", "..\PrivateDns\PrivateDns\PrivateDns.csproj", "{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.SignalR", "SignalR.Autorest\Az.SignalR.csproj", "{CD3901AD-9051-40C2-8023-F6D4018EDCE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3901AD-9051-40C2-8023-F6D4018EDCE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3901AD-9051-40C2-8023-F6D4018EDCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3901AD-9051-40C2-8023-F6D4018EDCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3901AD-9051-40C2-8023-F6D4018EDCE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

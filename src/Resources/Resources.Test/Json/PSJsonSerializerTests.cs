@@ -93,13 +93,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
 
             JToken parsedResult = result.FromJson<JToken>();
 
-            // NOTE(jcotillo): JsonExtensions is now camelCasing all property keys
-            // therefore even though Bar was set as PascalCase, after serializing it
-            // the key became camelCase.
             JToken expected = JToken.FromObject(new
             {
                 foo = "fooValue",
-                bar = true,
+                Bar = true,
                 nested = new
                 {
                     foo = "4d44fe86-f04a-4ba5-9900-abdec8cb11c1",

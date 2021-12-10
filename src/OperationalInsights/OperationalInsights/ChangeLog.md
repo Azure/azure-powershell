@@ -19,6 +19,26 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets
+* [Breaking Change] rename `StorageAccountId` to `StorageAccountIds`
+  - `New-AzOperationalInsightsLinkedStorageAccount`
+* [Breaking Change] Returns `PSSavedSearch` instead of `HttpStatusCode` by `New-AzOperationalInsightsComputerGroup`
+* [Breaking Change] Returns `PSCluster` instead of `PSLinkedService` by `Update-AzOperationalInsightsCluster`
+* Expanded Sku with values `capacityreservation`, `lacluster` for Workspace
+* Added new properties:`SkuCapacity`, `ForceCmkForQuery`, `DisableLocalAuth` for Workspace
+* Added new property: `DailyQuotaGb`on`Set-AzOperationalInsightsWorkspace`
+* Added new properties: `ETag`, `Tag` for StorageInsight cmdlets
+* Added new property `StorageAccountResourceId` to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added SupportsShouldProcess attribute to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added new cmdlets to support Table, DataExport, WorkspaceShareKey, PurgeWorkspace, and AvailableServiceTier
+* Added `Error` property in the result of the `Invoke-AzOperationalInsightsQuery` to retrieve partial error when running a query [#16378]
+
+## Version 2.3.1
+* Fixed a bug in `Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing`
+
 ## Version 2.3.0
 * Added `-ForceDelete` option for `Remove-AzOperationalInsightsWorkspace`
 * Added new cmdlet `Get-AzOperationalInsightsDeletedWorkspace`

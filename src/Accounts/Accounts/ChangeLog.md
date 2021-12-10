@@ -20,6 +20,31 @@
 
 ## Upcoming Release
 
+## Version 2.7.0
+* Removed `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount` [#15427]
+* Added optional parameter `MicrosoftGraphAccessToken` to `Connect-AzAccount`
+* Added optional parameters `MicrosoftGraphEndpointResourceId`, `MicrosoftGraphUrl` to `Add-AzEnvironment` and `Set-AzEnvironment`
+* Added `-AccountId` property to `UserWithSubscriptionId` parameter set of `Connect-AzAccount` which allows a user name to be pre-selected for interactive logins
+* Added `-Uri` and `-ResourceId` to `Invoke-AzRestMethod`
+* Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
+* Added module name and version to User-Agent string [#16291]
+
+## Version 2.6.2
+* Upgraded Azure.Identity to 1.5.0
+
+## Version 2.6.1
+* Added new version of AAD service client using Microsoft Graph API
+
+## Version 2.6.0
+* Added `-FederatedToken` on `Connect-AzAccount`
+* Updated Azure.Core from 1.19.0 to 1.20.0.
+
+## Version 2.5.4
+* Supported getting the access token for Microsoft Graph.
+* Added AuthorizeRequestDelegate to allow service module to adjust token audience.
+* Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflict issues in PowerShell.
+* Updated Azure.Core from 1.16.0 to 1.19.0.
+
 ## Version 2.5.3
 * Corrected the URLs to Azure Portal in the results of `Get-AzEnvironment` and `Get-AzContext`. [#15429]
 * Made infrastructural changes to support overriding default subscription via a `-SubscriptionId <String>` parameter.

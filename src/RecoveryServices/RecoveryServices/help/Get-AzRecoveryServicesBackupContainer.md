@@ -42,7 +42,7 @@ This command gets the container named V2VM of type AzureVM.
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
 ```
 
 This command gets all Windows containers that are protected by Azure Backup agent.
@@ -55,7 +55,7 @@ The **BackupManagementType** parameter is only required for Windows containers.
 The class of resources being protected. The acceptable values for this parameter are:
 
 - AzureVM
-- MARS
+- MAB
 - AzureWorkload
 - AzureStorage
 
@@ -65,7 +65,7 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, AzureWorkload, AzureStorage
+Accepted values: AzureVM, MAB, AzureWorkload, AzureStorage
 
 Required: False
 Position: 2

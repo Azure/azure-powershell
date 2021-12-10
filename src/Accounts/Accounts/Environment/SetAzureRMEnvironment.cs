@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Profile
         }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [EnvironmentCompleter()]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
@@ -185,6 +186,14 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
         public string AzureSynapseAnalyticsEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of Microsoft Graph")]
+        public string MicrosoftGraphEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Microsoft Graph Url")]
+        public string MicrosoftGraphUrl { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -349,6 +358,10 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(ContainerRegistryEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,
                                     nameof(AzureSynapseAnalyticsEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
+                                    nameof(MicrosoftGraphEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl,
+                                    nameof(MicrosoftGraphUrl));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient AAD graph permissions to perform the operation..
+        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient Microsoft Graph permissions to perform the operation..
         /// </summary>
         internal static string InSufficientGraphPermission {
             get {
@@ -966,6 +966,16 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ServicePrincipalDoesntExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The role assignment creation operation failed with the error: &apos;{0}&apos;
+        ///This means the role assignment was not able to be created. Please assign a role manually with help of the Service Principal Id.
+        /// </summary>
+        internal static string ServicePrincipalRoleAssignmentCreationFailed {
+            get {
+                return ResourceManager.GetString("ServicePrincipalRoleAssignmentCreationFailed", resourceCulture);
             }
         }
         

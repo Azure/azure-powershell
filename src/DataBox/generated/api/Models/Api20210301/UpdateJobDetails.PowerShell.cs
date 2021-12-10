@@ -104,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
+            if (content.Contains("ContactDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ShippingAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KeyEncryptionKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
+            if (content.Contains("ContactDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails) content.GetValueForProperty("ContactDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ContactDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ShippingAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KeyEncryptionKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey) content.GetValueForProperty("KeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUpdateJobDetailsInternal)this).KeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKeyTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

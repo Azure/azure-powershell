@@ -93,6 +93,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = netAppAccount.Name,
                 Type = netAppAccount.Type,
                 Tags = netAppAccount.Tags,
+                Etag = netAppAccount.Etag,
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
                 ProvisioningState = netAppAccount.ProvisioningState
             };
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = capacityPool.Name,
                 Type = capacityPool.Type,
                 Tags = capacityPool.Tags,
+                Etag = capacityPool.Etag,
                 PoolId = capacityPool.PoolId,
                 Size = capacityPool.Size,
                 ServiceLevel = capacityPool.ServiceLevel,
@@ -308,6 +310,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = volume.Name,
                 Type = volume.Type,
                 Tags = volume.Tags,
+                Etag = volume.Etag,
                 ProvisioningState = volume.ProvisioningState,
                 FileSystemId = volume.FileSystemId,
                 ServiceLevel = volume.ServiceLevel,
@@ -332,7 +335,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 LdapEnabled = volume.LdapEnabled,
                 CoolAccess = volume.CoolAccess,
                 CoolnessPeriod = volume.CoolnessPeriod,
-                UnixPermission = volume.UnixPermissions
+                UnixPermission = volume.UnixPermissions,
+                AvsDataStore = volume.AvsDataStore,
+                CloneProgress = volume.CloneProgress,
+                IsDefaultQuotaEnabled = volume.IsDefaultQuotaEnabled,
+                DefaultUserQuotaInKiBs = volume.DefaultUserQuotaInKiBs,
+                DefaultGroupQuotaInKiBs = volume.DefaultGroupQuotaInKiBs,
+                NetworkFeatures = volume.NetworkFeatures,
+                NetworkSiblingSetId = volume.NetworkSiblingSetId,
+                StorageToNetworkProximity = volume.StorageToNetworkProximity
             };
         }
 

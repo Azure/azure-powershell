@@ -437,6 +437,27 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMwithSSHKey");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMUserData()
+        {
+            TestRunner.RunTestScript("Test-VMUserData");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMUserDataBase64Encoded()
+        {
+            TestRunner.RunTestScript("Test-VMUserDataBase64Encoded");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMNoPublicIPAddress()
+        {
+            TestRunner.RunTestScript("Test-VMNoPublicIPAddress");
+        }
 
     }
 }

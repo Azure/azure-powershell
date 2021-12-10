@@ -149,6 +149,15 @@ If you register an application in a directory other than the default directory, 
 The application must be in the default directory.
 Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /users
+- GET /servicePrincipals/{id}
+- GET /servicePrincipals
+- GET /groups/{id}
+
 > [!NOTE]
 > When using a service principal to grant access policy permissions, you must use the `-BypassObjectIdValidation` parameter.
 
@@ -446,6 +455,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - All
 - Get
@@ -480,6 +490,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToKeys
 Specifies an array of key operation permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - All
 - Decrypt
@@ -514,6 +525,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToSecrets
 Specifies an array of secret operation permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - All
 - Get
@@ -540,6 +552,7 @@ Accept wildcard characters: False
 
 ### -PermissionsToStorage
 Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
+'All' will grant all the permissions except 'Purge'
 The acceptable values for this parameter:
 - all
 - get

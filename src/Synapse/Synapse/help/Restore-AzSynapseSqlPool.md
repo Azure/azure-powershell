@@ -15,33 +15,49 @@ Restores a Synapse Analytics SQL pool.
 ### RestoreFromBackupIdByNameParameterSet (Default)
 ```
 Restore-AzSynapseSqlPool [-FromBackup] [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceId <String> [-Tag <Hashtable>] [-StorageAccountType <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreFromBackupIdByParentObjectParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] -WorkspaceObject <PSSynapseWorkspace> -Name <String>
- -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceId <String> [-Tag <Hashtable>] [-StorageAccountType <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreFromRestorePointIdByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] [-ResourceGroupName <String>] -WorkspaceName <String>
- -Name <String> -PerformanceLevel <String> -ResourceId <String> -RestorePoint <DateTime> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Name <String> -PerformanceLevel <String> -ResourceId <String> -RestorePoint <DateTime> [-Tag <Hashtable>]
+ [-StorageAccountType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RestoreFromRestorePointIdByParentObjectParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromRestorePoint] -WorkspaceObject <PSSynapseWorkspace> -Name <String>
- -PerformanceLevel <String> -ResourceId <String> -RestorePoint <DateTime> [-AsJob]
+ -PerformanceLevel <String> -ResourceId <String> -RestorePoint <DateTime> [-Tag <Hashtable>]
+ [-StorageAccountType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RestoreFromDroppedSqlPoolByNameParameterSet
+```
+Restore-AzSynapseSqlPool [-FromDroppedSqlPool] [-ResourceGroupName <String>] -WorkspaceName <String>
+ -Name <String> -ResourceId <String> -DeletionDate <DateTime> [-Tag <Hashtable>] [-StorageAccountType <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestoreFromDroppedSqlPoolByParentObjectParameterSet
+```
+Restore-AzSynapseSqlPool [-FromDroppedSqlPool] -WorkspaceObject <PSSynapseWorkspace> -Name <String>
+ -ResourceId <String> -DeletionDate <DateTime> [-Tag <Hashtable>] [-StorageAccountType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzSynapseSqlPool** cmdlet restores an Azure Synapse Analytics SQL pool from a backup or a restore point of any SQL pool.
+The **Restore-AzSynapseSqlPool** cmdlet restores an Azure Synapse Analytics SQL pool from a geo-redundant backup, a backup of a deleted SQL pool or a restore point of any SQL pool.
 The restored SQL pool is created as a new SQL pool.
 
 ## EXAMPLES
@@ -63,6 +79,51 @@ PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint
 ```
 
 This command creates an Azure Synapse Analytics SQL pool by leveraging a restore point from any existing SQL pool to recover or copy from a previous state.
+
+### Example 2
+```powershell
+PS C:\> # Transform Synapse SQL pool resource ID to SQL database ID because
+PS C:\> # currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/recoverabledatabases/<DatabaseName>
+PS C:\> $pool = Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
+PS C:\>     -replace "workspaces", "servers"
+PS C:\> 
+PS C:\> # Restore to same workspace with source SQL pool
+PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromBackup -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId
+```
+
+This command creates an Azure Synapse Analytics SQL pool which restores from the SQL pool backup.
+
+### Example 3
+```powershell
+PS C:\> # Transform Synapse dropped SQL pool resource ID to SQL pool resource ID
+PS C:\> $pool = Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> $poolId = $pool.Id.Split(",")[0]
+PS C:\> $poolId = $poolId -replace "restorableDroppedSqlPools", "sqlPools"
+PS C:\> 
+PS C:\> # Restore to same workspace with source SQL pool
+PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromDroppedSqlPool -DeletionDate $pool.DeletionDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $poolId
+```
+
+This command creates an Azure Synapse Analytics SQL pool which restores from the deleted SQL pool backup.
+
+### Example 4
+```powershell
+PS C:\> # Transform Synapse SQL pool resource ID to SQL database ID because 
+PS C:\> # currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/databases/<DatabaseName>
+PS C:\> $pool = Get-AzSynapseSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
+PS C:\> 	-replace "workspaces", "servers" `
+PS C:\> 	-replace "sqlPools", "databases"
+PS C:\> 
+PS C:\> # Get the latest restore point
+PS C:\> $restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
+PS C:\> 
+PS C:\> # Restore to same workspace with source SQL pool
+PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c -Tag @{"tagName" = "tagValue"} -StorageAccountType LRS
+```
+
+This command creates an Azure Synapse Analytics SQL pool with specified tags and storage account type by leveraging a restore point from any existing SQL pool to recover or copy from a previous state.
 
 ## PARAMETERS
 
@@ -96,12 +157,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeletionDate
+The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)
+
+```yaml
+Type: System.DateTime
+Parameter Sets: RestoreFromDroppedSqlPoolByNameParameterSet, RestoreFromDroppedSqlPoolByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FromBackup
 Indicates to restore from the most recent backup of any SQL pool in this subscription.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromBackupIdByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromDroppedSqlPool
+Indicates to leverage a restore point from any SQL pool in this subscription to recover or copy from a previous state.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RestoreFromDroppedSqlPoolByNameParameterSet, RestoreFromDroppedSqlPoolByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -162,7 +253,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromRestorePointIdByNameParameterSet
+Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromRestorePointIdByNameParameterSet, RestoreFromDroppedSqlPoolByNameParameterSet
 Aliases:
 
 Required: False
@@ -202,12 +293,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageAccountType
+The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+A string,string dictionary of tags associated with the resource.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromRestorePointIdByNameParameterSet
+Parameter Sets: RestoreFromBackupIdByNameParameterSet, RestoreFromRestorePointIdByNameParameterSet, RestoreFromDroppedSqlPoolByNameParameterSet
 Aliases:
 
 Required: True
@@ -222,7 +343,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: RestoreFromBackupIdByParentObjectParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet
+Parameter Sets: RestoreFromBackupIdByParentObjectParameterSet, RestoreFromRestorePointIdByParentObjectParameterSet, RestoreFromDroppedSqlPoolByParentObjectParameterSet
 Aliases:
 
 Required: True

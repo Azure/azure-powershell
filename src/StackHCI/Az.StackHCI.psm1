@@ -6,7 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $GAOSBuildNumber = 17784
 $GAOSUBR = 1374
-
+$V2OSBuildNumber = 20348
+$V2OSUBR = 288
 #region User visible strings
 
 $AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzStackHCI again with same parameters to complete registration."
@@ -29,7 +30,7 @@ $ConnectingToCloudBillingServiceFailed = "Can't reach Azure from node(s) {0}. Ma
 $ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI resource with the same resource ID in region {0}, which is different from the input region {1}. Either specify the same region or delete the existing resource and try again."
 $ArcCmdletsNotAvailableError = "Azure Arc integration isn't available for the version of Azure Stack HCI installed on node(s) {0} yet. Check the documentation for details. You may need to install an update or join the Preview channel."
 $ArcRegistrationDisableInProgressError = "Unregister of Azure Arc integration is in progress. Try Unregister-AzStackHCI to finish unregistration and then try Register-AzStackHCI again."
-$ArcIntegrationNotAvailableChinaCloudError = "Azure Arc integration is not available in AzureChinaCloud. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
+$ArcIntegrationNotAvailableForCloudError = "Azure Arc integration is not available in {0}. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -74,6 +75,39 @@ $UnregisterArcFailedError = "Couldn't disable Azure Arc integration on Node {0}.
 $ArcExtensionCleanupFailedError = "Couldn't delete Arc extension {0} on cluster nodes. You can try the extension uninstallation steps listed at https://docs.microsoft.com/en-us/azure/azure-arc/servers/manage-agent for removing the extension and try Unregister-AzStackHCI again. If the node is in a state where extension uninstallation could not succeed, try Unregister-AzStackHCI with -Force switch."
 $ArcExtensionCleanupFailedWarning = "Couldn't delete Arc extension {0} on cluster nodes. Extension may continue to run even after unregistration."
 
+$SetProgressActivityName = "Setting properties for the Azure Stack HCI resource in Azure..."
+$SetProgressStatusGathering = "Gathering information"
+$SetProgressStatusGetAzureResource = "Getting the Azure Stack HCI resource"
+$SetProgressStatusOpSwitching = "Switching to the subscription ID {0}"
+$SetProgressStatusUpdatingProps = "Updating the resource properties"
+$SetProgressStatusSyncCluster = "Syncing the Azure Stack HCI cluster with Azure"
+$SetAzResourceClusterNotRegistered = "The cluster is not registered with Azure. Register the cluster using Register-AzStackHCI and then try again."
+$SetAzResourceClusterNodesDown = "One or more servers in your cluster are offline. Check that all your servers are up and then try again."
+$SetAzResourceSuccessWSSE = "Successfully enabled Windows Server Subscription."
+$SetAzResourceSuccessWSSD = "Successfully disabled Windows Server Subscription."
+$SetAzResourceSuccessDiagLevel = "Successfully configured the Azure Stack HCI diagnostic level to {0}."
+$SetProgressShouldProcess = "Update the resource properties to change Windows Server Subscription or Azure Stack HCI diagnostic level"
+$SetProgressShouldContinue = "This will enable or disable billing for Windows Server guest licenses through your Azure subscription."
+$SetProgressShouldContinueCaption = "Configure Windows Server Subscription"
+$SetProgressWarningDiagnosticOff = "Setting diagnostic level to Off will prevent Microsoft from collecting important diagnostic information that helps improve Azure Stack HCI."
+$SetProgressWarningWSSD = "Windows Server Subscription will no longer activate your Windows Server VMs. Please check that your VMs are being activated another way."
+$SecondaryProgressBarId = 2
+$EnableAzsHciImdsActivity = "Enable Azure Stack HCI IMDS Attestation..."
+$ConfirmEnableImds = "Enabling IMDS Attestation configures your cluster to use workloads that are exclusively available on Azure."
+$ConfirmDisableImds = "Disabling IMDS Attestation will remove the ability for some exclusive Azure workloads to function."
+$ImdsClusterNotRegistered = "The cluster is not registered with Azure. Register the cluster using Register-AzStackHCI and then try again."
+$DisableAzsHciImdsActivity = "Disable Azure Stack HCI IMDS Attestation..."
+$AddAzsHciImdsActivity = "Add Virtual Machines to Azure Stack HCI IMDS Attestation..."
+$RemoveAzsHciImdsActivity = "Remove Virtual Machines from Azure Stack HCI IMDS Attestation..."
+$ShouldContinueHyperVInstall = "The Hyper-V Powershell management tools are required to be installed on {0} to continue. Install RSAT-Hyper-V-Tools and continue?"
+$DiscoveringClusterNodes = "Discovering cluster nodes..."
+$AllClusterNodesAreNotOnline = "One or more servers in your cluster are offline. Check that all your servers are up and then try again."
+$CheckingClusterNode = "Checking AzureStack HCI IMDS Attestation on {0}"
+$ConfiguringClusterNode = "Configuring AzureStack HCI IMDS Attestation on {0}"
+$DisablingIMDSOnNode = "Disabling AzureStack HCI IMDS Attestation on {0}"
+$RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests on {0}"
+$AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
+$ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
 #endregion
 
 #region Constants
@@ -140,9 +174,9 @@ $AuthorityAzureChinaCloud = "https://login.partner.microsoftonline.cn"
 $BillingServiceApiScopeAzureChinaCloud = "$UsageServiceFirstPartyAppId/.default"
 $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/.default"
 
-$ServiceEndpointAzureUSGovernment = "https://azurestackhci-usage.trafficmanager.us"
+$ServiceEndpointAzureUSGovernment = "https://dp.azurestackhci.azure.us"
 $AuthorityAzureUSGovernment = "https://login.microsoftonline.us"
-$BillingServiceApiScopeAzureUSGovernment = "https://azurestackhci-usage.azurewebsites.us/.default"
+$BillingServiceApiScopeAzureUSGovernment = "https://dp.azurestackhci.azure.us/.default"
 $GraphServiceApiScopeAzureUSGovernment = "https://graph.windows.net/.default"
 
 $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.de"
@@ -150,8 +184,8 @@ $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
 
-$RPAPIVersion = "2020-10-01"
-$HCIArcAPIVersion = "2021-01-01-preview"
+$RPAPIVersion = "2021-09-01";
+$HCIArcAPIVersion = "2021-09-01"
 $HCIArcInstanceName = "/arcSettings/default"
 $HCIArcExtensions = "/Extensions"
 
@@ -190,6 +224,12 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
+enum DiagnosticLevel
+{
+    Off;
+    Basic;
+    Enhanced
+}
 enum ArcStatus
 {
     Unknown;
@@ -210,6 +250,19 @@ enum CertificateManagedBy
     Invalid;
     User;
     Cluster;
+}
+enum VMAttestationStatus
+{
+    Unknown;
+    Connected;
+    Disconnected;
+}
+enum ImdsAttestationNodeStatus
+{
+    Inactive;
+    Active;
+    Expired;
+    Error;
 }
 
 $registerArcScript = {
@@ -278,7 +331,7 @@ $registerArcScript = {
         Write-Error -Exception $_.Exception -Category OperationStopped
         # Get script line number, offset and Command that resulted in exception. Write-Error with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Error ('Exception occured in RegisterArcScript : ' + $positionMessage) -Category OperationStopped
+        Write-Error ('Exception occurred in RegisterArcScript : ' + $positionMessage) -Category OperationStopped
     }
     finally
     {
@@ -464,7 +517,7 @@ param(
     }
     elseif($EnvironmentName -eq $AzureUSGovernment)
     {
-        $defaultRegion = "usgoviowa"
+        $defaultRegion = "usgovvirginia"
     }
     elseif($EnvironmentName -eq $AzureGermanCloud)
     {
@@ -736,7 +789,7 @@ param(
     }
     catch 
     {
-        Write-Debug "Exception occured when granting admin consent"
+        Write-Debug "Exception occurred when granting admin consent"
         $ErrorMessage = $_.Exception.Message
         Write-Debug $ErrorMessage
         return $False
@@ -941,7 +994,7 @@ param(
     [string] $Region,
     [ref] $SupportedRegions
     )
-    $resources = Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI
+    $resources = Retry-Command -ScriptBlock { Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI } -RetryIfNullOutput $true
     $locations = $resources.Where{($_.ResourceTypes.ResourceTypeName -eq 'clusters' -and $_.RegistrationState -eq 'Registered')}.Locations
 
     $locations | foreach {
@@ -1014,7 +1067,7 @@ param(
         }
         catch
         {
-            Write-Verbose ("Exception occured while testing health endpoint connectivity on Node: " + $clusNode.Name + " Exception: " + $_.Exception)
+            Write-Verbose ("Exception occurred while testing health endpoint connectivity on Node: " + $clusNode.Name + " Exception: " + $_.Exception)
             $HealthEndPointCheckFailedNodes.Add($clusNode.Name) | Out-Null
             continue
         }
@@ -1060,7 +1113,7 @@ param(
         }
         catch
         {
-            Write-Debug ("Exception occured in establishing new PSSession. ErrorMessage : " + $_.Exception.Message)
+            Write-Debug ("Exception occurred in establishing new PSSession. ErrorMessage : " + $_.Exception.Message)
             Write-Debug $_
             $NewCertificateFailedNodes.Add($clusNode.Name) | Out-Null
             $SetCertificateFailedNodes.Add($clusNode.Name) | Out-Null
@@ -1086,7 +1139,7 @@ param(
             }
             catch
             {
-                Write-Debug ("Exception occured in New-AzureStackHCIRegistrationCertificate. ErrorMessage : " + $_.Exception.Message)
+                Write-Debug ("Exception occurred in New-AzureStackHCIRegistrationCertificate. ErrorMessage : " + $_.Exception.Message)
                 Write-Debug $_
                 $NewCertificateFailedNodes.Add($clusNode.Name) | Out-Null
                 continue
@@ -1156,7 +1209,7 @@ param(
         }
         catch
         {
-            Write-Debug ("Exception occured in Set-AzureStackHCIRegistrationCertificate. ErrorMessage : " + $_.Exception.Message)
+            Write-Debug ("Exception occurred in Set-AzureStackHCIRegistrationCertificate. ErrorMessage : " + $_.Exception.Message)
             Write-Debug $_
             $SetCertificateFailedNodes.Add($clusNode.Name) | Out-Null
             continue
@@ -1265,7 +1318,7 @@ function Remove-ArcApplication{
         catch
         {
             Write-Warning -Message $ArcRolesCleaningWarningMessage
-            Write-Debug ("Exception occured in clearing roles on service principal with App Id {0}. ErrorMessage : {1}" -f ($AppId), ($_.Exception.Message))
+            Write-Debug ("Exception occurred in clearing roles on service principal with App Id {0}. ErrorMessage : {1}" -f ($AppId), ($_.Exception.Message))
             Write-Debug $_
         }
 
@@ -1340,7 +1393,7 @@ param(
     {
         Write-Warning -Message $RegisterArcFailedWarningMessage
         $retStatus = [ErrorDetail]::ArcIntegrationFailedOnNodes
-        Write-Debug ("Exception occured in registering nodes to Arc For Servers. ErrorMessage : {0}" -f ($_.Exception.Message))
+        Write-Debug ("Exception occurred in registering nodes to Arc For Servers. ErrorMessage : {0}" -f ($_.Exception.Message))
         Write-Debug $_
     }
 
@@ -1372,7 +1425,8 @@ param(
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames -Credential $Credential
     }
 
-    if((Get-AzureStackHCIArcIntegration).ClusterArcStatus -eq [ArcStatus]::Disabled)
+    $nodeArcStatus = Invoke-Command -Session $Session -ScriptBlock { $(Get-AzureStackHCIArcIntegration)}
+    if($nodeArcStatus.ClusterArcStatus -eq [ArcStatus]::Disabled)
     {
         return $res
     }
@@ -1388,7 +1442,7 @@ param(
     catch
     {
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Debug ("Exception occured in un-registering nodes from Arc For Servers. ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage)
+        Write-Debug ("Exception occurred in un-registering nodes from Arc For Servers. ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage)
         Write-Debug $_
         $disableFailedOnANode = $true
     }
@@ -1423,7 +1477,8 @@ param(
     [string] $Region,
     [string] $AppName,
     [string] $ClusterDNSSuffix,
-    [Switch] $IsWAC
+    [Switch] $IsWAC,
+    [string] $Environment
     )
 
     if($IsManagementNode)
@@ -1482,16 +1537,41 @@ param(
             return [ErrorDetail]::ArcPermissionsMissing
         }
 
+        $arcCommand = Invoke-Command -Session $session -ScriptBlock { Get-Command -Name 'Initialize-AzureStackHCIArcIntegration' -ErrorAction SilentlyContinue }
+        if ($arcCommand.Parameters.ContainsKey('Cloud')) 
+        {
+            $arcEnvironment = $Environment
+            if( $Environment -eq $AzureCanary)
+            {
+                $arcEnvironment = $AzureCloud
+            }
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration with cloud switch")
+            $ArcRegistrationParams = @{
+                AppId = $AppId
+                Secret = $Secret
+                TenantId = $TenantId
+                SubscriptionId = $SubscriptionId
+                Region = $Region
+                ResourceGroup = $ResourceGroup 
+                cloud  = $arcEnvironment 
+            }    
+        }
+        else
+        {
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration without cloud switch")
+            $ArcRegistrationParams = @{
+                AppId = $AppId
+                Secret = $Secret
+                TenantId = $TenantId
+                SubscriptionId = $SubscriptionId
+                Region = $Region
+                ResourceGroup = $ResourceGroup
+            }
+        }
+        
         # Save Arc context.
         Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $SetupArcMessage -PercentComplete 40
-        $ArcRegistrationParams = @{
-            AppId = $AppId
-            Secret = $Secret
-            TenantId = $TenantId
-            SubscriptionId = $SubscriptionId
-            Region = $Region
-            ResourceGroup = $ResourceGroup
-        }
+        
         Invoke-Command -Session $session -ScriptBlock { Initialize-AzureStackHCIArcIntegration @Using:ArcRegistrationParams }
     }
 
@@ -1532,7 +1612,7 @@ param(
     catch
     {
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Error ("Exception occured in registering cluster scheduled task. ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage) -Category OperationStopped
+        Write-Error ("Exception occurred in registering cluster scheduled task. ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage) -Category OperationStopped
         throw
     }
     finally
@@ -1638,7 +1718,7 @@ param(
             {
                 $extensionsCleanupSucceeded = $false
                 $positionMessage = $_.InvocationInfo.PositionMessage
-                Write-Debug ("Exception occured in removing extension " + $extension.Name + ". ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage)
+                Write-Debug ("Exception occurred in removing extension " + $extension.Name + ". ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage)
 
                 if($Force -eq $true)
                 {
@@ -1683,7 +1763,7 @@ param(
     catch
     {
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Error ("Exception occured in unregistering cluster scheduled task. ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage) -Category OperationStopped
+        Write-Error ("Exception occurred in unregistering cluster scheduled task. ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage) -Category OperationStopped
         throw
     }
     finally
@@ -1794,7 +1874,7 @@ enum ErrorDetail
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER ComputerName
     Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -2026,7 +2106,8 @@ param(
 
         if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
         {
-            Write-Error -Message $ArcIntegrationNotAvailableChinaCloudError
+            $ArcNotAvailableMessage = $ArcIntegrationNotAvailableForCloudError -f $EnvironmentName
+            Write-Error -Message $ArcNotAvailableMessage 
             $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
             Write-Output $registrationOutput
             return
@@ -2345,7 +2426,7 @@ param(
                 }
                 catch
                 {
-                    Write-Debug ("Exception occured in establishing new PSSession. ErrorMessage : " + $_.Exception.Message)
+                    Write-Debug ("Exception occurred in establishing new PSSession. ErrorMessage : " + $_.Exception.Message)
                     Write-Debug $_
                     $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
                     continue
@@ -2403,7 +2484,7 @@ param(
                 $arcAppName = $ResourceName + ".arc"
 
                 Write-Verbose "Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName"
-                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC
+                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName
 
                 if($arcResult -ne [ErrorDetail]::Success)
                 {
@@ -2436,7 +2517,7 @@ param(
         Write-Error -Exception $_.Exception -Category OperationStopped -ErrorAction Continue
         # Get script line number, offset and Command that resulted in exception. Write-Error with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Error ("Exception occured in Register-AzStackHCI : " + $positionMessage) -Category OperationStopped
+        Write-Error ("Exception occurred in Register-AzStackHCI : " + $positionMessage) -Category OperationStopped
         throw
     }
     finally
@@ -2477,7 +2558,7 @@ param(
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER UseDeviceAuthentication
     Use device code authentication instead of an interactive browser prompt.
@@ -2712,7 +2793,7 @@ param(
                     catch
                     {
                         Write-Warning ($FailedToRemoveRegistrationCertWarning -f $clusNode.Name)
-                        Write-Debug ("Exception occured in clearing certificate on {0}. ErrorMessage : {1}" -f ($clusNode.Name), ($_.Exception.Message))
+                        Write-Debug ("Exception occurred in clearing certificate on {0}. ErrorMessage : {1}" -f ($clusNode.Name), ($_.Exception.Message))
                         Write-Debug $_
                         continue
                     }
@@ -2784,7 +2865,7 @@ param(
         Write-Error -Exception $_.Exception -Category OperationStopped -ErrorAction Continue
         # Get script line number, offset and Command that resulted in exception. Write-Error with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Error ("Exception occured in Unregister-AzStackHCI : " + $positionMessage) -Category OperationStopped
+        Write-Error ("Exception occurred in Unregister-AzStackHCI : " + $positionMessage) -Category OperationStopped
         throw
     }
     finally
@@ -2800,7 +2881,7 @@ param(
     Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER Region
     Specifies the Region to connect to. Not used unless it is Canary region.
@@ -2957,7 +3038,7 @@ param(
         Write-Error -Exception $_.Exception -Category OperationStopped -ErrorAction Continue
         # Get script line number, offset and Command that resulted in exception. Write-Error with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-Error ("Exception occured in Test-AzStackHCIConnection : " + $positionMessage) -Category OperationStopped
+        Write-Error ("Exception occurred in Test-AzStackHCIConnection : " + $positionMessage) -Category OperationStopped
         throw
     }
     finally
@@ -2966,6 +3047,1461 @@ param(
     }
 }
 
+<#
+    .Description
+    Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
+    .PARAMETER ComputerName
+    Specifies one of the cluster node in on-premise cluster that is registered to Azure.
+    .PARAMETER Credential
+    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
+    .PARAMETER ResourceId
+    Specifies the fully qualified resource ID, including the subscription, as in the following example: `/Subscriptions/`subscription ID`/providers/Microsoft.AzureStackHCI/clusters/MyCluster`
+    .PARAMETER EnableWSSubscription
+    Specifies if Windows Server Subscription should be enabled or disabled. Enabling this feature starts billing through your Azure subscription for Windows Server guest licenses.
+    .PARAMETER DiagnosticLevel
+    Specifies the diagnostic level for the cluster.
+    .PARAMETER TenantId
+    Specifies the Azure TenantId.
+    .PARAMETER ArmAccessToken
+    Specifies the ARM access token. Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    .PARAMETER GraphAccessToken
+    Specifies the Graph access token. Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    .PARAMETER AccountId
+    Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    .PARAMETER EnvironmentName
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
+    .PARAMETER UseDeviceAuthentication
+    Use device code authentication instead of an interactive browser prompt.
+    .PARAMETER Force
+    Forces the command to run without asking for user confirmation.
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject
+    Result: Success or Failed or Cancelled.
+    .EXAMPLE
+    Invoking on one of the cluster node to enable Windows Server Subscription feature
+    PS C:\> Set-AzStackHCI -EnableWSSubscription $true
+    Result: Success
+    .EXAMPLE
+    Invoking from the management node to set the diagnostic level to Basic
+    PS C:\> Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
+    Result: Success
+#>
+function Set-AzStackHCI{
+[CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
+[OutputType([PSCustomObject])]
+param(
+    [Parameter(Position = 0, Mandatory = $false)]
+    [string] $ComputerName,
+    [Parameter(Mandatory = $false)]
+    [System.Management.Automation.PSCredential] $Credential,
+    [Parameter(Mandatory = $false)]
+    [string] $ResourceId,
+    [Parameter(Mandatory = $false)]
+    [Bool] $EnableWSSubscription,
+    [Parameter(Mandatory = $false)]
+    [DiagnosticLevel] $DiagnosticLevel,
+    [Parameter(Mandatory = $false)]
+    [string] $TenantId,
+
+    [Parameter(Mandatory = $false)]
+    [string] $ArmAccessToken,
+
+    [Parameter(Mandatory = $false)]
+    [string] $GraphAccessToken,
+
+    [Parameter(Mandatory = $false)]
+    [string] $AccountId,
+
+    [Parameter(Mandatory = $false)]
+    [string] $EnvironmentName = $AzureCloud,
+
+    [Parameter(Mandatory = $false)]
+    [Switch]$UseDeviceAuthentication,
+
+    [Parameter(Mandatory = $false)]
+    [Switch] $Force
+    )
+
+    $setOutput          = New-Object -TypeName PSObject
+    $doSetResource      = $false
+    $needShouldContinue = $false
+    $doAzAuth           = $false
+    $isManagementNode   = $false
+    $nodeSessionParams  = @{}
+    $subscriptionId     = [string]::Empty
+    $armResourceId      = [string]::Empty
+    $armResource        = $null
+
+    $successMessage     = New-Object -TypeName System.Text.StringBuilder
+
+    try
+    {
+        Setup-Logging -LogFilePrefix "SetAzStackHCI"
+
+        Show-LatestModuleVersion
+
+        if([string]::IsNullOrEmpty($ComputerName))
+        {
+            $ComputerName = [Environment]::MachineName
+            $isManagementNode = $false
+        }
+        else
+        {
+            $isManagementNode = $true
+        }
+
+        Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGathering -PercentComplete 5
+
+        if($PSBoundParameters.ContainsKey('ResourceId') -eq $false)
+        {
+            $regContext = $null
+
+            if($isManagementNode)
+            {
+                $nodeSessionParams.Add('ComputerName', $ComputerName)
+
+                if($Credential -ne $null)
+                {
+                    $nodeSessionParams.Add('Credential', $Credential)
+                }
+
+                $regContext = Invoke-Command @nodeSessionParams -ScriptBlock { Get-AzureStackHCI }
+            }
+            else
+            {
+                $regContext = Get-AzureStackHCI
+            }
+
+            if ($regContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
+            {
+                Write-Error -Category InvalidOperation -Message $SetAzResourceClusterNotRegistered
+
+                $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value ([OperationStatus]::Failed)
+                $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $SetAzResourceClusterNotRegistered
+
+                Write-Output $setOutput
+
+                return
+            }
+
+            $clusScript = {
+                    $clusterPowershell = Get-WindowsFeature -Name RSAT-Clustering-PowerShell;
+                    if ( $clusterPowershell.Installed -eq $false)
+                    {
+                        Install-WindowsFeature RSAT-Clustering-PowerShell | Out-Null;
+                    }
+                }
+
+            Invoke-Command @nodeSessionParams -ScriptBlock $clusScript
+
+            $clusterNodes = Invoke-Command @nodeSessionParams -ScriptBlock { Get-ClusterNode }
+
+            $nodeDown = $false
+            $nodeDown = ($clusterNodes | % { if ($_.State -ne 'Up') { return $true } })
+
+            if ($nodeDown -eq $true)
+            {
+                Write-Error -Category ConnectionError -Message $SetAzResourceClusterNodesDown
+
+                $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value ([OperationStatus]::Failed)
+                $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $SetAzResourceClusterNodesDown
+
+                Write-Output $setOutput
+
+                return
+            }
+
+            $subscriptionId    = $regContext.AzureResourceUri.Split('/')[2]
+            $resourceGroupName = $regContext.AzureResourceUri.Split('/')[4]
+            $resourceName      = $regContext.AzureResourceUri.Split('/')[8]
+
+            $armResourceId = Get-ResourceId -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -ResourceName $resourceName
+        }
+        else
+        {
+            $armResourceId  = $ResourceId
+            $subscriptionId = $ResourceId.Split('/')[2]
+        }
+
+        Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGetAzureResource -PercentComplete 20
+
+        if($PSBoundParameters.ContainsKey('ArmAccessToken') -eq $true)
+        {
+            $doAzAuth = $true
+        }
+        else
+        {
+            $azContext = Get-AzContext -ErrorAction SilentlyContinue
+
+            if ($azContext -eq $null)
+            {
+                $doAzAuth = $true
+            }
+            else
+            {
+                if ($azContext.Subscription.Id -ne $subscriptionId)
+                {
+                    $currentOperation = ($SetProgressStatusOpSwitching -f $subscriptionId)
+                    Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGetAzureResource -CurrentOperation $currentOperation -PercentComplete 35
+
+                    $azContext = Set-AzContext -SubscriptionId $subscriptionId -ErrorAction Stop
+                }
+            }
+        }
+
+        if ($doAzAuth -eq $true)
+        {
+            $azureLoginParameters = @{
+                                        'SubscriptionId'          = $subscriptionId;
+                                        'TenantId'                = $TenantId;
+                                        'ArmAccessToken'          = $ArmAccessToken;
+                                        'GraphAccessToken'        = $GraphAccessToken;
+                                        'AccountId'               = $AccountId;
+                                        'EnvironmentName'         = $EnvironmentName;
+                                        'UseDeviceAuthentication' = $UseDeviceAuthentication;
+                                        'ProgressActivityName'    = $SetProgressActivityName
+                                     }
+
+            $TenantId = Azure-Login @azureLoginParameters
+        }
+        else 
+        {
+            try
+            {
+                Import-Module -Name Az.Resources -ErrorAction Stop
+            }
+            catch
+            {
+                try
+                {
+                    Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+                }
+                catch
+                {
+                    Install-PackageProvider NuGet -Force | Out-Null
+                }
+
+                Install-Module -Name Az.Resources -Force -AllowClobber
+                Import-Module -Name Az.Resources
+            }    
+        }
+
+        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ErrorAction Stop
+
+        $properties  = $armResource.Properties
+
+        if ($properties.desiredProperties -eq $null)
+        {
+            #
+            # Create desiredProperties object with default values
+            #
+            $desiredProperties = New-Object -TypeName PSObject
+            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value 'Disabled'
+            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value 'Basic'
+
+            $properties | Add-Member -MemberType NoteProperty -Name 'desiredProperties' -Value $desiredProperties
+        }
+
+        if ($PSBoundParameters.ContainsKey('EnableWSSubscription'))
+        {
+            if ($EnableWSSubscription -eq $true)
+            {
+                $properties.desiredProperties.windowsServerSubscription = 'Enabled';
+
+                $successMessage.Append($SetAzResourceSuccessWSSE) | Out-Null;
+            }
+            else
+            {
+                $properties.desiredProperties.windowsServerSubscription = 'Disabled';
+
+                $successMessage.Append($SetAzResourceSuccessWSSD) | Out-Null;
+            }
+
+            $doSetResource      = $true
+            $needShouldContinue = $true
+        }
+
+        if ($PSBoundParameters.ContainsKey('DiagnosticLevel'))
+        {
+            $properties.desiredProperties.diagnosticLevel = $DiagnosticLevel.ToString()
+
+            if ($successMessage.Length -gt 0)
+            {
+                $successMessage.AppendFormat(" {0}", ($SetAzResourceSuccessDiagLevel -f $DiagnosticLevel.ToString())) | Out-Null
+            }
+            else
+            {
+                $successMessage.AppendFormat("{0}", ($SetAzResourceSuccessDiagLevel -f $DiagnosticLevel.ToString())) | Out-Null
+            }
+
+            $doSetResource = $true
+        }
+
+        if ($doSetResource -eq $true)
+        {
+            if ($PSCmdlet.ShouldProcess($armResourceId, $SetProgressShouldProcess))
+            {
+                if ($needShouldContinue -eq $true)
+                {
+                    if (($Force -or $PSCmdlet.ShouldContinue($SetProgressShouldContinue, $SetProgressShouldContinueCaption)) -eq $false)
+                    {
+                        return;
+                    }
+                }
+
+                Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusUpdatingProps -PercentComplete 60
+
+                $setAzResourceParameters = @{
+                                            'ResourceId'  = $armResource.Id;
+                                            'Properties'  = $properties;
+                                            'ApiVersion'  = $RPAPIVersion
+                                            }
+
+                $localResult = Set-AzResource @setAzResourceParameters -Confirm:$false -Force -ErrorAction Stop
+
+                if ($PSBoundParameters.ContainsKey('EnableWSSubscription') -and ($EnableWSSubscription -eq $false))
+                {
+                    Write-Warning -Message $SetProgressWarningWSSD
+                }
+
+                if ($PSBoundParameters.ContainsKey('DiagnosticLevel') -and ($DiagnosticLevel -eq [DiagnosticLevel]::Off))
+                {
+                    Write-Warning -Message $SetProgressWarningDiagnosticOff
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        #
+        # Schedule a sync on the cluster
+        #
+        if($PSBoundParameters.ContainsKey('ResourceId') -eq $false)
+        {
+            if ($doSetResource -eq $true)
+            {
+                Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusSyncCluster -PercentComplete 90
+
+                Invoke-Command @nodeSessionParams -ScriptBlock { Sync-AzureStackHCI }
+            }
+        }
+
+        Write-Progress -Id $MainProgressBarId -activity $SetProgressActivityName -Completed
+
+        $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value ([OperationStatus]::Success)
+        $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value ($successMessage.ToString())
+
+        Write-Output $setOutput
+    }
+    catch
+    {
+        Write-Error -Exception $_.Exception -Category OperationStopped -ErrorAction Continue
+
+        # Get script line number, offset and Command that resulted in exception. Write-Error with the exception above does not write this info.
+        $positionMessage = $_.InvocationInfo.PositionMessage
+        Write-Error ("Exception occurred in {0} : {1}" -f $PSCmdlet.MyInvocation.InvocationName, $positionMessage) -Category OperationStopped
+
+        throw
+    }
+    finally
+    {
+        if ($doAzAuth -eq $true)
+        {
+            try { Disconnect-AzAccount | Out-Null } catch{}
+            try { Disconnect-AzureAD | Out-Null } catch{}
+        }
+
+        Stop-Transcript | out-null
+    }
+}
+
+#
+# IMDS Attestation Section
+#
+function Add-VMDevicesForImds{
+param(
+    [hashtable] $VmAdapterParams,
+    [hashtable] $VmAdapterAdditionalParams,
+    [hashtable] $VmAdapterVlanParams,
+    [hashtable] $SessionParams
+)
+    $ret = @{ 
+            Return    = $null
+            Exception = $null
+    }
+    $sc = {
+        param([hashtable]$VmAdapterParams, [hashtable]$VmAdapterAdditionalParams, [hashtable]$VmAdapterVlanParams)
+
+        try
+        {
+            $hostVmSwitch   = $VmAdapterParams.VMSwitch
+            $adapterParams  = @{
+                    VM      = $VmAdapterParams.VM
+                    Name    = $VmAdapterParams.Name
+            }
+
+            Write-Information "Checking for previously configured adapter"
+            $foundAdapter       = Get-VMNetworkAdapter @adapterParams -ErrorAction SilentlyContinue
+            $adapterCount       = ($foundAdapter | Measure-Object).Count
+
+            if ($adapterCount -eq 0)
+            {
+                Write-Information "Creating IMDS network adapter on guest $($VM.Name)"
+                $vmAdapter = Add-VMNetworkAdapter @adapterParams -Confirm: $false -Passthru
+            }
+            elseif ($adapterCount -eq 1)
+            {
+                Write-Information "Found existing adapter on guest $($VM.Name)"
+                $vmAdapter = $foundAdapter
+            }
+            else 
+            {
+                Write-Warning "Found additional IMDS configuration on guest $($VM.Name) adapter count=$($adapterCount)"
+                $vmAdapter = $foundAdapter[0]    
+            }
+
+            $vmAdapter      = $vmAdapter | Set-VMNetworkAdapter @VmAdapterAdditionalParams -Confirm: $false -Passthru
+        
+            Connect-VMNetworkAdapter -VMNetworkAdapter $vmAdapter -VMSwitch $hostVmSwitch -Confirm: $false
+
+            $vmAdapter      = Set-VMNetworkAdapterVlan -VMNetworkAdapter $vmAdapter @VmAdapterVlanParams -Confirm: $false -Passthru
+        
+            $ret.Return = $vmAdapter
+            return $ret
+        }
+        catch
+        {
+            $ret.Exception = $_
+            return $ret
+        }
+        finally
+        {
+            if ($ret.Exception) { try{ Remove-VMNetworkAdapter -VMNetworkAdapter $vmAdapter -Force }catch{}}
+        }
+    }
+
+    $ret = Invoke-Command @SessionParams -ScriptBlock $sc -ArgumentList $VmAdapterParams,$VmAdapterAdditionalParams,$VmAdapterVlanParams
+    
+    if ($ret.Exception)
+    {
+        Write-Error "Unable to configure IMDS Service on VM. $($ret.Exception)"
+        throw
+    }
+
+    return $ret.Return
+}
+
+function Add-HostDevicesForImds{
+param(
+    [hashtable] $VmSwitchParams,
+    [hashtable] $HostAdapterVlanParams,
+    [hashtable] $NetAdapterIpParams,
+    [hashtable] $SessionParams
+)
+    $sc = {
+        param([hashtable]$VmSwitchParams, [hashtable]$HostAdapterVlanParams, [hashtable]$NetAdapterIpParams)
+
+        $ret = @{ 
+            Return    = $null
+            Exception = $null
+        }
+        try
+        {
+            Write-Information "Searching for previous IMDS switch"
+            if ($VmSwitchParams.SwitchId)
+            {
+                $findSwitch         = Get-VMSwitch -Id $VmSwitchParams.SwitchId -ErrorAction SilentlyContinue
+            }
+            
+
+            $switchCount = ($findSwitch | Measure-Object).Count
+
+            if ($switchCount -eq 0)
+            {
+                Write-Information "Creating IMDS switch"
+                $VmSwitchParams.Remove("SwitchId")
+                $hostSwitch     = New-VMSwitch @VmSwitchParams
+            }
+            elseif ($switchCount -eq 1)
+            {
+                Write-Information "Found existing IMDS Service Switch."
+                $hostSwitch = $findSwitch
+            }
+        
+            $hostVMNetAdapter   = Get-VMNetworkAdapter -ManagementOS -SwitchName $hostSwitch.Name | Where-Object { $_.SwitchId -eq $hostSwitch.Id }
+
+            if (!$hostVMNetAdapter)
+            {
+                throw("Missing host adapter.")
+            }
+
+            $hostNetAdapter     = Get-NetAdapter | Where-Object { ($_.MacAddress -replace "[^a-zA-Z0-9]","") -eq ($hostVMNetAdapter.MacAddress -replace "[^a-zA-Z0-9]","") }
+
+            $nooutput           = $hostNetAdapter | Remove-NetIPAddress -Confirm:$false -ErrorAction SilentlyContinue
+
+            $hostNetAdapterIP   = $hostNetAdapter | New-NetIPAddress @NetAdapterIpParams
+
+            $hostNetAdapter     = $hostNetAdapter | Rename-NetAdapter -NewName $hostSwitch.Name -PassThru -ErrorAction SilentlyContinue
+
+            $HostAdapterVlanCommonParams = @{
+                VMNetworkAdapter    = $hostVMNetAdapter
+            }
+
+            Set-VMNetworkAdapterVlan @HostAdapterVlanCommonParams @HostAdapterVlanParams -Confirm: $false| Out-Null
+            
+            $ret.Return = $hostSwitch.Id
+            return $ret
+        }
+        catch
+        {
+            $ret.Exception = $_
+            return $ret
+        }
+        finally
+        {
+            if ($ret.Exception) { try{ Remove-VMSwitch -VMSwitch $hostSwitch -Force }catch{}}
+        }
+    }
+
+    $ret = Invoke-Command @SessionParams -ScriptBlock $sc -ArgumentList $VMSwitchParams,$HostAdapterVlanParams,$NetAdapterIpParams
+
+    if ($ret.Exception)
+    {
+        Write-Error "Unable to configure IMDS Service on host. $($ret.Exception)"
+        throw
+    }
+
+    return $ret.Return
+}
+
+
+$TemplateHostImdsParams = @{
+    Name                    = "AZSHCI_HOST-IMDS_DO_NOT_MODIFY"
+    SwitchType              = "Internal"
+    Notes                   = "Managed by Azure Stack HCI IMDS Attestation Service"
+    Promiscuous             = $true
+    PrimaryVlanId           = 10
+    SecondaryVlanIdList     = 200
+    IPAddress               = "169.254.169.253"
+    PrefixLength            = 16
+    NetFirewallRuleName     = "AzsHci-ImdsAttestation-Allow-In"
+}
+$TemplateVmImdsParams = @{
+    Name                    = "AZSHCI_GUEST-IMDS_DO_NOT_MODIFY"
+    MacAddressSpoofing      = "Off"
+    DhcpGuard               = "On"
+    RouterGuard             = "On"
+    NotMonitoredInCluster   = $true
+    Isolated                = $true
+    PrimaryVlanId           = 10
+    SecondaryVlanId         = 200
+}
+<#
+    .Description
+    Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
+    
+    .PARAMETER ComputerName
+    Specifies the AzureStack HCI host to perform the operation on. Note: this host should match the host of VMName.
+
+    .PARAMETER Credential
+    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
+
+    .PARAMETER AddVM
+    After enabling each cluster node for Attestation, add all guests on each node.
+
+    .PARAMETER Force
+    No confirmations.
+
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject
+    Cluster:     Name of cluster
+    Node:        Name of the host.
+    Attestation: IMDS Attestation status.
+
+    .EXAMPLE
+    Invoking on one of the cluster node.
+    C:\PS>Enable-AzStackHCIAttestation -AddVM
+
+    .EXAMPLE
+    Invoking from WAC/Management node and adding all existing VMs cluster-wide
+    C:\PS>Enable-AzStackHCIAttestation -ComputerName "host1" -AddVM
+#>
+function Enable-AzStackHCIAttestation{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
+param(
+    [Parameter(Position = 0, Mandatory = $false)]
+    [string] $ComputerName,
+    
+    [Parameter(Mandatory = $false)]
+    [System.Management.Automation.PSCredential] $Credential = [System.Management.Automation.PSCredential]::Empty,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $AddVM,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $Force
+    )
+
+    begin
+    {   
+        if ($Force)
+        {
+            $ConfirmPreference = 'None'
+        }
+
+        try
+        {
+            $logPath = "EnableAzureStackHCIImds"
+            Setup-Logging -LogFilePrefix $logPath
+            #Show-LatestModuleVersion
+
+            $enableImdsOutputList = [System.Collections.ArrayList]::new()
+            $HyperVInstallConfirmed = $false
+
+            if([string]::IsNullOrEmpty($ComputerName))
+            {
+                $ComputerName = [Environment]::MachineName
+                $IsManagementNode = $False
+            }
+            else
+            {
+                $IsManagementNode = $True
+            }
+
+            $percentComplete = 1
+            Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentComplete
+            
+            $SessionParams = @{
+                    ErrorAction = "Stop"
+            }
+
+            if($IsManagementNode)
+            {
+                $SessionParams.Add("ComputerName", $ComputerName)
+                
+                if($Null -eq $Credential)
+                {
+                    $SessionParams.Add("Credential", $Credential)
+                }
+            }
+            else
+            {
+                # An empty SessionParams will ensure commands run locally without issue
+                #$SessionParams.add("ComputerName", "localhost")
+            }
+
+            # Validate cluster is registered
+            $RegContext = Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCI }
+
+            if($RegContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
+            {
+                throw $ImdsClusterNotRegistered
+            }
+
+            $percentComplete = 5
+            Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
+
+            $ClusterName  = Invoke-Command @SessionParams -ScriptBlock { (Get-Cluster).Name }
+            $ClusterNodes = Invoke-Command @SessionParams -ScriptBlock { Get-ClusterNode }
+
+            # Validate Cluster nodes are online
+            if (($ClusterNodes | Where {$_.State -ne [Microsoft.FailoverClusters.PowerShell.ClusterNodeState]::Up} | Measure-Object).Count -ne 0)
+            {
+                throw $AllClusterNodesAreNotOnline
+            }
+
+            $percentComplete = 10
+            Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
+
+            $nodePercentChunk = (100 - ($percentComplete + 5)) / $ClusterNodes.Count / 2
+
+        }
+        catch
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Enable-AzueStackHCIImdsAttestation : " + $positionMessage) -Category OperationStopped
+            Stop-Transcript | out-null
+            throw $_
+        }
+    }
+
+    Process
+    {
+        foreach ($node in $ClusterNodes)
+        {
+            $NodeName = $node.Name
+            
+            try 
+            {
+                Write-Information "Enabling IMDS Attestation on $NodeName"
+                
+                $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                $ConfiguringClusterNode -f $NodeName | % { Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete }
+
+                $SessionParams["ComputerName"] = $NodeName
+            
+                if ($NodeName -ieq [Environment]::MachineName)
+                {
+                    $SessionParams.Remove("ComputerName")
+                }
+
+                $needHyperV = Invoke-Command @SessionParams -ScriptBlock { (Get-WindowsFeature -Name RSAT-Hyper-V-Tools).Installed -eq $false }   
+                if ($needHyperV)
+                {
+                    if ($Force -or $HyperVInstallConfirmed -or $PSCmdlet.ShouldContinue($ShouldContinueHyperVInstall -f $NodeName, "Install Management Tools"))
+                    {
+                        if ($HyperVInstallConfirmed -or $PSCmdlet.ShouldProcess("Windows Feature RSAT-Hyper-V-Tools is installed on $($NodeName).", "Install RSAT-Hyper-V-Tools?", ""))
+                        {
+                            $HyperVInstallConfirmed = $true
+                            Invoke-Command @SessionParams -ScriptBlock { Install-WindowsFeature RSAT-Hyper-V-Tools | Out-Null }
+                        }
+                    }
+                    else
+                    {
+                        throw "Hyper-V RSAT tools required to continue"
+                    }
+                }
+            
+                $attestationSwitchId = Invoke-Command @SessionParams -ScriptBlock { (Get-AzureStackHCIAttestation).AttestationSwitchId }
+
+                $HostVmSwitchParams = @{
+                                Name                = $TemplateHostImdsParams["Name"]
+                                SwitchType          = $TemplateHostImdsParams["SwitchType"]
+                                Notes               = $TemplateHostImdsParams["Notes"]
+                                SwitchId            = $attestationSwitchId
+                }
+                $HostAdapterVlanParams = @{
+                                Promiscuous         = $TemplateHostImdsParams["Promiscuous"]
+                                PrimaryVlanId       = $TemplateHostImdsParams["PrimaryVlanId"]
+                                SecondaryVlanIdList = $TemplateHostImdsParams["SecondaryVlanIdList"]
+                }
+                $NetAdapterIpParams = @{
+                                IPAddress           = $TemplateHostImdsParams["IPAddress"]
+                                PrefixLength        = $TemplateHostImdsParams["PrefixLength"]
+                }
+
+                # Validate or Configure a new switch on host
+                if($attestationSwitchId -or $Force -or $PSCmdlet.ShouldContinue($ConfirmEnableImds, "Enable Cluster $($ClusterName)?"))
+                {
+                    $Force = $true
+                    if ($PSCmdlet.ShouldProcess("IMDS Service will be configured/validated on the host $($NodeName).", "A switch managed by the IMDS Service must be configured/validated on the host $($NodeName). Process host?", ""))
+                    {
+                        $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                        $ConfiguringClusterNode -f $NodeName | % { Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete }
+                        
+                        $NotifyServiceNewSwitch = !$attestationSwitchId
+                        $attestationSwitchId = Add-HostDevicesForImds -VmSwitchParams $HostVmSwitchParams -HostAdapterVlanParams $HostAdapterVlanParams -NetAdapterIpParams $NetAdapterIpParams -SessionParams $SessionParams
+                        
+                        # Wait for networking stack to stabalize
+                        $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                        Start-Sleep 10
+
+                        if ($NotifyServiceNewSwitch)
+                        {
+                            Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList $attestationSwitchId | Out-Null
+                        }
+
+                        $firewallRule = Invoke-Command @SessionParams -ScriptBlock { param($ruleName) Enable-NetFirewallRule -Name $ruleName } -ArgumentList $TemplateHostImdsParams["NetFirewallRuleName"] 
+
+                        $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
+
+                        $enableImdsOutput = New-Object -TypeName PSObject
+                        $enableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
+                        $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([ImdsAttestationNodeStatus]($nodeAttestation.Status))
+                        $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Expiration -Value ($nodeAttestation.Expiration)
+                        $enableImdsOutputList.Add($enableImdsOutput) | Out-Null
+                    }
+                    elseif ($WhatIfPreference.IsPresent)
+                    {
+                        $attestationSwitchId = "Whatif:$(New-Guid)"
+                    }
+                }
+                else 
+                {
+                    return
+                }          
+            }
+            catch 
+            {
+                Write-Error -Exception $_.Exception -Category OperationStopped
+                $positionMessage = $_.InvocationInfo.PositionMessage
+                Write-Error ("Exception occurred in Enable-AzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+                Stop-Transcript | out-null
+                throw $_
+            }
+        }
+
+        if ($AddVM)
+        {
+            foreach ($node in $ClusterNodes)
+            {
+                $NodeName = $node.Name
+                
+                $SessionParams["ComputerName"] = $NodeName
+            
+                if ($NodeName -ieq [Environment]::MachineName)
+                {
+                    $SessionParams.Remove("ComputerName")
+                }
+                try 
+                {
+                    Write-Information "Adding VMs to IMDS Attestation on $NodeName"
+                    $ConfiguringClusterNode -f $NodeName | % { Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete }
+
+                    Invoke-Command @SessionParams -ScriptBlock { Add-AzStackHCIVMAttestation -AddAll } | Out-Null
+                }
+                catch 
+                {
+                    Write-Error -Category OperationStopped $ErrorAddingAllVMs
+                }
+            }
+        }
+
+        Invoke-Command @SessionParams -ScriptBlock { Sync-AzureStackHCI }
+
+        Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status "Complete" -percentcomplete 100
+    }
+    End
+    {
+        $enableImdsOutputList | Write-Output
+        Stop-Transcript | out-null
+    }
+}
+
+<#
+    .Description
+    Disable-AzStackHCIAttestation disables IMDS Attestation on the host
+
+    .PARAMETER RemoveVM
+    Specifies the guests on each node should be removed from IMDS Attestation before disabling on cluster. Disable cannot continue before guests are removed.
+    
+    .PARAMETER ComputerName
+    Specifies the AzureStack HCI host to perform the operation on.
+
+    .PARAMETER Credential
+    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
+
+    .PARAMETER Force
+    No confirmation.
+
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject
+    Cluster:     Name of cluster
+    Node:        Name of the host.
+    Attestation: IMDS Attestation status.
+
+    .EXAMPLE
+    Remove all guests from IMDS Attestation before disabling on cluster nodes.
+    C:\PS>Disable-AzStackHCIAttestation -RemoveVM
+
+    .EXAMPLE
+    Invoking from the management node/WAC
+    C:\PS>Disable-AzStackHCIAttestation -ComputerName "host1"
+#>
+function Disable-AzStackHCIAttestation{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
+param(
+    [Parameter(Position = 0, Mandatory = $false)]
+    [string] $ComputerName,
+    
+    [Parameter(Mandatory = $false)]
+    [System.Management.Automation.PSCredential] $Credential = [System.Management.Automation.PSCredential]::Empty,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $RemoveVM,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $Force
+    )
+
+    begin
+    {   
+        try
+        {
+            $logPath = "DisableAzureStackHCIImds"
+            Setup-Logging -LogFilePrefix $logPath
+            #Show-LatestModuleVersion
+
+            $disableImdsOutputList = [System.Collections.ArrayList]::new()
+
+            if([string]::IsNullOrEmpty($ComputerName))
+            {
+                $ComputerName = [Environment]::MachineName
+                $IsManagementNode = $False
+            }
+            else
+            {
+                $IsManagementNode = $True
+            }
+
+            $percentComplete = 1
+            Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentComplete
+            
+            $SessionParams = @{
+                    ErrorAction = "Stop"
+            }
+
+            if($IsManagementNode)
+            {
+                $SessionParams.Add("ComputerName", $ComputerName)
+                
+                if($Null -eq $Credential)
+                {
+                    $SessionParams.Add("Credential", $Credential)
+                }
+            }
+            else
+            {
+                # An empty SessionParams will ensure commands run locally without issue
+                #$SessionParams.add("ComputerName", "localhost")
+            }
+
+            $percentComplete = 5
+            Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
+
+            $ClusterName  = Invoke-Command @SessionParams -ScriptBlock { (Get-Cluster).Name }            
+            $ClusterNodes = Invoke-Command @SessionParams -ScriptBlock { Get-ClusterNode }
+
+            foreach ($node in $ClusterNodes)
+            {
+                $percentComplete += 1
+                $CheckingClusterNode -f $node.name | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete}
+                $NodeName = $node.Name
+                $SessionParams["ComputerName"] = $NodeName
+            
+                if (!$IsManagementNode -and ($NodeName -ieq $ComputerName))
+                {
+                    $SessionParams.Remove("ComputerName")
+                }
+
+                if (!$RemoveVM)
+                {
+                    $guests = Invoke-Command @SessionParams -ScriptBlock { Get-AzStackHCIVMAttestation -Local }
+                    if (($guests | Measure-Object).Count -ne 0)
+                    {
+                        throw ("There are still guests connected to IMDS Attestation. Use switch -RemoveVM or Remove-AzStackHCIVMAttestation cmdlet.")
+                    }
+                }
+                else 
+                {
+                    $RemovingVmImdsFromNode -f $node.name | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete}
+                    $removedGuests = Invoke-Command @SessionParams -ScriptBlock { Remove-AzStackHCIVMAttestation -RemoveAll }
+                }
+            }
+
+            $percentComplete = 10
+            Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
+
+            $nodePercentChunk = (100 - ($percentComplete + 5)) / $ClusterNodes.Count
+        }
+        catch
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Enable-AzueStackHCIImdsAttestation : " + $positionMessage) -Category OperationStopped
+            Stop-Transcript | out-null
+            throw $_
+        }
+    }
+
+    Process
+    {
+        if($Force -or $PSCmdlet.ShouldContinue($ConfirmDisableImds, "Disable Cluster $($ClusterName)?"))
+        {
+            foreach ($node in $ClusterNodes)
+            {
+                $NodeName = $node.Name
+                
+                try 
+                {
+                    Write-Information "Disabling IMDS Attestation on $NodeName"
+                    
+                    $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                    $DisablingIMDSOnNode -f $NodeName | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete;}
+    
+                    $SessionParams["ComputerName"] = $NodeName
+                
+                    if ($NodeName -ieq [Environment]::MachineName)
+                    {
+                        $SessionParams.Remove("ComputerName")
+                    }
+                
+                    $attestationSwitchId = Invoke-Command @SessionParams -ScriptBlock { (Get-AzureStackHCIAttestation).AttestationSwitchId }
+                    if ($attestationSwitchId -ne [Guid]::Empty -and $attestationSwitchId)
+                    {
+                        Invoke-Command @SessionParams -ScriptBlock { param($switchId); Get-VMSwitch -SwitchId $switchId -ErrorAction SilentlyContinue | Remove-VMSwitch -Force -ErrorAction SilentlyContinue } -ArgumentList $attestationSwitchId
+                    }
+    
+    
+                    $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                    $DisablingIMDSOnNode -f $NodeName | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete; }
+                    
+                    Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList ([Guid]::Empty) | Out-Null
+    
+                    $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
+                    $disableImdsOutput = New-Object -TypeName PSObject
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([ImdsAttestationNodeStatus]($nodeAttestation.Status))
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name Expiration -Value ($nodeAttestation.Expiration)
+                    $disableImdsOutputList.Add($disableImdsOutput) | Out-Null
+    
+                }
+                catch 
+                {
+                    Write-Error -Exception $_.Exception -Category OperationStopped
+                    $positionMessage = $_.InvocationInfo.PositionMessage
+                    Write-Error ("Exception occurred in Enable-AzueStackHCIImdsAttestation : " + $positionMessage) -Category OperationStopped
+                    Stop-Transcript | out-null
+                    throw $_
+                }
+            }
+        }
+
+        Invoke-Command @SessionParams -ScriptBlock { Sync-AzureStackHCI }
+
+        Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status "Complete" -percentcomplete 100
+    }
+    End
+    {
+        $disableImdsOutputList | Write-Output
+        Stop-Transcript | out-null
+    }
+}
+
+<#
+    .Description
+    Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestation.
+    
+    .PARAMETER VMName
+    Specifies an array of guest VMs to enable.
+
+    .PARAMETER VM
+    Specifies an array of VM objects from Get-VM.
+
+    .PARAMETER AddAll
+    Specifies a switch that will add all current guest VMs on host to IMDS Attestation on the current node.
+
+    .Parameter Force
+    No confirmations.
+
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject
+    Name:            Name of the VM.
+    AttestationHost: Host that VM is currently connected.
+    Status:          Connection status.
+
+    .EXAMPLE
+    Adding all guests on current node
+    C:\PS>Add-AzStackHCIVMAttestation -AddAll
+
+    .EXAMPLE
+    Invoking from the management node/WAC
+    C:\PS>Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+#>
+function Add-AzStackHCIVMAttestation{
+    [CmdletBinding(DefaultParameterSetName="VMName", SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
+param(
+    [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = "VMName")]
+    [string[]] $VMName,
+
+    [parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = "VMObject")]
+    [Object[]] $VM,
+
+    [Parameter(Mandatory = $true, ParameterSetName = "AddAll")]
+    [Switch]$AddAll,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $Force
+    )
+
+    begin
+    {   
+        if ($Force)
+        {
+            $ConfirmPreference = 'None'
+        }
+
+        try
+        {
+            $logPath = "AddAzureStackHCIImds"
+            Setup-Logging -LogFilePrefix $logPath
+
+            $enableImdsOutputList = [System.Collections.ArrayList]::new()
+            $ComputerName = [Environment]::MachineName
+
+            $percentcomplete = 1
+            Write-Progress -Id $SecondaryProgressBarId -activity $AddAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentcomplete
+            
+            $SessionParams = @{
+                    ErrorAction = "Stop"
+            }
+
+            # Validate cluster is registered
+            $RegContext = Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCI }
+
+            if($RegContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
+            {
+                throw $ImdsClusterNotRegistered
+            }
+
+            $percentcomplete = 2
+            Write-Progress -Id $SecondaryProgressBarId -activity $AddAzsHciImdsActivity -status "Verifying attestation" -percentcomplete $percentComplete
+
+            
+            $attestationSwitchId = Invoke-Command @SessionParams -ScriptBlock { (Get-AzureStackHCIAttestation).AttestationSwitchId }
+
+            # Validate or Configure a new switch on host
+            if(!$attestationSwitchId)
+            {
+                $message = $AttestationNotEnabled -f $ComputerName
+                throw $message
+            }          
+
+            if ($WhatIfPreference.IsPresent)
+            {
+                $attestationSwitchId = "Whatif:$(New-Guid)"
+            }
+            
+            if ($PSCmdlet.ShouldProcess("Will use IMDS switch $($attestationSwitchId) on $($ComputerName).", "The IMDS switch $($attestationSwitchId) was validated on $($ComputerName). Select and Continue?", ""))
+            {
+                $attestationSwitch = Invoke-Command @SessionParams -ScriptBlock {param($attestationSwitchId) Get-VMSwitch -Id $attestationSwitchId} -ArgumentList $attestationSwitchId
+            }
+            else
+            {
+                return
+            }
+            
+
+            if ($PSCmdlet.ParameterSetName -eq "AddAll")
+            {
+                $VirtualMachines = Invoke-Command @SessionParams -ScriptBlock { Get-VM }
+                Write-Debug "EnableAll specified. Found ($(($VirtualMachines | Measure-Object).Count) guests VMs."
+            }
+        }
+        catch
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Add-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
+            Stop-Transcript | out-null
+            throw $_
+        }
+    }
+
+    Process
+    {
+        try 
+        {
+            if (!$attestationSwitch)
+            {
+                throw ("Did not validate host configuration")
+            }
+            Write-Information "Enabling IMDS Attestation on guest virtual machines"
+            if ($VMName) 
+            {
+                $VirtualMachines = Invoke-Command @SessionParams -ScriptBlock {param($vms) Get-VM $vms} -ArgumentList (,$VMName)
+            }
+            elseif ($VM) 
+            {
+                $VirtualMachines = $VM
+            }
+            
+            $VmNetAdapterParams = @{
+                    Name                    = $TemplateVmImdsParams["Name"]
+                    VmSwitch                = $attestationSwitch
+            }
+            $VmAdapterAdditionalParams = @{
+                    MacAddressSpoofing      = $TemplateVmImdsParams["MacAddressSpoofing"]
+                    DhcpGuard               = $TemplateVmImdsParams["DhcpGuard"]
+                    RouterGuard             = $TemplateVmImdsParams["RouterGuard"]
+                    NotMonitoredInCluster   = $TemplateVmImdsParams["NotMonitoredInCluster"]
+            }
+            $VmAdapterVlanParams = @{
+                    Isolated                = $TemplateVmImdsParams["Isolated"]
+                    PrimaryVlanId           = $TemplateVmImdsParams["PrimaryVlanId"]
+                    SecondaryVlanId         = $TemplateVmImdsParams["SecondaryVlanId"]
+            }
+
+            foreach ($vm in $VirtualMachines)
+            {
+                if ($PSCmdlet.ShouldProcess("Added/Validated $($vm.Name) on host $($attestationSwitch.ComputerName)", "Add/Validate $($vm.Name) to IMDS Attestation on $($attestationSwitch.ComputerName)?", ""))
+                {
+                    $VmNetAdapterParams["VM"] = $vm
+                    $vmAdapter = Add-VMDevicesForImds $VmNetAdapterParams $VmAdapterAdditionalParams $VmAdapterVlanParams $SessionParams
+                    
+                    $enableImdsOutput = New-Object -TypeName PSObject
+                    $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $vm.Name
+                    $enableImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $ComputerName
+                    $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([VMAttestationStatus]::Connected)
+                    $enableImdsOutputList.Add($enableImdsOutput) | Out-Null
+                }
+            } 
+            
+        }
+        catch 
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Add-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
+            Stop-Transcript | out-null
+            throw $_
+        }
+    }
+    End
+    {
+        $enableImdsOutputList | Write-Output
+        Stop-Transcript | out-null
+    }
+}
+
+<#
+    .Description
+    Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
+    
+    .PARAMETER VMName
+    Specifies an array of guest VMs to enable.
+
+    .PARAMETER VM
+    Specifies an array of VM objects from Get-VM.
+
+    .PARAMETER RemoveAll
+    Specifies a switch that will remove all guest VMs from Attestation on the current node
+
+    .PARAMETER Force
+    No confirmations.
+
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject
+    Name:            Name of the VM.
+    AttestationHost: Host that VM is currently connected.
+    Status:          Connection status.
+
+    .EXAMPLE
+    Removing all guests on current node
+    C:\PS>Remove-AzStackHCIVMAttestation -RemoveVM
+
+    .EXAMPLE
+    Invoking from the management node/WAC
+    C:\PS>Invoke-Command -ScriptBlock {Remove-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+#>
+function Remove-AzStackHCIVMAttestation{
+    [CmdletBinding(DefaultParameterSetName="VMName", SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
+param(
+    [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = "VMName")]
+    [string[]] $VMName,
+
+    [parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = "VMObject")]
+    [Object[]] $VM,
+
+    [Parameter(Mandatory = $true, ParameterSetName = "RemoveAll")]
+    [Switch]$RemoveAll,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $Force
+    )
+
+    begin
+    {   
+        if ($Force)
+        {
+            $ConfirmPreference = 'None'
+        }
+
+        try
+        {
+            $logPath = "RemoveAzureStackHCIImds"
+            Setup-Logging -LogFilePrefix $logPath
+            #Show-LatestModuleVersion
+
+            $removeImdsOutputList = [System.Collections.ArrayList]::new()
+            $ComputerName = [Environment]::MachineName
+
+            $percentcomplete = 1
+            Write-Progress -Id $SecondaryProgressBarId -activity $RemoveAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentcomplete
+            
+            $SessionParams = @{
+                    ErrorAction = "Stop"
+            }
+
+            $percentcomplete = 2
+            Write-Progress -Id $SecondaryProgressBarId -activity $RemoveAzsHciImdsActivity -status "Removing guest attestation" -percentcomplete $percentComplete
+
+            if ($PSCmdlet.ParameterSetName -eq "RemoveAll")
+            {
+                $VirtualMachines = Invoke-Command @SessionParams -ScriptBlock { param($adapterName); Get-VMNetworkAdapter -All -Name $adapterName -ErrorAction SilentlyContinue | % {Get-VM $_.VMId -ErrorAction SilentlyContinue} } -ArgumentList $TemplateVmImdsParams["Name"]
+                Write-Debug "RemoveAll specified. Found ($(($VirtualMachines | Measure-Object).Count) guests VMs to remove IMDS Attestation from."
+            }
+        }
+        catch
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Remove-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
+            Stop-Transcript | out-null
+            throw $_
+        }
+    }
+
+    Process
+    {
+        try 
+        {
+            Write-Information "Removing IMDS Attestation on guest virtual machines"
+            if ($VMName) 
+            {
+                $VirtualMachines = Invoke-Command @SessionParams -ScriptBlock {param($vms) Get-VM $vms} -ArgumentList (,$VMName)
+            }
+            elseif ($VM) 
+            {
+                $VirtualMachines = $VM
+            }
+
+            foreach ($vm in $VirtualMachines)
+            {
+                if ($PSCmdlet.ShouldProcess("Remove IMDS Attestation from $($vm.Name) on host $ComputerName", "Remove $($vm.Name) from IMDS Attestation on $ComputerName?", ""))
+                {
+                    Invoke-Command @SessionParams -ScriptBlock { param($adapterName); Remove-VMNetworkAdapter -VM $vm -Name $adapterName -ErrorAction Stop } -ArgumentList $TemplateVmImdsParams["Name"]
+                    
+                    $removeImdsOutput = New-Object -TypeName PSObject
+                    $removeImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $vm.Name
+                    $removeImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $ComputerName
+                    $removeImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([VMAttestationStatus]::Disconnected)
+                    $removeImdsOutputList.Add($removeImdsOutput) | Out-Null
+                }
+            }
+            
+        }
+        catch 
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Remove-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
+            Stop-Transcript | out-null
+            throw $_
+        }
+    }
+    End
+    {
+        $removeImdsOutputList | Write-Output
+        Stop-Transcript | out-null
+    }
+}
+
+<#
+    .Description
+    Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
+
+    .PARAMETER Local
+    Only retrieve guests with Attestation from the node executing the cmdlet.
+
+    .OUTPUTS
+    PSCustomObject. Returns following Properties in PSCustomObject.
+    Name:            Name of the VM.
+    AttestationHost: Host that VM is currently connected.
+    Status:          Connection status.
+
+    .EXAMPLE
+    Get all guests on cluster.
+    C:\PS>Get-AzStackHCIVMAttestation
+
+    .EXAMPLE
+    Get all guests on current node.
+    C:\PS>Get-AzStackHCIVMAttestation -Local
+#>
+function Get-AzStackHCIVMAttestation {
+    [CmdletBinding()]
+    [OutputType([PSCustomObject])]
+param(
+    [Parameter(Mandatory = $false)]
+    [switch] $Local
+)
+
+    begin
+    {   
+        try
+        {
+            $getImdsOutputList = [System.Collections.ArrayList]::new()
+            
+            $SessionParams = @{
+                    ErrorAction = "Stop"
+            }
+        }
+        catch
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Get-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
+            throw $_
+        }
+    }
+
+    Process
+    {
+        try 
+        {   
+            $nodes = [Environment]::MachineName
+
+            if (!$Local)
+            {
+                $nodes = (Get-ClusterNode | Select-Object Name).Name
+            }
+
+            foreach ($node in $nodes)
+            {
+                $SessionParams["ComputerName"] = $node
+            
+                if ($node -ieq [Environment]::MachineName)
+                {
+                    $SessionParams.Remove("ComputerName")
+                }
+
+                try 
+                {
+                    $VirtualMachinesAdapters = $null
+                    $VirtualMachinesAdapters = Invoke-Command @SessionParams -ScriptBlock {param($adapterName); Get-VMNetworkAdapter -All -Name $adapterName -ErrorAction SilentlyContinue} -ArgumentList $TemplateVmImdsParams["Name"]
+                }
+                catch 
+                {
+                    Write-Error ("Exception occurred when querying cluster node $NodeName") -Category OperationStopped
+                }
+                
+                foreach ($adapter in $VirtualMachinesAdapters)
+                {
+                    $getImdsOutput = New-Object -TypeName PSObject
+                    $getImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $adapter.VMName
+                    $getImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $node
+                    $getImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([VMAttestationStatus]::Connected)
+                    $getImdsOutputList.Add($getImdsOutput) | Out-Null
+                }
+            }   
+        }
+        catch 
+        {
+            Write-Error -Exception $_.Exception -Category OperationStopped
+            $positionMessage = $_.InvocationInfo.PositionMessage
+            Write-Error ("Exception occurred in Get-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
+            throw $_
+        }
+    }
+    End
+    {
+        $getImdsOutputList | Write-Output
+    }
+}
+
 Export-ModuleMember -Function Register-AzStackHCI
 Export-ModuleMember -Function Unregister-AzStackHCI
 Export-ModuleMember -Function Test-AzStackHCIConnection
+Export-ModuleMember -Function Set-AzStackHCI
+Export-ModuleMember -Function Enable-AzStackHCIAttestation
+Export-ModuleMember -Function Disable-AzStackHCIAttestation
+Export-ModuleMember -Function Add-AzStackHCIVMAttestation
+Export-ModuleMember -Function Remove-AzStackHCIVMAttestation
+Export-ModuleMember -Function Get-AzStackHCIVMAttestation

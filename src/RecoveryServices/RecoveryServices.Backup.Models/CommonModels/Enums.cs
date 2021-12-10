@@ -56,11 +56,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         AzureVM = 1,
 
         /// <summary>
-        /// Represents the Microsoft Azure Recovery Services agent.
-        /// </summary>
-        MARS,
-
-        /// <summary>
         /// Represents the Service Center Data Protection Manager agent.
         /// </summary>
         SCDPM,
@@ -87,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         MAB,
 
         /// <summary>
-        /// represents that the BackupManagementType is Not Applicable.
+        /// Represents that the BackupManagementType is Not Applicable.
         /// </summary>
         NA
     }  
@@ -141,7 +136,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents MSSQL in Azure VM.
         /// </summary>
         MSSQL,
-        FileFolder
+
+        /// <summary>
+        /// Represents MARS agent.
+        /// </summary>
+        FileFolder,
+
+        /// <summary>
+        /// Represents SAPHANA in Azure VM.
+        /// </summary>
+        SAPHanaDatabase
     }
 
     /// <summary>

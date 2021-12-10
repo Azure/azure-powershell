@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             set { value = this.partnerType; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "The integration account partner business identities.",
+        [Parameter(Mandatory = false, HelpMessage = "Specifies business identities for the integration account partner. It is a nested array, with inner arrays containing the Qualifier as the first object/string and the Value as the second object/string",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public object BusinessIdentities { get; set; }

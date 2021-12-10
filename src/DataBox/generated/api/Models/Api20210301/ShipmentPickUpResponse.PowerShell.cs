@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber = (string) content.GetValueForProperty("ConfirmationNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime = (global::System.DateTime?) content.GetValueForProperty("ReadyByTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ConfirmationNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber = (string) content.GetValueForProperty("ConfirmationNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReadyByTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime = (global::System.DateTime?) content.GetValueForProperty("ReadyByTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber = (string) content.GetValueForProperty("ConfirmationNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime = (global::System.DateTime?) content.GetValueForProperty("ReadyByTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ConfirmationNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber = (string) content.GetValueForProperty("ConfirmationNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ConfirmationNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReadyByTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime = (global::System.DateTime?) content.GetValueForProperty("ReadyByTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpResponseInternal)this).ReadyByTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

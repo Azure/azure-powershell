@@ -36,7 +36,7 @@ Disable last access time tracking for the Azure Storage Blob service.
 Disables Blob Restore Policy on a Storage account.
 
 ### [Disable-AzStorageContainerDeleteRetentionPolicy](Disable-AzStorageContainerDeleteRetentionPolicy.md)
-Disable delete retention policy for Azure Storage blob contatiners.
+Disable delete retention policy for Azure Storage blob containers.
 
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
@@ -54,7 +54,7 @@ Enable last access time tracking for the Azure Storage Blob service.
 Enables Blob Restore Policy on a Storage account.
 
 ### [Enable-AzStorageContainerDeleteRetentionPolicy](Enable-AzStorageContainerDeleteRetentionPolicy.md)
-Enable delete retention policy for Azure Storage blob contatiners.
+Enable delete retention policy for Azure Storage blob containers.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -179,8 +179,14 @@ Gets the stored access policy or policies for an Azure storage table.
 ### [Get-AzStorageUsage](Get-AzStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
 
+### [Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration](Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration.md)
+Migrate an existing Storage blob containers to enable immutable Storage with versioning.
+
 ### [Invoke-AzStorageAccountFailover](Invoke-AzStorageAccountFailover.md)
 Invokes failover of a Storage account.
+
+### [Invoke-AzStorageAccountHierarchicalNamespaceUpgrade](Invoke-AzStorageAccountHierarchicalNamespaceUpgrade.md)
+Validates if a storage account can be upgraded to enable HierarchicalNamespace, or upgrades a Storage account to enabled HierarchicalNamespace.
 
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
@@ -305,6 +311,9 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
 
+### [Remove-AzStorageBlobImmutabilityPolicy](Remove-AzStorageBlobImmutabilityPolicy.md)
+Removes ImmutabilityPolicy of a Storage blob.
+
 ### [Remove-AzStorageBlobInventoryPolicy](Remove-AzStorageBlobInventoryPolicy.md)
 Removes blob inventory policy from a Storage account.
 
@@ -377,8 +386,14 @@ Creates or modifies the management policy of an Azure Storage account.
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
 
+### [Set-AzStorageBlobImmutabilityPolicy](Set-AzStorageBlobImmutabilityPolicy.md)
+Creates or updates ImmutabilityPolicy of a Storage blob.
+
 ### [Set-AzStorageBlobInventoryPolicy](Set-AzStorageBlobInventoryPolicy.md)
 Creates or updates blob inventory policy in a Storage account.
+
+### [Set-AzStorageBlobLegalHold](Set-AzStorageBlobLegalHold.md)
+Enables or disables legal hold on a Storage blob.
 
 ### [Set-AzStorageBlobTag](Set-AzStorageBlobTag.md)
 Set blob tags of a specific blob.
@@ -424,6 +439,9 @@ Start an Incremental copy operation from a Page blob snapshot to the specified d
 
 ### [Start-AzStorageFileCopy](Start-AzStorageFileCopy.md)
 Starts to copy a source file.
+
+### [Stop-AzStorageAccountHierarchicalNamespaceUpgrade](Stop-AzStorageAccountHierarchicalNamespaceUpgrade.md)
+Aborts an ongoing HierarchicalNamespace upgrade task on a storage account.
 
 ### [Stop-AzStorageBlobCopy](Stop-AzStorageBlobCopy.md)
 Stops a copy operation.

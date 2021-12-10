@@ -204,11 +204,11 @@ function Test-SetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true  -EnableHierarchicalNamespace $true;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true  -EnableHierarchicalNamespace $true -PublicNetworkAccess Disabled;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -217,6 +217,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Disabled $sto.PublicNetworkAccess;
         
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
@@ -225,13 +226,15 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Disabled $sto.PublicNetworkAccess;
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false }
+        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false -PublicNetworkAccess Enabled }
         $stotype = 'Standard_RAGRS';
         $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Enabled $sto.PublicNetworkAccess;
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -240,6 +243,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Enabled $sto.PublicNetworkAccess;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -1756,7 +1760,7 @@ function Test-StorageBlobInventory
         #create rule objects
         $rule1 = New-AzStorageBlobInventoryPolicyRule -Name test1 -Disabled -BlobType blockBlob,appendBlob -PrefixMatch abc,edf,eqwewqe,eqwewqreewqe,qwewqewqewqewqewadasd -IncludeSnapshot -IncludeBlobVersion `
 					-Destination $containerName -Format Parquet -Schedule Weekly `
-					-BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Metadata
+					-BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Metadata,AccessTierInferred,Tags
         $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
         $rule3 = New-AzStorageBlobInventoryPolicyRule -Name test3 -Destination $containerName -BlobType appendBlob -PrefixMatch abc1,edf1 -Format Csv -Schedule Weekly -BlobSchemaField Name
 
@@ -1775,7 +1779,7 @@ function Test-StorageBlobInventory
 		Assert-AreEqual "Parquet" $policy1.Rules[0].Definition.Format
 		Assert-AreEqual "Weekly" $policy1.Rules[0].Definition.Schedule
 		Assert-AreEqual "Blob" $policy1.Rules[0].Definition.ObjectType
-		Assert-AreEqual 12 $policy1.Rules[0].Definition.SchemaFields.Count
+		Assert-AreEqual 14 $policy1.Rules[0].Definition.SchemaFields.Count
 		Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeSnapshots
 		Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeBlobVersions
 		Assert-AreEqual 2 $policy1.Rules[0].Definition.Filters.BlobTypes.Count
@@ -1881,7 +1885,7 @@ function Test-StorageBlobInventory
 		Assert-AreEqual "Parquet" $policy3.Rules[0].Definition.Format
 		Assert-AreEqual "Weekly" $policy3.Rules[0].Definition.Schedule
 		Assert-AreEqual "Blob" $policy3.Rules[0].Definition.ObjectType
-		Assert-AreEqual 12 $policy3.Rules[0].Definition.SchemaFields.Count
+		Assert-AreEqual 14 $policy3.Rules[0].Definition.SchemaFields.Count
 		Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeSnapshots
 		Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeBlobVersions
 		Assert-AreEqual 2 $policy3.Rules[0].Definition.Filters.BlobTypes.Count
@@ -1981,7 +1985,7 @@ function Test-NewAzureStorageAccountEnableNfsV3
 				-EnableNfsV3 $true `
 				-EnableHierarchicalNamespace $true `
 				-EnableHttpsTrafficOnly $false `
-				-NetworkRuleSet (@{bypass="Logging,Metrics";defaultAction="allow";virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"})}) 
+				-NetworkRuleSet (@{bypass="Logging,Metrics";defaultAction="deny";virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"})}) 
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -1992,6 +1996,118 @@ function Test-NewAzureStorageAccountEnableNfsV3
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly
         Assert-AreEqual $true $sto.EnableNfsV3
 
+        # valid create container with NFSv3 properties		
+        $containerName = "container"+ $rgname
+        $con = New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -RootSquash RootSquash
+        Assert-AreEqual $false $con.EnableNfsV3AllSquash
+        Assert-AreEqual $true $con.EnableNfsV3RootSquash
+        $con = Update-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -RootSquash NoRootSquash
+        Assert-AreEqual $false $con.EnableNfsV3AllSquash
+        Assert-AreEqual $false $con.EnableNfsV3RootSquash
+        $con = Update-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -RootSquash AllSquash
+        Assert-AreEqual $true $con.EnableNfsV3AllSquash
+        Assert-AreEqual $false $con.EnableNfsV3RootSquash
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Test-AzureStorageAccountHierarchicalNamespaceUpgrade
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageAccountHierarchicalNamespaceUpgrade
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        $rg = New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+		# Create Storage account
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $null $sto.EnableHierarchicalNamespace
+
+		# HierarchicalNamespace upgrade validation and execute upgrade
+		Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $stoname -RequestType Validation		
+		$task = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $stoname -RequestType Upgrade -Force -AsJob
+		$task | Wait-Job
+
+		$sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test AzureStorageAccountWorm
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageAccountWorm
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Disabled 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.Enabled;
+        Assert-AreEqual 1 $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays;
+        Assert-AreEqual Disabled $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.State;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked  }
+        Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.Enabled;
+        Assert-AreEqual 2 $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays;
+        Assert-AreEqual Unlocked $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.State;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -ImmutabilityPolicyState Locked }
+        Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.Enabled;
+        Assert-AreEqual 2 $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays;
+        Assert-AreEqual Locked $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.State;
+		
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
