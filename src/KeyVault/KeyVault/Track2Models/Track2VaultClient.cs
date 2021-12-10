@@ -175,18 +175,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyRotationPolicy(client.GetKeyRotationPolicy(keyName), vaultName, keyName);
         }
 
-        internal PSKeyRotationPolicy UpdateKeyRotationPolicy(string vaultName, string keyName, TimeSpan ExpiresIn)
+        internal PSKeyRotationPolicy UpdateKeyRotationPolicy(string vaultName, string keyName, TimeSpan expiresIn)
         {
             var client = CreateKeyClient(vaultName);
-            return UpdateKeyRotationPolicy(client, vaultName, keyName, ExpiresIn);
-        }
-
-        private PSKeyRotationPolicy UpdateKeyRotationPolicy(KeyClient client, string vaultName, string keyName, TimeSpan ExpiresIn)
-        {
             var policy = new KeyRotationPolicy()
             {
-                ExpiresIn = ExpiresIn
+                ExpiresIn = expiresIn
             };
+
+            return UpdateKeyRotationPolicy(client, vaultName, keyName, policy);
+        }
+
+        private PSKeyRotationPolicy UpdateKeyRotationPolicy(KeyClient client, string vaultName, string keyName, KeyRotationPolicy policy)
+        {
             return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, policy), vaultName, keyName);
         }
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzKeyVaultKeyRotationPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the key rotation policy for the specified key in Key Vault.
 
 ## SYNTAX
 
@@ -18,12 +18,6 @@ Get-AzKeyVaultKeyRotationPolicy [-VaultName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByHsmName
-```
-Get-AzKeyVaultKeyRotationPolicy [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByKeyInputObject
 ```
 Get-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem>
@@ -31,16 +25,26 @@ Get-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet requires the keys/get permission. It returns key rotation policy for the specified key.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key
 ```
 
-{{ Add example description here }}
+```output
+Id              :
+VaultName       : test-kv
+KeyName         : test-key
+LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00]}
+ExpiresIn       :
+CreatedOn       :
+UpdatedOn       :
+```
+
+This cmdlet gets the key rotation policy for test-kv.
 
 ## PARAMETERS
 
@@ -54,21 +58,6 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HsmName
-HSM name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByHsmName
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,7 +83,7 @@ Key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVaultName, ByHsmName
+Parameter Sets: ByVaultName
 Aliases: KeyName
 
 Required: True
@@ -164,3 +153,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Update-AzKeyVaultKeyRotationPolicy.md](./Update-AzKeyVaultKeyRotationPolicy.md)
+
+[Invoke-AzKeyVaultKeyRotation.md](./Invoke-AzKeyVaultKeyRotation.md)

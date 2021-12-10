@@ -8,19 +8,13 @@ schema: 2.0.0
 # Update-AzKeyVaultKeyRotationPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the key rotation policy for the specified key in Key Vault.
 
 ## SYNTAX
 
 ### ByVaultName (Default)
 ```
 Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>] [-VaultName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByHsmName
-```
-Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>] [-HsmName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,16 +25,27 @@ Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>] [-InputObject] <PSKey
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet requires the key update permission. It returns a key rotation policy for the specified key.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$t = New-TimeSpan -Days 50
+Update-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key -ExpiresIn $t
 ```
 
-{{ Add example description here }}
+```output
+Id              : https://test-kv.vault.azure.net/keys/test-key/rotationpolicy
+VaultName       : test-kv
+KeyName         : test-key
+LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00]}
+ExpiresIn       : 50.00:00:00
+CreatedOn       : 12/10/2021 3:21:51 AM +00:00
+UpdatedOn       : 12/10/2021 3:22:14 AM +00:00
+```
+
+These cmdlets set the key rotation policy expiry time of test-key as 50 days.
 
 ## PARAMETERS
 
@@ -60,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiresIn
-ExpiresIn time.
+The time span when the key rotation policy will expire. It should be at least 28 days.
 
 ```yaml
 Type: System.TimeSpan
@@ -69,21 +74,6 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HsmName
-HSM name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByHsmName
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -109,7 +99,7 @@ Key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVaultName, ByHsmName
+Parameter Sets: ByVaultName
 Aliases: KeyName
 
 Required: True
@@ -179,3 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzKeyVaultKeyRotationPolicy.md](./Get-AzKeyVaultKeyRotationPolicy.md)
+
+[Invoke-AzKeyVaultKeyRotation.md](./Invoke-AzKeyVaultKeyRotation.md)

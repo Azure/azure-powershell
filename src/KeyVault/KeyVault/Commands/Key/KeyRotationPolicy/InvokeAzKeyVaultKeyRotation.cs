@@ -1,5 +1,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands.Key.KeyRotationPolicy
@@ -9,20 +11,31 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key.KeyRotationPolicy
     /// </summary>
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotation", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
-    public class InvokeAzKeyVaultKeyRotation : KeyVaultKeyCmdletBase
+    public class InvokeAzKeyVaultKeyRotation : KeyVaultOnlyKeyCmdletBase
     {
+        internal override void NormalizeParameterSets()
+        {
+            if (InputObject != null)
+            {
+                Name = InputObject.Name;
+
+                if (InputObject.IsHsm)
+                {
+                    throw new NotImplementedException("Rotating key on managed HSM is not supported yet");
+                }
+                else
+                {
+                    VaultName = InputObject.VaultName;
+                }
+            }
+
+        }
+
         public override void ExecuteCmdlet()
         {
             NormalizeParameterSets();
 
-            if (string.IsNullOrEmpty(HsmName))
-            {
-                WriteObject(this.Track2DataClient.RotateKey(VaultName, Name));
-            }
-            else
-            {
-                WriteObject(this.Track2DataClient.RotateManagedHsmKey(HsmName, Name));
-            }
+            WriteObject(this.Track2DataClient.RotateKey(VaultName, Name));
         }
     }
 } 

@@ -8,19 +8,13 @@ schema: 2.0.0
 # Invoke-AzKeyVaultKeyRotation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new key version in Key Vault, stores it, then returns the new key.
 
 ## SYNTAX
 
 ### ByVaultName (Default)
 ```
 Invoke-AzKeyVaultKeyRotation [-VaultName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByHsmName
-```
-Invoke-AzKeyVaultKeyRotation [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,16 +25,33 @@ Invoke-AzKeyVaultKeyRotation [-InputObject] <PSKeyVaultKeyIdentityItem>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The cmdlet will rotate the key based on the key policy. It requires the keys/rotate permission. It will returns a new version of the rotate key.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Invoke-AzKeyVaultKeyRotation -VaultName test-kv -Name test-key
 ```
 
-{{ Add example description here }}
+```output
+Vault/HSM Name : test-kv
+Name           : test-key
+Key Type       : RSA
+Key Size       : 2048
+Curve Name     :
+Version        : xxxxxxxxxxxxxx4939xxxxxxxxxxxxxxxx
+Id             : https://test-kv.vault.azure.net:443/keys/test-key/xxxxxxxxxxxxxx4939xxxxxxxxxxxxxxxx
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 12/10/2021 2:57:58 AM
+Updated        : 12/10/2021 2:57:58 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+```
+
+This cmdlet creates a new key version for test-key.
 
 ## PARAMETERS
 
@@ -54,21 +65,6 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HsmName
-HSM name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByHsmName
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,7 +90,7 @@ Key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVaultName, ByHsmName
+Parameter Sets: ByVaultName
 Aliases: KeyName
 
 Required: True
@@ -164,3 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzKeyVaultKeyRotationPolicy.md](./Get-AzKeyVaultKeyRotationPolicy.md)
+
+[Update-AzKeyVaultKeyRotationPolicy.md](./Update-AzKeyVaultKeyRotationPolicy.md)
