@@ -92,7 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("DoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            if (content.Contains("DoubleEncryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("DoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -110,7 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("DoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            if (content.Contains("DoubleEncryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("DoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferencesInternal)this).DoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

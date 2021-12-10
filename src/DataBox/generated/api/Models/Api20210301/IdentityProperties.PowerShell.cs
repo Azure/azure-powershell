@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedProperties) content.GetValueForProperty("UserAssigned",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.UserAssignedPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId = (string) content.GetValueForProperty("UserAssignedResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId, global::System.Convert.ToString);
+            if (content.Contains("UserAssigned"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedProperties) content.GetValueForProperty("UserAssigned",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.UserAssignedPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId = (string) content.GetValueForProperty("UserAssignedResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedProperties) content.GetValueForProperty("UserAssigned",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.UserAssignedPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId = (string) content.GetValueForProperty("UserAssignedResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId, global::System.Convert.ToString);
+            if (content.Contains("UserAssigned"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedProperties) content.GetValueForProperty("UserAssigned",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssigned, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.UserAssignedPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId = (string) content.GetValueForProperty("UserAssignedResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityPropertiesInternal)this).UserAssignedResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

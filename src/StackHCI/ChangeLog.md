@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Promoted Az.StackHCI to GA
+
 ## Version 0.10.0
 * Added Support for AzureStack HCI Attestation (Azure Benefits)
     - New cmdlets: Enable-AzStackHCIAttestation, Disable-AzStackHCIAttestation, Add-AzStackHCIVMAttestation, Remove-AzStackHCIVMAttestation, Get-AzStackHCIVMAttestation

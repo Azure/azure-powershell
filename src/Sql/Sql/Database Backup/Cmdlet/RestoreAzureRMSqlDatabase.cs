@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Backup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -287,6 +288,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
 
+        /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database. This property is only settable for Hyperscale edition databases.")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
@@ -365,6 +373,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 CreateMode = createMode,
                 LicenseType = LicenseType,
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

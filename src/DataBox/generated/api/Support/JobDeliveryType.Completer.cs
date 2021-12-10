@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NonScheduled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NonScheduled", "NonScheduled", global::System.Management.Automation.CompletionResultType.ParameterValue, "NonScheduled");
+                yield return new global::System.Management.Automation.CompletionResult("'NonScheduled'", "NonScheduled", global::System.Management.Automation.CompletionResultType.ParameterValue, "NonScheduled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Scheduled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Scheduled", "Scheduled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Scheduled");
+                yield return new global::System.Management.Automation.CompletionResult("'Scheduled'", "Scheduled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Scheduled");
             }
         }
     }
