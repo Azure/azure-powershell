@@ -30,6 +30,7 @@
 
 #### Az.Automation
 * Fixed example in reference doc for 'Remove-AzAutomationHybridWorkerGroup'
+* Updated 'Set-AzAutomationModule' to use PUT call while updating modules with specific versions [#12552]
 
 #### Az.CloudService
 * General availability of 'Az.CloudService' module
