@@ -19,9 +19,9 @@ Describe 'Remove-AzSentinelEntityQuery' {
         { Remove-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveentityQueryActivityId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $entityQuery = Get-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.RemoveViaIdentityQueryActivityId
-        { $entityQuery | Remove-AzSentinelEntityQuery } | Should -Not -Throw
+        { Remove-AzSentinelEntityQuery -InputObject $entityQuery } | Should -Not -Throw
     }
 }

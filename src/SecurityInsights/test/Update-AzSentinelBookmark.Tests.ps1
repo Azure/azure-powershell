@@ -22,8 +22,8 @@ Describe 'Update-AzSentinelBookmark' {
         $bookmark.DisplayName | Should -Be "UpdateBookmarkPSTest"
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        $bookmark = Update-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+    It 'UpdateViaIdentityExpanded' {
+        $bookmark = Get-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.UpdateBookmarkId
         $bookmarkUpdate = Update-AzSentinelBookmark -InputObject $bookmark -DisplayName "UpdateBookmarkPSTest"
         $bookmarkUpdate.DisplayName | Should -Be "UpdateBookmarkPSTest"

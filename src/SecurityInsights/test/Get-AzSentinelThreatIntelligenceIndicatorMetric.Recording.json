@@ -1,0 +1,43 @@
+{
+  "Get-AzSentinelThreatIntelligenceIndicatorMetric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "235" ],
+        "x-ms-client-request-id": [ "13903039-a3c7-45c0-87bf-f121e21932a0" ],
+        "CommandName": [ "Get-AzSentinelthreatIntelligenceIndicatorMetric" ],
+        "FullCommandName": [ "Get-AzSentinelThreatIntelligenceIndicatorMetric_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
+        "x-ms-request-id": [ "ab5f8907-6953-427d-8fbe-fb1671d65579" ],
+        "x-ms-correlation-request-id": [ "ab5f8907-6953-427d-8fbe-fb1671d65579" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T020401Z:ab5f8907-6953-427d-8fbe-fb1671d65579" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:04:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "275" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"lastUpdatedTimeUtc\":\"2021-12-12T02:04:01.6827262Z\",\"threatTypeMetrics\":[{\"metricName\":\"unknown\",\"metricValue\":5}],\"patternTypeMetrics\":[{\"metricName\":\"ipv4-addr\",\"metricValue\":5}],\"sourceMetrics\":[{\"metricName\":\"Azure Sentinel\",\"metricValue\":5}]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

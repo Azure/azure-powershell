@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "dataConnectorId": {
-      "value": "81efb0ff-d0cf-4e03-917f-fd01a575ee71"
+      "value": "88da8507-46cb-4c34-9cf3-189e58b34c9e"
     },
     "updateDataConnectorId": {
-      "value": "eb33c133-281f-45fe-94e2-f1bd15dfdda8"
+      "value": "b4b8bb52-2917-4179-a28d-fb197dc52aa6"
     },
     "workspaceName": {
-      "value": "asptestpnu4xc"
+      "value": "asptest8xu4wd"
     }
   }
 }

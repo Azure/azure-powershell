@@ -29,7 +29,7 @@ Describe 'Get-AzSentinelEntityQueryTemplate' {
     It 'GetViaIdentity' -skip {
         $entityQueryTemplates = Get-AzSentinelentityQueryTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $entityQueryTemplate = Get-AzSentinelentityQueryTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $entityQueryTemplates[0].Name
-        $entityQueryTemplateViaId = $entityQueryTemplate | Get-AzSentinelentityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
+        $entityQueryTemplateViaId = Get-AzSentinelentityQuery -InputObject $entityQueryTemplate
         $entityQueryTemplateViaId.Name | Should -Be $entityQueryTemplates[0].Name
     }
 }

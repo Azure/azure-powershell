@@ -20,10 +20,10 @@ Describe 'Update-AzSentinelEntityQuery' {
             -EntityQueryId $env.UpdateentityQueryActivityId -Title "UpdateEntityQueryPSTest"
         $entityQuery.Title | Should -Be "UpdateEntityQueryPSTest"
     }
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $entityQuery = Get-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -EntityQueryId $env.UpdateViaIdentityQueryActivityId 
-        $entityQueryUpdate = $entityQuery | Update-AzSentinelEntityQuery -Title "UpdateEntityQueryPSTest"
+        $entityQueryUpdate = Update-AzSentinelEntityQuery -InputObject $entityQuery -Title "UpdateEntityQueryPSTest"
         $entityQueryUpdate.Title | Should -Be "UpdateEntityQueryPSTest"
     }
 }

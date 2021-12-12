@@ -19,13 +19,6 @@ Update-AzSentinelIncidentRelation -IncidentId <String> -RelationName <String> -R
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzSentinelIncidentRelation -IncidentId <String> -RelationName <String> -ResourceGroupName <String>
- -WorkspaceName <String> -Relation <IRelation> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSentinelIncidentRelation -InputObject <ISecurityInsightsIdentity> [-RelatedResourceId <String>]
@@ -77,7 +70,7 @@ Incident ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -108,7 +101,7 @@ The resource ID of the related resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,28 +111,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Relation
-Represents a relation between two resources
-To construct, see NOTES section for RELATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -RelationName
 Relation Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -155,7 +132,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -170,7 +147,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +162,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -231,8 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
-
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
@@ -271,16 +246,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[SourceControlId <String>]`: Source control Id
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
-
-RELATION <IRelation>: Represents a relation between two resources
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[RelatedResourceId <String>]`: The resource ID of the related resource
 
 ## RELATED LINKS
 

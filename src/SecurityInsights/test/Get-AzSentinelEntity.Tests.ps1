@@ -26,10 +26,10 @@ Describe 'Get-AzSentinelEntity' {
         $entity.Name | Should -Be $entities[0].Name
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $entities = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $entity = Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $entities[0].Name
-        $entityViaId = $entity | Get-AzSentinelentity -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
+        $entityViaId = Get-AzSentinelentity -InputObject $entity
         $entityViaId.Name | Should -Be $entities[0].Name
     }
 }

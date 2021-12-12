@@ -30,7 +30,7 @@ Describe 'Remove-AzSentinelMetadata' {
         { Remove-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $metadata.Name} | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $metaDependencies = [ Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MetadataDependencies]::new()
         $metaDependencies.Kind = "Workbook"
         $metaDependencies.ContentId = "InsiderRiskManagement_workbook"
@@ -42,6 +42,6 @@ Describe 'Remove-AzSentinelMetadata' {
             -Provider "Microsoft" -SourceId "azuresentinel.azure-sentinel-solution-insiderriskmanagement" -SourceKind "Solution" `
             -SourceName "MicrosoftInsiderRiskManagement" -SupportEmail "support@microsoft.com" -SupportLink "https://support.microsoft.com" `
             -SupportName "Microsoft Corporation" -SupportTier "Microsoft" -Version "1.0.3" -DependencyCriterion $metaDependencies
-        { $metadata = Remove-AzSentinelMetadata -InputObject $metadata } | Should -Not -Throw
+        { Remove-AzSentinelMetadata -InputObject $metadata } | Should -Not -Throw
     }
 }

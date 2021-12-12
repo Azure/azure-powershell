@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelDataConnector' {
         $dataConnector.Name | Should -Be $env.dataConnectorId
     }
 
-    It 'GetViaIdentity' -skip  {
+    It 'GetViaIdentity'  {
         $dataConnector = Get-AzSentineldataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.dataConnectorId
-        $dataConnectorViaIdentity = $dataConnector | Get-AzSentineldataConnector
+        $dataConnectorViaIdentity = Get-AzSentineldataConnector -InputObject $dataConnector
         $dataConnectorViaIdentity.Name | Should -Be $env.dataConnectorId
     }
 }

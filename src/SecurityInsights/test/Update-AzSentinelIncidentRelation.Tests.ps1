@@ -20,19 +20,17 @@ Describe 'Update-AzSentinelIncidentRelation' {
             -WorkspaceName $env.workspaceName -DisplayName "UpdateIncidentRelationPSTest" -Query "SecurityEvent\n| take 1" `
             -QueryStartTime (get-date).ToUniversalTime() -QueryEndTime (get-date).AddDays(-1).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incidentRelation = Update-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -IncidentId $env.UpdateincidentCommentIncidentId -RelationName $env.UpdateincidentRelationId -RelatedResourceId $bookmark.Id
+            -IncidentId $env.UpdateincidentRelationIncidentId -RelationName $env.UpdateincidentRelationId -RelatedResourceId $bookmark.Id
         $incidentRelation.RelatedResourceId | should -be $bookmark.id
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        $queryStartTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
-        $queryEndTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+    It 'UpdateViaIdentityExpanded' {
         $bookmark = New-AzSentinelBookmark -Id ((New-Guid).Guid) -ResourceGroupName $env.resourceGroupName `
             -WorkspaceName $env.workspaceName -DisplayName "UpdateIncidentRelationPSTest" -Query "SecurityEvent\n| take 1" `
-            -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime
+            -QueryStartTime (get-date).ToUniversalTime() -QueryEndTime (get-date).AddDays(-1).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incidentRelation = Get-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -IncidentId $env.UpdateViaIdincidentCommentIncidentId -RelationName $env.UpdateViaIdincidentRelationId 
-        $incidentRelationUpdate = $IncidentRelation | Update-AzSentinelIncidentRelation -RelatedResourceId $bookmark.Id
+            -IncidentId $env.UpdateViaIdincidentRelationIncidentId -RelationName $env.UpdateViaIdincidentRelationId 
+        $incidentRelationUpdate = Update-AzSentinelIncidentRelation -InputObject $IncidentRelation -RelatedResourceId $bookmark.Id
         $incidentRelationUpdate.RelatedResourceId | should -be $bookmark.id
     }
 }

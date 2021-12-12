@@ -19,9 +19,9 @@ Describe 'Remove-AzSentinelBookmark' {
         { Remove-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveBookmarkId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $bookmark = Get-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
         -Id $env.RemoveViaIdBookmarkId
-        {$bookmark | Remove-AzSentinelBookmark } | Should -Not -Throw
+        { Remove-AzSentinelBookmark -InputObject $bookmark } | Should -Not -Throw
     }
 }

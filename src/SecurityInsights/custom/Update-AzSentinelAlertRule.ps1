@@ -76,6 +76,30 @@ function Update-AzSentinelAlertRule {
         ${InputObject},
 
         [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${FusionMLorTI},
+
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${MicrosoftSecurityIncidentCreation},
+
+        [Parameter(ParameterSetName = 'UpdateNRT')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${NRT},
+
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${Scheduled},
+
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -408,6 +432,10 @@ function Update-AzSentinelAlertRule {
 
     process {
         try {
+            $null = $PSBoundParameters.Remove('FusionMLorTI')
+            $null = $PSBoundParameters.Remove('MicrosoftSecurityIncidentCreation')
+            $null = $PSBoundParameters.Remove('NRT')
+            $null = $PSBoundParameters.Remove('Scheduled')
             #Handle Get
             $GetPSBoundParameters = @{}
             if($PSBoundParameters['InputObject']){

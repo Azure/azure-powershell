@@ -1,0 +1,38 @@
+{
+  "New-AzSentinelIncident+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/incidents/0e4bfdc2-dfdf-46a5-88e8-f8184be9d9aa?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/incidents/0e4bfdc2-dfdf-46a5-88e8-f8184be9d9aa?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"severity\": \"Informational\",\n    \"status\": \"New\",\n    \"title\": \"NewIncidentPSTest\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "112" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
+        "x-ms-request-id": [ "2c3ed61a-6a11-4eb0-97c9-554725d92685" ],
+        "x-ms-correlation-request-id": [ "2c3ed61a-6a11-4eb0-97c9-554725d92685" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T020747Z:2c3ed61a-6a11-4eb0-97c9-554725d92685" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:07:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1213" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Incidents/0e4bfdc2-dfdf-46a5-88e8-f8184be9d9aa\",\"name\":\"0e4bfdc2-dfdf-46a5-88e8-f8184be9d9aa\",\"etag\":\"\\\"3c006b7a-0000-0100-0000-61b559730000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents\",\"properties\":{\"title\":\"NewIncidentPSTest\",\"severity\":\"Informational\",\"status\":\"New\",\"owner\":{\"objectId\":null,\"email\":null,\"assignedTo\":null,\"userPrincipalName\":null,\"ownerType\":null},\"labels\":[],\"lastModifiedTimeUtc\":\"2021-12-12T02:07:47.5655543Z\",\"createdTimeUtc\":\"2021-12-12T02:07:47.5655543Z\",\"incidentNumber\":23,\"additionalData\":{\"alertsCount\":0,\"bookmarksCount\":0,\"commentsCount\":0,\"alertProductNames\":[],\"tactics\":[]},\"relatedAnalyticRuleIds\":[],\"incidentUrl\":\"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Incidents/0e4bfdc2-dfdf-46a5-88e8-f8184be9d9aa\",\"providerName\":\"Azure Sentinel\",\"providerIncidentId\":\"23\"}}",
+      "isContentBase64": false
+    }
+  }
+}

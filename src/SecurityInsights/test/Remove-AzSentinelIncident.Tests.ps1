@@ -19,9 +19,9 @@ Describe 'Remove-AzSentinelIncident' {
         { Remove-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveincidentId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $incident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.RemoveViaIdincidentId
-        { $incident | Remove-AzSentinelIncident } | Should -Not -Throw
+        { Remove-AzSentinelIncident -InputObject $incident } | Should -Not -Throw
     }
 }

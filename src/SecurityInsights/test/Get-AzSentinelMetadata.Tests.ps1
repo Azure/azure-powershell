@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelMetadata' {
         $metadata.Name | Should -Be $env.metadataName
     }
 
-    It 'GetViaIdentity' -Skip {
+    It 'GetViaIdentity' {
         $metadata = Get-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -name $env.metadataName
-        $metadataViaIdentity = $metadata | Get-AzSentinelMetadata -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
+        $metadataViaIdentity = Get-AzSentinelMetadata -InputObject $metadata
         $metadataViaIdentity.Name | Should -Be $env.metadataName
     }
 }

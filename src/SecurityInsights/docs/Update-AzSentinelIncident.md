@@ -24,13 +24,6 @@ Update-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceNam
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Incident <IIncident> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSentinelIncident -InputObject <ISecurityInsightsIdentity> [-Classification <IncidentClassification>]
@@ -72,7 +65,7 @@ The reason the incident was closed
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -87,7 +80,7 @@ Describes the reason the incident was closed
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,7 +95,7 @@ The classification reason the incident was closed with
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +125,7 @@ The description of the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +140,7 @@ The time of the first activity in the incident
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -162,29 +155,13 @@ Incident ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: IncidentId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Incident
-Represents an incident in Azure Security Insights.
-To construct, see NOTES section for INCIDENT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -210,7 +187,7 @@ To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -225,7 +202,7 @@ The time of the last activity in the incident
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -240,7 +217,7 @@ The name of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -255,7 +232,7 @@ The email of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -270,7 +247,7 @@ The object id of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,7 +262,7 @@ The user principal name of the user the incident is assigned to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -300,7 +277,7 @@ The incident ID assigned by the incident provider
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -315,7 +292,7 @@ The name of the source provider that generated the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -331,7 +308,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -346,7 +323,7 @@ The severity of the incident
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -361,7 +338,7 @@ The status of the incident
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -376,7 +353,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -391,7 +368,7 @@ The title of the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -406,7 +383,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -452,8 +429,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
-
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
@@ -468,32 +443,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Classification <IncidentClassification?>]`: The reason the incident was closed
-  - `[ClassificationComment <String>]`: Describes the reason the incident was closed
-  - `[ClassificationReason <IncidentClassificationReason?>]`: The classification reason the incident was closed with
-  - `[Description <String>]`: The description of the incident
-  - `[FirstActivityTimeUtc <DateTime?>]`: The time of the first activity in the incident
-  - `[Label <IIncidentLabel[]>]`: List of labels relevant to this incident
-    - `LabelName <String>`: The name of the label
-  - `[LastActivityTimeUtc <DateTime?>]`: The time of the last activity in the incident
-  - `[OwnerAssignedTo <String>]`: The name of the user the incident is assigned to.
-  - `[OwnerEmail <String>]`: The email of the user the incident is assigned to.
-  - `[OwnerObjectId <String>]`: The object id of the user the incident is assigned to.
-  - `[OwnerUserPrincipalName <String>]`: The user principal name of the user the incident is assigned to.
-  - `[ProviderIncidentId <String>]`: The incident ID assigned by the incident provider
-  - `[ProviderName <String>]`: The name of the source provider that generated the incident
-  - `[Severity <IncidentSeverity?>]`: The severity of the incident
-  - `[Status <IncidentStatus?>]`: The status of the incident
-  - `[Title <String>]`: The title of the incident
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID

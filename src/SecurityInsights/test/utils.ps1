@@ -118,7 +118,7 @@ function setupEnv() {
         $null = $env.Add('Playbook4TriggerUrl', ($deployResult.properties.Outputs.Playbook4triggerUrl.value))
     }
     
-
+    
     #Create Alert Rules
     Write-Host "Start to create test alert rules"
     Create-AlertRule -PSVerb Get -WorkspaceName $env.workspaceName
@@ -183,7 +183,8 @@ function setupEnv() {
     $TemplateFile = (Get-ChildItem $TemplatePath\authorization\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\authorization\template.parameters.json).FullName
     $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Authorization -ResourceGroupName $resourceGroupName
-    
+    start-sleep 60
+
     #Create Automation Rule
     Write-Host "Start to create test automation rule"
     Create-AutomationRule -PSVerb Get -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook2LogicAppResourceId
@@ -207,12 +208,11 @@ function setupEnv() {
 
     #Create Bookmark Realtion
     Write-Host "Start to create test bookmark Relation"
-    # BUG....emailed Ben Nick on 11/11
-    #Create-BookmarkRelation -PSVerb Get -WorkspaceName $env.workspaceName
-    #Create-BookmarkRelation -PSVerb Remove -WorkspaceName $env.workspaceName
-    #Create-BookmarkRelation -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
-    #Create-BookmarkRelation -PSVerb Update -WorkspaceName $env.workspaceName
-    #Create-BookmarkRelation -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
+    Create-BookmarkRelation -PSVerb Get -WorkspaceName $env.workspaceName
+    Create-BookmarkRelation -PSVerb Remove -WorkspaceName $env.workspaceName
+    Create-BookmarkRelation -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
+    Create-BookmarkRelation -PSVerb Update -WorkspaceName $env.workspaceName
+    Create-BookmarkRelation -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
 
     #Create DataConnector
     Write-Host "Start to create test dataConnector"

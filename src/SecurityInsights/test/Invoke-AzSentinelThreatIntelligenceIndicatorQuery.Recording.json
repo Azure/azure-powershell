@@ -1,0 +1,38 @@
+{
+  "Invoke-AzSentinelThreatIntelligenceIndicatorQuery+[NoContext]+QueryExpanded+$POST+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/main/queryIndicators?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/main/queryIndicators?api-version=2021-09-01-preview",
+      "Content": "{\n  \"pageSize\": 10,\n  \"includeDisabled\": true\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "47" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11939" ],
+        "x-ms-request-id": [ "6ffbdd72-7b6b-47e7-bbf5-5f789fdd5f19" ],
+        "x-ms-correlation-request-id": [ "6ffbdd72-7b6b-47e7-bbf5-5f789fdd5f19" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T020450Z:6ffbdd72-7b6b-47e7-bbf5-5f789fdd5f19" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:04:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4753" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/e43bf713-da7f-8329-80bb-e1556c70abdd\",\"name\":\"e43bf713-da7f-8329-80bb-e1556c70abdd\",\"etag\":\"\\\"00004c9d-0000-0200-0000-61b555c10000\\\"\",\"type\":\"Microsoft.SecurityInsights/threatIntelligence\",\"kind\":\"indicator\",\"properties\":{\"confidence\":0,\"created\":\"2021-12-12T01:51:49.8349782Z\",\"externalId\":\"indicator--1a8e6023-38be-4bf1-92a9-d0f8bff496f3\",\"lastUpdatedTimeUtc\":\"2021-12-12T01:51:49.8423586Z\",\"revoked\":false,\"source\":\"Azure Sentinel\",\"displayName\":\"UpdateViaIdthreatIntelligenceIndicatorol6dht\",\"threatTypes\":[\"unknown\"],\"parsedPattern\":[{\"patternTypeKey\":\"ipv4-addr\",\"patternTypeValues\":[{\"valueType\":\"ipv4-addr\",\"value\":\"8.8.8.5\"}]}],\"pattern\":\"[ipv4-addr:value = \u00278.8.8.5\u0027]\",\"patternType\":\"ipv4-addr\",\"validFrom\":\"2021-12-12T01:00:00Z\"}},{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/857acee8-b9d5-9c49-56c4-93496d0bf3bf\",\"name\":\"857acee8-b9d5-9c49-56c4-93496d0bf3bf\",\"etag\":\"\\\"00004a9d-0000-0200-0000-61b555b60000\\\"\",\"type\":\"Microsoft.SecurityInsights/threatIntelligence\",\"kind\":\"indicator\",\"properties\":{\"confidence\":0,\"created\":\"2021-12-12T01:51:48.9401782Z\",\"externalId\":\"indicator--2310bb8d-83b8-4d07-b46a-082da3184294\",\"lastUpdatedTimeUtc\":\"2021-12-12T01:51:48.9404217Z\",\"revoked\":false,\"source\":\"Azure Sentinel\",\"displayName\":\"UpdatethreatIntelligenceIndicator9tg8p7\",\"threatTypes\":[\"unknown\"],\"parsedPattern\":[{\"patternTypeKey\":\"ipv4-addr\",\"patternTypeValues\":[{\"valueType\":\"ipv4-addr\",\"value\":\"8.8.8.4\"}]}],\"pattern\":\"[ipv4-addr:value = \u00278.8.8.4\u0027]\",\"patternType\":\"ipv4-addr\",\"validFrom\":\"2021-12-12T01:00:00Z\"}},{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/b37ddba1-7a4f-1feb-9959-e1161d3bf335\",\"name\":\"b37ddba1-7a4f-1feb-9959-e1161d3bf335\",\"etag\":\"\\\"0000459d-0000-0200-0000-61b555b40000\\\"\",\"type\":\"Microsoft.SecurityInsights/threatIntelligence\",\"kind\":\"indicator\",\"properties\":{\"confidence\":0,\"created\":\"2021-12-12T01:51:48.0131394Z\",\"externalId\":\"indicator--01627cbb-77f2-4832-9dbe-9c3cf232ddef\",\"lastUpdatedTimeUtc\":\"2021-12-12T01:51:48.0976111Z\",\"revoked\":false,\"source\":\"Azure Sentinel\",\"displayName\":\"RemoveViaIdthreatIntelligenceIndicatornqcsd9\",\"threatTypes\":[\"unknown\"],\"parsedPattern\":[{\"patternTypeKey\":\"ipv4-addr\",\"patternTypeValues\":[{\"valueType\":\"ipv4-addr\",\"value\":\"8.8.8.3\"}]}],\"pattern\":\"[ipv4-addr:value = \u00278.8.8.3\u0027]\",\"patternType\":\"ipv4-addr\",\"validFrom\":\"2021-12-12T01:00:00Z\"}},{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/ccfb7869-be18-0f44-ff2c-a9b36e598fd1\",\"name\":\"ccfb7869-be18-0f44-ff2c-a9b36e598fd1\",\"etag\":\"\\\"0000429d-0000-0200-0000-61b555b30000\\\"\",\"type\":\"Microsoft.SecurityInsights/threatIntelligence\",\"kind\":\"indicator\",\"properties\":{\"confidence\":0,\"created\":\"2021-12-12T01:51:46.6007607Z\",\"externalId\":\"indicator--f7049b64-f651-4bd5-8324-3d13dc40ebc7\",\"lastUpdatedTimeUtc\":\"2021-12-12T01:51:46.8679787Z\",\"revoked\":false,\"source\":\"Azure Sentinel\",\"displayName\":\"RemovethreatIntelligenceIndicatorows6tu\",\"threatTypes\":[\"unknown\"],\"parsedPattern\":[{\"patternTypeKey\":\"ipv4-addr\",\"patternTypeValues\":[{\"valueType\":\"ipv4-addr\",\"value\":\"8.8.8.2\"}]}],\"pattern\":\"[ipv4-addr:value = \u00278.8.8.2\u0027]\",\"patternType\":\"ipv4-addr\",\"validFrom\":\"2021-12-12T01:00:00Z\"}},{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/threatIntelligence/711bdb9e-2ecc-abba-d962-171ce4710199\",\"name\":\"711bdb9e-2ecc-abba-d962-171ce4710199\",\"etag\":\"\\\"00004b9d-0000-0200-0000-61b555c00000\\\"\",\"type\":\"Microsoft.SecurityInsights/threatIntelligence\",\"kind\":\"indicator\",\"properties\":{\"confidence\":0,\"created\":\"2021-12-12T01:51:42.7595857Z\",\"externalId\":\"indicator--6990ddd5-505d-42ac-9880-ab23363f30c7\",\"lastUpdatedTimeUtc\":\"2021-12-12T01:51:45.3738433Z\",\"revoked\":false,\"source\":\"Azure Sentinel\",\"displayName\":\"GetthreatIntelligenceIndicator2c47h8\",\"threatTypes\":[\"unknown\"],\"parsedPattern\":[{\"patternTypeKey\":\"ipv4-addr\",\"patternTypeValues\":[{\"valueType\":\"ipv4-addr\",\"value\":\"8.8.8.1\"}]}],\"pattern\":\"[ipv4-addr:value = \u00278.8.8.1\u0027]\",\"patternType\":\"ipv4-addr\",\"validFrom\":\"2021-12-12T01:00:00Z\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

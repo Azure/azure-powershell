@@ -1,0 +1,125 @@
+{
+  "Remove-AzSentinelBookmarkRelation+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/bookmarks/20d8a730-18a5-4a76-9420-a32e46ce5888/relations/adad6e56-9f94-4fba-ba3b-96f4616cdf68?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/bookmarks/20d8a730-18a5-4a76-9420-a32e46ce5888/relations/adad6e56-9f94-4fba-ba3b-96f4616cdf68?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "281" ],
+        "x-ms-client-request-id": [ "a8e52b88-2b95-4183-bda7-9b192bbe6eea" ],
+        "CommandName": [ "Remove-AzSentinelBookmarkRelation" ],
+        "FullCommandName": [ "Remove-AzSentinelBookmarkRelation_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
+        "x-ms-request-id": [ "e563fe49-40fd-4119-95b8-af7c4c887deb" ],
+        "x-ms-correlation-request-id": [ "e563fe49-40fd-4119-95b8-af7c4c887deb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021156Z:e563fe49-40fd-4119-95b8-af7c4c887deb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:11:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSentinelBookmarkRelation+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/bookmarks/675541b3-2ae4-4199-b3b3-59f4b6c1f5b4/relations/e6624397-ccd0-42fd-98b4-9730d7baa0e2?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/bookmarks/675541b3-2ae4-4199-b3b3-59f4b6c1f5b4/relations/e6624397-ccd0-42fd-98b4-9730d7baa0e2?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "282" ],
+        "x-ms-client-request-id": [ "0e9b0a62-8442-402b-8a94-7512c9c6a6c8" ],
+        "CommandName": [ "Get-AzSentinelBookmarkRelation" ],
+        "FullCommandName": [ "Get-AzSentinelBookmarkRelation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11935" ],
+        "x-ms-request-id": [ "cc098520-2b65-4165-9046-f57ce899c1ca" ],
+        "x-ms-correlation-request-id": [ "cc098520-2b65-4165-9046-f57ce899c1ca" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021156Z:cc098520-2b65-4165-9046-f57ce899c1ca" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:11:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "828" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Bookmarks/675541b3-2ae4-4199-b3b3-59f4b6c1f5b4/relations/e6624397-ccd0-42fd-98b4-9730d7baa0e2\",\"name\":\"e6624397-ccd0-42fd-98b4-9730d7baa0e2\",\"etag\":\"\\\"6b0254b0-0000-0100-0000-61b552a20000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/Incidents/7d56a89d-59f4-4b3a-aa71-34494c2f5f5c\",\"relatedResourceName\":\"7d56a89d-59f4-4b3a-aa71-34494c2f5f5c\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Incidents\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSentinelBookmarkRelation+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/bookmarks/675541b3-2ae4-4199-b3b3-59f4b6c1f5b4/relations/e6624397-ccd0-42fd-98b4-9730d7baa0e2?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/bookmarks/675541b3-2ae4-4199-b3b3-59f4b6c1f5b4/relations/e6624397-ccd0-42fd-98b4-9730d7baa0e2?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "283" ],
+        "x-ms-client-request-id": [ "75dedba1-e385-4668-82f4-9d6186ef3845" ],
+        "CommandName": [ "Remove-AzSentinelBookmarkRelation" ],
+        "FullCommandName": [ "Remove-AzSentinelBookmarkRelation_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14990" ],
+        "x-ms-request-id": [ "a0f51d36-ff18-4054-9f30-8877d6bd7f4a" ],
+        "x-ms-correlation-request-id": [ "a0f51d36-ff18-4054-9f30-8877d6bd7f4a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021157Z:a0f51d36-ff18-4054-9f30-8877d6bd7f4a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:11:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  }
+}

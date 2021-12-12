@@ -1,0 +1,38 @@
+{
+  "Update-AzSentinelAlertRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/98981b11-0c0a-40bb-adc9-63f3693592bf?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/98981b11-0c0a-40bb-adc9-63f3693592bf?api-version=2021-09-01-preview",
+      "Content": "{\n  \"etag\": \"\\\"9200241b-0000-0100-0000-61b54fb50000\\\"\",\n  \"kind\": \"Scheduled\",\n  \"properties\": {\n    \"eventGroupingSettings\": {\n      \"aggregationKind\": \"SingleAlert\"\n    },\n    \"queryFrequency\": \"P1D\",\n    \"queryPeriod\": \"P1D\",\n    \"triggerOperator\": \"GreaterThan\",\n    \"triggerThreshold\": 0,\n    \"incidentConfiguration\": {\n      \"groupingConfiguration\": {\n        \"enabled\": false,\n        \"reopenClosedIncident\": false,\n        \"lookbackDuration\": \"PT5H\",\n        \"matchingMethod\": \"AllEntities\",\n        \"groupByEntities\": [ ]\n      },\n      \"createIncident\": false\n    },\n    \"description\": \"UpdateAlertRulevi15sc 98981b11-0c0a-40bb-adc9-63f3693592bf\",\n    \"query\": \"SecurityEvent\\n| take 1\",\n    \"displayName\": \"UpdateAlertRulevi15sc\",\n    \"enabled\": true,\n    \"suppressionDuration\": \"PT5H\",\n    \"suppressionEnabled\": false,\n    \"severity\": \"Informational\",\n    \"tactics\": [ \"Execution\" ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "900" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-request-id": [ "6ca0716c-8691-4fe1-ba57-92dd0e89a9a1" ],
+        "x-ms-correlation-request-id": [ "6ca0716c-8691-4fe1-ba57-92dd0e89a9a1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021541Z:6ca0716c-8691-4fe1-ba57-92dd0e89a9a1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:15:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1171" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/alertRules/98981b11-0c0a-40bb-adc9-63f3693592bf\",\"name\":\"98981b11-0c0a-40bb-adc9-63f3693592bf\",\"etag\":\"\\\"9400d13c-0000-0100-0000-61b55b4d0000\\\"\",\"type\":\"Microsoft.SecurityInsights/alertRules\",\"kind\":\"Scheduled\",\"properties\":{\"incidentConfiguration\":{\"createIncident\":false,\"groupingConfiguration\":{\"enabled\":false,\"reopenClosedIncident\":false,\"lookbackDuration\":\"PT5H\",\"matchingMethod\":\"AllEntities\",\"groupByEntities\":[],\"groupByAlertDetails\":null,\"groupByCustomDetails\":null}},\"queryFrequency\":\"P1D\",\"queryPeriod\":\"P1D\",\"triggerOperator\":\"GreaterThan\",\"triggerThreshold\":0,\"eventGroupingSettings\":{\"aggregationKind\":\"SingleAlert\"},\"severity\":\"Informational\",\"query\":\"SecurityEvent\\n| take 1\",\"suppressionDuration\":\"PT5H\",\"suppressionEnabled\":false,\"tactics\":[\"Execution\"],\"displayName\":\"UpdateAlertRulevi15sc\",\"enabled\":true,\"description\":\"UpdateAlertRulevi15sc 98981b11-0c0a-40bb-adc9-63f3693592bf\",\"alertRuleTemplateName\":null,\"lastModifiedUtc\":\"2021-12-12T02:15:39.3269202Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelIncidentRelation' {
         $incidentRelation.Name | Should -Be $env.GetincidentRelationId
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId -RelationName $env.GetincidentRelationId
-        $incidentRelationViaIdentity = $incidentRelation | Get-AzSentinelincidentRelation
+        $incidentRelationViaIdentity = Get-AzSentinelincidentRelation -InputObject $incidentRelation
         $incidentRelationViaIdentity.Name | Should -Be $env.GetincidentRelationId
     }
 }

@@ -22,8 +22,9 @@ Describe 'Update-AzSentinelDataConnector' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $dataConnector = Update-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -DataConnectorId $env.updateDataConnectorId -Teams "Enabled"
-        $dataConnector.TeamState | Should -Be "Enabled"
+        $dataConnector = Get-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+            -DataConnectorId $env.updateDataConnectorId
+        $dataConnectorUpdate = Update-AzSentinelDataConnector -InputObject $dataConnector -Teams "Enabled"
+        $dataConnectorUpdate.TeamState | Should -Be "Enabled"
     }
 }

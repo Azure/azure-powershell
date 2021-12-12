@@ -21,6 +21,7 @@ Describe 'Add-AzSentinelThreatIntelligenceIndicatorTag' {
     } 
 
     It 'AppendViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $tiIndicator = -Get-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.GetthreatIntelligenceIndicatorId
+        { Add-AzSentinelThreatIntelligenceIndicatorTag -InputObject $tiIndicator -ThreatIntelligenceTag @("TestTag") } | Should -Not -Throw
     }
 }

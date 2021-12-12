@@ -1,0 +1,43 @@
+{
+  "Remove-AzSentinelOnboardingState+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptestdlvh1s/providers/Microsoft.SecurityInsights/onboardingStates/default?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptestdlvh1s/providers/Microsoft.SecurityInsights/onboardingStates/default?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "304" ],
+        "x-ms-client-request-id": [ "a1499210-7039-49aa-8d0a-efbddac44cb5" ],
+        "CommandName": [ "Remove-AzSentinelOnboardingState" ],
+        "FullCommandName": [ "Remove-AzSentinelOnboardingState_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14981" ],
+        "x-ms-request-id": [ "0a1c6133-0e9e-4d99-b392-2a7de9d73fea" ],
+        "x-ms-correlation-request-id": [ "0a1c6133-0e9e-4d99-b392-2a7de9d73fea" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021455Z:0a1c6133-0e9e-4d99-b392-2a7de9d73fea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:14:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelBookmark' {
         $bookmark.Name | Should -Be $env.GetbookmarkId
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $bookmark = Get-AzSentinelbookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetbookmarkId
-        $bookmarkViaIdentity = $bookmark | Get-AzSentinelbookmark
+        $bookmarkViaIdentity = Get-AzSentinelbookmark -InputObject $bookmark
         $bookmarkViaIdentity.Name | Should -Be $env.GetbookmarkId
     }
 }

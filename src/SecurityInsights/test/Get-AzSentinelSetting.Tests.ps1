@@ -27,7 +27,7 @@ Describe 'Get-AzSentinelSetting' {
 
     It 'GetViaIdentity' -skip {
         $setting = Get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName "Anomalies"
-        $settingViaId = $setting | Get-AzSentinelonboardingState -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
+        $settingViaId = Get-AzSentinelonboardingState -InputObject $setting
         $settingViaId.Name | Should -Be "Anomalies"
     }
 }

@@ -22,7 +22,7 @@ Describe 'Update-AzSentinelAlertRule' {
 
     It 'UpdateViaIdentityExpanded' -skip {
         $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateViaIdAlertRuleId
-        $alertRuleUpdate = $alertRule | Update-AzSentinelAlertRule -Disabled
+        $alertRuleUpdate = Update-AzSentinelAlertRule -InputObject $alertRule -Disabled
         $alertRuleUpdate.Enabled | Should -Be $true
     }
 }

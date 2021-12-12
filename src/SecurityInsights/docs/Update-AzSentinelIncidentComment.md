@@ -19,13 +19,6 @@ Update-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGrou
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGroupName <String>
- -WorkspaceName <String> -IncidentComment <IIncidentComment> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Message <String>]
@@ -77,7 +70,7 @@ Incident comment ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: IncidentCommentId
 
 Required: True
@@ -87,28 +80,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncidentComment
-Represents an incident comment
-To construct, see NOTES section for INCIDENTCOMMENT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -IncidentId
 Incident ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -139,7 +116,7 @@ The comment message
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -155,7 +132,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -170,7 +147,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +162,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -231,8 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
@@ -247,20 +222,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-INCIDENTCOMMENT <IIncidentComment>: Represents an incident comment
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AuthorEmail <String>]`: The email of the client.
-  - `[AuthorName <String>]`: The name of the client.
-  - `[AuthorObjectId <String>]`: The object id of the client.
-  - `[AuthorUserPrincipalName <String>]`: The user principal name of the client.
-  - `[Message <String>]`: The comment message
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID

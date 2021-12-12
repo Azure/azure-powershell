@@ -1,0 +1,125 @@
+{
+  "Remove-AzSentinelEntityQuery+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/6feafad3-e3a9-4c0f-b9a7-f74b31c2c4db?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/6feafad3-e3a9-4c0f-b9a7-f74b31c2c4db?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "288" ],
+        "x-ms-client-request-id": [ "f3353721-6954-4ce5-97d0-b78e750f1313" ],
+        "CommandName": [ "Remove-AzSentinelEntityQuery" ],
+        "FullCommandName": [ "Remove-AzSentinelEntityQuery_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14987" ],
+        "x-ms-request-id": [ "3d39b250-9f16-44c0-98a4-d1a3eb60e730" ],
+        "x-ms-correlation-request-id": [ "3d39b250-9f16-44c0-98a4-d1a3eb60e730" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021242Z:3d39b250-9f16-44c0-98a4-d1a3eb60e730" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:12:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSentinelEntityQuery+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/f75cff94-cd35-4d3e-a20b-4c4eee51dd8e?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/f75cff94-cd35-4d3e-a20b-4c4eee51dd8e?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "289" ],
+        "x-ms-client-request-id": [ "2160734d-69fa-4379-a011-4f58077788cc" ],
+        "CommandName": [ "Get-AzSentinelEntityQuery" ],
+        "FullCommandName": [ "Get-AzSentinelEntityQuery_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11934" ],
+        "x-ms-request-id": [ "8c0f7930-5d20-4760-b414-94e36e7675b9" ],
+        "x-ms-correlation-request-id": [ "8c0f7930-5d20-4760-b414-94e36e7675b9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021242Z:8c0f7930-5d20-4760-b414-94e36e7675b9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:12:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2326" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/f75cff94-cd35-4d3e-a20b-4c4eee51dd8e\",\"name\":\"f75cff94-cd35-4d3e-a20b-4c4eee51dd8e\",\"etag\":\"\\\"50013ae2-0000-0100-0000-61b5535d0000\\\"\",\"type\":\"Microsoft.SecurityInsights/entityQueries\",\"kind\":\"Activity\",\"properties\":{\"title\":\"An account was deleted on this host\",\"content\":\"On \u0027{{Computer}}\u0027 the account \u0027{{TargetAccount}}\u0027 was deleted by \",\"description\":\"Account deleted on host\",\"queryDefinitions\":{\"query\":\"let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\\nSecurityEvent\\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\\n// parsing for Host to handle variety of conventions coming from data\\n| extend Host_HostName = case(\\nComputer has \u0027@\u0027, tostring(split(Computer, \u0027@\u0027)[0]),\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[1]),\\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[0]),\\nComputer\\n)\\n| extend Host_NTDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[-2]), \\nComputer\\n)\\n| extend Host_DnsDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, strcat_array(array_slice(split(Computer,\u0027.\u0027),-2,-1),\u0027.\u0027), \\nComputer\\n)\\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \\nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \\nor v_Host_AzureID =~ _ResourceId \\nor v_Host_OMSAgentID == SourceComputerId\\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid};\\nGetAccountActions(\u0027{{Host_HostName}}\u0027, \u0027{{Host_NTDomain}}\u0027, \u0027{{Host_DnsDomain}}\u0027, \u0027{{Host_AzureID}}\u0027, \u0027{{Host_OMSAgentID}}\u0027)\\n \\n| where EventID == 4726 \"},\"requiredInputFieldsSets\":[[\"Host_HostName\",\"Host_NTDomain\"],[\"Host_HostName\",\"Host_DnsDomain\"],[\"Host_AzureID\"],[\"Host_OMSAgentID\"]],\"entitiesFilter\":{\"Host_OsFamily\":[\"Windows\"]},\"enabled\":true,\"createdTimeUtc\":\"2021-12-12T01:41:49.6134342Z\",\"lastModifiedTimeUtc\":\"2021-12-12T01:41:49.6134342Z\",\"inputEntityType\":\"Host\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSentinelEntityQuery+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/f75cff94-cd35-4d3e-a20b-4c4eee51dd8e?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptest8xu4wd/providers/Microsoft.SecurityInsights/entityQueries/f75cff94-cd35-4d3e-a20b-4c4eee51dd8e?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "290" ],
+        "x-ms-client-request-id": [ "af1f747e-7f78-4d0e-993d-c8530a04e4e3" ],
+        "CommandName": [ "Remove-AzSentinelEntityQuery" ],
+        "FullCommandName": [ "Remove-AzSentinelEntityQuery_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14986" ],
+        "x-ms-request-id": [ "367c75ba-89ae-481a-b829-5f173538b0b5" ],
+        "x-ms-correlation-request-id": [ "367c75ba-89ae-481a-b829-5f173538b0b5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211212T021242Z:367c75ba-89ae-481a-b829-5f173538b0b5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 12 Dec 2021 02:12:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  }
+}

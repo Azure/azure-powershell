@@ -831,7 +831,6 @@ function Update-AzSentinelDataConnector {
             }
     
             $null = $PSBoundParameters.Add('DataConnector', $DataConnector)
-
             Az.SecurityInsights.internal\Update-AzSentinelDataConnector @PSBoundParameters
         }
         catch {

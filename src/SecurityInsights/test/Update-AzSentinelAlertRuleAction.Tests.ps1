@@ -21,10 +21,10 @@ Describe 'Update-AzSentinelAlertRuleAction' {
         $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook3LogicAppResourceId
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName `
             -RuleId $env.UpdateViaIdAlertRuleActionRuleId -Id $env.UpdateViaIdAlertRuleActionId
-        $alertRuleAction | Update-AzSentinelAlertRuleAction -LogicAppResourceId $env.Playbook3LogicAppResourceId -TriggerUri $env.Playbook3TriggerUrl
+        $alertRuleAction = Update-AzSentinelAlertRuleAction -InputObject $alertRuleAction -LogicAppResourceId $env.Playbook3LogicAppResourceId -TriggerUri $env.Playbook3TriggerUrl
         $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook3LogicAppResourceId
     }
 }

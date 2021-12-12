@@ -27,7 +27,7 @@ Describe 'Get-AzSentinelIncidentComment' {
 
     It 'GetViaIdentity' -skip {
         $incidentComment = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentCommentIncidentId -Id $env.GetincidentCommentId
-        $incidentCommentViaId = $incidentComment | Get-AzSentinelincident
+        $incidentCommentViaId = Get-AzSentinelincident -InputObject $incidentComment
         $incidentCommentViaId.Name | Should -Be $env.GetincidentCommentId
     }
 }

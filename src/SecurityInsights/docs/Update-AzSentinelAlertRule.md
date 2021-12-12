@@ -27,14 +27,14 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-IncidentConfigurationCreateIncident] [-Query <String>] [-QueryFrequency <TimeSpan>]
  [-QueryPeriod <TimeSpan>] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
  [-Tactic <AttackTactic>] [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Scheduled] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateFusionMLTI
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Fusion] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftSecurityIncidentCreation
@@ -43,7 +43,8 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled]
  [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>] [-Enabled]
  [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-MicrosoftSecurityIncidentCreation] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateNRT
@@ -59,13 +60,13 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
  [-IncidentConfigurationCreateIncident] [-Query <String>] [-Severity <AlertSeverity>]
  [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-NRT] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFusionMLTI
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleTemplateName <String>]
- [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-Fusion] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -74,7 +75,8 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleT
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleTemplateName <String>]
  [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>]
  [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-MicrosoftSecurityIncidentCreation] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNRT
@@ -90,7 +92,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
  [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
  [-IncidentConfigurationCreateIncident] [-Query <String>] [-Severity <AlertSeverity>]
  [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-NRT] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityUpdateScheduled
@@ -107,7 +109,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
  [-IncidentConfigurationCreateIncident] [-Query <String>] [-QueryFrequency <TimeSpan>]
  [-QueryPeriod <TimeSpan>] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
  [-Tactic <AttackTactic>] [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Scheduled] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -361,6 +363,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Fusion
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateFusionMLTI, UpdateViaIdentityFusionMLTI
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupingConfigurationEnabled
 
 
@@ -497,12 +514,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MicrosoftSecurityIncidentCreation
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateViaIdentityMicrosoftSecurityIncidentCreation
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NRT
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateNRT, UpdateViaIdentityNRT
 Aliases:
 
 Required: False
@@ -597,6 +644,21 @@ Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, Updat
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scheduled
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

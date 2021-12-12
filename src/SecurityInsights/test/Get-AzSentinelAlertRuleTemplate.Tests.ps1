@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelAlertRuleTemplate' {
         $alertRuleTemplate.Kind | Should -Be "Fusion"
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $alertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | where {$_.Kind -eq "Fusion"}
-        $alertRuleTemplateViaIdentity = $alertRuleTemplate | Get-AzSentinelAlertRuleTemplate
+        $alertRuleTemplateViaIdentity = Get-AzSentinelAlertRuleTemplate -InputObject $alertRuleTemplate
         $alertRuleTemplateViaIdentity.Kind | Should -Be "Fusion"
     }
 }

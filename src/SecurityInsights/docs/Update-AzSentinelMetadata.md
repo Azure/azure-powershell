@@ -25,13 +25,6 @@ Update-AzSentinelMetadata -Name <String> -ResourceGroupName <String> -WorkspaceN
  [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzSentinelMetadata -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -MetadataPatch <IMetadataPatch> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSentinelMetadata -InputObject <ISecurityInsightsIdentity> [-AuthorEmail <String>]
@@ -75,7 +68,7 @@ Email of author contact
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -90,7 +83,7 @@ Link for author/vendor page
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -106,7 +99,7 @@ Company or person.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -121,7 +114,7 @@ domain for the solution content item
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,7 +129,7 @@ Industry verticals for the solution content item
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -155,7 +148,7 @@ This is the resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,7 +178,7 @@ Id of the content item we depend on
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,7 +194,7 @@ To construct, see NOTES section for DEPENDENCYCRITERION properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataDependencies[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -216,7 +209,7 @@ Type of the content item we depend on
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.Kind
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -231,7 +224,7 @@ Name of the content item
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -246,7 +239,7 @@ Operator used for list of dependencies in criteria array.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.Operator
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -263,7 +256,7 @@ If version does not match our defined numeric format then an exact match is requ
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -278,7 +271,7 @@ first publish date solution content item
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -309,7 +302,7 @@ The kind of content the metadata is for.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.Kind
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -324,7 +317,7 @@ last publish date for the solution content item
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -334,28 +327,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MetadataPatch
-Metadata patch request body.
-To construct, see NOTES section for METADATAPATCH properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataPatch
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The Metadata name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: MetadataName
 
 Required: True
@@ -371,7 +348,7 @@ This is the full resource ID including the scope (subscription and resource grou
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -386,7 +363,7 @@ Providers for the solution content item
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -402,7 +379,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -418,7 +395,7 @@ The solution ID, workspace ID, etc
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -433,7 +410,7 @@ Source type of the content
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.SourceKind
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -449,7 +426,7 @@ The repo name, solution name, LA workspace name etc.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -464,7 +441,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -479,7 +456,7 @@ Email of support contact
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -494,7 +471,7 @@ Link for support help, like to support page to open a ticket etc.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -510,7 +487,7 @@ Company or person.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -525,7 +502,7 @@ Type of support for content item
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.SupportTier
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -543,7 +520,7 @@ Can also be any string, but then we cannot guarantee any version checks
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -558,7 +535,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -603,8 +580,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataPatch
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
@@ -652,46 +627,6 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[SourceControlId <String>]`: Source control Id
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
-
-METADATAPATCH <IMetadataPatch>: Metadata patch request body.
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AuthorEmail <String>]`: Email of author contact
-  - `[AuthorLink <String>]`: Link for author/vendor page
-  - `[AuthorName <String>]`: Name of the author. Company or person.
-  - `[CategoryDomain <String[]>]`: domain for the solution content item
-  - `[CategoryVertical <String[]>]`: Industry verticals for the solution content item
-  - `[ContentId <String>]`: Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
-  - `[DependencyContentId <String>]`: Id of the content item we depend on
-  - `[DependencyCriterion <IMetadataDependencies[]>]`: This is the list of dependencies we must fulfill, according to the AND/OR operator
-    - `[ContentId <String>]`: Id of the content item we depend on
-    - `[Criterion <IMetadataDependencies[]>]`: This is the list of dependencies we must fulfill, according to the AND/OR operator
-    - `[Kind <Kind?>]`: Type of the content item we depend on
-    - `[Name <String>]`: Name of the content item
-    - `[Operator <Operator?>]`: Operator used for list of dependencies in criteria array.
-    - `[Version <String>]`: Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
-  - `[DependencyKind <Kind?>]`: Type of the content item we depend on
-  - `[DependencyName <String>]`: Name of the content item
-  - `[DependencyOperator <Operator?>]`: Operator used for list of dependencies in criteria array.
-  - `[DependencyVersion <String>]`: Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
-  - `[FirstPublishDate <DateTime?>]`: first publish date solution content item
-  - `[Kind <Kind?>]`: The kind of content the metadata is for.
-  - `[LastPublishDate <DateTime?>]`: last publish date for the solution content item
-  - `[ParentId <String>]`: Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
-  - `[Provider <String[]>]`: Providers for the solution content item
-  - `[SourceId <String>]`: ID of the content source.  The solution ID, workspace ID, etc
-  - `[SourceKind <SourceKind?>]`: Source type of the content
-  - `[SourceName <String>]`: Name of the content source.  The repo name, solution name, LA workspace name etc.
-  - `[SupportEmail <String>]`: Email of support contact
-  - `[SupportLink <String>]`: Link for support help, like to support page to open a ticket etc.
-  - `[SupportName <String>]`: Name of the support contact. Company or person.
-  - `[SupportTier <SupportTier?>]`: Type of support for content item
-  - `[Version <String>]`: Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 
 ## RELATED LINKS
 

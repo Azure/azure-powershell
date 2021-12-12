@@ -32,7 +32,7 @@ Describe 'Update-AzSentinelMetadata' {
         $metadataUpdate.Version | Should -Be "1.0.4"
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $metaDependencies = [ Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MetadataDependencies]::new()
         $metaDependencies.Kind = "Workbook"
         $metaDependencies.ContentId = "MITREATT&CK_workbook"

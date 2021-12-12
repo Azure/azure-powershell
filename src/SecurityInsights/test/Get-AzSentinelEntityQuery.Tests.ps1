@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelEntityQuery' {
         $entityQuery.Name | Should -Be $env.GetentityQueryActivityId
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $entityQuery = Get-AzSentinelentityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetentityQueryActivityId
-        $entityQueryViaId = $entityQuery | Get-AzSentinelentityQuery
+        $entityQueryViaId = Get-AzSentinelentityQuery -InputObject $entityQuery
         $entityQueryViaId.Name | Should -Be $env.GetentityQueryActivityId
     }
 }

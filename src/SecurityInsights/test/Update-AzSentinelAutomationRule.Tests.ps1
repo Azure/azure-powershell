@@ -26,14 +26,14 @@ Describe 'Update-AzSentinelAutomationRule' {
         $automationRule.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
         $automationRuleAction.Order = 1
         $automationRuleAction.ActionType = "RunPlaybook"
         $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
         $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
-        $automationRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateViaIdAutomationRuleId
-        $automationRuleUpdate = Update-AzSentinelAutomationRule -InputObject $automationRule -Action $automationRuleAction -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
+        $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId
+        $automationRuleUpdate = Update-AzSentinelAutomationRule -InputObject $getRule -Action $automationRuleAction -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
         $automationRuleUpdate.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 }

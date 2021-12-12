@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelBookmarkRela
 }
 
 Describe 'Remove-AzSentinelBookmarkRelation' {
-    It 'Delete' -skip {
+    It 'Delete' {
         { Remove-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -BookmarkId $env.RemovebookmarkRelationBookmarkId -RelationName $env.RemoveBookmarkRelationId } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $bookmarkRelation = Get-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -BookmarkId $env.RemoveViaIdbookmarkRelationBookmarkId -RelationName $env.RemoveViaIdBookmarkRelationId
-        { $bookmarkRelation | Remove-AzSentinelBookmarkRelation } | Should -Not -Throw
+        { Remove-AzSentinelBookmarkRelation -InputObject $bookmarkRelation } | Should -Not -Throw
     }
 }

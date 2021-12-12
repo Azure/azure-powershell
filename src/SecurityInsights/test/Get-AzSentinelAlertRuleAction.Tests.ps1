@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelAlertRuleAction' {
         $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId -Id $env.GetAlertRuleActionId
-        $alertRuleActionviaId = $alertRuleAction | Get-AzSentinelAlertRuleAction
-        $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
+        $alertRuleActionviaId = Get-AzSentinelAlertRuleAction -InputObject $alertRuleAction
+        $alertRuleActionviaId.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
     }
 }

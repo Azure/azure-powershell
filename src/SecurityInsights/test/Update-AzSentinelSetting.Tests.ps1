@@ -16,15 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelSetting'))
 
 Describe 'Update-AzSentinelSetting' {
     It 'UpdateExpanded' {
-        $setting = Update-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -SettingsName Anomalies -Disabled
-        $setting.IsEnabled | Should -Be $false
+        Update-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName Anomalies -Disabled 
+        $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
+        $sttings.Name | Should -Not -Contain "Anomalies"
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        $setting = Get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -SettingsName EntityAnalytics 
-        $settingUpdate = $setting | Update-AzSentinelSetting -Disabled
-        $settingUpdate.IsEnabled | Should -Be $false
+    It 'UpdateViaIdentityExpanded'  {
+        $setting = Get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName EyesOn 
+        Update-AzSentinelSetting -InputObject $setting -Disabled 
+        $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
+        $sttings.Name | Should -Not -Contain "EyesOn"
     }
 }

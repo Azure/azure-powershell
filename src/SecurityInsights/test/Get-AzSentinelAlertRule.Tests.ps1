@@ -25,9 +25,9 @@ Describe 'Get-AzSentinelAlertRule' {
         $alertRule.Name | Should -Be $env.GetAlertRuleId
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleId
-        $alertRuleViaId = $alertRule | Get-AzSentinelAlertRule
+        $alertRuleViaId = Get-AzSentinelAlertRule -InputObject $alertRule
         $alertRuleViaId.Name | Should -Be $env.GetAlertRuleId
     }
 }
