@@ -2993,6 +2993,9 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
     {
         # Common
         $loc = Get-ComputeVMLocation;
+        ##$vmssSize = 'Standard_B4ms'; 
+        $vmssSize = 'Standard_DS3_v2';
+
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # NRP
@@ -3004,17 +3007,19 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-        $diffDiskPlacement = "ResourceDisk";
+        ##$diffDiskPlacement = "ResourceDisk";
+        $diffDiskPlacement = "CacheDisk";
 
         $adminUsername = 'Foo12';
         $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
 
         # Error of 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        #$imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
                     
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_DS1_v2' -UpgradePolicyMode 'Manual' `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
