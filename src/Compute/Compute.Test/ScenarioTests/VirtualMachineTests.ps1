@@ -5345,7 +5345,7 @@ function Test-VirtualMachineDiffDiskPlacement
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS1_v2';
+        $vmsize = 'Standard_DS3_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
@@ -5371,7 +5371,8 @@ function Test-VirtualMachineDiffDiskPlacement
              | Set-AzVMOSDisk -DiffDiskSetting "Local" -DiffDiskPlacement $diffDiskPlacement -Caching 'ReadOnly' -CreateOption FromImage;
 
         # error of "Cannot index into a null array" occurs on this next line. 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        ##$imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
 
         $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
 
@@ -5380,6 +5381,41 @@ function Test-VirtualMachineDiffDiskPlacement
 
         # Validate DiffDiskPlacement
         Assert-AreEqual $vm.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine DiffDiskPlacement feature. 
+#>
+function Test-VirtualMachineDiffDiskTest
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS1_v2';
+        $vmname = 'vm' + $rgname;
+
+        
+        # error of "Cannot index into a null array" occurs on this next line. 
+        ##$imgRef = Get-DefaultCRPImage -loc $loc;
+
+        ##$imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
+        $img = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+        
     }
     finally
     {

@@ -459,5 +459,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineDiffDiskPlacement");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDiffDiskTest()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineDiffDiskTest");
+        }
+
     }
 }
