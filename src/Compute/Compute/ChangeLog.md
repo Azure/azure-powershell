@@ -20,7 +20,8 @@
 
 -->
 ## Upcoming Release
-* Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
+* Changed `New-AzVM` cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PublicIPAddress name is not provided. 
+* Add `PlatformFaultDomainCounnt` parameter to cmdlets: `New-AzVM` and `New-AzVMConfig`
 
 ## Version 4.21.0
 * Contains updates to the following powershell cmdlets
