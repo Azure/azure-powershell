@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
-        public int PlatformFaultDomainCount { get; set; }
+        public int PlatformFaultDomain { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.UserData = this.UserData;
             }
 
-            if (this.IsParameterBound(c => c.PlatformFaultDomainCount))
+            if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
-                vm.PlatformFaultDomain = this.PlatformFaultDomainCount;
+                vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 
             WriteObject(vm);

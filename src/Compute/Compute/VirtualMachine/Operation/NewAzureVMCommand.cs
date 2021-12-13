@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
-        public int PlatformFaultDomainCount { get; set; }
+        public int PlatformFaultDomain { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Commands.Compute
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
-                        platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?) null
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null
                         );
                 }
                 else
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Commands.Compute
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
-                        platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null
                     );
                 }
             }

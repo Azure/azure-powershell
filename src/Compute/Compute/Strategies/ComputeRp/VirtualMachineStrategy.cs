@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             double? maxPrice,
             bool encryptionAtHostPresent,
             List<SshPublicKey> sshPublicKeys,
-            int? platformFaultDomainCount = null,
+            int? platformFaultDomain = null,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                     },
                     UserData = userData,
-                    PlatformFaultDomain = platformFaultDomainCount
+                    PlatformFaultDomain = platformFaultDomain
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string evictionPolicy,
             double? maxPrice,
             bool encryptionAtHostPresent,
-            int? platformFaultDomainCount,
+            int? platformFaultDomain,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                     },
                     UserData = userData,
-                    PlatformFaultDomain = platformFaultDomainCount
+                    PlatformFaultDomain = platformFaultDomain
                 });
     }
 }
