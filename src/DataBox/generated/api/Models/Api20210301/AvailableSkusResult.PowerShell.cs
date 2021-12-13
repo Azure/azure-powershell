@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuInformationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuInformationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuInformationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuInformationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkusResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

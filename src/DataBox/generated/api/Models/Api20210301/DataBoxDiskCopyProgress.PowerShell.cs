@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied = (long?) content.GetValueForProperty("BytesCopied",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete = (int?) content.GetValueForProperty("PercentComplete",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus.CreateFrom);
+            if (content.Contains("SerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("BytesCopied"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied = (long?) content.GetValueForProperty("BytesCopied",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("PercentComplete"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete = (int?) content.GetValueForProperty("PercentComplete",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied = (long?) content.GetValueForProperty("BytesCopied",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete = (int?) content.GetValueForProperty("PercentComplete",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus.CreateFrom);
+            if (content.Contains("SerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("BytesCopied"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied = (long?) content.GetValueForProperty("BytesCopied",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).BytesCopied, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("PercentComplete"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete = (int?) content.GetValueForProperty("PercentComplete",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).PercentComplete, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataBoxDiskCopyProgressInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

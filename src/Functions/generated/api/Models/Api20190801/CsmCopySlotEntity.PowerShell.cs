@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot = (string) content.GetValueForProperty("TargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig) content.GetValueForProperty("SiteConfig",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfigTypeConverter.ConvertFrom);
+            if (content.Contains("TargetSlot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot = (string) content.GetValueForProperty("TargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot, global::System.Convert.ToString);
+            }
+            if (content.Contains("SiteConfig"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig) content.GetValueForProperty("SiteConfig",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfigTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot = (string) content.GetValueForProperty("TargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig) content.GetValueForProperty("SiteConfig",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfigTypeConverter.ConvertFrom);
+            if (content.Contains("TargetSlot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot = (string) content.GetValueForProperty("TargetSlot",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).TargetSlot, global::System.Convert.ToString);
+            }
+            if (content.Contains("SiteConfig"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig) content.GetValueForProperty("SiteConfig",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmCopySlotEntityInternal)this).SiteConfig, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfigTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

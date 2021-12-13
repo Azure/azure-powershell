@@ -62,3 +62,21 @@ update an existing application insights resource
 ### [Update-AzApplicationInsightsLinkedStorageAccount](Update-AzApplicationInsightsLinkedStorageAccount.md)
 Update application insights linked storage account
 
+### [Get-AzApplicationInsightsWebTest](Get-AzApplicationInsightsWebTest.md)
+Get a specific Application Insights web test definition.
+
+### [New-AzApplicationInsightsWebTest](New-AzApplicationInsightsWebTest.md)
+Creates or updates an Application Insights web test definition.
+
+### [New-AzApplicationInsightsWebTestGeolocationObject](New-AzApplicationInsightsWebTestGeolocationObject.md)
+Create an in-memory object for WebTestGeolocation.
+
+### [New-AzApplicationInsightsWebTestHeaderFieldObject](New-AzApplicationInsightsWebTestHeaderFieldObject.md)
+Create a in-memory object for HeaderField
+
+### [Remove-AzApplicationInsightsWebTest](Remove-AzApplicationInsightsWebTest.md)
+Deletes an Application Insights web test.
+
+### [Update-AzApplicationInsightsWebTestTag](Update-AzApplicationInsightsWebTestTag.md)
+Creates or updates an Application Insights web test definition.
+

@@ -65,7 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -83,7 +86,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

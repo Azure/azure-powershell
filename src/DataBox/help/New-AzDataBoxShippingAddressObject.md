@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxShippingAddressObject
 
 ## SYNOPSIS
-Create a in-memory object for ShippingAddress
+Create an in-memory object for ShippingAddress.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ShippingAddress
+Create an in-memory object for ShippingAddress.
 
 ## EXAMPLES
 
-### Example 1: {{ Shipping Address object }}
+### Example 1: Shipping Address object 
 ```powershell
 PS C:\> $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 PS C:\> $ShippingDetails
@@ -33,7 +33,7 @@ AddressType City          CompanyName Country PostalCode StateOrProvince StreetA
 Commercial  San Francisco             US      94107      CA              101 TOWNSEND ST
 ```
 
-{{ Creates a in-memory shipping address object }}
+Creates a in-memory shipping address object
 
 ## PARAMETERS
 

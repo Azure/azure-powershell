@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MoveToCleanUpDevice".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MoveToCleanUpDevice", "MoveToCleanUpDevice", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveToCleanUpDevice");
+                yield return new global::System.Management.Automation.CompletionResult("'MoveToCleanUpDevice'", "MoveToCleanUpDevice", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveToCleanUpDevice");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Resume".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Resume", "Resume", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resume");
+                yield return new global::System.Management.Automation.CompletionResult("'Resume'", "Resume", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resume");
             }
         }
     }

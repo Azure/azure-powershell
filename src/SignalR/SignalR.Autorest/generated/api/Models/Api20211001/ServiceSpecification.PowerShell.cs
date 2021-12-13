@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification[]) content.GetValueForProperty("MetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.MetricSpecificationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification[]) content.GetValueForProperty("LogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LogSpecificationTypeConverter.ConvertFrom));
+            if (content.Contains("MetricSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification[]) content.GetValueForProperty("MetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.MetricSpecificationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("LogSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification[]) content.GetValueForProperty("LogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LogSpecificationTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification[]) content.GetValueForProperty("MetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.MetricSpecificationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification[]) content.GetValueForProperty("LogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LogSpecificationTypeConverter.ConvertFrom));
+            if (content.Contains("MetricSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification[]) content.GetValueForProperty("MetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).MetricSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.MetricSpecificationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("LogSpecification"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification[]) content.GetValueForProperty("LogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IServiceSpecificationInternal)this).LogSpecification, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LogSpecificationTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

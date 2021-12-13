@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName = (string) content.GetValueForProperty("CarrierName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId = (string) content.GetValueForProperty("TrackingId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl = (string) content.GetValueForProperty("TrackingUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl, global::System.Convert.ToString);
+            if (content.Contains("CarrierName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName = (string) content.GetValueForProperty("CarrierName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrackingId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId = (string) content.GetValueForProperty("TrackingId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrackingUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl = (string) content.GetValueForProperty("TrackingUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName = (string) content.GetValueForProperty("CarrierName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId = (string) content.GetValueForProperty("TrackingId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl = (string) content.GetValueForProperty("TrackingUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl, global::System.Convert.ToString);
+            if (content.Contains("CarrierName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName = (string) content.GetValueForProperty("CarrierName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).CarrierName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrackingId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId = (string) content.GetValueForProperty("TrackingId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrackingUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl = (string) content.GetValueForProperty("TrackingUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPackageShippingDetailsInternal)this).TrackingUrl, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

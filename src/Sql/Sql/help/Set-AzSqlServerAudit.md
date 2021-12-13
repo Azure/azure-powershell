@@ -50,12 +50,12 @@ PS C:\>Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Se
 PS C:\>Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Disabled
 ```
 
-### Example 3: Enable the blob storage auditing policy of an Azure SQL server with advanced filtering using a T-SQL predicate
+### Example 3: Enable the blob storage auditing policy of an Azure SQL server with filtering using a T-SQL predicate
 ```powershell
 PS C:\>Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -PredicateExpression "statement <> 'select 1'"
 ```
 
-### Example 4: Remove the advanced filtering setting from the auditing policy of an Azure SQL server
+### Example 4: Remove the filtering setting from the auditing policy of an Azure SQL server
 ```powershell
 PS C:\>Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -PredicateExpression ""
 ```

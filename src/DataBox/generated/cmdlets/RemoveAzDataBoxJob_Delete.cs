@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Extensions;
+    using System;
 
     /// <summary>Deletes a job.</summary>
     /// <remarks>

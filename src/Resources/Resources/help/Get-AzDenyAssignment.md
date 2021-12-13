@@ -12,6 +12,11 @@ Lists Azure RBAC deny assignments at the specified scope.
 By default it lists all deny assignments in the selected Azure subscription.
 Use respective parameters to list deny assignments to a specific user, or to list deny assignments on a specific resource group or resource.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
@@ -112,7 +117,7 @@ Get-AzDenyAssignment -Scope <String> [-DefaultProfile <IAzureContextContainer>] 
 
 ### DenyAssignmentIdParameterSet
 ```
-Get-AzDenyAssignment [-Scope <String>] -Id <Guid> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDenyAssignment [-Scope <String>] -Id <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -386,7 +391,7 @@ Accept wildcard characters: False
 Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: DenyAssignmentIdParameterSet
 Aliases:
 

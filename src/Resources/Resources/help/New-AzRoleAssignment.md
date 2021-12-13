@@ -11,6 +11,13 @@ schema: 2.0.0
 ## SYNOPSIS
 Assigns the specified RBAC role to the specified principal, at the specified scope.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
