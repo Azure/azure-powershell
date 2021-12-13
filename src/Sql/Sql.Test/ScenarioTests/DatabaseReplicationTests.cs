@@ -97,5 +97,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+        }
     }
 }

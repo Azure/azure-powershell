@@ -46,6 +46,7 @@ $cmdlets | ForEach-Object {
         $matchedRule = $possibleBetterMatch;
     }
 
+    $matchedModuleRule = $null; # clear before using
     [System.Array]$matchedModuleRules = @($rules | Where-Object { $_.Module -ne $null -and $module -eq $_.Module });
     if($matchedModuleRules.Length -eq 1) {
         # If only one rule maps to module, module name is prior than other rules.

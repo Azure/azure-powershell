@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.19.0
+* Added support for Synapse KQL script
+    - Added `Get-AzSynapseKqlScript` cmdlet
+    - Added `Export-AzSynapseKqlScript` cmdlet
+    - Added `Remove-AzSynapseKqlScript` cmdlet
+    - Added `New-AzSynapseKqlScript` cmdlet
 * Updated `New-AzSynapseSqlPool` to support new parameter [-StorageAccountType]
 * Updated `Restore-AzSynapseSqlPool` to support new parameter [-Tag] and [-StorageAccountType]
 * Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias

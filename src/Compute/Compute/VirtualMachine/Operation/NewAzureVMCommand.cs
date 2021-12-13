@@ -49,6 +49,7 @@ using System.Diagnostics;
 using CM = Microsoft.Azure.Management.Compute.Models;
 using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 
 
 namespace Microsoft.Azure.Commands.Compute
@@ -454,9 +455,19 @@ namespace Microsoft.Azure.Commands.Compute
                 bool enableAcceleratedNetwork = Utils.DoesConfigSupportAcceleratedNetwork(_client,
                     ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
 
-                var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
-                    _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
-
+                ResourceConfig<NetworkInterface> networkInterface;
+                if (string.IsNullOrEmpty(publicIpAddress.Name))
+                {
+                    networkInterface = resourceGroup.CreateNetworkInterfaceConfigNoPublicIP(
+                        _cmdlet.Name, _cmdlet.EdgeZone, subnet, 
+                        networkSecurityGroup, enableAcceleratedNetwork);
+                }
+                else
+                {
+                    networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
+                        _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
+                }
+                
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
@@ -551,7 +562,7 @@ namespace Microsoft.Azure.Commands.Compute
             ResourceGroupName = ResourceGroupName ?? Name;
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
-            PublicIpAddressName = PublicIpAddressName ?? Name;
+            PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
 
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
