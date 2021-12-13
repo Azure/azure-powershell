@@ -85,11 +85,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
             if (ShouldProcess(Name, $"Creating App Service Environment '{Name}'"))
             {
                 AppServiceEnvironmentResource appServiceEnvironment = new AppServiceEnvironmentResource();
-                appServiceEnvironment.AppServiceEnvironmentResourceName = Name;
-                appServiceEnvironment.AppServiceEnvironmentResourceLocation = Location;
                 appServiceEnvironment.Location = Location;
                 appServiceEnvironment.Kind = Kind;
-                appServiceEnvironment.WorkerPools = new List<WorkerPool>() { };
 
                 AppServiceEnvironmentResource ase = null;
                 switch (ParameterSetName)

@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Remove isUser operation filter from GetAzureProviderOperation Cmdlet
+
+## Version 5.1.0
 * Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.
 * Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
 * [Breaking change] Migrated from AAD Graph to Microsoft Graph

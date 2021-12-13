@@ -60,6 +60,7 @@
         "CONTRIBUTION.md",
         "LICENSE.txt",
         "README.md",
+        "ChangeLog.md",
         "**/ChangeLog.md",
         "**/readme.md",
         "src/**/document/*",

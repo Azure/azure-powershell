@@ -928,6 +928,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove KQL script &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("RemoveSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove linked service &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseLinkedService {
@@ -1149,6 +1158,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseDataset {
             get {
                 return ResourceManager.GetString("RemovingSynapseDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting KQL script &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("RemovingSynapseKqlScript", resourceCulture);
             }
         }
         
@@ -1486,6 +1504,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting KQL script &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseKqlScript {
+            get {
+                return ResourceManager.GetString("SettingSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {
@@ -1594,20 +1621,20 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
-        /// </summary>
-        internal static string StartingIntegrationRuntime {
-            get {
-                return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
         /// </summary>
         internal static string StartDataFlowDebugSession {
             get {
                 return ResourceManager.GetString("StartDataFlowDebugSession", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StartingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
             }
         }
         
