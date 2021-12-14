@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-Feature` parameter for `New-AzGalleryImageDefinition`
 * Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
 
 ## Version 4.21.0
