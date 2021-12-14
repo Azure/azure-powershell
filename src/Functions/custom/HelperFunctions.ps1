@@ -1,8 +1,8 @@
 # Load Az.Functions module constants
 $constants = @{}
-$constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS')
+$constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'Standard_GZRS')
 $constants["RequiredStorageEndpoints"] = @('PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
-$constants["DefaultFunctionsVersion"] = '3'
+$constants["DefaultFunctionsVersion"] = '4'
 $constants["RuntimeToFormattedName"] = @{
     'node' = 'Node'
     'dotnet' = 'DotNet'
@@ -34,7 +34,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
     'WEBSITE_CONTENTSHARE'
     'APPINSIGHTS_INSTRUMENTATIONKEY'
 )
-$constants["SupportedFunctionsVersion"] = @('3')
+$constants["SupportedFunctionsVersion"] = @('3', '4')
 $constants["FunctionsNoV2Version"] = @(
     "USNat West"
     "USNat East"
@@ -1041,7 +1041,7 @@ function GetRuntimeJsonDefinition
     if ($runtimeJsonDefinition.IsPreview)
     {
         # Write a verbose message to the user if the current runtime is in Preview
-        Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview." -Verbose
+        Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview for '$OSType'." -Verbose
     }
 
     return $runtimeJsonDefinition
@@ -1599,7 +1599,8 @@ function GetShareSuffix
         $Length = 8
     )
 
-    $letters = 'a'..'z'
+    # Create char array from 'a' to 'z'
+    $letters = 97..122 | ForEach-Object { [char]$_ }
     $numbers = 0..9
     $alphanumericLowerCase = $letters + $numbers
 

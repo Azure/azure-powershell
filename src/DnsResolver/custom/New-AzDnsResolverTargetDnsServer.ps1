@@ -34,7 +34,7 @@ function New-AzDnsResolverTargetDnsServerObject {
         $IPAddress,
         [Parameter(HelpMessage="DNS server port.")]
         [int]
-        $Port
+        $Port = 53
     )
 
     process {

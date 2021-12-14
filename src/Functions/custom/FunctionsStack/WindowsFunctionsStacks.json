@@ -10,6 +10,26 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "6.0",
+                        "runtimeVersion": "6.0",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
+                        },
+                        "isPreview": false,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
                         "displayVersion": "3.1",
                         "runtimeVersion": "3.1",
                         "supportedFunctionsExtensionVersions": [
@@ -62,10 +82,32 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "16",
+                        "runtimeVersion": "~16",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "node",
+                            "WEBSITE_NODE_DEFAULT_VERSION": "~16"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
                         "displayVersion": "14",
                         "runtimeVersion": "~14",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -75,7 +117,8 @@
                             "WEBSITE_NODE_DEFAULT_VERSION": "~14"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -120,7 +163,8 @@
                         "runtimeVersion": "1.8",
                         "supportedFunctionsExtensionVersions": [
                             "~2",
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -130,7 +174,8 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "javaVersion": "1.8",
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -140,7 +185,8 @@
                         "displayVersion": "11",
                         "runtimeVersion": "11",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
@@ -150,7 +196,8 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "javaVersion": "11",
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -171,10 +218,32 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "7.2",
+                        "runtimeVersion": "7.2",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "powerShellVersion": "7.2",
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": true
+                    },
+                    {
                         "displayVersion": "7.0",
                         "runtimeVersion": "~7",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -184,7 +253,8 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "powerShellVersion": "~7",
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,

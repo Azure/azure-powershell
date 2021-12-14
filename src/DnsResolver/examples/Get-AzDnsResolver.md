@@ -43,3 +43,14 @@ westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000c2d4-0000
 ```
 
 This command gets  single DNS Resolver by name.
+
+### Example 4: List all DNS Resolvers under the virtual network 
+```powershell
+PS C:\> Get-AzDnsResolver -ResourceGroupName powershell-test-rg -VirtualNetworkName virtualnetwork-test
+
+Location Name                      Type                           Etag
+-------- ----                      ----                           ----
+westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000c2d4-0000-0800-0000-604013880000"
+```
+
+This command gets  single DNS Resolver by virtual network.

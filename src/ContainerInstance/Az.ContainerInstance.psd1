@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ContainerInstance.private.dll'
   FormatsToProcess = './Az.ContainerInstance.format.ps1xml'
-  FunctionsToExport = 'Add-AzContainerInstanceOutput', 'Get-AzContainerGroup', 'Get-AzContainerInstanceCachedImage', 'Get-AzContainerInstanceCapability', 'Get-AzContainerInstanceLog', 'Get-AzContainerInstanceUsage', 'Invoke-AzContainerInstanceCommand', 'New-AzContainerGroup', 'New-AzContainerGroupImageRegistryCredentialObject', 'New-AzContainerGroupPortObject', 'New-AzContainerGroupVolumeObject', 'New-AzContainerInstanceEnvironmentVariableObject', 'New-AzContainerInstanceInitDefinitionObject', 'New-AzContainerInstanceObject', 'New-AzContainerInstancePortObject', 'New-AzContainerInstanceVolumeMountObject', 'Remove-AzContainerGroup', 'Start-AzContainerGroup', 'Stop-AzContainerGroup', 'Update-AzContainerGroup', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Add-AzContainerInstanceOutput', 'Get-AzContainerGroup', 'Get-AzContainerInstanceCachedImage', 'Get-AzContainerInstanceCapability', 'Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint', 'Get-AzContainerInstanceLog', 'Get-AzContainerInstanceUsage', 'Invoke-AzContainerInstanceCommand', 'New-AzContainerGroup', 'New-AzContainerGroupImageRegistryCredentialObject', 'New-AzContainerGroupPortObject', 'New-AzContainerGroupVolumeObject', 'New-AzContainerInstanceEnvironmentVariableObject', 'New-AzContainerInstanceHttpHeaderObject', 'New-AzContainerInstanceInitDefinitionObject', 'New-AzContainerInstanceObject', 'New-AzContainerInstancePortObject', 'New-AzContainerInstanceVolumeMountObject', 'Remove-AzContainerGroup', 'Restart-AzContainerGroup', 'Start-AzContainerGroup', 'Stop-AzContainerGroup', 'Update-AzContainerGroup', '*'
+  AliasesToExport = 'Get-AzContainerGroupOutboundNetworkDependencyEndpoint', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ContainerInstance'
