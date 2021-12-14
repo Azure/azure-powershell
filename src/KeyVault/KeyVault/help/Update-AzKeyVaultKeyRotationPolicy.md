@@ -14,13 +14,21 @@ Updates the key rotation policy for the specified key in Key Vault.
 
 ### ByVaultName (Default)
 ```
-Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>] [-VaultName] <String> [-Name] <String>
+Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>]
+ [-KeyRotationLifetimeAction <PSKeyRotationLifetimeAction[]>] [-VaultName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+###  ByKeyRotationPolicyInputObject
+```
+Update-AzKeyVaultKeyRotationPolicy [-KeyRotationPolicy] <PSKeyRotationPolicy>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
-Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>] [-InputObject] <PSKeyVaultKeyIdentityItem>
+Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>]
+ [-KeyRotationLifetimeAction <PSKeyRotationLifetimeAction[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +37,7 @@ This cmdlet requires the key update permission. It returns a key rotation policy
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Updates key rotation policy expiry time
 ```powershell
 $t = New-TimeSpan -Days 50
 Update-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key -ExpiresIn $t
@@ -43,6 +51,46 @@ LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: 30.00:0
 ExpiresIn       : 50.00:00:00
 CreatedOn       : 12/10/2021 3:21:51 AM +00:00
 UpdatedOn       : 12/10/2021 3:22:14 AM +00:00
+```
+
+These cmdlets set the key rotation policy expiry time of test-key as 50 days.
+
+### Example 2: Updates key rotation policy by InputObject
+```powershell
+$key = Get-AzKeyVaultKey -VaultName test-kv -Name test-key
+$action = [Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationLifetimeAction]::new()
+$action.Action = "Rotate"
+$action.TimeBeforeExpiry = New-TimeSpan -Days 30
+Update-AzKeyVaultKeyRotationPolicy -InputObject $key -KeyRotationLifetimeAction $action
+```
+
+```output
+Id              : https://test-kv.vault.azure.net/keys/test-key/rotationpolicy
+VaultName       : test-kv
+KeyName         : test-key
+LifetimeActions : {[Action: Rotate, TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00], [Action: Notify,
+                  TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00]}
+ExpiresIn       : 50.00:00:00
+CreatedOn       : 12/10/2021 3:21:51 AM +00:00
+UpdatedOn       : 12/14/2021 5:26:28 AM +00:00
+```
+
+These cmdlets set the key rotation policy expiry time of test-key as 50 days.
+
+### Example 3: Updates key rotation policy by PSKeyRotationPolicy object
+```powershell
+$key = Get-AzKeyVaultKey -VaultName test-kv -Name test-key
+$policy = Get-AzKeyVaultKeyRotationPolicy $key
+$policy.ExpiresIn = New-TimeSpan -Days 60
+Update-AzKeyVaultKeyRotationPolicy -KeyRotationPolicy $policy
+```
+
+```output
+LifetimeActions : {[Action: Rotate, TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00], [Action: Notify,
+                  TimeAfterCreate: , TimeBeforeExpiry: 30.00:00:00]}
+ExpiresIn       : 60.00:00:00
+CreatedOn       : 12/10/2021 3:21:51 AM +00:00
+UpdatedOn       : 12/14/2021 5:34:00 AM +00:00
 ```
 
 These cmdlets set the key rotation policy expiry time of test-key as 50 days.
@@ -69,7 +117,7 @@ The time span when the key rotation policy will expire. It should be at least 28
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: ByVaultName, ByKeyInputObject
 Aliases:
 
 Required: False
@@ -86,6 +134,36 @@ Key object
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKeyInputObject
 Aliases: Key
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KeyRotationLifetimeAction
+PSKeyRotationLifetimeAction object.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationLifetimeAction[]
+Parameter Sets: ByVaultName, ByKeyInputObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyRotationPolicy
+PSKeyRotationPolicy object.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationPolicy
+Parameter Sets:  ByKeyRotationPolicyInputObject
+Aliases:
 
 Required: True
 Position: 0

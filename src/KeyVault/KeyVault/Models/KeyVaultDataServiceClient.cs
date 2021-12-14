@@ -433,11 +433,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException();
         }
 
-        public PSKeyRotationPolicy UpdateKeyRotationPolicy(string vaultName, string keyName, TimeSpan ExpiresIn)
+        public PSKeyRotationPolicy UpdateKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
         {
             throw new NotImplementedException();
-
         }
+
         #endregion
 
         #endregion
@@ -2216,7 +2216,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Getting key rotation policies on managed HSM is only possible in track 2 SDK.");
         }
 
-        public PSKeyRotationPolicy UpdateManagedHsmKeyRotationPolicy(string managedHsmName, string keyName, TimeSpan ExpiresIn)
+        public PSKeyRotationPolicy UpdateManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
         {
             throw new NotImplementedException("Updating key rotation policies on managed HSM is only possible in track 2 SDK.");
         }

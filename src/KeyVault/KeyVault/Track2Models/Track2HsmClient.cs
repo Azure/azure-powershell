@@ -517,19 +517,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyRotationPolicy(client.GetKeyRotationPolicy(keyName), managedHsmName, keyName);
         }
 
-        internal PSKeyRotationPolicy UpdateKeyRotationPolicy(string managedHsmName, string keyName, TimeSpan ExpiresIn)
+        internal PSKeyRotationPolicy UpdateKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
         {
-            var client = CreateKeyClient(managedHsmName);
-            return UpdateKeyRotationPolicy(client, managedHsmName, keyName, ExpiresIn);
-        }
-
-        private PSKeyRotationPolicy UpdateKeyRotationPolicy(KeyClient client, string managedHsmName, string keyName, TimeSpan ExpiresIn)
-        {
+            var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
             var policy = new KeyRotationPolicy()
             {
-                ExpiresIn = ExpiresIn
+                ExpiresIn = psKeyRotationPolicy.ExpiresIn,
+                LifetimeActions = { }
             };
-            return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, policy), managedHsmName, keyName);
+
+            foreach (var psKeyRotationLifetimeAction in psKeyRotationPolicy.LifetimeActions)
+            {
+                policy.LifetimeActions.Add(
+                    new KeyRotationLifetimeAction()
+                    {
+                        Action = psKeyRotationLifetimeAction.Action,
+                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
+                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
+                    }
+                );
+            }
+            return UpdateKeyRotationPolicy(client, psKeyRotationPolicy.VaultName, psKeyRotationPolicy.KeyName, policy);
+        }
+
+        private PSKeyRotationPolicy UpdateKeyRotationPolicy(KeyClient client, string managedHsmName, string keyName, KeyRotationPolicy keyRotationPolicy)
+        {
+            return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, keyRotationPolicy), managedHsmName, keyName);
         }
         #endregion
 

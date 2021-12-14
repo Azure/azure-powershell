@@ -8,8 +8,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSKeyRotationLifetimeAction
     {
-
-
         //
         // Summary:
         //     Gets or sets he Azure.Security.KeyVault.Keys.KeyRotationPolicyAction that will

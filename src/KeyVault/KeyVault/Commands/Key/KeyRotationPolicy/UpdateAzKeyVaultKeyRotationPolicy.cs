@@ -13,12 +13,37 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     [OutputType(typeof(PSKeyRotationPolicy))]
     public class UpdateAzKeyVaultKeyRotationPolicy: KeyVaultOnlyKeyCmdletBase
     {
-        [Parameter(HelpMessage = "The time span when the key rotation policy will expire. It should be at least 28 days.")]
+        #region Parameter Set Names
+
+        internal const string ByKeyRotationPolicyInputObjectParameterSet = " ByKeyRotationPolicyInputObject";
+
+        #endregion
+
+        #region Input Parameter Definitions
+
+        [Parameter(Mandatory = true,
+                 Position = 0,
+                 ParameterSetName = ByKeyRotationPolicyInputObjectParameterSet,
+                 ValueFromPipeline = true,
+                 HelpMessage = "PSKeyRotationPolicy object.")]
+        public PSKeyRotationPolicy KeyRotationPolicy { get; set; }
+
+        [Parameter(ParameterSetName = ByVaultNameParameterSet, 
+            HelpMessage = "The time span when the key rotation policy will expire. It should be at least 28 days.")]
+        [Parameter(ParameterSetName = ByKeyInputObjectParameterSet)]
         public TimeSpan ExpiresIn { get; set; }
+
+
+        [Parameter(ParameterSetName = ByVaultNameParameterSet,
+            HelpMessage = "PSKeyRotationLifetimeAction object.")]
+        [Parameter(ParameterSetName = ByKeyInputObjectParameterSet)]
+        public PSKeyRotationLifetimeAction[] KeyRotationLifetimeAction { get; set; }
+
+        #endregion
 
         internal override void NormalizeParameterSets()
         {
-            if (InputObject != null)
+            if (null != InputObject)
             {
                 Name = InputObject.Name;
 
@@ -31,28 +56,30 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     VaultName = InputObject.VaultName;
                 }
             }
-        }
 
-        internal bool ValidateParameter()
-        {
-            if (null == ExpiresIn || default(TimeSpan) == ExpiresIn)
+            if (!this.ParameterSetName.Equals(ByKeyRotationPolicyInputObjectParameterSet))
             {
-                WriteWarning("No parameter needs be updated.");
-                return false;
+
+                // Only update specified parameter, others keep same
+                KeyRotationPolicy = Track2DataClient.GetKeyRotationPolicy(VaultName, Name);
+
+                if (MyInvocation.BoundParameters.ContainsKey("ExpiresIn"))
+                {
+                    KeyRotationPolicy.ExpiresIn = ExpiresIn;
+                }
+
+                if (MyInvocation.BoundParameters.ContainsKey("KeyRotationLifetimeAction"))
+                {
+                    KeyRotationPolicy.LifetimeActions = KeyRotationLifetimeAction;
+                }
             }
-            return true;
         }
 
         public override void ExecuteCmdlet()
         {
             NormalizeParameterSets();
 
-            if (!ValidateParameter())
-            {
-                return;
-            };
-
-            WriteObject(this.Track2DataClient.UpdateKeyRotationPolicy(VaultName, Name, ExpiresIn));
+            WriteObject(this.Track2DataClient.UpdateKeyRotationPolicy(KeyRotationPolicy));
         }
     }
 }

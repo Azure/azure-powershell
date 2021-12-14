@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName);
 
-        PSKeyRotationPolicy UpdateKeyRotationPolicy(string vaultName, string keyName, TimeSpan ExpiresIn);
+        PSKeyRotationPolicy UpdateKeyRotationPolicy(PSKeyRotationPolicy KeyRotationPolicy);
         #endregion
 
         #endregion
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyRotationPolicy GetManagedHsmKeyRotationPolicy(string managedHsmName, string keyName);
 
-        PSKeyRotationPolicy UpdateManagedHsmKeyRotationPolicy(string managedHsmName, string keyName, TimeSpan ExpiresIn);
+        PSKeyRotationPolicy UpdateManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy);
         #endregion
 
         #endregion
