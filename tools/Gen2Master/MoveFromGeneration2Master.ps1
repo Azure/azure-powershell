@@ -70,7 +70,7 @@ Function Move-Generation2Master {
         Write-Host "Copying docs: $SourceItem." -ForegroundColor Yellow
         Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
         #EndRegion
-        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml')
+        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
         Foreach($File in $File2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $File
             $DestItem = Join-Path -Path $DestPath -ChildPath $File
@@ -118,20 +118,13 @@ Function Move-Generation2Master {
         #EndRegion
 
         #Region Remove unnecessary readme.md
-        $ReadmeInHelp = Join-Path -Path (Join-Path -Path $DestPath -ChildPath 'help') -ChildPath 'readme.md'
         $ModuleReadmeInHelp = Join-Path -Path (Join-Path -Path $DestPath -ChildPath 'help') -ChildPath "Az.$ModuleName.md"
-        If (Test-Path $ReadmeInHelp) {
-            Write-Host "Deleting file $ReadmeInHelp." -ForegroundColor Yellow
-            Remove-Item -Path $ReadmeInHelp
-        }
+        Get-ChildItem -Path (Join-Path -Path $DestPath -ChildPath 'help') -Recurse -Include 'readme.md' | Remove-Item -ErrorAction SilentlyContinue
         If ($Null -ne $ModuleGuid) {
             $ReadmeContent = Get-Content -Path $ModuleReadmeInHelp
             $ReadmeContent -replace "Module Guid: [0-9a-z\-]+","Module Guid: $ModuleGuid" | Set-Content -Path $ModuleReadmeInHelp
         }
-        $ReadmeInExample = Join-Path -Path (Join-Path -Path $DestPath -ChildPath 'examples') -ChildPath 'readme.md'
-        If (Test-Path $ReadmeInExample) {
-            Remove-Item -Path $ReadmeInExample
-        }
+        Get-ChildItem -Path (Join-Path -Path $DestPath -ChildPath 'examples') -Recurse -Include 'readme.md' | Remove-Item -ErrorAction SilentlyContinue
         #EndRegion
 
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
