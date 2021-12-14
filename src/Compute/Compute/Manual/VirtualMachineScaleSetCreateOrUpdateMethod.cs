@@ -36,7 +36,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
         // SimpleParameterSet
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
             "CentOS",
             "CoreOS",
