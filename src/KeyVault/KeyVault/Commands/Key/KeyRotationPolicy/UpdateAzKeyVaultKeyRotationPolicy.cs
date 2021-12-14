@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     {
         #region Parameter Set Names
 
-        internal const string ByKeyRotationPolicyInputObjectParameterSet = " ByKeyRotationPolicyInputObject";
+        internal const string ByKeyRotationPolicyInputObjectParameterSet = "ByKeyRotationPolicyInputObject";
 
         #endregion
 
