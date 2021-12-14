@@ -150,5 +150,60 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
 
         #endregion
+
+        #region Key rotation actions
+
+        internal PSKeyVaultKey RotateKey(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return RotateKey(client, keyName);
+        }
+
+        private PSKeyVaultKey RotateKey(KeyClient client, string keyName)
+        {
+            return new PSKeyVaultKey(client.RotateKey(keyName), _vaultUriHelper);
+        }
+
+        internal PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetKeyRotationPolicy(client, vaultName, keyName);
+        }
+
+        private PSKeyRotationPolicy GetKeyRotationPolicy(KeyClient client, string vaultName, string keyName)
+        {
+            return new PSKeyRotationPolicy(client.GetKeyRotationPolicy(keyName), vaultName, keyName);
+        }
+
+        internal PSKeyRotationPolicy UpdateKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        {
+            var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
+            var policy = new KeyRotationPolicy()
+            {
+                ExpiresIn = psKeyRotationPolicy.ExpiresIn,
+                LifetimeActions = {}
+            };
+
+            foreach(var psKeyRotationLifetimeAction in psKeyRotationPolicy.LifetimeActions)
+            {
+                policy.LifetimeActions.Add(
+                    new KeyRotationLifetimeAction()
+                    {
+                        Action = psKeyRotationLifetimeAction.Action,
+                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
+                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
+                    }
+                );
+            }
+
+            return UpdateKeyRotationPolicy(client, psKeyRotationPolicy.VaultName, psKeyRotationPolicy.KeyName, policy);
+        }
+
+        private PSKeyRotationPolicy UpdateKeyRotationPolicy(KeyClient client, string vaultName, string keyName, KeyRotationPolicy policy)
+        {
+            return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, policy), vaultName, keyName);
+        }
+
+        #endregion
     }
 }
