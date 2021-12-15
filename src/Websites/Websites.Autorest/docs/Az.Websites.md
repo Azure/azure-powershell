@@ -50,10 +50,10 @@ Description for Gets the list of users of a static site.
 ### [Get-AzStaticWebAppUserProvidedFunctionApp](Get-AzStaticWebAppUserProvidedFunctionApp.md)
 Description for Gets the details of the user provided function app registered with a static site build
 
-### [Get-AzWebAppContinuouWebJob](Get-AzWebAppContinuouWebJob.md)
+### [Get-AzWebAppContinuousWebJob](Get-AzWebAppContinuousWebJob.md)
 Description for Gets a continuous web job by its ID for an app, or a deployment slot.
 
-### [Get-AzWebAppSlotContinuouWebJob](Get-AzWebAppSlotContinuouWebJob.md)
+### [Get-AzWebAppSlotContinuousWebJob](Get-AzWebAppSlotContinuousWebJob.md)
 Description for Gets a continuous web job by its ID for an app, or a deployment slot.
 
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
@@ -95,25 +95,25 @@ Description for Deletes a custom domain.
 ### [Remove-AzStaticWebAppUser](Remove-AzStaticWebAppUser.md)
 Description for Deletes the user entry from the static site.
 
-### [Remove-AzWebAppContinuouWebJob](Remove-AzWebAppContinuouWebJob.md)
+### [Remove-AzWebAppContinuousWebJob](Remove-AzWebAppContinuousWebJob.md)
 Description for Delete a continuous web job by its ID for an app, or a deployment slot.
 
-### [Remove-AzWebAppSlotContinuouWebJob](Remove-AzWebAppSlotContinuouWebJob.md)
+### [Remove-AzWebAppSlotContinuousWebJob](Remove-AzWebAppSlotContinuousWebJob.md)
 Description for Delete a continuous web job by its ID for an app, or a deployment slot.
 
 ### [Reset-AzStaticWebAppApiKey](Reset-AzStaticWebAppApiKey.md)
 Description for Resets the api key for an existing static site.
 
-### [Start-AzWebAppContinuouWebJob](Start-AzWebAppContinuouWebJob.md)
+### [Start-AzWebAppContinuousWebJob](Start-AzWebAppContinuousWebJob.md)
 Description for Start a continuous web job for an app, or a deployment slot.
 
-### [Start-AzWebAppSlotContinuouWebJob](Start-AzWebAppSlotContinuouWebJob.md)
+### [Start-AzWebAppSlotContinuousWebJob](Start-AzWebAppSlotContinuousWebJob.md)
 Description for Start a continuous web job for an app, or a deployment slot.
 
-### [Stop-AzWebAppContinuouWebJob](Stop-AzWebAppContinuouWebJob.md)
+### [Stop-AzWebAppContinuousWebJob](Stop-AzWebAppContinuousWebJob.md)
 Description for Stop a continuous web job for an app, or a deployment slot.
 
-### [Stop-AzWebAppSlotContinuouWebJob](Stop-AzWebAppSlotContinuouWebJob.md)
+### [Stop-AzWebAppSlotContinuousWebJob](Stop-AzWebAppSlotContinuousWebJob.md)
 Description for Stop a continuous web job for an app, or a deployment slot.
 
 ### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)

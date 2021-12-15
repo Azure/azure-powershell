@@ -1444,9 +1444,14 @@ directive:
       subject: $1
 
   - where:
+      subject: ContinuouWebJob
+    set:
+      subject: ContinuousWebJob
+
+  - where:
       subject: ContinuouWebJobSlot
     set:
-      subject: SlotContinuouWebJob
+      subject: SlotContinuousWebJob
 
   # - where:
   #     subject: ContinuouWebJob | SlotContinuouWebJob

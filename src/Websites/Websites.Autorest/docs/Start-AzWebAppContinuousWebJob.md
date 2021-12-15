@@ -1,32 +1,31 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/stop-azwebappslotcontinuouwebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebappcontinuouswebjob
 schema: 2.0.0
 ---
 
-# Stop-AzWebAppSlotContinuouWebJob
+# Start-AzWebAppContinuousWebJob
 
 ## SYNOPSIS
-Description for Stop a continuous web job for an app, or a deployment slot.
+Description for Start a continuous web job for an app, or a deployment slot.
 
 ## SYNTAX
 
-### Stop (Default)
+### Start (Default)
 ```
-Stop-AzWebAppSlotContinuouWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
- -WebJobName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzWebAppContinuousWebJob -Name <String> -ResourceGroupName <String> -WebJobName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### StartViaIdentity
 ```
-Stop-AzWebAppSlotContinuouWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Start-AzWebAppContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Stop a continuous web job for an app, or a deployment slot.
+Description for Start a continuous web job for an app, or a deployment slot.
 
 ## EXAMPLES
 
@@ -71,7 +70,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: StopViaIdentity
+Parameter Sets: StartViaIdentity
 Aliases:
 
 Required: True
@@ -86,7 +85,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -116,23 +115,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Slot
-Name of the deployment slot.
-If a slot is not specified, the API deletes a deployment for the production slot.
-
-```yaml
-Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -149,7 +132,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Start
 Aliases:
 
 Required: False
@@ -164,7 +147,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Start
 Aliases:
 
 Required: True

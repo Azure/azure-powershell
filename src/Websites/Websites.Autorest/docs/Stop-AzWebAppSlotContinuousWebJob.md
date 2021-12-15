@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappslotcontinuouwebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/stop-azwebappslotcontinuouswebjob
 schema: 2.0.0
 ---
 
-# Remove-AzWebAppSlotContinuouWebJob
+# Stop-AzWebAppSlotContinuousWebJob
 
 ## SYNOPSIS
-Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+Description for Stop a continuous web job for an app, or a deployment slot.
 
 ## SYNTAX
 
-### Delete (Default)
+### Stop (Default)
 ```
-Remove-AzWebAppSlotContinuouWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
+Stop-AzWebAppSlotContinuousWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
  -WebJobName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### StopViaIdentity
 ```
-Remove-AzWebAppSlotContinuouWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Stop-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+Description for Stop a continuous web job for an app, or a deployment slot.
 
 ## EXAMPLES
 
@@ -71,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: StopViaIdentity
 Aliases:
 
 Required: True
@@ -86,7 +86,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -116,7 +116,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -132,7 +132,7 @@ If a slot is not specified, the API deletes a deployment for the production slot
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -149,7 +149,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: False
@@ -164,7 +164,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True

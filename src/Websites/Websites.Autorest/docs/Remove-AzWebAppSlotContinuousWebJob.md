@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappcontinuouwebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappslotcontinuouswebjob
 schema: 2.0.0
 ---
 
-# Remove-AzWebAppContinuouWebJob
+# Remove-AzWebAppSlotContinuousWebJob
 
 ## SYNOPSIS
 Description for Delete a continuous web job by its ID for an app, or a deployment slot.
@@ -14,13 +14,14 @@ Description for Delete a continuous web job by its ID for an app, or a deploymen
 
 ### Delete (Default)
 ```
-Remove-AzWebAppContinuouWebJob -Name <String> -ResourceGroupName <String> -WebJobName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWebAppSlotContinuousWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
+ -WebJobName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzWebAppContinuouWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -112,6 +113,22 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Name of the resource group to which the resource belongs.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API deletes a deployment for the production slot.
 
 ```yaml
 Type: System.String

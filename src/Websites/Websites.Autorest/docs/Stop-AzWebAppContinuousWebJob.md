@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/stop-azwebappcontinuouwebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/stop-azwebappcontinuouswebjob
 schema: 2.0.0
 ---
 
-# Stop-AzWebAppContinuouWebJob
+# Stop-AzWebAppContinuousWebJob
 
 ## SYNOPSIS
 Description for Stop a continuous web job for an app, or a deployment slot.
@@ -14,13 +14,13 @@ Description for Stop a continuous web job for an app, or a deployment slot.
 
 ### Stop (Default)
 ```
-Stop-AzWebAppContinuouWebJob -Name <String> -ResourceGroupName <String> -WebJobName <String>
+Stop-AzWebAppContinuousWebJob -Name <String> -ResourceGroupName <String> -WebJobName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
-Stop-AzWebAppContinuouWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Stop-AzWebAppContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

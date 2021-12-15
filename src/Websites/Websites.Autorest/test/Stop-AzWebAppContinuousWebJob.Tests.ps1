@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Start-AzWebAppSlotContinuouWebJob'))
+if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzWebAppContinuousWebJob'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Start-AzWebAppSlotContinuouWebJob.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Stop-AzWebAppContinuousWebJob.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzWebAppSlotContinuouWe
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzWebAppSlotContinuouWebJob' {
-    It 'Start' -skip {
+Describe 'Stop-AzWebAppContinuousWebJob' {
+    It 'Stop' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'StartViaIdentity' -skip {
+    It 'StopViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
