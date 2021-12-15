@@ -163,4 +163,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzKeyVaultKeyRotationPolicy.md](./Get-AzKeyVaultKeyRotationPolicy.md)
 
-[Update-AzKeyVaultKeyRotationPolicy.md](./Update-AzKeyVaultKeyRotationPolicy.md)
+[Set-AzKeyVaultKeyRotationPolicy.md](./Set-AzKeyVaultKeyRotationPolicy.md)

@@ -5,29 +5,29 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-AzKeyVaultKeyRotationPolicy
+# Set-AzKeyVaultKeyRotationPolicy
 
 ## SYNOPSIS
-Updates the key rotation policy for the specified key in Key Vault.
+Sets the key rotation policy for the specified key in Key Vault.
 
 ## SYNTAX
 
 ### ByVaultName (Default)
 ```
-Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>]
+Set-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>]
  [-KeyRotationLifetimeAction <PSKeyRotationLifetimeAction[]>] [-VaultName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ###  ByKeyRotationPolicyInputObject
 ```
-Update-AzKeyVaultKeyRotationPolicy [-KeyRotationPolicy] <PSKeyRotationPolicy>
+Set-AzKeyVaultKeyRotationPolicy [-KeyRotationPolicy] <PSKeyRotationPolicy>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
-Update-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>]
+Set-AzKeyVaultKeyRotationPolicy [-ExpiresIn <TimeSpan>]
  [-KeyRotationLifetimeAction <PSKeyRotationLifetimeAction[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -37,10 +37,10 @@ This cmdlet requires the key update permission. It returns a key rotation policy
 
 ## EXAMPLES
 
-### Example 1: Updates key rotation policy expiry time
+### Example 1: Sets key rotation policy expiry time
 ```powershell
 $t = New-TimeSpan -Days 50
-Update-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key -ExpiresIn $t
+Set-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key -ExpiresIn $t
 ```
 
 ```output
@@ -55,13 +55,13 @@ UpdatedOn       : 12/10/2021 3:22:14 AM +00:00
 
 These cmdlets set the key rotation policy expiry time of test-key as 50 days.
 
-### Example 2: Updates key rotation policy by InputObject
+### Example 2: Sets key rotation policy by InputObject
 ```powershell
 $key = Get-AzKeyVaultKey -VaultName test-kv -Name test-key
 $action = [Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationLifetimeAction]::new()
 $action.Action = "Rotate"
 $action.TimeBeforeExpiry = New-TimeSpan -Days 30
-Update-AzKeyVaultKeyRotationPolicy -InputObject $key -KeyRotationLifetimeAction $action
+Set-AzKeyVaultKeyRotationPolicy -InputObject $key -KeyRotationLifetimeAction $action
 ```
 
 ```output
@@ -77,12 +77,12 @@ UpdatedOn       : 12/14/2021 5:26:28 AM +00:00
 
 These cmdlets set the key rotation policy expiry time of test-key as 50 days.
 
-### Example 3: Updates key rotation policy by PSKeyRotationPolicy object
+### Example 3: Sets key rotation policy by PSKeyRotationPolicy object
 ```powershell
 $key = Get-AzKeyVaultKey -VaultName test-kv -Name test-key
 $policy = Get-AzKeyVaultKeyRotationPolicy $key
 $policy.ExpiresIn = New-TimeSpan -Days 60
-Update-AzKeyVaultKeyRotationPolicy -KeyRotationPolicy $policy
+Set-AzKeyVaultKeyRotationPolicy -KeyRotationPolicy $policy
 ```
 
 ```output
@@ -97,11 +97,26 @@ These cmdlets set the key rotation policy expiry time of test-key as 50 days.
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -113,10 +128,11 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiresIn
-The time span when the key rotation policy will expire. It should be at least 28 days.
+The time span when the key rotation policy will expire.
+It should be at least 28 days.
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: ByVaultName, ByKeyInputObject
 Aliases:
 
@@ -131,7 +147,7 @@ Accept wildcard characters: False
 Key object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
+Type: PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKeyInputObject
 Aliases: Key
 
@@ -146,7 +162,7 @@ Accept wildcard characters: False
 PSKeyRotationLifetimeAction object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationLifetimeAction[]
+Type: PSKeyRotationLifetimeAction[]
 Parameter Sets: ByVaultName, ByKeyInputObject
 Aliases:
 
@@ -161,7 +177,7 @@ Accept wildcard characters: False
 PSKeyRotationPolicy object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationPolicy
+Type: PSKeyRotationPolicy
 Parameter Sets:  ByKeyRotationPolicyInputObject
 Aliases:
 
@@ -176,7 +192,7 @@ Accept wildcard characters: False
 Key name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVaultName
 Aliases: KeyName
 
@@ -191,7 +207,7 @@ Accept wildcard characters: False
 Vault name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -202,27 +218,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -237,6 +238,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyRotationPolicy
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 
