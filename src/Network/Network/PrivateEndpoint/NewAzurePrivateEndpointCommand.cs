@@ -21,6 +21,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
+using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -91,6 +92,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Application Security Groups")]
+        public PSApplicationSecurityGroup[] ApplicationSecurityGroups { get; set; }
+
         private PSPrivateEndpoint CreatePSPrivateEndpoint()
         {
             var psPrivateEndpoint = new PSPrivateEndpoint
@@ -113,6 +117,12 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {
                 psPrivateEndpoint.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            // Add support for new properties ApplicationSecurityGroups, IpConfigurations, CustomNetworkInterfaceName
+            if (this.ApplicationSecurityGroups != null && this.ApplicationSecurityGroups.Length > 0)
+            {
+                psPrivateEndpoint._psApplicationSecurityGroups = ApplicationSecurityGroups.ToList();
             }
 
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);

@@ -1357,8 +1357,10 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
 
-                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
-                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>()
+                    .ForMember(dest => dest.ApplicationSecurityGroups, opt => opt.MapFrom(src => src._psApplicationSecurityGroups));
+                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>()
+                    .ForMember(dest => dest._psApplicationSecurityGroups, opt => opt.MapFrom(src => src.ApplicationSecurityGroups));
                 cfg.CreateMap<CNM.PSPrivateDnsZoneGroup, MNM.PrivateDnsZoneGroup>();
                 cfg.CreateMap<MNM.PrivateDnsZoneGroup, CNM.PSPrivateDnsZoneGroup>();
                 cfg.CreateMap<CNM.PSPrivateDnsZoneConfig, MNM.PrivateDnsZoneConfig>();

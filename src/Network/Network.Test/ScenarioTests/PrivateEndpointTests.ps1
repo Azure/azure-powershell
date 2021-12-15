@@ -345,3 +345,112 @@ function Test-PrivateEndpointInEdgeZone
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test associating application security groups with private endpoint.
+It is qualified to pass application security groups as input parameters while updating the application security groups is not allowed
+#>
+function Test-PrivateEndpointApplicationSecurityGroups
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $location = "eastus"
+    # Dependency parameters
+    $vnetName = Get-ResourceName
+    $nlbFrontName = "LB-Frontend"
+    $nlbBackendName = "LB-Backend"
+    $nlbName = Get-ResourceName
+    $plsName = "PrivateLinkServiceName"
+    $plsConnectionName = "PrivateLinkServiceConnectionName"
+    $IpConfigurationName = "IpConfigurationName"
+    $vnetPEName = "VNetPE"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create Virtual networks
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24"
+        $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24"
+        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24" -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet
+
+        # Create LoadBalancer
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $nlbFrontName -PrivateIpAddress "10.0.1.5" -SubnetId $vnet.subnets[0].Id
+        $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $nlbBackendName;
+        $job = New-AzLoadBalancer -ResourceGroupName $rgname -Name $nlbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -AsJob
+        $job | Wait-Job
+        $nlbcreate = $job | Receive-Job
+
+        # Verfify if load balancer is created successfully
+        Assert-NotNull $nlbcreate
+        Assert-AreEqual $nlbName $nlbcreate.Name
+        Assert-AreEqual $location $nlbcreate.Location
+        Assert-AreEqual "Succeeded" $nlbcreate.ProvisioningState
+
+        # Create PrivateLinkService
+        $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2]
+        $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $nlbName | Get-AzLoadBalancerFrontendIpConfig
+
+        $job = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $plsName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -AsJob
+        $job | Wait-Job
+        $plscreate = $job | Receive-Job
+        $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
+
+        # Verfify if private link service is created successfully
+        Assert-NotNull $pls
+        Assert-AreEqual $plsName $pls.Name
+        Assert-NotNull $pls.IpConfigurations
+        Assert-True { $pls.IpConfigurations.Length -gt 0 }
+        Assert-AreEqual "Succeeded" $pls.ProvisioningState
+
+        # Create virtual network for private endpoint
+        $peSubnet = New-AzVirtualNetworkSubnetConfig -Name "peSubnet" -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag "Disabled"
+        $vnetPE = New-AzVirtualNetwork -Name $vnetPEName -ResourceGroupName $rgName -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+
+        # Create application security groups for private endpoint
+        $asg1 = New-AzApplicationSecurityGroup -Name "ApplicationSecurityGroupName1" -ResourceGroupName $rgname -Location $location
+        $asg2 = New-AzApplicationSecurityGroup -Name "ApplicationSecurityGroupName2" -ResourceGroupName $rgname -Location $location
+
+        # Create PrivateEndpoint
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name $plsConnectionName -PrivateLinkServiceId  $pls.Id
+
+        $job = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ApplicationSecurityGroups $asg1,$asg2 -AsJob
+        $job | Wait-Job
+        $pecreate = $job | Receive-Job
+        
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        
+        # Verification for New-
+        Assert-NotNull $pe
+        Assert-AreEqual $rname $pe.Name
+        Assert-AreEqual "Succeeded" $pe.ProvisioningState
+        Assert-NotNull $pe.ApplicationSecurityGroups
+        Assert-True { $pe.ApplicationSecurityGroups.Count -eq 2 }
+        foreach ($asg in $pe.ApplicationSecurityGroups)
+        {
+            Assert-NotNull $asg.Id
+        }
+
+        # Update application security groups for the private endpoint
+        $pe.ApplicationSecurityGroups[0].Name = "testname"
+        $pe | Set-AzPrivateEndpoint
+        $pe.ApplicationSecurityGroups[0].Id = "testid"
+        Assert-ThrowsContains  { $pe | Set-AzPrivateEndpoint } "BadRequest"
+
+        # Verfication after Set-
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        foreach ($asg in $pe.ApplicationSecurityGroups)
+        {
+            Assert-AreNotEqual "testname" $asg.Name
+            Assert-AreNotEqual "testid" $asg.Id
+        }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
