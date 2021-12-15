@@ -35,7 +35,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key.KeyRotationPolicy
         {
             NormalizeParameterSets();
 
-            WriteObject(this.Track2DataClient.RotateKey(VaultName, Name));
+            ConfirmAction(Name, Properties.Resources.RotateKey, () =>
+            {
+                WriteObject(this.Track2DataClient.RotateKey(VaultName, Name));
+            });
         }
     }
 } 

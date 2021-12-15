@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotationPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyRotationPolicy))]
-    public class UpdateAzKeyVaultKeyRotationPolicy: KeyVaultOnlyKeyCmdletBase
+    public class SetAzKeyVaultKeyRotationPolicy: KeyVaultOnlyKeyCmdletBase
     {
         #region Parameter Set Names
 
@@ -86,7 +86,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         {
             NormalizeParameterSets();
 
-            WriteObject(this.Track2DataClient.SetKeyRotationPolicy(KeyRotationPolicy));
+            ConfirmAction(KeyRotationPolicy.KeyName, Properties.Resources.SetKeyRotationPolicy, () => 
+            {
+                WriteObject(this.Track2DataClient.SetKeyRotationPolicy(KeyRotationPolicy));
+            });
         }
     }
 }
