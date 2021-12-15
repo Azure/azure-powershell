@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoPauseDelayInMinute
-Number of minutes idle. This parameter must be specified when Auto-pause is enabled.
+Number of minutes idle. This parameter can be specified when Auto-pause is enabled. The default value will be [15] if it is not specified manually.
 
 ```yaml
 Type: System.Int32

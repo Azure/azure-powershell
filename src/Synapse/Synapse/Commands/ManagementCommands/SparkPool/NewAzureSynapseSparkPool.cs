@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.AutoPauseDelayInMinute)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
-        public int AutoPauseDelayInMinute { get; set; }
+        public int AutoPauseDelayInMinute { get; set; } = SynapseConstants.DefaultAutoPauseDelayInMinute;
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.SparkVersion)]
