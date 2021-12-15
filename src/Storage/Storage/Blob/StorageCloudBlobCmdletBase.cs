@@ -14,12 +14,6 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Commands.Common.Storage.ResourceModel;
     using global::Azure;
     using global::Azure.Core;
@@ -34,6 +28,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
     using Track2blobModel = global::Azure.Storage.Blobs.Models;
 
     /// <summary>

@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System;
     using System.Collections.Generic;
     using System.Threading;
-    using System.Threading.Tasks;
     using global::Azure;
     using global::Azure.Data.Tables;
     using global::Azure.Data.Tables.Models;
@@ -103,46 +102,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             TableClient tableClient = this.tableServiceClient.GetTableClient(tableName);
             Response response = tableClient.Delete(cancellationToken);
             return response != null;
-        }
-
-        /// <summary>
-        /// Retrieves details about any stored access policies specified on the table that may be used with Shared Access Signatures.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
-        /// <returns></returns>
-        public IEnumerable<TableSignedIdentifier> GetAccessPolicies(string tableName, CancellationToken cancellationToken)
-        {
-            this.EnsureTableServiceClient();
-            TableClient tableClient = this.tableServiceClient.GetTableClient(tableName);
-            return tableClient.GetAccessPolicies(cancellationToken).Value;
-        }
-
-        /// <summary>
-        /// Retrieves details about any stored access policies specified on the table that may be used with Shared Access Signatures.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
-        /// <returns></returns>
-        public async Task<IEnumerable<TableSignedIdentifier>> GetAccessPoliciesAsync(string tableName, CancellationToken cancellationToken)
-        {
-            this.EnsureTableServiceClient();
-            TableClient tableClient = this.tableServiceClient.GetTableClient(tableName);
-            return (await tableClient.GetAccessPoliciesAsync(cancellationToken)).Value;
-        }
-
-        /// <summary>
-        /// Sets stored access policies for the table that may be used with Shared Access Signatures.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="identifiers">The access policies for the table.</param>
-        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
-        /// <returns></returns>
-        public Response SetAccessPolicies(string tableName, IEnumerable<TableSignedIdentifier> identifiers, CancellationToken cancellationToken)
-        {
-            this.EnsureTableServiceClient();
-            TableClient tableClient = this.tableServiceClient.GetTableClient(tableName);
-            return tableClient.SetAccessPolicy(identifiers, cancellationToken);
         }
 
         /// <summary>

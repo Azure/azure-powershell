@@ -14,16 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Storage.Shared.Protocol;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using StorageClient = Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 
     /// <summary>
     /// Show azure storage service properties
@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
 
         /// <summary>
-        /// Update the Table service logging properties according to the input
+        /// Update the Table service properties according to the input
         /// </summary>
         /// <param name="logging">Service properties</param>
         internal void UpdateTableServiceProperties(XTable.LoggingProperties logging)
@@ -150,8 +150,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
                 for (int i = 0; i < LoggingOperations.Length; i++)
                 {
-                    if (LoggingOperations[i] == StorageClient.LoggingOperations.None ||
-                        LoggingOperations[i] == StorageClient.LoggingOperations.All)
+                    if (LoggingOperations[i] == StorageClient.LoggingOperations.None
+                        || LoggingOperations[i] == StorageClient.LoggingOperations.All)
                     {
                         if (LoggingOperations.Length > 1)
                         {
@@ -338,7 +338,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                if (tableChannel.IsTokenCredential)
+                if (!tableChannel.IsTokenCredential)
+                {
+                    XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+
+                    // Premium Account not support classic metrics and logging
+                    if (currentServiceProperties.Logging == null)
+                    {
+                        AccountProperties accountProperties = Channel.GetAccountProperties();
+                        if (accountProperties.SkuName.Contains("Premium"))
+                        {
+                            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                        }
+                    }
+
+                    XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
+                    serviceProperties.Clean();
+                    serviceProperties.Logging = currentServiceProperties.Logging;
+
+                    UpdateTableServiceProperties(serviceProperties.Logging);
+
+                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
+                        GetTableRequestOptions(), TableOperationContext);
+
+                    if (PassThru)
+                    {
+                        WriteObject(serviceProperties.Logging);
+                    }
+                }
+                else
                 {
                     TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
 
@@ -355,34 +383,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     if (PassThru)
                     {
                         this.WriteObject(PSSeriviceProperties.ConvertLoggingProperties(serviceProperties.Logging));
-                    }
-                }
-                else
-                {
-                    XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-
-                    // Premium Account not support classic metrics and logging
-                    if (currentServiceProperties.Logging == null)
-                    {
-                        AccountProperties accountProperties = Channel.GetAccountProperties();
-                        if (accountProperties.SkuName.Contains("Premium"))
-                        {
-                            this.ThrowIfPremium("This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}");
-                        }
-                    }
-
-                    XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
-                    serviceProperties.Clean();
-                    serviceProperties.Logging = currentServiceProperties.Logging;
-
-                    UpdateTableServiceProperties(serviceProperties.Logging);
-
-                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                        GetTableRequestOptions(), TableOperationContext);
-
-                    if (PassThru)
-                    {
-                        WriteObject(serviceProperties.Logging);
                     }
                 }
             }

@@ -9,14 +9,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Storage.Shared.Protocol;
+using XTable = Microsoft.Azure.Cosmos.Table;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Azure.Data.Tables.Models;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
-    using System;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Storage.Shared.Protocol;
-    using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using XTable = Microsoft.Azure.Cosmos.Table;
-
     // Wrapper of ServiceProperties
     public class PSSeriviceProperties
     {

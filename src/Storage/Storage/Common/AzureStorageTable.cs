@@ -33,6 +33,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0)]
         public CloudTable CloudTable { get; }
 
+        /// <summary>
+        /// Track 2 Table Client object
+        /// </summary>
         public TableClient TableClient { get; }
 
         /// <summary>
@@ -67,16 +70,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <param name="tableClient"></param>
         public AzureStorageTable(TableClient tableClient)
         {
-            this.TableClient = TableClient;
+            this.TableClient = tableClient;
             this.Name = tableClient.Name;
 
             Uri uri = (Uri)typeof(TableClient)
                 .GetField("_endpoint", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .GetValue(tableClient);
             this.Uri = new Uri($"{uri.AbsoluteUri}{(uri.AbsoluteUri.EndsWith("/") ? string.Empty : "/")}{Name}");
-
+            
             // This constructed CloudTable is only for display purpose.
-            // Without credential content, it wouldn't work for data plane oprations.
+            // Without credential content, it wouldn't work for data plane operations.
             // Customer, who uses oauth, should use track 2 TableClient instead.
             this.CloudTable = new CloudTable(Uri);
         }

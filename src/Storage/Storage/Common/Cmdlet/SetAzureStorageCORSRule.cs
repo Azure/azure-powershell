@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Shared.Protocol;
+using XTable = Microsoft.Azure.Cosmos.Table;
+using System;
+using System.Globalization;
+using System.Management.Automation;
+using System.Net;
+using System.Security.Permissions;
+using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using Azure.Data.Tables.Models;
+using Azure;
+using System.Text;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Net;
-    using System.Security.Permissions;
-    using global::Azure;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Shared.Protocol;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-    using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
-    using XTable = Microsoft.Azure.Cosmos.Table;
-
     /// <summary>
     /// Define cmdlet to set azure storage CORS rules to service, it will overwrite all of the CORS rules in the service.
     /// </summary>
@@ -104,30 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                if (tableChannel.IsTokenCredential)
-                {
-                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
-
-                    foreach (var corsRule in this.CorsRules)
-                    {
-                        serviceProperties.Cors.Add(new TableCorsRule(
-                            string.Join(",", corsRule.AllowedOrigins),
-                            string.Join(",", corsRule.AllowedMethods),
-                            string.Join(",", corsRule.AllowedHeaders),
-                            string.Join(",", corsRule.ExposedHeaders),
-                            corsRule.MaxAgeInSeconds));
-                    }
-
-                    try
-                    {
-                        tableChannel.SetProperties(serviceProperties, this.CmdletCancellationToken);
-                    }
-                    catch (RequestFailedException)
-                    {
-                        throw new InvalidOperationException(Resources.CORSRuleError);
-                    }
-                }
-                else
+                if (!tableChannel.IsTokenCredential)
                 {
                     XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
                     serviceProperties.Clean();
@@ -163,6 +141,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                         {
                             throw;
                         }
+                    }
+                }
+                else
+                {
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
+                    serviceProperties.Cors.Clear();
+
+                    foreach (PSCorsRule corsRule in this.CorsRules)
+                    {
+                        serviceProperties.Cors.Add(new TableCorsRule(
+                            corsRule.AllowedOrigins == null ? string.Empty : string.Join(",", corsRule.AllowedOrigins),
+                            this.CheckAndJoinAllowedMethods(corsRule.AllowedMethods),
+                            corsRule.AllowedHeaders == null ? string.Empty : string.Join(",", corsRule.AllowedHeaders),
+                            corsRule.ExposedHeaders == null ? string.Empty : string.Join(",", corsRule.ExposedHeaders),
+                            corsRule.MaxAgeInSeconds));
+                    }
+
+                    try
+                    {
+                        tableChannel.SetProperties(serviceProperties, this.CmdletCancellationToken);
+                    }
+                    catch (RequestFailedException ex)
+                    {
+                        this.WriteExceptionError(ex);
+                        throw new InvalidOperationException(Resources.CORSRuleError);
                     }
                 }
             }
@@ -213,6 +216,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     }
                 }
             }
+        }
+
+        private string CheckAndJoinAllowedMethods(string[] allowedMethods)
+        {
+            if (allowedMethods == null)
+            {
+                return string.Empty;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach (var method in allowedMethods)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(',');
+                }
+
+                XTable.CorsHttpMethods allowedCorsMethod = XTable.CorsHttpMethods.None;
+                if (Enum.TryParse<XTable.CorsHttpMethods>(method, ignoreCase: true, out allowedCorsMethod))
+                {
+                    sb.Append(allowedCorsMethod);
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
+                }
+            }
+
+            return sb.ToString().ToUpperInvariant();
         }
     }
 }

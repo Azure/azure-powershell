@@ -14,13 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using Microsoft.Azure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
+    using System;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Storage.Shared.Protocol;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure.Data.Tables.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Show azure storage service properties
@@ -59,7 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 if ((MetricsType == ServiceMetricsType.Hour && serviceProperties.HourMetrics == null)
                     || (MetricsType == ServiceMetricsType.Minute && serviceProperties.MinuteMetrics == null))
                 {
-                    this.ThrowIfPremium("This Storage account doesn't support Classic Metrics, since it’s a Premium Storage account: {0}");
+                    AccountProperties accountProperties = Channel.GetAccountProperties();
+                    if (accountProperties.SkuName.Contains("Premium"))
+                    {
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Metrics, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                    }
                 }
 
                 switch (MetricsType)
@@ -77,7 +83,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                if (tableChannel.IsTokenCredential)
+                if (!tableChannel.IsTokenCredential)
+                {
+                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+
+                    // Premium Account not support classic metrics and logging
+                    if ((MetricsType == ServiceMetricsType.Hour && serviceProperties.HourMetrics == null)
+                        || (MetricsType == ServiceMetricsType.Minute && serviceProperties.MinuteMetrics == null))
+                    {
+                        AccountProperties accountProperties = Channel.GetAccountProperties();
+                        if (accountProperties.SkuName.Contains("Premium"))
+                        {
+                            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Metrics, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                        }
+                    }
+
+                    switch (MetricsType)
+                    {
+                        case ServiceMetricsType.Hour:
+                            WriteObject(serviceProperties.HourMetrics);
+                            break;
+                        case ServiceMetricsType.Minute:
+                        default:
+                            WriteObject(serviceProperties.MinuteMetrics);
+                            break;
+                    }
+                }
+                else
                 {
                     TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
 
@@ -96,28 +128,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                         case ServiceMetricsType.Minute:
                         default:
                             WriteObject(PSSeriviceProperties.ConvertMetricsProperties(serviceProperties.MinuteMetrics));
-                            break;
-                    }
-                }
-                else
-                {
-                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-
-                    // Premium Account not support classic metrics and logging
-                    if ((MetricsType == ServiceMetricsType.Hour && serviceProperties.HourMetrics == null) ||
-                        (MetricsType == ServiceMetricsType.Minute && serviceProperties.MinuteMetrics == null))
-                    {
-                        this.ThrowIfPremium("This Storage account doesn't support Classic Metrics, since it’s a Premium Storage account: {0}");
-                    }
-
-                    switch (MetricsType)
-                    {
-                        case ServiceMetricsType.Hour:
-                            WriteObject(serviceProperties.HourMetrics);
-                            break;
-                        case ServiceMetricsType.Minute:
-                        default:
-                            WriteObject(serviceProperties.MinuteMetrics);
                             break;
                     }
                 }

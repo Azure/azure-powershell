@@ -143,31 +143,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
 
         /// <summary>
-        /// Retrieves details about any stored access policies specified on the table that may be used with Shared Access Signatures.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
-        /// <returns></returns>
-        IEnumerable<TableSignedIdentifier> GetAccessPolicies(string tableName, CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Retrieves details about any stored access policies specified on the table that may be used with Shared Access Signatures.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
-        /// <returns></returns>
-        Task<IEnumerable<TableSignedIdentifier>> GetAccessPoliciesAsync(string tableName, CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Sets stored access policies for the table that may be used with Shared Access Signatures.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="identifiers">The access policies for the table.</param>
-        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
-        /// <returns></returns>
-        Response SetAccessPolicies(string tableName, IEnumerable<TableSignedIdentifier> identifiers, CancellationToken cancellationToken);
-
-        /// <summary>
         /// Get the Table service properties
         /// </summary>
         /// <param name="account">Cloud storage account</param>

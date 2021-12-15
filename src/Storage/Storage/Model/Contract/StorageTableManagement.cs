@@ -14,14 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Cosmos.Table;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using global::Azure.Core;
     using global::Azure.Data.Tables;
-    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Common;
-    using XTable = Microsoft.Azure.Cosmos.Table;
+    using global::Azure.Core;
 
     /// <summary>
     /// Storage table management
@@ -68,13 +70,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             TableClientOptions clientOptions = new TableClientOptions();
             clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
 
-            if (context.StorageAccount.Credentials.IsToken)
+            if (!context.StorageAccount.Credentials.IsToken)
             {
-                tableServiceClient = new TableServiceClient(context.StorageAccount.TableEndpoint, context.Track2OauthToken, clientOptions);
+                tableClient = internalStorageContext.TableStorageAccount.CreateCloudTableClient();
             }
             else
             {
-                tableClient = context.TableStorageAccount.CreateCloudTableClient();
+                tableServiceClient = new TableServiceClient(context.StorageAccount.TableEndpoint, context.Track2OauthToken, clientOptions);
             }
         }
 

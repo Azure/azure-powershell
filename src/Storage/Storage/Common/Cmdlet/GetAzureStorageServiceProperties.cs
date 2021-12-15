@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using Microsoft.Azure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Storage.Shared.Protocol;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-    using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure.Data.Tables.Models;
 
     /// <summary>
     /// Show Azure Storage service properties
@@ -57,14 +57,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                if (tableChannel.IsTokenCredential)
+                if (!tableChannel.IsTokenCredential)
                 {
-                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
+                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
                     WriteObject(new PSSeriviceProperties(serviceProperties));
                 }
                 else
                 {
-                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
                     WriteObject(new PSSeriviceProperties(serviceProperties));
                 }
             }

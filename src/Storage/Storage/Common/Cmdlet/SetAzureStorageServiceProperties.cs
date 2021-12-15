@@ -17,10 +17,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using StorageClient = Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// Modify Azure Storage service properties
@@ -75,11 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                    if (tableChannel.IsTokenCredential)
-                    {
-                        throw new ArgumentException("Updating default service version is not supported while using OAuth.");
-                    }
-                    else
+                    if (!tableChannel.IsTokenCredential)
                     {
                         XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
 
@@ -95,6 +91,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                         {
                             WriteObject(new PSSeriviceProperties(serviceProperties));
                         }
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Updating default service version is not supported while using OAuth.");
                     }
                 }
             }

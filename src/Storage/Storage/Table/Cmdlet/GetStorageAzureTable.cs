@@ -14,16 +14,17 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Commands.Common.Storage.ResourceModel;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.Azure.Cosmos.Table;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System.Linq;
+    using global::Azure.Data.Tables.Models;
 
     /// <summary>
     /// list azure tables
@@ -225,6 +226,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
 
         /// <summary>
+        /// write cloud table with storage context
+        /// </summary>
+        /// <param name="tableList">An enumerable collection of CloudTable object</param>
+        internal void WriteTablesWithStorageContext(IEnumerable<CloudTable> tableList)
+        {
+            if (null == tableList)
+            {
+                return;
+            }
+
+            foreach (CloudTable table in tableList)
+            {
+                AzureStorageTable azureTable = new AzureStorageTable(table, this.Channel.StorageContext, this.tableClientOptions);
+                WriteObjectWithStorageContext(azureTable);
+            }
+        }
+
+        /// <summary>
         /// write table with storage context
         /// </summary>
         /// <param name="tableList">An enumerable collection of AzureStorageTable object</param>
@@ -247,7 +266,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (this.Channel.IsTokenCredential)
+            if (!this.Channel.IsTokenCredential)
+            {
+                IEnumerable<CloudTable> tableList = null;
+
+                if (PrefixParameterSet == ParameterSetName)
+                {
+                    tableList = ListTablesByPrefix(Prefix);
+                }
+                else if (QueryParameterSet == ParameterSetName)
+                {
+                    throw new ArgumentException($"{QueryParameterSet} is only supported while using OAuth");
+                }
+                else
+                {
+                    tableList = ListTablesByName(Name);
+                }
+
+                WriteTablesWithStorageContext(tableList);
+            }
+            else
             {
                 IEnumerable<AzureStorageTable> tableList = null;
 
@@ -265,25 +303,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 }
 
                 WriteTablesWithStorageContext(tableList);
-            }
-            else
-            {
-                IEnumerable<CloudTable> tableList = null;
-
-                if (PrefixParameterSet == ParameterSetName)
-                {
-                    tableList = ListTablesByPrefix(Prefix);
-                }
-                else if (QueryParameterSet == ParameterSetName)
-                {
-                    throw new ArgumentException($"{QueryParameterSet} is only supported while using OAuth");
-                }
-                else
-                {
-                    tableList = ListTablesByName(Name);
-                }
-
-                WriteTablesWithStorageContext(tableList.Select(t => new AzureStorageTable(t, this.Channel.StorageContext, this.tableClientOptions)));
             }
         }
     }

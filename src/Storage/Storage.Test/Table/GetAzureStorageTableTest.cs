@@ -194,14 +194,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestMethod]
         public void WriteTablesWithStorageContextTest()
         {
-            this.command.WriteTablesWithStorageContext(null);
+            // v1 test
+            this.command.WriteTablesWithStorageContext((IEnumerable<CloudTable>)null);
             Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
 
             this.MockCmdRunTime.ResetPipelines();
-            this.command.WriteTablesWithStorageContext(new AzureStorageTable[] { });
+            this.command.WriteTablesWithStorageContext(new CloudTable[] { });
             Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
 
-            // v1 test
             CloudTable[] v1Tables =
             {
                 new CloudTable(new Uri($"{MockStorageTableManagement.TableEndPoint}test")),
@@ -209,10 +209,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             };
 
             this.MockCmdRunTime.ResetPipelines();
-            this.command.WriteTablesWithStorageContext(v1Tables.Select(t => new AzureStorageTable(t, null, null)));
+            this.command.WriteTablesWithStorageContext(v1Tables);
             Assert.AreEqual(2, this.MockCmdRunTime.OutputPipeline.Count);
 
             // v2 test
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext((IEnumerable<AzureStorageTable>)null);
+            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
+
+            this.MockCmdRunTime.ResetPipelines();
+            this.command.WriteTablesWithStorageContext(new AzureStorageTable[] { });
+            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count);
+
             TableClient[] v2Tables =
             {
                 new TableClient(new Uri($"{MockStorageTableManagement.TableEndPoint}test")),

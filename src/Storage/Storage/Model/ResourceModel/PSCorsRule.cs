@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Azure.Data.Tables.Models;
 using Microsoft.Azure.Storage.Shared.Protocol;
 using XTable = Microsoft.Azure.Cosmos.Table;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+using Azure.Data.Tables.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {

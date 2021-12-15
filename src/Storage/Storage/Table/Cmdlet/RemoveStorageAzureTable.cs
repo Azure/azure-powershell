@@ -14,14 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Security.Permissions;
-    using global::Azure.Data.Tables.Models;
-    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.Azure.Cosmos.Table;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Collections.Generic;
+    using global::Azure.Data.Tables.Models;
 
     /// <summary>
     /// remove an azure table
@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// </summary>
         /// <param name="name">table name</param>
         /// <returns>
-        /// true if the table is removed, false if user has cancelled the operation,
+        /// true if the table is removed, false if user cancel the operation,
         /// otherwise throw an exception</returns>
         internal bool RemoveAzureTable(string name)
         {
@@ -160,13 +160,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         {
             if (ShouldProcess(Name, "Remove table"))
             {
+                string result = string.Empty;
+
                 bool success = this.Channel.IsTokenCredential ?
                     RemoveAzureTableV2(Channel, Name) :
                     RemoveAzureTable(Name);
 
-                string result = success ?
-                    String.Format(Resources.RemoveTableSuccessfully, Name) :
-                    String.Format(Resources.RemoveTableCancelled, Name);
+                if (success)
+                {
+                    result = String.Format(Resources.RemoveTableSuccessfully, Name);
+                }
+                else
+                {
+                    result = String.Format(Resources.RemoveTableCancelled, Name);
+                }
 
                 WriteVerbose(result);
 
