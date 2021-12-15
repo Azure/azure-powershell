@@ -113,6 +113,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasResourceId = "ResourceId";
         protected const string AliasVirtualNetworkRule = "VirtualNteworkRule";
+        protected const string AliasSchemaGroupName = "SchemaGroupName";
 
         //Access Rights 
         protected const string Manage = "Manage";
