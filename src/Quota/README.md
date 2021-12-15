@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.QuotaExtensionApi
-This directory contains the PowerShell module for the QuotaExtensionApi service.
+# Az.Quota
+This directory contains the PowerShell module for the Quota service.
 
 ---
 ## Status
-[![Az.QuotaExtensionApi](https://img.shields.io/powershellgallery/v/Az.QuotaExtensionApi.svg?style=flat-square&label=Az.QuotaExtensionApi "Az.QuotaExtensionApi")](https://www.powershellgallery.com/packages/Az.QuotaExtensionApi/)
+[![Az.Quota](https://img.shields.io/powershellgallery/v/Az.Quota.svg?style=flat-square&label=Az.Quota "Az.Quota")](https://www.powershellgallery.com/packages/Az.Quota/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.QuotaExtensionApi`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
