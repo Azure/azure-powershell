@@ -12,7 +12,7 @@
 RootModule = './Az.DnsResolver.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.5'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -127,7 +127,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* First preview release for module Az.DnsResolver'
 
         # Prerelease string of this module
         # Prerelease = ''
