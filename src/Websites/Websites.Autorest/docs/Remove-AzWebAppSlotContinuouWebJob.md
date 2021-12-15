@@ -1,73 +1,54 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappfunctionappsetting
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappslotcontinuouwebjob
 schema: 2.0.0
 ---
 
-# New-AzStaticWebAppFunctionAppSetting
+# Remove-AzWebAppSlotContinuouWebJob
 
 ## SYNOPSIS
-Description for Creates or updates the function app settings of a static site.
+Description for Delete a continuous web job by its ID for an app, or a deployment slot.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### Delete (Default)
 ```
-New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AppSetting <Hashtable>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzWebAppSlotContinuouWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
+ -WebJobName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-New-AzStaticWebAppFunctionAppSetting -InputObject <IWebsitesIdentity> [-AppSetting <Hashtable>]
- [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWebAppSlotContinuouWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Creates or updates the function app settings of a static site.
+Description for Delete a continuous web job by its ID for an app, or a deployment slot.
 
 ## EXAMPLES
 
-### Example 1: Create or updates the function app settings of a static site
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01  -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
+PS C:\> {{ Add code here }}
 
-Kind Name        Type
----- ----        ----
-     appsettings Microsoft.Web/staticSites/config
+{{ Add output here }}
 ```
 
-This command creates or updates the function app settings of a static site.
+{{ Add description here }}
 
-### Example 1: Create or updates the function app settings of a static site by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName resourceGroup -Name staticweb01 | New-AzStaticWebAppFunctionAppSetting -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
+PS C:\> {{ Add code here }}
 
-Kind Name        Type
----- ----        ----
-     appsettings Microsoft.Web/staticSites/config
+{{ Add output here }}
 ```
 
-This command creates or updates the function app settings of a static site by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AppSetting
-Settings.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -90,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -100,30 +81,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Kind
-Kind of resource.
+### -Name
+Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the static site.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,7 +116,23 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API deletes a deployment for the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -152,12 +149,27 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebJobName
+Name of Web Job.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -202,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
+### System.Boolean
 
 ## NOTES
 

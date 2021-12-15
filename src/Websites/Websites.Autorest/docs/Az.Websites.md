@@ -50,6 +50,12 @@ Description for Gets the list of users of a static site.
 ### [Get-AzStaticWebAppUserProvidedFunctionApp](Get-AzStaticWebAppUserProvidedFunctionApp.md)
 Description for Gets the details of the user provided function app registered with a static site build
 
+### [Get-AzWebAppContinuouWebJob](Get-AzWebAppContinuouWebJob.md)
+Description for Gets a continuous web job by its ID for an app, or a deployment slot.
+
+### [Get-AzWebAppSlotContinuouWebJob](Get-AzWebAppSlotContinuouWebJob.md)
+Description for Gets a continuous web job by its ID for an app, or a deployment slot.
+
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
 Description for Creates a new static site in an existing resource group, or updates an existing static site.
 
@@ -89,8 +95,26 @@ Description for Deletes a custom domain.
 ### [Remove-AzStaticWebAppUser](Remove-AzStaticWebAppUser.md)
 Description for Deletes the user entry from the static site.
 
+### [Remove-AzWebAppContinuouWebJob](Remove-AzWebAppContinuouWebJob.md)
+Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+
+### [Remove-AzWebAppSlotContinuouWebJob](Remove-AzWebAppSlotContinuouWebJob.md)
+Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+
 ### [Reset-AzStaticWebAppApiKey](Reset-AzStaticWebAppApiKey.md)
 Description for Resets the api key for an existing static site.
+
+### [Start-AzWebAppContinuouWebJob](Start-AzWebAppContinuouWebJob.md)
+Description for Start a continuous web job for an app, or a deployment slot.
+
+### [Start-AzWebAppSlotContinuouWebJob](Start-AzWebAppSlotContinuouWebJob.md)
+Description for Start a continuous web job for an app, or a deployment slot.
+
+### [Stop-AzWebAppContinuouWebJob](Stop-AzWebAppContinuouWebJob.md)
+Description for Stop a continuous web job for an app, or a deployment slot.
+
+### [Stop-AzWebAppSlotContinuouWebJob](Stop-AzWebAppSlotContinuouWebJob.md)
+Description for Stop a continuous web job for an app, or a deployment slot.
 
 ### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)
 Description for Validates a particular custom domain can be added to a static site.
