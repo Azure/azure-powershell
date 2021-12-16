@@ -351,7 +351,7 @@ function Test-PrivateEndpointInEdgeZone
 Test associating application security groups with private endpoint.
 It is qualified to pass application security groups as input parameters while updating the application security groups is not allowed
 #>
-function Test-PrivateEndpointApplicationSecurityGroups
+function Test-PrivateEndpointApplicationSecurityGroup
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -417,7 +417,7 @@ function Test-PrivateEndpointApplicationSecurityGroups
         # Create PrivateEndpoint
         $plsConnection = New-AzPrivateLinkServiceConnection -Name $plsConnectionName -PrivateLinkServiceId  $pls.Id
 
-        $job = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ApplicationSecurityGroups $asg1,$asg2 -AsJob
+        $job = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ApplicationSecurityGroup $asg1,$asg2 -AsJob
         $job | Wait-Job
         $pecreate = $job | Receive-Job
         

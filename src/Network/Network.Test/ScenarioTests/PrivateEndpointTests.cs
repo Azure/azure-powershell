@@ -54,7 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.azdevxps)]
         public void TestPrivateEndpointApplicationSecurityGroups()
         {
-            TestRunner.RunTestScript("Test-PrivateEndpointApplicationSecurityGroups");
+            TestRunner.RunTestScript("Test-PrivateEndpointApplicationSecurityGroup");
         }
     }
 }

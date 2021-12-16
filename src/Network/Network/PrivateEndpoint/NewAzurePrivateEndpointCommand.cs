@@ -92,8 +92,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Application Security Groups")]
-        public PSApplicationSecurityGroup[] ApplicationSecurityGroups { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The application security group of the private endpoint")]
+        public PSApplicationSecurityGroup[] ApplicationSecurityGroup { get; set; }
 
         private PSPrivateEndpoint CreatePSPrivateEndpoint()
         {
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Add support for new properties ApplicationSecurityGroups, IpConfigurations, CustomNetworkInterfaceName
-            if (this.ApplicationSecurityGroups != null && this.ApplicationSecurityGroups.Length > 0)
+            if (this.ApplicationSecurityGroup != null && this.ApplicationSecurityGroup.Length > 0)
             {
-                psPrivateEndpoint._psApplicationSecurityGroups = ApplicationSecurityGroups.ToList();
+                psPrivateEndpoint._psApplicationSecurityGroups = ApplicationSecurityGroup.ToList();
             }
 
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);
