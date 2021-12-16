@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixing typo in error message of InvalidWorkspaceResourceId
 
 ## Version 4.13.0
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
