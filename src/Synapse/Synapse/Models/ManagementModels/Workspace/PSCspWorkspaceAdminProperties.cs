@@ -16,16 +16,16 @@ using Microsoft.Azure.Management.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSVirtualNetworkProfile
+    public class PSCspWorkspaceAdminProperties
     {
-        public PSVirtualNetworkProfile(VirtualNetworkProfile virtualNetworkProfile)
+        public PSCspWorkspaceAdminProperties(CspWorkspaceAdminProperties cwa)
         {
-            this.VirtualNetworkProfileComputeSubnetId = virtualNetworkProfile?.ComputeSubnetId;
+            this.InitialWorkspaceAdminObjectId = cwa?.InitialWorkspaceAdminObjectId;
         }
 
         /// <summary>
-        /// Gets or sets subnet ID used for computes in workspace
+        ///  Gets or sets AAD object ID of initial workspace admin
         /// </summary>
-        public string VirtualNetworkProfileComputeSubnetId { get; set; }
+        public string InitialWorkspaceAdminObjectId { get; set; }
     }
 }

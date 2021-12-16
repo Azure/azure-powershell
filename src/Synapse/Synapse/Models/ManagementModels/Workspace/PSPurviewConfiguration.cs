@@ -16,16 +16,16 @@ using Microsoft.Azure.Management.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSVirtualNetworkProfile
+    public class PSPurviewConfiguration
     {
-        public PSVirtualNetworkProfile(VirtualNetworkProfile virtualNetworkProfile)
+        public PSPurviewConfiguration(PurviewConfiguration configuration)
         {
-            this.VirtualNetworkProfileComputeSubnetId = virtualNetworkProfile?.ComputeSubnetId;
+            this.PurviewResourceId = configuration?.PurviewResourceId;
         }
 
         /// <summary>
-        /// Gets or sets subnet ID used for computes in workspace
+        /// Gets or sets purview Resource ID
         /// </summary>
-        public string VirtualNetworkProfileComputeSubnetId { get; set; }
+        public string PurviewResourceId { get; set; }
     }
 }
