@@ -105,11 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
 
-                if (tableChannel.IsTokenCredential)
-                {
-                    this.ExecuteTableV2(tableChannel);
-                }
-                else
+                if (!tableChannel.IsTokenCredential)
                 {
                     XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
                     serviceProperties.Clean();
@@ -147,37 +143,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                         }
                     }
                 }
+                else
+                {
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
+                    serviceProperties.Cors.Clear();
+
+                    foreach (PSCorsRule corsRule in this.CorsRules)
+                    {
+                        serviceProperties.Cors.Add(new TableCorsRule(
+                            corsRule.AllowedOrigins == null ? string.Empty : string.Join(",", corsRule.AllowedOrigins),
+                            this.CheckAndJoinAllowedMethods(corsRule.AllowedMethods),
+                            corsRule.AllowedHeaders == null ? string.Empty : string.Join(",", corsRule.AllowedHeaders),
+                            corsRule.ExposedHeaders == null ? string.Empty : string.Join(",", corsRule.ExposedHeaders),
+                            corsRule.MaxAgeInSeconds));
+                    }
+
+                    try
+                    {
+                        tableChannel.SetProperties(serviceProperties, this.CmdletCancellationToken);
+                    }
+                    catch (RequestFailedException ex)
+                    {
+                        this.WriteExceptionError(ex);
+                        throw new InvalidOperationException(Resources.CORSRuleError);
+                    }
+                }
             }
 
             if (PassThru)
             {
                 WriteObject(this.CorsRules);
-            }
-        }
-
-        private void ExecuteTableV2(IStorageTableManagement tableChannel)
-        {
-            TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
-            serviceProperties.Cors.Clear();
-
-            foreach (PSCorsRule corsRule in this.CorsRules)
-            {
-                serviceProperties.Cors.Add(new TableCorsRule(
-                    corsRule.AllowedOrigins == null ? string.Empty : string.Join(",", corsRule.AllowedOrigins),
-                    this.CheckAndJoinAllowedMethods(corsRule.AllowedMethods),
-                    corsRule.AllowedHeaders == null ? string.Empty : string.Join(",", corsRule.AllowedHeaders),
-                    corsRule.ExposedHeaders == null ? string.Empty : string.Join(",", corsRule.ExposedHeaders),
-                    corsRule.MaxAgeInSeconds));
-            }
-
-            try
-            {
-                tableChannel.SetProperties(serviceProperties, this.CmdletCancellationToken);
-            }
-            catch (RequestFailedException ex)
-            {
-                this.WriteExceptionError(ex);
-                throw new InvalidOperationException(Resources.CORSRuleError);
             }
         }
 
