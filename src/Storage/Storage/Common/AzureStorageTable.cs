@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 
             if (cloudTable.ServiceClient.Credentials.IsSAS)
             {
-                AzureSasCredential sasCredential = new AzureSasCredential(cloudTable.ServiceClient.Credentials.SASSignature);
+                AzureSasCredential sasCredential = new AzureSasCredential(cloudTable.ServiceClient.Credentials.SASToken);
                 tableClient = new TableClient(cloudTable.Uri, sasCredential, options);
             }
             else if (cloudTable.ServiceClient.Credentials.IsSharedKey)
