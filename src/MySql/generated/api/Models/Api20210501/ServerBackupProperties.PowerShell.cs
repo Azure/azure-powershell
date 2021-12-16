@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType = (string) content.GetValueForProperty("BackupType",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime = (global::System.DateTime?) content.GetValueForProperty("CompletedTime",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source = (string) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source, global::System.Convert.ToString);
+            if (content.Contains("BackupType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType = (string) content.GetValueForProperty("BackupType",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompletedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime = (global::System.DateTime?) content.GetValueForProperty("CompletedTime",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Source"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source = (string) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType = (string) content.GetValueForProperty("BackupType",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime = (global::System.DateTime?) content.GetValueForProperty("CompletedTime",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source = (string) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source, global::System.Convert.ToString);
+            if (content.Contains("BackupType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType = (string) content.GetValueForProperty("BackupType",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).BackupType, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompletedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime = (global::System.DateTime?) content.GetValueForProperty("CompletedTime",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).CompletedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Source"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source = (string) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupPropertiesInternal)this).Source, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

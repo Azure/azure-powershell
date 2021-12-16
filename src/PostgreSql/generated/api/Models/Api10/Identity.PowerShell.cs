@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType.CreateFrom);
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType.CreateFrom);
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).TenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdateTypeConverter.ConvertFrom));
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdateTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -84,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdateTypeConverter.ConvertFrom));
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListForBatchUpdateInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationForBatchUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdateTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using Microsoft.Azure.Management.Synapse.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.ManagedVirtualNetworkSettings = workspace?.ManagedVirtualNetworkSettings != null ? new PSManagedVirtualNetworkSettings(workspace?.ManagedVirtualNetworkSettings) : null;
             this.Encryption = workspace?.Encryption != null ? new PSEncryptionDetails(workspace?.Encryption) : null;
             this.WorkspaceRepositoryConfiguration = workspace.WorkspaceRepositoryConfiguration != null ? new PSWorkspaceRepositoryConfiguration(workspace?.WorkspaceRepositoryConfiguration) : null;
+            this.CspWorkspaceAdminProperties = workspace?.CspWorkspaceAdminProperties != null? new PSCspWorkspaceAdminProperties(workspace?.CspWorkspaceAdminProperties) : null;
+            this.PublicNetworkAccess = workspace?.PublicNetworkAccess;
+            this.PurviewConfiguration = workspace?.PurviewConfiguration != null ? new PSPurviewConfiguration(workspace?.PurviewConfiguration) : null;
         }
 
         /// <summary>
@@ -109,5 +113,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets git integration settings
         /// </summary>
         public PSWorkspaceRepositoryConfiguration WorkspaceRepositoryConfiguration { get; set; }
+
+        /// <summary>
+        ///  Gets or sets initial workspace AAD admin properties for a CSP subscription
+        /// </summary>
+        public PSCspWorkspaceAdminProperties CspWorkspaceAdminProperties { get; set; }
+
+        /// <summary>
+        ///  Gets or sets enable or Disable public network access to workspace. Possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        public string PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets purview Configuration
+        /// </summary>
+        public PSPurviewConfiguration PurviewConfiguration { get; set; }
     }
 }

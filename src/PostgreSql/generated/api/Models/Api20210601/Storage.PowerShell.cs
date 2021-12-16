@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("SizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("SizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

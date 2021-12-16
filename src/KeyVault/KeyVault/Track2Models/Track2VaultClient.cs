@@ -4,6 +4,7 @@ using Azure.Security.KeyVault.Keys.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections;
@@ -147,6 +148,59 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         private PSKeyOperationResult WrapKey(CryptographyClient cryptographyClient, KeyWrapAlgorithm keyWrapAlgorithm, byte[] wrapKey)
         {
             return new PSKeyOperationResult(cryptographyClient.WrapKey(keyWrapAlgorithm, wrapKey));
+        }
+
+        #endregion
+
+        #region Key rotation actions
+
+        internal PSKeyVaultKey RotateKey(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return RotateKey(client, keyName);
+        }
+
+        private PSKeyVaultKey RotateKey(KeyClient client, string keyName)
+        {
+            return new PSKeyVaultKey(client.RotateKey(keyName), _vaultUriHelper);
+        }
+
+        internal PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetKeyRotationPolicy(client, vaultName, keyName);
+        }
+
+        private PSKeyRotationPolicy GetKeyRotationPolicy(KeyClient client, string vaultName, string keyName)
+        {
+            return new PSKeyRotationPolicy(client.GetKeyRotationPolicy(keyName), vaultName, keyName);
+        }
+
+        internal PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        {
+            var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
+            var policy = new KeyRotationPolicy()
+            {
+                ExpiresIn = psKeyRotationPolicy.ExpiresIn,
+                LifetimeActions = {}
+            };
+
+            psKeyRotationPolicy.LifetimeActions?.ForEach(
+                psKeyRotationLifetimeAction => policy.LifetimeActions.Add(
+                    new KeyRotationLifetimeAction()
+                    {
+                        Action = psKeyRotationLifetimeAction.Action,
+                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
+                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
+                    }
+                ));
+
+            return SetKeyRotationPolicy(client, psKeyRotationPolicy.VaultName, psKeyRotationPolicy.KeyName, policy);
+        }
+
+        private PSKeyRotationPolicy SetKeyRotationPolicy(KeyClient client, string vaultName, string keyName, KeyRotationPolicy policy)
+        {
+            return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, policy), vaultName, keyName);
         }
 
         #endregion

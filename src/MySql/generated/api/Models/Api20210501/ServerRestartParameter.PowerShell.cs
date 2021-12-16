@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond = (int?) content.GetValueForProperty("MaxFailoverSecond",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("RestartWithFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("MaxFailoverSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond = (int?) content.GetValueForProperty("MaxFailoverSecond",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond = (int?) content.GetValueForProperty("MaxFailoverSecond",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("RestartWithFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).RestartWithFailover, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("MaxFailoverSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond = (int?) content.GetValueForProperty("MaxFailoverSecond",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameterInternal)this).MaxFailoverSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

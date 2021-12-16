@@ -116,6 +116,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
+        #region Key rotation
+        public PSKeyVaultKey RotateKey(string vaultName, string keyName)
+        {
+            return VaultClient.RotateKey(vaultName, keyName);
+        }
+
+        public PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
+        {
+            return VaultClient.GetKeyRotationPolicy(vaultName, keyName);
+        }
+
+        public PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        {
+            return VaultClient.SetKeyRotationPolicy(psKeyRotationPolicy);
+        }
+        #endregion
+
         public PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
         {
             throw new NotImplementedException();
@@ -490,24 +507,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             return HsmClient.DeleteKey(managedHsmName, keyName);
         }
-        public PSKeyOperationResult ManagedHsmKeyDecrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        public PSKeyOperationResult ManagedHsmKeyDecrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
-            return HsmClient.Decrypt(vaultName, keyName, version, value, encryptAlgorithm);
+            return HsmClient.Decrypt(managedHsmName, keyName, version, value, encryptAlgorithm);
         }
 
-        public PSKeyOperationResult ManagedHsmKeyEncrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        public PSKeyOperationResult ManagedHsmKeyEncrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
-            return HsmClient.Encrypt(vaultName, keyName, version, value, encryptAlgorithm);
+            return HsmClient.Encrypt(managedHsmName, keyName, version, value, encryptAlgorithm);
         }
 
-        public PSKeyOperationResult ManagedHsmUnwrapKey(string vaultName, string keyName, string version, byte[] value, string wrapAlgorithm)
+        public PSKeyOperationResult ManagedHsmUnwrapKey(string managedHsmName, string keyName, string version, byte[] value, string wrapAlgorithm)
         {
-            return HsmClient.UnwrapKey(vaultName, keyName, version, wrapAlgorithm, value);
+            return HsmClient.UnwrapKey(managedHsmName, keyName, version, wrapAlgorithm, value);
         }
 
-        public PSKeyOperationResult ManagedHsmWrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
+        public PSKeyOperationResult ManagedHsmWrapKey(string managedHsmName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
         {
-            return HsmClient.WrapKey(vaultName, keyName, keyVersion, wrapAlgorithm, wrapKey);
+            return HsmClient.WrapKey(managedHsmName, keyName, keyVersion, wrapAlgorithm, wrapKey);
         }
 
         public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
@@ -558,6 +575,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
         {
             return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
+        }
+        #endregion
+
+        #region Key rotation
+        public PSKeyVaultKey RotateManagedHsmKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.RotateKey(managedHsmName, keyName);
+        }
+
+        public PSKeyRotationPolicy GetManagedHsmKeyRotationPolicy(string managedHsmName, string keyName)
+        {
+            return HsmClient.GetKeyRotationPolicy(managedHsmName, keyName);
+        }
+
+        public PSKeyRotationPolicy SetManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
+        {
+            return HsmClient.SetKeyRotationPolicy(keyRotationPolicy);
         }
         #endregion
 

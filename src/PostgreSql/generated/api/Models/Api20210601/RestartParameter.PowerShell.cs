@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover = (bool?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode = (string) content.GetValueForProperty("FailoverMode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode, global::System.Convert.ToString);
+            if (content.Contains("RestartWithFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover = (bool?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FailoverMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode = (string) content.GetValueForProperty("FailoverMode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover = (bool?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode = (string) content.GetValueForProperty("FailoverMode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode, global::System.Convert.ToString);
+            if (content.Contains("RestartWithFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover = (bool?) content.GetValueForProperty("RestartWithFailover",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).RestartWithFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FailoverMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode = (string) content.GetValueForProperty("FailoverMode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameterInternal)this).FailoverMode, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
