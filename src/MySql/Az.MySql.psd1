@@ -12,7 +12,7 @@
 RootModule = './Az.MySql.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.8.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -133,7 +133,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* General availability of Az.MySql'
 
         # Prerelease string of this module
         # Prerelease = ''
