@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added OrdinalIgnoreCase for string comparison of resourceIdentifier type for flowlog cmdlets
 
 ## Version 4.13.0
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
