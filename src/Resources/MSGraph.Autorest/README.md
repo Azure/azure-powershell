@@ -65,7 +65,7 @@ psm1-internal: internal/MSGraph.internal.psm1
 psm1-custom: custom/MSGraph.custom.psm1
 format-ps1xml: MSGraph.format.ps1xml
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
-subject-prefix: Ad
+subject-prefix: AD
 identity-correction-for-post: true
 endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false
