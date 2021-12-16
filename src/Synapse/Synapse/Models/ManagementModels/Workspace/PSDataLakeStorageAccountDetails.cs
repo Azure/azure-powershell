@@ -18,15 +18,32 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSDataLakeStorageAccountDetails
     {
-        public string DefaultDataLakeStorageAccountUrl { get; set; }
-
-        public string DefaultDataLakeStorageFilesystem { get; set; }
-
-
         public PSDataLakeStorageAccountDetails(DataLakeStorageAccountDetails defaultDataLakeStorage)
         {
             this.DefaultDataLakeStorageAccountUrl = defaultDataLakeStorage?.AccountUrl;
             this.DefaultDataLakeStorageFilesystem = defaultDataLakeStorage?.Filesystem;
+            this.ResourceId = defaultDataLakeStorage?.ResourceId;
+            this.CreateManagedPrivateEndpoint = defaultDataLakeStorage?.CreateManagedPrivateEndpoint;
         }
+
+        /// <summary>
+        /// Gets or sets account URL
+        /// </summary>
+        public string DefaultDataLakeStorageAccountUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets filesystem name
+        /// </summary>
+        public string DefaultDataLakeStorageFilesystem { get; set; }
+
+        /// <summary>
+        /// Gets or sets ARM resource Id of this storage account
+        /// </summary>
+        public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets ARM resource Id of this storage account
+        /// </summary>
+        public bool? CreateManagedPrivateEndpoint { get; set; }
     }
 }

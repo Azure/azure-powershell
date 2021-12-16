@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+Added cmdlets: `Invoke-AzKeyVaultKeyRotation`, `Get-AzKeyVaultKeyRotationPolicy` and `Set-AzKeyVaultKeyRotationPolicy`
 
 ## Version 4.1.0
 * [Breaking Change] Renamed properties of `PSKeyVaultPermission` type to follow the pattern of Azure RBAC.
