@@ -65,5 +65,19 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpgradeKubernetesVersion");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancer()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-LoadBalancer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApiServiceAccess()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ApiServiceAccess");
+        }
     }
 }
