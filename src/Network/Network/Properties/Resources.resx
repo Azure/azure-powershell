@@ -525,7 +525,7 @@
     <value>WorkspaceResourceId must be provided in connection monitor output.</value>
   </data>
   <data name="InvalidWorkspaceResourceId" xml:space="preserve">
-    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace.</value>
+    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace.</value>
   </data>
   <data name="UnsupportedEndpointFilterItemType" xml:space="preserve">
     <value>Specified EndpointFilterItemType is not supported. Supported type is 'AgentAddress'.</value>
