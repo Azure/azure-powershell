@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
-        internal PSKeyOperationResult Decrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        internal PSKeyOperationResult Decrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
-            var key = GetKey(vaultName, keyName, version);
+            var key = GetKey(managedHsmName, keyName, version);
             var cryptographyClient = CreateCryptographyClient(key.Id);
             EncryptionAlgorithm keyEncryptAlgorithm = new EncryptionAlgorithm(encryptAlgorithm);
             return Decrypt(cryptographyClient, keyEncryptAlgorithm, value);
@@ -180,9 +180,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSDeletedKeyVaultKey(deletedKey, this._uriHelper, isHsm: true);
         }
 
-        internal PSKeyOperationResult Encrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        internal PSKeyOperationResult Encrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
-            var key = GetKey(vaultName, keyName, version);
+            var key = GetKey(managedHsmName, keyName, version);
             var cryptographyClient = CreateCryptographyClient(key.Id);
             EncryptionAlgorithm keyEncryptAlgorithm = new EncryptionAlgorithm(encryptAlgorithm);
             return Encrypt(cryptographyClient, keyEncryptAlgorithm, value);
@@ -193,9 +193,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyOperationResult(cryptographyClient.Encrypt(keyEncryptAlgorithm, value));
         }
 
-        internal PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string version, string wrapAlgorithm, byte[] value)
+        internal PSKeyOperationResult UnwrapKey(string managedHsmName, string keyName, string version, string wrapAlgorithm, byte[] value)
         {
-            var key = GetKey(vaultName, keyName, version);
+            var key = GetKey(managedHsmName, keyName, version);
             var cryptographyClient = CreateCryptographyClient(key.Id);
             KeyWrapAlgorithm keyWrapAlgorithm = new KeyWrapAlgorithm(wrapAlgorithm);
             return UnwrapKey(cryptographyClient, keyWrapAlgorithm, value);
@@ -206,9 +206,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyOperationResult(cryptographyClient.UnwrapKey(keyEncryptAlgorithm, value));
         }
 
-        internal PSKeyOperationResult WrapKey(string vaultName, string keyName, string keyVersion, string wrapAlgorithm, byte[] value)
+        internal PSKeyOperationResult WrapKey(string managedHsmName, string keyName, string keyVersion, string wrapAlgorithm, byte[] value)
         {
-            var key = GetKey(vaultName, keyName, keyVersion);
+            var key = GetKey(managedHsmName, keyName, keyVersion);
             var cryptographyClient = CreateCryptographyClient(key.Id);
             KeyWrapAlgorithm keyWrapAlgorithm = new KeyWrapAlgorithm(wrapAlgorithm);
             return WrapKey(cryptographyClient, keyWrapAlgorithm, value);
@@ -491,6 +491,57 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 throw GetInnerException(ex);
             }
+        }
+        #endregion
+
+        #region Key rotation
+        internal PSKeyVaultKey RotateKey(string managedHsmName, string keyName)
+        {
+            var client = CreateKeyClient(managedHsmName);
+            return RotateKey(client, keyName);
+        }
+
+        private PSKeyVaultKey RotateKey(KeyClient client, string keyName)
+        {
+            return new PSKeyVaultKey(client.RotateKey(keyName), _uriHelper, isHsm: true);
+        }
+
+        internal PSKeyRotationPolicy GetKeyRotationPolicy(string managedHsmName, string keyName)
+        {
+            var client = CreateKeyClient(managedHsmName);
+            return GetKeyRotationPolicy(client, managedHsmName, keyName);
+        }
+
+        private PSKeyRotationPolicy GetKeyRotationPolicy(KeyClient client, string managedHsmName, string keyName)
+        {
+            return new PSKeyRotationPolicy(client.GetKeyRotationPolicy(keyName), managedHsmName, keyName);
+        }
+
+        internal PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        {
+            var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
+            var policy = new KeyRotationPolicy()
+            {
+                ExpiresIn = psKeyRotationPolicy.ExpiresIn,
+                LifetimeActions = { }
+            };
+
+            psKeyRotationPolicy.LifetimeActions?.ForEach(
+                psKeyRotationLifetimeAction => policy.LifetimeActions.Add(
+                    new KeyRotationLifetimeAction()
+                    {
+                        Action = psKeyRotationLifetimeAction.Action,
+                        TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
+                        TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
+                    }
+                ));
+
+            return SetKeyRotationPolicy(client, psKeyRotationPolicy.VaultName, psKeyRotationPolicy.KeyName, policy);
+        }
+
+        private PSKeyRotationPolicy SetKeyRotationPolicy(KeyClient client, string managedHsmName, string keyName, KeyRotationPolicy keyRotationPolicy)
+        {
+            return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, keyRotationPolicy), managedHsmName, keyName);
         }
         #endregion
 

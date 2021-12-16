@@ -105,7 +105,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             if (ByParameters.Equals(this.ParameterSetName))
             {
                 this.Path = ConstructPath(this.IsParameterBound(c => c.SubscriptionId) ? this.SubscriptionId : context.Subscription.Id, this.ResourceGroupName, this.ResourceProviderName, this.ResourceType, this.Name);
-                this.Path += $"?api-version={this.ApiVersion}";
             }
             else if (ByURI.Equals(this.ParameterSetName))
             {

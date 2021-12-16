@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            if (content.Contains("DelegatedSubnetsUsage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            if (content.Contains("DelegatedSubnetsUsage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

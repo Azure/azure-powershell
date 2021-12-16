@@ -72,6 +72,15 @@ $hashtable =  @{myConnectionString = @{Type='MySql';Value='MySql Connection stri
 Set-AzWebApp -Name 'ContosoWebApp' -ResourceGroupName 'Default-Web-WestUS' -ConnectionString $hashtable
 ```
 
+### Example 5
+
+Enable application insights for Web App
+```azurepowershell-interactive
+$key=(Get-AzApplicationInsights -ResourceId $ai).InstrumentationKey
+$setting=@{"ApplicationInsightsAgent_EXTENSION_VERSION"="~3"; "APPINSIGHTS_INSTRUMENTATIONKEY"=$key}
+Set-AzWebApp -AppSettings $setting -Name 'ContosoWebApp' -ResourceGroupName 'Default-Web-WestUS'
+```
+
 ## PARAMETERS
 
 ### -AlwaysOn

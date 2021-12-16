@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackupListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
