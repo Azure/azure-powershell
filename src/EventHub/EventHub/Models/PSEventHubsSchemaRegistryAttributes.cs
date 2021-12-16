@@ -27,7 +27,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             {
                 SchemaCompatibility = schemaGroup.SchemaCompatibility;
                 SchemaType = schemaGroup.SchemaType;
-                GroupProperties = schemaGroup.GroupProperties;
+
+                if(schemaGroup.GroupProperties.Count > 0)
+                    GroupProperties = schemaGroup.GroupProperties;
 
                 if (schemaGroup.Id != null)
                     Id = schemaGroup.Id;

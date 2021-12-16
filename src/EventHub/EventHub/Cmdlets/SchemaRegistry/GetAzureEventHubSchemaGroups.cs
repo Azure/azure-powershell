@@ -17,23 +17,33 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubSchemaGroup", SupportsShouldProcess = true), OutputType(typeof(PSEventHubsSchemaRegistryAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubSchemaGroup", DefaultParameterSetName = NamespaceSchemaGroupParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubsSchemaRegistryAttributes))]
     public class GetAzureEventHubSchemaGroups : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceSchemaGroupParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceSchemaGroupParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Name of Schema Group")]
+        /*[Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
+        [ValidateNotNullOrEmpty]
+        public PSNamespaceAttributes InputObject { get; set; }*/
+
+        [Parameter(Mandatory = true, ParameterSetName = SchemaGroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceSchemaGroupParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Name of Schema Group")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasSchemaGroupName)]
         public string Name { get; set; }
@@ -42,6 +52,23 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
         {
             try
             {
+                if (ParameterSetName.Equals(SchemaGroupResourceIdParameterSet))
+                {
+                    LocalResourceIdentifier getParamSchemaGroup = new LocalResourceIdentifier(ResourceId);
+                    ResourceGroupName = getParamSchemaGroup.ResourceGroupName;
+                    if (getParamSchemaGroup.ParentResource == null)
+                    {
+                        Namespace = getParamSchemaGroup.ResourceName;
+                    }
+                    else
+                    {
+                        Name = getParamSchemaGroup.ResourceName;
+                        Namespace = getParamSchemaGroup.ParentResource;
+                    }
+
+                }
+
+
                 if (string.IsNullOrEmpty(Name))
                 {
                     IEnumerable<PSEventHubsSchemaRegistryAttributes> schemaGroups = Client.ListSchemaGroupByNamespace(ResourceGroupName, Namespace);
@@ -52,10 +79,15 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
                     PSEventHubsSchemaRegistryAttributes schemaGroup = Client.GetSchemaGroup(ResourceGroupName, Namespace, Name);
                     WriteObject(schemaGroup);
                 }
+
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)
             {
                 WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
         }
     }

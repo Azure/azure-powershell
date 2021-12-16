@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
         [ValidateSet("Avro", IgnoreCase = true)]
         public string SchemaType { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Compatibility of Schema. Forward, Backward")]
-        public Hashtable GroupProperties { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Group property of eventhub")]
+        public Hashtable GroupProperty { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            Dictionary<string, string> groupPropertiesDictionary = TagsConversionHelper.CreateTagDictionary(GroupProperties, validate: true);
+            Dictionary<string, string> groupPropertiesDictionary = TagsConversionHelper.CreateTagDictionary(GroupProperty, validate: true);
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamespaceSchemaGroup, Name, Namespace)))
             {

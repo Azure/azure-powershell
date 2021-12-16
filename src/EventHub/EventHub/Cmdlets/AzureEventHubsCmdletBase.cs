@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
         protected const string ClusterInputObjectParameterSet = "ClusterInputObjectSet";
+        protected const string SchemaGroupInputObjectParameterSet = "SchemaGroupInputObjectParameterSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
         protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
+        protected const string SchemaGroupResourceIdParameterSet = "SchemaGroupResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -103,6 +105,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
         protected const string IdentityUpdateParameterSet = "IdentityUpdateParameterSet";
 
+        //ParameterSets for SchemaGroups
+        protected const string NamespaceSchemaGroupParameterSet = "NamespaceSchemaGroupParameterSet";
+
         //Alias - used in Cmdlets
         protected const string AliasResourceGroup = "ResourceGroup";
         protected const string AliasNamespaceName = "NamespaceName";
@@ -119,6 +124,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string Manage = "Manage";
         protected const string Send = "Send";
         protected const string Listen = "Listen";
+
+        //Schema Group properties
+        protected const string SchemaCompatibilityProperty = "SchemaCompatibility";
+        protected const string SchemaTypeProperty = "SchemaType";
+        protected const string GroupPropertyProperty = "GroupProperty";
 
 
         protected struct SKU

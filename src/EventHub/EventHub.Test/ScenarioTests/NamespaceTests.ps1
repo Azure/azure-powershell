@@ -278,3 +278,73 @@ function NamespaceTests
 	Write-Debug " Delete resourcegroup"
 	Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
+
+function SchemaRegistryTest {
+	#Setup
+	$location = "eastus"
+	$resourceGroupName = getAssetName "PS-SDK-Testing-RG"
+	$namespaceName = getAssetName "PS-SDK-Testing-Namespace"
+	$schemaGroupName1 = getAssetName "SchemaGroup"
+    $schemaGroupName2 = getAssetName "SchemaGroup"
+    $schemaGroupName3 = getAssetName "SchemaGroup"
+
+    
+    Write-Debug "Create resource group"
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
+
+    $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Premium"
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+    Assert-AreEqual $result.Sku.Name "Premium" "Namespace Premium"
+
+
+	#Create Schema Group
+	$resultSchemaGroup1 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1 -SchemaCompatibility Forward -SchemaType Avro -GroupProperty @{"name"="name"}
+	
+	Assert-AreEqual $schemaGroupName1 $resultSchemaGroup1.Name
+	Assert-AreEqual "Forward" $resultSchemaGroup1.SchemaCompatibility
+	Assert-AreEqual "Avro" $resultSchemaGroup1.SchemaType
+
+    #Create Schema Group
+	$resultSchemaGroup2 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2 -SchemaCompatibility Backward -SchemaType Avro -GroupProperty @{"name"="name"; "key1"="value1"}
+	
+	Assert-AreEqual $schemaGroupName2 $resultSchemaGroup2.Name
+	Assert-AreEqual "Backward" $resultSchemaGroup2.SchemaCompatibility
+	Assert-AreEqual "Avro" $resultSchemaGroup2.SchemaType
+
+    #Create Schema Group
+	$resultSchemaGroup3 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName3 -SchemaCompatibility None -SchemaType Avro
+	
+	Assert-AreEqual $schemaGroupName3 $resultSchemaGroup3.Name
+	Assert-AreEqual "None" $resultSchemaGroup3.SchemaCompatibility
+	Assert-AreEqual "Avro" $resultSchemaGroup3.SchemaType
+
+    $getSchemaGroup1 = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1
+    Assert-AreEqual $schemaGroupName1 $getSchemaGroup1.Name
+	Assert-AreEqual "Forward" $getSchemaGroup1.SchemaCompatibility
+	Assert-AreEqual "Avro" $getSchemaGroup1.SchemaType
+
+    $getSchemaGroup2 = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2
+    Assert-AreEqual $schemaGroupName2 $getSchemaGroup2.Name
+	Assert-AreEqual "Backward" $getSchemaGroup2.SchemaCompatibility
+	Assert-AreEqual "Avro" $getSchemaGroup2.SchemaType
+
+    $getSchemaGroup3 = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName3
+    Assert-AreEqual $schemaGroupName3 $getSchemaGroup3.Name
+	Assert-AreEqual "None" $getSchemaGroup3.SchemaCompatibility
+	Assert-AreEqual "Avro" $getSchemaGroup3.SchemaType
+
+    $getAllSchemaGroups = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName
+    Assert-True {$getAllSchemaGroups.Count -ge 0} "All 3 schema groups are not there"
+
+	$resultRemove = Remove-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1 -PassThru
+    $resultRemove = Remove-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2 -PassThru
+    $resultRemove = Remove-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName3 -PassThru
+
+    Write-Debug " Delete namespaces"
+    Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+
+	Write-Debug " Delete resourcegroup"
+	Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
