@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage = (long?) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("SubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Usage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage = (long?) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage = (long?) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("SubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).SubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Usage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage = (long?) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsageInternal)this).Usage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializePSObject(content);
         }
 
