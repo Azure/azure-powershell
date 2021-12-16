@@ -57,7 +57,7 @@ function Test-ListDatabaseRestorePoints
 function Test-RestoreGeoBackup
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "west europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
 	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
@@ -115,7 +115,7 @@ function Test-RestoreDeletedDatabaseBackup
 function Test-RestorePointInTimeBackup
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "west europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
 	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
@@ -136,7 +136,7 @@ function Test-RestorePointInTimeBackup
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "southeast asia"
+	$location = "west europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
 	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
@@ -150,7 +150,7 @@ function Test-RestoreLongTermRetentionBackup
 function Test-LongTermRetentionV2Policy($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -186,7 +186,7 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 function Test-LongTermRetentionV2Backup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -213,7 +213,7 @@ function Test-LongTermRetentionV2Backup($location = "southeastasia")
 function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -399,7 +399,7 @@ function Test-NewDatabaseRestorePoint
 function Test-RemoveDatabaseRestorePoint
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$serverVersion = "12.0";
 	$label = "label01";
 	$rg = Create-ResourceGroupForTest

@@ -27,21 +27,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         #region Server Recommended Action Tests
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListServerRecommendedActions()
         {
             RunPowerShellTest("Test-ListServerRecommendedActions");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetServerRecommendedAction()
         {
             RunPowerShellTest("Test-GetServerRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateServerRecommendedAction()
         {
@@ -52,21 +52,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         #region Database Recommended Action Tests
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseRecommendedActions()
         {
             RunPowerShellTest("Test-ListDatabaseRecommendedActions");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDatabaseRecommendedAction()
         {
             RunPowerShellTest("Test-GetDatabaseRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDatabaseRecommendedAction()
         {
@@ -77,21 +77,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         #region Elastic Pool Recommended Action Tests
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListElasticPoolRecommendedActions()
         {
             RunPowerShellTest("Test-ListElasticPoolRecommendedActions");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetElasticPoolRecommendedAction()
         {
             RunPowerShellTest("Test-GetElasticPoolRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "Resource group 'WIRunnersProd' could not be found.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateElasticPoolRecommendedAction()
         {
