@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability[]) content.GetValueForProperty("SupportedVcore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VcoreCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedVcore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability[]) content.GetValueForProperty("SupportedVcore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VcoreCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability[]) content.GetValueForProperty("SupportedVcore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VcoreCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedVcore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability[]) content.GetValueForProperty("SupportedVcore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).SupportedVcore, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VcoreCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

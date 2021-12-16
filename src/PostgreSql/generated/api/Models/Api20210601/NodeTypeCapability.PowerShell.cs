@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType = (string) content.GetValueForProperty("NodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("NodeType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType = (string) content.GetValueForProperty("NodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType = (string) content.GetValueForProperty("NodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("NodeType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType = (string) content.GetValueForProperty("NodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).NodeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
