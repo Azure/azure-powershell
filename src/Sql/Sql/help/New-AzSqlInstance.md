@@ -187,30 +187,31 @@ This command creates a new instance in an instance pool with name instancePool0
 ### Example 6: Create a new instance with maintenance configuration
 ```powershell
 PS C:\>New-AzSqlInstance -Name managedInstance1 -ResourceGroupName resourcegroup01 -Location "westus" -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -VCore 8 -ComputeGeneration Gen5 -Edition GeneralPurpose -MaintenanceConfigurationId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestUS_MI_2"
-Location                   : westus
-Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName          : resourcegroup01
-ManagedInstanceName        : managedInstance1
-Tags                       :
-Identity                   :
-Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin         : adminLogin1
-AdministratorPassword      :
-SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType                : LicenseIncluded
-VCores                     : 8
-StorageSizeInGB            : 256
-Collation                  : SQL_Latin1_General_CP1_CI_AS
-PublicDataEndpointEnabled  : False
-ProxyOverride              :
-TimezoneId                 : UTC
-DnsZonePartner             :
-DnsZone                    : ad35cna0mw
-InstancePoolName           :
-MinimalTlsVersion          :
-BackupStorageRedundancy    : Geo
-MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestUS_MI_2
+Location							: westus
+Id									: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName					: resourcegroup01
+ManagedInstanceName					: managedInstance1
+Tags								:
+Identity							:
+Sku									: Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName			: managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin					: adminLogin1
+AdministratorPassword				:
+SubnetId							: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType							: LicenseIncluded
+VCores								: 8
+StorageSizeInGB						: 256
+Collation							: SQL_Latin1_General_CP1_CI_AS
+PublicDataEndpointEnabled			: False
+ProxyOverride						:
+TimezoneId							: UTC
+DnsZonePartner						:
+DnsZone								: ad35cna0mw
+InstancePoolName					:
+MinimalTlsVersion					:
+CurrentBackupStorageRedundancy		: Geo
+RequestedBackupStorageRedundancy	: Geo
+MaintenanceConfigurationId			: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestUS_MI_2
 ```
 
 This command creates a new instance with maintenance configuration MI_2
@@ -344,7 +345,7 @@ The Backup storage redundancy used to store backups for the Sql Azure Managed In
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Local, Zone, Geo
+Accepted values: Local, Zone, Geo, GeoZone
 
 Required: False
 Position: Named

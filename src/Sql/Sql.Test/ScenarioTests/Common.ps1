@@ -203,7 +203,7 @@ Creates the basic test environment used for the ledger tests - creates resource 
 #>
 function Create-LedgerTestEnvironment ($params)
 {
-	$location = "eastus2euap"
+	$location = "westeurope"
 	$serverVersion = "12.0"
 	New-AzResourceGroup -Name $params.rgname -Location $location
 	$serverName = $params.serverName
@@ -337,7 +337,7 @@ Creates the basic test environment needed to perform the Elastic Job agent tests
 #>
 function Create-ElasticJobAgentTestEnvironment ()
 {
-	$location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+	$location = Get-Location "Microsoft.Sql" "operations" "west europe"
 	$rg1 = Create-ResourceGroupForTest
 	$s1 = Create-ServerForTest $rg1 $location
 	$s1fw = $s1 | New-AzSqlServerFirewallRule -AllowAllAzureIPs # allow azure ips

@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases
+* Output braking change for Managed Instance CRUD commands
+    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy
 
 ## Version 3.6.0
 * Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]

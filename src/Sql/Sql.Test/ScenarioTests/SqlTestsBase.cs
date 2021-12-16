@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {"Microsoft.EventHub", null},
                 {"Microsoft.Insights", null},
                 {"Microsoft.OperationalInsights", null}
+                {"Microsoft.Sql", null }
             };
 
             var providersToIgnore = new Dictionary<string, string>
