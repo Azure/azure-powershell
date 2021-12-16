@@ -9,9 +9,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     /// <summary>
     /// Updates the KeyRotationPolicy for the specified key in Key Vault.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotationPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotationPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyRotationPolicy))]
-    public class UpdateAzKeyVaultKeyRotationPolicy: KeyVaultOnlyKeyCmdletBase
+    public class SetAzKeyVaultKeyRotationPolicy: KeyVaultOnlyKeyCmdletBase
     {
         #region Parameter Set Names
 
@@ -61,7 +61,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
             {
 
                 // Only update specified parameter, others keep same
-                KeyRotationPolicy = Track2DataClient.GetKeyRotationPolicy(VaultName, Name);
+                KeyRotationPolicy = Track2DataClient.GetKeyRotationPolicy(VaultName, Name) ?? 
+                    new PSKeyRotationPolicy() 
+                    { 
+                        VaultName = VaultName,
+                        KeyName = Name,
+                        ExpiresIn = null,
+                        LifetimeActions = null
+                    };
 
                 if (MyInvocation.BoundParameters.ContainsKey("ExpiresIn"))
                 {
@@ -79,7 +86,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         {
             NormalizeParameterSets();
 
-            WriteObject(this.Track2DataClient.UpdateKeyRotationPolicy(KeyRotationPolicy));
+            ConfirmAction(KeyRotationPolicy.KeyName, Properties.Resources.SetKeyRotationPolicy, () => 
+            {
+                WriteObject(this.Track2DataClient.SetKeyRotationPolicy(KeyRotationPolicy));
+            });
         }
     }
 }

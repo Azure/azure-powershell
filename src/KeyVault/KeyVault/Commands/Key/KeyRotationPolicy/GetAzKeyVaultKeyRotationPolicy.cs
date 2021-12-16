@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     /// <summary>
     /// Gets the KeyRotationPolicy for the specified key in Key Vault.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotationPolicy", DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRotationPolicy", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyRotationPolicy))]
     public class GetAzKeyVaultKeyRotationPolicy: KeyVaultOnlyKeyCmdletBase
     {
