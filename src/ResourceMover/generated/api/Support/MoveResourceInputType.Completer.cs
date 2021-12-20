@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MoveResourceId".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MoveResourceId", "MoveResourceId", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveResourceId");
+                yield return new global::System.Management.Automation.CompletionResult("'MoveResourceId'", "MoveResourceId", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveResourceId");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MoveResourceSourceId".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MoveResourceSourceId", "MoveResourceSourceId", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveResourceSourceId");
+                yield return new global::System.Management.Automation.CompletionResult("'MoveResourceSourceId'", "MoveResourceSourceId", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveResourceSourceId");
             }
         }
     }

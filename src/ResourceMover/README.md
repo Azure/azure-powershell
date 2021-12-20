@@ -60,10 +60,10 @@ module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-01-01
+aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01
 input-file:
-	- $(aks)/resourcemovercollection.json
-module-version: 0.1.0
+  - $(aks)/resourcemovercollection.json
+module-version: 1.0.0
 
 directive:
   # Remove the unexpanded parameter set

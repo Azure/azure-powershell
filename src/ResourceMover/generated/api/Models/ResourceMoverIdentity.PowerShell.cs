@@ -98,11 +98,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName = (string) content.GetValueForProperty("MoveCollectionName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName = (string) content.GetValueForProperty("MoveResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoveCollectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName = (string) content.GetValueForProperty("MoveCollectionName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoveResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName = (string) content.GetValueForProperty("MoveResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,11 +135,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName = (string) content.GetValueForProperty("MoveCollectionName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName = (string) content.GetValueForProperty("MoveResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoveCollectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName = (string) content.GetValueForProperty("MoveCollectionName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveCollectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoveResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName = (string) content.GetValueForProperty("MoveResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).MoveResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
