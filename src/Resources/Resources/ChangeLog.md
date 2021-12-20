@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Deserialized the `Value` in `DeploymentVariable` as object array if its type is Array [#16523]
 * Fixed the usage of SignInName in New-AzRoleAssignment [#16627]
 * Formatted the output format of DeploymentVariable
 * Remove isUser operation filter from GetAzureProviderOperation Cmdlet
