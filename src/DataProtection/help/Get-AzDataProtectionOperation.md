@@ -79,6 +79,7 @@ IsDataAction Name                                                               
              Microsoft.DataProtection/register/action                                                            user
              Microsoft.DataProtection/unregister/action                                                          user
              Microsoft.DataProtection/operations/read                                                            user
+```
 
 The above command gets the list of available operations.
 
