@@ -1,13 +1,12 @@
 {
-  "Remove-AzResourceMoverMoveResource+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-01-01+1": {
+  "Remove-AzResourceMoverMoveResource+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-08-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/moveResources/rms-sRg?api-version=2021-08-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "7825822e-1b56-4ad9-9141-befd99106a47" ],
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "b154543c-d3a9-4f82-b7d8-e34a1f90acdf" ],
         "CommandName": [ "Remove-AzResourceMoverMoveResource" ],
         "FullCommandName": [ "Remove-AzResourceMoverMoveResource_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,34 +22,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "4ba21483-ba95-4f93-80ec-3e2b499a46ef" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f?api-version=2021-01-01" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "80dd5d71-7f6b-49f4-9c8a-a3f7f4ff52fa" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T064542Z:80dd5d71-7f6b-49f4-9c8a-a3f7f4ff52fa" ],
-        "Date": [ "Sun, 31 Jan 2021 06:45:41 GMT" ]
+        "x-ms-request-id": [ "316671ed-2069-40d3-a32d-cee013102d55" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf?api-version=2021-08-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "222717cf-1d20-4902-93d2-e4f33cfb6fa4" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073620Z:222717cf-1d20-4902-93d2-e4f33cfb6fa4" ],
+        "Date": [ "Fri, 17 Dec 2021 07:36:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "text/plain" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": null,
-      "isContentBase64": false
+      "Content": "bnVsbA=="
     }
   },
-  "Remove-AzResourceMoverMoveResource+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f?api-version=2021-01-01+2": {
+  "Remove-AzResourceMoverMoveResource+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf?api-version=2021-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf?api-version=2021-08-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "7825822e-1b56-4ad9-9141-befd99106a47" ],
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "b154543c-d3a9-4f82-b7d8-e34a1f90acdf" ],
         "CommandName": [ "Remove-AzResourceMoverMoveResource" ],
         "FullCommandName": [ "Remove-AzResourceMoverMoveResource_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -64,33 +61,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "83c393a5-f56a-45fc-9375-57210f88c54d" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "a460486d-7a0a-490d-b940-fbbea4c654c6" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T064557Z:a460486d-7a0a-490d-b940-fbbea4c654c6" ],
-        "Date": [ "Sun, 31 Jan 2021 06:45:57 GMT" ]
+        "x-ms-request-id": [ "17d00f97-46f1-47ae-9f9c-304a216ba12e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "d9ca45bc-9b06-4299-8e4b-05a1405b6f55" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073635Z:d9ca45bc-9b06-4299-8e4b-05a1405b6f55" ],
+        "Date": [ "Fri, 17 Dec 2021 07:36:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "372" ],
+        "Content-Length": [ "374" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f\",\"name\":\"21db08b2-0de1-4a52-9c6b-6eec817bdb6f\",\"status\":\"Succeeded\",\"startTime\":\"1/31/2021 6:45:42 AM\",\"endTime\":\"1/31/2021 6:45:43 AM\",\"error\":null,\"properties\":{}}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf\",\"name\":\"1d6615a6-dc7a-404c-95ff-7307479f51bf\",\"status\":\"Succeeded\",\"startTime\":\"12/17/2021 7:36:19 AM\",\"endTime\":\"12/17/2021 7:36:20 AM\",\"error\":null,\"properties\":{}}"
     }
   },
-  "Remove-AzResourceMoverMoveResource+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f?api-version=2021-01-01+3": {
+  "Remove-AzResourceMoverMoveResource+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf?api-version=2021-08-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf?api-version=2021-08-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "7825822e-1b56-4ad9-9141-befd99106a47" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "b154543c-d3a9-4f82-b7d8-e34a1f90acdf" ],
         "CommandName": [ "Remove-AzResourceMoverMoveResource" ],
         "FullCommandName": [ "Remove-AzResourceMoverMoveResource_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -104,21 +99,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "696f7606-0559-4db6-9e25-c16425e1208f" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "acb1a408-0b88-4e86-b9f0-bc359745311d" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T064558Z:acb1a408-0b88-4e86-b9f0-bc359745311d" ],
-        "Date": [ "Sun, 31 Jan 2021 06:45:58 GMT" ]
+        "x-ms-request-id": [ "6e27fd4d-c296-46ea-8b46-ba73a0a89259" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "d2fca782-d211-4f21-930a-17f7f17b0bd7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073635Z:d2fca782-d211-4f21-930a-17f7f17b0bd7" ],
+        "Date": [ "Fri, 17 Dec 2021 07:36:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "372" ],
+        "Content-Length": [ "374" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/21db08b2-0de1-4a52-9c6b-6eec817bdb6f\",\"name\":\"21db08b2-0de1-4a52-9c6b-6eec817bdb6f\",\"status\":\"Succeeded\",\"startTime\":\"1/31/2021 6:45:42 AM\",\"endTime\":\"1/31/2021 6:45:43 AM\",\"error\":null,\"properties\":{}}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/operations/1d6615a6-dc7a-404c-95ff-7307479f51bf\",\"name\":\"1d6615a6-dc7a-404c-95ff-7307479f51bf\",\"status\":\"Succeeded\",\"startTime\":\"12/17/2021 7:36:19 AM\",\"endTime\":\"12/17/2021 7:36:20 AM\",\"error\":null,\"properties\":{}}"
     }
   }
 }
