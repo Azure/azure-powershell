@@ -148,6 +148,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
             var contextSource = source?.BaseObject as PSAzureContext;
             if (contextSource != null)
             {
+                var current = AzureRmProfileProvider.Instance.Profile as AzureRmProfile;
+                if (current != null && current.TryFindContext(contextSource, out string name))
+                {
+                    result.Context = new PSAzureContext(current.Contexts[name].DeepCopy());
+                    result.Context.Update(contextSource);
+                }
                 result.Context = contextSource;
             }
             else
@@ -155,7 +161,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.Context = new PSAzureContext(source);
 
             }
-
             return (AzureRmProfile)result;
         }
 

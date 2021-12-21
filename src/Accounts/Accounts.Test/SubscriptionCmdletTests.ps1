@@ -154,3 +154,21 @@ function Test-GetSubscriptionsAfterContextRenameAndSet
 	$subscriptionActual = Get-AzSubscription
 	Assert-AreEqualObjectProperties $subscriptionExp $subscriptionActual
 }
+
+<#
+.SYNOPSIS
+Tests whether subscripitions before and after context rename and set are equal.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsWithDefaultProfileAsInput
+{
+	$subscriptionExp = Get-AzSubscription
+
+	$contextWithOutSecret = Get-AzContext
+	Assert-False {$contextWithOutSecret.Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+
+	$subscriptionActual = Get-AzSubscription -DefaultProfile $contextWithOutSecret
+	Assert-AreEqualObjectProperties $subscriptionExp $subscriptionActual
+}
+
