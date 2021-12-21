@@ -452,7 +452,7 @@ function Update-AzADUser {
       }
       $PSBoundParameters['Id'] = $id
 
-      MSGraph.internal\Update-AzADUser @PSBoundParameters
+      Az.MSGraph.internal\Update-AzADUser @PSBoundParameters
     }
 }
     

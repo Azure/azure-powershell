@@ -155,13 +155,13 @@ function Remove-AzADAppCredential {
         if (!$PSBoundParameters['KeyId']) {
             $PSBoundParameters['Id'] = $app.Id
             $PSBoundParameters['KeyCredentials'] = @()
-            MSGraph.internal\Update-AzADApplication @PSBoundParameters
+            Az.MSGraph.internal\Update-AzADApplication @PSBoundParameters
             $null = $PSBoundParameters.Remove('KeyCredentials')
             $null = $PSBoundParameters.Remove('Id')
             $PSBoundParameters['ApplicationId'] = $app.Id
             foreach ($password in $app.PasswordCredentials) {
                 $PSBoundParameters['KeyId'] = $password.KeyId
-                MSGraph.internal\Remove-AzADApplicationPassword @PSBoundParameters
+                Az.MSGraph.internal\Remove-AzADApplicationPassword @PSBoundParameters
             }
         } else {
             $list = @()
@@ -174,13 +174,13 @@ function Remove-AzADAppCredential {
                 $null = $PSBoundParameters.Remove('KeyId')
                 $PSBoundParameters['Id'] = $app.Id
                 $PSBoundParameters['KeyCredentials'] = $list
-                MSGraph.internal\Update-AzADApplication @PSBoundParameters
+                Az.MSGraph.internal\Update-AzADApplication @PSBoundParameters
                 $foundKey = $true
             } else {
                 foreach ($password in $app.PasswordCredentials) {
                     if ($PSBoundParameters['KeyId'] -eq $password.KeyId) {
                         $PSBoundParameters['ApplicationId'] = $app.Id
-                        MSGraph.internal\Remove-AzADApplicationPassword @PSBoundParameters
+                        Az.MSGraph.internal\Remove-AzADApplicationPassword @PSBoundParameters
                         $foundKey = $true
                         break
                     }

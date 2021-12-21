@@ -202,6 +202,6 @@ process {
         }
     }
 
-    MsGraph.Internal\Remove-AzADServicePrincipal @PSBoundParameters
+    Az.MSGraph.internal\Remove-AzADServicePrincipal @PSBoundParameters
 }
 }

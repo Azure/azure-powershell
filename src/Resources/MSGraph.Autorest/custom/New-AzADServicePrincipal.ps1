@@ -746,7 +746,7 @@ function New-AzADServicePrincipal {
     if ($PSBoundParameters['Debug']) {
       $param['Debug'] = $PSBoundParameters['Debug']
     }
-    $sp = MSGraph.internal\New-AzADServicePrincipal @param
+    $sp = Az.MSGraph.internal\New-AzADServicePrincipal @param
     if ($app) {
       $sp.PasswordCredentials = $app.PasswordCredentials
     }

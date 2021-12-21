@@ -395,7 +395,7 @@ process {
     $PSBoundParameters['securityEnabled'] = $true
   }
   
-  MSGraph.internal\New-AzADGroup @PSBoundParameters
+  Az.MSGraph.internal\New-AzADGroup @PSBoundParameters
 }
 
 }

@@ -270,7 +270,7 @@ function New-AzADAppCredential {
             $PSBoundParameters['ApplicationId'] = $id
             foreach ($credential in $pc) {
                 $PSBoundParameters['PasswordCredential'] = $credential
-                MSGraph.internal\Add-AzADApplicationPassword @PSBoundParameters
+                Az.MSGraph.internal\Add-AzADApplicationPassword @PSBoundParameters
             }
             $null = $PSBoundParameters.Remove('ApplicationId')
             if ($PSBoundParameters['PasswordCredential']) {
@@ -280,7 +280,7 @@ function New-AzADAppCredential {
         if ($kc) {
             $PSBoundParameters['Id'] = $id
             $PSBoundParameters['KeyCredentials'] = $kc
-            MSGraph.internal\Update-AzADApplication @PSBoundParameters
+            Az.MSGraph.internal\Update-AzADApplication @PSBoundParameters
         }
     }
 }

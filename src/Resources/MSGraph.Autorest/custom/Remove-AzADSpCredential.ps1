@@ -156,13 +156,13 @@ function Remove-AzADSpCredential {
         if (!$PSBoundParameters['KeyId']) {
             $PSBoundParameters['Id'] = $sp.Id
             $PSBoundParameters['KeyCredentials'] = @()
-            MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
+            Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
             $null = $PSBoundParameters.Remove('KeyCredentials')
             $null = $PSBoundParameters.Remove('Id')
             $PSBoundParameters['ServicePrincipalId'] = $sp.Id
             foreach ($password in $sp.PasswordCredentials) {
                 $PSBoundParameters['KeyId'] = $password.KeyId
-                MSGraph.internal\Remove-AzADServicePrincipalPassword @PSBoundParameters
+                Az.MSGraph.internal\Remove-AzADServicePrincipalPassword @PSBoundParameters
             }
         } else {
             $list = @()
@@ -175,13 +175,13 @@ function Remove-AzADSpCredential {
                 $null = $PSBoundParameters.Remove('KeyId')
                 $PSBoundParameters['Id'] = $sp.Id
                 $PSBoundParameters['KeyCredentials'] = $list
-                MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
+                Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
                 $foundKey = $true
             } else {
                 foreach ($password in $sp.PasswordCredentials) {
                     if ($PSBoundParameters['KeyId'] -eq $password.KeyId) {
                         $PSBoundParameters['ServicePrincipalId'] = $sp.Id
-                        MSGraph.internal\Remove-AzADServicePrincipalPassword @PSBoundParameters
+                        Az.MSGraph.internal\Remove-AzADServicePrincipalPassword @PSBoundParameters
                         $foundKey = $true
                         break
                     }

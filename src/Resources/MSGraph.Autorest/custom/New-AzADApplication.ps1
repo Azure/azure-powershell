@@ -691,7 +691,7 @@ function New-AzADApplication {
       }
     }
 
-    $app = MSGraph.internal\New-AzADApplication @PSBoundParameters
+    $app = Az.MSGraph.internal\New-AzADApplication @PSBoundParameters
     $param = @{'ObjectId' = $app.Id}
 
     switch ($PSCmdlet.ParameterSetName) {

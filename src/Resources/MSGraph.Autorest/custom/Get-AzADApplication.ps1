@@ -203,6 +203,6 @@ process {
             break
         }
     }
-    MSGraph.internal\Get-AzADApplication @PSBoundParameters
+    Az.MSGraph.internal\Get-AzADApplication @PSBoundParameters
 }
 }

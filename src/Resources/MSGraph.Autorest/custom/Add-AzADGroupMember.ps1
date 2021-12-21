@@ -152,7 +152,7 @@ function Add-AzADGroupMember {
         foreach ($member in $members) {
             $additionalProperties = @{'@odata.id'="$($odataIdUriPrefix)/$($member)"}
             $PSBoundParameters['AdditionalProperties'] = $additionalProperties
-            MSGraph.internal\New-AzADGroupRefMember @PSBoundParameters
+            Az.MSGraph.internal\New-AzADGroupRefMember @PSBoundParameters
         }
 
         if ($PSBoundParameters['PassThru']) {
