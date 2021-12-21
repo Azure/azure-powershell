@@ -2991,9 +2991,9 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
 
     try
     {
+        ## Cache Disk Test ##
         # Common
         $loc = Get-ComputeVMLocation;
-        ##$vmssSize = 'Standard_B4ms'; 
         $vmssSize = 'Standard_DS3_v2';
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -3007,16 +3007,12 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-        ##$diffDiskPlacement = "ResourceDisk";
         $diffDiskPlacement = "CacheDisk";
 
         $adminUsername = 'Foo12';
         $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
 
-        # Error of 
-        #$imgRef = Get-DefaultCRPImage -loc $loc;
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
-
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
                     
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
@@ -3030,7 +3026,6 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
 
         # Validate DiffDiskPlacement value
         Assert-AreEqual $result.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
-
     }
     finally
     {
