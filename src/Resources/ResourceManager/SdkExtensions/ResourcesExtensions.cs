@@ -318,6 +318,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 if (properties.Outputs != null)
                 {
                     Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
+                    // Continue deserialize if the type of Value in DeploymentVariable is array
                     outputs?.Values.ForEach(dv => {
                         if ("Array".Equals(dv?.Type))
                         {
@@ -330,6 +331,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 if (properties.Parameters != null)
                 {
                     Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
+                    // Continue deserialize if the type of Value in DeploymentVariable is array
+                    parameters?.Values.ForEach(dv => {
+                        if ("Array".Equals(dv?.Type))
+                        {
+                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                        }
+                    });
                     deploymentObject.Parameters = parameters;
                 }
 
