@@ -702,12 +702,12 @@ function New-AzADApplication {
         if ($ed) {
           $param['EndDate'] = $ed
         }
-        $null = New-AzADAppCredential @param
+        $app.PasswordCredentials = New-AzADAppCredential @param
         break
       }
       'ApplicationWithPasswordCredentialParameterSet' {
         $param['PasswordCredentials'] = $pc
-        $null = New-AzADAppCredential @param
+        $app.PasswordCredentials = New-AzADAppCredential @param
         break
       }
       default {
