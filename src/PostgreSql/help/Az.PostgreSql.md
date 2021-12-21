@@ -117,7 +117,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzPostgreSqlFlexibleServer](Update-AzPostgreSqlFlexibleServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzPostgreSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzPostSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlFlexibleServerConfiguration](Update-AzPostgreSqlFlexibleServerConfiguration.md)
 Updates a configuration of a server.

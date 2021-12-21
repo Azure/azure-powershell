@@ -68,7 +68,7 @@ Properties :
              key3     value3
 ```
 
-This command Repalces the set of tags on the subscription with {subId}.
+This command Replaces the set of tags on the subscription with {subId}.
 
 ### Example 3: Selectively updates the set of tags on a subscription with "Delete" Operation
 

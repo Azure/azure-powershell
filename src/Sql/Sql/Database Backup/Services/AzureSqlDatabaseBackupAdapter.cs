@@ -612,6 +612,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 },
                 LicenseType = model.LicenseType,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
+                ZoneRedundant = model.ZoneRedundant,
             };
 
             if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)

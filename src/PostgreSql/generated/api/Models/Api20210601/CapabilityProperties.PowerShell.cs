@@ -66,13 +66,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone = (string) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported = (bool?) content.GetValueForProperty("GeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaAndGeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability[]) content.GetValueForProperty("SupportedFlexibleServerEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FlexibleServerEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability[]) content.GetValueForProperty("SupportedHyperscaleNodeEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HyperscaleNodeEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone = (string) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone, global::System.Convert.ToString);
+            }
+            if (content.Contains("GeoBackupSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported = (bool?) content.GetValueForProperty("GeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ZoneRedundantHaSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ZoneRedundantHaAndGeoBackupSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaAndGeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SupportedFlexibleServerEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability[]) content.GetValueForProperty("SupportedFlexibleServerEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FlexibleServerEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedHyperscaleNodeEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability[]) content.GetValueForProperty("SupportedHyperscaleNodeEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HyperscaleNodeEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -90,13 +111,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone = (string) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported = (bool?) content.GetValueForProperty("GeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaAndGeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability[]) content.GetValueForProperty("SupportedFlexibleServerEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FlexibleServerEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability[]) content.GetValueForProperty("SupportedHyperscaleNodeEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HyperscaleNodeEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone = (string) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Zone, global::System.Convert.ToString);
+            }
+            if (content.Contains("GeoBackupSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported = (bool?) content.GetValueForProperty("GeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).GeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ZoneRedundantHaSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ZoneRedundantHaAndGeoBackupSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported = (bool?) content.GetValueForProperty("ZoneRedundantHaAndGeoBackupSupported",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).ZoneRedundantHaAndGeoBackupSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SupportedFlexibleServerEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability[]) content.GetValueForProperty("SupportedFlexibleServerEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedFlexibleServerEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFlexibleServerEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FlexibleServerEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedHyperscaleNodeEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability[]) content.GetValueForProperty("SupportedHyperscaleNodeEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).SupportedHyperscaleNodeEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HyperscaleNodeEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityPropertiesInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -149,6 +149,12 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true)]
         public string UserData { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -239,6 +245,11 @@ namespace Microsoft.Azure.Commands.Compute
                     this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                 }
                 vm.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.PlatformFaultDomain))
+            {
+                vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 
             WriteObject(vm);

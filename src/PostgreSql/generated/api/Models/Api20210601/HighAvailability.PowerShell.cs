@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode?) content.GetValueForProperty("Mode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone = (string) content.GetValueForProperty("StandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone, global::System.Convert.ToString);
+            if (content.Contains("Mode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode?) content.GetValueForProperty("Mode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode.CreateFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState.CreateFrom);
+            }
+            if (content.Contains("StandbyAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone = (string) content.GetValueForProperty("StandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode?) content.GetValueForProperty("Mode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone = (string) content.GetValueForProperty("StandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone, global::System.Convert.ToString);
+            if (content.Contains("Mode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode?) content.GetValueForProperty("Mode",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).Mode, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode.CreateFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerHaState.CreateFrom);
+            }
+            if (content.Contains("StandbyAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone = (string) content.GetValueForProperty("StandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHighAvailabilityInternal)this).StandbyAvailabilityZone, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

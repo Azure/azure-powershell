@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop = (int?) content.GetValueForProperty("Iop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("AutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku, global::System.Convert.ToString);
+            if (content.Contains("SizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Iop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop = (int?) content.GetValueForProperty("Iop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AutoGrow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("AutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop = (int?) content.GetValueForProperty("Iop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("AutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku, global::System.Convert.ToString);
+            if (content.Contains("SizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb = (int?) content.GetValueForProperty("SizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).SizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Iop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop = (int?) content.GetValueForProperty("Iop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Iop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AutoGrow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("AutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).AutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageInternal)this).Sku, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

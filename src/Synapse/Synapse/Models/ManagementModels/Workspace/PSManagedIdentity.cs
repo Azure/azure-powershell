@@ -13,22 +13,39 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Synapse.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSManagedIdentity
     {
-        public string IdentityType { get; set; }
-
-        public string PrincipalId { get; set; }
-
-        public string TenantId { get; set; }
-
         public PSManagedIdentity(ManagedIdentity identity)
         {
             this.IdentityType = identity?.Type?.ToString();
             this.PrincipalId = identity?.PrincipalId;
             this.TenantId = identity?.TenantId.ToString();
+            this.UserAssignedIdentities = identity?.UserAssignedIdentities;
         }
+
+        /// <summary>
+        /// Gets or sets the type of managed identity for the workspace.Possible values include: 'None', 'SystemAssigned','SystemAssigned,UserAssigned'
+        /// </summary>
+        public string IdentityType { get; set; }
+
+        /// <summary>
+        /// Gets the principal ID of the workspace managed identity
+        /// </summary>
+        public string PrincipalId { get; set; }
+
+        /// <summary>
+        /// Gets the tenant ID of the workspace managed identity
+        /// </summary>
+        public string TenantId { get; set; }
+
+        /// <summary>
+        ///  Gets or sets the user assigned managed identities.
+        /// </summary>
+        public IDictionary<string, UserAssignedManagedIdentity> UserAssignedIdentities { get; set; }
     }
 }

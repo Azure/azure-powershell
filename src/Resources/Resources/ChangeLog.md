@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed the usage of SignInName in New-AzRoleAssignment [#16627]
+* Formatted the output format of DeploymentVariable
+* Remove isUser operation filter from GetAzureProviderOperation Cmdlet
+
+## Version 5.1.0
 * Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.
 * Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
 * [Breaking change] Migrated from AAD Graph to Microsoft Graph

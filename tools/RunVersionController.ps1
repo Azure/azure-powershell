@@ -142,6 +142,9 @@ function Get-ReleaseNotes
     
     .($PSScriptRoot + "\PreloadToolDll.ps1")
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
+    # Skip psd1 of generated modules in HYBRID modules because they are not really used
+    # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
+                                                                                                          $_.FullName -inotlike "*autorest*" -and `
                                                                                                           $_.FullName -notlike "*Debug*" -and `
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
@@ -284,7 +287,11 @@ function Generate-AzPreview
     {
         $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
         $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
-        $Psd1FilePath = $(Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName)
+        $Psd1FilePath = Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName | Where-Object {
+            # Skip psd1 of generated modules in HYBRID modules because they are not really used
+            # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
+            $_.FullName -inotlike "*autorest*"
+        }
         if ($null -ne $Psd1FilePath)
         {
             if($Psd1FilePath.Count -gt 1)

@@ -101,11 +101,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerVersionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability[]) content.GetValueForProperty("SupportedNodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NodeTypeCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedStorageEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedServerVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerVersionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedNodeType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability[]) content.GetValueForProperty("SupportedNodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NodeTypeCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,11 +138,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerVersionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability[]) content.GetValueForProperty("SupportedNodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NodeTypeCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedStorageEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedServerVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerVersionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedNodeType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability[]) content.GetValueForProperty("SupportedNodeType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).SupportedNodeType, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INodeTypeCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NodeTypeCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IHyperscaleNodeEditionCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

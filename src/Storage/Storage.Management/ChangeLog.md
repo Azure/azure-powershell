@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the failure of sync copy blob with long destination blob name [#16628]
+    -  `Copy-AzStorageBlob` 
+
+## Version 4.1.0
+* Fixed the failure of `Get-AzStorageContainerStoredAccessPolicy` when permission is null [#15644]
+* Supported create blob service Sas token or account Sas token with permission i
+    -  `New-AzStorageBlobSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageAccountSASToken`
 * Fixed creating container SAS token failed from an access policy without expire time, and set SAS token expire time [#16266]
     -  `New-AzStorageContainerSASToken` 
 * Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
@@ -30,7 +39,7 @@
     -  `Remove-AzStorageBlobImmutabilityPolicy`
 * Supported enable/disable legal hold on a Storage blob.
     -  `Set-AzStorageBlobLegalHold`
-* Supported create storage account with enable account level immutability with versioning, and create/udpate storage account with account level immutability policy.
+* Supported create storage account with enable account level immutability with versioning, and create/update storage account with account level immutability policy.
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
 

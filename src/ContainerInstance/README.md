@@ -134,18 +134,10 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start"].post.responses
     transform: >-
-      return {
-          "202": {
-            "description": "Started - the container group is starting."
-          },
-          "204": {
-            "description": "No content"
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        }
+      $["200"] = {
+          "description": "OK"
+      };
+      $["204"] = {
+          "description": "No content"
+      }
 ```

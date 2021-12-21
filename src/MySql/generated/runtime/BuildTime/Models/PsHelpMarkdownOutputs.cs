@@ -141,7 +141,7 @@ Locale: en-US
         }
 
         public override string ToString() => $@"### [{HelpInfo.CmdletName}]({HelpInfo.CmdletName}.md)
-{HelpInfo.Description.ToDescriptionFormat()}
+{HelpInfo.Synopsis.ToDescriptionFormat()}
 
 ";
     }

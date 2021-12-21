@@ -101,7 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix = (string) content.GetValueForProperty("PrivateDnsZoneSuffix",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix, global::System.Convert.ToString);
+            if (content.Contains("PrivateDnsZoneSuffix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix = (string) content.GetValueForProperty("PrivateDnsZoneSuffix",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,7 +122,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix = (string) content.GetValueForProperty("PrivateDnsZoneSuffix",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix, global::System.Convert.ToString);
+            if (content.Contains("PrivateDnsZoneSuffix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix = (string) content.GetValueForProperty("PrivateDnsZoneSuffix",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IGetPrivateDnsZoneSuffixResponseInternal)this).PrivateDnsZoneSuffix, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
