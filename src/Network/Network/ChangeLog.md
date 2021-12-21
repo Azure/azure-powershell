@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new properties ApplicationSecurityGroup, IpConfiguration and CustomNetworkInterfaceName for Private Endpoint cmdlets
+    - `Get-AzPrivateEndpoint`
+    - `New-AzPrivateEndpoint`
+* Added new cmdlet to create new IpConfiguration object for building Private Endpoint
+    - `New-AzPrivateEndpointIpConfiguration`
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
