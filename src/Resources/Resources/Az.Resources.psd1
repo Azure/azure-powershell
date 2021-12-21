@@ -65,8 +65,7 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll',
                'Microsoft.Extensions.Options.dll',
                'Microsoft.Extensions.Primitives.dll',
-               'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll',
-               'MSGraph\bin\Az.Resources.MSGraph.private.dll'
+               'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -76,28 +75,15 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Resources.format.ps1xml', 'ResourceManager.format.ps1xml',
-               'ResourceManager.generated.format.ps1xml', 'Tags.format.ps1xml',
-               'MSGraph\MSGraph.format.ps1xml'
+               'ResourceManager.generated.format.ps1xml', 'Tags.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Resources.dll',
                'Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll',
-               'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll',
-               'MSGraph\MSGraph.psm1')
+               'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzADUser', 'New-AzADUser', 'Remove-AzADUser', 'Update-AzADUser',
-               'Get-AzADGroup', 'New-AzADGroup', 'Remove-AzADGroup',
-               'Get-AzADApplication', 'New-AzADApplication',
-               'Remove-AzADApplication', 'Update-AzADApplication',
-               'Get-AzADServicePrincipal', 'New-AzADServicePrincipal',
-               'Remove-AzADServicePrincipal', 'Update-AzADServicePrincipal',
-               'Get-AzADAppCredential', 'New-AzADAppCredential',
-               'Remove-AzADAppCredential', 'Get-AzADSpCredential',
-               'New-AzADSpCredential', 'Remove-AzADSpCredential',
-               'Get-AzADGroupMember', 'Add-AzADGroupMember',
-               'Remove-AzADGroupMember', 'Add-AzADAppPermission',
-               'Get-AzADAppPermission', 'Remove-AzADAppPermission'
+FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
