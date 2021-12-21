@@ -5179,6 +5179,14 @@
 				<Label>ApplicationSecurityGroups</Label>
 				<PropertyName>ApplicationSecurityGroupsText</PropertyName>
 			  </ListItem>
+			  <ListItem>
+				<Label>IpConfigurations</Label>
+				<PropertyName>IpConfigurationsText</PropertyName>
+			  </ListItem>
+			  <ListItem>
+				<Label>CustomNetworkInterfaceName</Label>
+				<PropertyName>CustomNetworkInterfaceName</PropertyName>
+			  </ListItem>
 			</ListItems>
           </ListEntry>
         </ListEntries>
