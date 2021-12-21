@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Made changes to fix cluster registration that is using distributed network name as connection point.
+    - Fixed script for registering and unregistering Arc Registration clustered scheduled task that was causing authentication error when DNN was used due to double-hop.
 
 ## Version 0.9.0
 * Made changes to show Arc not supported error on 20H2 only if intent to enable Arc is specified by user.
