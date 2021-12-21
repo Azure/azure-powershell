@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     Enabled = this.EnableAutoPause != null ? this.EnableAutoPause : existingSparkPool.AutoPause?.Enabled ?? false,
                     DelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinute)
                         ? this.AutoPauseDelayInMinute
-                        : existingSparkPool.AutoPause?.DelayInMinutes ?? SynapseConstants.DefaultAutoPauseDelayInMinute
+                        : existingSparkPool.AutoPause?.DelayInMinutes ?? int.Parse(SynapseConstants.DefaultAutoPauseDelayInMinute)
                 };
             }
 

@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         
         public const string KqlScript = nameof(KqlScript);
 
-        public const int DefaultAutoPauseDelayInMinute = 15;
+        public const string DefaultAutoPauseDelayInMinute = "15";
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
