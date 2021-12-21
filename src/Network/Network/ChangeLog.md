@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added OrdinalIgnoreCase for string comparison of resourceIdentifier type for flowlog cmdlets
+* Fixed typo in error message of InvalidWorkspaceResourceId
 
 ## Version 4.13.0
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy

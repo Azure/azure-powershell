@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId = (string) content.GetValueForProperty("VirtualNetworkArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId, global::System.Convert.ToString);
+            if (content.Contains("VirtualNetworkArmResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId = (string) content.GetValueForProperty("VirtualNetworkArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId = (string) content.GetValueForProperty("VirtualNetworkArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId, global::System.Convert.ToString);
+            if (content.Contains("VirtualNetworkArmResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId = (string) content.GetValueForProperty("VirtualNetworkArmResourceId",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkArmResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

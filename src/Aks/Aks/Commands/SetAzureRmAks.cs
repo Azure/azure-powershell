@@ -127,6 +127,13 @@ namespace Microsoft.Azure.Commands.Aks
             return managedCluster;
         }
 
+        private ContainerServiceNetworkProfile SetNetworkProfile(ContainerServiceNetworkProfile networkProfile)
+        {
+            networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(networkProfile.LoadBalancerProfile);
+
+            return networkProfile;
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -376,6 +383,12 @@ namespace Microsoft.Azure.Commands.Aks
                         {
                             RemoveAcrRoleAssignment(AcrNameToDetach, nameof(AcrNameToDetach), acsServicePrincipal);
                         }
+                    }
+                    cluster.NetworkProfile = SetNetworkProfile(cluster.NetworkProfile);
+                    cluster.ApiServerAccessProfile = CreateOrUpdateApiServerAccessProfile(cluster.ApiServerAccessProfile);
+                    if (this.IsParameterBound(c => c.FqdnSubdomain))
+                    {
+                        cluster.FqdnSubdomain = FqdnSubdomain;
                     }
 
                     var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);
