@@ -12,7 +12,7 @@ Create a new managed Kubernetes cluster.
 
 The cmdlet may call below Microsoft Graph API according to input parameters:
 
-* POST /servicePrincipals
+- POST /servicePrincipals
 
 ## SYNTAX
 
