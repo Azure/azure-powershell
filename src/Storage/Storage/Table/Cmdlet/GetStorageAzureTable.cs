@@ -280,10 +280,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 }
                 else
                 {
-                    tableList = ListTablesByNameV2(Channel, Name);
+                    tableList = this.ListTablesByNameV2(Channel, Name);
                 }
 
-                WriteTablesWithStorageContext(tableList);
+                this.WriteTablesWithStorageContext(tableList);
             }
         }
     }
