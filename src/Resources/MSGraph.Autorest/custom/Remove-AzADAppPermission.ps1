@@ -33,7 +33,7 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermissi
 
 function Remove-AzADAppPermission {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', SupportsShouldProcess, PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory, HelpMessage = "The unique identifier in Azure AD.")]
         [System.Guid]
