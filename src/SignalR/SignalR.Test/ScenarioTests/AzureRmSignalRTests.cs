@@ -50,5 +50,10 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
         public void TestAzureRmSignalRSetUpstream() =>
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRSetUpstream");
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmSignalRUpdate() =>
+    TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRUpdate");
+
     }
 }
