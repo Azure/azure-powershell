@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             };
         }
 
-        readonly private Func<AzKeyStore> _getKeyStore;
+        private readonly Func<AzKeyStore> _getKeyStore;
         private AzKeyStore _keyStore;
         public AzKeyStore KeyStore
         {

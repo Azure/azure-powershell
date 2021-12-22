@@ -495,12 +495,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         /// <param name="name">The specified new name of the context.</param>
         /// <param name="context">The new context to set as default.</param>
-        /// fixme:jinlei
         public bool TrySetContext(string name, IAzureContext context)
         {
             bool result = false;
             if (Contexts != null)
             {
+                if (TryFindContext(context, out string oldName))
+                {
+                    var oldContext = Contexts[oldName].DeepCopy();
+                    oldContext.Update(context);
+                    context = oldContext;
+                }
                 Contexts[name] = context;
                 result = true;
             }

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
 * Fixed the issue that Azure PowerShell could not work in a workflow. [#16408]
 * Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
 

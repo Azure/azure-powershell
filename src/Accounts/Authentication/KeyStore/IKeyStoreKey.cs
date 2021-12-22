@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     {
         protected abstract string CreateKey();
 
-        override public abstract string ToString();
+        public override abstract string ToString();
 
-        override public abstract bool Equals(object obj);
+        public override abstract bool Equals(object obj);
 
-        override public abstract int GetHashCode();
+        public override abstract int GetHashCode();
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public class AzKeyStore : IDisposable
     {
         public const string Name = "AzKeyStore";
-        readonly private static IDictionary<IKeyStoreKey, SecureString> _credentials = new Dictionary<IKeyStoreKey, SecureString>();
+        private static readonly IDictionary<IKeyStoreKey, SecureString> _credentials = new Dictionary<IKeyStoreKey, SecureString>();
 
         [Obsolete("The constructor is deprecated. Will read key from encryted storage later.", false)]
         public AzKeyStore(IAzureContextContainer profile)
