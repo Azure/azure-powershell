@@ -134,7 +134,7 @@ Create key credentials for application
 
 ### Example 2: Create password credentials for application
 ```powershell
-
+PS C:\> Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 ```
 
 Create password credentials for application
