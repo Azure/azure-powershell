@@ -2298,7 +2298,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"IzuXPdx5cT7HWzWOyhWmoUqXUaG1BnJHUFk7tGMBwLCKP1CKfEPohH3AEIkqp97Wm55OnVx49D8DcZv2OV43mQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"1L/UlXcLk1ttTr2Psgs1wqX4DMXVahlwI1T8Rs15DNjq2792rFZ+NnQ8AjSMx3w6xCOkjgmBna7fHQWJB3B6cA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"****\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"***\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2361,7 +2361,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"IzuXPdx5cT7HWzWOyhWmoUqXUaG1BnJHUFk7tGMBwLCKP1CKfEPohH3AEIkqp97Wm55OnVx49D8DcZv2OV43mQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"1L/UlXcLk1ttTr2Psgs1wqX4DMXVahlwI1T8Rs15DNjq2792rFZ+NnQ8AjSMx3w6xCOkjgmBna7fHQWJB3B6cA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"****\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"***\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
