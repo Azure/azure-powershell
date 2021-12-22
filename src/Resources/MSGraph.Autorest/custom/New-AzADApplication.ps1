@@ -369,6 +369,12 @@ function New-AzADApplication {
     [System.DateTime]
     ${EndDate},
 
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
+    # webApplication
+    # To construct, see NOTES section for WEB properties and create a hash table.
+    ${Web},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -639,16 +645,18 @@ function New-AzADApplication {
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
     if ($PSBoundParameters['HomePage'] -or $PSBoundParameters['ReplyUrls']) {
-      $props = @{}
+      if (!$PSBoundParameters['Web']) {
+        $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
+      } 
+
       if ($PSBoundParameters['HomePage']) {
-        $props['HomePageUrl'] = $PSBoundParameters['HomePage']
+        $PSBoundParameters['Web'].HomePageUrl = $PSBoundParameters['HomePage']
         $null = $PSBoundParameters.Remove('HomePage')
       }
       if ($PSBoundParameters['ReplyUrls']) {
-        $props['RedirectUri'] = $PSBoundParameters['ReplyUrls']
+        $PSBoundParameters['Web'].RedirectUri = $PSBoundParameters['ReplyUrls']
         $null = $PSBoundParameters.Remove('ReplyUrls')
       }
-      $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
     }
     elseif ($PSBoundParameters['SPARedirectUri']) {
       $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
