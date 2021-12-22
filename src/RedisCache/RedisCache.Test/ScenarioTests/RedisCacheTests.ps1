@@ -173,6 +173,17 @@ function Test-RedisCachePipeline
 
     # Updating Cache using pipeline
     Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false -RedisVersion 6
+    # Wait for update to complete
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep 30000
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
     $cacheUpdatedPiped = Get-AzRedisCache -Name $cacheName
 
     Assert-AreEqual $cacheName $cacheUpdatedPiped.Name
