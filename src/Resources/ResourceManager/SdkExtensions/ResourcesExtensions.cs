@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -219,6 +221,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             return output.ToString();
         }
+        public static string Indent(this string value, int size)
+        {
+            string[] lines = value.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            var sb = new StringBuilder();
+            foreach (var s in lines)
+            {
+                sb.Append(new string(' ', size)).Append(s).Append(Environment.NewLine);
+            }
+            return sb.ToString().TrimEnd();
+        }
 
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)
         {
@@ -244,7 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
                 foreach (KeyValuePair<string, DeploymentVariable> pair in dictionary)
                 {
-                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, pair.Value.Value);
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, pair.Value.Value.ToString().Indent(maxNameLength + maxTypeLength + 4).Trim());
                 }
             }
 

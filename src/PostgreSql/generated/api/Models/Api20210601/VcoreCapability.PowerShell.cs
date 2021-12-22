@@ -104,11 +104,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVcoreMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedMemoryPerVcoreMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVcoreMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,11 +141,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVcoreMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedMemoryPerVcoreMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVcoreMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).SupportedMemoryPerVcoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVcoreCapabilityInternal)this).Status, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

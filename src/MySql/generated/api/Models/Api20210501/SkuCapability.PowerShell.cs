@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVCoreMb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedMemoryPerVCoreMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVCoreMb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVCoreMb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore = (long?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).VCore, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop = (long?) content.GetValueForProperty("SupportedIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedIop, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SupportedMemoryPerVCoreMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb = (long?) content.GetValueForProperty("SupportedMemoryPerVCoreMb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapabilityInternal)this).SupportedMemoryPerVCoreMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializePSObject(content);
         }
 

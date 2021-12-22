@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of Az.PostgreSql
 
 ## Version 0.8.0
 * Removed `Location` in `Restore-AzPostgreSqlFlexibleServer`

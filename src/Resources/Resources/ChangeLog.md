@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed the usage of SignInName in New-AzRoleAssignment [#16627]
+* Formatted the output format of DeploymentVariable
 * Remove isUser operation filter from GetAzureProviderOperation Cmdlet
 
 ## Version 5.1.0

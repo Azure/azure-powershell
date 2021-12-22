@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimagedefinition
@@ -20,8 +20,8 @@ New-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-EndOfLifeDate <DateTime>] [-Eula <String>] [-HyperVGeneration <String>] [-MinimumMemory <Int32>]
  [-MinimumVCPU <Int32>] [-MaximumMemory <Int32>] [-MaximumVCPU <Int32>] [-PrivacyStatementUri <String>]
  [-PurchasePlanName <String>] [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>]
- [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-Feature <GalleryImageFeature[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $ga
 
 Creates a gallery image definition to contain image versions for specialized windows images.
 
-### Example 4: Create an image definition for generalized windows images
+### Example 4: Create an image definition for generalized windows images and set features. 
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -89,7 +89,10 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $description = "My gallery"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description
+$IsHibernateSupported = @{​​​​​Name='IsHibernateSupported';Value='True'}​​​​​ 
+$IsAcceleratedNetworkSupported = @{​​​​​Name='IsAcceleratedNetworkSupported';Value='False'}​​​​​
+$features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported)
+PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
 ```
 
 Creates a gallery image definition to contain image versions for generalized windows images.
@@ -269,6 +272,22 @@ The Eula agreement for the gallery Image Definition.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Feature
+
+A list of gallery image features.
+
+```yaml
+Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]
 Parameter Sets: (All)
 Aliases:
 
@@ -635,7 +654,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the failure of sync copy blob with long destination blob name [#16628]
+    -  `Copy-AzStorageBlob` 
 
 ## Version 4.1.0
 * Fixed the failure of `Get-AzStorageContainerStoredAccessPolicy` when permission is null [#15644]

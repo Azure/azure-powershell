@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize = (long?) content.GetValueForProperty("MinStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize = (long?) content.GetValueForProperty("MaxStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay = (long?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay = (long?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("MinStorageSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize = (long?) content.GetValueForProperty("MinStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MaxStorageSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize = (long?) content.GetValueForProperty("MaxStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MinBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay = (long?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MaxBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay = (long?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize = (long?) content.GetValueForProperty("MinStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize = (long?) content.GetValueForProperty("MaxStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay = (long?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay = (long?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("MinStorageSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize = (long?) content.GetValueForProperty("MinStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MaxStorageSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize = (long?) content.GetValueForProperty("MaxStorageSize",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxStorageSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MinBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay = (long?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MinBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MaxBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay = (long?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapabilityInternal)this).MaxBackupRetentionDay, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializePSObject(content);
         }
 

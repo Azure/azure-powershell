@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]
 
 ## Version 3.0.0
 * [Breaking Change] Updated parameter alias and output type of `Get-AzAksVersion`
