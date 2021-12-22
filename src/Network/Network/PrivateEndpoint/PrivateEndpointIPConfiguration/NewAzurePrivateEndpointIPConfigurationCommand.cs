@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointIpConfiguration"), OutputType(typeof(PSPrivateEndpointIPConfiguration))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointIpConfiguration", SupportsShouldProcess = false), OutputType(typeof(PSPrivateEndpointIPConfiguration))]
     public class NewAzurePrivateEndpointIPConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the private endpoint IP configuration.")]
