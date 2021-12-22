@@ -22,7 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Collections.Generic;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Linq;
     using global::Azure.Data.Tables.Models;
 
@@ -42,11 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// </summary>
         private const string PrefixParameterSet = "TablePrefix";
 
-        /// <summary>
-        /// query parameter set name
-        /// </summary>
-        private const string QueryParameterSet = "TableQuery";
-
         [Alias("N", "Table")]
         [Parameter(Position = 0, HelpMessage = "Table name",
             ValueFromPipeline = true,
@@ -59,11 +53,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             ParameterSetName = PrefixParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Prefix { get; set; }
-
-        [Parameter(HelpMessage = "Table Query",
-            ParameterSetName = QueryParameterSet, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string Query { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageTableCommand class.
@@ -274,10 +263,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 {
                     tableList = ListTablesByPrefix(Prefix);
                 }
-                else if (QueryParameterSet == ParameterSetName)
-                {
-                    throw new ArgumentException($"{QueryParameterSet} is only supported while using OAuth");
-                }
                 else
                 {
                     tableList = ListTablesByName(Name);
@@ -292,10 +277,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 if (PrefixParameterSet == ParameterSetName)
                 {
                     tableList = this.ListTablesByPrefixV2(Channel, Prefix);
-                }
-                else if (QueryParameterSet == ParameterSetName)
-                {
-                    tableList = this.ListTablesByQueryV2(Channel, Query);
                 }
                 else
                 {
