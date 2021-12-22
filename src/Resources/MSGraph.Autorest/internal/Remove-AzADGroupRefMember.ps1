@@ -117,7 +117,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzADGroupRefMember_Delete';
+            Delete = 'Az.MSGraph.private\Remove-AzADGroupRefMember_Delete';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

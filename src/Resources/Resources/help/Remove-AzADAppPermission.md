@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermission
 schema: 2.0.0
@@ -14,14 +14,14 @@ Removes an API permission.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADAppPermission -ObjectId <Guid> -PermissionId <Guid> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADAppPermission -PermissionId <Guid> -ObjectId <Guid> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AppIdParameterSet
 ```
-Remove-AzADAppPermission -ApplicationId <Guid> -PermissionId <Guid> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADAppPermission -PermissionId <Guid> -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,4 +143,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

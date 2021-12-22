@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/new-azaduser
 schema: 2.0.0
@@ -13,18 +13,18 @@ Adds new entity to users
 ## SYNTAX
 
 ```
-New-AzADUser -DisplayName <String> -MailNickname <String> -Password <SecureString> -UserPrincipalName <String>
+New-AzADUser -DisplayName <String> -MailNickname <String> -UserPrincipalName <String> -Password <SecureString>
  [-AboutMe <String>] [-AccountEnabled] [-AgeGroup <String>] [-Birthday <DateTime>] [-City <String>]
  [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
  [-Department <String>] [-DeviceEnrollmentLimit <Int32>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
  [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
- [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-HireDate <DateTime>]
- [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
- [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>] [-OtherMail <String[]>]
- [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
- [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
- [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
- [-UsageLocation <String>] [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-FaxNumber <String>] [-GivenName <String>] [-HireDate <DateTime>] [-Interest <String[]>] [-IsResourceAccount]
+ [-JobTitle <String>] [-Mail <String>] [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>]
+ [-ImmutableId <String>] [-OtherMail <String[]>] [-PasswordPolicy <String>]
+ [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>] [-PreferredLanguage <String>]
+ [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList]
+ [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>]
+ [-UserType <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -448,7 +448,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsResourceAccount
-Do not use – reserved for future use.
+Do not use - reserved for future use.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -911,7 +911,6 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[ForceChangePasswordNextSignIn <Boolean?>]`: true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
   - `[ForceChangePasswordNextSignInWithMfa <Boolean?>]`: If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
-  - `[Password <String>]`: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
+  - `[Password <String>]`: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies property. By default, a strong password is required.
 
 ## RELATED LINKS
-

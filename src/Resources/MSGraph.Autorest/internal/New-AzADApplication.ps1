@@ -612,8 +612,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADApplication_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADApplication_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADApplication_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADApplication_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

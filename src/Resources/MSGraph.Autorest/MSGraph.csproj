@@ -1,7 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <PsModuleName>Resources</PsModuleName>
-  </PropertyGroup>
-
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.hybrid.v2.props" />
-</Project>
