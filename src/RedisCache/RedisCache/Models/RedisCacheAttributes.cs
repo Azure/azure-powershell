@@ -15,7 +15,9 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
+    using Newtonsoft.Json;
     using System.Collections.Generic;
+    using System.Reflection;
 
     public class RedisCacheAttributes
     {
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Port = cache.Port.HasValue ? cache.Port.Value : 0;
             ProvisioningState = cache.ProvisioningState;
             SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
-            RedisConfiguration = cache.RedisConfiguration;
+            
             EnableNonSslPort = cache.EnableNonSslPort.Value;
             RedisVersion = cache.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
@@ -42,6 +44,27 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             MinimumTlsVersion = cache.MinimumTlsVersion;
             Tag = cache.Tags;
             Zone = cache.Zones;
+            RedisConfiguration = new Dictionary<string, string>();
+            if (cache.RedisConfiguration != null)
+            {
+                foreach (PropertyInfo property in cache.RedisConfiguration.GetType().GetProperties())
+                {
+                    System.Attribute attr = property.GetCustomAttribute(typeof(JsonPropertyAttribute));
+                    if(property.GetValue(cache.RedisConfiguration) != null && attr != null)
+                    {
+                        JsonPropertyAttribute jsonAttr = (JsonPropertyAttribute)attr;
+                        RedisConfiguration[jsonAttr.PropertyName] = (string)property.GetValue(cache.RedisConfiguration);
+                    }
+                    
+                }
+                if(cache.RedisConfiguration.AdditionalProperties != null)
+                {
+                    foreach (KeyValuePair<string, object> kvPair in cache.RedisConfiguration.AdditionalProperties)
+                    {
+                        RedisConfiguration[kvPair.Key] = (string)kvPair.Value;
+                    }
+                }
+            }
         }
 
         public RedisCacheAttributes() { }

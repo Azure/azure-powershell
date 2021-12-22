@@ -84,10 +84,10 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             if (redisConfiguration != null)
             {
-                parameters.RedisConfiguration = new Dictionary<string, string>();
+                parameters.RedisConfiguration = new RedisCommonPropertiesRedisConfiguration(additionalProperties: new Dictionary<string, object>());
                 foreach (object key in redisConfiguration.Keys)
                 {
-                    parameters.RedisConfiguration.Add(key.ToString(), redisConfiguration[key].ToString());
+                    parameters.RedisConfiguration.AdditionalProperties.Add(key.ToString(), redisConfiguration[key].ToString());
                 }
             }
 
@@ -160,10 +160,10 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             if (redisConfiguration != null)
             {
-                parameters.RedisConfiguration = new Dictionary<string, string>();
+                parameters.RedisConfiguration = new RedisCommonPropertiesRedisConfiguration(additionalProperties: new Dictionary<string, object>());
                 foreach (object key in redisConfiguration.Keys)
                 {
-                    parameters.RedisConfiguration.Add(key.ToString(), redisConfiguration[key].ToString());
+                    parameters.RedisConfiguration.AdditionalProperties.Add(key.ToString(), redisConfiguration[key].ToString());
                 }
             }
 
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 parameters.MinimumTlsVersion = MinimumTlsVersion;
             }
-            
+
             RedisResource response = _client.Redis.Update(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;
         }

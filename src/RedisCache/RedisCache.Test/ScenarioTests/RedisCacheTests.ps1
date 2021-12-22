@@ -796,6 +796,7 @@ function Test-FirewallRule
     Assert-True {Remove-AzRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -PassThru} "Removing firewall rule 'ruleone' failed."
 
     # Verify that rule is deleted
+    Start-TestSleep 6000
     $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 2 $allRulesGet.Count
 
@@ -803,6 +804,7 @@ function Test-FirewallRule
     Get-AzRedisCacheFirewallRule -Name $cacheName | Remove-AzRedisCacheFirewallRule -PassThru
 
     # Verify that all rules are deleted
+    Start-TestSleep 6000
     $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 0 $allRulesGet.Count
 
