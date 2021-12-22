@@ -8,7 +8,7 @@ PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.R
 PS C:\> New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 ```
 
-Create key credentials for application
+Create key credentials for application with object Id $Id
 
 ### Example 2: Create password credentials for application
 ```powershell
