@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix cmdlet used in Set-AzBlueprintArtifact doc examples
 
 ## Version 0.4.0
 * Fix custom delegating handler to only apply to Blueprint requests
