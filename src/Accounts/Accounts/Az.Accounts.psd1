@@ -57,7 +57,6 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.PowerShell.Authentication.Abstractions.dll', 
-               'Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll', 
                'Microsoft.Azure.PowerShell.Authentication.dll', 
                'Microsoft.Azure.PowerShell.Authenticators.dll', 
                'Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll', 

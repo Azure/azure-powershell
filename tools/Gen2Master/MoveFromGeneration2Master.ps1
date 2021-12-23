@@ -316,6 +316,9 @@ Function Move-Generation2MasterHybrid {
                 $Psd1Metadata.Remove("PrivateData")
             }
             New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
+            
+            # Copy the assemblyinfo file
+            Copy-Template -SourceName AssemblyInfo.cs -DestPath (Join-Path (Join-Path $DestPath $submoduleDir.Name) "Properties") -DestName AssemblyInfo.cs -ModuleName $submoduleName
         }
 
         #update module page
@@ -361,7 +364,7 @@ Function Copy-Template {
         $DestPath = Join-Path -Path $DestPath -ChildPath $DestName
         If (-not (Test-Path -Path $DestPath)) {
             Write-Host "Copying template: $SourceName." -ForegroundColor Yellow
-            New-Item -Path $DestPath
+            New-Item -Path $DestPath -Force
             $TemplatePath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath "Templates") -ChildPath $SourceName
             $TemplateContent = Get-Content -Path $TemplatePath
             If ($TemplateContent -Match "{GUID}") {

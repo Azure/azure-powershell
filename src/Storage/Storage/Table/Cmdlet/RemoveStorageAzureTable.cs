@@ -20,6 +20,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using System.Collections.Generic;
+    using global::Azure.Data.Tables.Models;
 
     /// <summary>
     /// remove an azure table
@@ -107,6 +109,50 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
 
         /// <summary>
+        /// remove azure table
+        /// </summary>
+        /// <param name="channel"></param>
+        /// <param name="tableName">table name</param>
+        /// <returns>
+        /// true if the table is removed, false if user has cancelled the operation,
+        /// otherwise throw an exception</returns>
+        internal bool RemoveAzureTableV2(IStorageTableManagement localChannel, string tableName)
+        {
+            if (!NameUtil.IsValidTableName(tableName))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidTableName, tableName));
+            }
+
+            // check whether table exists
+            bool exists = false;
+            string query = $"TableName eq '{tableName}'";
+            IEnumerable<TableItem> tableItems = localChannel.QueryTables(query, this.CmdletCancellationToken);
+            foreach (TableItem tableItem in tableItems)
+            {
+                exists = true;
+                break;
+            }
+
+            if (!exists)
+            {
+                throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, tableName));
+            }
+
+            // delete accordingly
+            if (force ||
+                this.IsTableEmpty(localChannel, tableName, this.CmdletCancellationToken) ||
+                ShouldContinue(string.Format("Remove table and all content in it: {0}", tableName), ""))
+            {
+                localChannel.DeleteTable(tableName, this.CmdletCancellationToken);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -115,7 +161,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             if (ShouldProcess(Name, "Remove table"))
             {
                 string result = string.Empty;
-                bool success = RemoveAzureTable(Name);
+
+                bool success = this.Channel.IsTokenCredential ?
+                    RemoveAzureTableV2(Channel, Name) :
+                    RemoveAzureTable(Name);
 
                 if (success)
                 {

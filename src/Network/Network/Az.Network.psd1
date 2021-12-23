@@ -546,7 +546,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzVirtualNetworkGatewayNatRule',
                'Get-AzVirtualHubBgpConnection', 'New-AzVirtualHubBgpConnection',
                'Remove-AzVirtualHubBgpConnection',
-               'Update-AzVirtualHubBgpConnection'
+               'Update-AzVirtualHubBgpConnection',
+               'New-AzPrivateEndpointIpConfiguration'
 
 # Variables to export from this module
 # VariablesToExport = @()
