@@ -30,7 +30,6 @@ For information on how to develop for `Az.Websites`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-# branch: 7a2cc29033fe4027ef421267f1684efbd0d40a93
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -1305,26 +1304,6 @@ directive:
 
   - from: swagger-document
     where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run"]
-
-  - from: swagger-document
-    where: $.paths
     transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/usages"]
 
   - from: swagger-document
@@ -1338,14 +1317,6 @@ directive:
   - from: swagger-document
     where: $.paths
     transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}"]
 
   - from: swagger-document
     where: $.paths
@@ -1393,26 +1364,6 @@ directive:
 
   - from: swagger-document
     where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run"]
-
-  - from: swagger-document
-    where: $.paths
     transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/usages"]
 
   - from: swagger-document
@@ -1427,14 +1378,111 @@ directive:
     where: $.paths
     transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}"]
 
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs"]
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs"]
 
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}"]
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}"]
 
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run"]
+
+    # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run"]
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop"]
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start"]
+
+  # - from: swagger-document
+  #   where: $.paths
+  #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop"]
 # Use "WebApp" as subject prefix
   - where:
       subject-prefix: Websites
@@ -1453,23 +1501,46 @@ directive:
     set:
       subject: SlotContinuousWebJob
 
+  - where:
+      subject: TriggeredWebJobSlot
+    set:
+      subject: SlotTriggeredWebJob
+
+  - where:
+      subject: TriggeredWebJobHistorySlot
+    set:
+      subject: SlotTriggeredWebJobHistory
+
+  - where:
+      subject: WebJobSlot
+    set:
+      subject: SlotWebJob
+
   # - where:
-  #     subject: ContinuouWebJob | SlotContinuouWebJob
+  #     subject: ContinuousWebJob
   #     parameter-name: Name
   #   set:
   #     parameter-name: WebName
 
   # - where:
-  #     subject: ContinuouWebJob
+  #     subject: ContinuousWebJob
   #     parameter-name: WebJobName
   #   set:
   #     parameter-name: Name
 
   # - where:
-  #     subject: SlotContinuouWebJob
+  #     subject: SlotContinuousWebJob
   #     parameter-name: Slot
   #   set:
   #     parameter-name: SlotName
+  - where:
+      model-name: WebJob|TriggeredWebJob
+    set:
+      format-table:
+        properties:
+          - Name
+          - Kind
+          - WebJobType
   - where:
       model-name: ContinuousWebJob
     set:
