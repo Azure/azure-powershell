@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added a default value for [-AutoPauseDelayInMinute] parameter of command `New-AzSynapseSparkpool` and `Update-AzSynapseSparkpool`
 
 ## Version 0.19.0
 * Added support for Synapse KQL script

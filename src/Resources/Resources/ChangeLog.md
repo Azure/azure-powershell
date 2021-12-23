@@ -24,6 +24,7 @@
 * Fixed example for `New-AzADAppCredential` [#16682]
 * Added parameter `Web` for `New-AzADApplication` [#16659]
 * Added secret text in response of `New-AzADApplication` and `New-AzADServicePrincipal` [#16659]
+* Deserialized the `Value` in `DeploymentVariable` as object array if its type is Array [#16523]
 * Fixed the usage of SignInName in New-AzRoleAssignment [#16627]
 * Formatted the output format of DeploymentVariable
 * Remove isUser operation filter from GetAzureProviderOperation Cmdlet
