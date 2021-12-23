@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Port = cache.Port.HasValue ? cache.Port.Value : 0;
             ProvisioningState = cache.ProvisioningState;
             SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
-            
+
             EnableNonSslPort = cache.EnableNonSslPort.Value;
             RedisVersion = cache.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
@@ -63,6 +63,35 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     {
                         RedisConfiguration[kvPair.Key] = (string)kvPair.Value;
                     }
+                }
+            }
+            if(cache.Identity != null)
+            {
+                IdentityType = "";
+                if (cache.Identity.PrincipalId != null)
+                {
+                    SystemAssignedIdentity = new Dictionary<string, string>
+                    {
+                        { nameof(cache.Identity.PrincipalId), cache.Identity.PrincipalId.ToString() },
+                        { nameof(cache.Identity.TenantId), cache.Identity.TenantId.ToString() }
+                    };
+                    IdentityType = nameof(ManagedServiceIdentityType.SystemAssigned);
+                }
+                if (cache.Identity.UserAssignedIdentities?.Count > 0)
+                {
+                    UserAssignedIdentity = new List<string>();
+                    foreach( var identity in cache.Identity.UserAssignedIdentities)
+                    {
+                        UserAssignedIdentity.Add(identity.Key);
+                    }
+                    if (nameof(ManagedServiceIdentityType.SystemAssigned).Equals(IdentityType))
+                    {
+                        IdentityType = nameof(ManagedServiceIdentityType.SystemAssignedUserAssigned);
+                    } else
+                    {
+                        IdentityType = nameof(ManagedServiceIdentityType.UserAssigned);
+                    }
+                    
                 }
             }
         }
@@ -130,5 +159,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public IDictionary<string, string> Tag { get; protected set; }
 
         public IList<string> Zone { get; protected set; }
+
+        public string IdentityType { get; protected set; }
+
+        public IDictionary<string, string> SystemAssignedIdentity { get; protected set; }
+
+        public IList<string> UserAssignedIdentity { get; protected set; }
+
     }
 }

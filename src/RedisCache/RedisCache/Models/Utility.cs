@@ -1,8 +1,7 @@
 ﻿using Microsoft.Azure.Commands.RedisCache.Properties;
+using Microsoft.Azure.Management.Redis.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
@@ -41,6 +40,39 @@ namespace Microsoft.Azure.Commands.RedisCache
                 throw new ArgumentException(string.Format(Resources.InvalidRedisCacheId, id));
             }
             return e[8];
+        }
+
+        internal static ManagedServiceIdentity BuildManagedServiceIdentity(string identityType, string userAssignedIdentities)
+        {
+            if (!string.IsNullOrEmpty(identityType))
+            {
+                string managedIdentityType = ManagedServiceIdentityType.None;
+                foreach (var field in typeof(ManagedServiceIdentityType).GetFields())
+                {
+                    if (field.FieldType == typeof(string) && field.IsPublic && field.IsLiteral)
+                    {
+                        if (string.Equals(identityType, field.Name, StringComparison.OrdinalIgnoreCase))
+                        {
+                            managedIdentityType = (string)field.GetRawConstantValue();
+                            break;
+                        }
+                    }
+                }
+                var identity = new ManagedServiceIdentity(
+                    type: managedIdentityType
+                    );
+                if (!string.IsNullOrEmpty(userAssignedIdentities))
+                {
+                    var userIdentities = userAssignedIdentities.Split(',');
+                    identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+                    foreach (var userIdentity in userIdentities)
+                    {
+                        identity.UserAssignedIdentities[userIdentity.Trim()] = new UserAssignedIdentity();
+                    }
+                }
+                return identity;
+            }
+            return null;
         }
     }
 }

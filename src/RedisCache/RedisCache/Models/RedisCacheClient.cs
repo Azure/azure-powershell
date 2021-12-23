@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId,
-                string staticIP, Hashtable tags, IList<string> zones, String redisVersion)
+                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string userAssignedIdentities)
         {
             try
             {
@@ -67,6 +67,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                 },
                 RedisVersion = redisVersion
             };
+
+            parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
 
             if (zones != null && zones.Count != 0)
             {
@@ -130,7 +132,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, string redisVersion, Hashtable tags)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion,
+                string redisVersion, Hashtable tags, string identityType, string userAssignedIdentities)
         {
             try
             {
@@ -166,6 +169,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                     parameters.RedisConfiguration.AdditionalProperties.Add(key.ToString(), redisConfiguration[key].ToString());
                 }
             }
+
+            parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
 
             parameters.EnableNonSslPort = enableNonSslPort;
             parameters.RedisVersion = redisVersion;
