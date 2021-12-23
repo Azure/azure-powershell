@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new properties ApplicationSecurityGroup, IpConfiguration and CustomNetworkInterfaceName for Private Endpoint cmdlets
+    - `Get-AzPrivateEndpoint`
+    - `New-AzPrivateEndpoint`
+* Added new cmdlet to create new IpConfiguration object for building Private Endpoint
+    - `New-AzPrivateEndpointIpConfiguration`
 * Added OrdinalIgnoreCase for string comparison of resourceIdentifier type for flowlog cmdlets
 * Fixed typo in error message of InvalidWorkspaceResourceId
 
