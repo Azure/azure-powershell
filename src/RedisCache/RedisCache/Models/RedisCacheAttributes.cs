@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Tag = cache.Tags;
             Zone = cache.Zones;
             RedisConfiguration = new Dictionary<string, string>();
+
+            // Converting cache.RedisConfiguration Object into a readable dictionary using the json attributes
             if (cache.RedisConfiguration != null)
             {
                 foreach (PropertyInfo property in cache.RedisConfiguration.GetType().GetProperties())
@@ -65,7 +67,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     }
                 }
             }
-            if(cache.Identity != null)
+
+            // Converting cache.Identity Object into a readable SystemAssignedIdenty dictionary and UserAssignedIdentities list
+            if (cache.Identity != null)
             {
                 IdentityType = "";
                 if (cache.Identity.PrincipalId != null)
