@@ -1,0 +1,52 @@
+function Register-AzDataMigrationIntegrationRuntime 
+{
+    [OutputType()]
+    [CmdletBinding(PositionalBinding=$false)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Registers Sql Migration Service on Integration Runtime')]
+
+    param(
+        [Parameter(Mandatory, HelpMessage='AuthKey of Sql Migration Service')]
+        [System.String]
+        # AuthKey of Sql Migration Service to be registered
+        ${AuthKey},
+
+        [Parameter(HelpMessage='Path of SHIR msi')]
+        [System.String]
+        #Path of SHIR msi for installation.
+        ${IntegrationRuntimePath}
+    )
+
+    process 
+    {
+        # Entry point
+
+        # Script must be run as admin
+        If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+        [Security.Principal.WindowsBuiltInRole] "Administrator"))
+        {
+            throw "Failed: You do not have Administrator rights to run this command!`nPlease re-run this command as an Administrator!"
+            Break
+        }
+
+        $null = Validate-Input $PSBoundParameters.AuthKey
+
+        if($PSBoundParameters.ContainsKey("IntegrationRuntimePath"))
+        {
+            $path = $PSBoundParameters.IntegrationRuntimePath
+
+            if ([string]::IsNullOrEmpty($path))
+            {
+                throw "Gateway path is not specified"
+            }
+
+            if (!(Test-Path -Path $path))
+            {
+                throw "Invalid gateway path: $path"
+            }
+
+            Install-Gateway $path
+        }
+
+        $null = Register-IR $PSBoundParameters.AuthKey
+    }
+}
