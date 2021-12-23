@@ -886,9 +886,8 @@ Tests redis cache Managed Identity.
 function Test-ManagedIdentity
 {
     # Setup
-    $randId = Get-Random
-    $resourceGroupName = "PowerShellTest-$randID"
-    $cacheName = "redisteam$randID"
+    $resourceGroupName = "PowerShellTest-10"
+    $cacheName = "redisteam010"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     # Create resource group
