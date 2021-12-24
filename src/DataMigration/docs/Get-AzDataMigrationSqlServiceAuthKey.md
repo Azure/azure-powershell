@@ -25,7 +25,7 @@ Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 
 ### Example 1: Get the AuthKeys for a given Sql Migration Service
 ```powershell
-PS C:\> Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyRG" -SqlMigrationServiceName "MySqlMS"
+PS C:\> Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 
 AuthKey1                                                 AuthKey2
 --------                                                 --------

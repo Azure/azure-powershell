@@ -24,7 +24,7 @@ Retrieve the List of database migrations attached to the service.
 
 ### Example 1: Get the list of database migrations attached to a given Sql Migration Service
 ```powershell
-PS C:\> Get-AzDataMigrationSqlServiceMigration -ResourceGroupName "MyRG" -SqlMigrationServiceName "MySqlMS"
+PS C:\> Get-AzDataMigrationSqlServiceMigration -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 
 Name                                   Type                                       Kind  ProvisioningState MigrationStatus
 ----                                   ----                                       ----  ----------------- ---------------

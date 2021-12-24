@@ -32,7 +32,7 @@ Retrieve the Database Migration resource.
 
 ### Example 1: Get the details of a given Database Migration to a SQL Managed Instance
 ```powershell
-PS C:\> Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyRG" -ManagedInstanceName "MyMI" -TargetDbName "MyDatabase"
+PS C:\> Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
 
 Name               Type                                       Kind  ProvisioningState MigrationStatus
 ----               ----                                       ----  ----------------- ---------------
@@ -43,7 +43,7 @@ This command gets the details of a given Database Migration to a SQL Managed Ins
 
 ### Example 2: Get the expanded details of a given Database Migration to a SQL Managed Instance
 ```powershell
-PS C:\> $miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyRG" -ManagedInstanceName "MyMI" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
+PS C:\> $miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
 PS C:\> $miMigration.MigrationStatusDetail
 
 BlobContainerName                    CompleteRestoreErrorMessage CurrentRestoringFilename          FileUploadBlockingError 

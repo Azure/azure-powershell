@@ -1,6 +1,6 @@
 ### Example 1: Get the Monitoring Data for a given Sql Migration Service
 ```powershell
-PS C:\> Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyRG" -SqlMigrationServiceName "MySqlMS" | Select *
+PS C:\> Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select *
 
 Name       Node
 ----       ----
@@ -11,7 +11,7 @@ This command gets the Monitoring Data for a given Sql Migration Service.
 
 ### Example 2: Print the monitoring data for each node
 ```powershell
-PS C:\> $item = Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyRG" -SqlMigrationService "MySqlMS"
+PS C:\> $item = Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyResourceGroup" -SqlMigrationService "MySqlMigrationService"
 PS C:\> $item.Node[0] 
 
 AvailableMemoryInMb ConcurrentJobsLimit ConcurrentJobsRunning CpuUtilization MaxConcurrentJob NodeName     ReceivedByte     SentByte

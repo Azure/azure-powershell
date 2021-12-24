@@ -25,7 +25,7 @@ Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 
 ### Example 1: Regenerate AuthKeys for a given Sql Migration Service
 ```powershell
-PS C:\> New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyRG" -SqlMigrationServiceName "MySqlMS" -KeyName AuthKey2
+PS C:\> New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -KeyName AuthKey2
 
 AuthKey1 AuthKey2                                                   KeyName
 -------- --------                                                   -------

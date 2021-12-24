@@ -32,7 +32,7 @@ Retrieve the Database Migration resource.
 
 ### Example 1: Get the details of a given Database Migration to a SQL Virtual Machine
 ```powershell
-PS C:\> Get-AzDataMigrationToSqlVM -ResourceGroupName "MyRG" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase"
+PS C:\> Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase"
 
 Name                 Type                                       Kind  ProvisioningState MigrationStatus
 ----                 ----                                       ----  ----------------- ---------------
@@ -43,7 +43,7 @@ This command gets the details of a given Database Migration to a SQL Virtual Mac
 
 ### Example 2: Get the expanded details of a given Database Migration to a SQL Virtual Machine
 ```powershell
-PS C:\> $vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyRG" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
+PS C:\> $vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResouceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
 PS C:\> $vmMigration.MigrationStatusDetail
 
 BlobContainerName                    CompleteRestoreErrorMessage CurrentRestoringFilename          FileUploadBlockingError 

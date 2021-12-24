@@ -32,7 +32,7 @@ Update SQL Migration Service.
 
 ### Example 1: Update tag of SQL Migration Service
 ```powershell
-PS C:\> Update-AzDataMigrationSqlService -ResourceGroupName "MyRG" -SqlMigrationServiceName "MySqlMS" -Tag @{Tag="Service"}
+PS C:\> Update-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -Tag @{Tag="Service"}
 
 Location  Name    Type                                         ProvisioningState IntegrationRuntimeState
 --------  ----    ----                                         ----------------- -----------------------
@@ -43,7 +43,7 @@ This command updates tag of SQL Migration Service.
 
 ### Example 2: Update tag of SQL Migration Service using InputObject
 ```powershell
-PS C:\> $mySqlMS = Get-AzDataMigrationSqlService -ResourceGroupName "MyRG" -SqlMigrationServiceName "MySqlMS"
+PS C:\> $mySqlMS = Get-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 PS C:\> Update-AzDataMigrationSqlService -InputObject $mySqlMS -Tag @{Tag="Service"}
 
 Location  Name    Type                                         ProvisioningState IntegrationRuntimeState
