@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 5)]
         public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
 
+        [JsonProperty(Order = 6)]
+        public List<PSInboundNatRulePortMapping> InboundNatRulePortMappings { get; set; }
+
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationIdText
         {
@@ -65,6 +68,20 @@ namespace Microsoft.Azure.Commands.Network.Models
             {
                 return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             }
+        }
+
+        [JsonIgnore]
+        public string InboundNatRulePortMappingsText
+        {
+            get
+            {
+                return JsonConvert.SerializeObject(InboundNatRulePortMappings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            }
+        }
+
+        public bool ShouldSerializeInboundNatRulePortMappings()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }
