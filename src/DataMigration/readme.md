@@ -34,12 +34,10 @@ branch: 7086ee861c3a6196bb98f8b327af11d03e545a05
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  # - D:\azure-rest-api\azure-rest-api-specs\specification\windowsiot\resource-manager\Microsoft.WindowsIoT\stable\2019-06-01\DataMigration.json
   - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2021-10-30-preview/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0
-subject-prefix: ''
 
 directive:
 
