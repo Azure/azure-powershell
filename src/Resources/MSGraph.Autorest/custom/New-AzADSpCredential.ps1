@@ -43,7 +43,8 @@ function New-AzADSpCredential {
     param(
         [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
         [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
-        [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
+        [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
+        [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "The object Id of application.")]
         [Alias('Id', 'ServicePrincipalObjectId')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
@@ -51,7 +52,8 @@ function New-AzADSpCredential {
 
         [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory, HelpMessage = "The service principal name.")]
         [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory, HelpMessage = "The service principal name.")]
-        [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory, HelpMessage = "The service principal name.")]
+        [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory, HelpMessage = "The service principal name.")]
+        [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "The service principal name.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         [Alias('SPN')]
@@ -59,7 +61,8 @@ function New-AzADSpCredential {
 
         [Parameter(ParameterSetName='ServicePrincipalObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
         [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
         ${ServicePrincipalObject},
@@ -71,16 +74,16 @@ function New-AzADSpCredential {
         [System.String]
         ${CertValue},
 
-        [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', HelpMessage = "key credentials associated with the service principal.")]
-        [Parameter(ParameterSetName='SPNWithCredentialParameterSet', HelpMessage = "key credentials associated with the service principal.")]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet', HelpMessage = "key credentials associated with the service principal.")]
+        [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory, HelpMessage = "key credentials associated with the service principal.")]
+        [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory, HelpMessage = "key credentials associated with the service principal.")]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory, HelpMessage = "key credentials associated with the service principal.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
         ${KeyCredentials},
 
-        [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', HelpMessage = "Password credentials associated with the service principal.")]
-        [Parameter(ParameterSetName='SPNWithCredentialParameterSet', HelpMessage = "Password credentials associated with the service principal.")]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet', HelpMessage = "Password credentials associated with the service principal.")]
+        [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
+        [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
         ${PasswordCredentials},
@@ -219,7 +222,7 @@ function New-AzADSpCredential {
             $PSBoundParameters['ServicePrincipalId'] = $id
             foreach ($credential in $pc) {
                 $PSBoundParameters['PasswordCredential'] = $credential
-                MSGraph.internal\Add-AzADServicePrincipalPassword @PSBoundParameters
+                Az.MSGraph.internal\Add-AzADServicePrincipalPassword @PSBoundParameters
             }
             $null = $PSBoundParameters.Remove('ServicePrincipalId')
             if ($PSBoundParameters['PasswordCredential']) {
@@ -229,7 +232,7 @@ function New-AzADSpCredential {
         if ($kc) {
             $PSBoundParameters['Id'] = $id
             $PSBoundParameters['KeyCredentials'] = $kc
-            MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
+            Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
         }  
     }
 }

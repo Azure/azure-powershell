@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Resources
-Module Guid: 26500ceb-dbf8-4aae-b866-5fa86b3ec272
-Download Help Link: https://docs.microsoft.com/powershell/module/az.resources
+Module Name: Az.MSGraph
+Module Guid: 9c1e9bcf-5175-4d03-99c7-a7f2f7040f46
+Download Help Link: https://docs.microsoft.com/powershell/module/az.msgraph
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.Resources Module
+# Az.MSGraph Module
 ## Description
 Microsoft Azure PowerShell: MSGraph cmdlets
 
-## Az.Resources Cmdlets
+## Az.MSGraph Cmdlets
 ### [Add-AzADAppPermission](Add-AzADAppPermission.md)
 Adds an API permission.
 
