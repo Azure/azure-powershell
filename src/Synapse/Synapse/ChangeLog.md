@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Migrate Azure AD features in Az.Synapse to MSGraph APIs, below cmdlets will call MSGraph API according to input parameters:
+    - `New-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Remove-AzSynapseRoleAssignment` cmdlet
+    - `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
 * Added a default value for [-AutoPauseDelayInMinute] parameter of command `New-AzSynapseSparkpool` and `Update-AzSynapseSparkpool`
 
 ## Version 0.19.0
