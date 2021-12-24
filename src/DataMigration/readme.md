@@ -26,12 +26,20 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
+### AutoRest Configuration
+> see https://aka.ms/autorest
+
 ``` yaml
-# it's the same options as command line options, just drop the double-dash!
+branch: 7086ee861c3a6196bb98f8b327af11d03e545a05
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-input-file: https://github.com/Azure/azure-rest-api-specs/blob/7086ee861c3a6196bb98f8b327af11d03e545a05/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2021-10-30-preview/sqlmigration.json
+input-file:
+  # - D:\azure-rest-api\azure-rest-api-specs\specification\windowsiot\resource-manager\Microsoft.WindowsIoT\stable\2019-06-01\DataMigration.json
+  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2021-10-30-preview/sqlmigration.json
+
 title: DataMigration
+module-version: 0.1.0
+subject-prefix: ''
 
 directive:
 
