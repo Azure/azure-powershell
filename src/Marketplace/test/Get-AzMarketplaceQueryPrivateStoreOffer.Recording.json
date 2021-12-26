@@ -1,0 +1,49 @@
+{
+  "Get-AzMarketplaceQueryPrivateStoreOffer+[NoContext]+Query+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryOffers?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryOffers?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "9cf1568b-6c02-4b96-895c-3cac38ba14d4" ],
+        "CommandName": [ "Get-AzMarketplaceQueryPrivateStoreOffer" ],
+        "FullCommandName": [ "Get-AzMarketplaceQueryPrivateStoreOffer_Query" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
+        "Set-Cookie": [ "ARRAffinity=78be796e04d1429f893c112f1ece82d12c725ab62841753de8c43221c54a3398;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=78be796e04d1429f893c112f1ece82d12c725ab62841753de8c43221c54a3398;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
+        "x-ms-request-id": [ "0f3dfa4a-b07d-462d-add8-bf81aff7c8a6" ],
+        "x-ms-correlation-request-id": [ "0f3dfa4a-b07d-462d-add8-bf81aff7c8a6" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150841Z:0f3dfa4a-b07d-462d-add8-bf81aff7c8a6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Sun, 26 Dec 2021 15:08:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1770" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"uniqueOfferId\":\"data3-limited-1019419.d3_azure_managed_services\",\"specificPlanIdsLimitation\":[\"d3-azure-health-check\",\"data3-azure-optimiser-plan\",\"data3-managed-azure-plan\"],\"eTag\":\"\\\"f4017791-0000-0100-0000-61c19ecf0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"viacode_consulting-1089577.viacodems\",\"specificPlanIdsLimitation\":[\"mgmt-limited-free\"],\"eTag\":\"\\\"f4017c91-0000-0100-0000-61c19ecf0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"redhat.jboss-eap-rhel\",\"specificPlanIdsLimitation\":[],\"eTag\":\"\\\"1702c75a-0000-0100-0000-61c204f20000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"aumatics.azure_managedservices\",\"specificPlanIdsLimitation\":[\"azure_managedservices_professional\"],\"eTag\":\"\\\"f4018091-0000-0100-0000-61c19ecf0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"almalinux.almalinux\",\"specificPlanIdsLimitation\":[\"8_5\"],\"eTag\":\"\\\"9a017052-0000-0100-0000-61c0721a0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"RedHat.RHEL_7\",\"specificPlanIdsLimitation\":[\"RedHatEnterpriseLinux73-ARM\"],\"eTag\":\"\\\"9a016727-0000-0100-0000-61c071490000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"cloudeteer.cdt_cloud-ops\",\"specificPlanIdsLimitation\":[\"cloud_pro\",\"cloud_go\"],\"eTag\":\"\\\"9a017127-0000-0100-0000-61c071490000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}]}",
+      "isContentBase64": false
+    }
+  }
+}

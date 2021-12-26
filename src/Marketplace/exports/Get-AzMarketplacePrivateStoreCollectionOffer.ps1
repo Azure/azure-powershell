@@ -20,13 +20,13 @@ Gets information about a specific offer.
 .Description
 Gets information about a specific offer.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name                                            SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+----                        			------------------- ------------------- ----------------------- ------------------------ ------------------------ -------------------
+data3-limited-1019419.d3_azure_managed_services
+viacode_consulting-1089577.viacodems
+RedHat.RHEL_7
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity

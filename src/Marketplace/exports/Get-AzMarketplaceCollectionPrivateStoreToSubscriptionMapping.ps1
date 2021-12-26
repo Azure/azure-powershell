@@ -20,13 +20,10 @@ For a given subscriptions list, the API will return a map of collections and the
 .Description
 For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  $res = Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "53425a7b-4ac1-4729-8340-e1da5046212c"}
+PS C:\> $res.keys
+e58535dc-1be3-4d2c-904c-1f97984ebe5d
+fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload

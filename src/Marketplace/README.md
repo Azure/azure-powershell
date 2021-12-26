@@ -108,6 +108,10 @@ directive:
       verb: Get
       subject: PrivateStoreAdminRequestApproval
     remove: true
+  - where:
+      verb: Remove
+      subject: PrivateStore
+    remove: true
 
   - where:
       verb: Invoke
@@ -124,6 +128,22 @@ directive:
       subject: BillingPrivateStoreAccount
     set:
       verb: Get
+  - where:
+      verb: Move
+      subject: PrivateStoreCollectionOffer
+      parameter-name: OfferIdsList 
+    set:
+      parameter-name: OfferIdList 
+  - where:
+      verb: Invoke
+      subject: BulkPrivateStoreCollectionAction
+    set:
+      verb: Set
+  - where:
+      verb: Move
+      subject: PrivateStoreCollectionOffer
+    set:
+      verb: Copy
 	  
 
 ```

@@ -20,13 +20,8 @@ Delete a collection from the given private store.
 .Description
 Delete a collection from the given private store.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity

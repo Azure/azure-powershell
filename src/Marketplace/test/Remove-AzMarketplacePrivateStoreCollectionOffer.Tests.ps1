@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMarketplacePrivateSt
 }
 
 Describe 'Remove-AzMarketplacePrivateStoreCollectionOffer' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'  {
+       Remove-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -OfferId aumatics.azure_managedservices
+
+	try{Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -OfferId aumatics.azure_managedservices} catch {$Error[0] | Should -Match "aumatics.azure_managedservices does not exist"}
+
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    
 }

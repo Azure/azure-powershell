@@ -6,5 +6,4 @@ PS C:\> Get-AzMarketplaceBillingPrivateStoreAccount -PrivateStoreId 3ac32d8c-e88
 <billing account[string]>
 
 
-
 This command returns the billing account of a private store 

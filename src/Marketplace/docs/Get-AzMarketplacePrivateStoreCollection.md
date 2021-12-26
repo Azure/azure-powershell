@@ -48,10 +48,6 @@ Name                                 SystemDataCreatedAt  SystemDataCreatedBy Sy
 
 This command gets list of private store collections
 
-```
-
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -CollectionId

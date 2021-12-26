@@ -20,13 +20,9 @@ Changes private store properties
 .Description
 Changes private store properties
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPrivateStore

@@ -1,0 +1,93 @@
+{
+  "Remove-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "cbfe34f2-a517-45fa-b49c-5d133a62d5b4" ],
+        "CommandName": [ "Remove-AzMarketplacePrivateStoreCollectionOffer" ],
+        "FullCommandName": [ "Remove-AzMarketplacePrivateStoreCollectionOffer_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
+        "Set-Cookie": [ "ARRAffinity=f8b348ab603aeb654affd202b4559f2bcbc3b8205c82a60887bb0f9057a54b31;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=f8b348ab603aeb654affd202b4559f2bcbc3b8205c82a60887bb0f9057a54b31;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "14995" ],
+        "x-ms-request-id": [ "beed9d67-a045-411a-8458-4a20ed65dcf4" ],
+        "x-ms-correlation-request-id": [ "beed9d67-a045-411a-8458-4a20ed65dcf4" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150858Z:beed9d67-a045-411a-8458-4a20ed65dcf4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Sun, 26 Dec 2021 15:08:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "6e7e7c34-64be-4c43-a289-bb6ddc6e849b" ],
+        "CommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer" ],
+        "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
+        "Set-Cookie": [ "ARRAffinity=b3fc68825d4c0187e5068d5b13b911a47383c023416d45b3a77817aab84fb695;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=b3fc68825d4c0187e5068d5b13b911a47383c023416d45b3a77817aab84fb695;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11961" ],
+        "x-ms-request-id": [ "2d3cbb32-3694-4446-9a66-22226a288cc7" ],
+        "x-ms-correlation-request-id": [ "2d3cbb32-3694-4446-9a66-22226a288cc7" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150859Z:2d3cbb32-3694-4446-9a66-22226a288cc7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Sun, 26 Dec 2021 15:08:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "95" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Offer aumatics.azure_managedservices does not exist\"}}",
+      "isContentBase64": false
+    }
+  }
+}

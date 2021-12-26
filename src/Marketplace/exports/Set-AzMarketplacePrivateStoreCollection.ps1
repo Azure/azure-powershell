@@ -20,13 +20,7 @@ Create or update private store collection
 .Description
 Create or update private store collection
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection

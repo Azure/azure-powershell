@@ -20,13 +20,7 @@ Update or add an offer to a specific collection of the private store.
 .Description
 Update or add an offer to a specific collection of the private store.
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer

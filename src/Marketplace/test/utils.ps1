@@ -20,6 +20,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
+	Connect-AzAccount -UseDeviceAuthentication -SubscriptionId 1052ff5a-aa43-4ca1-bd18-010399494ce5
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
@@ -27,5 +28,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
+ 	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a6065
+ 	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188
 }
 

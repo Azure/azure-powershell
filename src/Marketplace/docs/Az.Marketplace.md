@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: Marketplace cmdlets
 
 ## Az.Marketplace Cmdlets
+### [Copy-AzMarketplacePrivateStoreCollectionOffer](Copy-AzMarketplacePrivateStoreCollectionOffer.md)
+transferring offers (copy or move) from source collection to target collection(s)
+
 ### [Get-AzMarketplaceBillingPrivateStoreAccount](Get-AzMarketplaceBillingPrivateStoreAccount.md)
 Tenant billing accounts names
 
@@ -29,12 +32,6 @@ Gets information about a specific offer.
 ### [Get-AzMarketplaceQueryPrivateStoreOffer](Get-AzMarketplaceQueryPrivateStoreOffer.md)
 List of offers, regardless the collections
 
-### [Invoke-AzMarketplaceBulkPrivateStoreCollectionAction](Invoke-AzMarketplaceBulkPrivateStoreCollectionAction.md)
-Perform an action on bulk collections
-
-### [Move-AzMarketplacePrivateStoreCollectionOffer](Move-AzMarketplacePrivateStoreCollectionOffer.md)
-transferring offers (copy or move) from source collection to target collection(s)
-
 ### [New-AzMarketplacePrivateStore](New-AzMarketplacePrivateStore.md)
 Changes private store properties
 
@@ -44,15 +41,14 @@ Create or update private store collection
 ### [New-AzMarketplacePrivateStoreCollectionOffer](New-AzMarketplacePrivateStoreCollectionOffer.md)
 Update or add an offer to a specific collection of the private store.
 
-### [Remove-AzMarketplacePrivateStore](Remove-AzMarketplacePrivateStore.md)
-Deletes the private store.
-All that is not saved will be lost.
-
 ### [Remove-AzMarketplacePrivateStoreCollection](Remove-AzMarketplacePrivateStoreCollection.md)
 Delete a collection from the given private store.
 
 ### [Remove-AzMarketplacePrivateStoreCollectionOffer](Remove-AzMarketplacePrivateStoreCollectionOffer.md)
 Deletes an offer from the given collection of private store.
+
+### [Set-AzMarketplaceBulkPrivateStoreCollectionAction](Set-AzMarketplaceBulkPrivateStoreCollectionAction.md)
+Perform an action on bulk collections
 
 ### [Set-AzMarketplacePrivateStore](Set-AzMarketplacePrivateStore.md)
 Changes private store properties

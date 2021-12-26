@@ -37,7 +37,7 @@ Gets information about a specific offer.
 
 ### Example 1: Gets collection offers.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
 
 Name                                            SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                        			------------------- ------------------- ----------------------- ------------------------ ------------------------ -------------------
@@ -47,9 +47,6 @@ RedHat.RHEL_7
 ```
 
 This command get colletion offer
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -1,0 +1,49 @@
+{
+  "Get-AzMarketplacePrivateStoreCollection+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "9ef99a0b-b6b0-40b8-b60e-f2f456d52951" ],
+        "CommandName": [ "Get-AzMarketplacePrivateStoreCollection" ],
+        "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
+        "Set-Cookie": [ "ARRAffinity=36c1f67f56e94520a7fc2a8c64c64d24f3d68a98940e7f63578774151d0c83a8;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=36c1f67f56e94520a7fc2a8c64c64d24f3d68a98940e7f63578774151d0c83a8;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11964" ],
+        "x-ms-request-id": [ "a6c76888-c5f0-49cf-9ba1-883d28ba72bd" ],
+        "x-ms-correlation-request-id": [ "a6c76888-c5f0-49cf-9ba1-883d28ba72bd" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150833Z:a6c76888-c5f0-49cf-9ba1-883d28ba72bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Sun, 26 Dec 2021 15:08:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":null,\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-13T13:21:57.3181794Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"name\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"collectionName\":\"DefaultCollection\",\"claim\":null,\"allSubscriptions\":true,\"subscriptionsList\":[],\"enabled\":true,\"numberOfOffers\":6}},{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-01T21:01:33.6281032Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-21T09:27:13.7700644Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d\",\"name\":\"8c7a91db-cd41-43b6-af47-2e869654126d\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"8c7a91db-cd41-43b6-af47-2e869654126d\",\"collectionName\":\"Demo collection 1\",\"claim\":\"\",\"allSubscriptions\":true,\"subscriptionsList\":[],\"enabled\":true,\"numberOfOffers\":5}}]}",
+      "isContentBase64": false
+    }
+  }
+}

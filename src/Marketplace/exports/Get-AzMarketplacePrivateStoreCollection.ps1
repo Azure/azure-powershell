@@ -20,13 +20,13 @@ Gets private store collection
 .Description
 Gets private store collection
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplacePrivateStoreCollection -PrivateStoreId 53425a7b-4ac1-4729-8340-e1da5046212c
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
+Name                                 SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+----                                 -------------------  ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+53425a7b-4ac1-4729-8340-e1da5046212c                                          User                    8/23/2021 6:06:52 AM                              User
+23455a7b-4ac1-4729-8340-e1da5046212c 12/1/2021 9:01:33 PM                     User                    12/1/2021 9:01:33 PM                              User
 
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity

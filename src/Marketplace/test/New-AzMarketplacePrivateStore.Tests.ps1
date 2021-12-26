@@ -12,10 +12,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMarketplacePrivateStore
       $currentPath = Split-Path -Path $currentPath -Parent
   }
   . ($mockingPath | Select-Object -First 1).FullName
-}
 
-Describe 'New-AzMarketplacePrivateStore' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+
 }

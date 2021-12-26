@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Marketplace.private.dll'
   FormatsToProcess = './Az.Marketplace.format.ps1xml'
-  FunctionsToExport = 'Get-AzMarketplaceBillingPrivateStoreAccount', 'Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping', 'Get-AzMarketplacePrivateStore', 'Get-AzMarketplacePrivateStoreCollection', 'Get-AzMarketplacePrivateStoreCollectionOffer', 'Get-AzMarketplaceQueryPrivateStoreOffer', 'Invoke-AzMarketplaceBulkPrivateStoreCollectionAction', 'Move-AzMarketplacePrivateStoreCollectionOffer', 'New-AzMarketplacePrivateStore', 'New-AzMarketplacePrivateStoreCollection', 'New-AzMarketplacePrivateStoreCollectionOffer', 'Remove-AzMarketplacePrivateStore', 'Remove-AzMarketplacePrivateStoreCollection', 'Remove-AzMarketplacePrivateStoreCollectionOffer', 'Set-AzMarketplacePrivateStore', 'Set-AzMarketplacePrivateStoreCollection', 'Set-AzMarketplacePrivateStoreCollectionOffer', '*'
+  FunctionsToExport = 'Copy-AzMarketplacePrivateStoreCollectionOffer', 'Get-AzMarketplaceBillingPrivateStoreAccount', 'Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping', 'Get-AzMarketplacePrivateStore', 'Get-AzMarketplacePrivateStoreCollection', 'Get-AzMarketplacePrivateStoreCollectionOffer', 'Get-AzMarketplaceQueryPrivateStoreOffer', 'New-AzMarketplacePrivateStore', 'New-AzMarketplacePrivateStoreCollection', 'New-AzMarketplacePrivateStoreCollectionOffer', 'Remove-AzMarketplacePrivateStoreCollection', 'Remove-AzMarketplacePrivateStoreCollectionOffer', 'Set-AzMarketplaceBulkPrivateStoreCollectionAction', 'Set-AzMarketplacePrivateStore', 'Set-AzMarketplacePrivateStoreCollection', 'Set-AzMarketplacePrivateStoreCollectionOffer', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

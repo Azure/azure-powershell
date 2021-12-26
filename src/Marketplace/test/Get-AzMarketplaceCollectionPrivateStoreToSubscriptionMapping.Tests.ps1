@@ -15,19 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplaceCollectionPr
 }
 
 Describe 'Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping' {
-    It 'CollectionsExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Collections' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CollectionsViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CollectionsViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CollectionsExpanded' {
+        $res = Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "1052ff5a-aa43-4ca1-bd18-010399494ce5"}
+        $res.keys.Count | Should -BeGreaterOrEqual 1
     }
 }

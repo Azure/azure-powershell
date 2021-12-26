@@ -20,13 +20,7 @@ Tenant billing accounts names
 .Description
 Tenant billing accounts names
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzMarketplaceBillingPrivateStoreAccount -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity

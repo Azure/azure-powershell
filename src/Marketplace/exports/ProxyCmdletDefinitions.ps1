@@ -16,17 +16,197 @@
 
 <#
 .Synopsis
+transferring offers (copy or move) from source collection to target collection(s)
+.Description
+transferring offers (copy or move) from source collection to target collection(s)
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
+  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
+  [CollectionId <String>]: The collection ID
+  [Id <String>]: Resource identity path
+  [OfferId <String>]: The offer ID to update or delete
+  [PrivateStoreId <String>]: The store ID - must use the tenant ID
+  [RequestApprovalId <String>]: The request approval ID to get create or update
+
+PAYLOAD <ITransferOffersProperties>: Transfer offers properties
+  [OfferIdsList <String[]>]: Offers ids list to transfer from source collection to target collection(s)
+  [Operation <String>]: Operation to perform (For example: Copy or Move)
+  [TargetCollection <String[]>]: Target collections ids
+.Link
+https://docs.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
+#>
+function Copy-AzMarketplacePrivateStoreCollectionOffer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse])]
+[CmdletBinding(DefaultParameterSetName='TransferExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Transfer', Mandatory)]
+    [Parameter(ParameterSetName='TransferExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [System.String]
+    # The collection ID
+    ${CollectionId},
+
+    [Parameter(ParameterSetName='Transfer', Mandatory)]
+    [Parameter(ParameterSetName='TransferExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [System.String]
+    # The store ID - must use the tenant ID
+    ${PrivateStoreId},
+
+    [Parameter(ParameterSetName='TransferViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TransferViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Transfer', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TransferViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties]
+    # Transfer offers properties
+    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
+    ${Payload},
+
+    [Parameter(ParameterSetName='TransferExpanded')]
+    [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String[]]
+    # Offers ids list to transfer from source collection to target collection(s)
+    ${OfferIdList},
+
+    [Parameter(ParameterSetName='TransferExpanded')]
+    [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String]
+    # Operation to perform (For example: Copy or Move)
+    ${Operation},
+
+    [Parameter(ParameterSetName='TransferExpanded')]
+    [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String[]]
+    # Target collections ids
+    ${TargetCollection},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            Transfer = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_Transfer';
+            TransferExpanded = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferExpanded';
+            TransferViaIdentity = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentity';
+            TransferViaIdentityExpanded = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+<#
+.Synopsis
 Tenant billing accounts names
 .Description
 Tenant billing accounts names
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzMarketplaceBillingPrivateStoreAccount -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -157,13 +337,10 @@ For a given subscriptions list, the API will return a map of collections and the
 .Description
 For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  $res = Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "53425a7b-4ac1-4729-8340-e1da5046212c"}
+PS C:\> $res.keys
+e58535dc-1be3-4d2c-904c-1f97984ebe5d
+fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
@@ -323,13 +500,13 @@ Gets information about a specific offer.
 .Description
 Gets information about a specific offer.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name                                            SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+----                        			------------------- ------------------- ----------------------- ------------------------ ------------------------ -------------------
+data3-limited-1019419.d3_azure_managed_services
+viacode_consulting-1089577.viacodems
+RedHat.RHEL_7
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -475,13 +652,13 @@ Gets private store collection
 .Description
 Gets private store collection
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplacePrivateStoreCollection -PrivateStoreId 53425a7b-4ac1-4729-8340-e1da5046212c
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
+Name                                 SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+----                                 -------------------  ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+53425a7b-4ac1-4729-8340-e1da5046212c                                          User                    8/23/2021 6:06:52 AM                              User
+23455a7b-4ac1-4729-8340-e1da5046212c 12/1/2021 9:01:33 PM                     User                    12/1/2021 9:01:33 PM                              User
 
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -622,13 +799,11 @@ Get information about the private store
 .Description
 Get information about the private store
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplacePrivateStore
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+a260d38c-96cf-492d-a340-404d0c4b3ad6                                         User                    12/1/2021 9:01:33 PM                              User
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -767,13 +942,16 @@ List of offers, regardless the collections
 .Description
 List of offers, regardless the collections
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
+CreatedAt ETag                                   ModifiedAt OfferDisplayName PrivateStoreId                       PublisherDisplayName SpecificPlanIdsLimitation                                                     UniqueOfferId
+--------- ----                                   ---------- ---------------- --------------                       -------------------- -------------------------                                                     -------------
+          "ed0093ae-0000-0100-0000-61a4dab30000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {d3-azure-health-check, data3-azure-optimiser-plan, data3-managed-azure-plan} data3-limite…
+          "750547d8-0000-0100-0000-61b752010000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {mgmt-limited-free, mgmt-assessment}                                          viacode_cons…
+          "ef00ab05-0000-0100-0000-61a5f12f0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {RedHatEnterpriseLinux72-ARM}                                                 RedHat.RHEL_7
+          "f300276b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_conductor_hourly_427, 128technology_conductor_hourly_452}      128technolog…
+          "f300296b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_router_100_hourly_427, 128technology_router_100_hourly_452}    128technolog…
 
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -900,373 +1078,11 @@ end {
 
 <#
 .Synopsis
-Perform an action on bulk collections
-.Description
-Perform an action on bulk collections
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
-  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
-  [CollectionId <String>]: The collection ID
-  [Id <String>]: Resource identity path
-  [OfferId <String>]: The offer ID to update or delete
-  [PrivateStoreId <String>]: The store ID - must use the tenant ID
-  [RequestApprovalId <String>]: The request approval ID to get create or update
-
-PAYLOAD <IBulkCollectionsPayload>: Bulk collections action properties
-  [Action <String>]: Action to perform (For example: EnableCollections, DisableCollections)
-  [CollectionId <String[]>]: collection ids list that the action is performed on
-.Link
-https://docs.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacebulkprivatestorecollectionaction
-#>
-function Invoke-AzMarketplaceBulkPrivateStoreCollectionAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse])]
-[CmdletBinding(DefaultParameterSetName='BulkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Bulk', Mandatory)]
-    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [System.String]
-    # The store ID - must use the tenant ID
-    ${PrivateStoreId},
-
-    [Parameter(ParameterSetName='BulkViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Bulk', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='BulkViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload]
-    # Bulk collections action properties
-    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
-    ${Payload},
-
-    [Parameter(ParameterSetName='BulkExpanded')]
-    [Parameter(ParameterSetName='BulkViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [System.String]
-    # Action to perform (For example: EnableCollections, DisableCollections)
-    ${Action},
-
-    [Parameter(ParameterSetName='BulkExpanded')]
-    [Parameter(ParameterSetName='BulkViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [System.String[]]
-    # collection ids list that the action is performed on
-    ${CollectionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Bulk = 'Az.Marketplace.private\Invoke-AzMarketplaceBulkPrivateStoreCollectionAction_Bulk';
-            BulkExpanded = 'Az.Marketplace.private\Invoke-AzMarketplaceBulkPrivateStoreCollectionAction_BulkExpanded';
-            BulkViaIdentity = 'Az.Marketplace.private\Invoke-AzMarketplaceBulkPrivateStoreCollectionAction_BulkViaIdentity';
-            BulkViaIdentityExpanded = 'Az.Marketplace.private\Invoke-AzMarketplaceBulkPrivateStoreCollectionAction_BulkViaIdentityExpanded';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-<#
-.Synopsis
-transferring offers (copy or move) from source collection to target collection(s)
-.Description
-transferring offers (copy or move) from source collection to target collection(s)
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
-  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
-  [CollectionId <String>]: The collection ID
-  [Id <String>]: Resource identity path
-  [OfferId <String>]: The offer ID to update or delete
-  [PrivateStoreId <String>]: The store ID - must use the tenant ID
-  [RequestApprovalId <String>]: The request approval ID to get create or update
-
-PAYLOAD <ITransferOffersProperties>: Transfer offers properties
-  [OfferIdsList <String[]>]: Offers ids list to transfer from source collection to target collection(s)
-  [Operation <String>]: Operation to perform (For example: Copy or Move)
-  [TargetCollection <String[]>]: Target collections ids
-.Link
-https://docs.microsoft.com/powershell/module/az.marketplace/move-azmarketplaceprivatestorecollectionoffer
-#>
-function Move-AzMarketplacePrivateStoreCollectionOffer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse])]
-[CmdletBinding(DefaultParameterSetName='TransferExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Transfer', Mandatory)]
-    [Parameter(ParameterSetName='TransferExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [System.String]
-    # The collection ID
-    ${CollectionId},
-
-    [Parameter(ParameterSetName='Transfer', Mandatory)]
-    [Parameter(ParameterSetName='TransferExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [System.String]
-    # The store ID - must use the tenant ID
-    ${PrivateStoreId},
-
-    [Parameter(ParameterSetName='TransferViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='TransferViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Transfer', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='TransferViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties]
-    # Transfer offers properties
-    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
-    ${Payload},
-
-    [Parameter(ParameterSetName='TransferExpanded')]
-    [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [System.String[]]
-    # Offers ids list to transfer from source collection to target collection(s)
-    ${OfferIdsList},
-
-    [Parameter(ParameterSetName='TransferExpanded')]
-    [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [System.String]
-    # Operation to perform (For example: Copy or Move)
-    ${Operation},
-
-    [Parameter(ParameterSetName='TransferExpanded')]
-    [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [System.String[]]
-    # Target collections ids
-    ${TargetCollection},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Transfer = 'Az.Marketplace.private\Move-AzMarketplacePrivateStoreCollectionOffer_Transfer';
-            TransferExpanded = 'Az.Marketplace.private\Move-AzMarketplacePrivateStoreCollectionOffer_TransferExpanded';
-            TransferViaIdentity = 'Az.Marketplace.private\Move-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentity';
-            TransferViaIdentityExpanded = 'Az.Marketplace.private\Move-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentityExpanded';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-<#
-.Synopsis
 Update or add an offer to a specific collection of the private store.
 .Description
 Update or add an offer to a specific collection of the private store.
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
@@ -1429,13 +1245,7 @@ Create or update private store collection
 .Description
 Create or update private store collection
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
@@ -1583,13 +1393,9 @@ Changes private store properties
 .Description
 Changes private store properties
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
 
 .Outputs
 System.Boolean
@@ -1764,13 +1570,7 @@ Deletes an offer from the given collection of private store.
 .Description
 Deletes an offer from the given collection of private store.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  Remove-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -OfferId aumatics.azure_managedservices
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -1919,13 +1719,8 @@ Delete a collection from the given private store.
 .Description
 Delete a collection from the given private store.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -2064,11 +1859,9 @@ end {
 
 <#
 .Synopsis
-Deletes the private store.
-All that is not saved will be lost.
+Perform an action on bulk collections
 .Description
-Deletes the private store.
-All that is not saved will be lost.
+Perform an action on bulk collections
 .Example
 PS C:\> {{ Add code here }}
 
@@ -2079,41 +1872,49 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
-  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
-  [CollectionId <String>]: The collection ID
-  [Id <String>]: Resource identity path
-  [OfferId <String>]: The offer ID to update or delete
-  [PrivateStoreId <String>]: The store ID - must use the tenant ID
-  [RequestApprovalId <String>]: The request approval ID to get create or update
+PAYLOAD <IBulkCollectionsPayload>: Bulk collections action properties
+  [Action <String>]: Action to perform (For example: EnableCollections, DisableCollections)
+  [CollectionId <String[]>]: collection ids list that the action is performed on
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestore
+https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplacebulkprivatestorecollectionaction
 #>
-function Remove-AzMarketplacePrivateStore {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Set-AzMarketplaceBulkPrivateStoreCollectionAction {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse])]
+[CmdletBinding(DefaultParameterSetName='BulkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('PrivateStoreId')]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [System.String]
     # The store ID - must use the tenant ID
-    ${Id},
+    ${PrivateStoreId},
 
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [Parameter(ParameterSetName='Bulk', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload]
+    # Bulk collections action properties
+    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
+    ${Payload},
+
+    [Parameter(ParameterSetName='BulkExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String]
+    # Action to perform (For example: EnableCollections, DisableCollections)
+    ${Action},
+
+    [Parameter(ParameterSetName='BulkExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String[]]
+    # collection ids list that the action is performed on
+    ${CollectionId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2143,12 +1944,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Runtime')]
     [System.Uri]
@@ -2177,8 +1972,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Marketplace.private\Remove-AzMarketplacePrivateStore_Delete';
-            DeleteViaIdentity = 'Az.Marketplace.private\Remove-AzMarketplacePrivateStore_DeleteViaIdentity';
+            Bulk = 'Az.Marketplace.private\Set-AzMarketplaceBulkPrivateStoreCollectionAction_Bulk';
+            BulkExpanded = 'Az.Marketplace.private\Set-AzMarketplaceBulkPrivateStoreCollectionAction_BulkExpanded';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2214,13 +2009,7 @@ Update or add an offer to a specific collection of the private store.
 .Description
 Update or add an offer to a specific collection of the private store.
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
@@ -2383,13 +2172,7 @@ Create or update private store collection
 .Description
 Create or update private store collection
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
@@ -2537,13 +2320,9 @@ Changes private store properties
 .Description
 Changes private store properties
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
 
 .Outputs
 System.Boolean
