@@ -339,7 +339,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource
 
 ## NOTES
 

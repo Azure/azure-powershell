@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("", "Resources")
+$SKIP_MODULES = @("Resources")
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -65,10 +65,13 @@ git init
 git remote add -f origin https://github.com/Azure/azure-powershell.git
 git config core.sparseCheckout true
 Add-Content -Path .git/info/sparse-checkout -Value "src/Accounts/"
+Add-Content -Path .git/info/sparse-checkout -Value "tools/"
 git pull origin main
 Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts"
 Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
 Remove-Item -Path "$TmpFolder\src" -Recurse -Force
+Move-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools"
+Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
 Install-Module Az.Accounts -Repository PSGallery -Force
 Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder

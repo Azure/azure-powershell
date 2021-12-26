@@ -28,8 +28,8 @@ Update-AzADServicePrincipal -ObjectId <String> [-AccountEnabled] [-AddIn <IMicro
  [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PasswordCredential <IMicrosoftGraphPasswordCredential[]>] [-PreferredSingleSignOnMode <String>]
  [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String>]
- [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalType <String>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
@@ -53,8 +53,8 @@ Update-AzADServicePrincipal -InputObject <IMicrosoftGraphServicePrincipal> [-Acc
  [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PasswordCredential <IMicrosoftGraphPasswordCredential[]>] [-PreferredSingleSignOnMode <String>]
  [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String>]
- [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalType <String>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
@@ -77,8 +77,8 @@ Update-AzADServicePrincipal -ApplicationId <Guid> [-AccountEnabled] [-AddIn <IMi
  [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
  [-PasswordCredential <IMicrosoftGraphPasswordCredential[]>] [-PreferredSingleSignOnMode <String>]
  [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String>]
- [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalType <String>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
@@ -736,7 +736,7 @@ Supports $filter (eq, NOT, ge, le, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SPNWithDisplayNameParameterSet
 Aliases: SPN
 
 Required: True

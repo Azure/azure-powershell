@@ -54,6 +54,10 @@ $ModuleManifestFiles = $ProjectPaths | ForEach-Object { Get-ChildItem -Path $_ -
 foreach ($ModuleManifest in $ModuleManifestFiles) {
     Write-Host "checking $($ModuleManifest.Fullname)"
     $ModuleName = $ModuleManifest.Name.Replace(".psd1", "")
+    if ("Az.Resources" -eq $ModuleName)
+    {
+        Continue;
+    }
     $Assemblies = $DependencyMap | Where-Object { $_.Directory.EndsWith($ModuleName) }
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifest.DirectoryName -FileName $ModuleManifest.Name
 

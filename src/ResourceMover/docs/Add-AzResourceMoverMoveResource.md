@@ -167,7 +167,7 @@ Gets or sets the move resource dependencies overrides.
 To construct, see NOTES section for DEPENDSONOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResourceDependencyOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +258,7 @@ Gets or sets the resource settings.
 To construct, see NOTES section for RESOURCESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IResourceSettings
 Parameter Sets: (All)
 Aliases:
 
@@ -337,13 +337,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource
 
 ## NOTES
 
 ALIASES
 
-Update-AzResourceMoverMoveResource
+### Update-AzResourceMoverMoveResource
 
 COMPLEX PARAMETER PROPERTIES
 

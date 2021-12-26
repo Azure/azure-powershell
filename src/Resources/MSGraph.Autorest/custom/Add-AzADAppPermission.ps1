@@ -42,7 +42,7 @@ https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 
 function Add-AzADAppPermission {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', SupportsShouldProcess, PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory, HelpMessage = "The unique identifier in Azure AD.")]
         [System.Guid]
@@ -112,7 +112,7 @@ function Add-AzADAppPermission {
     process {
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdParameterSet' {
-                $app = MSGraph.internal\Get-AzADApplication -Id $PSBoundParameters['ObjectId']
+                $app = Az.MSGraph.internal\Get-AzADApplication -Id $PSBoundParameters['ObjectId']
                 if($null -eq $app) {
                     Write-Error "Cannot find application by ObjectId $($PSBoundParameters['ObjectId'])"
                 }

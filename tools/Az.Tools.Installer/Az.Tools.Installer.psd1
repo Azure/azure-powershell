@@ -12,7 +12,7 @@
     RootModule = 'Az.Tools.Installer.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.1.1'
+    ModuleVersion = '0.2.0'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -109,8 +109,11 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Fix bugs for Install-AzModule
-            * Fix syntax errors when run in Windows Powershell'
+            ReleaseNotes = '* Supported installing from a path of nuget package
+            * Supported installing Az sub modules using minimum required Az.Accounts version
+            * Supported uninstalling by module name filter and whether in preview
+            * Provided progress bar to show the cmdlet execution status
+            * Optimized the performance of Az.Tools.Installer'
     
             # Prerelease string of this module
             # Prerelease = ''
