@@ -30,7 +30,7 @@ Runs assessment on given Sql Servers
 
 ### Example 1:  Run SQL Assessment on given SQL Server using connection string
 ```powershell
-PS C:\> Get-AzDataMigrationAssessment -ConnectionStrings "Data Source=LabServer.database.net;Initial Catalog=master;Integrated Security=False;User Id=User;Password=password" -OutputFolder "C:\AssessmentOutput" -Overwrite
+PS C:\> Get-AzDataMigrationAssessment -ConnectionString "Data Source=LabServer.database.net;Initial Catalog=master;Integrated Security=False;User Id=User;Password=password" -OutputFolder "C:\AssessmentOutput" -Overwrite
 
 Starting SQL assessment...
 Progress: 100%; Issues Found: 100; Objects Assessed: 500/500; Status: Completed; Total time: 00:01:50.000.
