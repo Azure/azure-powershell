@@ -29,7 +29,7 @@ function Get-AzDataMigrationAssessment
     param(
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Sql Server Connection Strings')]
         [System.String[]]
-        ${ConnectionStrings},
+        ${ConnectionString},
 
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Output folder to store assessment report')]
@@ -77,11 +77,11 @@ function Get-AzDataMigrationAssessment
                 {
                     if($PSBoundParameters.ContainsKey("Overwrite"))
                     {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionStrings --outputFolder $PSBoundParameters.OutputFolder; 
+                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --outputFolder $PSBoundParameters.OutputFolder; 
                     }
                     else
                     {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionStrings --outputFolder $PSBoundParameters.OutputFolder --overwrite False;
+                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --outputFolder $PSBoundParameters.OutputFolder --overwrite False;
                         
                     }
                 }
@@ -89,11 +89,11 @@ function Get-AzDataMigrationAssessment
                 {
                     if(($PSBoundParameters.ContainsKey("Overwrite")))
                     {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionStrings;
+                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString;
                     }
                     else 
                     {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionStrings --overwrite False;
+                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --overwrite False;
                     }
                 } 
             }
