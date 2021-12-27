@@ -45,14 +45,16 @@ test-container
 
 Create a container instance using image alphine with request cpu 1.0 and request memory 1.5Gb
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzContainerInstanceObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
 
-{{ Add output here }}
+Name
+----
+test-container
 ```
 
-{{ Add description here }}
+Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
 
 ## PARAMETERS
 
