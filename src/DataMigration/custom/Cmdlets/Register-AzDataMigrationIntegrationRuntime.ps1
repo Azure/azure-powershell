@@ -19,6 +19,13 @@ function Register-AzDataMigrationIntegrationRuntime
     process 
     {
         # Entry point
+        $OSPlatform = $env:OS
+
+        if(-Not $OSPlatform.Contains("Windows"))
+        {
+            throw "This command cannot be run in non-windows environment"
+            Break;
+        }
 
         # Script must be run as admin
         If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`

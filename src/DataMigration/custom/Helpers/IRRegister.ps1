@@ -29,8 +29,8 @@ function Install-Gateway {
         }
 
         Write-Host "Start Gateway installation"
-        
-        Start-Process "msiexec.exe" "/i $path /quiet /passive" -Wait
+
+        Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$path`" /quiet /passive" -Wait
         Start-Sleep -Seconds 30 
 
         Write-Host "Succeed to install gateway"
