@@ -1,3 +1,12 @@
+#-----------------------------------------------------------------------
+# <copyright company="Microsoft">
+#     Copyright (C) Microsoft Corporation.  All rights reserved.
+# </copyright>
+#-----------------------------------------------------------------------
+
+
+# Function Definitions
+
 function Test-ConfigFile{
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DoNotExportAttribute()]
     param(
