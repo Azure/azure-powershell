@@ -14,3 +14,5 @@ test/*-TestResults.xml
 /*.snk
 /*.csproj
 /*.nuspec
+custom/Cmdlets/SqlAssessment.Console.csproj/
+custom/Cmdlets/SqlAssessment.zip

@@ -32,6 +32,9 @@ function Get-AzDataMigrationAssessment
             $BaseFolder = $PSScriptRoot;
             $ExePath = Join-Path -Path $BaseFolder -ChildPath SqlAssessment.Console.csproj\SqlAssessment.exe;
 
+            #Defining Default Output Path
+            $DefaultOutputFolder = Get-DefaultOutputFolder
+
             #Testing Whether Console App is downloaded or not
             $TestExePath =  Test-Path -Path $ExePath;
 
@@ -78,7 +81,8 @@ function Get-AzDataMigrationAssessment
                 & $ExePath --configFile $PSBoundParameters.ConfigFilePath
             }
 
-            Write-Host "Error and Event Logs Folder Path: C:\Users\$env:UserName\AppData\Local\Microsoft\SqlAssessment\Logs";
+            $LogFilePath = Join-Path -Path $DefaultOutputFolder -ChildPath Logs;
+            Write-Host "Event and Error Logs Folder Path: $LogFilePath";
         }
         catch 
         {

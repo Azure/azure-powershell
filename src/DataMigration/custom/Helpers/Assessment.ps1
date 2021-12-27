@@ -20,3 +20,31 @@ function Test-ConfigFile{
 
     }
 }
+
+function  Get-DefaultOutputFolder {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DoNotExportAttribute()]
+    param(
+    )
+
+    process {
+        $OSPlatform = (Get-CimInstance Win32_OperatingSystem).Name
+
+        if($OSPlatform.Contains("Linux"))
+        {
+            $DefualtPath = Join-Path -Path $env:USERPROFILE -ChildPath ".config\Microsoft\SqlAssessment";
+
+        }
+        elseif ($OSPlatform.Contains("OSX"))
+        {
+            $DefualtPath = Join-Path -Path $env:USERPROFILE -ChildPath "Library\Application Support\Microsoft\SqlAssessment";
+        }
+        else
+        {
+            $DefualtPath = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Microsoft\SqlAssessment";
+        }
+
+        return $DefualtPath
+
+    }
+    
+}
