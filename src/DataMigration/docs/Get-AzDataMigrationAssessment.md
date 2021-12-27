@@ -14,7 +14,7 @@ Runs assessment on given Sql Servers
 
 ### CommandLine (Default)
 ```
-Get-AzDataMigrationAssessment -ConnectionStrings <String[]> [-OutputFolder <String>] [-Overwrite]
+Get-AzDataMigrationAssessment -ConnectionString <String[]> [-OutputFolder <String>] [-Overwrite]
  [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConnectionStrings
+### -ConnectionString
 Sql Server Connection Strings
 
 ```yaml

@@ -4,7 +4,7 @@ PS C:\> New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup
 
 AuthKey1 AuthKey2                                                   KeyName
 -------- --------                                                   -------
-         IR@tyi97c5-gdby456-4673svs-yeh4@mysqlms@eastus@xp6/x892=
+         IR@abcd7-efgh8-jklmn9-opqr10@mysqlms@eastus@stuv2/wxyz1=
 ```
 
 This command regenerate the AuthKeys for a given Sql Migration Service. Here we have regenerated AuthKey2.

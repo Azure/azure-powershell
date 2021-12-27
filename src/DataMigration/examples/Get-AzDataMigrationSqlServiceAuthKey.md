@@ -4,7 +4,7 @@ PS C:\> Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup
 
 AuthKey1                                                 AuthKey2
 --------                                                 --------
-IR@tyi97c5-gdby456-4673svs-yeh4@mysqlms@eastus@xp6/x892= IR@578t7c5-ggby479-4353dms-hei4@mysqlms@eastus@er9/24i0=
+IR@abcd1-efgh2-jklmn3-opqr4@mysqlms@eastus@stuv5/wxyz6=  IR@abcd6-efgh5-jklmn4-opqr3@mysqlms@eastus@stuv2/wxyz1=
 ```
 
 This command gets the AuthKeys for a given Sql Migration Service.

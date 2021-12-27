@@ -3,7 +3,7 @@
 PS C:\> $authKeys = Get-AzDataMigrationSqlMigrationServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 PS C:\> Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1
 
-Start to register IR with key: IR@tyi97c5-gdby456-4673svs-yeh4@mysqlms@eastus@xp6/x892=
+Start to register IR with key: IR@abcd1-efgh2-jklmn3-opqr4@mysqlms@eastus@stuv5/wxyz6=
 Integration Runtime registration is successful!
 ```
 
@@ -16,7 +16,7 @@ PS C:\> Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -
 
 Start Gateway installation
 Succeed to install gateway
-Start to register IR with key: IR@tyi97c5-gdby456-4673svs-yeh4@mysqlms@eastus@xp6/x892=
+Start to register IR with key: IR@abcd1-efgh2-jklmn3-opqr4@mysqlms@eastus@stuv5/wxyz6=
 Integration Runtime registration is successful!
 ```
 
