@@ -894,7 +894,7 @@ function Test-ManagedIdentity
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test,/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2"
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test","/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2"
     
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location

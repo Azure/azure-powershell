@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             return e[8];
         }
 
-        internal static ManagedServiceIdentity BuildManagedServiceIdentity(string identityType, string userAssignedIdentities)
+        internal static ManagedServiceIdentity BuildManagedServiceIdentity(string identityType, string[] userAssignedIdentities)
         {
             if (!string.IsNullOrEmpty(identityType))
             {
@@ -61,11 +61,10 @@ namespace Microsoft.Azure.Commands.RedisCache
                 var identity = new ManagedServiceIdentity(
                     type: managedIdentityType
                     );
-                if (!string.IsNullOrEmpty(userAssignedIdentities))
+                if (userAssignedIdentities != null)
                 {
-                    var userIdentities = userAssignedIdentities.Split(',');
                     identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
-                    foreach (var userIdentity in userIdentities)
+                    foreach (var userIdentity in userAssignedIdentities)
                     {
                         identity.UserAssignedIdentities[userIdentity.Trim()] = new UserAssignedIdentity();
                     }
