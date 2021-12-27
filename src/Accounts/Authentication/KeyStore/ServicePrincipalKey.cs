@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public ServicePrincipalKey(string name, string appId, string tenantId)
         {
-            this.name = name;
-            this.appId = appId;
-            this.tenantId = tenantId;
+            this.name = name?? string.Empty;
+            this.appId = appId?? string.Empty;
+            this.tenantId = tenantId?? string.Empty;
         }
 
         protected override string CreateKey()
