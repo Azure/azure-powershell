@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
 
 ## Version 4.13.0
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
