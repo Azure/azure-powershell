@@ -18,7 +18,7 @@ New-AzRedisCache -ResourceGroupName <String> -Name <String> -Location <String> [
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
  [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-SubnetId <String>] [-StaticIP <String>]
  [-Tag <Hashtable>] [-Zone <String[]>] [-RedisVersion <String>] [-IdentityType <String>]
- [-UserAssignedIdentity <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -559,7 +559,7 @@ Accept wildcard characters: False
 Specifies one or more comma seperated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
