@@ -69,7 +69,7 @@ Add-Content -Path .git/info/sparse-checkout -Value "tools/"
 git pull origin main
 Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts" -Force
 Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
-Remove-Item -Path "$TmpFolder\src" -Recursemove -Force
+Remove-Item -Path "$TmpFolder\src" -Recurse -Force
 Move-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools" -Force
 Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
 Install-Module Az.Accounts -Repository PSGallery -Force
