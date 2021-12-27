@@ -337,6 +337,18 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true)]
         public string UserData { get; set; }
 
+        [Parameter(
+            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -517,7 +529,8 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData
+                        userData: _cmdlet.UserData,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null
                         );
                 }
                 else
@@ -549,7 +562,8 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData
+                        userData: _cmdlet.UserData,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null
                     );
                 }
             }

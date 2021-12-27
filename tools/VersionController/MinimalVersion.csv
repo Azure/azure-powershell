@@ -3,3 +3,5 @@
 "Az.CloudService","1.0.0"
 "Az.Functions","4.0.0"
 "Az.StackHCI","1.0.0"
+"Az.MySql","1.0.0"
+"Az.PostgreSql","1.0.0"

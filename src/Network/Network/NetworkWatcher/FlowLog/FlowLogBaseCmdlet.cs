@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 string[] tokens = id.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                if (tokens.Count() != 2 || (!string.IsNullOrEmpty(expectedParentType) && !string.Equals(tokens[0], expectedParentType)))
+                if (tokens.Count() != 2 || (!string.IsNullOrEmpty(expectedParentType) && !string.Equals(tokens[0], expectedParentType, StringComparison.OrdinalIgnoreCase)))
                 {
                     return false;
                 }

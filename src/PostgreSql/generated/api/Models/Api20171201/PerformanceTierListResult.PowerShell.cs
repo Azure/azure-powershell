@@ -101,7 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierPropertiesTypeConverter.ConvertFrom));
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierPropertiesTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,7 +122,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierPropertiesTypeConverter.ConvertFrom));
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierPropertiesTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Exposing BackupPolicyMigrationState as a part of Get-AzCosmosDBAccount response. 
+This shows the status of a backup policy migration state when an account is being converted from peroidic backup mode to continuous.
 
 ## Version 1.5.0
 * Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.

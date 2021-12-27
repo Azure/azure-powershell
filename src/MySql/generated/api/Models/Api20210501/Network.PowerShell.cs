@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId = (string) content.GetValueForProperty("PrivateDnsZoneResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId, global::System.Convert.ToString);
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("DelegatedSubnetResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateDnsZoneResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId = (string) content.GetValueForProperty("PrivateDnsZoneResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId = (string) content.GetValueForProperty("PrivateDnsZoneResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId, global::System.Convert.ToString);
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("DelegatedSubnetResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId = (string) content.GetValueForProperty("DelegatedSubnetResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).DelegatedSubnetResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateDnsZoneResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId = (string) content.GetValueForProperty("PrivateDnsZoneResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.INetworkInternal)this).PrivateDnsZoneResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

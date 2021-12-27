@@ -30,6 +30,7 @@
 
 #### Az.Automation
 * Fixed example in reference doc for 'Remove-AzAutomationHybridWorkerGroup'
+* Updated 'Set-AzAutomationModule' to use PUT call while updating modules with specific versions [#12552]
 
 #### Az.CloudService
 * General availability of 'Az.CloudService' module
@@ -188,6 +189,12 @@
 
 #### Az.Websites
 * Updated the Microsoft.Azure.Management.Websites SDK to 3.1.2
+
+### Thanks to our community contributors
+* Hiroshi Yoshioka (@hyoshioka0128), Fix typo "Azure CosmosDB"→"Azure Cosmos DB" (#16470)
+* Chris (@isjwuk), Update New-AzAutomationSourceControl.md (#16366)
+* Julian Hüppauff (@jhueppauff), [API Management] Fixed variable reference (#16525)
+* @toswedlu, [CosmosDB] Changing the warning message for AnalyticalStorageSchemaType (#15723)
 
 ## 6.6.0 - November 2021
 #### Az.Accounts

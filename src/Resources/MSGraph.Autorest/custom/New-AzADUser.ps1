@@ -480,6 +480,6 @@ param(
       $PSBoundParameters['PasswordProfile'] = $passwordProfile
     }
 
-    MSGraph.internal\New-AzADUser @PSBoundParameters
+    Az.MSGraph.internal\New-AzADUser @PSBoundParameters
   }
 }

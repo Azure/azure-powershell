@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSManagedVirtualNetworkSettings(ManagedVirtualNetworkSettings settings)
         {
             this.PreventDataExfiltration = settings?.PreventDataExfiltration;
-            this.LinkedAccessCheckOnTargetResource = settings.LinkedAccessCheckOnTargetResource;
+            this.LinkedAccessCheckOnTargetResource = settings?.LinkedAccessCheckOnTargetResource;
             this.AllowedAadTenantIdsForLinking = settings?.AllowedAadTenantIdsForLinking;
         }
 

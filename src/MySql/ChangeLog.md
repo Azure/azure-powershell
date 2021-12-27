@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of Az.MySql
 
 ## Version 0.8.0
 * Changed API version to 2021-05-01
