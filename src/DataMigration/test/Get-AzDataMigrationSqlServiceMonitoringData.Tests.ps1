@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationSqlServiceMonitoringData' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $instance = Get-AzDataMigrationSqlServiceMonitoringData -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestSqlMigrationService.GroupName -SqlMigrationServiceName $env.TestSqlMigrationService.SqlMigrationServiceName
+        $instance.Name | should be 'default-ir'
     }
 }

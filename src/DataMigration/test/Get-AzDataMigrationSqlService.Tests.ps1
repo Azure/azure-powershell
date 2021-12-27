@@ -12,8 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationSqlService' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1'  {
+        $instance = Get-AzDataMigrationSqlService -SubscriptionId $env.SubscriptionId  
+        $assert = $instance.Count -gt 0
+        $assert | Should be $true
     }
 
     It 'Get' -skip {
@@ -21,7 +23,9 @@ Describe 'Get-AzDataMigrationSqlService' {
     }
 
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $instance = Get-AzDataMigrationSqlServic -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestSqlMigrationService.GroupName 
+        $assert = $instance.Count -gt 0
+        $assert | Should be $true
     }
 
     It 'GetViaIdentity' -skip {

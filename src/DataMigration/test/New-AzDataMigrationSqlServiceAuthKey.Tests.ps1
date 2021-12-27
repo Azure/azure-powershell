@@ -12,7 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataMigrationSqlServiceAuthKey' {
-    It 'RegenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateExpanded'  {
+        $oldAuthKeys = Get-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName
+        New-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName -KeyName AuthKey1
+        New-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName -KeyName AuthKey2
+        $newAuthKeys = Get-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName
+        $value = ($newAuthKeys.AuthKey1 -ne $oldAuthKeys.AuthKey1) -AND ($newAuthKeys.AuthKey2 -ne $oldAuthKeys.AuthKey2)
+        $value | should be $true
     }
 }

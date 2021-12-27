@@ -12,8 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDataMigrationSqlService' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'  {
+        $count1 = (Get-AzDataMigrationSqlService  -ResourceGroupName $env.TestNewSqlMigrationService.GroupName).count
+        Remove-AzDataMigrationSqlService -Name $env.TestNewSqlMigrationService.SqlMigrationServiceName -ResourceGroupName $env.TestNewSqlMigrationService.GroupName
+        $count2 = (Get-AzDataMigrationSqlService  -ResourceGroupName $env.TestNewSqlMigrationService.GroupName).count
+        $assert = ($count1-$count2 -eq 1)
+        $assert | should be $true
     }
 
     It 'DeleteViaIdentity' -skip {

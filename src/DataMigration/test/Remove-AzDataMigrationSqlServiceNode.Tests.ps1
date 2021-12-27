@@ -12,8 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDataMigrationSqlServiceNode' {
-    It 'DeleteExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteExpanded' {
+        $temp =  Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
+        $nodeList = $temp.Node
+        $cnt1 = $nodeList.Count
+        if($cnt1 -eq 0)
+        {
+            $assert = $true
+            $assert | should be $true
+        }
+        else{
+            $instance =  Remove-AzDataMigrationSqlServiceNode -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName -NodeName $nodeList[0].NodeName
+            $temp =  Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
+            $nodeList = $temp.Node
+            $cnt2 = $nodeList.Count
+            $assert = ($cnt1-$cnt2 -eq 1)
+            $assert | should be $true
+        }
     }
 
     It 'DeleteViaIdentityExpanded' -skip {

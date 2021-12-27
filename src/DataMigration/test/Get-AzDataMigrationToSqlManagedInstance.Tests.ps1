@@ -12,8 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationToSqlManagedInstance' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get'  {
+        $instance = Get-AzDataMigrationToSqlManagedInstance -ManagedInstanceName $env.TestDatabaseMigrationMi.ManagedInstanceName -ResourceGroupName $env.TestDatabaseMigrationMi.ResourceGroupName -TargetDbName $env.TestDatabaseMigrationMi.TargetDbName
+        $assert = ($instance.Name -eq $env.TestDatabaseMigrationMi.TargetDbName) -AND ($instance.Kind -eq 'SqlMi')
+        $assert | Should be $true
     }
 
     It 'GetViaIdentity' -skip {
