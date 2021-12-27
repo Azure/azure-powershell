@@ -27,7 +27,7 @@ function  Get-DefaultOutputFolder {
     )
 
     process {
-        $OSPlatform = (Get-CimInstance Win32_OperatingSystem).Name
+        $OSPlatform = $env:OS
 
         if($OSPlatform.Contains("Linux"))
         {
