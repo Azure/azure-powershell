@@ -19,8 +19,9 @@
 --->
 
 ## Upcoming Release
+* Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
 * Added new properties `ApplicationSecurityGroup`, `IpConfiguration` and `CustomNetworkInterfaceName` for Private Endpoint cmdlets
-    - ``Get-AzPrivateEndpoint`
+    - `Get-AzPrivateEndpoint`
     - `New-AzPrivateEndpoint`
 * Added new cmdlet to create new `IpConfiguration` object for building Private Endpoint
     - `New-AzPrivateEndpointIpConfiguration`
