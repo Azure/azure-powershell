@@ -22,7 +22,7 @@ Run assessment on given Sql Servers.
 
 function Get-AzDataMigrationAssessment 
 {
-    [OutputType()]
+    [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Runs assessment on given Sql Servers')]
 
@@ -43,7 +43,13 @@ function Get-AzDataMigrationAssessment
 
         [Parameter(ParameterSetName='ConfigFile', Mandatory, HelpMessage='Path of the ConfigFile')]
         [System.String]
-        ${ConfigFilePath}
+        ${ConfigFilePath},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru}
     )
 
     process 
@@ -105,11 +111,15 @@ function Get-AzDataMigrationAssessment
 
             $LogFilePath = Join-Path -Path $DefaultOutputFolder -ChildPath Logs;
             Write-Host "Event and Error Logs Folder Path: $LogFilePath";
+
+            if($PSBoundParameters.ContainsKey("PassThru"))
+            {
+                return $true;
+            }
         }
         catch 
         {
             throw $_
         }
-
     }
 }
