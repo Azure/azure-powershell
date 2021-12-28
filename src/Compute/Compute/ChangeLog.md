@@ -24,6 +24,7 @@
 * Added `PlatformFaultDomain` parameter to cmdlets: `New-AzVM` and `New-AzVMConfig`
 * Added `-Feature` parameter for `New-AzGalleryImageDefinition`
 * Added `DiffDiskPlacement` string parameter to `Set-AzVmOSDisk` and `Set-AzVmssStorageProfile` cmdlets.
+* Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
 
 ## Version 4.21.0
 * Contains updates to the following powershell cmdlets
