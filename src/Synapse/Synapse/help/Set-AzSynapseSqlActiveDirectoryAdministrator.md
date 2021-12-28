@@ -63,9 +63,9 @@ We recommend that you provision a dedicated Azure AD group as an administrator.
 
 The cmdlet may call below Microsoft Graph API according to input parameters:
 
-*GET /users/{id}
-*GET /servicePrincipals/{id}
-*GET /groups/{id}
+* GET /users/{id}
+* GET /servicePrincipals/{id}
+* GET /groups/{id}
 
 ## EXAMPLES
 
