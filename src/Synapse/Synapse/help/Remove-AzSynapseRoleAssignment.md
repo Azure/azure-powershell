@@ -85,8 +85,8 @@ The **Remove-AzSynapseRoleAssignment** cmdlet permanently deletes an Azure Synap
 
 The cmdlet may call below Microsoft Graph API according to input parameters:
 
-*GET /users/{id}
-*GET /servicePrincipals/{id}
+* GET /users/{id}
+* GET /servicePrincipals/{id}
 
 ## EXAMPLES
 
