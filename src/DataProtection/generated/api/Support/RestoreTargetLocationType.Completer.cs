@@ -31,15 +31,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureBlobs".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureBlobs", "AzureBlobs", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureBlobs");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureBlobs'", "AzureBlobs", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureBlobs");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureFiles".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureFiles", "AzureFiles", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFiles");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureFiles'", "AzureFiles", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFiles");
             }
         }
     }
