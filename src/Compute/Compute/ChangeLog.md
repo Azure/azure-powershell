@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.
 
 ## Version 4.21.0
 * Contains updates to the following powershell cmdlets
