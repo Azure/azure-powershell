@@ -93,6 +93,20 @@
     - 'Set-AzSynapseSqlActiveDirectoryAdministrator' cmdlet
 * Added a default value for [-AutoPauseDelayInMinute] parameter of command 'New-AzSynapseSparkpool' and 'Update-AzSynapseSparkpool'
 
+### Thanks to our community contributors
+* @adishiritwick, Updated Set-AzAutomationModule  to use PUT call while updating modules with specific versions (#16505)
+* @anuraj, Update the New-AzWebAppCertificate (#16634)
+* @BrajaMS, Updated the example command with NodeType param (#16670)
+* @geologyrocks, Principal typo (was princial) (#16699)
+* Hen Itzhaki (@HenItzhaki), Added more example (#16424)
+* Chris (@isjwuk), Formatting improvement (#15826)
+* Jaromir Kaspar (@jaromirk), Added example for password credentials (#16600)
+* Martin Falkus (@mfalkus), Fix a typo in Update Az-Tags doc where "Repalces" was specified instead of "Replaces" (#16541)
+* Radoslav Gatev (@RadoslavGatev), [Az.Accounts] Fix the doubled Api Version in Uri of the request issued by Invoke-AzRestMethod (#16616)
+* @Skuldo, Typo fix (#16585)
+* Sujit Singh (@sujitks), Update Set-AzApplicationGatewayFirewallPolicy.md (#16583)
+* @trudolf-msft, new example 4/workaround (#16437)
+
 ## 7.0.0 - December 2021
 #### Az.Accounts
 * Removed 'ServicePrincipalSecret' and 'CertificatePassword' in 'PSAzureRmAccount' [#15427]
