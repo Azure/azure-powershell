@@ -95,6 +95,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Table)) return;
+
+            // when user is using oauth credential, the current code uses track 2 sdk, which fails with 404.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Access Policy operations are not supported while using OAuth.");
+            }
+
             Func<long, Task> taskGenerator = (taskId) => GetAzureTableStoredAccessPolicyAsync(taskId, Channel, Table, Policy);
             RunTask(taskGenerator);
         }

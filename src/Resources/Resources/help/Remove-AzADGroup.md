@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroup
 schema: 2.0.0
@@ -14,20 +14,20 @@ Deletes entity from groups.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADGroup -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADGroup -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Remove-AzADGroup -DisplayName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzADGroup [-IfMatch <String>] -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzADGroup -InputObject <IMicrosoftGraphGroup> [-IfMatch <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADGroup [-IfMatch <String>] -InputObject <IMicrosoftGraphGroup> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -236,4 +236,3 @@ INPUTOBJECT <IMicrosoftGraphGroup>: user input object
   - `[Visibility <String>]`: Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. Hiddenmembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. See group visibility options to learn more. Returned by default.
 
 ## RELATED LINKS
-

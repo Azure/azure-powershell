@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
+    using System;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
+
     [TestClass]
     public class NewAzureStorageTableTest : StorageTableStorageTestBase
     {
@@ -29,61 +29,97 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestInitialize]
         public void InitCommand()
         {
-            command = new NewAzureStorageTableCommand(tableMock)
-                {
-                    CommandRuntime = MockCmdRunTime
-                };
+            this.command = new NewAzureStorageTableCommand(this.tableMock)
+            {
+                CommandRuntime = this.MockCmdRunTime
+            };
         }
 
         [TestCleanup]
         public void CleanCommand()
         {
-            command = null;
+            this.clearTest();
+            this.command = null;
         }
 
         [TestMethod]
         public void CreateAzureTableWithInvalidNameTest()
         {
-            string name = String.Empty;
-            AssertThrows<ArgumentException>(() => command.CreateAzureTable(name),
-                String.Format(Resources.InvalidTableName, name));
+            string[] invalidTableNames =
+            {
+                string.Empty,
+                "a",
+                "&*(",
+            };
 
-            name = "a";
-            AssertThrows<ArgumentException>(() => command.CreateAzureTable(name),
-                String.Format(Resources.InvalidTableName, name));
+            foreach (string invalidTableName in invalidTableNames)
+            {
+                // v1 test
+                AssertThrows<ArgumentException>(() => command.CreateAzureTable(invalidTableName),
+                    String.Format(Resources.InvalidTableName, invalidTableName));
 
-            name = "&*(";
-            AssertThrows<ArgumentException>(() => command.CreateAzureTable(name),
-                String.Format(Resources.InvalidTableName, name));
+                // v2 test
+                AssertThrows<ArgumentException>(() => command.CreateAzureTableV2(this.tableMock, invalidTableName),
+                    String.Format(Resources.InvalidTableName, invalidTableName));
+            }
         }
 
         [TestMethod]
         public void CreateAzureTableWithExistTableTest()
         {
-            AddTestTables();
-            string name = "text";
-            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTable(name),
-                String.Format(Resources.TableAlreadyExists, name));
+            string existingTableName = "text";
+
+            // v1 test
+            this.AddTestTables();
+            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTable(existingTableName),
+                String.Format(Resources.TableAlreadyExists, existingTableName));
+
+            // v2 test
+            this.tableMock.ClearAndAddTestTableV2(existingTableName);
+            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTableV2(this.tableMock, existingTableName),
+                String.Format(Resources.TableAlreadyExists, existingTableName));
         }
 
         [TestMethod]
         public void CreateAzureTableSuccessfullyTest()
         {
-            string name = "test";
-            AzureStorageTable table = command.CreateAzureTable(name);
-            Assert.AreEqual("test", table.Name);
+            // v1 test
+            string tableName = "test";
+            AzureStorageTable table = command.CreateAzureTable(tableName);
+            Assert.AreEqual(tableName, table.Name);
 
-            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTable(name),
-                String.Format(Resources.TableAlreadyExists, name));
+            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTable(tableName),
+                String.Format(Resources.TableAlreadyExists, tableName));
+
+            // v2 test
+            tableName = "text";
+            table = command.CreateAzureTableV2(this.tableMock, tableName);
+            Assert.AreEqual(tableName, table.Name);
+
+            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTableV2(this.tableMock, tableName),
+                String.Format(Resources.TableAlreadyExists, tableName));
         }
 
         [TestMethod]
         public void ExcuteCommandNewTableTest()
         {
-            string name = "tablename";
+            // v1 test
+            this.tableMock.IsTokenCredential = false;
+            string name = "test";
+
             command.Name = name;
             command.ExecuteCmdlet();
             AzureStorageTable table = (AzureStorageTable)MockCmdRunTime.OutputPipeline.FirstOrDefault();
+            Assert.AreEqual(name, table.Name);
+
+            // v2 test
+            this.tableMock.IsTokenCredential = true;
+            name = "test";
+            this.MockCmdRunTime.ResetPipelines();
+
+            command.Name = name;
+            command.ExecuteCmdlet();
+            table = (AzureStorageTable)MockCmdRunTime.OutputPipeline.FirstOrDefault();
             Assert.AreEqual(name, table.Name);
         }
     }

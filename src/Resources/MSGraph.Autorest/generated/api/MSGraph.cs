@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.addKey'");
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.addPassword'");
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications'");
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.removeKey'");
@@ -1381,7 +1381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.removePassword'");
@@ -1552,7 +1552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/members/$ref'");
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members/(?<member-id>[^/]+)/$ref$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members/(?<member-id>[^/]+)/$ref$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/members/{member-id}/$ref'");
@@ -1996,7 +1996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}'");
@@ -2171,7 +2171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}'");
@@ -2359,7 +2359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups'");
@@ -2540,7 +2540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}'");
@@ -2733,7 +2733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/members'");
@@ -2914,7 +2914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.addKey'");
@@ -3075,7 +3075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.addPassword'");
@@ -3236,7 +3236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.removeKey'");
@@ -3397,7 +3397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.removePassword'");
@@ -3672,7 +3672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
@@ -3849,7 +3849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
@@ -4039,7 +4039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals'");
@@ -4222,7 +4222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
@@ -4490,7 +4490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/users/{user-id}'");
@@ -4649,7 +4649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/me$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/me$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/me'");
@@ -4812,7 +4812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/users/{user-id}'");
@@ -5000,7 +5000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/users$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/users$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/users'");
@@ -5175,7 +5175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/users/{user-id}'");

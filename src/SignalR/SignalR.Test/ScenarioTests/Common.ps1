@@ -18,7 +18,7 @@ Gets a SignalR service name
 #>
 function Get-RandomSignalRName
 {
-	param([string]$prefix = "signalr-test-")
+	param([string]$prefix = "signalrps-test-")
 	return $prefix + (getAssetName)
 }
 
@@ -28,7 +28,7 @@ Gets a resource group name
 #>
 function Get-RandomResourceGroupName
 {
-	param([string]$prefix = "signalr-test-rg-")
+	param([string]$prefix = "signalrps-test-rg-")
 	return $prefix + (getAssetName)
 }
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 schema: 2.0.0
@@ -14,39 +14,39 @@ Lists entities from applications or get entity from applications by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADApplication [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ApplicationIdentifierUriParameterSet
-```
-Get-AzADApplication -IdentifierUri <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ApplicationIdParameterSet
-```
-Get-AzADApplication -ApplicationId <Guid> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplication [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
-Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### DisplayNameParameterSet
-```
-Get-AzADApplication -DisplayName <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzADApplication -DisplayNameStartWith <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplication [-Select <String[]>] -DisplayNameStartWith <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzADApplication [-Select <String[]>] -DisplayName <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ApplicationIdParameterSet
+```
+Get-AzADApplication [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ApplicationIdentifierUriParameterSet
+```
+Get-AzADApplication [-Select <String[]>] -IdentifierUri <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,21 +190,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -First
-Gets only the first 'n' objects.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IdentifierUri
 application identifier uri
 
@@ -295,6 +280,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -309,4 +309,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

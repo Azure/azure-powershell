@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. Valid values: 4, 6")]
         public string RedisVersion { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specifies the type of identity used for the Azure Cache for Redis. Valid values: \"SystemAssigned\" or \"UserAssigned\" or \"SystemAssignedUserAssigned\" or \"None\" ")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specifies one or more comma seperated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
+        public string[] UserAssignedIdentity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
@@ -159,7 +166,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku,
-                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, SubnetId, StaticIP, Tag, Zone, RedisVersion);
+                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, SubnetId, StaticIP, Tag, Zone, RedisVersion, IdentityType, UserAssignedIdentity);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

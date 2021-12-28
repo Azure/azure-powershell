@@ -491,7 +491,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzADApplication_UpdateExpanded';
+            UpdateExpanded = 'Az.MSGraph.private\Update-AzADApplication_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

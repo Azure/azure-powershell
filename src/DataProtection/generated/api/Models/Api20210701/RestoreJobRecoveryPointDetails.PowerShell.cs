@@ -100,8 +100,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,8 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

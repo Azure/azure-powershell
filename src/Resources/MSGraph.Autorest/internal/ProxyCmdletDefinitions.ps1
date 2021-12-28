@@ -178,8 +178,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADApplicationKey_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADApplicationKey_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADApplicationKey_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADApplicationKey_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -337,8 +337,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADApplicationPassword_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADApplicationPassword_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADApplicationPassword_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADApplicationPassword_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -531,8 +531,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalKey_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -690,8 +690,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalPassword_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalPassword_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADServicePrincipalPassword_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADServicePrincipalPassword_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -866,8 +866,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.MSGraph.private\Get-AzADApplication_Get';
-            List = 'Az.Resources.MSGraph.private\Get-AzADApplication_List';
+            Get = 'Az.MSGraph.private\Get-AzADApplication_Get';
+            List = 'Az.MSGraph.private\Get-AzADApplication_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1041,7 +1041,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            List = 'Az.Resources.MSGraph.private\Get-AzADGroupMember_List';
+            List = 'Az.MSGraph.private\Get-AzADGroupMember_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1214,8 +1214,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.MSGraph.private\Get-AzADGroup_Get';
-            List = 'Az.Resources.MSGraph.private\Get-AzADGroup_List';
+            Get = 'Az.MSGraph.private\Get-AzADGroup_Get';
+            List = 'Az.MSGraph.private\Get-AzADGroup_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1392,8 +1392,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.MSGraph.private\Get-AzADServicePrincipal_Get';
-            List = 'Az.Resources.MSGraph.private\Get-AzADServicePrincipal_List';
+            Get = 'Az.MSGraph.private\Get-AzADServicePrincipal_Get';
+            List = 'Az.MSGraph.private\Get-AzADServicePrincipal_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1515,7 +1515,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.MSGraph.private\Get-AzADUserSigned_Get';
+            Get = 'Az.MSGraph.private\Get-AzADUserSigned_Get';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1686,8 +1686,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.MSGraph.private\Get-AzADUser_Get';
-            List = 'Az.Resources.MSGraph.private\Get-AzADUser_List';
+            Get = 'Az.MSGraph.private\Get-AzADUser_Get';
+            List = 'Az.MSGraph.private\Get-AzADUser_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2314,8 +2314,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADApplication_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADApplication_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADApplication_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADApplication_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2456,8 +2456,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADGroupRefMember_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADGroupRefMember_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADGroupRefMember_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADGroupRefMember_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2825,8 +2825,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADGroup_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADGroup_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADGroup_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADGroup_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3512,8 +3512,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADServicePrincipal_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADServicePrincipal_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADServicePrincipal_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipal_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3976,8 +3976,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADUser_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADUser_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADUser_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADUser_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4133,8 +4133,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADApplicationKey_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADApplicationKey_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADApplicationKey_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationKey_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4283,8 +4283,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADApplicationPassword_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADApplicationPassword_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADApplicationPassword_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationPassword_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4409,7 +4409,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzADApplication_Delete';
+            Delete = 'Az.MSGraph.private\Remove-AzADApplication_Delete';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4541,7 +4541,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzADGroupRefMember_Delete';
+            Delete = 'Az.MSGraph.private\Remove-AzADGroupRefMember_Delete';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4666,7 +4666,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzADGroup_Delete';
+            Delete = 'Az.MSGraph.private\Remove-AzADGroup_Delete';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4822,8 +4822,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipalKey_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4972,8 +4972,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipalPassword_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipalPassword_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5098,7 +5098,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipal_Delete';
+            Delete = 'Az.MSGraph.private\Remove-AzADServicePrincipal_Delete';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5221,7 +5221,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzADUser_Delete';
+            Delete = 'Az.MSGraph.private\Remove-AzADUser_Delete';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5727,7 +5727,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzADApplication_UpdateExpanded';
+            UpdateExpanded = 'Az.MSGraph.private\Update-AzADApplication_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6064,7 +6064,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzADGroup_UpdateExpanded';
+            UpdateExpanded = 'Az.MSGraph.private\Update-AzADGroup_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6634,7 +6634,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzADServicePrincipal_UpdateExpanded';
+            UpdateExpanded = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7055,7 +7055,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzADUser_UpdateExpanded';
+            UpdateExpanded = 'Az.MSGraph.private\Update-AzADUser_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
+    using System;
 
     /// <summary>Create or update a backup instance in a backup vault</summary>
     /// <remarks>

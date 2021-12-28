@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "First".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("First", "First", global::System.Management.Automation.CompletionResultType.ParameterValue, "First");
+                yield return new global::System.Management.Automation.CompletionResult("'First'", "First", global::System.Management.Automation.CompletionResultType.ParameterValue, "First");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Fourth".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Fourth", "Fourth", global::System.Management.Automation.CompletionResultType.ParameterValue, "Fourth");
+                yield return new global::System.Management.Automation.CompletionResult("'Fourth'", "Fourth", global::System.Management.Automation.CompletionResultType.ParameterValue, "Fourth");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Last".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Last", "Last", global::System.Management.Automation.CompletionResultType.ParameterValue, "Last");
+                yield return new global::System.Management.Automation.CompletionResult("'Last'", "Last", global::System.Management.Automation.CompletionResultType.ParameterValue, "Last");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Second".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Second", "Second", global::System.Management.Automation.CompletionResultType.ParameterValue, "Second");
+                yield return new global::System.Management.Automation.CompletionResult("'Second'", "Second", global::System.Management.Automation.CompletionResultType.ParameterValue, "Second");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Third".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Third", "Third", global::System.Management.Automation.CompletionResultType.ParameterValue, "Third");
+                yield return new global::System.Management.Automation.CompletionResult("'Third'", "Third", global::System.Management.Automation.CompletionResultType.ParameterValue, "Third");
             }
         }
     }

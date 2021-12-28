@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation, global::System.Convert.ToString);
+            }
+            if (content.Contains("Provider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider, global::System.Convert.ToString);
+            }
+            if (content.Contains("Resource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Operation, global::System.Convert.ToString);
+            }
+            if (content.Contains("Provider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Provider, global::System.Convert.ToString);
+            }
+            if (content.Contains("Resource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryDisplayInternal)this).Resource, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

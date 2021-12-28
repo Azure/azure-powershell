@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the bug of "Update-AzSignalR" cmdlet that resets the resource states by mistake.
 
 ## Version 1.4.0
 * Added Web PubSub cmdlets

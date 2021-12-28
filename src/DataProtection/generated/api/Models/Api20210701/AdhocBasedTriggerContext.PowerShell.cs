@@ -66,12 +66,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTaggingCriteria) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBasedTaggingCriteriaTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TaggingCriterionTagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            if (content.Contains("TaggingCriterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTaggingCriteria) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBasedTaggingCriteriaTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaggingCriterionTagInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TaggingCriterionTagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TagInfoETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoTagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,12 +107,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTaggingCriteria) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBasedTaggingCriteriaTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TaggingCriterionTagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            if (content.Contains("TaggingCriterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTaggingCriteria) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterion, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBasedTaggingCriteriaTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaggingCriterionTagInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TaggingCriterionTagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TaggingCriterionTagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TagInfoETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoTagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBasedTriggerContextInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
