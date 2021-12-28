@@ -12,7 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Stop-AzDataMigrationToSqlVM' {
-    It 'CancelExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CancelExpanded' {
+        $instance = New-AzDataMigrationToSqlVM -ResourceGroupName $env.TestStopDatabaseMigrationVm.ResourceGroupName -SqlVirtualMachineName $env.TestStopDatabaseMigrationVm.SqlVirtualMachineName -TargetDbName $env.TestStopDatabaseMigrationVm.TargetDbName -Kind $env.TestStopDatabaseMigrationVm.Kind -Scope $env.TestStopDatabaseMigrationVm.Scope -MigrationService $env.TestStopDatabaseMigrationVm.MigrationService -TargetLocationStorageAccountResourceId $env.TestStopDatabaseMigrationVm.TargetLocationStorageAccountResourceId -TargetLocationAccountKey $env.TestStopDatabaseMigrationVm.TargetLocationAccountKey -FileSharePath $env.TestStopDatabaseMigrationVm.FileSharePath  -FileShareUsername $env.TestStopDatabaseMigrationVm.FileShareUsername -FileSharePassword $env.TestStopDatabaseMigrationVm.FileSharePassword -SourceSqlConnectionAuthentication $env.TestStopDatabaseMigrationVm.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestStopDatabaseMigrationVm.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestStopDatabaseMigrationVm.SourceSqlConnectionUsername -SourceSqlConnectionPassword $env.TestStopDatabaseMigrationVm.SourceSqlConnectionPassword -SourceDatabaseName $env.TestStopDatabaseMigrationVm.SourceDatabaseName
+        $details =  Get-AzDataMigrationToSqlVM  -SqlVirtualMachineName $env.TestStopDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestStopDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestStopDatabaseMigrationVm.TargetDbName
+        Stop-AzDataMigrationToSqlVM -MigrationOperationId $details.MigrationOperationId -SqlVirtualMachineName $env.TestStopDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestStopDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestStopDatabaseMigrationVm.TargetDbName
+        $details =  Get-AzDataMigrationToSqlVM  -SqlVirtualMachineName $env.TestStopDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestStopDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestStopDatabaseMigrationVm.TargetDbName
+        While($details.MigrationStatus -eq "Canceling")
+        {
+            $details =  Get-AzDataMigrationToSqlVM  -SqlVirtualMachineName $env.TestStopDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestStopDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestStopDatabaseMigrationVm.TargetDbName
+            
+        }
+        $assert = ($details.MigrationStatus -eq "Canceled") 
+        $assert | should be $true
     }
 }

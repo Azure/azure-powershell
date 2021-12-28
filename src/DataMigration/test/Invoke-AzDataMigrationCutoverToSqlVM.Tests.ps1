@@ -12,7 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzDataMigrationCutoverToSqlVM' {
-    It 'CutoverExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CutoverExpanded'  -skip{
+        $instance =  New-AzDataMigrationToSqlVM -ResourceGroupName $env.TestCutDatabaseMigrationVm.ResourceGroupName -SqlVirtualMachineName $env.TestCutDatabaseMigrationVm.SqlVirtualMachineName -TargetDbName $env.TestCutDatabaseMigrationVm.TargetDbName -Kind $env.TestCutDatabaseMigrationVm.Kind -Scope $env.TestCutDatabaseMigrationVm.Scope -MigrationService $env.TestCutDatabaseMigrationVm.MigrationService -TargetLocationStorageAccountResourceId $env.TestCutDatabaseMigrationVm.TargetLocationStorageAccountResourceId -TargetLocationAccountKey $env.TestCutDatabaseMigrationVm.TargetLocationAccountKey -FileSharePath $env.TestCutDatabaseMigrationVm.FileSharePath  -FileShareUsername $env.TestCutDatabaseMigrationVm.FileShareUsername -FileSharePassword $env.TestCutDatabaseMigrationVm.FileSharePassword -SourceSqlConnectionAuthentication $env.TestCutDatabaseMigrationVm.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestCutDatabaseMigrationVm.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestCutDatabaseMigrationVm.SourceSqlConnectionUsername -SourceSqlConnectionPassword $env.TestCutDatabaseMigrationVm.SourceSqlConnectionPassword -SourceDatabaseName $env.TestCutDatabaseMigrationVm.SourceDatabaseName       
+        $details =  Get-AzDataMigrationToSqlVM -SqlVirtualMachineName $env.TestCutDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestCutDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestCutDatabaseMigrationVm.TargetDbName
+        while(-Not $details.MigrationStatusDetail.IsFullBackupRestored){
+            $details =  Get-AzDataMigrationToSqlVM -SqlVirtualMachineName $env.TestCutDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestCutDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestCutDatabaseMigrationVm.TargetDbName
+        }
+        Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName $env.TestCutatabaseMigrationVm.ResourceGroupName -ManagedInstanceName $env.TestCutDatabaseMigrationVm.ManagedInstanceName -TargetDbName  $instance.Name -MigrationOperationId $details.MigrationOperationId
+        $details = Get-AzDataMigrationToSqlVM -ManagedInstanceName $env.TestCutDatabaseMigrationVm.ManagedInstanceName -ResourceGroupName $env.TestCutDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestCutDatabaseMigrationVm.TargetDbName
+        $assert = ($details.MigrationStatus -eq "Completing") -AND ($details.ProvisioningState -eq "Completing")
+        $assert | should be $true
     }
 }

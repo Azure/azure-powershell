@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataMigrationToSqlManagedInstance' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded'  {
+        $instance = New-AzDataMigrationToSqlManagedInstance -ResourceGroupName $env.TestNewDatabaseMigrationMi.ResourceGroupName -ManagedInstanceName $env.TestNewDatabaseMigrationMi.ManagedInstanceName -TargetDbName $env.TestNewDatabaseMigrationMi.TargetDbName -Kind $env.TestNewDatabaseMigrationMi.Kind -Scope $env.TestNewDatabaseMigrationMi.Scope -MigrationService $env.TestNewDatabaseMigrationMi.MigrationService -TargetLocationStorageAccountResourceId $env.TestNewDatabaseMigrationMi.TargetLocationStorageAccountResourceId -TargetLocationAccountKey $env.TestNewDatabaseMigrationMi.TargetLocationAccountKey -FileSharePath $env.TestNewDatabaseMigrationMi.FileSharePath  -FileShareUsername $env.TestNewDatabaseMigrationMi.FileShareUsername -FileSharePassword $env.TestNewDatabaseMigrationMi.FileSharePassword -SourceSqlConnectionAuthentication $env.TestNewDatabaseMigrationMi.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestNewDatabaseMigrationMi.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestNewDatabaseMigrationMi.SourceSqlConnectionUsername -SourceSqlConnectionPassword $env.TestNewDatabaseMigrationMi.SourceSqlConnectionPassword -SourceDatabaseName $env.TestNewDatabaseMigrationMi.SourceDatabaseName
+        $assert = ($instance.Type -eq "Microsoft.DataMigration/databaseMigrations") -AND ($instance.Name -eq $env.TestNewDatabaseMigrationMi.TargetDbName) -AND ($instance.ProvisioningState -eq "Succeeded") -AND ($instance.Kind -eq "SqlMi")
+        $assert | should be $true
     }
 }
