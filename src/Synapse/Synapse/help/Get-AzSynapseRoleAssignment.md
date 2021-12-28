@@ -86,8 +86,8 @@ If you do not specify a role definition or a user principal name, this cmdlet ge
 
 The cmdlet may call below Microsoft Graph API according to input parameters:
 
-*GET /users/{id}
-*GET /servicePrincipals/{id}
+* GET /users/{id}
+* GET /servicePrincipals/{id}
 
 ## EXAMPLES
 
