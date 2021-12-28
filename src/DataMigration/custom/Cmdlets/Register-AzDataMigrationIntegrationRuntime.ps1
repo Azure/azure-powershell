@@ -23,7 +23,7 @@ Registers Sql Migration Service on Integration Runtime.
 
 function Register-AzDataMigrationIntegrationRuntime 
 {
-    [OutputType()]
+    [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Registers Sql Migration Service on Integration Runtime')]
 
@@ -36,7 +36,13 @@ function Register-AzDataMigrationIntegrationRuntime
         [Parameter(HelpMessage='Path of SHIR msi')]
         [System.String]
         #Path of SHIR msi for installation.
-        ${IntegrationRuntimePath}
+        ${IntegrationRuntimePath},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru}
     )
 
     process 
@@ -77,6 +83,11 @@ function Register-AzDataMigrationIntegrationRuntime
             Install-Gateway $path
         }
 
-        $null = Register-IR $PSBoundParameters.AuthKey
+        $result = Register-IR $PSBoundParameters.AuthKey
+
+        if($PSBoundParameters.ContainsKey("PassThru"))
+        {
+            return $result;
+        }
     }
 }

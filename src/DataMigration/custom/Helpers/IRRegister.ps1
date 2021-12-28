@@ -105,7 +105,16 @@ function Register-IR {
         Start-Process $dmgCmdPath "-EnableRemoteAccess 8060" -Wait
 
         # Register/ Re-register IR
-        & $regIRScriptPath -gatewayKey $key
+        $result = & $regIRScriptPath -gatewayKey $key 6>&1
+        if($result.ToString().Contains("successful"))
+        {
+            Write-Host $result;
+            return $true;
+        }
+        else
+        {
+            throw $result;
+        }
     }
 }
 
