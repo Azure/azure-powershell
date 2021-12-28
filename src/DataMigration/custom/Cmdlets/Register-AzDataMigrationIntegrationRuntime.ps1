@@ -92,7 +92,7 @@ function Register-AzDataMigrationIntegrationRuntime
             throw "Failed: No installed Integration Runtime found!"
         }
 
-        if($PSCmdlet.ShouldProcess('Microsoft Integration Runtime','Register AuthKeys'))
+        if($PSCmdlet.ShouldProcess('Microsoft Integration Runtime','Register AuthKey'))
         {
             $result = Register-IR $PSBoundParameters.AuthKey
 
