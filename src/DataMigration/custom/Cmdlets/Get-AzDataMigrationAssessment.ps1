@@ -56,12 +56,19 @@ function Get-AzDataMigrationAssessment
     {
         try 
         {
-            #Defining Base and Exe paths
-            $BaseFolder = $PSScriptRoot;
-            $ExePath = Join-Path -Path $BaseFolder -ChildPath SqlAssessment.Console.csproj\SqlAssessment.exe;
 
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultOutputFolder
+
+            #Defining Base and Exe paths
+            $BaseFolder = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
+            $ExePath = Join-Path -Path $BaseFolder -ChildPath SqlAssessment.Console.csproj\SqlAssessment.exe;
+
+            #Checking if BaseFolder Path is valid or not
+            if(-Not (Test-Path $BaseFolder))
+            {
+                $null = New-Item -Path $BaseFolder -ItemType "directory"
+            }
 
             #Testing Whether Console App is downloaded or not
             $TestExePath =  Test-Path -Path $ExePath;
