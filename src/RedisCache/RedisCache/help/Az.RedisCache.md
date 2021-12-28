@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.RedisCache
 Module Guid: 820628d7-6938-488a-8760-43373a5ffce6
 Download Help Link: https://docs.microsoft.com/powershell/module/az.rediscache
@@ -69,7 +69,7 @@ Removes the patch schedule.
 Restarts nodes of a cache.
 
 ### [Set-AzRedisCache](Set-AzRedisCache.md)
-Modifies a Redis Cache.
+Modifies an Azure Cache for Redis.
 
 ### [Set-AzRedisCacheDiagnostic](Set-AzRedisCacheDiagnostic.md)
 Enables diagnostics on an Azure Redis Cache.

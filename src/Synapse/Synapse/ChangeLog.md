@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* General availability of Az.Synapse
 * Added a default value for [-AutoPauseDelayInMinute] parameter of command `New-AzSynapseSparkpool` and `Update-AzSynapseSparkpool`
 
 ## Version 0.19.0
