@@ -24,7 +24,7 @@ Registers Sql Migration Service on Integration Runtime.
 function Register-AzDataMigrationIntegrationRuntime 
 {
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Registers Sql Migration Service on Integration Runtime')]
 
     param(
@@ -80,14 +80,27 @@ function Register-AzDataMigrationIntegrationRuntime
                 throw "Invalid gateway path: $path"
             }
 
-            Install-Gateway $path
+            if($PSCmdlet.ShouldProcess('Local Machine','Installation of Microsoft Integration Runtime'))
+            {
+                Install-Gateway $path
+            }
+            
         }
 
-        $result = Register-IR $PSBoundParameters.AuthKey
-
-        if($PSBoundParameters.ContainsKey("PassThru"))
+        if(-Not (Check-WhetherGatewayInstalled("Microsoft Integration Runtime")))
         {
-            return $result;
+            throw "Failed: No installed Integration Runtime found!"
         }
+
+        if($PSCmdlet.ShouldProcess('Microsoft Integration Runtime','Register AuthKeys'))
+        {
+            $result = Register-IR $PSBoundParameters.AuthKey
+
+            if($PSBoundParameters.ContainsKey("PassThru"))
+            {
+                return $result;
+            }
+        }
+        
     }
 }
