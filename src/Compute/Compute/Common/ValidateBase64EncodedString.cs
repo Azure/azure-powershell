@@ -15,11 +15,12 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string UserDataEncodeNotification = "The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value by Base64 encoding it.";
         public static bool ValidateStringIsBase64Encoded(string encodedString)
         {
-            if (encodedString.Contains(" ") ||
+            if (!string.IsNullOrEmpty(encodedString) &&
+                (encodedString.Contains(" ") ||
                 encodedString.Length % 4 != 0 ||
                 encodedString.Contains("\t") ||
                 encodedString.Contains("\r") ||
-                encodedString.Contains("\n"))
+                encodedString.Contains("\n")))
             {
                 return false;
             }
