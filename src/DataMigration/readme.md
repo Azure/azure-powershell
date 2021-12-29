@@ -165,6 +165,34 @@ directive:
     set:
       parameter-name: Offline
 
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: TargetLocationStorageAccountResourceId
+    set:
+      parameter-name: StorageAccountResourceId
+
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: TargetLocationStorageAccountResourceId
+    set:
+      parameter-name: StorageAccountResourceId
+  
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: TargetLocationAccountKey
+    set:
+      parameter-name: StorageAccountKey
+
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: TargetLocationAccountKey
+    set:
+      parameter-name: StorageAccountKey
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
