@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: DataMigration cmdlets
 
 ## Az.DataMigration Cmdlets
 ### [Get-AzDataMigrationAssessment](Get-AzDataMigrationAssessment.md)
-Runs assessment on given Sql Servers
+Start assessment on SQL Server instance(s)
 
 ### [Get-AzDataMigrationSqlService](Get-AzDataMigrationSqlService.md)
 Retrieve the Database Migration Service.

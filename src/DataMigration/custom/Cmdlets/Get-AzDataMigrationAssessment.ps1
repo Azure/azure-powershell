@@ -24,7 +24,7 @@ function Get-AzDataMigrationAssessment
 {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Runs assessment on given Sql Servers')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Start assessment on SQL Server instance(s)')]
 
     param(
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Sql Server Connection Strings')]

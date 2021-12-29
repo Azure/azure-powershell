@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationAssessment
 
 ## SYNOPSIS
-Runs assessment on given Sql Servers
+Start assessment on SQL Server instance(s)
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzDataMigrationAssessment -ConfigFilePath <String> [-PassThru] [<CommonParam
 ```
 
 ## DESCRIPTION
-Runs assessment on given Sql Servers
+Start assessment on SQL Server instance(s)
 
 ## EXAMPLES
 
@@ -55,6 +55,18 @@ Event and Error Logs Folder Path: C:\Users\user\AppData\Local\Microsoft\SqlAsses
 ```
 
 This command runs SQL Assessment on given SQL Server using assessment config file.
+The config file has the following format
+
+```
+{
+    "action": "Assess",
+    "outputFolder": "C:\\AssessmentOutput",
+    "overwrite":  "True",
+    "sqlConnectionStrings": [
+        "Data Source=LabServer1.database.net;Initial Catalog=master;Integrated Security=True;"
+    ]
+}
+```
 
 ## PARAMETERS
 
