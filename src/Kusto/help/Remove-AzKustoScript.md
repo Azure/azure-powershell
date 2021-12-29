@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzKustoScript
 
 ## SYNOPSIS
-Deletes a Kusto principalAssignment.
+Deletes a Kusto script.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzKustoScript -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] 
 ```
 
 ## DESCRIPTION
-Deletes a Kusto principalAssignment.
+Deletes a Kusto script.
 
 ## EXAMPLES
 
