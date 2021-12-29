@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationToSqlVM
 
 ## SYNOPSIS
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL VM.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzDataMigrationToSqlVM -InputObject <IDataMigrationIdentity> [-Expand <Strin
 ```
 
 ## DESCRIPTION
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL VM.
 
 ## EXAMPLES
 

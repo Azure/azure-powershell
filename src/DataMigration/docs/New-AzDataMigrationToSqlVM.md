@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataMigrationToSqlVM
 
 ## SYNOPSIS
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL VM.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <S
 ```
 
 ## DESCRIPTION
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL VM.
 
 ## EXAMPLES
 
@@ -306,7 +306,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Scope of the database.
+Resource Id of the target resource (SQL VM or SQL Managed Instance)
 
 ```yaml
 Type: System.String

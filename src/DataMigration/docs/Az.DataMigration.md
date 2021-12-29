@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: DataMigration cmdlets
 Runs assessment on given Sql Servers
 
 ### [Get-AzDataMigrationSqlService](Get-AzDataMigrationSqlService.md)
-Retrieve the Migration Service.
+Retrieve the Database Migration Service.
 
 ### [Get-AzDataMigrationSqlServiceAuthKey](Get-AzDataMigrationSqlServiceAuthKey.md)
 Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
@@ -27,44 +27,44 @@ Retrieve the List of database migrations attached to the service.
 Retrieve the Monitoring Data.
 
 ### [Get-AzDataMigrationToSqlManagedInstance](Get-AzDataMigrationToSqlManagedInstance.md)
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL Managed Instance.
 
 ### [Get-AzDataMigrationToSqlVM](Get-AzDataMigrationToSqlVM.md)
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL VM.
 
 ### [Invoke-AzDataMigrationCutoverToSqlManagedInstance](Invoke-AzDataMigrationCutoverToSqlManagedInstance.md)
-Initiate cutover for online migration in progress for the database.
+Initiate cutover for in-progress online database migration to SQL Managed Instance.
 
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
-Cutover online migration operation for the database.
+Initiate cutover for in-progress online database migration to SQL VM.
 
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
-Create or Update SQL Migration Service.
+Create or Update Database Migration Service.
 
 ### [New-AzDataMigrationSqlServiceAuthKey](New-AzDataMigrationSqlServiceAuthKey.md)
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL Managed Instance.
 
 ### [New-AzDataMigrationToSqlVM](New-AzDataMigrationToSqlVM.md)
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL VM.
 
 ### [Register-AzDataMigrationIntegrationRuntime](Register-AzDataMigrationIntegrationRuntime.md)
 Registers Sql Migration Service on Integration Runtime
 
 ### [Remove-AzDataMigrationSqlService](Remove-AzDataMigrationSqlService.md)
-Delete SQL Migration Service.
+Delete Database Migration Service.
 
 ### [Remove-AzDataMigrationSqlServiceNode](Remove-AzDataMigrationSqlServiceNode.md)
 Delete the integration runtime node.
 
 ### [Stop-AzDataMigrationToSqlManagedInstance](Stop-AzDataMigrationToSqlManagedInstance.md)
-Stop migrations in progress for the database
+Stop in-progress database migration to SQL Managed Instance.
 
 ### [Stop-AzDataMigrationToSqlVM](Stop-AzDataMigrationToSqlVM.md)
-Stop ongoing migration for the database.
+Stop in-progress database migration to SQL VM.
 
 ### [Update-AzDataMigrationSqlService](Update-AzDataMigrationSqlService.md)
-Update SQL Migration Service.
+Update Database Migration Service.
 

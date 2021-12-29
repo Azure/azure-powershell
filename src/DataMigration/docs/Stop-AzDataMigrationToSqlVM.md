@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDataMigrationToSqlVM
 
 ## SYNOPSIS
-Stop ongoing migration for the database.
+Stop in-progress database migration to SQL VM.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Stop-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <
 ```
 
 ## DESCRIPTION
-Stop ongoing migration for the database.
+Stop in-progress database migration to SQL VM.
 
 ## EXAMPLES
 

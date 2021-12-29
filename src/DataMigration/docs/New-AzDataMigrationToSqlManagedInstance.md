@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataMigrationToSqlManagedInstance
 
 ## SYNOPSIS
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL Managed Instance.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL Managed Instance.
 
 ## EXAMPLES
 
@@ -321,7 +321,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Scope of the database.
+Resource Id of the target resource (SQL VM or SQL Managed Instance)
 
 ```yaml
 Type: System.String

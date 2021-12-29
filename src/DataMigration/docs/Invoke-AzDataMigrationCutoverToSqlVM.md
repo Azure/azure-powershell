@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzDataMigrationCutoverToSqlVM
 
 ## SYNOPSIS
-Cutover online migration operation for the database.
+Initiate cutover for in-progress online database migration to SQL VM.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName <String> -SqlVirtualMach
 ```
 
 ## DESCRIPTION
-Cutover online migration operation for the database.
+Initiate cutover for in-progress online database migration to SQL VM.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationToSqlManagedInstance
 
 ## SYNOPSIS
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL Managed Instance.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity> [-
 ```
 
 ## DESCRIPTION
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL Managed Instance.
 
 ## EXAMPLES
 

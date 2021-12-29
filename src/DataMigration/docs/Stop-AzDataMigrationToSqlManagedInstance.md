@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDataMigrationToSqlManagedInstance
 
 ## SYNOPSIS
-Stop migrations in progress for the database
+Stop in-progress database migration to SQL Managed Instance.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Stop-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -Resource
 ```
 
 ## DESCRIPTION
-Stop migrations in progress for the database
+Stop in-progress database migration to SQL Managed Instance.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataMigrationSqlService
 
 ## SYNOPSIS
-Delete SQL Migration Service.
+Delete Database Migration Service.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzDataMigrationSqlService -InputObject <IDataMigrationIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Delete SQL Migration Service.
+Delete Database Migration Service.
 
 ## EXAMPLES
 

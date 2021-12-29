@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationSqlService
 
 ## SYNOPSIS
-Retrieve the Migration Service.
+Retrieve the Database Migration Service.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzDataMigrationSqlService -ResourceGroupName <String> [-SubscriptionId <Stri
 ```
 
 ## DESCRIPTION
-Retrieve the Migration Service.
+Retrieve the Database Migration Service.
 
 ## EXAMPLES
 

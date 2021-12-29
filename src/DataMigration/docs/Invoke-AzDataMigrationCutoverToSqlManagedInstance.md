@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzDataMigrationCutoverToSqlManagedInstance
 
 ## SYNOPSIS
-Initiate cutover for online migration in progress for the database.
+Initiate cutover for in-progress online database migration to SQL Managed Instance.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-AzDataMigrationCutoverToSqlManagedInstance -ManagedInstanceName <String> 
 ```
 
 ## DESCRIPTION
-Initiate cutover for online migration in progress for the database.
+Initiate cutover for in-progress online database migration to SQL Managed Instance.
 
 ## EXAMPLES
 

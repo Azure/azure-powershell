@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataMigrationSqlService
 
 ## SYNOPSIS
-Update SQL Migration Service.
+Update Database Migration Service.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzDataMigrationSqlService -InputObject <IDataMigrationIdentity> [-Tag <Ha
 ```
 
 ## DESCRIPTION
-Update SQL Migration Service.
+Update Database Migration Service.
 
 ## EXAMPLES
 
