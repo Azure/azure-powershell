@@ -150,6 +150,21 @@ directive:
     set:
       subject: SqlService
 
+  #Changing parameter names
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: OfflineConfigurationOffline
+    set:
+      parameter-name: Offline
+
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: OfflineConfigurationOffline
+    set:
+      parameter-name: Offline
+
   # Remove the set-* cmdlet
   - where:
       verb: Set

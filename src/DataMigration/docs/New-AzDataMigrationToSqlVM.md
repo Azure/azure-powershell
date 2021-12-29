@@ -17,7 +17,7 @@ New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <S
  [-SubscriptionId <String>] [-AzureBlobAccountKey <String>] [-AzureBlobContainerName <String>]
  [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <String>] [-FileSharePath <String>]
  [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
- [-MigrationService <String>] [-OfflineConfigurationLastBackupName <String>] [-OfflineConfigurationOffline]
+ [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
  [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
  [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
  [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
@@ -227,13 +227,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfflineConfigurationLastBackupName
-Last backup name for offline migration.
-This is optional for migrations from file share.
-If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+### -Offline
+Offline migration
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -244,11 +242,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfflineConfigurationOffline
-Offline migration
+### -OfflineConfigurationLastBackupName
+Last backup name for offline migration.
+This is optional for migrations from file share.
+If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
