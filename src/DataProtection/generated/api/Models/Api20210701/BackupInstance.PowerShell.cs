@@ -66,16 +66,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DataSourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DataSourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfo) content.GetValueForProperty("PolicyInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetails) content.GetValueForProperty("ProtectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ProtectionStatusDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState?) content.GetValueForProperty("CurrentProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ProtectionErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataSourceInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DataSourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataSourceSetInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DataSourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PolicyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfo) content.GetValueForProperty("PolicyInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProtectionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetails) content.GetValueForProperty("ProtectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ProtectionStatusDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CurrentProtectionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState?) content.GetValueForProperty("CurrentProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState.CreateFrom);
+            }
+            if (content.Contains("ProtectionErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ProtectionErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatasourceAuthCredentials"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -93,16 +123,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DataSourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DataSourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfo) content.GetValueForProperty("PolicyInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetails) content.GetValueForProperty("ProtectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ProtectionStatusDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState?) content.GetValueForProperty("CurrentProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ProtectionErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataSourceInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DataSourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataSourceSetInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DataSourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DataSourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PolicyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfo) content.GetValueForProperty("PolicyInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).PolicyInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProtectionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetails) content.GetValueForProperty("ProtectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ProtectionStatusDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CurrentProtectionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState?) content.GetValueForProperty("CurrentProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).CurrentProtectionState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CurrentProtectionState.CreateFrom);
+            }
+            if (content.Contains("ProtectionErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ProtectionErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProtectionErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatasourceAuthCredentials"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskAdditionalDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId = (int) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress = (string) content.GetValueForProperty("TaskProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus = (string) content.GetValueForProperty("TaskStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus, global::System.Convert.ToString);
+            if (content.Contains("AdditionalDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskAdditionalDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TaskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId = (int) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("TaskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaskProgress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress = (string) content.GetValueForProperty("TaskProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaskStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus = (string) content.GetValueForProperty("TaskStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskAdditionalDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId = (int) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress = (string) content.GetValueForProperty("TaskProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus = (string) content.GetValueForProperty("TaskStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus, global::System.Convert.ToString);
+            if (content.Contains("AdditionalDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskAdditionalDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TaskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId = (int) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("TaskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaskProgress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress = (string) content.GetValueForProperty("TaskProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskProgress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaskStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus = (string) content.GetValueForProperty("TaskStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTaskInternal)this).TaskStatus, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

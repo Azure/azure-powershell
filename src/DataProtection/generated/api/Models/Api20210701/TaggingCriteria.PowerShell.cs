@@ -99,13 +99,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria[]) content.GetValueForProperty("Criterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupCriteriaTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault = (bool) content.GetValueForProperty("IsDefault",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority = (long) content.GetValueForProperty("TaggingPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            if (content.Contains("TagInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Criterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria[]) content.GetValueForProperty("Criterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupCriteriaTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IsDefault"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault = (bool) content.GetValueForProperty("IsDefault",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TaggingPriority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority = (long) content.GetValueForProperty("TaggingPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TagInfoETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoTagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,13 +144,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria[]) content.GetValueForProperty("Criterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupCriteriaTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault = (bool) content.GetValueForProperty("IsDefault",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority = (long) content.GetValueForProperty("TaggingPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            if (content.Contains("TagInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTag) content.GetValueForProperty("TagInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RetentionTagTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Criterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria[]) content.GetValueForProperty("Criterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).Criterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupCriteriaTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IsDefault"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault = (bool) content.GetValueForProperty("IsDefault",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).IsDefault, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TaggingPriority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority = (long) content.GetValueForProperty("TaggingPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TaggingPriority, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TagInfoETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag = (string) content.GetValueForProperty("TagInfoETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId = (string) content.GetValueForProperty("TagInfoId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagInfoTagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName = (string) content.GetValueForProperty("TagInfoTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteriaInternal)this).TagInfoTagName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -99,13 +99,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDeleteOption) content.GetValueForProperty("DeleteAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DeleteOptionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("SourceDataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting[]) content.GetValueForProperty("TargetDataStoreCopySetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TargetCopySettingTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration = (string) content.GetValueForProperty("DeleteAfterDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType = (string) content.GetValueForProperty("DeleteAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("SourceDataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType = (string) content.GetValueForProperty("SourceDataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType, global::System.Convert.ToString);
+            if (content.Contains("DeleteAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDeleteOption) content.GetValueForProperty("DeleteAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DeleteOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SourceDataStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("SourceDataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetDataStoreCopySetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting[]) content.GetValueForProperty("TargetDataStoreCopySetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TargetCopySettingTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeleteAfterDuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration = (string) content.GetValueForProperty("DeleteAfterDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeleteAfterObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType = (string) content.GetValueForProperty("DeleteAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceDataStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("SourceDataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
+            }
+            if (content.Contains("SourceDataStoreObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType = (string) content.GetValueForProperty("SourceDataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,13 +144,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDeleteOption) content.GetValueForProperty("DeleteAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DeleteOptionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("SourceDataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting[]) content.GetValueForProperty("TargetDataStoreCopySetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TargetCopySettingTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration = (string) content.GetValueForProperty("DeleteAfterDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType = (string) content.GetValueForProperty("DeleteAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("SourceDataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType = (string) content.GetValueForProperty("SourceDataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType, global::System.Convert.ToString);
+            if (content.Contains("DeleteAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDeleteOption) content.GetValueForProperty("DeleteAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DeleteOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SourceDataStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("SourceDataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetDataStoreCopySetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting[]) content.GetValueForProperty("TargetDataStoreCopySetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).TargetDataStoreCopySetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TargetCopySettingTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeleteAfterDuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration = (string) content.GetValueForProperty("DeleteAfterDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterDuration, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeleteAfterObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType = (string) content.GetValueForProperty("DeleteAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).DeleteAfterObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceDataStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("SourceDataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
+            }
+            if (content.Contains("SourceDataStoreObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType = (string) content.GetValueForProperty("SourceDataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISourceLifeCycleInternal)this).SourceDataStoreObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

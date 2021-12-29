@@ -99,19 +99,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationExtendedInfo) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.OperationExtendedInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationExtendedInfo) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.OperationExtendedInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,19 +168,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationExtendedInfo) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.OperationExtendedInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationExtendedInfo) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.OperationExtendedInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Status, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationResourceInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorAdditionalInfo) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorAdditionalInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("EmbeddedInnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorAdditionalInfo) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorAdditionalInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("EmbeddedInnerError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("EmbeddedInnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorAdditionalInfo) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorAdditionalInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("EmbeddedInnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorAdditionalInfo) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).AdditionalInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorAdditionalInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("EmbeddedInnerError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("EmbeddedInnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerErrorInternal)this).EmbeddedInnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

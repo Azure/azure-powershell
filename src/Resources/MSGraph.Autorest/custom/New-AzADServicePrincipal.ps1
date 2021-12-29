@@ -719,17 +719,25 @@ function New-AzADServicePrincipal {
     if ($PSBoundParameters['ApplicationObject']) {
       $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
     } elseif (!$PSBoundParameters['ApplicationId']) {
-      if (!$PSBoundParameters['StartDate']) {
-        $PSBoundParameters['StartDate'] = [System.DateTime]::UtcNow
-      }
-
-      if (!$PSBoundParameters['EndDate']) {
-        $PSBoundParameters['EndDate'] = $PSBoundParameters['StartDate'].AddYears(1)
-      }
-
       if (!$PSBoundParameters['DisplayName']) {
         $PSBoundParameters['DisplayName'] = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
       }
+
+      if ($PSBoundParameters['PasswordCredential']) {
+        $PSBoundParameters['PasswordCredentials'] = $PSBoundParameters['PasswordCredential']
+        $null = $PSBoundParameters.Remove('PasswordCredential')
+      } elseif ($PSBoundParameters['KeyCredential']) {
+        $PSBoundParameters['KeyCredentials'] = $PSBoundParameters['KeyCredential']
+        $null = $PSBoundParameters.Remove('KeyCredential')
+      } else {
+        if (!$PSBoundParameters['StartDate']) {
+          $PSBoundParameters['StartDate'] = [System.DateTime]::UtcNow
+        }
+        if (!$PSBoundParameters['EndDate']) {
+          $PSBoundParameters['EndDate'] = $PSBoundParameters['StartDate'].AddYears(1)
+        }
+      }
+
       $app = New-AzADApplication @PSBoundParameters
       $PSBoundParameters['ApplicationId'] = $app.AppId
     }
@@ -738,7 +746,12 @@ function New-AzADServicePrincipal {
     if ($PSBoundParameters['Debug']) {
       $param['Debug'] = $PSBoundParameters['Debug']
     }
-    Write-Output ($sp = MSGraph.internal\New-AzADServicePrincipal @param)
+    $sp = Az.MSGraph.internal\New-AzADServicePrincipal @param
+    if ($app) {
+      $sp.PasswordCredentials = $app.PasswordCredentials
+    }
+
+    $PSCmdlet.WriteObject($sp)
 
     if ($spRole) {
       $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole}

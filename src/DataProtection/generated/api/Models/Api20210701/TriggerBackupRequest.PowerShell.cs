@@ -106,10 +106,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdHocBackupRuleOptions) content.GetValueForProperty("BackupRuleOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdHocBackupRuleOptionsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOption) content.GetValueForProperty("BackupRuleOptionTriggerOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBackupTriggerOptionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName = (string) content.GetValueForProperty("BackupRuleOptionRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride = (string) content.GetValueForProperty("TriggerOptionRetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride, global::System.Convert.ToString);
+            if (content.Contains("BackupRuleOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdHocBackupRuleOptions) content.GetValueForProperty("BackupRuleOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdHocBackupRuleOptionsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BackupRuleOptionTriggerOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOption) content.GetValueForProperty("BackupRuleOptionTriggerOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBackupTriggerOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BackupRuleOptionRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName = (string) content.GetValueForProperty("BackupRuleOptionRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerOptionRetentionTagOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride = (string) content.GetValueForProperty("TriggerOptionRetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,10 +139,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdHocBackupRuleOptions) content.GetValueForProperty("BackupRuleOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdHocBackupRuleOptionsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOption) content.GetValueForProperty("BackupRuleOptionTriggerOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBackupTriggerOptionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName = (string) content.GetValueForProperty("BackupRuleOptionRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride = (string) content.GetValueForProperty("TriggerOptionRetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride, global::System.Convert.ToString);
+            if (content.Contains("BackupRuleOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdHocBackupRuleOptions) content.GetValueForProperty("BackupRuleOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdHocBackupRuleOptionsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BackupRuleOptionTriggerOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOption) content.GetValueForProperty("BackupRuleOptionTriggerOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionTriggerOption, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AdhocBackupTriggerOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BackupRuleOptionRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName = (string) content.GetValueForProperty("BackupRuleOptionRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).BackupRuleOptionRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerOptionRetentionTagOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride = (string) content.GetValueForProperty("TriggerOptionRetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerBackupRequestInternal)this).TriggerOptionRetentionTagOverride, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

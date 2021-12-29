@@ -159,7 +159,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            List = 'Az.Resources.MSGraph.private\Get-AzADGroupMember_List';
+            List = 'Az.MSGraph.private\Get-AzADGroupMember_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

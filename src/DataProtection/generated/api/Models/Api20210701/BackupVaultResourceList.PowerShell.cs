@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupVaultResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupVaultResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupVaultResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupVaultResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
