@@ -47,6 +47,10 @@ directive:
     transform: $["description"] = "Retrieve the Database Migration Service."
 
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMonitoringData"].post
+    transform: $["description"] = "Retrieve the registered nodes and node monitoring data for a given Database Migration Service"
+
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
     transform: $["description"] = "Retrieve the specified database migration for a given SQL Managed Instance."
 

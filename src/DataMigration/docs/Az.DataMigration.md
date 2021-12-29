@@ -24,7 +24,7 @@ Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 Retrieve the List of database migrations attached to the service.
 
 ### [Get-AzDataMigrationSqlServiceMonitoringData](Get-AzDataMigrationSqlServiceMonitoringData.md)
-Retrieve the Monitoring Data.
+Retrieve the registered nodes and node monitoring data for a given Database Migration Service
 
 ### [Get-AzDataMigrationToSqlManagedInstance](Get-AzDataMigrationToSqlManagedInstance.md)
 Retrieve the specified database migration for a given SQL Managed Instance.

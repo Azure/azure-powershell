@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationSqlServiceMonitoringData
 
 ## SYNOPSIS
-Retrieve the Monitoring Data.
+Retrieve the registered nodes and node monitoring data for a given Database Migration Service
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName <String> -SqlMigr
 ```
 
 ## DESCRIPTION
-Retrieve the Monitoring Data.
+Retrieve the registered nodes and node monitoring data for a given Database Migration Service
 
 ## EXAMPLES
 
-### Example 1: Get the Monitoring Data for a given Sql Migration Service
+### Example 1: Get the registered nodes and node monitoring data for a given Sql Migration Service
 ```powershell
 PS C:\> Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select *
 
@@ -32,7 +32,7 @@ Name       Node
 default-ir {WIN-AKLAB}
 ```
 
-This command gets the Monitoring Data for a given Sql Migration Service.
+This command gets the registered nodes and node monitoring data for a given Sql Migration Service.
 
 ### Example 2: Print the monitoring data for each node
 ```powershell
@@ -44,7 +44,7 @@ AvailableMemoryInMb ConcurrentJobsLimit ConcurrentJobsRunning CpuUtilization Max
 200138              20                  0                     8                               WIN-AKLAB    9.33309006690979 5.433871746063232
 ```
 
-First command gets the Monitoring Data of a Sql Migration Service.
+First command gets the node monitoring data of a Sql Migration Service.
 Second command is then used to print the monitoring data for each node.
 
 ## PARAMETERS
