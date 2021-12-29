@@ -100,6 +100,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return Path.Join(profileDirectoryPath, AzPredictorConstants.SettingsFileName);
         }
 
+        private void OverrideSettingsFromProfile()
+        {
+            try
+            {
+                var profileSettings = Settings.GetProfileSettings();
+
+                if (profileSettings != null)
+                {
+                    OverrideSettingsFrom(profileSettings);
+                }
+            }
+            catch (Exception)
+            {
+                // Ignore all exceptions so we still can use the default settings.
+            }
+        }
+
         private void OverrideSettingsFromEnv()
         {
             try

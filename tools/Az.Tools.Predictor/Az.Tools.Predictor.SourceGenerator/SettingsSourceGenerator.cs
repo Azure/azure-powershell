@@ -131,14 +131,8 @@ namespace {settingClass.ContainingNamespace}
         // Generate the method to override the properties values from user's profile settings.
 
         _ = generatedSource.Append($@"
-            private void OverrideSettingsFromProfile()
+            private void OverrideSettingsFrom(Settings otherSettings)
             {{
-                try
-                {{
-                    var profileSettings = Settings.GetProfileSettings();
-
-                    if (profileSettings != null)
-                    {{
 ");
 
         foreach (var p in settingProperties)
@@ -147,39 +141,33 @@ namespace {settingClass.ContainingNamespace}
                 string.Equals(p.Type, SettingsSourceGenerator._DoubleType, StringComparison.Ordinal))
             {
                 _ = generatedSource.Append($@"
-                        if (profileSettings.{p.Name}.HasValue && profileSettings.{p.Name}.Value > 0)
-                        {{
-                            this.{p.Name} = profileSettings.{p.Name}.Value;
-                        }}
+                if (otherSettings.{p.Name}.HasValue && otherSettings.{p.Name}.Value > 0)
+                {{
+                    {p.Name} = otherSettings.{p.Name}.Value;
+                }}
 ");
             }
             else if (string.Equals(p.Type, SettingsSourceGenerator._StringType, StringComparison.Ordinal))
             {
                 _ = generatedSource.Append($@"
-                        if (!string.IsNullOrWhiteSpace(profileSettings.{p.Name}))
-                        {{
-                            this.{p.Name} = profileSettings.{p.Name};
-                        }}
+                if (!string.IsNullOrWhiteSpace(otherSettings.{p.Name}))
+                {{
+                    {p.Name} = otherSettings.{p.Name};
+                }}
 ");
             }
             else
             {
                 _ = generatedSource.Append($@"
-                        if (profileSettings.{p.Name} != null)
-                        {{
-                            this.{p.Name} = profileSettings.{p.Name}.Value;
-                        }}
+                if (otherSettings.{p.Name} != null)
+                {{
+                    {p.Name} = otherSettings.{p.Name}.Value;
+                }}
 ");
             }
         }
 
         _ = generatedSource.Append(@"
-                    }
-                    catch (Exception e)
-                    {
-                        // Ignore all exceptions so we still can use the default settings.
-                    }
-                }
             }
 ");
 
@@ -187,7 +175,7 @@ namespace {settingClass.ContainingNamespace}
     }
 }");
 
-        context.AddSource("Settings.g.cs", generatedSource.ToString());
+        context.AddSource("Settings.generated.cs", generatedSource.ToString());
     }
 
     /// <inheritdoc />
