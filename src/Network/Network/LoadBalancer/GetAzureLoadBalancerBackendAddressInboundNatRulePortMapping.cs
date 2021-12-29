@@ -102,9 +102,16 @@ namespace Microsoft.Azure.Commands.Network
 
             // Request
             MNM.QueryInboundNatRulePortMappingRequest parameters = new MNM.QueryInboundNatRulePortMappingRequest();
-            SubResource nic = new SubResource(this.NetworkInterfaceIpConfigurationId);
-            parameters.IpAddress = this.IpAddress;
-            parameters.IpConfiguration = nic;
+            if (!string.IsNullOrEmpty(this.IpAddress))
+            {
+                parameters.IpAddress = this.IpAddress;
+            }
+
+            if (!string.IsNullOrEmpty(this.NetworkInterfaceIpConfigurationId))
+            {
+                SubResource nic = new SubResource(this.NetworkInterfaceIpConfigurationId);
+                parameters.IpConfiguration = nic;
+            }
 
             // Response
             var response = this.NetworkClient.NetworkManagementClient.LoadBalancers.ListInboundNatRulePortMappings(this.ResourceGroupName, this.LoadBalancerName, this.Name, parameters);

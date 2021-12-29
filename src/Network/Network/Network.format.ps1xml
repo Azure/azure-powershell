@@ -2724,36 +2724,6 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSInboundNatRulePortMapping</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSInboundNatRulePortMapping</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>InboundNatRuleName</Label>
-                <PropertyName>InboundNatRuleName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Protocol</Label>
-                <PropertyName>Protocol</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>FrontendPort</Label>
-                <PropertyName>FrontendPort</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>BackendPort</Label>
-                <PropertyName>BackendPort</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</TypeName>
@@ -2787,8 +2757,8 @@
                 <PropertyName>LoadBalancerFrontendIPConfigurationIdText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>InboundNatRulePortMappings</Label>
-                <PropertyName>InboundNatRulePortMappingsText</PropertyName>
+                <Label>InboundNatRulesPortMapping</Label>
+                <PropertyName>InboundNatRulesPortMappingText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2843,6 +2813,62 @@
               <ListItem>
                 <Label>LoadBalancingRules</Label>
                 <PropertyName>LoadBalancingRulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSInboundNatRulePortMapping</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSInboundNatRulePortMapping</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>InboundNatRuleName</Label>
+                <PropertyName>InboundNatRuleName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocol</Label>
+                <PropertyName>Protocol</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FrontendPort</Label>
+                <PropertyName>FrontendPort</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>BackendPort</Label>
+                <PropertyName>BackendPort</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSNatRulePortMapping</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNatRulePortMapping</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>InboundNatRuleName</Label>
+                <PropertyName>InboundNatRuleName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FrontendPort</Label>
+                <PropertyName>FrontendPort</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>BackendPort</Label>
+                <PropertyName>BackendPort</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

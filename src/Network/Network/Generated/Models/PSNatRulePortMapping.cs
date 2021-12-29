@@ -30,13 +30,11 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSInboundNatRulePortMapping
+    public partial class PSNatRulePortMapping
     {
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string InboundNatRuleName { get; set; }
-        [JsonProperty(Order = 1)]
-        public string Protocol { get; set; }
         [JsonProperty(Order = 1)]
         public int? FrontendPort { get; set; }
         [JsonProperty(Order = 1)]
