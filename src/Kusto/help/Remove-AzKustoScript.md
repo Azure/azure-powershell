@@ -26,7 +26,7 @@ Remove-AzKustoScript -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] 
 ```
 
 ## DESCRIPTION
-Deletes a Kusto script.
+Deletes a Kusto principalAssignment.
 
 ## EXAMPLES
 
