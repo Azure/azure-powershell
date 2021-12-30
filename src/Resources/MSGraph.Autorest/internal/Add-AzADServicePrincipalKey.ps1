@@ -178,8 +178,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalKey_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

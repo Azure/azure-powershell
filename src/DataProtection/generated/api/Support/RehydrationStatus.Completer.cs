@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CREATE_IN_PROGRESS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CREATE_IN_PROGRESS", "CREATE_IN_PROGRESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "CREATE_IN_PROGRESS");
+                yield return new global::System.Management.Automation.CompletionResult("'CREATE_IN_PROGRESS'", "CREATE_IN_PROGRESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "CREATE_IN_PROGRESS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "COMPLETED".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("COMPLETED", "COMPLETED", global::System.Management.Automation.CompletionResultType.ParameterValue, "COMPLETED");
+                yield return new global::System.Management.Automation.CompletionResult("'COMPLETED'", "COMPLETED", global::System.Management.Automation.CompletionResultType.ParameterValue, "COMPLETED");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DELETE_IN_PROGRESS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DELETE_IN_PROGRESS", "DELETE_IN_PROGRESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "DELETE_IN_PROGRESS");
+                yield return new global::System.Management.Automation.CompletionResult("'DELETE_IN_PROGRESS'", "DELETE_IN_PROGRESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "DELETE_IN_PROGRESS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DELETED".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DELETED", "DELETED", global::System.Management.Automation.CompletionResultType.ParameterValue, "DELETED");
+                yield return new global::System.Management.Automation.CompletionResult("'DELETED'", "DELETED", global::System.Management.Automation.CompletionResultType.ParameterValue, "DELETED");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FAILED".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FAILED", "FAILED", global::System.Management.Automation.CompletionResultType.ParameterValue, "FAILED");
+                yield return new global::System.Management.Automation.CompletionResult("'FAILED'", "FAILED", global::System.Management.Automation.CompletionResultType.ParameterValue, "FAILED");
             }
         }
     }

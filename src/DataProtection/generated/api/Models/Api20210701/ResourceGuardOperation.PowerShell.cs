@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation = (string) content.GetValueForProperty("VaultCriticalOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType = (string) content.GetValueForProperty("RequestResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType, global::System.Convert.ToString);
+            if (content.Contains("VaultCriticalOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation = (string) content.GetValueForProperty("VaultCriticalOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType = (string) content.GetValueForProperty("RequestResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation = (string) content.GetValueForProperty("VaultCriticalOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType = (string) content.GetValueForProperty("RequestResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType, global::System.Convert.ToString);
+            if (content.Contains("VaultCriticalOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation = (string) content.GetValueForProperty("VaultCriticalOperation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).VaultCriticalOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType = (string) content.GetValueForProperty("RequestResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperationInternal)this).RequestResourceType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

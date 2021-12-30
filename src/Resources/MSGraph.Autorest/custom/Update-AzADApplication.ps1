@@ -546,6 +546,6 @@ function Update-AzADApplication {
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
     
-    MSGraph.internal\Update-AzADApplication @PSBoundParameters
+    Az.MSGraph.internal\Update-AzADApplication @PSBoundParameters
   }
 }

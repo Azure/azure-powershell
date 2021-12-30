@@ -106,12 +106,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId = (string) content.GetValueForProperty("ApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId = (string) content.GetValueForProperty("ServicePrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId = (string) content.GetValueForProperty("MemberId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId = (string) content.GetValueForProperty("UserId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("ApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId = (string) content.GetValueForProperty("ApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId = (string) content.GetValueForProperty("ServicePrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MemberId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId = (string) content.GetValueForProperty("MemberId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId = (string) content.GetValueForProperty("UserId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,12 +147,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId = (string) content.GetValueForProperty("ApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId = (string) content.GetValueForProperty("ServicePrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId = (string) content.GetValueForProperty("MemberId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId = (string) content.GetValueForProperty("UserId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("ApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId = (string) content.GetValueForProperty("ApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId = (string) content.GetValueForProperty("ServicePrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MemberId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId = (string) content.GetValueForProperty("MemberId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId = (string) content.GetValueForProperty("UserId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).UserId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

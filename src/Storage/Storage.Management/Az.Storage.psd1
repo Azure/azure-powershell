@@ -56,19 +56,20 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll',
-               'Microsoft.Azure.Storage.Common.dll',
-               'Microsoft.Azure.Storage.Blob.dll',
-               'Microsoft.Azure.Storage.File.dll',
-               'Microsoft.Azure.Storage.Queue.dll',
-               'Microsoft.Azure.Cosmos.Table.dll',
-               'Microsoft.Azure.DocumentDB.Core.dll',
-               'Microsoft.Azure.Storage.DataMovement.dll',
-               'Microsoft.Azure.DocumentDB.Core.dll', 'Microsoft.OData.Core.dll',
-               'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll',
-               'Microsoft.Azure.KeyVault.Core.dll', 'Azure.Storage.Blobs.dll',
-               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll',
-               'Azure.Storage.Queues.dll', 'Azure.Storage.Files.Shares.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
+               'Microsoft.Azure.Storage.Common.dll', 
+               'Microsoft.Azure.Storage.Blob.dll', 
+               'Microsoft.Azure.Storage.File.dll', 
+               'Microsoft.Azure.Storage.Queue.dll', 
+               'Microsoft.Azure.Cosmos.Table.dll', 
+               'Microsoft.Azure.DocumentDB.Core.dll', 
+               'Microsoft.Azure.Storage.DataMovement.dll', 
+               'Microsoft.Azure.DocumentDB.Core.dll', 'Microsoft.OData.Core.dll', 
+               'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll', 
+               'Microsoft.Azure.KeyVault.Core.dll', 'Azure.Storage.Blobs.dll', 
+               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll', 
+               'Azure.Storage.Queues.dll', 'Azure.Storage.Files.Shares.dll',
+               'Azure.Data.Tables.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

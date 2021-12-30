@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Azure.Data.Tables.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
@@ -72,6 +73,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 
         //
         // Summary:
+        //     Initializes a new instance of the PSSeriviceProperties class from track 2 service properties.
+        public PSSeriviceProperties(TableServiceProperties properties)
+        {
+            if (properties != null)
+            {
+                this.Logging = PSSeriviceProperties.ConvertLoggingProperties(properties.Logging);
+                this.HourMetrics = PSSeriviceProperties.ConvertMetricsProperties(properties.HourMetrics);
+                this.MinuteMetrics = PSSeriviceProperties.ConvertMetricsProperties(properties.MinuteMetrics);
+                this.DefaultServiceVersion = string.Empty;
+                this.Cors = PSCorsRule.ParseCorsRules(properties.Cors);
+            }
+        }
+
+        //
+        // Summary:
         //     Gets or sets the logging properties.
         [Ps1Xml(Label = "Logging.Version", Target = ViewControl.List, ScriptBlock = "$_.Logging.Version", Position = 0)]
         [Ps1Xml(Label = "Logging.LoggingOperations", Target = ViewControl.List, ScriptBlock = "$_.Logging.LoggingOperations", Position = 1)]
@@ -114,6 +130,72 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         [Ps1Xml(Label = "StaticWebsite.IndexDocument", Target = ViewControl.List, ScriptBlock = "$_.StaticWebsite.IndexDocument", Position = 12)]
         [Ps1Xml(Label = "StaticWebsite.ErrorDocument404Path", Target = ViewControl.List, ScriptBlock = "$_.StaticWebsite.ErrorDocument404Path", Position = 13)]
         public PSStaticWebsiteProperties StaticWebsite { get; set; }
+
+        public static MetricsProperties ConvertMetricsProperties(TableMetrics tableMetrics)
+        {
+            MetricsLevel metricsLevel = MetricsLevel.None;
+            if (tableMetrics.Enabled)
+            {
+                if (tableMetrics.IncludeApis.HasValue && tableMetrics.IncludeApis.Value)
+                {
+                    metricsLevel = MetricsLevel.ServiceAndApi;
+                }
+                else
+                {
+                    metricsLevel = MetricsLevel.Service;
+                }
+            }
+
+            return new MetricsProperties()
+            {
+                Version = tableMetrics.Version,
+                RetentionDays = tableMetrics.RetentionPolicy?.Days,
+                MetricsLevel = metricsLevel,
+            };
+        }
+
+        public static LoggingProperties ConvertLoggingProperties(TableAnalyticsLoggingSettings loggingSettings)
+        {
+            LoggingOperations loggingOperations = LoggingOperations.None;
+
+            if (loggingSettings.Delete)
+            {
+                loggingOperations |= LoggingOperations.Delete;
+            }
+
+            if (loggingSettings.Read)
+            {
+                loggingOperations |= LoggingOperations.Read;
+            }
+
+            if (loggingSettings.Write)
+            {
+                loggingOperations |= LoggingOperations.Write;
+            }
+
+            return new LoggingProperties()
+            {
+                Version = loggingSettings.Version,
+                RetentionDays = loggingSettings.RetentionPolicy?.Days,
+                LoggingOperations = loggingOperations,
+            };
+        }
+
+        private MetricsLevel ParseMetricsLevel(TableMetrics tableMetrics)
+        {
+            if (!tableMetrics.Enabled)
+            {
+                return MetricsLevel.None;
+            }
+            else if (tableMetrics.IncludeApis.HasValue && tableMetrics.IncludeApis.Value)
+            {
+                return MetricsLevel.ServiceAndApi;
+            }
+            else
+            {
+                return MetricsLevel.Service;
+            }
+        }
     }
 
     // Wrapper of DeleteRetentionPolicy
