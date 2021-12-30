@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
                     token.LoginType, token.TenantId, token.UserId);
-                return new RenewingTokenCredential(token);
+                return RenewingTokenCredential(token);
             }
             catch (Exception ex)
             {
