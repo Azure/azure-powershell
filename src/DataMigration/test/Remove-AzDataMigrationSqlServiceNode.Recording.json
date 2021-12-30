@@ -7,8 +7,8 @@
       "Headers": {
         "x-ms-unique-id": [ "57" ],
         "x-ms-client-request-id": [ "d571f833-c269-4584-8101-880f1d81072e" ],
-        "CommandName": [ "Get-AzDataMigrationSqlServiceMonitoringData" ],
-        "FullCommandName": [ "Get-AzDataMigrationSqlServiceMonitoringData_List" ],
+        "CommandName": [ "Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]

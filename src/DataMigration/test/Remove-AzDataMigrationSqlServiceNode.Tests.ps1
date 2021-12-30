@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzDataMigrationSqlServiceNode' {
     It 'DeleteExpanded' {
-        $temp =  Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
+        $temp =  Get-AzDataMigrationSqlService -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
         $nodeList = $temp.Node
         $cnt1 = $nodeList.Count
         if($cnt1 -eq 0)
@@ -23,7 +23,7 @@ Describe 'Remove-AzDataMigrationSqlServiceNode' {
         }
         else{
             $instance =  Remove-AzDataMigrationSqlServiceNode -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName -NodeName $nodeList[0].NodeName
-            $temp =  Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
+            $temp =  Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
             $nodeList = $temp.Node
             $cnt2 = $nodeList.Count
             $assert = ($cnt1-$cnt2 -eq 1)
