@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated help message and help markdown for parameter `Tenant` of the cmdlet `Set-AzContext` [#16515]
 * Fixed the issue that Azure PowerShell could not work in a workflow. [#16408]
 * Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
 
