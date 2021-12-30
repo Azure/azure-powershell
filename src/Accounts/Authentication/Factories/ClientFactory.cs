@@ -89,7 +89,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             // Add user agents
             option.AddPolicy(new AzPsHttpPipelineSynchronousPolicy(_userAgents.Keys.ToArray()), HttpPipelinePosition.PerCall);
 
-
             var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
             return new ArmClient(creds, option);
         }

@@ -12,16 +12,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
     internal class Track2KeyVaultManagementClient
     {
-        private Track2TokenCredential _credential;
-
         private ArmClient _armClient;
         private string _subscription;
+        private IClientFactory _clientFactory;
 
-        public Track2KeyVaultManagementClient(IAuthenticationFactory authFactory, IAzureContext context)
+        public Track2KeyVaultManagementClient(IClientFactory clientFactory, IAzureContext context)
         {
-            var accesstoken = authFactory.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, ShowDialog.Never, null);
-            _credential = new Track2TokenCredential(accesstoken.AccessToken);
-            _armClient = new ArmClient(_credential);
+            _clientFactory = clientFactory;
+            _armClient = _clientFactory.CreateArmClient(context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
             _subscription = context.Subscription.Id;
         }
 
@@ -29,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             _armClient.GetResourceGroup(
                 Track2VaultManagementClient.ConstructResourceIdentifier(_subscription, resourcegroup));
 
-        public IEnumerable<Vault> ListVaults(string resourcegroup) => 
+        public IEnumerable<Vault> ListVaults(string resourcegroup) =>
             GetResourceGroup(resourcegroup).GetVaults().GetAll();
 
         public Vault GetVault(string resourcegroup, string vaultName) =>

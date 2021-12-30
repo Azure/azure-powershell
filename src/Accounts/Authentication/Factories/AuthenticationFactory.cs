@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new AzureTokenCredential(context.Account, targetEndpoint, GetEndpointToken);
+                    return new AzureTokenCredential(GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint));
             }
 
 
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
                     token.LoginType, token.TenantId, token.UserId);
-                return new RenewingTokenCredential(token);
+                return new AzureTokenCredential(token.AccessToken);
             }
             catch (Exception ex)
             {
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public TokenCredential GetTokenCredential(string accessToken, Func<string> renew = null)
         {
-            return null;
+            return new AzureTokenCredential(accessToken, renew);
         }
 
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)

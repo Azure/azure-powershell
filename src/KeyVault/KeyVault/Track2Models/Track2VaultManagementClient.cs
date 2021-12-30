@@ -18,17 +18,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
     public class Track2VaultManagementClient
     {
 
-        private IAuthenticationFactory _authFactory;
+        private IClientFactory _clientFactory;
         private IAzureContext _context;
 
         private Track2KeyVaultManagementClient Track2KeyVaultManagementClient => 
-            _track2KeyVaultManagementClient ?? (_track2KeyVaultManagementClient = new Track2KeyVaultManagementClient(_authFactory, _context));
+            _track2KeyVaultManagementClient ?? (_track2KeyVaultManagementClient = new Track2KeyVaultManagementClient(_clientFactory, _context));
         private Track2KeyVaultManagementClient _track2KeyVaultManagementClient;
 
-        public Track2VaultManagementClient(IAuthenticationFactory authFactory, IAzureContext context)
+        public Track2VaultManagementClient(IClientFactory clientFactory , IAzureContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            _authFactory = authFactory ?? throw new ArgumentNullException(nameof(authFactory));
+            _clientFactory = clientFactory ?? throw new ArgumentNullException(nameof(clientFactory));
 
             if (context.Environment == null)
             {

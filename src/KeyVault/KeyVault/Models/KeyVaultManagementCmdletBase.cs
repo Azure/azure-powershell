@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             get
             {
-                return _track2VaultManagementClient ?? (_track2VaultManagementClient = new Track2VaultManagementClient(AzureSession.Instance.AuthenticationFactory, DefaultContext));
+                return _track2VaultManagementClient ?? (_track2VaultManagementClient = new Track2VaultManagementClient(AzureSession.Instance.ClientFactory, DefaultContext));
             }
 
             set { _track2VaultManagementClient = value; }

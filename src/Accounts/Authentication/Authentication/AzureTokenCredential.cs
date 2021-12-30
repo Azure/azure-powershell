@@ -13,34 +13,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication
 {
     public class AzureTokenCredential : TokenCredential
     {
-        public string TenantId { get; private set; }
 
-        public delegate string TokenAccessor(IAzureAccount account, string targetEndpoint);
+        private readonly Func<string> _getTokenImpl;
 
-        TokenAccessor _tokenAccessor;
-        IAzureAccount _account;
-        string _targetEndpoint;
-        IAccessToken _accessToken;
-        public AzureTokenCredential(IAccessToken accessToken)
+        internal string AccessToken;
+      
+        public AzureTokenCredential(string accessToken, Func<string>  GetTokenImpl = null)
         {
-            _accessToken = accessToken;            
-        }
-
-        public AzureTokenCredential(IAzureAccount account, string targetEndpoint, TokenAccessor getToken)
-        {
-            _tokenAccessor = getToken;
-            _account = account;
-            _targetEndpoint = targetEndpoint;
+            AccessToken = accessToken;
+            _getTokenImpl = GetTokenImpl;
         }
         
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            /*_accessToken.AuthorizeRequest((tokenType, tokenValue) =>
-            {
-                requestContext.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
-            });*/
-
-            return new AccessToken(_tokenAccessor(_account, _targetEndpoint), DateTimeOffset.UtcNow);
+            return new AccessToken( (_getTokenImpl == null) ? AccessToken : _getTokenImpl(), DateTimeOffset.UtcNow);
         }
 
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
