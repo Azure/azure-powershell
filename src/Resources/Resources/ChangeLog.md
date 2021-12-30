@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.2.0
 * Fixed incorrect alias for `Get-AzADSpCredential` [#16592]
 * Fixed `ServicePrincipalName` and `InputObject` parameters for `Update-AzADServicePrincipal` [#16620]
 * Fixed example for `New-AzADAppCredential` [#16682]
