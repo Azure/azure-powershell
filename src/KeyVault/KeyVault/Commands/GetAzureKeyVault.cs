@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     else
                     {
                         // WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
-                        WriteObject(this.Track2VaultManagementClient.ListVaults(DefaultContext.Subscription.Id, ResourceGroupName));
+                        WriteObject(this.Track2VaultManagementClient.ListVaults(ResourceGroupName));
                     }
 
                     break;

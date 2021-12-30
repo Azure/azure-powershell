@@ -127,29 +127,5 @@ namespace Microsoft.Azure.Commands.KeyVault
             new Track1ManagementSdk.Models.Vault(
                 track2Vault.Data.Properties?.ToTrack1VaultProperties(),
                 track2Vault.Data.Id, track2Vault.Data.Name, track2Vault.Data.Type, track2Vault.Data.Location, track2Vault.Data.Tags.ToDictionary(pair => pair.Key, pair => pair.Value));
-
-
-        public const string ResourceGroupType = "resourceGroups";
-        public const string VaultsResourceType = "Microsoft.KeyVault/vaults";
-        public const string ManagedHsmResourceType = "Microsoft.KeyVault/managedHSMs";
-
-        public static ResourceIdentifier ConstructResourceIdentifier(string subscription, string resourceGroupName, string resourceType = ResourceGroupType, string resourceName = null)
-        {
-            string id = null;
-            switch (resourceType)
-            {
-                case ResourceGroupType:
-                    id = string.Format("/subscriptions/{0}/resourceGroups/{1}", subscription, resourceGroupName);
-                    break;
-                case VaultsResourceType:
-                case ManagedHsmResourceType:
-                    id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/{2}/vaults/{3}",
-                        subscription, resourceGroupName, resourceType, resourceName);
-                    break;
-                default:
-                    throw new NotImplementedException("");
-            }
-            return new ResourceIdentifier(id);
-        }
     }
 }

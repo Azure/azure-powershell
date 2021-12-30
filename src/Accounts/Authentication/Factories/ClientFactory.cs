@@ -12,12 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Azure.Core.Pipeline;
+using Azure.ResourceManager;
+
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Policy;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System;
@@ -70,6 +75,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return client;
+        }
+
+        public virtual ArmClient CreateArmClient(IAzureContext context, string endpoint, ArmClientOptions option = null)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+            }
+
+            option = option ?? new ArmClientOptions();
+
+            // Add user agents
+            option.AddPolicy(new AzPsHttpPipelineSynchronousPolicy(_userAgents.Keys.ToArray()), HttpPipelinePosition.PerCall);
+
+
+            var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
+            return new ArmClient(creds, option);
         }
 
         public virtual TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>

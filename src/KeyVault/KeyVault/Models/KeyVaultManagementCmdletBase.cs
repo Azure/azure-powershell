@@ -47,10 +47,9 @@ namespace Microsoft.Azure.Commands.KeyVault
     [SupportsSubscriptionId]
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
-        private VaultManagementClient _keyVaultManagementClient;
-        private Track2VaultManagementClient _track2KeyVaultManagementClient;
-
         private DataServiceCredential _dataServiceCredential;
+
+        private VaultManagementClient _keyVaultManagementClient;
         public VaultManagementClient KeyVaultManagementClient
         {
             get
@@ -61,14 +60,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { _keyVaultManagementClient = value; }
         }
 
+        private Track2VaultManagementClient _track2VaultManagementClient;
         public Track2VaultManagementClient Track2VaultManagementClient
         {
             get
             {
-                return _track2KeyVaultManagementClient ?? (_track2KeyVaultManagementClient = new Track2VaultManagementClient(AzureSession.Instance.AuthenticationFactory, DefaultContext));
+                return _track2VaultManagementClient ?? (_track2VaultManagementClient = new Track2VaultManagementClient(AzureSession.Instance.AuthenticationFactory, DefaultContext));
             }
 
-            set { _track2KeyVaultManagementClient = value; }
+            set { _track2VaultManagementClient = value; }
         }
 
         private IMicrosoftGraphClient _graphClient;

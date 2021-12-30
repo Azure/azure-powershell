@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
@@ -324,6 +326,85 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
+        public TokenCredential GetTokenCredential(IAzureContext context) =>
+            GetTokenCredential(context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+
+        public TokenCredential GetTokenCredential(IAzureContext context, string targetEndpoint)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException("Azure context is empty");
+            }
+            return GetTokenCredential(context, targetEndpoint, context.Environment.GetTokenAudience(targetEndpoint));
+        }
+
+        public TokenCredential GetTokenCredential(IAzureContext context, string targetEndpoint, string resourceId)
+        {
+            if (context.Account == null)
+            {
+                throw new AzPSArgumentException(Resources.ArmAccountNotFound, "context.Account", ErrorKind.UserError);
+            }
+            switch (context.Account.Type)
+            {
+                case AzureAccount.AccountType.Certificate:
+                    throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
+                case AzureAccount.AccountType.AccessToken:
+                    return new AzureTokenCredential(context.Account, targetEndpoint, GetEndpointToken);
+            }
+
+
+            string tenant = null;
+
+            if (context.Subscription != null && context.Account != null)
+            {
+                tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
+                      .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                      .FirstOrDefault();
+            }
+
+            if (tenant == null && context.Tenant != null && new Guid(context.Tenant.Id) != Guid.Empty)
+            {
+                tenant = context.Tenant.Id.ToString();
+            }
+
+            if (tenant == null)
+            {
+                throw new ArgumentException(Resources.NoTenantInContext);
+            }
+
+            try
+            {
+                TracingAdapter.Information(Resources.UPNAuthenticationTrace,
+                    context.Account.Id, context.Environment.Name, tenant);
+
+                IAccessToken token = null;
+                switch (context.Account.Type)
+                {
+                    case AzureAccount.AccountType.ManagedService:
+                    case AzureAccount.AccountType.User:
+                    case AzureAccount.AccountType.ServicePrincipal:
+                    case "ClientAssertion":
+                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, resourceId);
+                        break;
+                    default:
+                        throw new NotSupportedException(context.Account.Type.ToString());
+                }
+
+                TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
+                    token.LoginType, token.TenantId, token.UserId);
+                return new RenewingTokenCredential(token);
+            }
+            catch (Exception ex)
+            {
+                TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
+                throw new AzPSArgumentException(Resources.InvalidArmContext + System.Environment.NewLine + ex.Message, ex);
+            }
+        }
+
+        public TokenCredential GetTokenCredential(string accessToken, Func<string> renew = null)
+        {
+            return null;
+        }
 
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
