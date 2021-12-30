@@ -389,10 +389,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
                 }
-
+                return null;
+                /*
                 TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
                     token.LoginType, token.TenantId, token.UserId);
-                return RenewingTokenCredential(token);
+                return new RenewingTokenCredential(token);*/
             }
             catch (Exception ex)
             {

@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Azure.ResourceManager;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -137,6 +138,11 @@ namespace Microsoft.Azure.Commands.TestFx
         }
 
         public TClient CreateCustomClient<TClient>(params object[] parameters) where TClient : Hyak.Common.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        public ArmClient CreateArmClient(IAzureContext context, string endpoint, ArmClientOptions option = null)
         {
             throw new NotImplementedException();
         }

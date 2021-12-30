@@ -46,20 +46,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
-<<<<<<< HEAD
     <ProjectReference Include="..\Authenticators\Authenticators.csproj" />
-    <ProjectReference Include="C:\Azure\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
-    <ProjectReference Include="C:\Azure\azure-powershell-common\src\Common\Common.csproj" />
-    <ProjectReference Include="C:\Azure\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
-
-=======
-    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
-    <ProjectReference Include="C:\AzurePowershell\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
-    <ProjectReference Include="C:\AzurePowershell\azure-powershell-common\src\Common\Common.csproj" />
-    <ProjectReference Include="C:\AzurePowershell\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
->>>>>>> 85b8812503c25b55a8865603dce8750aa610a6b3
-  </ItemGroup>
-   
+        <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Common\Common.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
+  </ItemGroup>   
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
