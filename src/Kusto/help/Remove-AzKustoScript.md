@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzKustoScript
 
 ## SYNOPSIS
-Deletes a Kusto script.
+Deletes a Kusto principalAssignment.
 
 ## SYNTAX
 
