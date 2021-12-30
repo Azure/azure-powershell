@@ -1,4 +1,4 @@
-### Example 1: Checks that the script name which is not in use
+### Example 1: Check that the script name which is not in use
 ```powershell
 PS C:\> Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name newkustoscript
 
@@ -9,7 +9,7 @@ Message Name           NameAvailable Reason
 
 The above command checks that the script name which is not in use.
 
-### Example 2: Checks that the script name which is not valid
+### Example 2: Check that the script name which is not valid
 ```powershell
 PS C:\> Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name newkustoscript!
 
