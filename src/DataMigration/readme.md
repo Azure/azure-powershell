@@ -48,7 +48,7 @@ directive:
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMonitoringData"].post
-    transform: $["description"] = "Retrieve the registered nodes and node monitoring data for a given Database Migration Service"
+    transform: $["description"] = "Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service"
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
@@ -145,6 +145,11 @@ directive:
     set:
       subject: ToSqlVM
   
+  - where:
+      subject: (MonitoringData$)
+    set:
+      subject: IntegrationRuntimeMetric
+
   - where:
       subject: (^SqlMigrationService)
     set:

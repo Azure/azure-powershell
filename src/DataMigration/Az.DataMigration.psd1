@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataMigration.private.dll'
   FormatsToProcess = './Az.DataMigration.format.ps1xml'
-  FunctionsToExport = 'Get-AzDataMigrationAssessment', 'Get-AzDataMigrationSqlService', 'Get-AzDataMigrationSqlServiceAuthKey', 'Get-AzDataMigrationSqlServiceMigration', 'Get-AzDataMigrationSqlServiceMonitoringData', 'Get-AzDataMigrationToSqlManagedInstance', 'Get-AzDataMigrationToSqlVM', 'Invoke-AzDataMigrationCutoverToSqlManagedInstance', 'Invoke-AzDataMigrationCutoverToSqlVM', 'New-AzDataMigrationSqlService', 'New-AzDataMigrationSqlServiceAuthKey', 'New-AzDataMigrationToSqlManagedInstance', 'New-AzDataMigrationToSqlVM', 'Register-AzDataMigrationIntegrationRuntime', 'Remove-AzDataMigrationSqlService', 'Remove-AzDataMigrationSqlServiceNode', 'Stop-AzDataMigrationToSqlManagedInstance', 'Stop-AzDataMigrationToSqlVM', 'Update-AzDataMigrationSqlService', '*'
+  FunctionsToExport = 'Get-AzDataMigrationAssessment', 'Get-AzDataMigrationSqlService', 'Get-AzDataMigrationSqlServiceAuthKey', 'Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric', 'Get-AzDataMigrationSqlServiceMigration', 'Get-AzDataMigrationToSqlManagedInstance', 'Get-AzDataMigrationToSqlVM', 'Invoke-AzDataMigrationCutoverToSqlManagedInstance', 'Invoke-AzDataMigrationCutoverToSqlVM', 'New-AzDataMigrationSqlService', 'New-AzDataMigrationSqlServiceAuthKey', 'New-AzDataMigrationToSqlManagedInstance', 'New-AzDataMigrationToSqlVM', 'Register-AzDataMigrationIntegrationRuntime', 'Remove-AzDataMigrationSqlService', 'Remove-AzDataMigrationSqlServiceNode', 'Stop-AzDataMigrationToSqlManagedInstance', 'Stop-AzDataMigrationToSqlVM', 'Update-AzDataMigrationSqlService', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

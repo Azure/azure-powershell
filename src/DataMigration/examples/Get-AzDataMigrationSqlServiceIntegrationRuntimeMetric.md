@@ -1,17 +1,17 @@
-### Example 1: Get the registered nodes and node monitoring data for a given Sql Migration Service
+### Example 1: Get the registered Integration Runtime nodes and their monitoring data for a given Sql Migration Service
 ```powershell
-PS C:\> Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select *
+PS C:\> Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select *
 
 Name       Node
 ----       ----
 default-ir {WIN-AKLAB}
 ```
 
-This command gets the registered nodes and node monitoring data for a given Sql Migration Service.
+This command gets the registered Integration Runtime nodes and their monitoring data for a given Sql Migration Service.
 
-### Example 2: Print the monitoring data for each node
+### Example 2: Print the monitoring data for each Integration Runtime node
 ```powershell
-PS C:\> $item = Get-AzDataMigrationSqlServiceMonitoringData -ResourceGroupName "MyResourceGroup" -SqlMigrationService "MySqlMigrationService"
+PS C:\> $item = Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationService "MySqlMigrationService"
 PS C:\> $item.Node[0] 
 
 AvailableMemoryInMb ConcurrentJobsLimit ConcurrentJobsRunning CpuUtilization MaxConcurrentJob NodeName     ReceivedByte     SentByte
@@ -20,4 +20,5 @@ AvailableMemoryInMb ConcurrentJobsLimit ConcurrentJobsRunning CpuUtilization Max
 ```
 
 First command gets the node monitoring data of a Sql Migration Service. Second command is then used to print the monitoring data for each node.
+
 
