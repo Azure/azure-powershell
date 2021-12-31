@@ -25,11 +25,19 @@ New-AzNotificationHubKey cmdlet regenerates the Primary Key/Secondary Key for th
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+New-AzNotificationHubKey -ResourceGroup "ContosoNotificationsGroup" -Namespace "ContosoNamespace" -NotificationHub "ContosoInternalHub" -AuthorizationRule "DefaultListenSharedAccessSignature" -PolicyKey "PrimaryKey"
 ```
 
-{{ Add example description here }}
+```Output
+PrimaryConnectionString   : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenShare
+                            dAccessSignature;SharedAccessKey=VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
+SecondaryConnectionString : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenShare
+                            dAccessSignature;SharedAccessKey=VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
+PrimaryKey                : VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
+SecondaryKey              : VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
+KeyName                   : DefaultListenSharedAccessSignature
+```
 
 ## PARAMETERS
 
