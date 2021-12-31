@@ -389,7 +389,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
-                    userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null
+                    userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
+                    sharedGalleryImageId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null
                     );
             }
 

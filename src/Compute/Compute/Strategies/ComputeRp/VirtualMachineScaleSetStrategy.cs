@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string edgeZone,
             string orchestrationMode,
             string capacityReservationId,
-            string userData
+            string userData,
+            string sharedGalleryImageId
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -102,7 +103,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {
-                            ImageReference = imageAndOsType?.Image,
+                            ImageReference = (sharedGalleryImageId == null) ? imageAndOsType?.Image : new ImageReference
+                            {
+                                SharedGalleryImageId = sharedGalleryImageId
+                            },
                             DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                 imageAndOsType?.DataDiskLuns, dataDisks)
                         },

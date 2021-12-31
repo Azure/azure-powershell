@@ -341,10 +341,6 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = DiskFileParameterSet,
-            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string SharedGalleryImageId { get; set; }
 
@@ -437,11 +433,6 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
-
-                    if (_cmdlet.SharedGalleryImageId != null)
-                    {
-                        ImageAndOsType.Image.SharedGalleryImageId = _cmdlet.SharedGalleryImageId;
-                    }
                 }
 
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -533,7 +524,8 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData
+                        userData: _cmdlet.UserData,
+                        sharedGalleryImageId: _cmdlet.SharedGalleryImageId
                         );
                 }
                 else

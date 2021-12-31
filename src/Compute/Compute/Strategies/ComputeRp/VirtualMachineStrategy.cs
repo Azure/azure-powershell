@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
-            string userData = null)
+            string userData = null,
+            string sharedGalleryImageId = null)
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -97,7 +98,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     StorageProfile = new StorageProfile
                     {
-                        ImageReference = imageAndOsType?.Image,
+                        ImageReference = (sharedGalleryImageId == null) ? imageAndOsType?.Image : new ImageReference
+                        {
+                            SharedGalleryImageId = sharedGalleryImageId
+                        },
                         DataDisks = DataDiskStrategy.CreateDataDisks(
                             imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
                     },
