@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Updated PowerShell to use 2021-10-01 version.
 * Added CommitmentTier and CommitmentPlan cmdlets.
 * Added Deployment cmdlets.

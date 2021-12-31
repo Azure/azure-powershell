@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.1
 * Fixed trigger schedule client for `New-AzDataProtectionPolicyTriggerScheduleClientObject`
 
 ## Version 0.3.0

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.5.1
 * Exposed BackupPolicyMigrationState as a part of Get-AzCosmosDBAccount response.
   - This shew the status of a backup policy migration state when an account was being converted from peroidic backup mode to continuous.
 

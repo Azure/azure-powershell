@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability of Az.Synapse
 * Migrated Azure AD features in Az.Synapse to MSGraph APIs. The cmdlets below called MSGraph API according to input parameters:
     - `New-AzSynapseRoleAssignment` cmdlet
