@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.1
 * Removed preview from the PowerShell 7.0 stack on Linux
 
 ## Version 4.0.0

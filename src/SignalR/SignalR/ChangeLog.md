@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Fixed the bug of "Update-AzSignalR" cmdlet that resets the resource states by mistake.
 
 ## Version 1.4.0
