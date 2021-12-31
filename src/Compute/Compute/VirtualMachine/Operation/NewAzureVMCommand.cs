@@ -337,6 +337,17 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true)]
         public string UserData { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string SharedGalleryImageId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -426,6 +437,11 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
+
+                    if (_cmdlet.SharedGalleryImageId != null)
+                    {
+                        ImageAndOsType.Image.SharedGalleryImageId = _cmdlet.SharedGalleryImageId;
+                    }
                 }
 
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(

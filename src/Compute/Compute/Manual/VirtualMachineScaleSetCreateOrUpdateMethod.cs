@@ -208,6 +208,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string SharedGalleryImageId { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -248,6 +255,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
+                if (_cmdlet.SharedGalleryImageId != null)
+                {
+                    ImageAndOsType.Image.SharedGalleryImageId = _cmdlet.SharedGalleryImageId;
+                }
 
                 // generate a domain name label if it's not specified.
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(

@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
+* Added `-SharedGalleryImageId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
 
 ## Version 4.21.0
 * Contains updates to the following powershell cmdlets
