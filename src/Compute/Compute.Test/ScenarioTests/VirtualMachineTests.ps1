@@ -2902,7 +2902,10 @@ function Test-VirtualMachineReapply
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
+
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Create a Virtual Machine
@@ -3755,7 +3758,10 @@ function Test-VirtualMachineWriteAcceleratorUpdate
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
+
         $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
 
         # Get VM
@@ -4079,7 +4085,10 @@ function Test-VirtualMachineRemoteDesktop
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
+
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
@@ -4457,7 +4466,9 @@ function Test-SetAzVMOperatingSystem
         $p2 = Set-AzVMOperatingSystem -VM $p2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate;
         $p3 = Set-AzVMOperatingSystem -VM $p3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "AutomaticByPlatform";
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
         $p2 = ($imgRef | Set-AzVMSourceImage -VM $p2);
         $p3 = ($imgRef | Set-AzVMSourceImage -VM $p3);
@@ -4539,7 +4550,10 @@ function Test-SetAzVMOperatingSystemError
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -DisableVMAgent -Patchmode "AutomaticByPlatform";
       
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
+
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
        
         # Virtual Machine
@@ -4685,7 +4699,10 @@ function Test-VirtualMachineBootDiagnostics
         # Windows OS test case. 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
+
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
