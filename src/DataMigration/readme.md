@@ -113,11 +113,11 @@ directive:
     remove: true
 
   - where:
-      variant: ^Cutover$|^CutoverViaIdentity$|^CutoverViaIdentityExpanded$ 
+      variant: ^Cutover$|^CutoverViaIdentity$
     remove: true
 
   - where:
-      variant: ^Cancel$|^CancelViaIdentity$|^CancelViaIdentityExpanded$
+      variant: ^Cancel$|^CancelViaIdentity$
     remove: true
 
   - where:
