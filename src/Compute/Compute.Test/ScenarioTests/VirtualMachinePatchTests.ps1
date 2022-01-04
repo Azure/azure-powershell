@@ -54,13 +54,7 @@ function Test-InvokeAzVmPatchAssessment
         $computerName = 'test';
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-
-        #adam  $imgRef = Get-DefaultCRPImage -loc $loc;
-        # might need to change image loc to whatever the current $loc is.
-        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
-        # no success, this VM image does not support patch operations.
-        
-
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Create a Virtual Machine
