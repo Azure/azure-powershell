@@ -1,50 +1,75 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjob
 schema: 2.0.0
 ---
 
-# Start-AzWebAppSlotContinuousWebJob
+# Get-AzWebAppTriggeredWebJob
 
 ## SYNOPSIS
-Start a continuous web job for a deployment slot.
+Get or list triggered web for an app.
 
 ## SYNTAX
 
-### Start (Default)
+### List (Default)
 ```
-Start-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Get-AzWebAppTriggeredWebJob -AppName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzWebAppTriggeredWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWebAppTriggeredWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
-### StartViaIdentity
-```
-Start-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Start a continuous web job for a deployment slot.
+Get or list triggered web for an app.
 
 ## EXAMPLES
 
-### Example 1: Start a continuous web job for a deployment slot
+### Example 1: List triggered webs for an app
 ```powershell
-PS C:\> Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01
+PS C:\> Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01
 
+Name                              Kind WebJobType ResourceGroupName
+----                              ---- ---------- -----------------
+appService-test01/triggeredjob-01                 webjob-rg-test   
+appService-test01/triggeredjob-02                 webjob-rg-test  
 ```
 
-This command starts a continuous web job for an app.
+This command lists triggered webs for an app.
 
-### Example 2: Start a continuous web job for a deployment slot by pipeline
+### Example 2: Get triggered web for an app
 ```powershell
-PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01 | Start-AzWebAppSlotContinuousWebJob
+PS C:\> Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 
+Name                              Kind WebJobType ResourceGroupName
+----                              ---- ---------- -----------------
+appService-test01/triggeredjob-01                 webjob-rg-test
 ```
 
-This command starts a continuous web job for a deployment slot by pipeline.
+This command gets triggered web for an app.
+
+### Example 3: Get triggered web for an app by pipeline
+```powershell
+PS C:\> $webjob = Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
+PS C:\> Start-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 
+PS C:\> $webjob.Id | Get-AzWebAppTriggeredWebJob
+
+Name                              Kind WebJobType ResourceGroupName
+----                              ---- ---------- -----------------
+appService-test01/triggeredjob-01                 webjob-rg-test
+```
+
+This command gets triggered web for an app by pipeline.
 
 ## PARAMETERS
 
@@ -53,7 +78,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -84,7 +109,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -99,7 +124,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -114,7 +139,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -129,23 +154,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SlotName
-Name of the deployment slot.
-If a slot is not specified, the API deletes a deployment for the production slot.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -161,44 +170,13 @@ This is a GUID-formatted string (e.g.
 00000000-0000-0000-0000-000000000000).
 
 ```yaml
-Type: System.String
-Parameter Sets: Start
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredWebJob
 
 ## NOTES
 

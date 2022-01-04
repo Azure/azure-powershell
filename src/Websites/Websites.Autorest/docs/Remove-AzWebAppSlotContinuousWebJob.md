@@ -8,14 +8,14 @@ schema: 2.0.0
 # Remove-AzWebAppSlotContinuousWebJob
 
 ## SYNOPSIS
-Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+Delete a continuous web job for a deployment slot.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzWebAppSlotContinuousWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
- -WebJobName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
+ -SlotName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -26,29 +26,42 @@ Remove-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultPr
 ```
 
 ## DESCRIPTION
-Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+Delete a continuous web job for a deployment slot.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a continuous web job for a deployment slot
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a continuous web job for a deployment slot.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a continuous web job for a deployment slot by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-04 | Remove-AzWebAppSlotContinuousWebJob
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a continuous web job for a deployment slot by pipeline.
 
 ## PARAMETERS
+
+### -AppName
+Site name.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -82,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Site name.
+Name of Web Job.
 
 ```yaml
 Type: System.String
@@ -126,7 +139,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Slot
+### -SlotName
 Name of the deployment slot.
 If a slot is not specified, the API deletes a deployment for the production slot.
 
@@ -155,21 +168,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebJobName
-Name of Web Job.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -230,7 +228,8 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
-  - `[Id <String>]`: Resource identity path
+  - `[Id <String>]`: History ID.
+  - `[Id1 <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.

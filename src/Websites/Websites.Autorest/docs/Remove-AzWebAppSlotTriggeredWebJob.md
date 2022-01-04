@@ -1,50 +1,50 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappslottriggeredwebjob
 schema: 2.0.0
 ---
 
-# Start-AzWebAppSlotContinuousWebJob
+# Remove-AzWebAppSlotTriggeredWebJob
 
 ## SYNOPSIS
-Start a continuous web job for a deployment slot.
+Delete a triggered web job for a deployment slot.
 
 ## SYNTAX
 
-### Start (Default)
+### Delete (Default)
 ```
-Start-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
+Remove-AzWebAppSlotTriggeredWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
  -SlotName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### DeleteViaIdentity
 ```
-Start-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzWebAppSlotTriggeredWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Start a continuous web job for a deployment slot.
+Delete a triggered web job for a deployment slot.
 
 ## EXAMPLES
 
-### Example 1: Start a continuous web job for a deployment slot
+### Example 1: Delete a triggered web job for a deployment slot
 ```powershell
-PS C:\> Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01
+PS C:\> Remove-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 
 ```
 
-This command starts a continuous web job for an app.
+This command deletes a triggered web job for a deployment slot.
 
-### Example 2: Start a continuous web job for a deployment slot by pipeline
+### Example 2: Delete a triggered web job for a deployment slot by pipeline
 ```powershell
-PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01 | Start-AzWebAppSlotContinuousWebJob
+PS C:\> Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-04 | Remove-AzWebAppSlotTriggeredWebJob
 
 ```
 
-This command starts a continuous web job for a deployment slot by pipeline.
+This command deletes a triggered web job for a deployment slot by pipeline.
 
 ## PARAMETERS
 
@@ -53,7 +53,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -84,7 +84,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -99,7 +99,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -129,7 +129,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -141,11 +141,11 @@ Accept wildcard characters: False
 
 ### -SlotName
 Name of the deployment slot.
-If a slot is not specified, the API deletes a deployment for the production slot.
+If a slot is not specified, the API deletes web job for the production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: False

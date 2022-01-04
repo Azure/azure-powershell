@@ -51,10 +51,28 @@ Description for Gets the list of users of a static site.
 Description for Gets the details of the user provided function app registered with a static site build
 
 ### [Get-AzWebAppContinuousWebJob](Get-AzWebAppContinuousWebJob.md)
-Description for Gets a continuous web job by its ID for an app, or a deployment slot.
+Get or list continuous web for an app.
 
 ### [Get-AzWebAppSlotContinuousWebJob](Get-AzWebAppSlotContinuousWebJob.md)
-Description for Gets a continuous web job by its ID for an app, or a deployment slot.
+Get or list continuous web for a deployment slot.
+
+### [Get-AzWebAppSlotTriggeredWebJob](Get-AzWebAppSlotTriggeredWebJob.md)
+Get or list triggered web for a deployment slot.
+
+### [Get-AzWebAppSlotTriggeredWebJobHistory](Get-AzWebAppSlotTriggeredWebJobHistory.md)
+Get or list triggered web job's history for a deployment slot.
+
+### [Get-AzWebAppSlotWebJob](Get-AzWebAppSlotWebJob.md)
+List webjobs for a deployment slot.
+
+### [Get-AzWebAppTriggeredWebJob](Get-AzWebAppTriggeredWebJob.md)
+Get or list triggered web for an app.
+
+### [Get-AzWebAppTriggeredWebJobHistory](Get-AzWebAppTriggeredWebJobHistory.md)
+Get or list triggered web job's history for an app.
+
+### [Get-AzWebAppWebJob](Get-AzWebAppWebJob.md)
+List webjobs for an app.
 
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
 Description for Creates a new static site in an existing resource group, or updates an existing static site.
@@ -96,25 +114,37 @@ Description for Deletes a custom domain.
 Description for Deletes the user entry from the static site.
 
 ### [Remove-AzWebAppContinuousWebJob](Remove-AzWebAppContinuousWebJob.md)
-Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+Delete a continuous web job for an app.
 
 ### [Remove-AzWebAppSlotContinuousWebJob](Remove-AzWebAppSlotContinuousWebJob.md)
-Description for Delete a continuous web job by its ID for an app, or a deployment slot.
+Delete a continuous web job for a deployment slot.
+
+### [Remove-AzWebAppSlotTriggeredWebJob](Remove-AzWebAppSlotTriggeredWebJob.md)
+Delete a triggered web job for a deployment slot.
+
+### [Remove-AzWebAppTriggeredWebJob](Remove-AzWebAppTriggeredWebJob.md)
+Delete a triggered web job for an app.
 
 ### [Reset-AzStaticWebAppApiKey](Reset-AzStaticWebAppApiKey.md)
 Description for Resets the api key for an existing static site.
 
 ### [Start-AzWebAppContinuousWebJob](Start-AzWebAppContinuousWebJob.md)
-Description for Start a continuous web job for an app, or a deployment slot.
+Start a continuous web job for an app.
 
 ### [Start-AzWebAppSlotContinuousWebJob](Start-AzWebAppSlotContinuousWebJob.md)
-Description for Start a continuous web job for an app, or a deployment slot.
+Start a continuous web job for a deployment slot.
+
+### [Start-AzWebAppSlotTriggeredWebJob](Start-AzWebAppSlotTriggeredWebJob.md)
+Run a triggered web job for a deployment slot.
+
+### [Start-AzWebAppTriggeredWebJob](Start-AzWebAppTriggeredWebJob.md)
+Run a triggered web job for an app.
 
 ### [Stop-AzWebAppContinuousWebJob](Stop-AzWebAppContinuousWebJob.md)
-Description for Stop a continuous web job for an app, or a deployment slot.
+Stop a continuous web job for an app.
 
 ### [Stop-AzWebAppSlotContinuousWebJob](Stop-AzWebAppSlotContinuousWebJob.md)
-Description for Stop a continuous web job for an app, or a deployment slot.
+Stop a continuous web job for a deployment slot.
 
 ### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)
 Description for Validates a particular custom domain can be added to a static site.

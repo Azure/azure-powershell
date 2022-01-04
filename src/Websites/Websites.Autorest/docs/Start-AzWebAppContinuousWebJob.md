@@ -8,13 +8,13 @@ schema: 2.0.0
 # Start-AzWebAppContinuousWebJob
 
 ## SYNOPSIS
-Description for Start a continuous web job for an app, or a deployment slot.
+Start a continuous web job for an app.
 
 ## SYNTAX
 
 ### Start (Default)
 ```
-Start-AzWebAppContinuousWebJob -Name <String> -ResourceGroupName <String> -WebJobName <String>
+Start-AzWebAppContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,29 +25,42 @@ Start-AzWebAppContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-Description for Start a continuous web job for an app, or a deployment slot.
+Start a continuous web job for an app.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a continuous web job for an app
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name continuousjob-01
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command starts a continuous web job for an app.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a continuous web job for an app by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name continuousjob-01 | Start-AzWebAppContinuousWebJo
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command starts a continuous web job for an app by pipeline.
 
 ## PARAMETERS
+
+### -AppName
+Site name.
+
+```yaml
+Type: System.String
+Parameter Sets: Start
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Site name.
+Name of Web Job.
 
 ```yaml
 Type: System.String
@@ -142,21 +155,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WebJobName
-Name of Web Job.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -213,7 +211,8 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
-  - `[Id <String>]`: Resource identity path
+  - `[Id <String>]`: History ID.
+  - `[Id1 <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.

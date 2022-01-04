@@ -8,21 +8,20 @@ schema: 2.0.0
 # Get-AzWebAppSlotContinuousWebJob
 
 ## SYNOPSIS
-Description for Gets a continuous web job by its ID for an app, or a deployment slot.
+Get or list continuous web for a deployment slot.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWebAppSlotContinuousWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
+Get-AzWebAppSlotContinuousWebJob -AppName <String> -ResourceGroupName <String> -SlotName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebAppSlotContinuousWebJob -Name <String> -ResourceGroupName <String> -Slot <String>
- -WebJobName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+Get-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
+ -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -32,29 +31,62 @@ Get-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-Description for Gets a continuous web job by its ID for an app, or a deployment slot.
+Get or list continuous web for a deployment slot.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List continuous webs for a deployment slot
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
 
-{{ Add output here }}
+Name                                          Kind WebJobType ResourceGroupName
+----                                          ---- ---------- -----------------
+appService-test01/slot01/slotcontinuousjob-03                 webjob-rg-test
+appService-test01/slot01/slotcontinuousjob-04                 webjob-rg-test
 ```
 
-{{ Add description here }}
+This command lists continuous webs for a deployment slot.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get continuous web for a deployment slot
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
 
-{{ Add output here }}
+Name                                          Kind WebJobType ResourceGroupName
+----                                          ---- ---------- -----------------
+appService-test01/slot01/slotcontinuousjob-03                 webjob-rg-test
 ```
 
-{{ Add description here }}
+This command gets continuous web for a deployment slot.
+
+### Example 3: Get continuous web for a deployment slot by pipeline
+```powershell
+PS C:\> $webjob = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
+PS C:\> Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
+PS C:\> $webjob.Id | Get-AzWebAppSlotContinuousWebJob
+
+Name                                          Kind WebJobType ResourceGroupName
+----                                          ---- ---------- -----------------
+appService-test01/slot01/slotcontinuousjob-03                 webjob-rg-test
+```
+
+This command gets continuous web for a deployment slot by pipeline.
 
 ## PARAMETERS
+
+### -AppName
+Site name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -88,11 +120,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Site name.
+Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -132,7 +164,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Slot
+### -SlotName
 Name of the deployment slot.
 If a slot is not specified, the API deletes a deployment for the production slot.
 
@@ -165,21 +197,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WebJobName
-Name of Web Job.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -205,7 +222,8 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
-  - `[Id <String>]`: Resource identity path
+  - `[Id <String>]`: History ID.
+  - `[Id1 <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.

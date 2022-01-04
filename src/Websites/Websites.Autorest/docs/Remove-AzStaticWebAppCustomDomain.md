@@ -242,7 +242,8 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
-  - `[Id <String>]`: Resource identity path
+  - `[Id <String>]`: History ID.
+  - `[Id1 <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.

@@ -1,50 +1,74 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjobhistory
 schema: 2.0.0
 ---
 
-# Start-AzWebAppSlotContinuousWebJob
+# Get-AzWebAppTriggeredWebJobHistory
 
 ## SYNOPSIS
-Start a continuous web job for a deployment slot.
+Get or list triggered web job's history for an app.
 
 ## SYNTAX
 
-### Start (Default)
+### List (Default)
 ```
-Start-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Get-AzWebAppTriggeredWebJobHistory -AppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzWebAppTriggeredWebJobHistory -AppName <String> -Id <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWebAppTriggeredWebJobHistory -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
-### StartViaIdentity
-```
-Start-AzWebAppSlotContinuousWebJob -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Start a continuous web job for a deployment slot.
+Get or list triggered web job's history for an app.
 
 ## EXAMPLES
 
-### Example 1: Start a continuous web job for a deployment slot
+### Example 1: List triggered web job's history for an app
 ```powershell
-PS C:\> Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01
+PS C:\> Get-AzWebAppTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 
+Kind Name                                                 ResourceGroupName
+---- ----                                                 -----------------
+     appService-test01/triggeredjob-01/202201040249386155 webjob-rg-test
+     appService-test01/triggeredjob-01/202201040236300466 webjob-rg-test
 ```
 
-This command starts a continuous web job for an app.
+This command lists triggered web job's history for an app.
 
-### Example 2: Start a continuous web job for a deployment slot by pipeline
+### Example 2: Get triggered web job's history for an app
 ```powershell
-PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01 | Start-AzWebAppSlotContinuousWebJob
+PS C:\> Get-AzWebAppTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 -Id 202201040236300466
 
+Kind Name                                                 ResourceGroupName
+---- ----                                                 -----------------
+     appService-test01/triggeredjob-01/202201040236300466 webjob-rg-test
 ```
 
-This command starts a continuous web job for a deployment slot by pipeline.
+This command get triggered web job's history for an app.
+
+### Example 3: Get triggered web job's history for an app by pipeline
+```powershell
+PS C:\> $logs =  Get-AzWebAppTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
+PS C:\> $logs[0].Id | Get-AzWebAppTriggeredWebJobHistory
+
+Kind Name                                                 ResourceGroupName
+---- ----                                                 -----------------
+     appService-test01/triggeredjob-01/202201040236300466 webjob-rg-test
+```
+
+This command get triggered web job's history for an app by pipeline.
 
 ## PARAMETERS
 
@@ -53,7 +77,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -78,13 +102,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+History ID.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -99,7 +138,7 @@ Name of Web Job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -129,23 +168,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SlotName
-Name of the deployment slot.
-If a slot is not specified, the API deletes a deployment for the production slot.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -161,44 +184,13 @@ This is a GUID-formatted string (e.g.
 00000000-0000-0000-0000-000000000000).
 
 ```yaml
-Type: System.String
-Parameter Sets: Start
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredJobHistory
 
 ## NOTES
 
