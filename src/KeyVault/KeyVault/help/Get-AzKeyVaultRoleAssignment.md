@@ -36,6 +36,13 @@ And to specify an Azure AD application, use ApplicationId or ObjectId parameters
 The role that is being assigned must be specified using the RoleDefinitionName or RoleDefinitionId parameter.
 The scope at which access is being granted may be specified. It defaults to "/".
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1

@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Active".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Active", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
+                yield return new global::System.Management.Automation.CompletionResult("'Active'", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disconnected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disconnected", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
+                yield return new global::System.Management.Automation.CompletionResult("'Disconnected'", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pending".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pending", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
+                yield return new global::System.Management.Automation.CompletionResult("'Pending'", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LogOff".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LogOff", "LogOff", global::System.Management.Automation.CompletionResultType.ParameterValue, "LogOff");
+                yield return new global::System.Management.Automation.CompletionResult("'LogOff'", "LogOff", global::System.Management.Automation.CompletionResultType.ParameterValue, "LogOff");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserProfileDiskMounted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserProfileDiskMounted", "UserProfileDiskMounted", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserProfileDiskMounted");
+                yield return new global::System.Management.Automation.CompletionResult("'UserProfileDiskMounted'", "UserProfileDiskMounted", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserProfileDiskMounted");
             }
         }
     }

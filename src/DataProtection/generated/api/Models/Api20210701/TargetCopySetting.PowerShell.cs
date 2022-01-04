@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICopyOption) content.GetValueForProperty("CopyAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.CopyOptionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType = (string) content.GetValueForProperty("CopyAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType, global::System.Convert.ToString);
+            if (content.Contains("CopyAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICopyOption) content.GetValueForProperty("CopyAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.CopyOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CopyAfterObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType = (string) content.GetValueForProperty("CopyAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
+            }
+            if (content.Contains("DataStoreObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICopyOption) content.GetValueForProperty("CopyAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.CopyOptionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType = (string) content.GetValueForProperty("CopyAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType, global::System.Convert.ToString);
+            if (content.Contains("CopyAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ICopyOption) content.GetValueForProperty("CopyAfter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.CopyOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CopyAfterObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType = (string) content.GetValueForProperty("CopyAfterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).CopyAfterObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
+            }
+            if (content.Contains("DataStoreObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetCopySettingInternal)this).DataStoreObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

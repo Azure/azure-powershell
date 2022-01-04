@@ -28,31 +28,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WaitingForDeployment".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WaitingForDeployment", "WaitingForDeployment", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingForDeployment");
+                yield return new global::System.Management.Automation.CompletionResult("'WaitingForDeployment'", "WaitingForDeployment", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingForDeployment");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Uploading".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Uploading", "Uploading", global::System.Management.Automation.CompletionResultType.ParameterValue, "Uploading");
+                yield return new global::System.Management.Automation.CompletionResult("'Uploading'", "Uploading", global::System.Management.Automation.CompletionResultType.ParameterValue, "Uploading");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deploying".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deploying", "Deploying", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deploying");
+                yield return new global::System.Management.Automation.CompletionResult("'Deploying'", "Deploying", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deploying");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ready".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ready", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
+                yield return new global::System.Management.Automation.CompletionResult("'Ready'", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleting", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleting'", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Detached".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Detached", "Detached", global::System.Management.Automation.CompletionResultType.ParameterValue, "Detached");
+                yield return new global::System.Management.Automation.CompletionResult("'Detached'", "Detached", global::System.Management.Automation.CompletionResultType.ParameterValue, "Detached");
             }
         }
     }

@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.16.2
+* Updated ADF .Net SDK version to 5.0.0
+
+## Version 1.16.1
+* Updated ADF .Net SDK version to 4.28.0
+
+## Version 1.16.0
+* Added PublicNetworkAccess to Update_AzDataFactoryV2 Command
+* Updated ADF .Net SDK version to 4.26.0
+
 ## Version 1.15.0
 * Added a DataFlowEnableQuickReuse argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to enable quick reuse of clusters in next pipeline activities.
 * Updated ADF .Net SDK version to 4.25.0

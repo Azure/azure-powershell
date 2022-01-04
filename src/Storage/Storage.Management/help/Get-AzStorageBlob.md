@@ -93,7 +93,7 @@ PS C:\> do
      if($Blobs.Length -le 0) { Break;}
      $Token = $Blobs[$blobs.Count -1].ContinuationToken;
  }
- While ($Token -ne $Null)
+ While ($null -ne $Token)
 PS C:\> Echo "Total $Total blobs in container $ContainerName"
 ```
 

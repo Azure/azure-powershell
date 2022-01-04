@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1.0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1.0", "1.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.0");
+                yield return new global::System.Management.Automation.CompletionResult("'1.0'", "1.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.0");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1.1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1.1", "1.1", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.1");
+                yield return new global::System.Management.Automation.CompletionResult("'1.1'", "1.1", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1.2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1.2", "1.2", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.2");
+                yield return new global::System.Management.Automation.CompletionResult("'1.2'", "1.2", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.2");
             }
         }
     }

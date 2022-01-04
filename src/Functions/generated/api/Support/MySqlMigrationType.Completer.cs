@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LocalToRemote".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LocalToRemote", "LocalToRemote", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalToRemote");
+                yield return new global::System.Management.Automation.CompletionResult("'LocalToRemote'", "LocalToRemote", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalToRemote");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RemoteToLocal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RemoteToLocal", "RemoteToLocal", global::System.Management.Automation.CompletionResultType.ParameterValue, "RemoteToLocal");
+                yield return new global::System.Management.Automation.CompletionResult("'RemoteToLocal'", "RemoteToLocal", global::System.Management.Automation.CompletionResultType.ParameterValue, "RemoteToLocal");
             }
         }
     }

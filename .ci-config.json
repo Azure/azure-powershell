@@ -60,9 +60,15 @@
         "CONTRIBUTION.md",
         "LICENSE.txt",
         "README.md",
+        "ChangeLog.md",
         "**/ChangeLog.md",
         "**/readme.md",
-        "src/**/document/*"
+        "src/**/document/*",
+        ".ci-config.json",
+        "tools/PrepareAutorestModule.ps1",
+        "tools/SyncFromMainBranch.ps1",
+        "tools/CheckAssemblies.ps1",
+        "tools/GeneratedModuleList.txt"
       ],
       "phases": []
     },

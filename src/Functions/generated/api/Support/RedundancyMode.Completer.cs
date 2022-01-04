@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Manual".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Manual", "Manual", global::System.Management.Automation.CompletionResultType.ParameterValue, "Manual");
+                yield return new global::System.Management.Automation.CompletionResult("'Manual'", "Manual", global::System.Management.Automation.CompletionResultType.ParameterValue, "Manual");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failover", "Failover", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failover");
+                yield return new global::System.Management.Automation.CompletionResult("'Failover'", "Failover", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ActiveActive".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ActiveActive", "ActiveActive", global::System.Management.Automation.CompletionResultType.ParameterValue, "ActiveActive");
+                yield return new global::System.Management.Automation.CompletionResult("'ActiveActive'", "ActiveActive", global::System.Management.Automation.CompletionResultType.ParameterValue, "ActiveActive");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GeoRedundant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GeoRedundant", "GeoRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeoRedundant");
+                yield return new global::System.Management.Automation.CompletionResult("'GeoRedundant'", "GeoRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeoRedundant");
             }
         }
     }

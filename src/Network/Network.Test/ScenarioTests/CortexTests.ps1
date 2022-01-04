@@ -189,24 +189,28 @@ function Test-CortexCRUD
 		#Assert-AreEqual $false $createdVpnGateway.EnableBgpRouteTranslationForNat
 
 		# Create one more NATRule using New-AzVpnGatewayNatRule
-		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Dynamic" -Mode "IngressSnat" -InternalMapping "192.168.1.0/26" -ExternalMapping "10.0.1.0/26"
+		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Static" -Mode "IngressSnat" -InternalMapping "192.168.1.0/26" -ExternalMapping "10.0.1.0/26" -InternalPortRange @("100-100") -ExternalPortRange @("200-200")
 		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
 		Assert-AreEqual "NatRule3" $natRule.Name
-		Assert-AreEqual "Dynamic" $natRule.VpnGatewayNatRulePropertiesType
+		Assert-AreEqual "Static" $natRule.VpnGatewayNatRulePropertiesType
 		Assert-AreEqual "IngressSnat" $natRule.Mode
 		Assert-AreEqual 1 $natRule.InternalMappings.Count		
 		Assert-AreEqual "192.168.1.0/26" $natRule.InternalMappings[0].AddressSpace
 		Assert-AreEqual 1 $natRule.ExternalMappings.Count		
 		Assert-AreEqual "10.0.1.0/26" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "100-100" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "200-200" $natRule.ExternalMappings[0].PortRange
 		Assert-AreEqual 0 $natRule.IngressVpnSiteLinkConnections.Count	
 		Assert-AreEqual 0 $natRule.EgressVpnSiteLinkConnections.Count
 		Assert-AreEqual "Succeeded" $natRule.ProvisioningState		
 
-		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -InternalMapping "192.168.2.0/26" -ExternalMapping "10.0.2.0/26"
+		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -InternalMapping "192.168.2.0/26" -ExternalMapping "10.0.2.0/26" -InternalPortRange @("300-300") -ExternalPortRange @("400-400")
 		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
 		Assert-AreEqual "NatRule3" $natRule.Name
 		Assert-AreEqual "192.168.2.0/26" $natRule.InternalMappings[0].AddressSpace
 		Assert-AreEqual "10.0.2.0/26" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "300-300" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "400-400" $natRule.ExternalMappings[0].PortRange
 		Assert-AreEqual "Succeeded" $natRule.ProvisioningState	
 		#Assert-AreEqual $True $vpnGateway.IsRoutingPreferenceInternet
 
@@ -326,6 +330,86 @@ function Test-CortexCRUD
 		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+VpnSiteIsSecurity
+#>
+function Test-VpnSiteIsSecurity
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+	$virtualWanName = Get-ResourceName
+	$vpnSiteName1 = Get-ResourceName
+	$vpnSiteName2 = Get-ResourceName
+	$vpnSiteName3 = Get-ResourceName
+    $vpnSiteLinkName1 = Get-ResourceName
+	$vpnSiteLinkName2 = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the VpnSite
+		$vpnSiteAddressSpaces1 = New-Object string[] 1
+		$vpnSiteAddressSpaces1[0] = "192.168.2.0/24"
+		$ip1 = "1.2.3.4"
+		$createdVpnSite1 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip1 -AddressSpace $vpnSiteAddressSpaces1 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10
+		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1
+		Assert-AreEqual $rgName $vpnSite1.ResourceGroupName
+		Assert-AreEqual $vpnSiteName1 $vpnSite1.Name
+		Assert-AreEqual $ip1 $vpnSite1.IpAddress
+		Assert-AreEqual $False $vpnSite1.IsSecuritySite
+
+		# Create the VpnSite with IsSecuritySite
+		$vpnSiteAddressSpaces2 = New-Object string[] 1
+		$vpnSiteAddressSpaces2[0] = "192.168.3.0/24"
+		$ip2 = "2.3.4.5"
+		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip2 -AddressSpace $vpnSiteAddressSpaces2 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10 -IsSecuritySite
+		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2
+		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName
+		Assert-AreEqual $vpnSiteName2 $vpnSite2.Name
+		Assert-AreEqual $ip2 $vpnSite2.IpAddress
+		Assert-AreEqual $True $vpnSite2.IsSecuritySite
+
+		# Create the VpnSite with Links
+		$vpnSiteAddressSpaces3 = New-Object string[] 2
+		$vpnSiteAddressSpaces3[0] = "192.168.2.0/24"
+		$vpnSiteAddressSpaces3[1] = "192.168.3.0/24"
+		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLinkName1 -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
+		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLinkName2 -IpAddress "5.5.5.6" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
+
+		$createdVpnSite3 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName3 -Location $rglocation -VirtualWan $virtualWan -AddressSpace $vpnSiteAddressSpaces3 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2) -IsSecuritySite
+		$vpnSite3 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName3
+		Assert-AreEqual $rgName $vpnSite3.ResourceGroupName
+		Assert-AreEqual $vpnSiteName3 $vpnSite3.Name
+		Assert-AreEqual $True $vpnSite3.IsSecuritySite
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName3 -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru

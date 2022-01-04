@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxJobDetailsObject
 
 ## SYNOPSIS
-Create a in-memory object for DataBoxJobDetails
+Create an in-memory object for DataBoxJobDetails.
 
 ## SYNTAX
 
@@ -20,11 +20,11 @@ New-AzDataBoxJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscr
 ```
 
 ## DESCRIPTION
-Create a in-memory object for DataBoxJobDetails
+Create an in-memory object for DataBoxJobDetails.
 
 ## EXAMPLES
 
-### Example 1: {{ Creates a databox job detail in memory object }}
+### Example 1: Creates a databox job detail in memory object 
 ```powershell
 PS C:\> $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 PS C:\> $details
@@ -49,7 +49,7 @@ ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.A
 Type                       : DataBox
 ```
 
-{{ Create a in-memory object for DataBoxJobDetails }}
+Create a in-memory object for DataBoxJobDetails
 
 ## PARAMETERS
 

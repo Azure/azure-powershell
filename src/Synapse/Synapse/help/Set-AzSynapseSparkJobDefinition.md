@@ -14,14 +14,16 @@ Creates a Spark job definition in workspace.
 
 ### SetByName (Default)
 ```
-Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -DefinitionFile <String>
+ [-FolderPath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -DefinitionFile <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-FolderPath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +40,22 @@ This command creates a Spark job definition named ContosoSparkJobDefinition in t
 The command bases the Spark job definition on information in the sparkJobDefinition.json file.
 
 ### Example 2
+```powershell
+PS C:\> Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json" -FolderPath ContosoFolder
+```
+
+This command creates a Spark job definition named ContosoSparkJobDefinition and specify a folder path ContosoFolder where the spark job definition will be placed in the workspace named ContosoWorkspace.
+The command bases the Spark job definition on information in the sparkJobDefinition.json file.
+
+### Example 3
+```powershell
+PS C:\> Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json" -FolderPath ContosoFolder/SubFolder
+```
+
+This command creates a Spark job definition named ContosoSparkJobDefinition and specify a multi-level folder path ContosoFolder/SubFolder where the spark job definition will be placed in the workspace named ContosoWorkspace.
+The command bases the Spark job definition on information in the sparkJobDefinition.json file.
+
+### Example 4
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Set-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
@@ -87,6 +105,21 @@ Parameter Sets: (All)
 Aliases: File
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FolderPath
+The folder that this Spark job definition is in. If specify a multi-level path such as [rootFolder/subFolder], the Spark job definition will appear at the bottom level. If not specified, this Spark job definition will appear at the root level.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

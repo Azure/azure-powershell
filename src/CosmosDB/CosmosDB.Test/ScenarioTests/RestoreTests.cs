@@ -61,5 +61,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlContainerBackupInformationCmdLets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoDBCollectionBackupInformationCmdLets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoDBCollectionBackupInformationCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateCosmosDBAccountBackupPolicyCmdLet()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCosmosDBAccountBackupPolicyCmdLet");
+        }
     }
 }

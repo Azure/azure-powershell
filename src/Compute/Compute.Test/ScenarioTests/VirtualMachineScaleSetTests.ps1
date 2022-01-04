@@ -2821,3 +2821,216 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test the VMSS Flexible orchestration mode defaulting. 
+#>
+function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $networkAPIVersionFlexible = "2020-11-01";
+    $flexiblePFDC = 1;
+    $flexibleSinglePlacementGroup = $false;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $omode = "Flexible";
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        Assert-NotNull $vmss;
+        Assert-AreEqual $vmss.OrchestrationMode $omode;
+        Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
+        Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
+        Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
+
+        Assert-ThrowsContains 
+        {
+            $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; `
+        } ` 
+        "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Add and remove Vmss Run Command. 
+#>
+function Test-AddAndRemoveAzVmssRunCommand
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
+        #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        
+        $runcmds = Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
+        Assert-AreEqual $runcmds.RunAsUser "admin01";
+        Assert-AreEqual $runcmds.TimeOutInSeconds "3600";
+        Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
+
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS UserData feature, specifically the Base64 encoding functionality.
+#>
+function Test-VirtualMachineScaleSetUserdata
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create Vmss with UserData.
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -Userdata $userData;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
+
+        # Update UserData property on Vmss.
+        $text2 = "update vmss";
+        $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
+        $encodedText2 = [Convert]::ToBase64String($bytes2);
+        $userData2 = $encodedText2;
+
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssGet -Userdata $userData2;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName -Userdata -InstanceView:$false;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
+
+        # Update VmssVm UserData property.
+        $text3 = "vm update vmss vm";
+        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
+        $encodedText3 = [Convert]::ToBase64String($bytes3);
+        $userData3 = $encodedText3;
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -UserData; 
+        Assert-AreNotEqual $vmssvm.UserData $userData3;
+        $vmssvmUp = Update-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData $userData3;
+        
+        $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData; 
+        Assert-AreEqual $vmssvm2.UserData $userData3;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set DiffDiskPlacement feature. 
+#>
+function Test-VirtualMachineScaleSetDiffDiskPlacement
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        ## Cache Disk Test ##
+        # Common
+        $loc = Get-ComputeVMLocation;
+        $vmssSize = 'Standard_DS3_v2';
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+        $diffDiskPlacement = "CacheDisk";
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+                    
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName -DiffDiskSetting 'Local' -DiffDiskPlacement $diffDiskPlacement;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        # Validate DiffDiskPlacement value
+        Assert-AreEqual $result.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+

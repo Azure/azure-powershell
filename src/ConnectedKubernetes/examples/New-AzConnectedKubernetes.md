@@ -1,21 +1,20 @@
 ### Example 1: Create a connected kubernetes
 ```powershell
-PS C:\> New-AzConnectedKubernetes -ClusterName ps-connaks-t01 -ResourceGroupName connected-aks -Location 
-Location Name         Type
--------- ----         ----
-eastus   ps-connaks-t01 Microsoft.Kubernetes/connectedClusters
+PS C:\> New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
 ```
 
 This command creates a connected kubernetes.
 
 ### Example 1: Create a connected kubernetes with parameters kubeConfig and kubeContext
 ```powershell
-PS C:\> New-AzConnectedKubernetes -ClusterName ps-connaks-t02 -ResourceGroupName connected-aks -Location eastus -KubeConfig $HOME\.kube\config -KubeContext portal-aks-t01
+PS C:\> New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 
-Location Name         Type
--------- ----         ----
-eastus   ps-connaks-t02 Microsoft.Kubernetes/connectedClusters
+Location Name               ResourceGroupName
+-------- ----               -----------------
+eastus   azps_test_cluster1 azps_test_group
 ```
 
 This command creates a connected kubernetes with parameters kubeConfig and kubeContext.
-

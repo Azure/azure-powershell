@@ -11,12 +11,10 @@ Function Move-Generation2Master {
         $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
         $SourcePsd1Path = Get-ChildItem -path $SourcePath -filter Az.$ModuleName.psd1 -Recurse
         $FolderPathRelativeToSrc = $SourcePsd1Path.Directory.FullName.Replace('/', '\').Split('\src\')[1]
-        if ($FolderPathRelativeToSrc -eq $ModuleName)
-        {
+        if ($FolderPathRelativeToSrc -eq $ModuleName) {
             $IsHybridModule = $False
         }
-        else
-        {
+        else {
             $IsHybridModule = $True
         }
         $SourcePath = $SourcePsd1Path.Directory.FullName
@@ -25,15 +23,12 @@ Function Move-Generation2Master {
         }
         
         $DestParentPath = $DestPath
-        While ("" -ne $DestParentPath)
-        {
+        While ("" -ne $DestParentPath) {
             $DestAccountsPath = Join-Path -Path $DestParentPath -ChildPath Accounts
-            if (-not (Test-Path -Path $DestAccountsPath))
-            {
+            if (-not (Test-Path -Path $DestAccountsPath)) {
                 $DestParentPath = Split-Path -path $DestParentPath -Parent
             }
-            else
-            {
+            else {
                 Break
             }
         }
@@ -42,15 +37,14 @@ Function Move-Generation2Master {
             New-Item -ItemType Directory -Path $DestPath -Force
         }
         $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils')
-        Foreach($Dir in $Dir2Copy) {
+        Foreach ($Dir in $Dir2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $Dir
             $DestItem = Join-Path -Path $DestPath -ChildPath $Dir
             If (Test-Path $DestItem) {
                 Remove-Item -Path $DestItem -Recurse
             }
             Write-Host "Copying folder: $SourceItem." -ForegroundColor Yellow
-            if (Test-Path -Path $SourceItem)
-            {
+            if (Test-Path -Path $SourceItem) {
                 Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
             }
         }
@@ -70,8 +64,8 @@ Function Move-Generation2Master {
         Write-Host "Copying docs: $SourceItem." -ForegroundColor Yellow
         Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
         #EndRegion
-        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml')
-        Foreach($File in $File2Copy) {
+        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
+        Foreach ($File in $File2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $File
             $DestItem = Join-Path -Path $DestPath -ChildPath $File
             If (Test-Path $DestItem) {
@@ -94,8 +88,7 @@ Function Move-Generation2Master {
             $Psd1Version = $Psd1Metadata.ModuleVersion
         }
         $Psd1Metadata = Import-LocalizedData -BaseDirectory $SourcePath -FileName "Az.$ModuleName.psd1"
-        If ($Null -ne $Psd1Version)
-        {
+        If ($Null -ne $Psd1Version) {
             $Psd1Metadata.ModuleVersion = $Psd1Version
         }
         If ($Null -ne $ModuleGuid) {
@@ -106,32 +99,24 @@ Function Move-Generation2Master {
             $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
             $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }
-        If ($Null -ne $RequiredModule)
-        {
+        If ($Null -ne $RequiredModule) {
             $Psd1Metadata.RequiredModules = $RequiredModule
         }
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
-            $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object {$_ -ne "*"})
+            $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object { $_ -ne "*" })
         }
         Update-ModuleManifest -Path $SourcePsd1Path @Psd1Metadata
         Copy-Item -Path $SourcePsd1Path -Destination $DestPsd1Path
         #EndRegion
 
         #Region Remove unnecessary readme.md
-        $ReadmeInHelp = Join-Path -Path (Join-Path -Path $DestPath -ChildPath 'help') -ChildPath 'readme.md'
         $ModuleReadmeInHelp = Join-Path -Path (Join-Path -Path $DestPath -ChildPath 'help') -ChildPath "Az.$ModuleName.md"
-        If (Test-Path $ReadmeInHelp) {
-            Write-Host "Deleting file $ReadmeInHelp." -ForegroundColor Yellow
-            Remove-Item -Path $ReadmeInHelp
-        }
+        Get-ChildItem -Path (Join-Path -Path $DestPath -ChildPath 'help') -Recurse -Include 'readme.md' | Remove-Item -ErrorAction SilentlyContinue
         If ($Null -ne $ModuleGuid) {
             $ReadmeContent = Get-Content -Path $ModuleReadmeInHelp
-            $ReadmeContent -replace "Module Guid: [0-9a-z\-]+","Module Guid: $ModuleGuid" | Set-Content -Path $ModuleReadmeInHelp
+            $ReadmeContent -replace "Module Guid: [0-9a-z\-]+", "Module Guid: $ModuleGuid" | Set-Content -Path $ModuleReadmeInHelp
         }
-        $ReadmeInExample = Join-Path -Path (Join-Path -Path $DestPath -ChildPath 'examples') -ChildPath 'readme.md'
-        If (Test-Path $ReadmeInExample) {
-            Remove-Item -Path $ReadmeInExample
-        }
+        Get-ChildItem -Path (Join-Path -Path $DestPath -ChildPath 'examples') -Recurse -Include 'readme.md' | Remove-Item -ErrorAction SilentlyContinue
         #EndRegion
 
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
@@ -144,25 +129,21 @@ Function Move-Generation2Master {
         $generateInfo.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
         $extensions = ls ~/.autorest
         ForEach ($ex in $extensions) {
-            if ($Null -eq $ex.Name)
-            {
+            if ($Null -eq $ex.Name) {
                 continue
             }
             $info = $ex.Name.Split('@')
             $packageName = $info[1]
             $version = $info[2]
-            if ($generateInfo.ContainsKey($packageName))
-            {
+            if ($generateInfo.ContainsKey($packageName)) {
                 $preVersion = $generateInfo[$packageName]
                 $versionFields = $version.Split('.')
                 $preVersionFields = $preVersion.Split('.')
-                if (($versionFields[0] -lt $preVersionFields[0]) -or ($versionFields[1] -lt $preVersionFields[1]) -or ($versionFields[2] -lt $preVersionFields[2]))
-                {
+                if (($versionFields[0] -lt $preVersionFields[0]) -or ($versionFields[1] -lt $preVersionFields[1]) -or ($versionFields[2] -lt $preVersionFields[2])) {
                     $generateInfo[$packageName] = $version
                 }
             }
-            else
-            {
+            else {
                 $generateInfo.Add($packageName, $version)
             }
         }
@@ -180,20 +161,17 @@ Function Move-Generation2Master {
         Set-Content -Path $GeneratedModuleListPath -Value $NewModules
         #EndRegion
 
-        if ($IsHybridModule)
-        {
-            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"
+        if ($IsHybridModule) {
+            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj" -ModuleName $ModuleName
         }
-        else
-        {
-            Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"
+        else {
+            Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj" -ModuleName $ModuleName
         }
-        Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md
+        Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md -ModuleName $ModuleName
         #Region create a solution file for module and add the related csproj files to this solution.
         dotnet new sln -n $ModuleName -o $DestPath --force
         $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
-        foreach ($DependenceCsproj in (Get-ChildItem -path $DestAccountsPath -Recurse -Filter *.csproj -Exclude *test*))
-        {
+        foreach ($DependenceCsproj in (Get-ChildItem -path $DestAccountsPath -Recurse -Filter *.csproj -Exclude *test*)) {
             dotnet sln $SolutionPath add $DependenceCsproj
         }
         dotnet sln $SolutionPath add (Join-Path -Path $DestPath -ChildPath Az.$ModuleName.csproj)
@@ -203,8 +181,150 @@ Function Move-Generation2Master {
         If (-not (Test-Path $PropertiesPath)) {
             New-Item -ItemType Directory -Path $PropertiesPath
         }
-        Copy-Template -SourceName AssemblyInfo.cs -DestPath $PropertiesPath -DestName AssemblyInfo.cs
+        Copy-Template -SourceName AssemblyInfo.cs -DestPath $PropertiesPath -DestName AssemblyInfo.cs -ModuleName $ModuleName
         Update-MappingJson -ModuleName $ModuleName
+    }
+}
+
+Function Move-Generation2MasterHybrid {
+    Param(
+        [string]
+        ${SourcePath},
+        [string]
+        ${DestPath}
+    )
+
+    process {
+        #Region Handle the hybrid module whoes folder is a subfolder of the module folder.
+        $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+
+        $DestParentPath = $DestPath
+        While ("" -ne $DestParentPath) {
+            $DestAccountsPath = Join-Path -Path $DestParentPath -ChildPath Accounts
+            if (-not (Test-Path -Path $DestAccountsPath)) {
+                $DestParentPath = Split-Path -path $DestParentPath -Parent
+            }
+            else {
+                Break
+            }
+        }
+        #EndRegion
+        If (-not (Test-Path $DestPath)) {
+            throw "$DestPath does not exist"
+        }
+        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils', 'docs')
+        $submoduleDirs = Get-ChildItem -Filter *.Autorest -Directory -Path $SourcePath
+        foreach ($submoduleDir in $submoduleDirs) {
+            $submoduleName = $submoduleDir.Name.Split('.')[0]
+            Foreach ($Dir in $Dir2Copy) {
+                $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $Dir
+                $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $Dir
+                If (Test-Path $DestItem) {
+                    Remove-Item -Path $DestItem -Recurse
+                }
+                Write-Host "Copying folder: $SourceItem." -ForegroundColor Yellow
+                if (Test-Path -Path $SourceItem) {
+                    Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
+                }
+            }
+            #Region Clean Local Modules
+            $LocalModulesPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath 'generated') -ChildPath 'modules'
+            If (Test-Path $LocalModulesPath) {
+                Write-Host "Removing local modules: $LocalModulesPath." -ForegroundColor Yellow
+                Remove-Item -Path $LocalModulesPath -Recurse -Force
+            }
+            #EndRegion
+            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
+            Foreach ($File in $File2Copy) {
+                $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $File
+                $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $File
+                If (Test-Path $DestItem) {
+                    Remove-Item -Path $DestItem
+                }
+                Write-Host "Copying file: $SourceItem" -ForegroundColor Yellow
+                Copy-Item -Path $SourceItem -Destination (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name)
+            }
+
+            #copy generated docs to help folder
+            Copy-Item -Path "$SourcePath\$submoduleName.Autorest\docs\*" -Destination "$DestPath\$ModuleName\help" -Filter *-*
+
+            #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
+            $generateInfo = @{}
+            $repo = "https://github.com/Azure/azure-rest-api-specs"
+            $commit = git ls-remote $repo HEAD
+            $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))
+            $generateInfo.Add("node", (node --version))
+            $autorest_info = (npm ls -g @autorest/autorest).Split('@')
+            $generateInfo.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
+            $extensions = ls ~/.autorest
+            ForEach ($ex in $extensions) {
+                if ($Null -eq $ex.Name) {
+                    continue
+                }
+                $info = $ex.Name.Split('@')
+                $packageName = $info[1]
+                $version = $info[2]
+                if ($generateInfo.ContainsKey($packageName)) {
+                    $preVersion = $generateInfo[$packageName]
+                    $versionFields = $version.Split('.')
+                    $preVersionFields = $preVersion.Split('.')
+                    if (($versionFields[0] -lt $preVersionFields[0]) -or ($versionFields[1] -lt $preVersionFields[1]) -or ($versionFields[2] -lt $preVersionFields[2])) {
+                        $generateInfo[$packageName] = $version
+                    }
+                }
+                else {
+                    $generateInfo.Add($packageName, $version)
+                }
+            }
+            Set-Content -Path (Join-Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) generate-info.json) -Value (ConvertTo-Json $generateInfo)
+            #EndRegion
+
+            # Generate csproj file and add the dependency in the solution file
+            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName
+
+            $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
+
+            dotnet sln $SolutionPath add (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath Az.$submoduleName.csproj)
+
+            # Update psd1
+            $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"
+            $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName) -FileName "Az.$ModuleName.psd1"
+            $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
+            if (!@($Psd1Metadata.RequiredAssemblies).Contains("${submoduleName}.Autorest\bin\Az.${submoduleName}.private.dll")) {
+                $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + "${submoduleName}.Autorest\bin\Az.${submoduleName}.private.dll"
+            }
+            if (!@($Psd1Metadata.FormatsToProcess).Contains("${submoduleName}.Autorest\Az.${submoduleName}.format.ps1xml")) {
+                $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + "${submoduleName}.Autorest\Az.${submoduleName}.format.ps1xml"
+            }
+            if (!@($Psd1Metadata.NestedModules).Contains("${submoduleName}.Autorest\Az.${submoduleName}.psm1")) {
+                $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + "${submoduleName}.Autorest\Az.${submoduleName}.psm1"
+            }
+            foreach ($func in $SubModulePsd1MetaData.FunctionsToExport) {
+                if (!@($Psd1Metadata.FunctionsToExport).Contains($func) -and ($func -ne '*')) {
+                    $Psd1Metadata.FunctionsToExport = @($Psd1Metadata.FunctionsToExport) + $func
+                }
+            }
+            foreach ($alias in $SubModulePsd1MetaData.AliasesToExport) {
+                if (!@($Psd1Metadata.AliasesToExport).Contains($alias) -and ($alias -ne '*')) {
+                    $Psd1Metadata.AliasesToExport = @($Psd1Metadata.AliasesToExport) + $alias
+                }
+            }
+            if ($null -ne $Psd1Metadata.PrivateData) {
+                foreach($pKey in $Psd1Metadata.PrivateData.PSData.Keys) {
+                    $Psd1Metadata.$pKey = $Psd1Metadata.PrivateData.PSData.$pKey
+                }
+                $Psd1Metadata.Remove("PrivateData")
+            }
+            New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
+            
+            # Copy the assemblyinfo file
+            Copy-Template -SourceName AssemblyInfo.cs -DestPath (Join-Path (Join-Path $DestPath $submoduleDir.Name) "Properties") -DestName AssemblyInfo.cs -ModuleName $submoduleName
+        }
+
+        #update module page
+        dotnet build "$DestPath\$ModuleName.sln"
+        Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+        Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
     }
 }
 
@@ -222,7 +342,7 @@ Function Update-MappingJson {
                 return
             }
         }
-        $MappingObject = $MappingObject + @{regex=$ModuleName; alias=$ModuleName}
+        $MappingObject = $MappingObject + @{regex = $ModuleName; alias = $ModuleName }
         ConvertTo-Json $MappingObject -Depth 1 | Set-Content -Path $MappingPath
     }
 }
@@ -234,19 +354,28 @@ Function Copy-Template {
         [string]
         $DestPath,
         [string]
-        $DestName
+        $DestName,
+        [string]
+        $ModuleName,
+        [string]
+        $RootModuleName
     )
     process {
         $DestPath = Join-Path -Path $DestPath -ChildPath $DestName
         If (-not (Test-Path -Path $DestPath)) {
             Write-Host "Copying template: $SourceName." -ForegroundColor Yellow
-            New-Item -Path $DestPath
+            New-Item -Path $DestPath -Force
             $TemplatePath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath "Templates") -ChildPath $SourceName
             $TemplateContent = Get-Content -Path $TemplatePath
             If ($TemplateContent -Match "{GUID}") {
-                $TemplateContent = $TemplateContent -replace '{GUID}',(New-Guid).Guid
+                $TemplateContent = $TemplateContent -replace '{GUID}', (New-Guid).Guid
             }
-            $TemplateContent -replace '{ModuleNamePlaceHolder}',$ModuleName | Set-Content -Path $DestPath
+            if ($null -eq $RootModuleName) {
+                $RootModuleName = $ModuleName
+            }
+            $TemplateContent = $TemplateContent -replace '{ModuleNamePlaceHolder}', $ModuleName
+            $TemplateContent -replace '{RootModuleNamePlaceHolder}', $RootModuleName | Set-Content -Path $DestPath
+
         }
     }
 }

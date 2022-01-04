@@ -9,33 +9,48 @@ schema: 2.0.0
 # Add-AzVhd
 
 ## SYNOPSIS
-Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
+Uploads a virtual hard disk from an on-premises machine to Azure (managed disk or blob).
 
 ## SYNTAX
 
+### DefaultParameterSet
 ```
 Add-AzVhd [[-ResourceGroupName] <String>] [-Destination] <Uri> [-LocalFilePath] <FileInfo>
- [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-AsJob]
+ [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-skipResizing] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DirectUploadToManagedDiskSet
+```
+Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <String> [-Location] <String>
+ [-DiskSku <String>] [-Zone <String[]>] [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzVhd** cmdlet uploads on-premises virtual hard disks, in .vhd file format, to a blob storage account as fixed virtual hard disks.
-You can configure the number of uploader threads that will be used or overwrite an existing blob in the specified destination URI.
-Also supported is the ability to upload a patched version of an on-premises .vhd file.
+The **Add-AzVhd** cmdlet uploads an on-premise virtual hard disk to a managed disk or a blob storage account.<br/><br/>
+
+The virtual hard disk being uploaded needs to be a .vhd file and in size N * Mib + 512 bytes. Using Hyper-V functionality, **Add-AzVhd** will 
+convert .vhdx file to a .vhd file before uploading. It will convert dynamically sized .vhd file to a fixed size .vhd and resize. 
+If Hyper-V is not found, an error will occur with a message including a link to directions on how to enable Hyper-V 
+and manual steps for resizing and converting. <br/><br/>
+
+For Default Parameter set (upload to blob), also supported is the ability to upload a patched version of an on-premises .vhd file.
 When a base virtual hard disk has already been uploaded, you can upload differencing disks that use the base image as the parent.
-Shared access signature (SAS) URI is supported also.
+Shared access signature (SAS) URI is supported also. <br/>
+For Direct Upload to Managed Disk Parameter set, parameters: ResourceGroupName, DiskName, Location, DiskSku, and Zone will be used to 
+create a new disk, then the virtual hard disk will be uploaded to it.
 
 ## EXAMPLES
 
-### Example 1: Add a VHD file
+### Example 1: Add a VHD file to a blob
 ```
 PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
 ```
 
 This command adds a .vhd file to a storage account.
 
-### Example 2: Add a VHD file and overwrite the destination
+### Example 2: Add a VHD file to a blob and overwrite the destination
 ```
 PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
 ```
@@ -43,7 +58,7 @@ PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhds
 This command adds a .vhd file to a storage account.
 The command overwrites an existing file.
 
-### Example 3: Add a VHD file and specify the number of threads
+### Example 3: Add a VHD file to a blob with number of threads specified
 ```
 PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfUploaderThreads 32
 ```
@@ -51,12 +66,26 @@ PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhds
 This command adds a .vhd file to a storage account.
 The command specifies the number of threads to use to upload the file.
 
-### Example 4: Add a VHD file and specify the SAS URI
+### Example 4: Add a VHD file to a blob and specify the SAS URI
 ```
 PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01 -09T22%3A15%3A49Z&amp;se=2013-01-09T23%3A10%3A49Z&amp;sr=b&amp;sp=w&amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveO SIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"
 ```
 
 This command adds a .vhd file to a storage account and specifies the SAS URI.
+
+### Example 5: Add a VHD file directly to a managed disk.
+```
+PS C:\> Add-AzVhd -LocalFilePath C:\data.vhd -ResourceGroupName rgname -Location eastus -DiskName newDisk
+```
+
+This command create a managed disk with given ResourceGroupName, Location, and DiskName; and uploads the VHD file to it.
+
+### Example 6: Add a VHD file directly to a more configured disk.
+```
+PS C:\> Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS
+```
+
+This command will tried to convert vhdx file to vhd file first using Hyper-V. If Hyper-V is not found, it will return an error asking to use a vhd file. After successful conversion, it will create a managed disk with provided parameters, then upload the vhd file. 
 
 ## PARAMETERS
 
@@ -81,7 +110,7 @@ An SAS can be specified as the value for this parameter.
 
 ```yaml
 Type: System.Uri
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: bs
 
 Required: False
@@ -112,11 +141,41 @@ The parameter supports SAS URI, although patching scenarios destination cannot b
 
 ```yaml
 Type: System.Uri
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: dst
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskName
+Name of the new managed Disk
+
+```yaml
+Type: System.String
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskSku
+Sku for managed disk. Options: Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS
+
+```yaml
+Type: System.String
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -132,6 +191,21 @@ Aliases: lf
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of new Managed Disk
+
+```yaml
+Type: System.String
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -157,7 +231,7 @@ Indicates that this cmdlet overwrites an existing blob in the specified destinat
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: o
 
 Required: False
@@ -172,11 +246,54 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -skipResizing
+Skips the resizing of the VHD file. 
+Users that wish to upload a VHD files that has its size misaligned (not N * Mib + 512 bytes) to a blob can use this switch parameter.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the logical zone list for Disk. To attach the Disk to a VM, must be same zone as the VM.
+
+```yaml
+Type: System.String[]
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -206,5 +323,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Save-AzVhd](./Save-AzVhd.md)
-
-

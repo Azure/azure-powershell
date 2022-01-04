@@ -24,15 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
         public string[] AttachedDatabaseName { get => this._attachedDatabaseName; }
 
-        /// <summary>Backing field for <see cref="ClusterResourceId" /> property.</summary>
-        private string _clusterResourceId;
-
-        /// <summary>
-        /// The resource id of the kusto pool where the databases you would like to attach reside.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
-        public string ClusterResourceId { get => this._clusterResourceId; set => this._clusterResourceId = value; }
-
         /// <summary>Backing field for <see cref="DatabaseName" /> property.</summary>
         private string _databaseName;
 
@@ -48,6 +39,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>The default principals modification kind</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind DefaultPrincipalsModificationKind { get => this._defaultPrincipalsModificationKind; set => this._defaultPrincipalsModificationKind = value; }
+
+        /// <summary>Backing field for <see cref="KustoPoolResourceId" /> property.</summary>
+        private string _kustoPoolResourceId;
+
+        /// <summary>
+        /// The resource id of the kusto pool where the databases you would like to attach reside.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
+        public string KustoPoolResourceId { get => this._kustoPoolResourceId; set => this._kustoPoolResourceId = value; }
 
         /// <summary>Internal Acessors for AttachedDatabaseName</summary>
         string[] Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal.AttachedDatabaseName { get => this._attachedDatabaseName; set { {_attachedDatabaseName = value;} } }
@@ -117,16 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         PossibleTypes = new [] { typeof(string) })]
         string[] AttachedDatabaseName { get;  }
         /// <summary>
-        /// The resource id of the kusto pool where the databases you would like to attach reside.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The resource id of the kusto pool where the databases you would like to attach reside.",
-        SerializedName = @"clusterResourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterResourceId { get; set; }
-        /// <summary>
         /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
@@ -144,6 +134,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         SerializedName = @"defaultPrincipalsModificationKind",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind) })]
         Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind DefaultPrincipalsModificationKind { get; set; }
+        /// <summary>
+        /// The resource id of the kusto pool where the databases you would like to attach reside.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The resource id of the kusto pool where the databases you would like to attach reside.",
+        SerializedName = @"clusterResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string KustoPoolResourceId { get; set; }
         /// <summary>The provisioned state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
         Required = false,
@@ -211,15 +211,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// </summary>
         string[] AttachedDatabaseName { get; set; }
         /// <summary>
-        /// The resource id of the kusto pool where the databases you would like to attach reside.
-        /// </summary>
-        string ClusterResourceId { get; set; }
-        /// <summary>
         /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
         /// </summary>
         string DatabaseName { get; set; }
         /// <summary>The default principals modification kind</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind DefaultPrincipalsModificationKind { get; set; }
+        /// <summary>
+        /// The resource id of the kusto pool where the databases you would like to attach reside.
+        /// </summary>
+        string KustoPoolResourceId { get; set; }
         /// <summary>The provisioned state of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState? ProvisioningState { get; set; }
         /// <summary>Table level sharing specifications</summary>

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Allowed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Allowed", "Allowed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allowed");
+                yield return new global::System.Management.Automation.CompletionResult("'Allowed'", "Allowed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allowed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotAllowed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotAllowed", "NotAllowed", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotAllowed");
+                yield return new global::System.Management.Automation.CompletionResult("'NotAllowed'", "NotAllowed", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotAllowed");
             }
         }
     }

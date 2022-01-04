@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     protectedItemGetResponses.Add(getResponse.Body);
                 }
             }
-
+            
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
 
             if (!string.IsNullOrEmpty(itemName))
@@ -620,18 +620,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public List<ItemBase> GetMABProtectedItems(string vaultName, string resourceGroupName)
+        public List<ItemBase> GetMABProtectedItems(string vaultName, string resourceGroupName, ContainerBase container = null)
         {
             ODataQuery<ProtectedItemQueryObject> queryParams =
                 new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
-                            
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);                            
 
             List<ProtectedItemResource> protectedItems = ServiceClientAdapter.ListProtectedItem(
                 queryParams,
                 null,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+
+            // filter by Container Name if given
+            if (container != null)
+            {
+                protectedItems = protectedItems.Where(protectedItem =>
+                {
+                    Dictionary<CmdletModel.UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+                    string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
+
+                    var delimIndex = containerUri.IndexOf(';');
+                    string containerName = containerUri.Substring(delimIndex + 1);                    
+                    return containerName.ToLower().Equals(container.Name.ToLower());
+                }).ToList();
+            }
 
             return ConversionHelpers.GetItemModelList(protectedItems);
         }

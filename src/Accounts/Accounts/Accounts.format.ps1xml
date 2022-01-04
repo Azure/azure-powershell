@@ -269,7 +269,7 @@
               </ListItem>
               <ListItem>
                 <Label>ExtendedProperties</Label>
-                <ScriptBlock>$_.ExtendedProperties.GetEnumerator() | Where-Object { $_.Key -ne "ServicePrincipalSecret" }</ScriptBlock>
+                <ScriptBlock>$_.ExtendedProperties.GetEnumerator()</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

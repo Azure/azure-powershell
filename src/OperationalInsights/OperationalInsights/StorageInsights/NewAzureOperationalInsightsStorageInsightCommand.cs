@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 
@@ -61,20 +62,27 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The Azure Storage blob containers that the storage insight will read data from.")]
         public string[] Containers { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The ETag of the StorageInsight.")]
+        public string ETag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
+        public Hashtable Tag { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            CreatePSStorageInsightParameters parameters = new CreatePSStorageInsightParameters()
+            PSStorageInsightParameters parameters = new PSStorageInsightParameters()
             {
                 Name = Name,
                 StorageAccountResourceId = StorageAccountResourceId,
                 StorageAccountKey = StorageAccountKey,
-                Tables = Tables != null ? Tables.ToList() : null,
-                Containers = Containers != null ? Containers.ToList() : null,
-                Force = Force.IsPresent,
-                ConfirmAction = ConfirmAction
+                Tables = Tables?.ToList(),
+                Containers = Containers?.ToList(),
+                Etag = ETag,
+                Tags = Tag
             };
 
             if (ParameterSetName == ByWorkspaceObject)
@@ -87,8 +95,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 parameters.ResourceGroupName = ResourceGroupName;
                 parameters.WorkspaceName = WorkspaceName;
             }
-
-            WriteObject(OperationalInsightsClient.CreatePSStorageInsight(parameters));
+            if (ShouldProcess(Name, $"Create StorageInsight: {Name}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(OperationalInsightsClient.CreatePSStorageInsight(parameters, ConfirmAction, Force.IsPresent));
+            }
         }
     }
 }

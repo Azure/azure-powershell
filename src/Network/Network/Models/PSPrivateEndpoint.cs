@@ -31,6 +31,30 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSPrivateEndpointCustomDnsConfig> CustomDnsConfigs { get; set; }
         public PSExtendedLocation ExtendedLocation { get; set; }
 
+        /// <summary>
+        /// Need this interim property due to a bug in AutoMapper 6.6.2
+        /// https://github.com/AutoMapper/AutoMapper/issues/2507 - Not able to map null to null for IEnumerable/IReadOnlyList object except for IList
+        /// </summary>
+        internal List<PSApplicationSecurityGroup> _psApplicationSecurityGroups { get; set; }
+
+        /// <summary>
+        /// IReadOnlyList object due to ApplicationSecurityGroups is not applicable for Set-AzPrivateEndpoint
+        /// </summary>
+        public IReadOnlyList<PSApplicationSecurityGroup> ApplicationSecurityGroups => _psApplicationSecurityGroups.AsReadOnly();
+
+        /// <summary>
+        /// Need this interim property due to a bug in AutoMapper 6.6.2
+        /// https://github.com/AutoMapper/AutoMapper/issues/2507 - Not able to map null to null for IEnumerable/IReadOnlyList object except for IList
+        /// </summary>
+        internal List<PSPrivateEndpointIPConfiguration> _psIpConfigurations { get; set; }
+
+        /// <summary>
+        /// IReadOnlyList object due to PrivateEndpointIPConfigurations is not applicable for Set-AzPrivateEndpoint
+        /// </summary>
+        public IReadOnlyList<PSPrivateEndpointIPConfiguration> IpConfigurations => _psIpConfigurations.AsReadOnly();
+
+        public string CustomNetworkInterfaceName { get; internal set; }
+
         [JsonIgnore]
         public string SubnetText
         {
@@ -65,6 +89,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ExtendedLocationText
         {
             get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ApplicationSecurityGroupsText
+        {
+            get { return JsonConvert.SerializeObject(ApplicationSecurityGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string IpConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeNetworkInterfaces()

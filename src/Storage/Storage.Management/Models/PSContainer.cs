@@ -142,7 +142,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableNfsV3AllSquash { get; set; }
 
-
         public static string ParseResourceGroupFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))

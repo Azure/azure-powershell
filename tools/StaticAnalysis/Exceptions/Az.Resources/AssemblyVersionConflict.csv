@@ -1,1 +1,2 @@
 "Directory","AssemblyName","Expected Version","Actual Version","Parent Assembly","Severity","ProblemId","Description","Remediation"
+"Az.Resources","Newtonsoft.Json","12.0.0.0","10.0.0.0","Microsoft.Azure.PowerShell.Cmdlets.Resources.Test","1","1010","Assembly Newtonsoft.Json version 12.0.0.0 referenced from Microsoft.Azure.PowerShell.Cmdlets.Resources.Test.dll does not match assembly version on disk: 10.0.0.0","Update any references to version 10.0.0.0 of assembly Newtonsoft.Json"

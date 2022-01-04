@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstance) content.GetValueForProperty("BackupInstance",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceTypeConverter.ConvertFrom);
+            if (content.Contains("BackupInstance"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstance) content.GetValueForProperty("BackupInstance",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstance) content.GetValueForProperty("BackupInstance",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceTypeConverter.ConvertFrom);
+            if (content.Contains("BackupInstance"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstance) content.GetValueForProperty("BackupInstance",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IValidateForBackupRequestInternal)this).BackupInstance, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

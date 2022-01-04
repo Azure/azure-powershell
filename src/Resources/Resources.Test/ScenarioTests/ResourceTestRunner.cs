@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.Monitor.psd1"),
+                    helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>

@@ -408,8 +408,14 @@
     "alias": "DevSpaces"
   },
   {
+    "module": "SignalR", 
     "regex": "SignalR",
     "alias": "SignalR"
+  },
+  {
+    "module": "SignalR", 
+    "regex": "WebPubSub",
+    "alias": "Web PubSub"
   },
   {
     "regex": "AzSearch",
@@ -540,10 +546,6 @@
   {
     "module": "Sql",
     "alias": "SQL"
-  },
-  {
-    "regex": "Blockchain",
-    "alias": "Blockchain Service"
   },
   {
     "regex": "ImportExport",
@@ -692,5 +694,21 @@
   {
     "alias": "Elastic",
     "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
+  },
+  {
+    "alias": "EdgeOrder",
+    "module": "EdgeOrder"
   }
 ]

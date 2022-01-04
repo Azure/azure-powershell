@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SniEnabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SniEnabled", "SniEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "SniEnabled");
+                yield return new global::System.Management.Automation.CompletionResult("'SniEnabled'", "SniEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "SniEnabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "IpBasedEnabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("IpBasedEnabled", "IpBasedEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "IpBasedEnabled");
+                yield return new global::System.Management.Automation.CompletionResult("'IpBasedEnabled'", "IpBasedEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "IpBasedEnabled");
             }
         }
     }

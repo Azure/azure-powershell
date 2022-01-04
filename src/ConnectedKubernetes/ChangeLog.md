@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Updated api-version of ConnectedKubernetes to 2021-10-01
+* Create new cmdlet: Get-AzConnectedKubernetesUserCredential.
+* Update the New-AzConnectedKubernetes to support helm from version 3.7+
+
 ## Version 0.2.0
 * Updated api-version of ConnectedKubernetes to 2021-03-01
 

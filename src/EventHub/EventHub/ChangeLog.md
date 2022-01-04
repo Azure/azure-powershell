@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.1
+* Fixed the issue that `New-AzEventHubKey` always generates a new primary key instead of a secondary key since version 1.9.0 [#16362]
+
+## Version 1.9.0
+* Added support for Premium sku and namesapce and optional switch parameter 'DisableLocalAuth' to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` 
+
 ## Version 1.8.0
 * Added functionality to accept input from pipeline for `Get-AzEventHub` from `Get-AzEventHubNamespace`.
 

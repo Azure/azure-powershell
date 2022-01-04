@@ -118,9 +118,35 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+            }
+
             base.ExecuteCmdlet();
 
             if (this.ParameterSetName.Equals(IdParameterSet))
@@ -132,6 +158,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
+                            
                     var parameters = new VirtualMachine
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
@@ -159,7 +186,11 @@ namespace Microsoft.Azure.Commands.Compute
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority,
-                        CapacityReservation = this.VM.CapacityReservation
+                        CapacityReservation = this.VM.CapacityReservation,
+                        ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile),
+                        UserData = this.IsParameterBound(c => c.UserData)
+                            ? this.UserData
+                            : this.VM.UserData
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))

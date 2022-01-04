@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\psm1.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
@@ -13,10 +14,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="49.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="49.2.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ModuleAlcEntryAssembly Include="Microsoft.Azure.Commands.Compute.AlcWrapper" />
     <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
     <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
   </ItemGroup>

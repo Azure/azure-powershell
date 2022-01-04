@@ -52,8 +52,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyParameterHelp = "The new policy parameters file path or string for the policy assignment.";
         public const string SetPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
         public const string SetPolicyAssignmentInputObjectHelp = "The policy assignment object to update that was output from another cmdlet.";
-        public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.";
-        public const string PolicyAssignmentLocationHelp = "The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.";
+        public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign a system assigned managed identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.";
+        public const string PolicyAssignmentIdentityTypeHelp = "The type of managed identity to assign to this policy assignment. Can be of type 'SystemAssigned', in which case a managed identity is created for the policy, of type 'UserAssigned', in which case the IdentityId value is required or type 'None', which will remove any managed identity assigned to the policy assignment.";
+        public const string PolicyAssignmentIdentityIdHelp = "The id of the user assigned managed identity  to assign to the policy. This is required when the IdentityType is 'UserAssigned'.";
+        public const string PolicyAssignmentLocationHelp = "The location of the policy assignment's resource identity. This is required when the IdentityType is provided.";
         public const string PolicyAssignmentNonComplianceMessageHelp = "The non-compliance messages that describe why a resource is non-compliant with the policy.";
 
         /// <summary>

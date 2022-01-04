@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 66AC5120-80B1-46F2-AA51-132BF361602E
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 schema: 2.0.0
 ---
@@ -9,179 +8,84 @@ schema: 2.0.0
 # Get-AzADApplication
 
 ## SYNOPSIS
-Lists existing azure active directory applications.
+Lists entities from applications or get entity from applications by key
 
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADApplication [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
- [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
-Get-AzADApplication -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
-```
-
-### ApplicationIdParameterSet
-```
-Get-AzADApplication -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzADApplication -DisplayNameStartWith <String> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication [-Select <String[]>] -DisplayNameStartWith <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADApplication -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication [-Select <String[]>] -DisplayName <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ApplicationIdParameterSet
+```
+Get-AzADApplication [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
 ```
-Get-AzADApplication -IdentifierUri <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication [-Select <String[]>] -IdentifierUri <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists existing azure active directory applications.
-Application lookup can be done by ObjectId, ApplicationId, IdentifierUri or DisplayName.
-If no parameter is provided, it fetches all applications under the tenant.
+Lists entities from applications or get entity from applications by key
 
 ## EXAMPLES
 
-### Example 1: List all applications
-
+### Example 1: Get application by display name
 ```powershell
-PS C:\> Get-AzADApplication
+PS C:\> Get-AzADApplication -DisplayName $appname
 ```
 
-Lists all the applications under a tenant.
+Get application by display name
 
-### Example 2: List applications using paging
-
+### Example 2: List applications
 ```powershell
-PS C:\> Get-AzADApplication -First 100
+PS C:\> Get-AzADApplication -First 10
 ```
 
-Lists the first 100 applications under a tenant.
+List first 10 applications
 
-### Example 3: Get application by identifier URI
-
+### Example 3: Search for application display name starts with
 ```powershell
-PS C:\> Get-AzADApplication -IdentifierUri http://mySecretApp1
+PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
 ```
 
-Gets the application with identifier uri as "http://mySecretApp1".
+Search for application display name starts with
 
-### Example 4: Get application by object id
-
+### Example 4: Get application by object Id
 ```powershell
-PS C:\> Get-AzADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69
+PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 ```
 
-Gets the application with the object id '39e64ec6-569b-4030-8e1c-c3c519a05d69'.
+Get application by object Id and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience'
 
 ## PARAMETERS
 
-### -ApplicationId
-The application id of the application to fetch.
-
-```yaml
-Type: System.Guid
-Parameter Sets: ApplicationIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-The display name of the application.
-
-```yaml
-Type: System.String
-Parameter Sets: DisplayNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DisplayNameStartWith
-Fetch all applications starting with the display name.
-
-```yaml
-Type: System.String
-Parameter Sets: SearchStringParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentifierUri
-Unique identifier Uri of the application to fetch.
-
-```yaml
-Type: System.String
-Parameter Sets: ApplicationIdentifierUriParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ObjectId
-The object id of the application to fetch.
-
-```yaml
-Type: System.String
-Parameter Sets: ApplicationObjectIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
+### -AppendSelected
+Append properties selected with default properties when this switch is on, only works with parameter '-Select'.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -195,8 +99,174 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ApplicationId
+application id
+
+```yaml
+Type: System.Guid
+Parameter Sets: ApplicationIdParameterSet
+Aliases: AppId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsistencyLevel
+Indicates the requested consistency level.
+Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+application display name
+
+```yaml
+Type: System.String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayNameStartWith
+application display name starts with
+
+```yaml
+Type: System.String
+Parameter Sets: SearchStringParameterSet
+Aliases: DisplayNameStartsWith
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+Filter items by property values
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentifierUri
+application identifier uri
+
+```yaml
+Type: System.String
+Parameter Sets: ApplicationIdentifierUriParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ObjectId
+key: id of application
+
+```yaml
+Type: System.String
+Parameter Sets: ApplicationObjectIdParameterSet
+Aliases: Id
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Orderby
+Order items by property values
+
+```yaml
+Type: System.String[]
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Search
+Search items by search phrases
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Select
+Select properties to be returned
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Skip
-Ignores the first N objects and then gets the remaining objects.
+Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
@@ -211,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -First
-The maximum number of objects to return.
+Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
@@ -230,27 +300,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Guid
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
-
-[Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
-
-[New-AzADAppCredential](./New-AzADAppCredential.md)
-
-[Get-AzADAppCredential](./Get-AzADAppCredential.md)
-
-[Remove-AzADApplication](./Remove-AzADApplication.md)
-
-[New-AzADApplication](./New-AzADApplication.md)
-
-[Update-AzADApplication](./Update-AzADApplication.md)
-

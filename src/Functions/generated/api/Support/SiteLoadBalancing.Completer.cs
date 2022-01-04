@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WeightedRoundRobin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WeightedRoundRobin", "WeightedRoundRobin", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeightedRoundRobin");
+                yield return new global::System.Management.Automation.CompletionResult("'WeightedRoundRobin'", "WeightedRoundRobin", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeightedRoundRobin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LeastRequests".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LeastRequests", "LeastRequests", global::System.Management.Automation.CompletionResultType.ParameterValue, "LeastRequests");
+                yield return new global::System.Management.Automation.CompletionResult("'LeastRequests'", "LeastRequests", global::System.Management.Automation.CompletionResultType.ParameterValue, "LeastRequests");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LeastResponseTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LeastResponseTime", "LeastResponseTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LeastResponseTime");
+                yield return new global::System.Management.Automation.CompletionResult("'LeastResponseTime'", "LeastResponseTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LeastResponseTime");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WeightedTotalTraffic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WeightedTotalTraffic", "WeightedTotalTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeightedTotalTraffic");
+                yield return new global::System.Management.Automation.CompletionResult("'WeightedTotalTraffic'", "WeightedTotalTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeightedTotalTraffic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RequestHash".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RequestHash", "RequestHash", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequestHash");
+                yield return new global::System.Management.Automation.CompletionResult("'RequestHash'", "RequestHash", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequestHash");
             }
         }
     }

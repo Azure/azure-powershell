@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "True".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("True", "True", global::System.Management.Automation.CompletionResultType.ParameterValue, "True");
+                yield return new global::System.Management.Automation.CompletionResult("'True'", "True", global::System.Management.Automation.CompletionResultType.ParameterValue, "True");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "False".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("False", "False", global::System.Management.Automation.CompletionResultType.ParameterValue, "False");
+                yield return new global::System.Management.Automation.CompletionResult("'False'", "False", global::System.Management.Automation.CompletionResultType.ParameterValue, "False");
             }
         }
     }

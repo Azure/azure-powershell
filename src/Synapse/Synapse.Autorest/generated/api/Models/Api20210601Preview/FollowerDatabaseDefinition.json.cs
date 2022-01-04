@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
             {
                 return;
             }
-            {_clusterResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString>("clusterResourceId"), out var __jsonClusterResourceId) ? (string)__jsonClusterResourceId : (string)ClusterResourceId;}
+            {_kustoPoolResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString>("clusterResourceId"), out var __jsonClusterResourceId) ? (string)__jsonClusterResourceId : (string)KustoPoolResourceId;}
             {_attachedDatabaseConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString>("attachedDatabaseConfigurationName"), out var __jsonAttachedDatabaseConfigurationName) ? (string)__jsonAttachedDatabaseConfigurationName : (string)AttachedDatabaseConfigurationName;}
             {_databaseName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString>("databaseName"), out var __jsonDatabaseName) ? (string)__jsonDatabaseName : (string)DatabaseName;}
             AfterFromJson(json);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
             {
                 return container;
             }
-            AddIf( null != (((object)this._clusterResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString(this._clusterResourceId.ToString()) : null, "clusterResourceId" ,container.Add );
+            AddIf( null != (((object)this._kustoPoolResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString(this._kustoPoolResourceId.ToString()) : null, "clusterResourceId" ,container.Add );
             AddIf( null != (((object)this._attachedDatabaseConfigurationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonString(this._attachedDatabaseConfigurationName.ToString()) : null, "attachedDatabaseConfigurationName" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.SerializationMode.IncludeReadOnly))
             {

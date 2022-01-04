@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSIntelligencePack
     {
-        public PSIntelligencePack()
+        public PSIntelligencePack(IntelligencePack ip)
         {
-        }
-
-        public PSIntelligencePack(string name, bool enabled)
-        {
-            this.Name = name;
-            this.Enabled = enabled;
+            this.Name = ip.Name;
+            this.DisplayName = ip.DisplayName;
+            this.Enabled = ip.Enabled.Value;
         }
 
         public string Name { get; set; }
+
+        public string DisplayName { get; set; }
 
         public bool Enabled { get; set; }
     }

@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Default", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
+                yield return new global::System.Management.Automation.CompletionResult("'Default'", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "XffProxy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("XffProxy", "XffProxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "XffProxy");
+                yield return new global::System.Management.Automation.CompletionResult("'XffProxy'", "XffProxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "XffProxy");
             }
         }
     }

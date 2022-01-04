@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
-        public Tier ClusterTier { get; set; }
+        public string ClusterTier { get; set; }
 
         /// <summary>
         /// Gets or sets the database to store the metadata for Oozie.

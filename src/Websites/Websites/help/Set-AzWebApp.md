@@ -72,6 +72,15 @@ $hashtable =  @{myConnectionString = @{Type='MySql';Value='MySql Connection stri
 Set-AzWebApp -Name 'ContosoWebApp' -ResourceGroupName 'Default-Web-WestUS' -ConnectionString $hashtable
 ```
 
+### Example 5
+
+Enable application insights for Web App
+```azurepowershell-interactive
+$key=(Get-AzApplicationInsights -ResourceId $ai).InstrumentationKey
+$setting=@{"ApplicationInsightsAgent_EXTENSION_VERSION"="~3"; "APPINSIGHTS_INSTRUMENTATIONKEY"=$key}
+Set-AzWebApp -AppSettings $setting -Name 'ContosoWebApp' -ResourceGroupName 'Default-Web-WestUS'
+```
+
 ## PARAMETERS
 
 ### -AlwaysOn
@@ -572,13 +581,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 Below provided cmdlet will help you to update Azure Web App to **DOTNETCORE**
-
 $PropertiesObject = @{
     "CURRENT_STACK" =  "dotnetcore"
 }
 New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName "Default-Web-WestUS" -ResourceType Microsoft.Web/sites/config -ResourceName "ContosoWebApp/metadata" -ApiVersion 2018-02-01 -Force
-
-Replace the values of Default-Web-WestUS with your resource group name of the webapp and ContosoWebApp with the webapp name.
+Replace the values of `Default-Web-WestUS` with your resource group name of the webapp and `ContosoWebApp` with the webapp name.
 
 ## RELATED LINKS
 

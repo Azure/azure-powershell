@@ -36,10 +36,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 BackupIntervalInMinutes = periodicModeBackupPolicy.PeriodicModeProperties.BackupIntervalInMinutes;
                 BackupRetentionIntervalInHours = periodicModeBackupPolicy.PeriodicModeProperties.BackupRetentionIntervalInHours;
                 BackupType = PeriodicModeBackupType;
+                BackupStorageRedundancy = periodicModeBackupPolicy.PeriodicModeProperties.BackupStorageRedundancy;
             }
             else if (backupPolicy is ContinuousModeBackupPolicy)
             {
                 BackupType = ContinuousModeBackupType;
+            }
+
+            if (backupPolicy.MigrationState != null)
+            {
+                BackupPolicyMigrationState = new PSBackupPolicyMigrationState(backupPolicy.MigrationState);
             }
         }
 
@@ -49,11 +55,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public string BackupType { get; set; }
 
+        public string BackupStorageRedundancy { get; set; }
+
+        public PSBackupPolicyMigrationState BackupPolicyMigrationState { get; set;}
+
         public BackupPolicy ToSDKModel()
         {
+            BackupPolicy backupPolicy;
             if (BackupType.Equals(PSBackupPolicy.ContinuousModeBackupType))
             {
-                return new ContinuousModeBackupPolicy();
+                backupPolicy = new ContinuousModeBackupPolicy();
             }
             else
             {
@@ -62,12 +73,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     PeriodicModeProperties = new PeriodicModeProperties()
                     {
                         BackupIntervalInMinutes = BackupIntervalInMinutes,
-                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                        BackupStorageRedundancy = BackupStorageRedundancy
                     }
                 };
 
-                return periodicModeBackupPolicy;
+                backupPolicy = periodicModeBackupPolicy;
             }
+
+            return backupPolicy;
         }
     }
 }

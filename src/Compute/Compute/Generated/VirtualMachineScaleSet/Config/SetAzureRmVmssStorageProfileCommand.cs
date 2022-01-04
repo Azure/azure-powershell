@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class SetAzureRmVmssStorageProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        protected const string DiffDiskPlacementPresentButNotSetting = "The DiffDiskPlacement parameter can only be used when the DiffDiskSetting parameter is set to 'Local'. Please provide the DiffDiskSetting parameter.";
+
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -116,6 +118,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string DiffDiskSetting { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.")]
+        [PSArgumentCompleter("CacheDisk", "ResourceDisk")]
+        public string DiffDiskPlacement { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -320,6 +329,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption = this.OsDiskCreateOption;
             }
 
+            if (this.IsParameterBound(c => c.DiffDiskPlacement) & !this.IsParameterBound(c => c.DiffDiskPlacement))
+            {
+                WriteError(new ErrorRecord(
+                        new Exception(DiffDiskPlacementPresentButNotSetting),
+                        string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+
+            // DiffDiskSetting
             if (this.IsParameterBound(c => c.DiffDiskSetting))
             {
                 // VirtualMachineProfile
@@ -337,12 +354,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetOSDisk();
                 }
-                // DiffDiskSettings
+                // DiffDiskSettings.Option
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings == null)
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings = new DiffDiskSettings();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Option = this.DiffDiskSetting;
+
+                // DiffDiskPlacement assignment
+                if (this.IsParameterBound(c => c.DiffDiskPlacement))
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement = this.DiffDiskPlacement;
+                }
             }
 
             if (this.IsParameterBound(c => c.OsDiskOsType))

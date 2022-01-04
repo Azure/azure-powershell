@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Location = cluster.Location;
             ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
-            OperatingSystemType = cluster.Properties.OsType ?? OSType.Linux;
-            ClusterTier = cluster.Properties.Tier ?? Tier.Standard;
+            OperatingSystemType = cluster.Properties.OsType;
+            ClusterTier = cluster.Properties.Tier;
             ClusterState = cluster.Properties.ClusterState;
             ClusterType = cluster.Properties.ClusterDefinition.Kind;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed ?? 0;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
-            AssignedIdentity = cluster.Identity;
+            AssignedIdentity = new AzureHDInsightClusterIdentity(cluster.Identity);
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
             var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeProfile)?.VirtualNetworkProfile;
@@ -81,6 +81,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             KafkaRestProperties = cluster?.Properties?.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
             NetworkProperties = cluster?.Properties?.NetworkProperties != null ? new AzureHDInsightNetworkProperties(cluster.Properties.NetworkProperties) : null;
             ComputeIsolationProperties = cluster?.Properties?.ComputeIsolationProperties != null ? new AzureHDInsightComputeIsolationProperties(cluster.Properties.ComputeIsolationProperties) : null;
+            PrivateLinkConfigurations = cluster?.Properties?.PrivateLinkConfigurations?.Select(config => new AzureHDInsightPrivateLinkConfiguration(config)).ToList();
+            PrivateEndpointConnections = cluster?.Properties?.PrivateEndpointConnections?.Select(connection => new AzureHDInsightPrivateEndpointConnection(connection)).ToList();
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -148,12 +150,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// The type of operating system.
         /// </summary>
-        public OSType OperatingSystemType { get; set; }
+        public string OperatingSystemType { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
-        public Tier ClusterTier { get; set; }
+        public string ClusterTier { get; set; }
 
         /// <summary>
         /// The state of the cluster.
@@ -240,7 +242,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the assigned identity.
         /// </summary>
-        public ClusterIdentity AssignedIdentity { get; set; }
+        public AzureHDInsightClusterIdentity AssignedIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets the private endpoint.
@@ -286,5 +288,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the connectivity endpoints.
         /// </summary>
         public IList<AzureHDInsightConnectivityEndpoint> ConnectivityEndpoints;
+
+        /// <summary>
+        /// Gets or sets the private link configurations.
+        /// </summary>
+        public List<AzureHDInsightPrivateLinkConfiguration> PrivateLinkConfigurations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the private endpoint connections.
+        /// </summary>
+        public List<AzureHDInsightPrivateEndpointConnection> PrivateEndpointConnections { get; }
     }
 }

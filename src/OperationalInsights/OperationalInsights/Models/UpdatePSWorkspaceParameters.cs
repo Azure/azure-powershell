@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     public class UpdatePSWorkspaceParameters : OperationalInsightsParametersBase
     {
-        public string Sku { get; set; }
+        public PSWorkspaceSku Sku { get; set; }
 
         public Hashtable Tags { get; set; }
 
@@ -27,5 +28,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string PublicNetworkAccessForIngestion { get; set; }
 
         public string PublicNetworkAccessForQuery { get; set; }
+
+        public int? DailyQuotaGb { get; set; }
+
+        public bool? ForceCmkForQuery { get; set; }
+
+        public PSWorkspaceFeatures WsFeatures { get; set; }
     }
 }

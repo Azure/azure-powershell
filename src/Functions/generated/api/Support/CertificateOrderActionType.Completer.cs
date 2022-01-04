@@ -28,59 +28,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateIssued".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateIssued", "CertificateIssued", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateIssued");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateIssued'", "CertificateIssued", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateIssued");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateOrderCanceled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateOrderCanceled", "CertificateOrderCanceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateOrderCanceled");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateOrderCanceled'", "CertificateOrderCanceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateOrderCanceled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateOrderCreated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateOrderCreated", "CertificateOrderCreated", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateOrderCreated");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateOrderCreated'", "CertificateOrderCreated", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateOrderCreated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateRevoked".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateRevoked", "CertificateRevoked", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateRevoked");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateRevoked'", "CertificateRevoked", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateRevoked");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DomainValidationComplete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DomainValidationComplete", "DomainValidationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainValidationComplete");
+                yield return new global::System.Management.Automation.CompletionResult("'DomainValidationComplete'", "DomainValidationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainValidationComplete");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FraudDetected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FraudDetected", "FraudDetected", global::System.Management.Automation.CompletionResultType.ParameterValue, "FraudDetected");
+                yield return new global::System.Management.Automation.CompletionResult("'FraudDetected'", "FraudDetected", global::System.Management.Automation.CompletionResultType.ParameterValue, "FraudDetected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OrgNameChange".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OrgNameChange", "OrgNameChange", global::System.Management.Automation.CompletionResultType.ParameterValue, "OrgNameChange");
+                yield return new global::System.Management.Automation.CompletionResult("'OrgNameChange'", "OrgNameChange", global::System.Management.Automation.CompletionResultType.ParameterValue, "OrgNameChange");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OrgValidationComplete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OrgValidationComplete", "OrgValidationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "OrgValidationComplete");
+                yield return new global::System.Management.Automation.CompletionResult("'OrgValidationComplete'", "OrgValidationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "OrgValidationComplete");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SanDrop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SanDrop", "SanDrop", global::System.Management.Automation.CompletionResultType.ParameterValue, "SanDrop");
+                yield return new global::System.Management.Automation.CompletionResult("'SanDrop'", "SanDrop", global::System.Management.Automation.CompletionResultType.ParameterValue, "SanDrop");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FraudCleared".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FraudCleared", "FraudCleared", global::System.Management.Automation.CompletionResultType.ParameterValue, "FraudCleared");
+                yield return new global::System.Management.Automation.CompletionResult("'FraudCleared'", "FraudCleared", global::System.Management.Automation.CompletionResultType.ParameterValue, "FraudCleared");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateExpired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateExpired", "CertificateExpired", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateExpired");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateExpired'", "CertificateExpired", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateExpired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateExpirationWarning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateExpirationWarning", "CertificateExpirationWarning", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateExpirationWarning");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateExpirationWarning'", "CertificateExpirationWarning", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateExpirationWarning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FraudDocumentationRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FraudDocumentationRequired", "FraudDocumentationRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "FraudDocumentationRequired");
+                yield return new global::System.Management.Automation.CompletionResult("'FraudDocumentationRequired'", "FraudDocumentationRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "FraudDocumentationRequired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

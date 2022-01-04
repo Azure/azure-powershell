@@ -131,7 +131,7 @@ function setupEnv() {
             Runtime = "PowerShell"
             RuntimeVersion = '7.0'
             Name = "Functions-PowerShell-7-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            FunctionsVersion = 4
         },
         @{
             ResourceGroupName = $resourceGroupNameLinuxPremium
@@ -139,9 +139,9 @@ function setupEnv() {
             StorageAccountName = $storageAccountLinux
             OSType = "Linux"
             Runtime = "Node"
-            RuntimeVersion = 12
-            Name = "Functions-Node-12-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            RuntimeVersion = 14
+            Name = "Functions-Node-14-" + (RandomString -len 6)
+            FunctionsVersion = 4
         },
         @{
             ResourceGroupName = $resourceGroupNameWindowsConsumption
@@ -149,9 +149,9 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "DotNet"
-            RuntimeVersion = 3
-            Name = "Functions-DoNet-3-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            RuntimeVersion = 6.0
+            Name = "Functions-DoNet-6-" + (RandomString -len 6)
+            FunctionsVersion = 4
         },
         @{
             ResourceGroupName = $resourceGroupNameLinuxConsumption      
@@ -161,7 +161,7 @@ function setupEnv() {
             Runtime = "Python"
             RuntimeVersion = 3.8
             Name = "Functions-Python-3-8-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            FunctionsVersion = 4
         }
     )
 
@@ -181,6 +181,7 @@ function setupEnv() {
     $functionNameJava = "Functions-Java-" + (RandomString -len 10)
     $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
+    $functionAppTestPlanName= "Functions-MyTestPlan1-" + (RandomString -len 10)
 
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
@@ -190,6 +191,7 @@ function setupEnv() {
     $env.add('functionNameJava', $functionNameJava) | Out-Null
     $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
+    $env.add('functionAppTestPlanName', $functionAppTestPlanName) | Out-Null
 
     # Create user assigned identity
     Write-Host "Create user assigned managed identity" -ForegroundColor Yellow

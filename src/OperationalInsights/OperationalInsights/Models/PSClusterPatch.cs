@@ -22,11 +22,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSClusterPatch
     {
-        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable))
+        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity), string billingType = default(string))
         {
             KeyVaultProperties = keyVaultProperties;
             Sku = sku;
             Tags = tags;
+            Identity = identity;
+            BillingType = billingType;
         }
 
         public PSClusterPatch(ClusterPatch patch)
@@ -44,7 +46,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             if (patch.Tags != null)
             {
                 this.Tags = new Hashtable((IDictionary)patch.Tags);
-            }        
+            }
+
+            if (patch.Identity != null)
+            {
+                this.Identity = new PSIdentity(patch.Identity);
+            }
+
+            if (patch.BillingType != null)
+            {
+                this.BillingType = patch.BillingType;
+            }
         }
 
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
@@ -53,6 +65,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public Hashtable Tags { get; set; }
 
+        public PSIdentity Identity { get; set; }
+
+        public string BillingType { get; set; }
+
         private IDictionary<string, string> getTags()
         {
             return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
@@ -60,7 +76,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public ClusterPatch GetClusterPatch()
         {
-            return new ClusterPatch(this.KeyVaultProperties?.GetKeyVaultProperties(), this.Sku?.geteClusterSku(), this.getTags());
+            return new ClusterPatch(
+                this.KeyVaultProperties?.GetKeyVaultProperties(),
+                billingType: this.BillingType,
+                identity: Identity.getIdentity(), 
+                this.Sku?.getClusterSku(),
+                this.getTags()
+            );
         }
     }
 }

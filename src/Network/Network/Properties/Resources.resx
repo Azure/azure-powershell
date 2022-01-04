@@ -525,7 +525,7 @@
     <value>WorkspaceResourceId must be provided in connection monitor output.</value>
   </data>
   <data name="InvalidWorkspaceResourceId" xml:space="preserve">
-    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace.</value>
+    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace.</value>
   </data>
   <data name="UnsupportedEndpointFilterItemType" xml:space="preserve">
     <value>Specified EndpointFilterItemType is not supported. Supported type is 'AgentAddress'.</value>
@@ -710,5 +710,17 @@
   </data>
   <data name="ApplicationGatewayTrustedClientCertificateName" xml:space="preserve">
     <value>trustedClientCertificates</value>
+  </data>
+  <data name="VpnNatRuleUnmatchedPortRange" xml:space="preserve">
+    <value>One or more port ranges specified the VPN NAT rule does not have a corresponding subnet mapping. The count of supplied port ranges in {0} must match with the count of subnets in {1}. </value>
+  </data>
+  <data name="VpnGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VpnGatewayNatRule could not be found</value>
+  </data>
+  <data name="VpnGatewayRequiredToCreateVpnNatRule" xml:space="preserve">
+    <value>A valid VpnGateway reference is required to create a VpnNatRule</value>
+  </data>
+  <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VirtualNetworkGatewayNatRule could not be found</value>
   </data>
 </root>

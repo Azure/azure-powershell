@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Delete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Delete", "Delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delete");
+                yield return new global::System.Management.Automation.CompletionResult("'Delete'", "Delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delete");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Update".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Update", "Update", global::System.Management.Automation.CompletionResultType.ParameterValue, "Update");
+                yield return new global::System.Management.Automation.CompletionResult("'Update'", "Update", global::System.Management.Automation.CompletionResultType.ParameterValue, "Update");
             }
         }
     }

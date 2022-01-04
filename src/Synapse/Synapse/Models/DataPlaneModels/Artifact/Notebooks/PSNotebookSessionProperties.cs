@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -30,14 +28,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.NumExecutors = notebookSessionProperties?.NumExecutors;
         }
 
+        [JsonProperty(PropertyName = "driverMemory")]
         public string DriverMemory { get; set; }
 
+        [JsonProperty(PropertyName = "driverCores")]
         public int? DriverCores { get; set; }
 
+        [JsonProperty(PropertyName = "executorMemory")]
         public string ExecutorMemory { get; set; }
 
+        [JsonProperty(PropertyName = "executorCores")]
         public int? ExecutorCores { get; set; }
 
+        [JsonProperty(PropertyName = "numExecutors")]
         public int? NumExecutors { get; set; }
     }
 }

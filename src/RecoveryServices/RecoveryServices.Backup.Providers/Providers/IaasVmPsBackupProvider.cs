@@ -448,6 +448,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // Vanguard M9 requirement: restores using MSI
             IdentityInfo identityInfo = null;
+            IdentityBasedRestoreDetails identityBasedRestoreDetails = null;
             if (useSystemAssignedIdentity || (userAssignedIdentityId != null && userAssignedIdentityId != ""))
             {
                 if (rp.IsManagedVirtualMachine)
@@ -462,6 +463,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         identityInfo.IsSystemAssignedIdentity = false;
                         identityInfo.ManagedIdentityResourceId = userAssignedIdentityId;
                     }
+
+                    // target storage account for MSI based restore 
+                    identityBasedRestoreDetails = new IdentityBasedRestoreDetails();
+                    identityBasedRestoreDetails.TargetStorageAccountId = storageAccountResource.Id;
                 }
                 else
                 {
@@ -484,8 +489,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 RestoreDiskLunList = restoreDiskLUNS,
                 DiskEncryptionSetId = DiskEncryptionSetId,
                 RestoreWithManagedDisks = restoreWithManagedDisks,
-                IdentityInfo = identityInfo
+                IdentityInfo = identityInfo,
+                IdentityBasedRestoreDetails = identityBasedRestoreDetails
             };
+
+            // make StorageAccountId null in case of MSI based restore
+            if (identityBasedRestoreDetails != null)
+            {
+                restoreRequest.StorageAccountId = null;
+            }
 
             if(targetZones != null)
             {

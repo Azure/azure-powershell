@@ -61,5 +61,34 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         ? null
                         : new ExtendedLocation { Name = edgeZone }
                 });
+
+        public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfigNoPublicIP(
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            string edgeZone,
+            NestedResourceConfig<Subnet, VirtualNetwork> subnet,
+            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null,
+            bool enableAcceleratedNetworking = false)
+            => Strategy.CreateResourceConfig(
+                resourceGroup: resourceGroup,
+                name: name,
+                createModel: engine => new NetworkInterface
+                {
+                    EnableAcceleratedNetworking = enableAcceleratedNetworking,
+                    IpConfigurations = new[]
+                    {
+                        new NetworkInterfaceIPConfiguration
+                        {
+                            Name = name,
+                            Subnet = engine.GetReference(subnet)
+                        }
+                    },
+                    NetworkSecurityGroup = networkSecurityGroup == null
+                        ? null
+                        : engine.GetReference(networkSecurityGroup),
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
+                });
     }
 }

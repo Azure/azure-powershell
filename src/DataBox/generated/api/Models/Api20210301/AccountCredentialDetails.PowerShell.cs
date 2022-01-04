@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString = (string) content.GetValueForProperty("AccountConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails[]) content.GetValueForProperty("ShareCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShareCredentialDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("AccountConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString = (string) content.GetValueForProperty("AccountConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareCredentialDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails[]) content.GetValueForProperty("ShareCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShareCredentialDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString = (string) content.GetValueForProperty("AccountConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails[]) content.GetValueForProperty("ShareCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShareCredentialDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("AccountConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString = (string) content.GetValueForProperty("AccountConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).AccountConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareCredentialDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails[]) content.GetValueForProperty("ShareCredentialDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAccountCredentialDetailsInternal)this).ShareCredentialDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShareCredentialDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -17,8 +17,9 @@ Creates a Redis Cache.
 New-AzRedisCache -ResourceGroupName <String> -Name <String> -Location <String> [-Size <String>] [-Sku <String>]
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
  [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-SubnetId <String>] [-StaticIP <String>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-RedisVersion <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-RedisVersion <String>] [-IdentityType <String>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +79,7 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 
 This cmdlet creates a cache using Azure Cache for Redis.
 
-### Example 3: Create a Zone Redundant Cache 
+### Example 3: Create a Zone Redundant Cache
 
 ```
 PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -Zone @("1","2")
@@ -103,10 +104,11 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
           Tag                : {}
           Zone               : {1, 2}
 ```
+
 This command creates Azure cache for Redis instance in mutliple zones.
 
 ### Example 4: Create a Virtual Network enable Cache
-   
+
 Requirements for creating Virtual Network enable cache.
 1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](./../../../Network/Network/help/New-AzVirtualNetwork.md) powershell command.
 1. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
@@ -158,6 +160,8 @@ For RDB backup enable
 -  rdb-storage-connection-string (Give connection string in above format.)    
 -  rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
     
+
+
 ```
 PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
@@ -236,6 +240,21 @@ The default value is $False (the non-SSL port is disabled).
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Specifies the type of identity used for the Azure Cache for Redis. Valid values: "SystemAssigned" or "UserAssigned" or "SystemAssignedUserAssigned" or "None"
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -526,6 +545,21 @@ This parameter has been deprecated.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+Specifies one or more comma seperated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

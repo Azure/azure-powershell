@@ -31,15 +31,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LatestTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LatestTime", "LatestTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTime");
+                yield return new global::System.Management.Automation.CompletionResult("'LatestTime'", "LatestTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTime");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LatestTag".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LatestTag", "LatestTag", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTag");
+                yield return new global::System.Management.Automation.CompletionResult("'LatestTag'", "LatestTag", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTag");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Custom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Custom", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
+                yield return new global::System.Management.Automation.CompletionResult("'Custom'", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
             }
         }
     }

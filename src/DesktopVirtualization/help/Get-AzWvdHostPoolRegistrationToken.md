@@ -159,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IRegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IRegistrationInfo
 
 ## NOTES
 

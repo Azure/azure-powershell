@@ -6,15 +6,19 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Extensions;
+    using System;
 
-    /// <summary>Create or Update Disk pool.</summary>
+    /// <summary>
+    /// Create or Update Disk pool. This create or update operation can take 15 minutes to complete. This is expected service
+    /// behavior.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDiskPool_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Description(@"Create or Update Disk pool.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Description(@"Create or Update Disk pool. This create or update operation can take 15 minutes to complete. This is expected service behavior.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Generated]
     public partial class NewAzDiskPool_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.IEventListener
@@ -88,14 +92,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         ReadOnly = false,
         Description = @"List of Azure Managed Disks to attach to a Disk Pool.",
         SerializedName = @"disks",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDisk) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDisk[] Disk { get => DiskPoolCreatePayloadBody.Disk ?? null /* arrayOf */; set => DiskPoolCreatePayloadBody.Disk = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[] Disk { get => DiskPoolCreatePayloadBody.Disk ?? null /* arrayOf */; set => DiskPoolCreatePayloadBody.Disk = value; }
 
         /// <summary>Backing field for <see cref="DiskPoolCreatePayloadBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolCreate _diskPoolCreatePayloadBody= new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.DiskPoolCreate();
+        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreate _diskPoolCreatePayloadBody= new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskPoolCreate();
 
         /// <summary>Request payload for create or update Disk Pool request.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolCreate DiskPoolCreatePayloadBody { get => this._diskPoolCreatePayloadBody; set => this._diskPoolCreatePayloadBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreate DiskPoolCreatePayloadBody { get => this._diskPoolCreatePayloadBody; set => this._diskPoolCreatePayloadBody = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -122,6 +126,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => DiskPoolCreatePayloadBody.Location ?? null; set => DiskPoolCreatePayloadBody.Location = value; }
+
+        /// <summary>
+        /// Azure resource id. Indicates if this resource is managed by another Azure resource.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource id. Indicates if this resource is managed by another Azure resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource id. Indicates if this resource is managed by another Azure resource.",
+        SerializedName = @"managedBy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedBy { get => DiskPoolCreatePayloadBody.ManagedBy ?? null; set => DiskPoolCreatePayloadBody.ManagedBy = value; }
+
+        /// <summary>List of Azure resource ids that manage this resource.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Azure resource ids that manage this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Azure resource ids that manage this resource.",
+        SerializedName = @"managedByExtended",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ManagedByExtended { get => DiskPoolCreatePayloadBody.ManagedByExtended ?? null /* arrayOf */; set => DiskPoolCreatePayloadBody.ManagedByExtended = value; }
 
         /// <summary>
         /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -249,32 +278,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolCreateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolCreateTags Tag { get => DiskPoolCreatePayloadBody.Tag ?? null /* object */; set => DiskPoolCreatePayloadBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreateTags Tag { get => DiskPoolCreatePayloadBody.Tag ?? null /* object */; set => DiskPoolCreatePayloadBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -500,12 +529,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -522,7 +551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=DiskPoolCreatePayloadBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -540,12 +569,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool> response)
         {
             using( NoSynchronizationContext )
             {
@@ -557,7 +586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
                 WriteObject((await response));
             }
         }

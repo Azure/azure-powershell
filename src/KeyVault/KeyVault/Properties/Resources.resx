@@ -120,7 +120,7 @@
   <data name="ADObjectIDRetrievalFailed" xml:space="preserve">
     <value>Retrieving object ID from Azure Active Directory failed. {0}
 
-Please provide object ID for the user or service principle to set a vault access policy.
+Please provide object ID for the user or service principal to set a vault access policy.
 You can find the object ID using Azure Active Directory Module for Windows PowerShell.</value>
   </data>
   <data name="ADObjectNotFound" xml:space="preserve">
@@ -577,7 +577,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Remove HSM</value>
   </data>
   <data name="ADGraphPermissionWarning" xml:space="preserve">
-    <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`.</value>
+    <value>Please make sure you have sufficient permissions in Microsoft Graph to get and list directory objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`.</value>
   </data>
   <data name="UpdateHsmShouldProcessMessage" xml:space="preserve">
     <value>Updating managed HSM '{0}' in resource group '{1}'.</value>
@@ -590,5 +590,11 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="CurveNameButNotEc" xml:space="preserve">
     <value>When '-CurveName' is specified, '-KeyType' must be 'EC'.</value>
+  </data>
+  <data name="RotateKey" xml:space="preserve">
+    <value>Rotate Key</value>
+  </data>
+  <data name="SetKeyRotationPolicy" xml:space="preserve">
+    <value>Set key rotation policy</value>
   </data>
 </root>

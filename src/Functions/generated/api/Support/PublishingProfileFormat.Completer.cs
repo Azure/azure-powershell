@@ -33,15 +33,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FileZilla3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FileZilla3", "FileZilla3", global::System.Management.Automation.CompletionResultType.ParameterValue, "FileZilla3");
+                yield return new global::System.Management.Automation.CompletionResult("'FileZilla3'", "FileZilla3", global::System.Management.Automation.CompletionResultType.ParameterValue, "FileZilla3");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WebDeploy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WebDeploy", "WebDeploy", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebDeploy");
+                yield return new global::System.Management.Automation.CompletionResult("'WebDeploy'", "WebDeploy", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebDeploy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ftp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ftp", "Ftp", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ftp");
+                yield return new global::System.Management.Automation.CompletionResult("'Ftp'", "Ftp", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ftp");
             }
         }
     }

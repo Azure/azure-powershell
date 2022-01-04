@@ -23,6 +23,9 @@ Adds information to the unattended Windows Setup answer file.
 ### [Add-AzVMDataDisk](Add-AzVMDataDisk.md)
 Adds a data disk to a virtual machine.
 
+### [Add-AzVmGalleryApplication](Add-AzVmGalleryApplication.md)
+Add a PSGalleryApplication object to the PSVirtualMachine object.
+
 ### [Add-AzVMNetworkInterface](Add-AzVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
 
@@ -40,6 +43,9 @@ Adds a diagnostics extension to the VMSS.
 
 ### [Add-AzVmssExtension](Add-AzVmssExtension.md)
 Adds an extension to the VMSS.
+
+### [Add-AzVmssGalleryApplication](Add-AzVmssGalleryApplication.md)
+Add a PSVMGalleryApplication object to the PSVirtualMachineScaleSetVMProfile object.
 
 ### [Add-AzVMSshPublicKey](Add-AzVMSshPublicKey.md)
 Adds the public keys for SSH for a virtual machine, when only creating the VM.
@@ -121,6 +127,12 @@ Get or list Proximity Placement Group resource(s).
 
 ### [Get-AzRemoteDesktopFile](Get-AzRemoteDesktopFile.md)
 Gets an .rdp file.
+
+### [Get-AzRestorePoint](Get-AzRestorePoint.md)
+Command to get the Restore Point
+
+### [Get-AzRestorePointCollection](Get-AzRestorePointCollection.md)
+Get a Restore Point Collection
 
 ### [Get-AzSnapshot](Get-AzSnapshot.md)
 Gets the properties of a snapshot
@@ -287,6 +299,12 @@ Creates a configurable image object.
 ### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
 Create Proximity Placement Group resource.
 
+### [New-AzRestorePoint](New-AzRestorePoint.md)
+This cmdlet can create a New Restore Point
+
+### [New-AzRestorePointCollection](New-AzRestorePointCollection.md)
+Creates a New Restore Point Collection
+
 ### [New-AzSnapshot](New-AzSnapshot.md)
 Creates a snapshot.
 
@@ -308,6 +326,9 @@ Creates a configurable virtual machine object.
 ### [New-AzVMDataDisk](New-AzVMDataDisk.md)
 Creates a local data disk object for a virtual machine or a Vmss VM.
 
+### [New-AzVmGalleryApplication](New-AzVmGalleryApplication.md)
+Create a local PSVMGalleryApplication object.
+
 ### [New-AzVMSqlServerAutoBackupConfig](New-AzVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
 
@@ -322,6 +343,9 @@ Creates a VMSS.
 
 ### [New-AzVmssConfig](New-AzVmssConfig.md)
 Creates a VMSS configuration object.
+
+### [New-AzVmssGalleryApplication](New-AzVmssGalleryApplication.md)
+Create a local PSVMGalleryApplication object.
 
 ### [New-AzVmssIpConfig](New-AzVmssIpConfig.md)
 Creates an IP configuration for a network interface of a VMSS.
@@ -377,6 +401,12 @@ Removes a data disk from an image object.
 ### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
 Delete Proximity Placement Group resource.
 
+### [Remove-AzRestorePoint](Remove-AzRestorePoint.md)
+This cmdlet can remove a Restore Point 
+
+### [Remove-AzRestorePointCollection](Remove-AzRestorePointCollection.md)
+This Cmdlet can remove Restore Point Collection
+
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.
 
@@ -416,6 +446,9 @@ Removes a DSC extension handler from a virtual machine in a resource group.
 ### [Remove-AzVMExtension](Remove-AzVMExtension.md)
 Removes an extension from a virtual machine.
 
+### [Remove-AzVmGalleryApplication](Remove-AzVmGalleryApplication.md)
+Remove a VMGalleryApplication object from PSVirtualMachine object.
+
 ### [Remove-AzVMNetworkInterface](Remove-AzVMNetworkInterface.md)
 Removes a network interface from a virtual machine.
 
@@ -436,6 +469,9 @@ Removes a diagnostics extension from the VMSS.
 
 ### [Remove-AzVmssExtension](Remove-AzVmssExtension.md)
 Removes an extension from the VMSS.
+
+### [Remove-AzVmssGalleryApplication](Remove-AzVmssGalleryApplication.md)
+Remove a VMGalleryApplication object from PSVirtualMachineScaleSetVMProfile object.
 
 ### [Remove-AzVmssNetworkInterfaceConfiguration](Remove-AzVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
@@ -644,6 +680,9 @@ Update a gallery image version.
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
 
+### [Update-AzRestorePointCollection](Update-AzRestorePointCollection.md)
+Update Restore Point Collection.
+
 ### [Update-AzSnapshot](Update-AzSnapshot.md)
 Updates a snapshot.
 
@@ -662,3 +701,44 @@ Starts a manual upgrade of the VMSS instance.
 ### [Update-AzVmssVM](Update-AzVmssVM.md)
 Updates the state of a Vmss VM.
 
+### [Get-AzVMRunCommand](Get-AzVMRunCommand.md)
+Gets specific run command for a subscription in a location.
+
+### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
+The operation to get the VMSS VM run command.
+
+### [Remove-AzVMRunCommand](Remove-AzVMRunCommand.md)
+The operation to delete the run command.
+
+### [Remove-AzVmssVMRunCommand](Remove-AzVmssVMRunCommand.md)
+The operation to delete the VMSS VM run command.
+
+### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
+The operation to create or update the run command.
+
+### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
+The operation to create or update the VMSS VM run command.
+
+### [Get-AzGalleryApplication](Get-AzGalleryApplication.md)
+Retrieves information about a gallery Application Definition.
+
+### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
+Retrieves information about a gallery Application Version.
+
+### [New-AzGalleryApplication](New-AzGalleryApplication.md)
+Create or update a gallery Application Definition.
+
+### [New-AzGalleryApplicationVersion](New-AzGalleryApplicationVersion.md)
+Create or update a gallery Application Version.
+
+### [Remove-AzGalleryApplication](Remove-AzGalleryApplication.md)
+Delete a gallery Application.
+
+### [Remove-AzGalleryApplicationVersion](Remove-AzGalleryApplicationVersion.md)
+Delete a gallery Application Version.
+
+### [Update-AzGalleryApplication](Update-AzGalleryApplication.md)
+Update a gallery Application Definition.
+
+### [Update-AzGalleryApplicationVersion](Update-AzGalleryApplicationVersion.md)
+Update a gallery Application Version.

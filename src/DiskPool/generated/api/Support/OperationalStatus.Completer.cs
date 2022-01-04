@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Healthy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Healthy", "Healthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Healthy");
+                yield return new global::System.Management.Automation.CompletionResult("'Healthy'", "Healthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Healthy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unhealthy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unhealthy", "Unhealthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unhealthy");
+                yield return new global::System.Management.Automation.CompletionResult("'Unhealthy'", "Unhealthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unhealthy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Updating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Updating", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
+                yield return new global::System.Management.Automation.CompletionResult("'Updating'", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Running".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Running", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
+                yield return new global::System.Management.Automation.CompletionResult("'Running'", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stopped", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
+                yield return new global::System.Management.Automation.CompletionResult("'Stopped'", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopped (deallocated)".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stopped (deallocated)", "Stopped (deallocated)", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped (deallocated)");
+                yield return new global::System.Management.Automation.CompletionResult("'Stopped (deallocated)'", "Stopped (deallocated)", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped (deallocated)");
             }
         }
     }

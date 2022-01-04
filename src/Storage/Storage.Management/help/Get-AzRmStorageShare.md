@@ -38,8 +38,8 @@ Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted] [-Incl
 
 ### ShareResourceId
 ```
-Get-AzRmStorageShare [-ResourceId] <String> [-Name <String>] [-GetShareUsage]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRmStorageShare [-ResourceId] <String> [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,7 +209,7 @@ Share Name
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameSingle, ShareResourceId
+Parameter Sets: AccountNameSingle
 Aliases: N, ShareName
 
 Required: False
@@ -307,7 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

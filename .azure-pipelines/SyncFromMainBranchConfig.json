@@ -1,0 +1,11 @@
+{
+    "SyncPath": [
+        "tools",
+        ".azure-pipelines",
+        "src/lib",
+        "build.proj"
+    ],
+    "UnSyncPath": [
+        ".azure-pipelines/SyncFromMainBranchConfig.json"
+    ]
+}

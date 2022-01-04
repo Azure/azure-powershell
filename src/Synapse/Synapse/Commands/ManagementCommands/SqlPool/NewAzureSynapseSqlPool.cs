@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Collation { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.StorageAccountType)]
+        [ValidateSet(Management.Synapse.Models.StorageAccountType.GRS, Management.Synapse.Models.StorageAccountType.LRS, IgnoreCase = true)]
+        [ValidateNotNull]
+        public string StorageAccountType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -143,7 +148,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 var createParams = new SqlPool
                 {
                     Location = existingWorkspace.Location,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                    StorageAccountType = this.StorageAccountType
                 };
 
                 createParams.CreateMode = SynapseSqlPoolCreateMode.Default;

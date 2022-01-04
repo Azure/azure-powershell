@@ -106,8 +106,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse[]) content.GetValueForProperty("IndividualResponseDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputResponseTypeConverter.ConvertFrom));
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus.CreateFrom);
+            }
+            if (content.Contains("IndividualResponseDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse[]) content.GetValueForProperty("IndividualResponseDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputResponseTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,8 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse[]) content.GetValueForProperty("IndividualResponseDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputResponseTypeConverter.ConvertFrom));
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.OverallValidationStatus.CreateFrom);
+            }
+            if (content.Contains("IndividualResponseDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse[]) content.GetValueForProperty("IndividualResponseDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationResponsePropertiesInternal)this).IndividualResponseDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ValidationInputResponseTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

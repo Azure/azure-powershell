@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.222
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blueprint", "Blueprint\Blueprint.csproj", "{A505E64B-6AA8-43AC-90E7-22A94FD38A0F}"
 EndProject
@@ -25,6 +25,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\Resources\ResourceManager\ResourceManager.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{266CBF7F-4C80-4D7A-A415-44C142369101}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +78,10 @@ Global
 		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

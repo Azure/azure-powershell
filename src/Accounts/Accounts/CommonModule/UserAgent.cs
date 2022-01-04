@@ -42,6 +42,12 @@ namespace Microsoft.Azure.Commands.Common
             {
                 list.Add(new ProductInfoHeaderValue("PSVersion", $"v{AzurePSCmdlet.PowerShellVersion}"));
             }
+            string moduleName = TelemetryProvider.TrimModuleName(invocation?.MyCommand?.ModuleName);
+            string moduleVersion = TelemetryProvider.TrimModuleVersion(invocation?.MyCommand?.Module?.Version);
+            if(!string.IsNullOrWhiteSpace(moduleName))
+            {
+                list.Add(new ProductInfoHeaderValue(moduleName, moduleVersion));
+            }
             _userAgents = list.ToArray();
         }
 

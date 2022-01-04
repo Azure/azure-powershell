@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SlowProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SlowProgress", "SlowProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "SlowProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'SlowProgress'", "SlowProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "SlowProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoProgress", "NoProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'NoProgress'", "NoProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Queued".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Queued", "Queued", global::System.Management.Automation.CompletionResultType.ParameterValue, "Queued");
+                yield return new global::System.Management.Automation.CompletionResult("'Queued'", "Queued", global::System.Management.Automation.CompletionResultType.ParameterValue, "Queued");
             }
         }
     }

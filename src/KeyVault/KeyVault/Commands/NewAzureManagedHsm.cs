@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Models;
+﻿using Microsoft.Azure.Commands.KeyVault.Helpers;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     SkuFamilyName = DefaultManagedHsmSkuFamily
                 };
 
-                this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, ActiveDirectoryClient));
+                this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, GraphClient));
             }
         }
 

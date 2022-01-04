@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Creates or update active directory administrator on an existing server. The update action will overwrite the existing

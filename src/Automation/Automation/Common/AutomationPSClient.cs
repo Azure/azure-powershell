@@ -388,28 +388,44 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Module UpdateModule(string resourceGroupName, string automationAccountName, string name,
             Uri contentLinkUri, string contentLinkVersion)
         {
-            var moduleModel =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-            if (contentLinkUri != null)
+            try
             {
-                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
-
-                moduleUpdateParameters.Name = name;
-                moduleUpdateParameters.ContentLink = new AutomationManagement.Models.ContentLink();
-                moduleUpdateParameters.ContentLink.Uri = contentLinkUri.ToString();
-                moduleUpdateParameters.ContentLink.Version =
-                    (String.IsNullOrWhiteSpace(contentLinkVersion))
-                        ? Guid.NewGuid().ToString()
-                        : contentLinkVersion;
-
-                moduleUpdateParameters.Tags = moduleModel.Tags;
-
-                this.automationManagementClient.Module.Update(resourceGroupName, automationAccountName, name,
-                    moduleUpdateParameters);
-            }
-            var updatedModule =
+                var moduleModel =
                 this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                if (contentLinkUri != null)
+                {
+                    var updateModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+                    {
+                        Name = name,
+                        ContentLink = new AutomationManagement.Models.ContentLink()
+                        {
+                            Uri = contentLinkUri.ToString(),
+                            ContentHash = null,
+                            Version =
+                            (String.IsNullOrWhiteSpace(contentLinkVersion))
+                            ? Guid.NewGuid().ToString()
+                            : contentLinkVersion
+                        },
+                    });
+                }
+            var updatedModule =
+            this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
             return new Module(resourceGroupName, automationAccountName, updatedModule);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                 if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                 {
+                     throw new ResourceNotFoundException(typeof(Module),
+                         string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+
+                 }
+
+                 throw;
+             }
         }
 
         public void DeleteModule(string resourceGroupName, string automationAccountName, string name)
@@ -436,10 +452,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Schedule CreateSchedule(string resourceGroupName, string automationAccountName, Schedule schedule)
         {
-            var scheduleCreateOrUpdateParameters = new AutomationManagement.Models.ScheduleCreateOrUpdateParameters
+            var scheduleCreateOrUpdateParameters = new ScheduleCreateOrUpdateParameters
             {
                Name = schedule.Name,
-               StartTime = schedule.StartTime.DateTime,
+               StartTime = schedule.StartTime,
                ExpiryTime = schedule.ExpiryTime,
                Description = schedule.Description,
                Interval = schedule.Interval,

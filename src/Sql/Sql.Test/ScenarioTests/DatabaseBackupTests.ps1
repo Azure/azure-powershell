@@ -581,3 +581,139 @@ function Test-UpdateLongTermRetentionBackup
 	# Update-AzSqlDatabaseLongTermRetentionBackup returns after target BSR is set
 	Assert-AreEqual "Local" $backupAfterSet.BackupStorageRedundancy 
 }
+
+<#
+	.SYNOPSIS
+	Tests restoring a vldb with source zone redundant == false
+	1. Restore source vldb passing in zone redundant == true and backup storage redundancy == Zone,
+	   Verify restored vldb has zone redundant == true and backup storage redundancy == Zone
+	2. Restore source vldb with no parameters passed in,
+	   Verify restored vldb has zone redundant == false and backup storage redundancy == Geo
+#>
+function Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceNonZRDatabaseName = Get-DatabaseName + "-non-zr"
+
+	$restoreTrueZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-restore-zr-true"
+	$restoreNoZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-restore-no-zr-param"
+
+	try
+	{
+		# Create source vldb
+		$sourceNonZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded"
+
+		# Verify created source vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $sourceNonZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceNonZRDatabase.DatabaseName $sourceNonZRDatabaseName
+		Assert-AreEqual $sourceNonZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceNonZRDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $sourceNonZRDatabase.ZoneRedundant 
+		Assert-False    { $sourceNonZRDatabase.ZoneRedundant }
+
+		# Get current time for PITR
+		$time = Get-Date
+		$utcTime = $Time.ToUniversalTime()
+		$pitrTime = $utcTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+		# Restore source vldb with zone redundancy == true and backup storage redundancy == Zone
+		$restoreTrueZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreTrueZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceNonZRDatabase.ResourceId -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify restored vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $restoreTrueZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreTrueZRParamDatabase.DatabaseName $restoreTrueZRParamDatabaseName
+		Assert-AreEqual $restoreTrueZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreTrueZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $restoreTrueZRParamDatabase.ZoneRedundant 
+		Assert-True     { $restoreTrueZRParamDatabase.ZoneRedundant }
+
+		# Restore source vldb with no parameters passed in
+		$restoreNoZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreNoZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceNonZRDatabase.ResourceId
+
+		# Verify restored vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $restoreNoZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreNoZRParamDatabase.DatabaseName $restoreNoZRParamDatabaseName
+		Assert-AreEqual $restoreNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreNoZRParamDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $restoreNoZRParamDatabase.ZoneRedundant 
+		Assert-False    { $restoreNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a vldb with source zone redundant == true and backup storage redundancy == Zone
+	1. Restore source vldb passing in zone redundant == false and backup storage redundancy == Zone,
+	   Verify restored vldb has zone redundant == false and backup storage redundancy == Zone
+	2. Restore source vldb with no parameters passed in,
+	   Verify restored vldb has zone redundant == true and backup storage redundancy == Zone
+#>
+function Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceZRDatabaseName = Get-DatabaseName + "-zr"
+
+	$restoreFalseZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-restore-zr-false"
+	$restoreNoZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-restore-no-zr-param"
+
+	try
+	{
+		# Create source vldb with zone redundancy == true and backup storage redundancy == Zone
+		$sourceZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify created source vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $sourceZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceZRDatabase.DatabaseName $sourceZRDatabaseName
+		Assert-AreEqual $sourceZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceZRDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $sourceZRDatabase.ZoneRedundant 
+		Assert-True     { $sourceZRDatabase.ZoneRedundant }
+
+		# Get current time for PITR
+		$time = Get-Date
+		$utcTime = $Time.ToUniversalTime()
+		$pitrTime = $utcTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+		# Copy source vldb with zone redundancy == false
+		$restoreFalseZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreFalseZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceZRDatabase.ResourceId -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -ZoneRedundant:$false
+		
+		# Verify restored vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Zone)
+		Assert-AreEqual $restoreFalseZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreFalseZRParamDatabase.DatabaseName $restoreFalseZRParamDatabaseName
+		Assert-AreEqual $restoreFalseZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreFalseZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $restoreFalseZRParamDatabase.ZoneRedundant 
+		Assert-False    { $restoreFalseZRParamDatabase.ZoneRedundant }
+
+		# Restore source vldb with no parameters passed in
+		$restoreNoZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreNoZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceZRDatabase.ResourceId
+
+		# Verify restored vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $restoreNoZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreNoZRParamDatabase.DatabaseName $restoreNoZRParamDatabaseName
+		Assert-AreEqual $restoreNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreNoZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $restoreNoZRParamDatabase.ZoneRedundant 
+		Assert-True     { $restoreNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

@@ -31,8 +31,8 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
             //TODO: Generate assembly version info into AzSharedAssemblies.json during build
             var azSharedAssemblies = new Dictionary<string, Version>()
             {
-                {"Azure.Core", new Version("1.19.0.0")},
-                {"Azure.Identity", new Version("1.4.0.0")},
+                {"Azure.Core", new Version("1.21.0.0")},
+                {"Azure.Identity", new Version("1.5.0.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
                 {"Microsoft.Identity.Client", new Version("4.30.1.0") },
                 {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.18.4.0") },
