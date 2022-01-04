@@ -706,5 +706,9 @@
   {
     "alias": "CustomLocation",
     "regex": "CustomLocation"
+  },
+  {
+    "alias": "EdgeOrder",
+    "module": "EdgeOrder"
   }
 ]

@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     protectedItemGetResponses.Add(getResponse.Body);
                 }
             }
-
+            
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
 
             if (!string.IsNullOrEmpty(itemName))

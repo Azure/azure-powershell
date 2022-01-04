@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList = (string[]) content.GetValueForProperty("FilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList = (string[]) content.GetValueForProperty("FilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList = (string[]) content.GetValueForProperty("FileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("FilePrefixList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList = (string[]) content.GetValueForProperty("FilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FilePathList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList = (string[]) content.GetValueForProperty("FilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FileShareList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList = (string[]) content.GetValueForProperty("FileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList = (string[]) content.GetValueForProperty("FilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList = (string[]) content.GetValueForProperty("FilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList = (string[]) content.GetValueForProperty("FileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("FilePrefixList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList = (string[]) content.GetValueForProperty("FilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FilePathList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList = (string[]) content.GetValueForProperty("FilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FileShareList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList = (string[]) content.GetValueForProperty("FileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetailsInternal)this).FileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ImportToAzure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ImportToAzure", "ImportToAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "ImportToAzure");
+                yield return new global::System.Management.Automation.CompletionResult("'ImportToAzure'", "ImportToAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "ImportToAzure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ExportFromAzure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ExportFromAzure", "ExportFromAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExportFromAzure");
+                yield return new global::System.Management.Automation.CompletionResult("'ExportFromAzure'", "ExportFromAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExportFromAzure");
             }
         }
     }

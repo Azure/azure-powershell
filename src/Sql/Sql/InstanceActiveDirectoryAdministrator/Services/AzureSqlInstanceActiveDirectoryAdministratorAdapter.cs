@@ -13,13 +13,15 @@
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Services
 {
@@ -39,29 +41,25 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// A private instance of ActiveDirectoryClient
+        /// A private instance of MicrosoftGraphClient
         /// </summary>
-        private ActiveDirectoryClient _activeDirectoryClient;
+        private MicrosoftGraphClient _microsoftGraphClient;
 
         /// <summary>
-        /// Gets or sets the Azure ActiveDirectoryClient instance
+        /// Gets or sets the Azure MicrosoftGraphClient instance
         /// </summary>
-        public ActiveDirectoryClient ActiveDirectoryClient
+        public MicrosoftGraphClient MicrosoftGraphClient
         {
             get
             {
-                if (_activeDirectoryClient == null)
+                if (_microsoftGraphClient == null)
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
-                    if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
-                    {
-                        throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
-                    }
+                    _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.Endpoint.Graph);
+                    _microsoftGraphClient.TenantID = Context.Tenant.Id;
                 }
-                return this._activeDirectoryClient;
+                return _microsoftGraphClient;
             }
-
-            set { this._activeDirectoryClient = value; }
+            set { _microsoftGraphClient = value; }
         }
 
         /// <summary>
@@ -163,10 +161,10 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             Guid tenantId = GetTenantId();
 
             // Check for a Azure Active Directory group. Recommended to always use group.
-            IEnumerable<PSADGroup> groupList = null;
-            PSADGroup group = null;
+            IEnumerable<MicrosoftGraphGroup> groupList = null;
+            MicrosoftGraphGroup group = null;
 
-            var filter = new ADObjectFilterOptions()
+            var filter = new MicrosoftObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -174,7 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             };
 
             // Get a list of groups from Azure Active Directory
-            groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+            groupList = MicrosoftGraphClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
             if (groupList != null && groupList.Count() > 1)
             {
@@ -194,19 +192,19 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             }
 
             // Lookup for serviceprincipals
-            ODataQuery<ServicePrincipal> odataQueryFilter;
+            ODataQuery<MicrosoftGraphServicePrincipal> odataQueryFilter;
 
             if ((objectId != null && objectId != Guid.Empty))
             {
                 var applicationIdString = objectId.ToString();
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphServicePrincipal>(a => a.AppId == applicationIdString);
             }
             else
             {
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphServicePrincipal>(a => a.DisplayName == displayName);
             }
 
-            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
+            var servicePrincipalList = MicrosoftGraphClient.FilterServicePrincipals(odataQueryFilter);
 
             if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
             {
@@ -216,7 +214,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
             {
                 // Only one user was found. Get the user display name and object id
-                PSADServicePrincipal app = servicePrincipalList.First();
+                MicrosoftGraphServicePrincipal app = servicePrincipalList.First();
 
                 if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
                 {
@@ -231,7 +229,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 return new ManagedInstanceAdministrator()
                 {
                     Login = displayName,
-                    Sid = app.ApplicationId,
+                    Sid = new Guid(app.AppId),
                     TenantId = tenantId
                 };
             }
@@ -241,13 +239,13 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 return new ManagedInstanceAdministrator()
                 {
                     Login = group.DisplayName,
-                    Sid = group.Id,
+                    Sid = new Guid(group.Id),
                     TenantId = tenantId
                 };
             }
 
             // No group or service principal was found. Check for a user
-            filter = new ADObjectFilterOptions()
+            filter = new MicrosoftObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -255,34 +253,34 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             };
 
             // Get a list of user from Azure Active Directory
-            var userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+            var userList = MicrosoftGraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
             // No user was found. Check if the display name is a UPN
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN
-                filter = new ADObjectFilterOptions()
+                filter = new MicrosoftObjectFilterOptions()
                 {
                     Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                     UPN = displayName,
                     Paging = true,
                 };
 
-                userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
+                userList = MicrosoftGraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
             // No user was found. Check if the display name is a guest user. 
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN
-                filter = new ADObjectFilterOptions()
+                filter = new MicrosoftObjectFilterOptions()
                 {
                     Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                     Mail = displayName,
                     Paging = true,
                 };
 
-                userList = ActiveDirectoryClient.FilterUsers(filter);
+                userList = MicrosoftGraphClient.FilterUsers(filter);
             }
 
             // No user was found
@@ -303,7 +301,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 return new ManagedInstanceAdministrator()
                 {
                     Login = displayName,
-                    Sid = obj.Id,
+                    Sid = new Guid(obj.Id),
                     TenantId = tenantId
                 };
             }

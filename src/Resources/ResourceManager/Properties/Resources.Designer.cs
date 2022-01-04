@@ -719,6 +719,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating feature registration ....
+        /// </summary>
+        internal static string NewFeatureRegistrationMessage {
+            get {
+                return ResourceManager.GetString("NewFeatureRegistrationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -922,6 +931,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string RemoveApplication {
             get {
                 return ResourceManager.GetString("RemoveApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing feature registration ....
+        /// </summary>
+        internal static string RemoveFeatureRegistrationMessage {
+            get {
+                return ResourceManager.GetString("RemoveFeatureRegistrationMessage", resourceCulture);
             }
         }
         

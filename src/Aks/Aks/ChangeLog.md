@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `Invoke-AzAksRunCommand` to  support running a shell command (with kubectl, helm) on aks cluster. [#16104]
+
+## Version 3.1.0
+* Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]
+
+## Version 3.0.0
+* [Breaking Change] Updated parameter alias and output type of `Get-AzAksVersion`
+* Added `Invoke-AzAksRunCommand` to support running a shell command (with kubectl, helm) on aks cluster. [#16104]
 * Added support of `EnableNodePublicIp` and `NodePublicIPPrefixID` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
 * Migrated the logic of creating service principal in `New-AzAksCluster` from `Azure Active Directory Graph` to `Microsoft Graph`.
 * Fixed the issue that `Set-AzAksCluster` can't upgrade cluster when node pool version doesn't match cluster version. [#14583]

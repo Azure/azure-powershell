@@ -102,14 +102,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore = (int?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration = (string) content.GetValueForProperty("HardwareGeneration",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay = (int?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay = (int?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb = (int?) content.GetValueForProperty("MaxStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb = (int?) content.GetValueForProperty("MinStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Edition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore = (int?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("HardwareGeneration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration = (string) content.GetValueForProperty("HardwareGeneration",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay = (int?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MinBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay = (int?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaxStorageMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb = (int?) content.GetValueForProperty("MaxStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MinStorageMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb = (int?) content.GetValueForProperty("MinStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,14 +151,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore = (int?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration = (string) content.GetValueForProperty("HardwareGeneration",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay = (int?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay = (int?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb = (int?) content.GetValueForProperty("MaxStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb = (int?) content.GetValueForProperty("MinStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Edition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).Edition, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore = (int?) content.GetValueForProperty("VCore",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).VCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("HardwareGeneration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration = (string) content.GetValueForProperty("HardwareGeneration",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).HardwareGeneration, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay = (int?) content.GetValueForProperty("MaxBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MinBackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay = (int?) content.GetValueForProperty("MinBackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinBackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaxStorageMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb = (int?) content.GetValueForProperty("MaxStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MaxStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MinStorageMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb = (int?) content.GetValueForProperty("MinStorageMb",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierServiceLevelObjectivesInternal)this).MinStorageMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

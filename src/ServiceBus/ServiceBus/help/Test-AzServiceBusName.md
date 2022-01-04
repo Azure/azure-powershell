@@ -30,17 +30,17 @@ The **Test-AzServiceBusName** Cmdlet Check Availability of the NameSpace Name or
 
 ### Example 1
 ```
-PS C:\> Test-AzServiceBusName -Namespace MyNameSapceName
+PS C:\> Test-AzServiceBusName -Namespace MyNameSpaceName
 ```
 
-Returns the status on availability of the namespace name 'MyNameSapceName' as True
+Returns the status on availability of the namespace name 'MyNameSpaceName' as True
 
 ### Example 2
 ```
-PS C:\> Test-AzServiceBusName -Namespace MyNameSapceName
+PS C:\> Test-AzServiceBusName -Namespace MyNameSpaceName
 ```
 
-Returns the status on availability of the namespace name 'MyNameSapceName' as False with Reason
+Returns the status on availability of the namespace name 'MyNameSpaceName' as False with Reason
 
 ### Example 3
 ```

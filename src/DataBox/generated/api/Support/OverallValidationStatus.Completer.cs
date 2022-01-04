@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllValidToProceed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllValidToProceed", "AllValidToProceed", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllValidToProceed");
+                yield return new global::System.Management.Automation.CompletionResult("'AllValidToProceed'", "AllValidToProceed", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllValidToProceed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InputsRevisitRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InputsRevisitRequired", "InputsRevisitRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "InputsRevisitRequired");
+                yield return new global::System.Management.Automation.CompletionResult("'InputsRevisitRequired'", "InputsRevisitRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "InputsRevisitRequired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertainInputValidationsSkipped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertainInputValidationsSkipped", "CertainInputValidationsSkipped", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertainInputValidationsSkipped");
+                yield return new global::System.Management.Automation.CompletionResult("'CertainInputValidationsSkipped'", "CertainInputValidationsSkipped", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertainInputValidationsSkipped");
             }
         }
     }

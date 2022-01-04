@@ -453,6 +453,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     case 'x':
                         permission = permission | BlobContainerSasPermissions.DeleteBlobVersion;
                         break;
+                    case 'i':
+                        permission = permission | BlobContainerSasPermissions.SetImmutabilityPolicy;
+                        break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string
                         sasBuilder.SetPermissions(rawPermission);
@@ -633,6 +636,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         break;
                     case 'x':
                         permission = permission | AccountSasPermissions.DeleteVersion;
+                        break;
+                    case 'i':
+                        permission = permission | AccountSasPermissions.SetImmutabilityPolicy;
                         break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string

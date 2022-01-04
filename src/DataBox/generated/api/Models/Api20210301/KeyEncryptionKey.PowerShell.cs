@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType) content.GetValueForProperty("KekType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityProperties) content.GetValueForProperty("IdentityProperty",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IdentityPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl = (string) content.GetValueForProperty("KekUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId = (string) content.GetValueForProperty("KekVaultResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId, global::System.Convert.ToString);
+            if (content.Contains("KekType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType) content.GetValueForProperty("KekType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType.CreateFrom);
+            }
+            if (content.Contains("IdentityProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityProperties) content.GetValueForProperty("IdentityProperty",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IdentityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KekUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl = (string) content.GetValueForProperty("KekUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("KekVaultResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId = (string) content.GetValueForProperty("KekVaultResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType) content.GetValueForProperty("KekType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityProperties) content.GetValueForProperty("IdentityProperty",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IdentityPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl = (string) content.GetValueForProperty("KekUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId = (string) content.GetValueForProperty("KekVaultResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId, global::System.Convert.ToString);
+            if (content.Contains("KekType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType) content.GetValueForProperty("KekType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType.CreateFrom);
+            }
+            if (content.Contains("IdentityProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IIdentityProperties) content.GetValueForProperty("IdentityProperty",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).IdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IdentityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KekUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl = (string) content.GetValueForProperty("KekUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("KekVaultResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId = (string) content.GetValueForProperty("KekVaultResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKeyInternal)this).KekVaultResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

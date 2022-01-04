@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISku>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

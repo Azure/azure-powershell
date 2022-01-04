@@ -160,15 +160,15 @@ function NamespaceAuthTests
 	Assert-True {$namespaceRegenerateKeysDefault.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$namespaceRegenerateKeys = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
-	Assert-True { $namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey }
+	Assert-True { $namespaceRegenerateKeys.PrimaryKey -eq $namespaceListKeys.PrimaryKey }
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
-	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.SecondaryKey
+	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
+	Assert-True { $namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey }
 	
 	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
-	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey  $namespaceListKeys.SecondaryKey
+	Assert-AreEqual $namespaceRegenerateKeys1.PrimaryKey  $namespaceRegenerateKeys.PrimaryKey
 
 	# Cleanup
     Write-Debug "Delete the created Namespace AuthorizationRule"
@@ -232,6 +232,14 @@ function NamespaceTests
 	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
 	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"    
     Assert-True { $result.DisableLocalAuth }
+    Assert-AreEqual $result.Sku.Name "Premium" "Namespace Premium"
+
+
+    $result = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName3 -Identity -Location $location
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"    
+    Assert-True { $result.DisableLocalAuth }
+    Assert-True { $result.Identity }
     Assert-AreEqual $result.Sku.Name "Premium" "Namespace Premium"
 	
 	# Assert 

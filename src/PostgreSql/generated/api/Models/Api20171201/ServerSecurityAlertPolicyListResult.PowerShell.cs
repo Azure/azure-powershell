@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

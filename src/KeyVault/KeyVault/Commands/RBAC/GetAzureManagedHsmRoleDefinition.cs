@@ -14,25 +14,12 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [CmdletOutputBreakingChange(typeof(PSKeyVaultRoleDefinition),
-        DeprecatedOutputProperties = new string[] {
-            "Permissions.AllowedActions",
-            "Permissions.DeniedActions",
-            "Permissions.AllowedDataActions",
-            "Permissions.DeniedDataActions"},
-        NewOutputProperties = new string[] {
-            "Permissions.Actions",
-            "Permissions.NotActions",
-            "Permissions.DataActions",
-            "Permissions.NotDataActions",
-        })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleDefinition, DefaultParameterSetName = InteractiveParameterSet)]
     [OutputType(typeof(PSKeyVaultRoleDefinition))]
     public class GetAzureManagedHsmRoleDefinition : RbacCmdletBase

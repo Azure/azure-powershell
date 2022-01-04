@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
     }
 }

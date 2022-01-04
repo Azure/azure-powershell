@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string DefaultParameterSet = "Default";
 
         #region These fields are marked obsolete in ClusterCreateParameters
-        private OSType? _osType;
+        private string _osType;
         #endregion
 
         #region Input Parameter Definitions
@@ -274,14 +274,17 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-        public OSType OSType
+        [PSArgumentCompleter(Management.HDInsight.Models.OSType.Linux)]
+        public string OSType
+
         {
-            get { return _osType ?? OSType.Linux; }
+            get { return string.IsNullOrEmpty(_osType)? Management.HDInsight.Models.OSType.Linux : _osType; }
             set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-        public Tier ClusterTier { get; set; }
+        [PSArgumentCompleter(Tier.Standard, Tier.Premium)]
+        public string ClusterTier { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]
         public PSCredential SshCredential { get; set; }
@@ -333,7 +336,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string StorageAccountManagedIdentity { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [ValidateSet(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
@@ -364,11 +367,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string KafkaClientGroupName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the resource provider connection type.")]
-        [ValidateSet(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
+        [PSArgumentCompleter(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
         public string ResourceProviderConnection { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the private link type.")]
-        [ValidateSet(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
+        [PSArgumentCompleter(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
         public string PrivateLink { get; set; }
 
         [Parameter(HelpMessage = "Enables HDInsight compute isolation feature.")]
@@ -376,6 +379,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the dedicated host sku for compute isolation.")]
         public string ComputeIsolationHostSku { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the availability zones.")]
+        public string[] Zone { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the private link configuration.")]
+        public AzureHDInsightPrivateLinkConfiguration[] PrivateLinkConfiguration { get; set; }
 
 
         #endregion
@@ -516,15 +525,15 @@ namespace Microsoft.Azure.Commands.HDInsight
                 clusterIdentity = new ClusterIdentity
                 {
                     Type = ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, ClusterIdentityUserAssignedIdentitiesValue>()
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
                 };
                 if (AssignedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new ClusterIdentityUserAssignedIdentitiesValue());
+                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
                 }
                 if (StorageAccountManagedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new ClusterIdentityUserAssignedIdentitiesValue());
+                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
                 }
             }
 
@@ -585,6 +594,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 Location = Location,
                 //Tags = Tags,  //To Do add this Tags parameter
+                Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {
                     Tier = ClusterTier,
@@ -608,8 +618,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     } : null,
                     MinSupportedTlsVersion = MinSupportedTlsVersion,
                     NetworkProperties = networkProperties,
-                    ComputeIsolationProperties= computeIsolationProperties
-
+                    ComputeIsolationProperties= computeIsolationProperties,
+                    PrivateLinkConfigurations = PrivateLinkConfiguration !=null ? PrivateLinkConfiguration.Select(item=> item.ToPrivateLinkConfiguration()).ToList(): null
                 },
                 Identity = clusterIdentity
             };
