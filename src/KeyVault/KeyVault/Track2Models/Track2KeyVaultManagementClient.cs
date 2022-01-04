@@ -12,16 +12,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
     internal class Track2KeyVaultManagementClient
     {
-        private Track2TokenCredential _credential;
-
         private ArmClient _armClient;
         private string _subscription;
 
         public Track2KeyVaultManagementClient(IAuthenticationFactory authFactory, IAzureContext context)
         {
-            var accesstoken = authFactory.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, ShowDialog.Never, null);
-            _credential = new Track2TokenCredential(accesstoken.AccessToken);
-            _armClient = new ArmClient(_credential);
+            _armClient = AzureSession.Instance.ClientFactory.CreateArmClient(context);
             _subscription = context.Subscription.Id;
         }
 

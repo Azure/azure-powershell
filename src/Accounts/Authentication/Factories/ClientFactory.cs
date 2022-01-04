@@ -77,7 +77,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual ArmClient CreateArmClient(IAzureContext context, string endpoint, ArmClientOptions option = null)
+        public virtual ArmClient CreateArmClient(IAzureContext context, 
+            string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, 
+            ArmClientOptions option = null)
         {
             if (context == null)
             {
@@ -87,7 +89,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             option = option ?? new ArmClientOptions();
 
             // Add user agents
-            option.AddPolicy(new AzPsHttpPipelineSynchronousPolicy(_userAgents.Keys.ToArray()), HttpPipelinePosition.PerCall);
+            option.AddPolicy(new AzPsHttpPipelineSynchronousPolicy(), HttpPipelinePosition.PerCall);
 
 
             var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
