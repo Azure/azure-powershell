@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor.SourceGenerator</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor.SourceGenerator</RootNamespace>
     <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
@@ -9,12 +8,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-      <!--
-         - IsRoslyComponent helps to debug the source generator in Visual Studio. To debug it:
-         - 1. Install the component ".NET compiler platform SDK"
-         - 2. Set the this project as startup project
-         - 3. Configure this project's debug launch profiles: Add an new "Roslyn Component" profile and set the Target Project to Az.Tools.Predictor
-         -->
+    <!--
+      - IsRoslyComponent helps to debug the source generator in Visual Studio. To debug it:
+      - 1. Install the component ".NET compiler platform SDK"
+      - 2. Set the this project as startup project
+      - 3. Configure this project's debug launch profiles: Add an new "Roslyn Component" profile and set the Target Project to Az.Tools.Predictor
+    -->
     <IsRoslynComponent>true</IsRoslynComponent>
   </PropertyGroup>
 
@@ -40,7 +39,9 @@
 
   <Target Name="GetDependencyTargetPaths" AfterTargets="ResolvePackageDependenciesForBuild">
     <ItemGroup>
-      <!-- See potential transient dependency workaround here https://turnerj.com/blog/the-pain-points-of-csharp-source-generators -->
+      <!-- We need to add all the (direct and indirect) dependencies. @(ResolvedCompileFileDefinitions) is a way to get that.
+        - See more about Transient Dependencies here https://turnerj.com/blog/the-pain-points-of-csharp-source-generators
+      -->
       <TargetPathWithTargetPlatformMoniker Include="@(ResolvedCompileFileDefinitions)" IncludeRuntimeDependency="false" />
     </ItemGroup>
   </Target>

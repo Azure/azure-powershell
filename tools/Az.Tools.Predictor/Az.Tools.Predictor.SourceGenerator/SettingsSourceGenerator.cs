@@ -93,43 +93,43 @@ namespace {settingClass.ContainingNamespace}
 
         foreach (var element in jsonRoot.EnumerateObject())
         {
-            var addedProperty = new SettingProperty()
+            var newProperty = new SettingProperty()
             {
                 Name = element.Name.Substring(0, 1).ToUpperInvariant() + element.Name.Substring(1),
             };
 
-            // There are only three types used in the json file: bool, int, and string.
+            // There are only four types used in the json file: bool, int, string, and double (double isn't used in the json file yet).
             // So we only need to handle those right now. Expand to other types when we need to.
 
             switch (element.Value.ValueKind)
             {
                 case JsonValueKind.String:
-                    addedProperty.Type = SettingsSourceGenerator._StringType;
-                    addedProperty.Value = $"\"{element.Value.GetString()}\"";
+                    newProperty.Type = SettingsSourceGenerator._StringType;
+                    newProperty.Value = $"\"{element.Value.GetString()}\"";
                     break;
                 case JsonValueKind.Number:
                     if (element.Value.TryGetInt32(out var intValue))
                     {
-                        addedProperty.Value = intValue.ToString(CultureInfo.InvariantCulture);
-                        addedProperty.Type = SettingsSourceGenerator._IntType;
+                        newProperty.Value = intValue.ToString(CultureInfo.InvariantCulture);
+                        newProperty.Type = SettingsSourceGenerator._IntType;
                     }
                     else if (element.Value.TryGetDouble(out var doubleValue))
                     {
-                        addedProperty.Value = doubleValue.ToString(CultureInfo.InvariantCulture);
-                        addedProperty.Type = SettingsSourceGenerator._DoubleType;
+                        newProperty.Value = doubleValue.ToString(CultureInfo.InvariantCulture);
+                        newProperty.Type = SettingsSourceGenerator._DoubleType;
                     }
                     break;
                 case JsonValueKind.True:
                     goto case JsonValueKind.False;
                 case JsonValueKind.False:
-                    addedProperty.Type = SettingsSourceGenerator._BoolType;
-                    addedProperty.Value = element.Value.ValueKind == JsonValueKind.True ? "true" : "false";
+                    newProperty.Type = SettingsSourceGenerator._BoolType;
+                    newProperty.Value = element.Value.ValueKind == JsonValueKind.True ? "true" : "false";
                     break;
                 default:
                     throw new InvalidOperationException($"The type {element.Value.ValueKind.ToString()} isn't supported yet.");
             }
 
-            settingProperties.Add(addedProperty);
+            settingProperties.Add(newProperty);
         }
 
         // Generate the properties in the class Settings.
