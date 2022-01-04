@@ -15,15 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWebAppTriggeredWebJob')
 }
 
 Describe 'Get-AzWebAppTriggeredWebJob' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $jobList = Get-AzWebAppTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp
+        $jobList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $job = Get-AzWebAppTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.triggeredJob01
+        $job.Name | Should -Be "$($env.webApp)/$($env.triggeredJob01)"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $job = Get-AzWebAppTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.triggeredJob01
+        $job = Get-AzWebAppTriggeredWebJob -InputObject $job
+        
+        $job.Name | Should -Be "$($env.webApp)/$($env.triggeredJob01)"
     }
 }

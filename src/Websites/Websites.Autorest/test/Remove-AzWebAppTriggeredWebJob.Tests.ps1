@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWebAppTriggeredWebJo
 }
 
 Describe 'Remove-AzWebAppTriggeredWebJob' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzWebAppTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.triggeredJob01 } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $job = Get-AzWebAppTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.triggeredJob02
+        { Remove-AzWebAppTriggeredWebJob -InputObject $job.Id } | Should -Not -Throw
     }
 }

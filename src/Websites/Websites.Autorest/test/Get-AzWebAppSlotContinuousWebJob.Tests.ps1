@@ -15,15 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWebAppSlotContinuousWeb
 }
 
 Describe 'Get-AzWebAppSlotContinuousWebJob' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $jobList = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot
+        $jobList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $job = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slotcontinuousJob03
+        $job.Name | Should -Be "$($env.webApp)/$($env.slot)/$($env.slotcontinuousJob03)"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $job = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slotcontinuousJob03
+        $job = Get-AzWebAppSlotContinuousWebJob -InputObject $job
+        $job.Name | Should -Be "$($env.webApp)/$($env.slot)/$($env.slotcontinuousJob03)"
     }
 }

@@ -15,15 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWebAppSlotTriggeredWebJ
 }
 
 Describe 'Get-AzWebAppSlotTriggeredWebJob' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $jobList = Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot
+        $jobList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $job = Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03
+        $job.Name | Should -Be "$($env.webApp)/$($env.slot)/$($env.slottriggeredJob03)"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $job = Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03
+        $job = Get-AzWebAppSlotTriggeredWebJob -InputObject $job
+        
+        $job.Name | Should -Be "$($env.webApp)/$($env.slot)/$($env.slottriggeredJob03)"
     }
 }

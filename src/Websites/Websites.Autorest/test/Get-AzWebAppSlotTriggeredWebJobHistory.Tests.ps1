@@ -15,15 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWebAppSlotTriggeredWebJ
 }
 
 Describe 'Get-AzWebAppSlotTriggeredWebJobHistory' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03 } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $jobs = Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03
+        { Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03 -Id $jobs[0].Id.Split('/')[-1] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $jobs = Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03
+        { Get-AzWebAppSlotTriggeredWebJobHistory -InputObject $jobs[0].Id } | Should -Not -Throw
     }
 }

@@ -15,15 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWebAppContinuousWebJob'
 }
 
 Describe 'Get-AzWebAppContinuousWebJob' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $jobList = Get-AzWebAppContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp
+        $jobList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $job = Get-AzWebAppContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.continuousJob01
+        $job.Name | Should -Be "$($env.webApp)/$($env.continuousJob01)"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $job = Get-AzWebAppContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.continuousJob01
+        $job = Get-AzWebAppContinuousWebJob -InputObject $job
+        
+        $job.Name | Should -Be "$($env.webApp)/$($env.continuousJob01)"
     }
 }

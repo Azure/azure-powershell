@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzWebAppSlotTriggeredWe
 }
 
 Describe 'Start-AzWebAppSlotTriggeredWebJob' {
-    It 'Run' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Start' {
+        { Start-AzWebAppSlotTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03 } | Should -Not -Throw
     }
 
-    It 'RunViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartViaIdentity' {
+        $job = Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -SlotName $env.slot -Name $env.slottriggeredJob03
+        { Start-AzWebAppSlotTriggeredWebJob -InputObject $job.Id } | Should -Not -Throw
     }
 }

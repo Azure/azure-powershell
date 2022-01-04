@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzWebAppContinuousWebJo
 }
 
 Describe 'Start-AzWebAppContinuousWebJob' {
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Start' {
+        { Start-AzWebAppContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.continuousJob01 } | Should -Not -Throw
     }
 
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartViaIdentity' {
+        $job = Get-AzWebAppContinuousWebJob -ResourceGroupName $env.webJobResourceGroup -AppName $env.webApp -Name $env.continuousJob01
+        { Start-AzWebAppContinuousWebJob -InputObject $job.Id } | Should -Not -Throw
     }
 }
