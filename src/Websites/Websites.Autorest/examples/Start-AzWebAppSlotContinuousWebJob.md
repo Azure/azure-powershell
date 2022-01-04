@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start a continuous web job for a deployment slot
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command starts a continuous web job for an app.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a continuous web job for a deployment slot by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-01 | Start-AzWebAppSlotContinuousWebJob
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command starts a continuous web job for a deployment slot by pipeline.

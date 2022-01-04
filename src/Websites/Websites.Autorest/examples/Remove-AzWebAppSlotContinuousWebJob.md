@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a continuous web job for a deployment slot
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a continuous web job for a deployment slot.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a continuous web job for a deployment slot by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-04 | Remove-AzWebAppSlotContinuousWebJob
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command deletes a continuous web job for a deployment slot by pipeline.

@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a continuous web job for an app
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name continuousjob-01
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a continuous web job for an app.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a continuous web job for an app by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name continuousjob-02 | Remove-AzWebAppContinuousWebJob
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command deletes a continuous web job for an app by pipeline.

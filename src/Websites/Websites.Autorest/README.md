@@ -1387,8 +1387,8 @@ directive:
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}"]
 
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}"].get.description
-    transform: return "Get or list webjob for an app."
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs"].get.description
+    transform: return "List webjobs for an app."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1399,8 +1399,8 @@ directive:
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}"]
 
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}"].get.description
-    transform: return "Get or list webjob webjob for a deployment slot."
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs"].get.description
+    transform: return "List webjobs for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1572,13 +1572,26 @@ directive:
       subject: SlotWebJob
 
   - where:
-      subject: ContinuousWebJob|TriggeredWebJob|TriggeredWebJobHistory|SlotContinuousWebJob|SlotWebJob|SlotTriggeredWebJob|SlotTriggeredWebJobHistory
+      verb: Get
+      subject: ^WebJob$|^SlotWebJob$
+      variant: Get|GetViaIdentity
+    remove: true
+
+  # The service response result is "No route registered for '/api/webjobs/webjobname?api-version=2021-02-01'"
+  # - where:
+  #     verb: Get
+  #     subject: ^Get
+  #     variant: GetViaIdentity
+  #   remove: true
+
+  - where:
+      subject: WebJob|ContinuousWebJob|TriggeredWebJob|TriggeredWebJobHistory|SlotContinuousWebJob|SlotWebJob|SlotTriggeredWebJob|SlotTriggeredWebJobHistory
       parameter-name: Name
     set:
       parameter-name: AppName
 
   - where:
-      subject: ContinuousWebJob|TriggeredWebJob|TriggeredWebJobHistory|SlotContinuousWebJob|SlotWebJob|SlotTriggeredWebJob|SlotTriggeredWebJobHistory
+      subject: WebJob|ContinuousWebJob|TriggeredWebJob|TriggeredWebJobHistory|SlotContinuousWebJob|SlotWebJob|SlotTriggeredWebJob|SlotTriggeredWebJobHistory
       parameter-name: WebJobName
     set:
       parameter-name: Name
