@@ -57,12 +57,14 @@ namespace Microsoft.Azure.Commands.Profile
                     HelpMessage = "Tenant name or ID")]
         [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
+        [TenantCompleter]
         public string Tenant { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true,
                     HelpMessage = "Subscription Name or Id", Position = 0)]
         [Alias("SubscriptionId", "SubscriptionName")]
         [ValidateNotNullOrEmpty]
+        [SubscriptionCompleter]
         public string Subscription { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Additional context properties")]

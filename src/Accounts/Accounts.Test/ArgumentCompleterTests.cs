@@ -52,5 +52,19 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             TestRunner.RunTestScript("Test-EnvironmentCompleter");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTenantCompleter()
+        {
+            TestRunner.RunTestScript("Test-TenantCompleter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSubscriptionCompleter()
+        {
+            TestRunner.RunTestScript("Test-SubscriptionCompleter");
+        }
     }
 }

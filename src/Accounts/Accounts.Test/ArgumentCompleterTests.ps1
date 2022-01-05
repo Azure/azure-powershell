@@ -109,3 +109,95 @@ function Get-EnvironmentCompleterResult
 
     return $environmentCompleterAttribute.ScriptBlock.Invoke().CompletionText
 }
+
+<#
+.SYNOPSIS
+Tests tenant completer
+#>
+function Test-TenantCompleter
+{
+    $expectedTenantIds = (Get-AzTenant).Id
+
+    # Test TenantCompleterAttribute static method
+    $tenantIds = [Microsoft.Azure.Commands.Profile.Common.TenantCompleterAttribute]::GetTenantIds()
+    Assert-AreEqualArray $tenantIds $expectedTenantIds
+
+    # Test completion results for Set-AzContext
+    $paramTenantIds = Get-TenantCompleterResult -CmdletName 'Set-AzContext' -ParameterName 'Tenant'
+    Assert-AreEqualArray $paramTenantIds $expectedTenantIds
+}
+
+<#
+.SYNOPSIS
+Helper function to get tenant parameter completer results for specified cmdlet.
+#>
+function Get-TenantCompleterResult
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [string]
+        $CmdletName,
+
+        [Parameter(Mandatory = $true)]
+        [string]
+        $ParameterName
+    )
+
+    $command = Get-Command -Name $CmdletName
+    $tenantCompleterAttribute = $command.Parameters.$ParameterName.Attributes | Where-Object { $_.GetType() -eq [Microsoft.Azure.Commands.Profile.Common.TenantCompleterAttribute]}
+
+    return $tenantCompleterAttribute.CompleteArgument($CmdletName,$ParameterName,"",$null, $null).CompletionText
+}
+
+<#
+.SYNOPSIS
+Tests subscription completer
+#>
+function Test-SubscriptionCompleter
+{
+    $expectedSubIds = (Get-AzSubscription).Id
+    $expectedSubNames = (Get-AzSubscription).Name
+    $expectedSubs = $expectedSubNames + $expectedSubIds
+
+    $tenantIds = (Get-AzTenant).Id
+    $expectedSubIds01 = Get-AzSubscription -TenantId $tenantIds[0]
+
+    # Test SubscriptionCompleterAttribute static method
+    $subIds = [Microsoft.Azure.Commands.Profile.Common.SubscriptionCompleterAttribute]::GetSubscriptions("subscriptionid")
+    $subIds01 = [Microsoft.Azure.Commands.Profile.Common.SubscriptionCompleterAttribute]::GetSubscriptions("subscriptionid", $tenantIds[0])
+    $subNames = [Microsoft.Azure.Commands.Profile.Common.SubscriptionCompleterAttribute]::GetSubscriptions("subscriptionname")
+    $subs = [Microsoft.Azure.Commands.Profile.Common.SubscriptionCompleterAttribute]::GetSubscriptions($null)
+    Assert-AreEqualArray $subIds $expectedSubIds
+    Assert-AreEqualArray $subIds01 $expectedSubIds01
+    Assert-AreEqualArray $subNames $expectedSubNames
+    Assert-AreEqualArray $subs $expectedSubs
+
+    # Test completion results for Set-AzContext
+    # Subscriptionid and SubscriptionName as alias of the Subscription. Cannot as parameter name of the cmdlet.
+    $paramSubs = Get-SubscriptionCompleterResult -CmdletName 'Set-AzContext' -ParameterName 'Subscription'
+    Assert-AreEqualArray $paramSubs $expectedSubs
+}
+
+<#
+.SYNOPSIS
+Helper function to get subscription parameter completer results for specified cmdlet.
+#>
+function Get-SubscriptionCompleterResult
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [string]
+        $CmdletName,
+
+        [Parameter(Mandatory = $true)]
+        [string]
+        $ParameterName
+    )
+
+    $command = Get-Command -Name $CmdletName
+    $subCompleterAttribute = $command.Parameters.$ParameterName.Attributes | Where-Object { $_.GetType() -eq [Microsoft.Azure.Commands.Profile.Common.SubscriptionCompleterAttribute]}
+
+    return $subCompleterAttribute.CompleteArgument($CmdletName,$ParameterName,"",$null, $null).CompletionText
+}
