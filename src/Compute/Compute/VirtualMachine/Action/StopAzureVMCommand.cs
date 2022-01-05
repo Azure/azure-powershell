@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;//adam
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -58,6 +59,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "To request non-graceful VM shutdown when keeping the VM provisioned.")]
         public SwitchParameter SkipShutdown { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Optional parameter to hibernate a virtual machine. (Feature in Preview)")]
+        public SwitchParameter Hibernate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -85,6 +92,17 @@ namespace Microsoft.Azure.Commands.Compute
                         else 
                         {
                             op = this.VirtualMachineClient.PowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                    }
+                    else if (this.IsParameterBound(c => c.Hibernate) && this.Hibernate)
+                    {
+                        if (NoWait.IsPresent)
+                        {
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                     }
                     else

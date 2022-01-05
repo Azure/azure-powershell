@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled,
+            //bool ultraSSDEnabled,
+            //adam bool hibernationEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
@@ -66,7 +67,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
-            string userData = null
+            string userData = null,
+            AdditionalCapabilities additionalCapabilities = null
             )
 
             => Strategy.CreateResourceConfig(
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
+                    AdditionalCapabilities = additionalCapabilities,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
                     VirtualMachineScaleSet = string.IsNullOrEmpty(VmssId) ? null : new SubResource(VmssId),
@@ -134,6 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
+            //adam bool hibernationEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
@@ -147,7 +150,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
-            string userData = null
+            string userData = null,
+            AdditionalCapabilities additionalCapabilities = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -180,7 +184,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
+                    AdditionalCapabilities = additionalCapabilities,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
                     VirtualMachineScaleSet = string.IsNullOrEmpty(VmssId) ? null : new SubResource(VmssId),
