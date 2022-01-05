@@ -13,20 +13,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication
 {
     public class AzureTokenCredential : TokenCredential
     {
+        public string AccessToken { get; set; }
 
-        private readonly Func<string> _getTokenImpl;
+        private readonly Func<string> GetTokenImpl;
 
-        internal string AccessToken;
-      
-        public AzureTokenCredential(string accessToken, Func<string>  GetTokenImpl = null)
+        public AzureTokenCredential(string accessToken, Func<string> getTokenImpl = null)
         {
             AccessToken = accessToken;
-            _getTokenImpl = GetTokenImpl;
+            GetTokenImpl = getTokenImpl;
         }
         
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            return new AccessToken( (_getTokenImpl == null) ? AccessToken : _getTokenImpl(), DateTimeOffset.UtcNow);
+            return new AccessToken(GetTokenImpl == null ? AccessToken : GetTokenImpl(), 
+                DateTimeOffset.UtcNow);
         }
 
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)

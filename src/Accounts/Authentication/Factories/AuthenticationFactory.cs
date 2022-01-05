@@ -349,9 +349,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new AzureTokenCredential(GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint));
+                    return new AzureTokenCredential(GetEndpointToken(context.Account, targetEndpoint), 
+                        () => GetEndpointToken(context.Account, targetEndpoint));
             }
-
 
             string tenant = null;
 
@@ -377,22 +377,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 TracingAdapter.Information(Resources.UPNAuthenticationTrace,
                     context.Account.Id, context.Environment.Name, tenant);
 
-                IAccessToken token = null;
+                IAccessToken accesstoken = null;
                 switch (context.Account.Type)
                 {
                     case AzureAccount.AccountType.ManagedService:
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
                     case "ClientAssertion":
-                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, resourceId);
+                        accesstoken = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, resourceId);
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
                 }
 
                 TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
+<<<<<<< HEAD
                     token.LoginType, token.TenantId, token.UserId);
                 return new AzureTokenCredential(token.AccessToken);
+=======
+                    accesstoken.LoginType, accesstoken.TenantId, accesstoken.UserId);
+                return new AzureTokenCredential(accesstoken.AccessToken, () => GetEndpointToken(context.Account, targetEndpoint));
+>>>>>>> e5435d8b0f720a4a87165fd020ac23f835a6aaa2
             }
             catch (Exception ex)
             {

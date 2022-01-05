@@ -299,7 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public ArmClient CreateArmClient(IAzureContext context, string endpoint, ArmClientOptions option = null)
         {
-            return AzureSession.Instance.ClientFactory.CreateArmClient(context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+            throw new NotImplementedException();
         }
     }
 }
