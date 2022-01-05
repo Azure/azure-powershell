@@ -73,8 +73,9 @@ function Update-AzADUser {
 
         [Parameter()]
         [System.Boolean]
+        [Alias('EnableAccount')]
         # true for enabling the account; otherwise, false.
-        ${EnableAccount},
+        ${AccountEnabled},
         
         [Parameter()]
         [SecureString]
