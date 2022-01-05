@@ -659,7 +659,7 @@ function New-AzADServicePrincipal {
     ${TransitiveMemberOf},
 
     [Parameter()]
-    [Alias("AzContext", "AzureRmContext", "AzureCredential")]
+    [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
