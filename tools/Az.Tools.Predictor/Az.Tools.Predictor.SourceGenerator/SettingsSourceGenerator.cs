@@ -82,9 +82,9 @@ namespace {settingClass.ContainingNamespace}
     {{
 ");
 
-        var settingFilePath = context.AdditionalFiles.Single((file) => file.Path.EndsWith("AzPredictorSettings.json", StringComparison.Ordinal)).Path;
+        var settingsFilePath = context.AdditionalFiles.Single((file) => file.Path.EndsWith("AzPredictorSettings.json", StringComparison.Ordinal)).Path;
 
-        var fileContent = File.ReadAllText(settingFilePath, Encoding.UTF8);
+        var fileContent = File.ReadAllText(settingsFilePath, Encoding.UTF8);
         var jsonDocument = JsonDocument.Parse(fileContent);
         var jsonRoot = jsonDocument.RootElement;
         var settingProperties = new List<SettingProperty>();
