@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Updated Powershell example for custom password generation for `New-AzADAppCredential`
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
 
 ## Version 5.2.0
 * Fixed incorrect alias for `Get-AzADSpCredential` [#16592]

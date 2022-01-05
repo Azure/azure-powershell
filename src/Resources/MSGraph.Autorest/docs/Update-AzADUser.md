@@ -14,10 +14,10 @@ Updates entity in users
 
 ### UPNOrObjectIdParameterSet (Default)
 ```
-Update-AzADUser -UPNOrObjectId <String> [-AgeGroup <String>] [-City <String>] [-CompanyName <String>]
- [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>]
- [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>]
- [-EnableAccount <Boolean>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
+Update-AzADUser -UPNOrObjectId <String> [-AccountEnabled <Boolean>] [-AgeGroup <String>] [-City <String>]
+ [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
+ [-Department <String>] [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
+ [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
  [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-Id <String>]
  [-Identity <IMicrosoftGraphObjectIdentity[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
  [-MailNickname <String>] [-OfficeLocation <String>] [-OnPremisesImmutableId <String>] [-OtherMail <String[]>]
@@ -29,10 +29,10 @@ Update-AzADUser -UPNOrObjectId <String> [-AgeGroup <String>] [-City <String>] [-
 
 ### InputObjectParameterSet
 ```
-Update-AzADUser -InputObject <IMicrosoftGraphUser> [-AgeGroup <String>] [-City <String>]
- [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
- [-Department <String>] [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
- [-EmployeeType <String>] [-EnableAccount <Boolean>] [-ExternalUserState <String>]
+Update-AzADUser -InputObject <IMicrosoftGraphUser> [-AccountEnabled <Boolean>] [-AgeGroup <String>]
+ [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>]
+ [-DeletedDateTime <DateTime>] [-Department <String>] [-DisplayName <String>] [-EmployeeHireDate <DateTime>]
+ [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
  [-ExternalUserStateChangeDateTime <DateTime>] [-FaxNumber <String>] [-ForceChangePasswordNextLogin]
  [-GivenName <String>] [-Id <String>] [-Identity <IMicrosoftGraphObjectIdentity[]>] [-IsResourceAccount]
  [-JobTitle <String>] [-Mail <String>] [-MailNickname <String>] [-OfficeLocation <String>]
@@ -45,10 +45,10 @@ Update-AzADUser -InputObject <IMicrosoftGraphUser> [-AgeGroup <String>] [-City <
 
 ### ObjectIdParameterSet
 ```
-Update-AzADUser -ObjectId <String> [-AgeGroup <String>] [-City <String>] [-CompanyName <String>]
- [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>]
- [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>]
- [-EnableAccount <Boolean>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
+Update-AzADUser -ObjectId <String> [-AccountEnabled <Boolean>] [-AgeGroup <String>] [-City <String>]
+ [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
+ [-Department <String>] [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
+ [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
  [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-Id <String>]
  [-Identity <IMicrosoftGraphObjectIdentity[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
  [-MailNickname <String>] [-OfficeLocation <String>] [-OnPremisesImmutableId <String>] [-OtherMail <String[]>]
@@ -60,10 +60,10 @@ Update-AzADUser -ObjectId <String> [-AgeGroup <String>] [-City <String>] [-Compa
 
 ### UPNParameterSet
 ```
-Update-AzADUser -UserPrincipalName <String> [-AgeGroup <String>] [-City <String>] [-CompanyName <String>]
- [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>]
- [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>]
- [-EnableAccount <Boolean>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
+Update-AzADUser -UserPrincipalName <String> [-AccountEnabled <Boolean>] [-AgeGroup <String>] [-City <String>]
+ [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
+ [-Department <String>] [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
+ [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
  [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-Id <String>]
  [-Identity <IMicrosoftGraphObjectIdentity[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
  [-MailNickname <String>] [-OfficeLocation <String>] [-OnPremisesImmutableId <String>] [-OtherMail <String[]>]
@@ -86,6 +86,21 @@ PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
 Update user by user principal name
 
 ## PARAMETERS
+
+### -AccountEnabled
+true for enabling the account; otherwise, false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases: EnableAccount
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AgeGroup
 Sets the age group of the user.
@@ -278,21 +293,6 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableAccount
-true for enabling the account; otherwise, false.
-
-```yaml
-Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

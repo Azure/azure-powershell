@@ -23,7 +23,11 @@ Describe 'New-AzADSpCredential' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'SpObjectIdWithCredentialParameterSet' -skip {
+    It 'SpObjectIdWithKeyCredentialParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'SpObjectIdWithPasswordCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -43,11 +47,19 @@ Describe 'New-AzADSpCredential' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ServicePrincipalObjectWithCredentialParameterSet' -skip {
+    It 'ServicePrincipalObjectWithPasswordCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'SPNWithCredentialParameterSet' -skip {
+    It 'SPNWithPasswordCredentialParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ServicePrincipalObjectWithKeyCredentialParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'SPNWithKeyCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

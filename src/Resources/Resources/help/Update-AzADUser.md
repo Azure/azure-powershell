@@ -14,7 +14,7 @@ Updates entity in users
 
 ### UPNOrObjectIdParameterSet (Default)
 ```
-Update-AzADUser -UPNOrObjectId <String> [-EnableAccount <Boolean>] [-Password <SecureString>]
+Update-AzADUser -UPNOrObjectId <String> [-AccountEnabled <Boolean>] [-Password <SecureString>]
  [-ForceChangePasswordNextLogin] [-AgeGroup <String>] [-City <String>] [-CompanyName <String>]
  [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>]
  [-DisplayName <String>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>]
@@ -29,7 +29,7 @@ Update-AzADUser -UPNOrObjectId <String> [-EnableAccount <Boolean>] [-Password <S
 
 ### ObjectIdParameterSet
 ```
-Update-AzADUser [-EnableAccount <Boolean>] [-Password <SecureString>] [-ForceChangePasswordNextLogin]
+Update-AzADUser [-AccountEnabled <Boolean>] [-Password <SecureString>] [-ForceChangePasswordNextLogin]
  [-AgeGroup <String>] [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>]
  [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>] [-DisplayName <String>]
  [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
@@ -44,7 +44,7 @@ Update-AzADUser [-EnableAccount <Boolean>] [-Password <SecureString>] [-ForceCha
 
 ### InputObjectParameterSet
 ```
-Update-AzADUser [-EnableAccount <Boolean>] [-Password <SecureString>] [-ForceChangePasswordNextLogin]
+Update-AzADUser [-AccountEnabled <Boolean>] [-Password <SecureString>] [-ForceChangePasswordNextLogin]
  [-AgeGroup <String>] [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>]
  [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>] [-DisplayName <String>]
  [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
@@ -59,7 +59,7 @@ Update-AzADUser [-EnableAccount <Boolean>] [-Password <SecureString>] [-ForceCha
 
 ### UPNParameterSet
 ```
-Update-AzADUser [-EnableAccount <Boolean>] [-Password <SecureString>] [-ForceChangePasswordNextLogin]
+Update-AzADUser [-AccountEnabled <Boolean>] [-Password <SecureString>] [-ForceChangePasswordNextLogin]
  [-AgeGroup <String>] [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>]
  [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>] [-DisplayName <String>]
  [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
@@ -85,6 +85,21 @@ PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
 Update user by user principal name
 
 ## PARAMETERS
+
+### -AccountEnabled
+true for enabling the account; otherwise, false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases: EnableAccount
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AgeGroup
 Sets the age group of the user.
@@ -277,21 +292,6 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableAccount
-true for enabling the account; otherwise, false.
-
-```yaml
-Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
