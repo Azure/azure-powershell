@@ -16,6 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConfidentialLedger'))
 
 Describe 'New-AzConfidentialLedger' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        New-AzConfidentialLedger `
+            -Name $env.ledgerName `
+            -ResourceGroupName $env.resourceGroup `
+            -Location $env.location -Sku "standard"
     }
 }

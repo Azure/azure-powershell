@@ -14,3 +14,5 @@ test/*-TestResults.xml
 /*.snk
 /*.csproj
 /*.nuspec
+test/env.json
+test/localEnv.json
