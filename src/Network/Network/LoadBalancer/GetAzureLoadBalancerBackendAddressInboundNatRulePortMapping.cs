@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressInboundNatRulePortMapping"), OutputType(typeof(PSInboundNatRulePortMapping))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressInboundNatRulePortMapping", DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSInboundNatRulePortMapping))]
     public partial class GetAzureLoadBalancerBackendAddressInboundNatRulePortMapping : NetworkBaseCmdlet
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
             var response = this.NetworkClient.NetworkManagementClient.LoadBalancers.ListInboundNatRulePortMappings(this.ResourceGroupName, this.LoadBalancerName, this.Name, parameters);
             var portMappingList = response.InboundNatRulePortMappings;
 
-            // convert list of portMappings to a list of Powershell portMappings
+            // Convert list of portMappings to a list of Powershell portMappings
             List<PSInboundNatRulePortMapping> psPortMappingList = new List<PSInboundNatRulePortMapping>();
             foreach (var portMapping in portMappingList)
             {
