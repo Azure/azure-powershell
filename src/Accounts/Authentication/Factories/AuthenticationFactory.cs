@@ -391,13 +391,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 }
 
                 TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
-<<<<<<< HEAD
-                    token.LoginType, token.TenantId, token.UserId);
-                return new AzureTokenCredential(token.AccessToken);
-=======
                     accesstoken.LoginType, accesstoken.TenantId, accesstoken.UserId);
-                return new AzureTokenCredential(accesstoken.AccessToken, () => GetEndpointToken(context.Account, targetEndpoint));
->>>>>>> e5435d8b0f720a4a87165fd020ac23f835a6aaa2
+                return new AzureTokenCredential(accesstoken.AccessToken);
             }
             catch (Exception ex)
             {

@@ -20,6 +20,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Extensions;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Policy;
@@ -78,7 +79,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         public virtual ArmClient CreateArmClient(IAzureContext context, 
-            string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, 
+            string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+            }
+
+            return CreateCustomArmClient(context, endpoint);
+        }
+
+        public virtual ArmClient CreateCustomArmClient(IAzureContext context,
+            string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
             ArmClientOptions option = null)
         {
             if (context == null)
@@ -87,12 +99,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             option = option ?? new ArmClientOptions();
+            // Add Azure PowerShell policy into option
 
             // Add user agents
-            option.AddPolicy(new AzPsHttpPipelineSynchronousPolicy(), HttpPipelinePosition.PerCall);
+            if (maxRetries != null && maxRetries >= 0)
 
+                foreach (var user in UserAgents)
+            {
+                option.AddUserAgent();
+            }
+
+            // Set max retries
+            int? maxRetries = HttpRetryTimes.AzurePsHttpMaxRetries;
+            if (maxRetries != null && maxRetries >= 0)
+            {
+                option.SetMaxRetryCountofRetryOption((int)maxRetries);
+            }
+
+            // Set max delay
+
+            int? maxretriesfor429 = HttpRetryTimes.AzurePsHttpMaxRetriesFor429;
+            if (maxretriesfor429 != null && maxretriesfor429 >= 0)
+            {
+                option.SetMaxDelayForRetryOption((int)maxretriesfor429);
+            }
+            
             var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
-            return new ArmClient(creds, option);
+            return new ArmClient(context.Subscription.Id.ToString(), creds, option);
         }
 
         public virtual TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -403,6 +436,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             return productInfoHeaderKey;
         }
+
         /// <summary>
         /// Adds user agent to UserAgents collection.
         /// </summary>

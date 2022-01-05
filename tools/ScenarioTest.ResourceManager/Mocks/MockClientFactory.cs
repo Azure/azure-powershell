@@ -297,7 +297,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             UniqueUserAgents.RemoveWhere((p) => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
-        public ArmClient CreateArmClient(IAzureContext context, string endpoint, ArmClientOptions option = null)
+        public ArmClient CreateArmClient(IAzureContext context, string endpoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ArmClient CreateCustomArmClient(IAzureContext context, string endpoint, ArmClientOptions option)
         {
             throw new NotImplementedException();
         }

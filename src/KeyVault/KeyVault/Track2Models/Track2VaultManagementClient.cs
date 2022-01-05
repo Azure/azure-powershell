@@ -56,34 +56,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         #endregion
 
-        private Track2ManagedHsmCollection Track2ManagedHsmManagementClient => 
-            _track2ManagedHsmManagementClient ?? (_track2ManagedHsmManagementClient = new Track2ManagedHsmCollection());
-        private Track2ManagedHsmCollection _track2ManagedHsmManagementClient;
+        private Track2ManagedHsmManagementClient Track2ManagedHsmManagementClient => 
+            _track2ManagedHsmManagementClient ?? (_track2ManagedHsmManagementClient = new Track2ManagedHsmManagementClient());
+        private Track2ManagedHsmManagementClient _track2ManagedHsmManagementClient;
 
-
-        public const string ResourceGroupType = "resourceGroups";
-        public const string VaultsResourceType = "Microsoft.KeyVault/vaults";
-        public const string ManagedHsmResourceType = "Microsoft.KeyVault/managedHSMs";
         #region ManagedHsm-related METHODS
 
         #endregion
-        public static ResourceIdentifier ConstructResourceIdentifier(string subscription, string resourceGroupName, string resourceType = ResourceGroupType, string resourceName = null)
-        {
-            string id = null;
-            switch (resourceType)
-            {
-                case ResourceGroupType:
-                    id = string.Format("/subscriptions/{0}/resourceGroups/{1}", subscription, resourceGroupName);
-                    break;
-                case VaultsResourceType:
-                case ManagedHsmResourceType:
-                    id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/{2}/vaults/{3}",
-                        subscription, resourceGroupName, resourceType, resourceName);
-                    break;
-                default:
-                    throw new NotImplementedException("");
-            }
-            return new ResourceIdentifier(id);
-        }
     }
 }

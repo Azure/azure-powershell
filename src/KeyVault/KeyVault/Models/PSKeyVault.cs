@@ -31,6 +31,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public PSKeyVault(Track2ManagementSdk.Vault vault, IMicrosoftGraphClient graphClient)
         {
+            if (!vault.HasData) 
+            {
+                vault = vault.Get();
+            }
+
             VaultName = vault.Data.Name;
             Location = vault.Data.Location;
             ResourceId = vault.Data.Id;

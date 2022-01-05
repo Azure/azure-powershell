@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
 
+using static Azure.Core.HttpHeader;
+
 namespace Microsoft.Azure.Commands.Common.Authentication.Policy
 {
     internal class AzPsHttpPipelineSynchronousPolicy: HttpPipelineSynchronousPolicy
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Policy
         public override void OnSendingRequest(HttpMessage message)
         {
             userAgents?.ForEach((agent)=> {
-                message.Request.Headers.Add("Custom-Header", agent.ToString());
+                message.Request.Headers.Add(Names.UserAgent, agent.ToString());
             });
         }
     }

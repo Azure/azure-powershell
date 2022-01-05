@@ -24,15 +24,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
 
         private ResourceGroup GetResourceGroup(string resourcegroup) =>
-            _armClient.GetResourceGroup(
-                Track2VaultManagementClient.ConstructResourceIdentifier(_subscription, resourcegroup));
+            _armClient.GetResourceGroup(new ResourceIdentifier(
+                string.Format("/subscriptions/{0}/resourceGroups/{1}", _subscription, resourcegroup)));
 
         public IEnumerable<Vault> ListVaults(string resourcegroup) =>
             GetResourceGroup(resourcegroup).GetVaults().GetAll();
 
         public Vault GetVault(string resourcegroup, string vaultName) =>
-            _armClient.GetVault(Track2VaultManagementClient.ConstructResourceIdentifier(
-                _subscription, resourcegroup, Track2VaultManagementClient.VaultsResourceType, vaultName));
+            _armClient.GetVault(Vault.CreateResourceIdentifier(_subscription, resourcegroup, vaultName));
 
         public Vault CreateVault(string resourcegroup, string vaultName, VaultCreateOrUpdateParameters parameters) =>
             GetResourceGroup(resourcegroup).GetVaults().CreateOrUpdate(vaultName, parameters).Value;

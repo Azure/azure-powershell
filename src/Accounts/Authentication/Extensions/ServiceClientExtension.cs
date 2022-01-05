@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Policy;
 using Microsoft.Rest.TransientFaultHandling;
 using System;
 
@@ -19,52 +20,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     internal static class ServiceClientExtension
     {
-        private class HttpRetryTimes
-        {
-            private const string maxRetriesVariableName = "AZURE_PS_HTTP_MAX_RETRIES";
-            private const string maxRetriesFor429VariableName = "AZURE_PS_HTTP_MAX_RETRIES_FOR_429";
-
-            public static int? AzurePsHttpMaxRetries
-            {
-                get
-                {
-                    return TryGetAzurePsHttpMaxRetries();
-                }
-            }
-            public static int? AzurePsHttpMaxRetriesFor429
-            {
-                get
-                {
-                    return TryGetAzurePsHttpMaxRetriesFor429();
-                }
-            }
-
-            private static int? TryGetValue(string environmentVariable)
-            {
-                int? retries = null;
-                var value = Environment.GetEnvironmentVariable(environmentVariable);
-                if (value != null)
-                {
-                    int valueParsed = int.MinValue;
-                    if (int.TryParse(value, out valueParsed))
-                    {
-                        retries = valueParsed;
-                    }
-                }
-                return retries;
-            }
-
-            private static int? TryGetAzurePsHttpMaxRetries()
-            {
-                return TryGetValue(maxRetriesVariableName);
-            }
-
-            private static int? TryGetAzurePsHttpMaxRetriesFor429()
-            {
-                return TryGetValue(maxRetriesFor429VariableName);
-            }
-        }
-
         private static bool SetMaxTimesForRetryAfterHandler<TClient>(this Microsoft.Rest.ServiceClient<TClient> serviceClient, uint retrytimes) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             bool findRetryHandler = false;
@@ -101,7 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>Whether succeed to set retry count or not</returns>
         public static bool TrySetRetryCountofRetryPolicy<TClient>(this Microsoft.Rest.ServiceClient<TClient> serviceClient) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
-            int? maxretries = ServiceClientExtension.HttpRetryTimes.AzurePsHttpMaxRetries;
+            int? maxretries = HttpRetryTimes.AzurePsHttpMaxRetries;
             if (maxretries != null && maxretries >= 0)
             {
                 TimeSpan defaultBackoffDelta = new TimeSpan(0, 0, 10);

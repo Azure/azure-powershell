@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
-    public class Track2ManagedHsmCollection
+    public class Track2ManagedHsmManagementClient
     {
     }
 }
