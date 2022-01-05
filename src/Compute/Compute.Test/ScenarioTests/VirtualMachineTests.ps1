@@ -108,7 +108,7 @@ function Test-VirtualMachine
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
@@ -3758,10 +3758,7 @@ function Test-VirtualMachineWriteAcceleratorUpdate
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
-        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
-
-
         $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
 
         # Get VM
@@ -4462,12 +4459,11 @@ function Test-SetAzVMOperatingSystem
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate:$false -PatchMode "Manual"; # adam aedit
         $p2 = Set-AzVMOperatingSystem -VM $p2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate;
         $p3 = Set-AzVMOperatingSystem -VM $p3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "AutomaticByPlatform";
 
-        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
-        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
 
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
         $p2 = ($imgRef | Set-AzVMSourceImage -VM $p2);
