@@ -92,10 +92,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl = (string) content.GetValueForProperty("BlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey = (string) content.GetValueForProperty("BlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl = (string) content.GetValueForProperty("ExcelFileBlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey = (string) content.GetValueForProperty("ExcelFileBlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey, global::System.Convert.ToString);
+            if (content.Contains("BlobUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl = (string) content.GetValueForProperty("BlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("BlobSasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey = (string) content.GetValueForProperty("BlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExcelFileBlobUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl = (string) content.GetValueForProperty("ExcelFileBlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExcelFileBlobSasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey = (string) content.GetValueForProperty("ExcelFileBlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -113,10 +125,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl = (string) content.GetValueForProperty("BlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey = (string) content.GetValueForProperty("BlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl = (string) content.GetValueForProperty("ExcelFileBlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey = (string) content.GetValueForProperty("ExcelFileBlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey, global::System.Convert.ToString);
+            if (content.Contains("BlobUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl = (string) content.GetValueForProperty("BlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("BlobSasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey = (string) content.GetValueForProperty("BlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).BlobSasKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExcelFileBlobUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl = (string) content.GetValueForProperty("ExcelFileBlobUrl",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExcelFileBlobSasKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey = (string) content.GetValueForProperty("ExcelFileBlobSasKey",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IExportJobsResultInternal)this).ExcelFileBlobSasKey, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

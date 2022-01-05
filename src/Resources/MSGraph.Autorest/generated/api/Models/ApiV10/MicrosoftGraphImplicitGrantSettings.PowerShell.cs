@@ -109,8 +109,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance = (bool?) content.GetValueForProperty("EnableAccessTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance = (bool?) content.GetValueForProperty("EnableIdTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("EnableAccessTokenIssuance"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance = (bool?) content.GetValueForProperty("EnableAccessTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableIdTokenIssuance"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance = (bool?) content.GetValueForProperty("EnableIdTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializeDictionary(content);
@@ -130,8 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance = (bool?) content.GetValueForProperty("EnableAccessTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance = (bool?) content.GetValueForProperty("EnableIdTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("EnableAccessTokenIssuance"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance = (bool?) content.GetValueForProperty("EnableAccessTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableAccessTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableIdTokenIssuance"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance = (bool?) content.GetValueForProperty("EnableIdTokenIssuance",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphImplicitGrantSettingsInternal)this).EnableIdTokenIssuance, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializePSObject(content);

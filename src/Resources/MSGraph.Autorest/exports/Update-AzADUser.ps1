@@ -101,10 +101,11 @@ param(
     ${UPNOrObjectId},
 
     [Parameter()]
+    [Alias('EnableAccount')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Boolean]
     # true for enabling the account; otherwise, false.
-    ${EnableAccount},
+    ${AccountEnabled},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -484,10 +485,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UPNOrObjectIdParameterSet = 'MSGraph.custom\Update-AzADUser';
-            ObjectIdParameterSet = 'MSGraph.custom\Update-AzADUser';
-            InputObjectParameterSet = 'MSGraph.custom\Update-AzADUser';
-            UPNParameterSet = 'MSGraph.custom\Update-AzADUser';
+            UPNOrObjectIdParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
+            UPNParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

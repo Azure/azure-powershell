@@ -172,7 +172,7 @@ function Get-AzADUser {
 
         if('SignedInUser' -eq $PSCmdlet.ParameterSetName) {
             $null = $PSBoundParameters.Remove('SignedIn')
-            Az.Resources.MSGraph.private\Get-AzADUserSigned_Get @PSBoundParameters
+            Az.MSGraph.private\Get-AzADUserSigned_Get @PSBoundParameters
             return
         }
 
@@ -207,7 +207,7 @@ function Get-AzADUser {
             }
         }
 
-        MSGraph.internal\Get-AzADUser @PSBoundParameters
+        Az.MSGraph.internal\Get-AzADUser @PSBoundParameters
     }
 }
     

@@ -19,8 +19,16 @@
 --->
 
 ## Upcoming Release
-* Added OrdinalIgnoreCase for string comparison of resourceIdentifier type for flowlog cmdlets
-* Fixed typo in error message of InvalidWorkspaceResourceId
+
+## Version 4.14.0
+* Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
+* Added new properties `ApplicationSecurityGroup`, `IpConfiguration` and `CustomNetworkInterfaceName` for Private Endpoint cmdlets
+    - `Get-AzPrivateEndpoint`
+    - `New-AzPrivateEndpoint`
+* Added new cmdlet to create new `IpConfiguration` object for building Private Endpoint
+    - `New-AzPrivateEndpointIpConfiguration`
+* Added OrdinalIgnoreCase for string comparison of `ResourceIdentifier` type for FlowLog cmdlets
+* Fixed typo in error message of `InvalidWorkspaceResourceId`
 
 ## Version 4.13.0
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy

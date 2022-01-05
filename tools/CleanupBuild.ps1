@@ -48,7 +48,10 @@ foreach($RMPath in $resourceManagerPaths)
 
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
 
-        $acceptedDlls = @()
+        $acceptedDlls = @(
+            # netcoreapp, can't be in RequiredAssemblies, but we need to pack it
+            "Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll"
+        )
 
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
         foreach($cmdAssembly in $ModuleMetadata.NestedModules)

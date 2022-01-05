@@ -98,11 +98,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval = (bool?) content.GetValueForProperty("AllowAutoApproval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation[]) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceGuardOperationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList = (string[]) content.GetValueForProperty("VaultCriticalOperationExclusionList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description, global::System.Convert.ToString);
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("AllowAutoApproval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval = (bool?) content.GetValueForProperty("AllowAutoApproval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation[]) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceGuardOperationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("VaultCriticalOperationExclusionList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList = (string[]) content.GetValueForProperty("VaultCriticalOperationExclusionList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,11 +135,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval = (bool?) content.GetValueForProperty("AllowAutoApproval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation[]) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceGuardOperationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList = (string[]) content.GetValueForProperty("VaultCriticalOperationExclusionList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description, global::System.Convert.ToString);
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("AllowAutoApproval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval = (bool?) content.GetValueForProperty("AllowAutoApproval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).AllowAutoApproval, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation[]) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Operation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceGuardOperationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("VaultCriticalOperationExclusionList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList = (string[]) content.GetValueForProperty("VaultCriticalOperationExclusionList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).VaultCriticalOperationExclusionList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceGuardInternal)this).Description, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

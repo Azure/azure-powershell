@@ -32,16 +32,16 @@ Set-AzVirtualHub -InputObject <PSVirtualHub> -RouteTable <PSVirtualHubRouteTable
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzVirtualHub** cmdlet modifies a Virtual Hub to add a Virtual HUb Route Table to it.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $existingHub�=�Get-AzVirtualHub�-ResourceGroupName�"testRg"�-Name�"westushub"
-PS C:\> $route1�=�Add-AzVirtualHubRoute�-DestinationType�"CIDR"�-Destination�@("10.4.0.0/16",�"10.5.0.0/16")�-NextHopType�"IPAddress"�-NextHop�@("10.0.0.68")
-PS C:\> $routeTable1�=�Add-AzVirtualHubRouteTable�-Route�@($route1)�-Connection�@("All_Vnets")�-Name�"routeTable1"
-PS C:\> Set-AzVirtualHub�-VirtualHub�$existingHub�-RouteTable�@($routeTable1)
+PS C:\> $existingHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "westushub"
+PS C:\> $route1 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
+PS C:\> $routeTable1 = Add-AzVirtualHubRouteTable -Route @($route1) -Connection @("All_Vnets") -Name "routeTable1"
+PS C:\> Set-AzVirtualHub -VirtualHub $existingHub -RouteTable @($routeTable1)
 
 VirtualWan                            : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/testWan
 ResourceGroupName                     : testRg
