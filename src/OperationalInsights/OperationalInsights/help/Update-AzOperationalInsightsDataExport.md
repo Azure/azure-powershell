@@ -38,7 +38,7 @@ Updates a data export.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names}
+PS C:\> Update-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names} -Enable $true
 
 Name             : {dataExportName}
 Id               : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/dataexports/{dataExportName}
@@ -49,7 +49,7 @@ ResourceId       : /subscriptions/{resource_subscription}/resourceGroups/{resour
                    counts/{storage_name}
 DataExportType   : StorageAccount
 EventHubName     :
-Enable           : false
+Enable           : true
 CreatedDate      : 
 LastModifiedDate :
 ```
