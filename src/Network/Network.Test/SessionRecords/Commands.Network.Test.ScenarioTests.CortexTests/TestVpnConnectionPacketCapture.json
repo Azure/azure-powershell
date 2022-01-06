@@ -4730,8 +4730,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/providers/Microsoft.Storage/checkNameAvailability?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/providers/Microsoft.Storage/checkNameAvailability?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMC0wOC0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"name\": \"sto2ps571\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
       "RequestHeaders": {
@@ -4799,8 +4799,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Storage/storageAccounts/sto2ps571?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvMnBzNTcxP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Storage/storageAccounts/sto2ps571?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvMnBzNTcxP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
@@ -4831,7 +4831,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/providers/Microsoft.Storage/locations/eastus/asyncoperations/f70ac371-74f4-42da-9eba-61da3503ebee?monitor=true&api-version=2019-06-01"
+          "https://management.azure.com/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/providers/Microsoft.Storage/locations/eastus/asyncoperations/f70ac371-74f4-42da-9eba-61da3503ebee?monitor=true&api-version=2020-08-01-preview"
         ],
         "Retry-After": [
           "17"
@@ -4874,8 +4874,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/providers/Microsoft.Storage/locations/eastus/asyncoperations/f70ac371-74f4-42da-9eba-61da3503ebee?monitor=true&api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvZWFzdHVzL2FzeW5jb3BlcmF0aW9ucy9mNzBhYzM3MS03NGY0LTQyZGEtOWViYS02MWRhMzUwM2ViZWU/bW9uaXRvcj10cnVlJmFwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/providers/Microsoft.Storage/locations/eastus/asyncoperations/f70ac371-74f4-42da-9eba-61da3503ebee?monitor=true&api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvZWFzdHVzL2FzeW5jb3BlcmF0aW9ucy9mNzBhYzM3MS03NGY0LTQyZGEtOWViYS02MWRhMzUwM2ViZWU/bW9uaXRvcj10cnVlJmFwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -4931,8 +4931,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Storage/storageAccounts/sto2ps571?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvMnBzNTcxP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Storage/storageAccounts/sto2ps571?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvMnBzNTcxP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -4994,8 +4994,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Storage/storageAccounts/sto2ps571/listKeys?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvMnBzNTcxL2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Storage/storageAccounts/sto2ps571/listKeys?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvMnBzNTcxL2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {

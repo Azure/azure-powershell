@@ -470,6 +470,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? immutabilityPeriod;
 
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. " +
@@ -686,6 +687,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
                     }
+                    if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
+                    { 
+                        updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    }
                     if (this.minimumTlsVersion != null)
                     {
                         updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
@@ -718,12 +723,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.PublicNetworkAccess = this.PublicNetworkAccess;
                     }
-                    if(this.immutabilityPeriod !=null ||  this.ImmutabilityPolicyState != null)
+
                     {
                         updateParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

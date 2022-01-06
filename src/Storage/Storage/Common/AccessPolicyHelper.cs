@@ -177,12 +177,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
             }
 
+            string permissionString = string.Empty;
+            if (typeof(T) == typeof(SharedAccessTablePolicy)) //Table
+            {
+                permissionString = SharedAccessTablePolicy.PermissionsToString((SharedAccessTablePermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
+            }
+            else if (typeof(T) == typeof(SharedAccessFilePolicy)) //File
+            { 
+                permissionString = SharedAccessFilePolicy.PermissionsToString((SharedAccessFilePermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
+            }
+            else if (typeof(T) == typeof(SharedAccessQueuePolicy)) //Queue
+            {
+                permissionString = SharedAccessQueuePolicy.PermissionsToString((SharedAccessQueuePermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
+            }
+            else //Blob
+            {
+                permissionString = SharedAccessBlobPolicy.PermissionsToString((SharedAccessBlobPermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
+            }
+
             return PowerShellUtilities.ConstructPSObject(
                 typeof(PSObject).FullName,
                 "Policy",
                 policyName,
                 "Permissions",
-                (sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]),
+                permissionString,
                 "StartTime",
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessStartTime").GetValue(sharedAccessPolicies[policyName]),
                 "ExpiryTime",

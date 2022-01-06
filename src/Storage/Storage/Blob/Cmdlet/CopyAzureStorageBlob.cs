@@ -145,6 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
         public IStorageContext DestContext { get; set; }
 
+        // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }

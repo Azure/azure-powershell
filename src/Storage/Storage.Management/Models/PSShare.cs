@@ -121,6 +121,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public long? ShareUsageBytes { get; }
 
+
         public DateTime? SnapshotTime { get; private set; }
         public static string ParseResourceGroupFromId(string idFromServer)
         {

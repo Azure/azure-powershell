@@ -513,6 +513,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? immutabilityPeriod;
 
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Disabled. " +
@@ -733,6 +734,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.EnableNfsV3 = enableNfsV3;
             }
+            if (enableNfsV3 != null)
+            {
+                createParameters.EnableNfsV3 = enableNfsV3;
+            }
             if (this.EdgeZone != null)
             {
                 createParameters.ExtendedLocation = new ExtendedLocation()
@@ -757,7 +762,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.PublicNetworkAccess = this.PublicNetworkAccess;
             }
-            if (EnableAccountLevelImmutability.IsPresent || this.immutabilityPeriod != null ||  this.ImmutabilityPolicyState != null)
+
             {
                 if (!EnableAccountLevelImmutability.IsPresent)
                 {
@@ -765,11 +770,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 createParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
                 createParameters.ImmutableStorageWithVersioning.Enabled = this.EnableAccountLevelImmutability.IsPresent;
-                if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
+
                 {
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+
                 }
             }
 

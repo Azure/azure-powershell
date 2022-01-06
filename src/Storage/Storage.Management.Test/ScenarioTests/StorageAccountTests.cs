@@ -228,6 +228,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountEnableNfsV3()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountEnableNfsV3");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountEdgeZone()
         {
             TestRunner.RunTestScript("Test-NewAzureStorageAccountEdgeZone");
@@ -256,13 +263,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureStorageAccountEnableNfsV3()
-        {
-            TestRunner.RunTestScript("Test-NewAzureStorageAccountEnableNfsV3");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureStorageAccountHierarchicalNamespaceUpgrade()
         {
             TestRunner.RunTestScript("Test-AzureStorageAccountHierarchicalNamespaceUpgrade");
@@ -274,5 +274,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureStorageAccountWorm");
         }
+
     }
 }

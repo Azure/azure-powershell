@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableHierarchicalNamespace { get; set; }
 
-        public bool? FailoverInProgress { get; set; }
-
         public string LargeFileSharesState { get; set; }
+
+        public bool? FailoverInProgress { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
@@ -291,9 +291,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.ImmutabilityPeriodSinceCreationInDays = accountImmutabilityPolicyProperties.ImmutabilityPeriodSinceCreationInDays;
                 this.State = accountImmutabilityPolicyProperties.State;
+
             }
         }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
+
     }
 }
