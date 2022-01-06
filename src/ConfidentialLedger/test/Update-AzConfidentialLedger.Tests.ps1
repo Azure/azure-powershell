@@ -15,11 +15,51 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConfidentialLedger')
 }
 
 Describe 'Update-AzConfidentialLedger' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $ledger = Update-AzConfidentialLedger `
+            -Name $env.LedgerName `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -AadBasedSecurityPrincipal `
+                @{
+                    LedgerRoleName=$env.AadPrincipalRole; 
+                    PrincipalId=$env.AadPrincipalId; 
+                    TenantId=$env.AadPrincipalTenantId
+                } `
+            -CertBasedSecurityPrincipal `
+                @{
+                    Cert=$env.CertPrincipalCert; 
+                    LedgerRoleName=$env.CertPrincipalRole
+                } `
+            -LedgerType $env.LedgerType `
+            -Location $env.Location `
+            -Tag @{Tag0=$env.Tag0; Tag1=$env.Tag1}
+
+        $ledger.Tags.Tag0 | Should -Be $env.Tag0
+        $ledger.Tags.Tag1 | Should -Be $env.Tag1
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.LedgerName
+        $ledger = Update-AzConfidentialLedger `
+            -InputObject $ledger `
+            -AadBasedSecurityPrincipal `
+                @{
+                    LedgerRoleName=$env.AadPrincipalRole; 
+                    PrincipalId=$env.AadPrincipalId; 
+                    TenantId=$env.AadPrincipalTenantId
+                } `
+            -CertBasedSecurityPrincipal `
+                @{
+                    Cert=$env.CertPrincipalCert; 
+                    LedgerRoleName=$env.CertPrincipalRole
+                } `
+            -LedgerType $env.LedgerType `
+            -Location $env.Location `
+            -Tag @{Tag0=$env.Tag0; Tag1=$env.Tag1}
+
+        $ledger.Tags.Tag0 | Should -Be $env.Tag0
+        $ledger.Tags.Tag1 | Should -Be $env.Tag1
+        $ledger.Tags.Tag2 | Should -Be $env.Tag2
     }
 }

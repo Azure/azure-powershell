@@ -33,7 +33,7 @@ Describe 'Remove-AzConfidentialLedger' {
                 } `
             -LedgerType $env.LedgerType `
             -Location $env.Location `
-            -Tag @{Location=$env.Tag0}
+            -Tag @{Tag0=$env.Tag0}
         Remove-AzConfidentialLedger -Name $env.RemoveLedgerName -ResourceGroupName $env.ResourceGroup
 
         $ledgerList = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.RemoveLedgerName
@@ -58,7 +58,7 @@ Describe 'Remove-AzConfidentialLedger' {
                 } `
             -LedgerType $env.LedgerType `
             -Location $env.Location `
-            -Tag @{Location=$env.Tag0}
+            -Tag @{Tag0=$env.Tag0}
         Remove-AzConfidentialLedger -InputObject $ledger
 
         $ledgerList = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.RemoveLedgerName

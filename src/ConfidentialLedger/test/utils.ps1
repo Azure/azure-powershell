@@ -30,6 +30,7 @@ function setupEnv() {
     $env.Add('LedgerType', 'Public')
     $env.Add('Tag0', 'additional properties 0')
     $env.Add('Tag1', 'additional property 1')
+    $env.Add('Tag2', 'additional property 2')
 
     # Ledger names.
     # More than one is required as setupEnv runs once before all tests, so some tests need to
@@ -68,7 +69,7 @@ function setupEnv() {
             } `
         -LedgerType $env.LedgerType `
         -Location $env.Location `
-        -Tag @{Location=$env.Tag0}
+        -Tag @{Tag0=$env.Tag0}
     Write-Host -ForegroundColor Green 'Confidential Ledger created successfully.'
 
     # For any resources you created for test, you should add it to $env here.
