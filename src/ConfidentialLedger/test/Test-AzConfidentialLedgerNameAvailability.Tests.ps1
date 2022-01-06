@@ -15,19 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzConfidentialLedgerName
 }
 
 Describe 'Test-AzConfidentialLedgerNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
+            -SubscriptionId $env.SubscriptionId `
+            -Name $env.LedgerName
+
+        $availabilityResult.NameAvailable | Should -Be $false
+
+        $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
+            -SubscriptionId $env.SubscriptionId `
+            -Name $env.AvailableName
+
+        $availabilityResult.NameAvailable | Should -Be $true
     }
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Check' {
+        $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
+            -NameAvailabilityRequest `
+                @{
+                    Name=$env.LedgerName;
+                    Type="Microsoft.ConfidentialLedger/ledgers"
+                }
 
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $availabilityResult.NameAvailable | Should -Be $false
 
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
+        -NameAvailabilityRequest `
+            @{
+                Name=$env.AvailableName;
+                Type="Microsoft.ConfidentialLedger/ledgers"
+            }
+
+        $availabilityResult.NameAvailable | Should -Be $true
     }
 }
