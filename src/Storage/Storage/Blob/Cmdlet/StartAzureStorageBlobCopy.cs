@@ -296,7 +296,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string TagCondition { get; set; }
 
-        //public override SwitchParameter AsJob { get; set; }
+        public override SwitchParameter AsJob { get; set; }
 
         protected override bool UseTrack2Sdk()
         {

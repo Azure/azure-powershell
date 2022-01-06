@@ -274,12 +274,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureStorageAccountWorm");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureStorageAccountLocalUserSftp()
-        {
-            TestRunner.RunTestScript("Test-AzureStorageAccountLocalUserSftp");
-        }        
     }
 }

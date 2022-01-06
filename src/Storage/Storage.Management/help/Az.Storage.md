@@ -89,12 +89,6 @@ Gets a Storage account.
 ### [Get-AzStorageAccountKey](Get-AzStorageAccountKey.md)
 Gets the access keys for an Azure Storage account.
 
-### [Get-AzStorageAccountLocalUser](Get-AzStorageAccountLocalUser.md)
-Gets a specified local user or lists all local users in a storage account.
-
-### [Get-AzStorageAccountLocalUserPublicKey](Get-AzStorageAccountLocalUserPublicKey.md)
-Lists SSH authorized keys and shared key of a specified local user.
-
 ### [Get-AzStorageAccountManagementPolicy](Get-AzStorageAccountManagementPolicy.md)
 Gets the management policy of an Azure Storage account.
 
@@ -218,15 +212,6 @@ Creates a Storage account.
 ### [New-AzStorageAccountKey](New-AzStorageAccountKey.md)
 Regenerates a storage key for an Azure Storage account.
 
-### [New-AzStorageAccountLocalUserPermissionScope](New-AzStorageAccountLocalUserPermissionScope.md)
-Creates a permission scope object, which can be used in Set-AzStorageAccountLocalUser.
-
-### [New-AzStorageAccountLocalUserSshPassword](New-AzStorageAccountLocalUserSshPassword.md)
-Regenerate SSH password of a specified local user in a storage account.
-
-### [New-AzStorageAccountLocalUserSshPublicKey](New-AzStorageAccountLocalUserSshPublicKey.md)
-Creates a SSH public key object, which can be used in Set-AzStorageAccountLocalUser.
-
 ### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
 Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.
 
@@ -320,9 +305,6 @@ Removes a Storage file share.
 ### [Remove-AzStorageAccount](Remove-AzStorageAccount.md)
 Removes a Storage account from Azure.
 
-### [Remove-AzStorageAccountLocalUser](Remove-AzStorageAccountLocalUser.md)
-Removes a specified local user in a storage account.
-
 ### [Remove-AzStorageAccountManagementPolicy](Remove-AzStorageAccountManagementPolicy.md)
 Removes the management policy of an Azure Storage account.
 
@@ -403,9 +385,6 @@ Creates or updates ImmutabilityPolicy of a Storage blob containers
 
 ### [Set-AzStorageAccount](Set-AzStorageAccount.md)
 Modifies a Storage account.
-
-### [Set-AzStorageAccountLocalUser](Set-AzStorageAccountLocalUser.md)
-Creates or updates a specified local user in a storage account.
 
 ### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
 Creates or modifies the management policy of an Azure Storage account.
