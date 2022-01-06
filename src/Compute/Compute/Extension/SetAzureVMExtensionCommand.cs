@@ -48,28 +48,24 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = SettingsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Settings { get; set; }
 
         [Parameter(
             ParameterSetName = SettingsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable ProtectedSettings { get; set; }
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The setting raw string.")]
-        [ValidateNotNullOrEmpty]
         public string SettingString { get; set; }
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected setting raw string.")]
-        [ValidateNotNullOrEmpty]
         public string ProtectedSettingString { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
