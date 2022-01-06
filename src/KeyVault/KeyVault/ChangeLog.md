@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue when importing no-password certificate [#16742]
 
 ## Version 4.2.0
 * Added cmdlets: `Invoke-AzKeyVaultKeyRotation`, `Get-AzKeyVaultKeyRotationPolicy` and `Set-AzKeyVaultKeyRotationPolicy`
