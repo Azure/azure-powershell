@@ -35,8 +35,8 @@ Describe 'Update-AzConfidentialLedger' {
             -Location $env.Location `
             -Tag @{Tag0=$env.Tag0; Tag1=$env.Tag1}
 
-        $ledger.Tags["Tag0"] | Should -Be $env.Tag0
-        $ledger.Tags["Tag1"] | Should -Be $env.Tag1
+        $ledger.Tag["Tag0"] | Should -Be $env.Tag0
+        $ledger.Tag["Tag1"] | Should -Be $env.Tag1
     }
 
     It 'UpdateViaIdentityExpanded' {
@@ -58,8 +58,8 @@ Describe 'Update-AzConfidentialLedger' {
             -Location $env.Location `
             -Tag @{Tag0=$env.Tag0; Tag1=$env.Tag1; Tag2=$env.Tag2}
 
-        $ledger.Tags["Tag0"] | Should -Be $env.Tag0
-        $ledger.Tags["Tag1"] | Should -Be $env.Tag1
-        $ledger.Tags["Tag2"] | Should -Be $env.Tag2
+        $ledger.Tag["Tag0"] | Should -Be $env.Tag0
+        $ledger.Tag["Tag1"] | Should -Be $env.Tag1
+        $ledger.Tag["Tag2"] | Should -Be $env.Tag2
     }
 }

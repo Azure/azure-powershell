@@ -28,7 +28,8 @@ Describe 'Get-AzConfidentialLedger' {
     It 'Get' {
         $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.LedgerName
         $ledger.Name | Should -Be $env.LedgerName
-        $ledger.Tags["Tag0"] | Should -Be $env.Tag0
+        Write-Host ($ledger | Format-List | Out-String)
+        $ledger.Tag["Tag0"] | Should -Be $env.Tag0
     }
 
     It 'GetViaIdentity' {
