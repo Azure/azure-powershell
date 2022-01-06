@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "64324460-64b1-4cd5-953d-665e1c544b49" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "8a6aea9c-b323-4cac-a977-43052e36e3d4" ],
         "CommandName": [ "Get-AzConfidentialLedger" ],
         "FullCommandName": [ "Get-AzConfidentialLedger_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,33 +22,74 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "2c39ab60-00ee-41b0-afde-943ae891c9b2", "36cf0c5e-3953-4751-a750-5c4be9c2d3b0", "f532beae-b464-42c4-83b0-fb74b594773c", "6211b174-3574-4684-a7c1-abd502143a60" ],
+        "x-ms-original-request-ids": [ "27f1596e-89cb-452b-b99a-708a22a372e4", "23097978-3d5e-4471-8a32-5032622b7abf", "96129f16-e8e3-41c7-85a7-0a16c9788937", "9d38942b-c3e6-4650-8d56-b37693b3e227" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "aa076594-59fe-49c9-b817-9d319cdcd0a5" ],
-        "x-ms-correlation-request-id": [ "aa076594-59fe-49c9-b817-9d319cdcd0a5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220106T211820Z:aa076594-59fe-49c9-b817-9d319cdcd0a5" ],
+        "x-ms-request-id": [ "285a5f63-6463-49fa-a7bd-b4203bca1bad" ],
+        "x-ms-correlation-request-id": [ "285a5f63-6463-49fa-a7bd-b4203bca1bad" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224343Z:285a5f63-6463-49fa-a7bd-b4203bca1bad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Jan 2022 21:18:19 GMT" ]
+        "Date": [ "Thu, 06 Jan 2022 22:43:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "2706" ]
+        "Content-Length": [ "3126" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/Test-Create-Ledger/providers/Microsoft.ConfidentialLedger/Ledgers/testMusaLedger\",\"name\":\"testMusaLedger\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"EastUS\",\"tags\":{\"IsPreProduction\":\"true\",\"otherPropertiesKey\":\"otherPropertiesValue\"},\"properties\":{\"ledgerName\":\"testMusaLedger\",\"ledgerUri\":\"https://testmusaledger.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/testmusaledger\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"e76336f1-cae2-492f-84bc-bfcbb6503c9b\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Contributor\"},{\"principalId\":\"c7d855e9-e7b7-4d78-b2d2-e91e357c2329\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Reader\"},{\"principalId\":\"3132e15f-7ed2-4e4c-bbc0-b0159c0619bf\",\"tenantId\":\"664735b5-25a4-4128-a671-4662c643b297\",\"ledgerRoleName\":\"Administrator\"}],\"ledgerInternalNamespace\":\"f6454139-0d81-45b4-8cc5-4c5f4e7ca0ce\"}},{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-6efz8moy2igqs\",\"name\":\"pwsh-6efz8moy2igqs\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Location\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-6efz8moy2igqs\",\"ledgerUri\":\"https://pwsh-6efz8moy2igqs.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-6efz8moy2igqs\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"b48c4398-fc6b-43c5-8f6a-cba963578a88\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/Test-Create-Ledger/providers/Microsoft.ConfidentialLedger/Ledgers/testMusaLedger\",\"name\":\"testMusaLedger\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"EastUS\",\"tags\":{\"IsPreProduction\":\"true\",\"otherPropertiesKey\":\"otherPropertiesValue\"},\"properties\":{\"ledgerName\":\"testMusaLedger\",\"ledgerUri\":\"https://testmusaledger.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/testmusaledger\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"e76336f1-cae2-492f-84bc-bfcbb6503c9b\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Contributor\"},{\"principalId\":\"c7d855e9-e7b7-4d78-b2d2-e91e357c2329\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Reader\"},{\"principalId\":\"3132e15f-7ed2-4e4c-bbc0-b0159c0619bf\",\"tenantId\":\"664735b5-25a4-4128-a671-4662c643b297\",\"ledgerRoleName\":\"Administrator\"}],\"ledgerInternalNamespace\":\"f6454139-0d81-45b4-8cc5-4c5f4e7ca0ce\"}},{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-oqwmishpjrcb9\",\"name\":\"pwsh-oqwmishpjrcb9\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Tag0\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-oqwmishpjrcb9\",\"ledgerUri\":\"https://pwsh-oqwmishpjrcb9.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-oqwmishpjrcb9\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"01d06f80-ae73-4a9e-8c63-4d180780e856\"}}],\"nextLink\":\"https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/ledgers/?api-version=2021-05-13-preview\u0026%24skiptoken=HY1PC4IwHEC%2fy%2b5z03SmEB3Cm1H0h85z%2fmYj3cY2LRK%2fe9LpwePBm5GGT6iVfnlUzuhRXW%2fV%2fXI6V6hEzxCsLwkZuOYdDKBDxL%2bjg0iYgfix8cIpG5TRntAkb3kutziRguGUtSkuGihwxmhOWcOoBEGsM5NqwXlyVMIZb2SIDkbL1emgeF9D24Ej%2fR%2be7LlVeFrz9bBLaBJjmuF4g62DScEbLcsP\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzConfidentialLedger+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview+1": {
+  "Get-AzConfidentialLedger+[NoContext]+List+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/ledgers/?api-version=2021-05-13-preview\u0026%24skiptoken=HY1PC4IwHEC%2fy%2b5z03SmEB3Cm1H0h85z%2fmYj3cY2LRK%2fe9LpwePBm5GGT6iVfnlUzuhRXW%2fV%2fXI6V6hEzxCsLwkZuOYdDKBDxL%2bjg0iYgfix8cIpG5TRntAkb3kutziRguGUtSkuGihwxmhOWcOoBEGsM5NqwXlyVMIZb2SIDkbL1emgeF9D24Ej%2fR%2be7LlVeFrz9bBLaBJjmuF4g62DScEbLcsP+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/ledgers/?api-version=2021-05-13-preview\u0026%24skiptoken=HY1PC4IwHEC%2fy%2b5z03SmEB3Cm1H0h85z%2fmYj3cY2LRK%2fe9LpwePBm5GGT6iVfnlUzuhRXW%2fV%2fXI6V6hEzxCsLwkZuOYdDKBDxL%2bjg0iYgfix8cIpG5TRntAkb3kutziRguGUtSkuGihwxmhOWcOoBEGsM5NqwXlyVMIZb2SIDkbL1emgeF9D24Ej%2fR%2be7LlVeFrz9bBLaBJjmuF4g62DScEbLcsP",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "56d6ed86-1fc0-4443-9acf-5af9f40b7048" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "8a6aea9c-b323-4cac-a977-43052e36e3d4" ],
+        "CommandName": [ "Get-AzConfidentialLedger" ],
+        "FullCommandName": [ "Get-AzConfidentialLedger_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 502,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "0484b137-74b5-463c-b31b-c7d20b3436ea" ],
+        "x-ms-correlation-request-id": [ "0484b137-74b5-463c-b31b-c7d20b3436ea" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224347Z:0484b137-74b5-463c-b31b-c7d20b3436ea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 Jan 2022 22:43:47 GMT" ],
+        "Connection": [ "close" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "152" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ProviderError\",\"message\":\"Resource provider \u0027Microsoft.ConfidentialLedger\u0027 failed to return collection response for type \u0027Ledgers\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConfidentialLedger+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "5c3e1d82-7a15-4577-b0fb-59264bf567e2" ],
         "CommandName": [ "Get-AzConfidentialLedger" ],
         "FullCommandName": [ "Get-AzConfidentialLedger_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,33 +104,74 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "088eb5cc-c702-446b-b838-2232cee39faf", "eafe2608-7b4a-4909-ad6d-654e9b749503", "f7744d21-395c-4530-a078-c5912d090891", "07879896-0f9a-419e-b66e-9994120bd196" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "3e895684-76b2-447b-98fd-8fc0d76ed6d1" ],
-        "x-ms-correlation-request-id": [ "3e895684-76b2-447b-98fd-8fc0d76ed6d1" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220106T211820Z:3e895684-76b2-447b-98fd-8fc0d76ed6d1" ],
+        "x-ms-original-request-ids": [ "f291af82-8c55-449d-8519-8c23b6d25940", "648285fc-99ca-452f-9486-0f575b6df2bd", "ff5ef4d5-6c40-48c5-93cf-7ed9d8c43749", "f4a42171-946f-405a-b386-39c78e26c7e3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "3f4ad08b-32cf-46a2-9fec-c73e0fc4cc5f" ],
+        "x-ms-correlation-request-id": [ "3f4ad08b-32cf-46a2-9fec-c73e0fc4cc5f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224352Z:3f4ad08b-32cf-46a2-9fec-c73e0fc4cc5f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Jan 2022 21:18:20 GMT" ]
+        "Date": [ "Thu, 06 Jan 2022 22:43:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "1641" ]
+        "Content-Length": [ "2126" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-6efz8moy2igqs\",\"name\":\"pwsh-6efz8moy2igqs\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Location\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-6efz8moy2igqs\",\"ledgerUri\":\"https://pwsh-6efz8moy2igqs.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-6efz8moy2igqs\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"b48c4398-fc6b-43c5-8f6a-cba963578a88\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-oqwmishpjrcb9\",\"name\":\"pwsh-oqwmishpjrcb9\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Tag0\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-oqwmishpjrcb9\",\"ledgerUri\":\"https://pwsh-oqwmishpjrcb9.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-oqwmishpjrcb9\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"01d06f80-ae73-4a9e-8c63-4d180780e856\"}}],\"nextLink\":\"https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview\u0026%24skiptoken=HY7LasMwEAD%2fRfe1FDeRE0PpoZhcUlr6oGdZWtsitiR2ZSck5N9rehoY5jB3EfCaTz6cWdR38dt8fTc%2fn%2b8fjajFkHPiWsrJBNPjhCEX5jYTFjZOkueWLfmUfQwsVVk5U3V7KDurYavdFg4tHmCnVaV0q1WHVhJynMnikeKcWBo7pgsPQD1MN7e%2fhkEmiot3SCzfvKXIscvFawzd6kL2Zjyh65Hk%2bA9%2bMcnDstbrwnOpyg2oHWyeIBEuHi%2fi8fgD\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzConfidentialLedger+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-6efz8moy2igqs?api-version=2021-05-13-preview+1": {
+  "Get-AzConfidentialLedger+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview\u0026%24skiptoken=HY7LasMwEAD%2fRfe1FDeRE0PpoZhcUlr6oGdZWtsitiR2ZSck5N9rehoY5jB3EfCaTz6cWdR38dt8fTc%2fn%2b8fjajFkHPiWsrJBNPjhCEX5jYTFjZOkueWLfmUfQwsVVk5U3V7KDurYavdFg4tHmCnVaV0q1WHVhJynMnikeKcWBo7pgsPQD1MN7e%2fhkEmiot3SCzfvKXIscvFawzd6kL2Zjyh65Hk%2bA9%2bMcnDstbrwnOpyg2oHWyeIBEuHi%2fi8fgD+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-6efz8moy2igqs?api-version=2021-05-13-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers?api-version=2021-05-13-preview\u0026%24skiptoken=HY7LasMwEAD%2fRfe1FDeRE0PpoZhcUlr6oGdZWtsitiR2ZSck5N9rehoY5jB3EfCaTz6cWdR38dt8fTc%2fn%2b8fjajFkHPiWsrJBNPjhCEX5jYTFjZOkueWLfmUfQwsVVk5U3V7KDurYavdFg4tHmCnVaV0q1WHVhJynMnikeKcWBo7pgsPQD1MN7e%2fhkEmiot3SCzfvKXIscvFawzd6kL2Zjyh65Hk%2bA9%2bMcnDstbrwnOpyg2oHWyeIBEuHi%2fi8fgD",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "04c33d48-3827-4367-b208-756d8f1604ba" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "5c3e1d82-7a15-4577-b0fb-59264bf567e2" ],
+        "CommandName": [ "Get-AzConfidentialLedger" ],
+        "FullCommandName": [ "Get-AzConfidentialLedger_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 502,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "444b319c-9631-422e-b754-b67d0d73efa2" ],
+        "x-ms-correlation-request-id": [ "444b319c-9631-422e-b754-b67d0d73efa2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224356Z:444b319c-9631-422e-b754-b67d0d73efa2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 Jan 2022 22:43:56 GMT" ],
+        "Connection": [ "close" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "152" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ProviderError\",\"message\":\"Resource provider \u0027Microsoft.ConfidentialLedger\u0027 failed to return collection response for type \u0027Ledgers\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConfidentialLedger+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-oqwmishpjrcb9?api-version=2021-05-13-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-oqwmishpjrcb9?api-version=2021-05-13-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "666f391c-92c0-4918-9deb-0d58a4b40a63" ],
         "CommandName": [ "Get-AzConfidentialLedger" ],
         "FullCommandName": [ "Get-AzConfidentialLedger_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -104,38 +186,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2701c60e-0000-0100-0000-61d75c950000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "ETag": [ "\"2701c7d8-0000-0100-0000-61d7708b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-correlation-request-id": [ "c56e7702-56b2-44ba-bce5-b7eb596b5c02" ],
-        "x-ms-client-request-id": [ "75f0fe24-f338-436d-8d25-9878fce0829e" ],
-        "x-ms-machineName": [ "controlplane-7587d6c5c8-tbjpq" ],
+        "x-ms-correlation-request-id": [ "f715aa24-c38e-41a7-b879-c7aa2771fc69" ],
+        "x-ms-client-request-id": [ "bea86ba5-5fff-4cf5-af53-00da4b4cfa3c" ],
+        "x-ms-machineName": [ "controlplane-7587d6c5c8-fhbht" ],
         "x-ms-image-digest": [ "sha256:eb52264e04c28a15db5cc165ad1af3d641dca8487e84f5db6421737d38396193" ],
         "x-ms-image-tag": [ "1.0.01796.263-737d1ad8305f306575229813108842c9bd601f8f" ],
-        "x-ms-request-id": [ "c8010d89-ac0c-4da2-b25f-750b34fc5772" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220106T211820Z:c56e7702-56b2-44ba-bce5-b7eb596b5c02" ],
+        "x-ms-request-id": [ "562811ff-5042-4e07-8c31-d4f18e452c38" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224357Z:f715aa24-c38e-41a7-b879-c7aa2771fc69" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Jan 2022 21:18:20 GMT" ]
+        "Date": [ "Thu, 06 Jan 2022 22:43:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1629" ],
+        "Content-Length": [ "1625" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-6efz8moy2igqs\",\"name\":\"pwsh-6efz8moy2igqs\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Location\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-6efz8moy2igqs\",\"ledgerUri\":\"https://pwsh-6efz8moy2igqs.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-6efz8moy2igqs\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"b48c4398-fc6b-43c5-8f6a-cba963578a88\"}}",
+      "Content": "{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-oqwmishpjrcb9\",\"name\":\"pwsh-oqwmishpjrcb9\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Tag0\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-oqwmishpjrcb9\",\"ledgerUri\":\"https://pwsh-oqwmishpjrcb9.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-oqwmishpjrcb9\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"01d06f80-ae73-4a9e-8c63-4d180780e856\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzConfidentialLedger+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-6efz8moy2igqs?api-version=2021-05-13-preview+1": {
+  "Get-AzConfidentialLedger+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-oqwmishpjrcb9?api-version=2021-05-13-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-6efz8moy2igqs?api-version=2021-05-13-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-oqwmishpjrcb9?api-version=2021-05-13-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "7058e273-a752-4888-b1b1-6e8c9ba2b042" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "9837c5db-97b4-4730-a223-f20bea99ecbd" ],
         "CommandName": [ "Get-AzConfidentialLedger" ],
         "FullCommandName": [ "Get-AzConfidentialLedger_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -150,38 +232,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2701c60e-0000-0100-0000-61d75c950000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "ETag": [ "\"2701c7d8-0000-0100-0000-61d7708b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-correlation-request-id": [ "7de04e0d-e93e-44ba-9b6e-1ab4fe6833c2" ],
-        "x-ms-client-request-id": [ "30e9e95d-e8f8-4ebc-a8be-b975ed5607b1" ],
-        "x-ms-machineName": [ "controlplane-7587d6c5c8-tbjpq" ],
+        "x-ms-correlation-request-id": [ "cb7368a3-838e-44be-ae42-ba85bd5e34c3" ],
+        "x-ms-client-request-id": [ "3cac9dcb-59a9-4816-90c2-d367691c808e" ],
+        "x-ms-machineName": [ "controlplane-7587d6c5c8-fhbht" ],
         "x-ms-image-digest": [ "sha256:eb52264e04c28a15db5cc165ad1af3d641dca8487e84f5db6421737d38396193" ],
         "x-ms-image-tag": [ "1.0.01796.263-737d1ad8305f306575229813108842c9bd601f8f" ],
-        "x-ms-request-id": [ "3f242c74-4f64-47e1-b8bf-55a76982be41" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220106T211821Z:7de04e0d-e93e-44ba-9b6e-1ab4fe6833c2" ],
+        "x-ms-request-id": [ "58c7b167-9395-4ac4-863d-55aa995d6615" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224357Z:cb7368a3-838e-44be-ae42-ba85bd5e34c3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Jan 2022 21:18:20 GMT" ]
+        "Date": [ "Thu, 06 Jan 2022 22:43:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1629" ],
+        "Content-Length": [ "1625" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-6efz8moy2igqs\",\"name\":\"pwsh-6efz8moy2igqs\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Location\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-6efz8moy2igqs\",\"ledgerUri\":\"https://pwsh-6efz8moy2igqs.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-6efz8moy2igqs\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"b48c4398-fc6b-43c5-8f6a-cba963578a88\"}}",
+      "Content": "{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-oqwmishpjrcb9\",\"name\":\"pwsh-oqwmishpjrcb9\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Tag0\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-oqwmishpjrcb9\",\"ledgerUri\":\"https://pwsh-oqwmishpjrcb9.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-oqwmishpjrcb9\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"01d06f80-ae73-4a9e-8c63-4d180780e856\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzConfidentialLedger+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-6efz8moy2igqs?api-version=2021-05-13-preview+2": {
+  "Get-AzConfidentialLedger+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-oqwmishpjrcb9?api-version=2021-05-13-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-6efz8moy2igqs?api-version=2021-05-13-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/ledgers/pwsh-oqwmishpjrcb9?api-version=2021-05-13-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "0390667e-2211-4588-bcf4-6abd6e88f969" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "a194bd65-ec9e-4a52-8bca-7c59c056379c" ],
         "CommandName": [ "Get-AzConfidentialLedger" ],
         "FullCommandName": [ "Get-AzConfidentialLedger_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -196,26 +278,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2701c60e-0000-0100-0000-61d75c950000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "ETag": [ "\"2701c7d8-0000-0100-0000-61d7708b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-correlation-request-id": [ "d8919c63-7c37-472d-a91d-726a7876b76b" ],
-        "x-ms-client-request-id": [ "5884b116-e188-48e4-a954-676e7f301831" ],
-        "x-ms-machineName": [ "controlplane-7587d6c5c8-tbjpq" ],
+        "x-ms-correlation-request-id": [ "335bff15-2465-41c8-b60e-953bd0dfb5c5" ],
+        "x-ms-client-request-id": [ "4b95f688-5217-445b-9995-3e5ffc3edb07" ],
+        "x-ms-machineName": [ "controlplane-7587d6c5c8-fhbht" ],
         "x-ms-image-digest": [ "sha256:eb52264e04c28a15db5cc165ad1af3d641dca8487e84f5db6421737d38396193" ],
         "x-ms-image-tag": [ "1.0.01796.263-737d1ad8305f306575229813108842c9bd601f8f" ],
-        "x-ms-request-id": [ "f2eb3b08-c7e3-4eda-a32b-6f0e702547d2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220106T211821Z:d8919c63-7c37-472d-a91d-726a7876b76b" ],
+        "x-ms-request-id": [ "bbe50c3a-c5f7-490e-92ea-4c666c9d00a3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220106T224357Z:335bff15-2465-41c8-b60e-953bd0dfb5c5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 Jan 2022 21:18:21 GMT" ]
+        "Date": [ "Thu, 06 Jan 2022 22:43:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1629" ],
+        "Content-Length": [ "1625" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-5o3redn/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-6efz8moy2igqs\",\"name\":\"pwsh-6efz8moy2igqs\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Location\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-6efz8moy2igqs\",\"ledgerUri\":\"https://pwsh-6efz8moy2igqs.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-6efz8moy2igqs\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"b48c4398-fc6b-43c5-8f6a-cba963578a88\"}}",
+      "Content": "{\"id\":\"/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/resourceGroups/aclpwsh-rg-mzd8xnh/providers/Microsoft.ConfidentialLedger/Ledgers/pwsh-oqwmishpjrcb9\",\"name\":\"pwsh-oqwmishpjrcb9\",\"type\":\"Microsoft.ConfidentialLedger/Ledgers\",\"location\":\"eastus\",\"tags\":{\"Tag0\":\"additional properties 0\"},\"properties\":{\"ledgerName\":\"pwsh-oqwmishpjrcb9\",\"ledgerUri\":\"https://pwsh-oqwmishpjrcb9.confidential-ledger.azure.com\",\"identityServiceUri\":\"https://identity.confidential-ledger.core.azure.com/ledgerIdentity/pwsh-oqwmishpjrcb9\",\"ledgerType\":\"Public\",\"aadBasedSecurityPrincipals\":[{\"principalId\":\"34621747-6fc8-4771-a2eb-72f31c461f2e\",\"tenantId\":\"bce123b9-2b7b-4975-8360-5ca0b9b1cd08\",\"ledgerRoleName\":\"Administrator\"},{\"principalId\":\"480f0db4-5580-44c3-b7a4-0b90304e1960\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"ledgerRoleName\":\"Administrator\"}],\"certBasedSecurityPrincipals\":[{\"cert\":\"-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----\",\"ledgerRoleName\":\"Reader\"}],\"ledgerInternalNamespace\":\"01d06f80-ae73-4a9e-8c63-4d180780e856\"}}",
       "isContentBase64": false
     }
   }
