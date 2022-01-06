@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 allowProtectedAppendWriteAll = value;
             }
         }
-        private bool? allowProtectedAppendWriteAll;
+        private bool? _allowProtectedAppendWriteAll;
 
         public override void ExecuteCmdlet()
         {
