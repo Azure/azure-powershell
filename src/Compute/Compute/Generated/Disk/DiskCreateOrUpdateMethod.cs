@@ -29,11 +29,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSDisk))]
+    [OutputType(typeof(PSDisk), typeof(PSAzureOperationResponse))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -47,8 +49,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string diskName = this.DiskName;
                     Disk disk = new Disk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
+                    Disk result;
+                    
+                    if (!string.IsNullOrEmpty(disk.CreationData?.GalleryImageReference?.Id))
+                    {
+                        Dictionary<string, List<string>> auxAuthHeader = null;
+                        var resourceId = ResourceId.TryParse(disk.CreationData.GalleryImageReference.Id);
 
-                    var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                        if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                         && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            List<string> resourceIds = new List<string>();
+                            resourceIds.Add(disk.CreationData.GalleryImageReference.Id);
+                            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                            {
+                                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                            }
+                        }
+
+                        var res = this.DisksClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            disk.Name,
+                            disk,
+                            auxAuthHeader).GetAwaiter().GetResult();
+
+                        result = res.Body;
+                    }
+                    else
+                    {
+                        result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                    }
                     var psObject = new PSDisk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
