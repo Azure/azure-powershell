@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.Compute
         public int PlatformFaultDomain { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSet,
+            ParameterSetName = SimpleParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
@@ -512,17 +512,21 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // AdditionalCapabilities
-                bool hibernationEnabledBool = false;
-                bool enableUltraSSDBool = false;
-                if (_cmdlet.IsParameterBound(c => c.HibernationEnabled) && _cmdlet.HibernationEnabled == true)
+                var vAdditionalCapabilities = new AdditionalCapabilities();
+                bool vUltraSSDEnabled = false;
+                if (_cmdlet.IsParameterBound(c => c.HibernationEnabled))
                 {
-                    hibernationEnabledBool = true;
+                    vAdditionalCapabilities.HibernationEnabled = _cmdlet.HibernationEnabled;
                 }
-                if (_cmdlet.IsParameterBound(c => c.EnableUltraSSD) && _cmdlet.EnableUltraSSD == true)
+                if (_cmdlet.IsParameterBound(c => c.EnableUltraSSD))
                 {
-                    enableUltraSSDBool = true;
+                    vAdditionalCapabilities.UltraSSDEnabled = _cmdlet.EnableUltraSSD;
+                    if (_cmdlet.EnableUltraSSD == true)
+                    {
+                        vUltraSSDEnabled = true;
+                    }
                 }
-                var vAdditionalCapabilities = new AdditionalCapabilities(enableUltraSSDBool, hibernationEnabledBool);
+                
 
 
                 _cmdlet.ConfigAsyncVisited = true;
@@ -574,7 +578,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
-                        ultraSSDEnabled: enableUltraSSDBool,
+                        ultraSSDEnabled: vUltraSSDEnabled,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
