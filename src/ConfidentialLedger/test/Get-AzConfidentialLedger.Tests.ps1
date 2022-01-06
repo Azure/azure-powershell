@@ -22,17 +22,17 @@ Describe 'Get-AzConfidentialLedger' {
 
     It 'List1' {
         $ledgerList = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup
-        $ledgerList.Count | Should -Be 2
+        $ledgerList.Count | Should -Be 1
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.LedgerName
         $ledger.Name | Should -Be $env.LedgerName
     }
 
     It 'GetViaIdentity' {
         $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.LedgerName
-        $ledger = Get-AzAppConfigurationStore -InputObject $ledger 
+        $ledger = Get-AzConfidentialLedger -InputObject $ledger 
         $ledger.Name | Should -Be $env.LedgerName
     }
 }

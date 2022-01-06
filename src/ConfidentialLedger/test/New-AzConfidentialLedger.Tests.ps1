@@ -15,10 +15,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConfidentialLedger'))
 }
 
 Describe 'New-AzConfidentialLedger' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         New-AzConfidentialLedger `
-            -Name $env.ledgerName `
-            -ResourceGroupName $env.resourceGroup `
-            -Location $env.location -Sku "standard"
+            -Name $env.NewLedgerName `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -AadBasedSecurityPrincipal `
+                @{
+                    LedgerRoleName=$env.AadPrincipalRole; 
+                    PrincipalId=$env.AadPrincipalId; 
+                    TenantId=$env.AadPrincipalTenantId
+                } `
+            -CertBasedSecurityPrincipal `
+                @{
+                    Cert=$env.CertPrincipalCert; 
+                    LedgerRoleName=$env.CertPrincipalRole
+                } `
+            -LedgerType $env.LedgerType `
+            -Location $env.Location `
+            -Tag @{Location=$env.Tag0}
+
+        $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.NewLedgerName
+        
+        $ledger.Properties.ProvisioningState | Should -Be "Succeeded"
+
+        Remove-AzConfidentialLedger -InputObject $ledger
     }
 }
