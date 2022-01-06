@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/upgrade storage account by enable sftp and enable localuser
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported manage local user of a storage account
+    -  `Set-AzStorageAccountLocalUser`
+    -  `Get-AzStorageAccountLocalUser`
+    -  `Remove-AzStorageAccountLocalUser`
+    -  `New-AzStorageAccountLocalUserSshPassword`
+    -  `Get-AzStorageAccountLocalUserPublicKey`
+    -  `New-AzStorageAccountLocalUserSshPublicKey`
+    -  `New-AzStorageAccountLocalUserPermissionScope`
 
 ## Version 4.1.1
 * Fixed the failure of sync copy blob with long destination blob name [#16628]
