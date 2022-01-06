@@ -26,14 +26,13 @@ The **New-AzCosmosDBGremlinIndexingPolicy** cmdlet creates a new object of type 
 ### Example 1
 ```powershell
 PS C:\> $ipath1 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-PS C:\>> $ipath2 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-PS C:\>> $IncludedPath = New-AzCosmosDBGremlinIncludedPath -Path "/*" -Index $ipath1, $ipath2
-PS C:\>>  $SpatialSpec = New-AzCosmosDBGremlinSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
-PS C:\>> $cp1 = New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
-PS C:\>>  $cp2 = New-AzCosmosDBGremlinCompositePath -Path "/aberc" -Order Descending
-PS C:\>> $compositePath = (($cp1, $cp2), ($cp2, $cp1))
-PS C:\>> New-AzCosmosDBGremlinIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $compositePath -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
-
+PS C:\> $ipath2 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+PS C:\> $IncludedPath = New-AzCosmosDBGremlinIncludedPath -Path "/*" -Index $ipath1, $ipath2
+PS C:\> $SpatialSpec = New-AzCosmosDBGremlinSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+PS C:\> $cp1 = New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+PS C:\> $cp2 = New-AzCosmosDBGremlinCompositePath -Path "/aberc" -Order Descending
+PS C:\> $compositePath = (($cp1, $cp2), ($cp2, $cp1))
+PS C:\> New-AzCosmosDBGremlinIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $compositePath -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
 
 Automatic        : True
 IndexingMode     : Consistent
@@ -43,8 +42,6 @@ CompositeIndexes : {Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Mic
                    Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath}
 SpatialIndexes   : {Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec}
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
