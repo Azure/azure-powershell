@@ -87,7 +87,21 @@ myshare  5120
 
 This command gets a Storage blob container with Storage account object and container name.
 
-### Example 4: Get a Storage file share with the share usage in bytes
+### Example 4: List all Storage file shares of a Storage account, include the deleted shares
+```
+PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted 
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version          ShareUsageBytes
+----     -------- ---------------- ----------           ------- -------          ---------------
+test     100                      TransactionOptimized                                         
+share1   100                      TransactionOptimized True    01D61FD1FC5498B6
+```
+
+This command lists all Storage file shares include the deleted shares of a Storage account with Storage account name.
+
+### Example 5: Get a Storage file share with the share usage in bytes
 ```
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -GetShareUsage
 

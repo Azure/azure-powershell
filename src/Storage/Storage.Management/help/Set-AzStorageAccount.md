@@ -24,8 +24,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+
 ```
 
 ### KeyvaultEncryption
@@ -40,8 +41,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -58,8 +59,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,7 +188,32 @@ AzureStorageSid   : S-1-5-21-1234567890-1234567890-1234567890-1234
 
 The command updates a Storage account by enable Azure Files Active Directory Domain Service Authentication, and then shows the File Identity Based authentication setting
 
-### Example 12: Set MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess
+### Example 12: Update a Storage account with RoutingPreference setting
+```powershell
+PS C:\>$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
+
+PS C:\>$account.RoutingPreference
+
+RoutingChoice   PublishMicrosoftEndpoints PublishInternetEndpoints
+-------------   ------------------------- ------------------------
+InternetRouting                     False                     True
+
+PS C:\>$account.PrimaryEndpoints
+
+Blob               : https://mystorageaccount.blob.core.windows.net/
+Queue              : https://mystorageaccount.queue.core.windows.net/
+Table              : https://mystorageaccount.table.core.windows.net/
+File               : https://mystorageaccount.file.core.windows.net/
+Web                : https://mystorageaccount.z2.web.core.windows.net/
+Dfs                : https://mystorageaccount.dfs.core.windows.net/
+MicrosoftEndpoints : 
+InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core.windows.net/","File":"https://mystorageaccount-internetrouting.file.core.windows.net/","Web":"https://mystorageaccount-internetrouting.z2.web.core.windows.net/","Dfs":"https://w
+                     eirp3-internetrouting.dfs.core.windows.net/"}
+```
+
+This command updates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint as false, PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
+
+### Example 13: Set MinimumTlsVersion and AllowBlobPublicAccess
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 
@@ -331,16 +357,16 @@ This command updates a Storage account by set PublicNetworkAccess as enabled.
 
 ### Example 19: Update account level  mmutability policy
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $false
 
 PS C:\> $account.ImmutableStorageWithVersioning.Enabled
 True
 
 PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
-ImmutabilityPeriodSinceCreationInDays State    
-------------------------------------- -----    
-                                    2 Unlocked 
+ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
+------------------------------------- -----    --------------------------
+                                    2 Unlocked                      False
 ```
 
 The command updates account-level immutability policy properties on an existing storage account, and show the result. 
@@ -477,6 +503,22 @@ Accept wildcard characters: False
 
 ### -AllowCrossTenantReplication
 Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowProtectedAppendWrite
+When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
+This property can only be changed when account is created with '-EnableAccountLevelImmutability', and ImmutabilityPolicy State is disabled or unlocked.
 
 ```yaml
 Type: System.Boolean

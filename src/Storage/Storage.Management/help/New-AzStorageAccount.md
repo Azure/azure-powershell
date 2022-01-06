@@ -27,8 +27,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [<CommonParameters>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -47,8 +47,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
+ [-ImmutabilityPolicyState <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +119,7 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 This command creates a Storage account withenable Files Active Directory Domain Service Authentication and DefaultSharePermission.
 
 ### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key, and Require Infrastructure Encryption.
-```powershell
+```
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -RequireInfrastructureEncryption
 
 PS C:\>$account = get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountName
@@ -184,7 +185,19 @@ InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core
 
 This command creates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint and PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
 
-### Example 11: Create a Storage account with EdgeZone and AllowCrossTenantReplication
+### Example 11: Create account with EnableNfsV3
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false -NetworkRuleSet (@{bypass="Logging,Metrics";
+        virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});
+        defaultAction="allow"}) 
+
+PS C:\> $account.EnableNfsV3
+True
+```
+
+The command create account with EnableNfsV3 as true, and then show the EnableNfsV3 property of the created account 
+
+### Example 12: Create a Storage account with EdgeZone and AllowCrossTenantReplication
 ```powershell
 PS C:\>$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location westus -EdgeZone "microsoftlosangeles1" -AllowCrossTenantReplication $false
 
@@ -200,7 +213,7 @@ False
 
 This command creates a Storage account with EdgeZone as "microsoftlosangeles1" and AllowCrossTenantReplication as false, then show the created account related properties.
 
-### Example 12: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+### Example 13: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod
 ```powershell
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
 
@@ -213,7 +226,7 @@ PS C:\> $$account.SasPolicy.SasExpirationPeriod
 
 This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the created account related properties.
 
-### Example 12: Create a Storage account with Keyvault encryption (access Keyvault with user assigned identity)
+### Example 14: Create a Storage account with Keyvault encryption (access Keyvault with user assigned identity)
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
 PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
@@ -269,16 +282,19 @@ The command creates account with disable PublicNetworkAccess of the account.
 
 ### Example 15: Create account with account level  mmutability policy
 ```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked
+
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $true
 
 PS C:\> $account.ImmutableStorageWithVersioning.Enabled
 True
 
 PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
-ImmutabilityPeriodSinceCreationInDays State    
-------------------------------------- -----    
-                                    1 Unlocked 
+
+ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
+------------------------------------- -----    --------------------------
+                                    1 Unlocked                       True
+
 ```
 
 The command creates an account and enable account level immutability with versioning by '-EnableAccountLevelImmutability', then all the containers under this account will have object-level immutability enabled by default.
@@ -413,6 +429,22 @@ Accept wildcard characters: False
 
 ### -AllowCrossTenantReplication
 Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowProtectedAppendWrite
+When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
+This property can only be specified with '-EnableAccountLevelImmutability'.
 
 ```yaml
 Type: System.Boolean

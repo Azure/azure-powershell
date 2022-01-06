@@ -83,6 +83,7 @@ PS C:\> $action
 
 BaseBlob.TierToCool.DaysAfterModificationGreaterThan      : 
 BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan    : 
+BaseBlob.EnableAutoTierToHotFromCool                      : 
 BaseBlob.TierToArchive.DaysAfterModificationGreaterThan   : 
 BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan : 
 BaseBlob.Delete.DaysAfterModificationGreaterThan          : 

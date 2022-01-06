@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Account object parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
-
         /// <summary>
         /// AccountName EncryptionScope Parameter Set
         /// </summary>
@@ -147,6 +146,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
 
+        [Parameter(HelpMessage = "Enable object level immutability at the container level.", Mandatory = false)]
+        public SwitchParameter EnableImmutableStorageWithVersioning { get; set; }        
+
         [Parameter(Mandatory = false,
         HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
         [ValidateSet(RootSquashType.NoRootSquash,
@@ -206,7 +208,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 metadata: MetadataDictionary,
                                 immutableStorageWithVersioning: this.EnableImmutableStorageWithVersioning.IsPresent ? new ImmutableStorageWithVersioning(true) : null,
                                 enableNfsV3RootSquash: enableNfsV3RootSquash,
-                                enableNfsV3AllSquash: enableNfsV3AllSquash));
+                                enableNfsV3AllSquash: enableNfsV3AllSquash,
+                                immutableStorageWithVersioning: this.EnableImmutableStorageWithVersioning.IsPresent ? new ImmutableStorageWithVersioning(true) : null));
 
                 container =
                     this.StorageClient.BlobContainers.Get(

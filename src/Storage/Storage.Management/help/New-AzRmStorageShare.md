@@ -15,14 +15,15 @@ Creates a Storage file share.
 ### AccountName (Default)
 ```
 New-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-AccessTier <String>] [-Snapshot] [-EnabledProtocol <String>]
- [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>]
+ [-AccessTier <String>] [-Snapshot] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 New-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-QuotaGiB <Int32>]
- [-Metadata <Hashtable>] [-AccessTier <String>] [-Snapshot] [-EnabledProtocol <String>] [-RootSquash <String>]
+ [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>] [-AccessTier <String>] [-Snapshot]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,33 +58,7 @@ myshare
 
 This command creates a Storage file share with Storage account object and share name.
 
-### Example 3: Create a Storage file share with accesstier as Hot
-```
-PS C:\>$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Hot
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
-----     -------- ---------------- ---------- ------- ------- ---------------
-myshare                            Hot
-```
-
-This command creates a Storage file share with accesstier as Hot.
-
-### Example 4: Create a Storage file share snapshot of an existing share
-```
-PS C:\>$shareSnapshot = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -Snapshot
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes snapshotTime 
-----     -------- ---------------- ---------- ------- ------- --------------- ------------   
-myshare                                                                       2021-05-10T08:04:08
-```
-
-This command creates a Storage file share snapshot of an existing base file share.
-
-### Example 5: Create a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash property as NoRootSquash
+### Example 3: Create a Storage file share with EnabledProtocol property as NFS, and RootSquash proeprty as NoRootSquash
 ```
 PS C:\>$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -EnabledProtocol NFS -RootSquash NoRootSquash 
 
@@ -100,6 +75,32 @@ NoRootSquash
 ```
 
 This command creates a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash proeprty as NoRootSquash.
+
+### Example 4: Create a Storage file share with accesstier as Hot
+```
+PS C:\>$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Hot
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
+myshare                            Hot
+```
+
+This command creates a Storage file share with accesstier as Hot.
+
+### Example 5: Create a Storage file share snapshot of an existing share
+```
+PS C:\>$shareSnapshot = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -Snapshot
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes snapshotTime 
+----     -------- ---------------- ---------- ------- ------- --------------- ------------   
+myshare                                                                       2021-05-10T08:04:08
+```
+
+This command creates a Storage file share snapshot of an existing base file share.
 
 ## PARAMETERS
 

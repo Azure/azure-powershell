@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
             this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
             this.IsVersioningEnabled = policy.IsVersioningEnabled;
-            this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
             this.LastAccessTimeTrackingPolicy = policy.LastAccessTimeTrackingPolicy is null? null : new PSLastAccessTimeTrackingPolicy(policy.LastAccessTimeTrackingPolicy);
+            this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
                 ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
                 IsVersioningEnabled = this.IsVersioningEnabled,
-                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
-                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy()
+                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy(),
+                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy()
             };
         }
 

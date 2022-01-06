@@ -30,11 +30,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Storage.DataMovement;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using Azure.Storage;
-using Azure.Storage.Blobs.Specialized;
 using Azure;
+using Azure.Storage.Blobs;
+using Azure.Storage.Files.DataLake.Models;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
+using Azure.Storage;
 using System.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
@@ -208,20 +209,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [ValidateNotNullOrEmpty]
         public string EncryptionScope { get; set; }
 
-        private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
-
         protected override bool UseTrack2Sdk()
         {
             if (this.BlobTag != null)
             {
                 return true;
             }
-            if (!string.IsNullOrEmpty(EncryptionScope))
+            if (!string.IsNullOrEmpty(this.EncryptionScope))
             {
                 return true;
             }
-            return false;
+
+            return base.UseTrack2Sdk();
         }
+
+        private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
 
         /// <summary>
         /// Initializes a new instance of the SetAzureBlobContentCommand class.

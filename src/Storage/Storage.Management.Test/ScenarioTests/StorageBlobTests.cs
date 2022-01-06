@@ -71,13 +71,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobServiceProperties()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobServiceProperties");
-        }    
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageBlobORS()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobORS");
         }
 
         [Fact]
@@ -89,9 +82,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageBlobChangeFeed()
+        public void TestStorageBlobORS()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobChangeFeed");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobORS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobLastAccessTimeTracking()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobLastAccessTimeTracking");
         }
 
         [Fact]
@@ -103,9 +103,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageBlobLastAccessTimeTracking()
+        public void TestStorageBlobChangeFeed()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobLastAccessTimeTracking");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobChangeFeed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobContainerVLW()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerVLW");
         }
 
         [Fact]

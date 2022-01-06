@@ -40,13 +40,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageFileShareGetUsage()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageFileShareGetUsage");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShareSoftDeletee()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-ShareSoftDelete");
@@ -54,9 +47,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestShareSnapshot()
+        public void TestStorageFileShareGetUsage()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ShareSnapshot");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageFileShareGetUsage");
         }
 
         [Fact]
@@ -64,6 +57,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestFileServiceProperties()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-FileServiceProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestShareSnapshot()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-ShareSnapshot");
         }
 
         [Fact]

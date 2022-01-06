@@ -136,6 +136,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Version { get; }
 
+        public PSImmutableStorageWithVersioning ImmutableStorageWithVersioning { get; set; }
+
         public bool? EnableNfsV3RootSquash { get; set; }
 
         public bool? EnableNfsV3AllSquash { get; set; }
