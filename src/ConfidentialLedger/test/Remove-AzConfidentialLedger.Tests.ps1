@@ -15,11 +15,53 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzConfidentialLedger')
 }
 
 Describe 'Remove-AzConfidentialLedger' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        New-AzConfidentialLedger `
+            -Name $env.RemoveLedgerName `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -AadBasedSecurityPrincipal `
+                @{
+                    LedgerRoleName=$env.AadPrincipalRole; 
+                    PrincipalId=$env.AadPrincipalId; 
+                    TenantId=$env.AadPrincipalTenantId
+                } `
+            -CertBasedSecurityPrincipal `
+                @{
+                    Cert=$env.CertPrincipalCert; 
+                    LedgerRoleName=$env.CertPrincipalRole
+                } `
+            -LedgerType $env.LedgerType `
+            -Location $env.Location `
+            -Tag @{Location=$env.Tag0}
+        Remove-AzConfidentialLedger -Name $env.RemoveLedgerName -ResourceGroupName $env.ResourceGroup
+
+        $ledgerList = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.RemoveLedgerName
+        $ledgerList.Name | Should -Not -Contain $env.RemoveLedgerName
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $ledger = New-AzConfidentialLedger `
+            -Name $env.RemoveLedgerName `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -AadBasedSecurityPrincipal `
+                @{
+                    LedgerRoleName=$env.AadPrincipalRole; 
+                    PrincipalId=$env.AadPrincipalId; 
+                    TenantId=$env.AadPrincipalTenantId
+                } `
+            -CertBasedSecurityPrincipal `
+                @{
+                    Cert=$env.CertPrincipalCert; 
+                    LedgerRoleName=$env.CertPrincipalRole
+                } `
+            -LedgerType $env.LedgerType `
+            -Location $env.Location `
+            -Tag @{Location=$env.Tag0}
+        Remove-AzConfidentialLedger -InputObject $ledger
+
+        $ledgerList = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.RemoveLedgerName
+        $ledgerList.Name | Should -Not -Contain $env.RemoveLedgerName
     }
 }
