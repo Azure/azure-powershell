@@ -12,18 +12,10 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 
 ## SYNTAX
 
-### CutoverExpanded (Default)
 ```
 Invoke-AzDataMigrationCutoverToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-MigrationOperationId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CutoverViaIdentityExpanded
-```
-Invoke-AzDataMigrationCutoverToSqlManagedInstance -InputObject <IDataMigrationIdentity>
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,28 +68,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-Parameter Sets: CutoverViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ManagedInstanceName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: CutoverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -158,7 +134,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: CutoverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -173,7 +149,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CutoverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -188,7 +164,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: CutoverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -234,8 +210,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -243,20 +217,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ManagedInstanceName <String>]`: 
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlMigrationServiceName <String>]`: Name of the SQL Migration Service.
-  - `[SqlVirtualMachineName <String>]`: 
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
-  - `[TargetDbName <String>]`: The name of the target database.
 
 ## RELATED LINKS
 
