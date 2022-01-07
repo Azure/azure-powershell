@@ -340,9 +340,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
-        public string SharedGalleryImageId { get; set; }
+        public string ImageReferenceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Commands.Compute
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
-                        sharedGalleryImageId: _cmdlet.SharedGalleryImageId
+                        imageReferenceId: _cmdlet.ImageReferenceId
                         );
                 }
                 else

@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
-        public string SharedGalleryImageId { get; set; }
+        public string ImageReferenceId { get; set; }
 
         protected override bool IsUsageMetricEnabled
         {
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.UserData = this.UserData;
             }
 
-            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            if (this.IsParameterBound(c => c.ImageReferenceId))
             {
                 if (vm.StorageProfile == null)
                 {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     vm.StorageProfile.ImageReference = new ImageReference();
                 }
-                vm.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
+                vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
             WriteObject(vm);
