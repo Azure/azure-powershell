@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
         [ValidateNotNullOrEmpty]
         public string DataExportName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "An array of tables to export, for example: [“Heartbeat, SecurityEvent”].")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "An array of tables to export, for example: [“Heartbeat, SecurityEvent”].")]
         public string[] TableName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.")]
