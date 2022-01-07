@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("EncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("TransportPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EncryptionPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("EncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreferredDataCenterRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("EncryptionPreferenceDoubleEncryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            }
+            if (content.Contains("TransportPreferencePreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("EncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("TransportPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EncryptionPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IEncryptionPreferences) content.GetValueForProperty("EncryptionPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.EncryptionPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreferredDataCenterRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion = (string[]) content.GetValueForProperty("PreferredDataCenterRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).PreferredDataCenterRegion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("EncryptionPreferenceDoubleEncryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption?) content.GetValueForProperty("EncryptionPreferenceDoubleEncryption",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).EncryptionPreferenceDoubleEncryption, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption.CreateFrom);
+            }
+            if (content.Contains("TransportPreferencePreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferencesInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

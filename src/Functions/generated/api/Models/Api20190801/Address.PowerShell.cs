@@ -66,12 +66,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1 = (string) content.GetValueForProperty("Address1",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2 = (string) content.GetValueForProperty("Address2",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State, global::System.Convert.ToString);
+            if (content.Contains("Address1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1 = (string) content.GetValueForProperty("Address1",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1, global::System.Convert.ToString);
+            }
+            if (content.Contains("Address2"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2 = (string) content.GetValueForProperty("Address2",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2, global::System.Convert.ToString);
+            }
+            if (content.Contains("City"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City, global::System.Convert.ToString);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostalCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,12 +107,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1 = (string) content.GetValueForProperty("Address1",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2 = (string) content.GetValueForProperty("Address2",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State, global::System.Convert.ToString);
+            if (content.Contains("Address1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1 = (string) content.GetValueForProperty("Address1",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address1, global::System.Convert.ToString);
+            }
+            if (content.Contains("Address2"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2 = (string) content.GetValueForProperty("Address2",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Address2, global::System.Convert.ToString);
+            }
+            if (content.Contains("City"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).City, global::System.Convert.ToString);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).Country, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostalCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).PostalCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAddressInternal)this).State, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

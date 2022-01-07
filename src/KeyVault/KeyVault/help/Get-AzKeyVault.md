@@ -38,6 +38,13 @@ particular key vault.
 Note that although specifying the resource group is optional for this cmdlet when you get a single
 key vault, you should do so for better performance.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1: Get all key vaults in your current subscription

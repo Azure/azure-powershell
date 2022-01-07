@@ -515,7 +515,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 throw new ArgumentException(string.Format("Expiry time {0} is earlier than now.", userDelegationKeyEndTime.ToString()));
             }
-            else if (userDelegationKeyStartTime >= userDelegationKeyEndTime)
+            else if (userDelegationKeyStartTime != null && userDelegationKeyStartTime >= userDelegationKeyEndTime)
             {
                 throw new ArgumentException(string.Format("Start time {0} is later than expiry time {1}.", userDelegationKeyStartTime.ToString(), userDelegationKeyEndTime.ToString()));
             }

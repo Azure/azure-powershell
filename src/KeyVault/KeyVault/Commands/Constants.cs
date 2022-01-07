@@ -31,9 +31,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const string DefaultSoftDeleteRetentionDaysString = "90";
 
         public const string KeyOpsImport = "import";
-
-        public const string BreakingChangeMSGraphMigration = @"This cmdlet will use Microsoft Graph in Az 7.x and later.
-Visit https://go.microsoft.com/fwlink/?linkid=2174792 for migration guide and breaking changes.";
     }
 
     public static class CmdletNoun

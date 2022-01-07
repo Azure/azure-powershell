@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -33,9 +28,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSKeyVault(Vault vault, ActiveDirectoryClient adClient)
+        public PSKeyVault(Vault vault, IMicrosoftGraphClient graphClient)
         {
-            var vaultTenantDisplayName = ModelExtensions.GetDisplayNameForTenant(vault.Properties.TenantId, adClient);
+            var vaultTenantDisplayName = ModelExtensions.GetDisplayNameForTenant(vault.Properties.TenantId, graphClient);
             VaultName = vault.Name;
             Location = vault.Location;
             ResourceId = vault.Id;
@@ -52,7 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
             EnableRbacAuthorization = vault.Properties.EnableRbacAuthorization;
             SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
-            AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
+            AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, graphClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
         }
@@ -73,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnableSoftDelete { get; private set; }
 
         public bool? EnablePurgeProtection { get; private set; }
-        
+
         public bool? EnableRbacAuthorization { get; private set; }
 
         public int? SoftDeleteRetentionInDays { get; private set; }

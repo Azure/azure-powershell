@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             // Update HDInsight Management properties for Job.
             var cluster1 = new Cluster(
                 id: $"/subscriptions/{Guid.NewGuid()}/resourceGroups/{ResourceGroupName}/providers/Microsoft.HDInsight/clusters/{ClusterName}",
-                name: ClusterName)
+                name: ClusterName, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux,
+                    OsType = "Linux",
                     ConnectivityEndpoints = new List<ConnectivityEndpoint> { new ConnectivityEndpoint { Location = ClusterName, Name = "HTTPS" } }
                 }
             };

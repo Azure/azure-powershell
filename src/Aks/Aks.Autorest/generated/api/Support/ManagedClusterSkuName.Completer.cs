@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Basic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Basic", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
+                yield return new global::System.Management.Automation.CompletionResult("'Basic'", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
             }
         }
     }

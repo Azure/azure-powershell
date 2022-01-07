@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TCP".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TCP", "TCP", global::System.Management.Automation.CompletionResultType.ParameterValue, "TCP");
+                yield return new global::System.Management.Automation.CompletionResult("'TCP'", "TCP", global::System.Management.Automation.CompletionResultType.ParameterValue, "TCP");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UDP".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UDP", "UDP", global::System.Management.Automation.CompletionResultType.ParameterValue, "UDP");
+                yield return new global::System.Management.Automation.CompletionResult("'UDP'", "UDP", global::System.Management.Automation.CompletionResultType.ParameterValue, "UDP");
             }
         }
     }

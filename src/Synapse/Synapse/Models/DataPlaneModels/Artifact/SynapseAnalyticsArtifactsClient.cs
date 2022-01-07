@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
         private readonly SqlScriptClient _sqlScriptClient;
         private readonly SparkConfigurationClient _sparkConfigurationClient;
+        private readonly KqlScriptClient _kqlScriptClient;
+        private readonly KqlScriptsClient _kqlScriptsClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -69,6 +71,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
             _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
             _sparkConfigurationClient = new SparkConfigurationClient(uri, new AzureSessionCredential(context));
+            _kqlScriptClient = new KqlScriptClient(uri, new AzureSessionCredential(context));
+            _kqlScriptsClient = new KqlScriptsClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -415,6 +419,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public void DeleteSparkConfiguration(string sparkConfigurationName)
         {
             _sparkConfigurationClient.StartDeleteSparkConfiguration(sparkConfigurationName).Poll();
+        }
+
+        #endregion
+
+        #region Kql Script
+
+        public KqlScriptResource GetKqlScript(string kqlScriptName)
+        {
+            return _kqlScriptClient.GetByName(kqlScriptName);
+        }
+
+        public Pageable<KqlScriptResource> GetKqlScriptsByWorkspace()
+        {
+            return _kqlScriptsClient.GetAll();
+        }
+
+        public void DeleteKqlScript(string kqlScriptName)
+        {
+            _kqlScriptClient.StartDeleteByName(kqlScriptName).Poll();
+        }
+
+        public KqlScriptResource CreateOrUpdateKqlScript(string kqlScriptName, KqlScriptResource kqlScript)
+        {
+            var operation = _kqlScriptClient.StartCreateOrUpdate(kqlScriptName, kqlScript);
+            return operation.Poll().Value;
         }
 
         #endregion

@@ -62,9 +62,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             double? maxPrice,
             bool encryptionAtHostPresent,
             List<SshPublicKey> sshPublicKeys,
+            int? platformFaultDomain = null,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
-            string dataDiskDeleteOption = null)
+            string dataDiskDeleteOption = null,
+            string userData = null
+            )
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -114,7 +117,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
-                    }
+                    },
+                    UserData = userData,
+                    PlatformFaultDomain = platformFaultDomain
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -138,9 +143,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string evictionPolicy,
             double? maxPrice,
             bool encryptionAtHostPresent,
+            int? platformFaultDomain,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
-            string dataDiskDeleteOption = null
+            string dataDiskDeleteOption = null,
+            string userData = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -185,7 +192,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
-                    }
+                    },
+                    UserData = userData,
+                    PlatformFaultDomain = platformFaultDomain
                 });
     }
 }

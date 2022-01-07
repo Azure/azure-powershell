@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TransferAll".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TransferAll", "TransferAll", global::System.Management.Automation.CompletionResultType.ParameterValue, "TransferAll");
+                yield return new global::System.Management.Automation.CompletionResult("'TransferAll'", "TransferAll", global::System.Management.Automation.CompletionResultType.ParameterValue, "TransferAll");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TransferUsingFilter".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TransferUsingFilter", "TransferUsingFilter", global::System.Management.Automation.CompletionResultType.ParameterValue, "TransferUsingFilter");
+                yield return new global::System.Management.Automation.CompletionResult("'TransferUsingFilter'", "TransferUsingFilter", global::System.Management.Automation.CompletionResultType.ParameterValue, "TransferUsingFilter");
             }
         }
     }

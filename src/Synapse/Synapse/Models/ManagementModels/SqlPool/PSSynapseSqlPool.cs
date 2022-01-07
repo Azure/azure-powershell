@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 this.RestorePointInTime = sqlPool.RestorePointInTime;
             }
+            this.StorageAccountType = sqlPool?.StorageAccountType;
         }
 
         /// <summary>
@@ -122,5 +123,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets date the SQL pool was created
         /// </summary>
         public System.DateTime? CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage account type used to store backups for this sql pool. Possible values include: 'GRS', 'LRS'.
+        /// </summary>
+        public string StorageAccountType { get; set; }
     }
 }

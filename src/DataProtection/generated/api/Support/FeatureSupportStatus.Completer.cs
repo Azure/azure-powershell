@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSupported".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSupported", "NotSupported", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSupported");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSupported'", "NotSupported", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSupported");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AlphaPreview".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AlphaPreview", "AlphaPreview", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlphaPreview");
+                yield return new global::System.Management.Automation.CompletionResult("'AlphaPreview'", "AlphaPreview", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlphaPreview");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PrivatePreview".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PrivatePreview", "PrivatePreview", global::System.Management.Automation.CompletionResultType.ParameterValue, "PrivatePreview");
+                yield return new global::System.Management.Automation.CompletionResult("'PrivatePreview'", "PrivatePreview", global::System.Management.Automation.CompletionResultType.ParameterValue, "PrivatePreview");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PublicPreview".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PublicPreview", "PublicPreview", global::System.Management.Automation.CompletionResultType.ParameterValue, "PublicPreview");
+                yield return new global::System.Management.Automation.CompletionResult("'PublicPreview'", "PublicPreview", global::System.Management.Automation.CompletionResultType.ParameterValue, "PublicPreview");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GenerallyAvailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GenerallyAvailable", "GenerallyAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "GenerallyAvailable");
+                yield return new global::System.Management.Automation.CompletionResult("'GenerallyAvailable'", "GenerallyAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "GenerallyAvailable");
             }
         }
     }

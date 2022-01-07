@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 case ServiceClientModel.BackupManagementType.AzureIaasVM:
                     return BackupManagementType.AzureVM;
                 case ServiceClientModel.BackupManagementType.MAB:
-                    return BackupManagementType.MARS;
+                    return BackupManagementType.MAB;
                 case ServiceClientModel.BackupManagementType.DPM:
                     return BackupManagementType.SCDPM;
                 case ServiceClientModel.BackupManagementType.AzureBackupServer:
@@ -303,6 +303,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             else if (workloadType == "SQL")
             {
                 return WorkloadType.MSSQL;
+            }
+            else if (workloadType == ServiceClientModel.WorkloadType.SAPHanaDatabase)
+            {
+                return WorkloadType.SAPHanaDatabase;
             }
             else if (workloadType == ServiceClientModel.WorkloadType.FileFolder)
             {

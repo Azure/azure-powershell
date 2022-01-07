@@ -137,5 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 ## NOTES
+- Currently, PowerShell SDK for Consumption is only available to Enterprise Agreement customers.
+- PowerShell SDK for Consumption is using an older version of Budgets API and few backwards non-compatible items like listing Budgets with filters will not work as expected.
 
 ## RELATED LINKS

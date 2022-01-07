@@ -193,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tenant
-Tenant name or ID
+Tenant domain name or ID
 
 ```yaml
 Type: System.String

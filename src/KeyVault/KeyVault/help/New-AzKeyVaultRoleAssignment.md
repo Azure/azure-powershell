@@ -57,6 +57,14 @@ To specify a security group, use Azure AD ObjectId parameter.
 And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
 The role that is being assigned must be specified using the RoleDefinitionName pr RoleDefinitionId parameter. The scope at which access is being granted may be specified. It defaults to the selected subscription.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /servicePrincipals
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1

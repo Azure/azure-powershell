@@ -63,7 +63,7 @@ Creates a new database or updates an existing database.
 Creates a new firewall rule for MySQL flexible server
 
 ### [New-AzMySqlFlexibleServerReplica](New-AzMySqlFlexibleServerReplica.md)
-Creates a new replica from an existing database.
+Creates a replica server for a MySQL flexible server
 
 ### [New-AzMySqlReplica](New-AzMySqlReplica.md)
 Creates a new replica from an existing database.

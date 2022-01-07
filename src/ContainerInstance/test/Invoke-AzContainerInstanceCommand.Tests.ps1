@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Invoke-AzContainerInstanceCommand' {
+Describe 'Invoke-AzContainerInstanceCommand' -Tag 'LiveOnly' {
     It 'ExecuteExpanded' {
         Invoke-AzContainerInstanceCommand -ContainerGroupName $env.ContainerGroupName -ContainerName $env.containerInstanceName -ResourceGroupName　$env.ResourceGroupName -Command "echo hello" -TerminalSizeCol 12 -TerminalSizeRow 12    
     }

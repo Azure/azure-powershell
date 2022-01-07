@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Status = cmk?.Status;
             this.Key = cmk?.Key != null ? new PSWorkspaceKeyDetails(cmk.Key) : null;
+            this.KekIdentity = cmk?.KekIdentity != null ? new PSKekIdentityProperties(cmk.KekIdentity) : null;
         }
 
         /// <summary>
@@ -33,5 +34,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the key object of the workspace
         /// </summary>
         public PSWorkspaceKeyDetails Key { get; set; }
+
+        /// <summary>
+        /// Gets or sets key encryption key
+        /// </summary>
+        public PSKekIdentityProperties KekIdentity { get; set; }
     }
 }

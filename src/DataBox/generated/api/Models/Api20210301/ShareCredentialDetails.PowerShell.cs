@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType?) content.GetValueForProperty("ShareType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName = (string) content.GetValueForProperty("UserName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol[]) content.GetValueForProperty("SupportedAccessProtocol",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol.CreateFrom));
+            if (content.Contains("ShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType?) content.GetValueForProperty("ShareType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType.CreateFrom);
+            }
+            if (content.Contains("UserName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName = (string) content.GetValueForProperty("UserName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Password"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedAccessProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol[]) content.GetValueForProperty("SupportedAccessProtocol",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol.CreateFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType?) content.GetValueForProperty("ShareType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName = (string) content.GetValueForProperty("UserName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol[]) content.GetValueForProperty("SupportedAccessProtocol",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol.CreateFrom));
+            if (content.Contains("ShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType?) content.GetValueForProperty("ShareType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).ShareType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ShareDestinationFormatType.CreateFrom);
+            }
+            if (content.Contains("UserName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName = (string) content.GetValueForProperty("UserName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).UserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Password"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).Password, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedAccessProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol[]) content.GetValueForProperty("SupportedAccessProtocol",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShareCredentialDetailsInternal)this).SupportedAccessProtocol, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AccessProtocol.CreateFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

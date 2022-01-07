@@ -43,7 +43,7 @@ This command exports an API to a WADL file.
 ### Example 2: Export an API in OpenApi 3.0 Specification Format as Json Document
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\> Export-AzApiManagementApi -Context $context -ApiId swagger-petstore -SpecificationFormat OpenApiJson -SaveAs D:\github\petstore.json
+PS C:\> Export-AzApiManagementApi -Context $ApiMgmtContext -ApiId swagger-petstore -SpecificationFormat OpenApiJson -SaveAs D:\github\petstore.json
 ```
 
 This command exports an API definitions in Open Api format as Json document

@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange[]) content.GetValueForProperty("RestorableTimeRange",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestorableTimeRangeTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("RestorableTimeRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange[]) content.GetValueForProperty("RestorableTimeRange",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestorableTimeRangeTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange[]) content.GetValueForProperty("RestorableTimeRange",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestorableTimeRangeTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("RestorableTimeRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange[]) content.GetValueForProperty("RestorableTimeRange",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).RestorableTimeRange, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestorableTimeRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestorableTimeRangeTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -44,7 +44,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $sku = "EP3"
             $maxBurst = 5
             
-            Update-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Sku $sku -MaximumWorkerCount $maxBurst
+            Update-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Sku $sku -MaximumWorkerCount $maxBurst -Force
 
             $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $plan.WorkerType | Should -Be "Windows"
@@ -95,7 +95,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             # Update function app plan SKU to EP2 and maxBurst to 7
             $sku = "EP2"
             $maxBurst = 7
-            Update-AzFunctionAppPlan -InputObject $plan -Sku $sku -MaximumWorkerCount $maxBurst
+            Update-AzFunctionAppPlan -InputObject $plan -Sku $sku -MaximumWorkerCount $maxBurst -Force
 
             $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $plan.WorkerType | Should -Be "Windows"
@@ -169,6 +169,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $functionAppPlanJob = Update-AzFunctionAppPlan -Name $planName `
                                                            -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                                                            -Sku $sku `
+                                                           -Force `
                                                            -AsJob
 
             Write-Verbose "Update-AzFunctionAppPlan job started." -Verbose

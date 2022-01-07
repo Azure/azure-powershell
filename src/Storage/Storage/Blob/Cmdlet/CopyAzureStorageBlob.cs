@@ -365,7 +365,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
                         pr.PercentComplete = 0 == srcProperties.ContentLength ? 100 : (int)(finishedBytes * 100 / srcProperties.ContentLength);
                         pr.StatusDescription = string.Format("Percent: {0}%.", pr.PercentComplete);
-                        Console.WriteLine(finishedBytes);
                         this.OutputStream.WriteProgress(pr);
                     }
                 });

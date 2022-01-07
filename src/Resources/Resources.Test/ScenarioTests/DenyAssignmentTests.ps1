@@ -82,7 +82,7 @@ function Test-GetDaByObjectId
 
 function Test-GetDaByObjectIdAndGroupExpansion
 {
-    $objectId = '00000000-0000-0000-0000-000000000000'
+    $objectId = '4d712a4e-1897-4dd0-845f-452a5b82844e'
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -ExpandPrincipalGroups
     
     Assert-NotNull $assignments

@@ -21,7 +21,7 @@ Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
 
 ### FriendMethod
 ```
-Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
+Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -148,6 +148,88 @@ Group002                                       VMSS004      eastus Standard_DS1_
 
 Get all Vmss in subscription that start with "VMSS00".
 
+### Example 5: Get the Vmss with a UserData value
+```
+PS C:\> Get-AzVmss -ResourceGroupName <RESOURCE GROUP NAME> -VMScaleSetName <VMSS NAME> -InstanceView:$false -UserData;
+
+ResourceGroupName                           : <RESOURCE GROUP NAME>
+Sku                                         :
+  Name                                      : Standard_DS1_v2
+  Tier                                      : Standard
+  Capacity                                  : 2
+UpgradePolicy                               :
+  Mode                                      : Manual
+ProvisioningState                           : Succeeded
+Overprovision                               : True
+DoNotRunExtensionsOnOverprovisionedVMs      : False
+UniqueId                                    : <UNIQUE ID>
+SinglePlacementGroup                        : False
+Id                                          : /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>
+Name                                        : usdvmss
+Type                                        : Microsoft.Compute/virtualMachineScaleSets
+Location                                    : eastus
+Tags                                        :
+{"azsecpack":"nonprod","platformsettings.host_environment.service.platform_optedin_for_rootcerts":"true"}
+VirtualMachineProfile                       :
+  OsProfile                                 :
+    ComputerNamePrefix                      : <PREFIX>
+    AdminUsername                           : <USERNAME>
+    WindowsConfiguration                    :
+      ProvisionVMAgent                      : True
+      EnableAutomaticUpdates                : True
+  StorageProfile                            :
+    ImageReference                          :
+      Publisher                             : MicrosoftWindowsServer
+      Offer                                 : WindowsServer
+      Sku                                   : 2016-Datacenter
+      Version                               : latest
+    OsDisk                                  :
+      Caching                               : None
+      CreateOption                          : FromImage
+      DiskSizeGB                            : 127
+      OsType                                : Windows
+      ManagedDisk                           :
+        StorageAccountType                  : Premium_LRS
+  NetworkProfile                            :
+    NetworkInterfaceConfigurations[0]       :
+      Name                                  : <VMSS NAME>
+      Primary                               : True
+      EnableAcceleratedNetworking           : False
+      DnsSettings                           :
+      IpConfigurations[0]                   :
+        Name                                : <VMSS NAME>
+        Subnet                              :
+          Id                                : /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Network/virtualNetworks/<VMSS NAME>/subnets/<VMSS NAME>
+        PrivateIPAddressVersion             : IPv4
+        LoadBalancerBackendAddressPools[0]  :
+          Id                                : /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Network/loadBalancers/<VMSS NAME>/backendAddressPools/<VMSS NAME>
+        LoadBalancerInboundNatPools[0]      :
+          Id                                : /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Network/loadBalancers/<VMSS NAME>/inboundNatPools/<VMSS NAME>
+        LoadBalancerInboundNatPools[1]      :
+          Id                                : /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Network/loadBalancers/<VMSS NAME>/inboundNatPools/<VMSS NAME>
+      EnableIPForwarding                    : False
+  ExtensionProfile                          :
+    Extensions[0]                           :
+      Name                                  : Microsoft.Azure.Security.AntimalwareSignature.AntimalwareConfiguration
+      Publisher                             : Microsoft.Azure.Security.AntimalwareSignature
+      Type                                  : AntimalwareConfiguration
+      TypeHandlerVersion                    : 2.0
+      AutoUpgradeMinorVersion               : True
+      EnableAutomaticUpgrade                : True
+      Settings                              : {}
+    Extensions[1]                           :
+      Name                                  : Microsoft.Azure.Geneva.GenevaMonitoring
+      Publisher                             : Microsoft.Azure.Geneva
+      Type                                  : GenevaMonitoring
+      TypeHandlerVersion                    : 2.0
+      AutoUpgradeMinorVersion               : True
+      EnableAutomaticUpgrade                : True
+      Settings                              : {}
+  UserData                                  : dQBwAGQAYQB0AGUAIAB2AG0AcwBzAA==
+```
+
+The UserData value must be Base64 encoded. This command assumes you have created a Vmss with a UserData value. 
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -208,6 +290,21 @@ Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -UserData
+UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FriendMethod
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### -VMScaleSetName

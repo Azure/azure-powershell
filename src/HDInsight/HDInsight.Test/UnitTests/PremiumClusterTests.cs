@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.StorageAccountResourceId = StorageAccountResourceId;
             cmdlet.StorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
-            cmdlet.ClusterTier = Tier.Premium;
+            // cmdlet.ClusterTier = Tier.Premium;
             cmdlet.SshCredential = _httpCred;
-            var cluster = new Cluster(id: "id", name: ClusterName)
+            var cluster = new Cluster(id: "id", name: ClusterName, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux,
-                    Tier = Tier.Premium
+                    OsType = "Linux",
+                    Tier = "Premium"
                 }
             };
             var coreConfigs = new Dictionary<string, string>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )))
             .Returns(cluster)
             .Verifiable();
@@ -121,8 +121,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux &&
-                    clusterout.ClusterTier == Tier.Premium)),
+                    clusterout.OperatingSystemType.ToString() == "Linux" &&
+                    clusterout.ClusterTier.ToString() == "Premium")),
                     Times.Once);
         }
     }

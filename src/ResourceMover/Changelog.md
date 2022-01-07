@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added support for Tags in azure resource mover
+* Added support for SystemData in azure resource mover
+* Released 2021-08-01 api-version
+
 ## Version 1.0.0
 * General availability of 'Az.ResourceMover' module
 

@@ -29,9 +29,7 @@ The **Get-AzApiManagementApiVersionSet** cmdlet gets the details of the API Vers
 
 ## EXAMPLES
 
-### Example 1
-
-### Example 2: Get all API Version Sets
+### Example 1: Get all API Version Sets
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext
@@ -70,7 +68,7 @@ ServiceName       : contoso
 
 This command gets all of the API Version sets for the specified context.
 
-### Example 3: Get a API Version Set by ID
+### Example 2: Get a API Version Set by ID
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId

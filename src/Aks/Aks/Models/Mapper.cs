@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ManagedClusterServicePrincipalProfile,PSContainerServiceServicePrincipalProfile>().ReverseMap();
                 cfg.CreateMap<ContainerServiceSshConfiguration, PSContainerServiceSshConfiguration>().ReverseMap();
                 cfg.CreateMap<ContainerServiceSshPublicKey,PSContainerServiceSshPublicKey>().ReverseMap();
-                cfg.CreateMap<KeyVaultSecretRef, PSKeyVaultSecretRef>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAADProfile, PSManagedClusterAadProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAccessProfile,PSManagedClusterAccessProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterAddonProfile, PSManagedClusterAddonProfile>().ReverseMap();
@@ -51,8 +50,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ResourceIdentityType, PSResourceIdentityType>().ReverseMap();
                 cfg.CreateMap<AgentPool, PSNodePool>().ReverseMap();
                 cfg.CreateMap<SubResource, PSSubResource>().ReverseMap();
-                cfg.CreateMap<OrchestratorVersionProfile, PSOrchestratorVersionProfile>().ReverseMap();
-                cfg.CreateMap<PSOrchestratorProfile, PSOrchestratorProfile>().ReverseMap();
+                cfg.CreateMap<RunCommandResult, PSRunCommandResult>().ReverseMap();
             });
             _instance = config.CreateMapper();
         }
