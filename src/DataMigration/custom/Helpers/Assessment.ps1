@@ -44,14 +44,14 @@ function  Get-DefaultOutputFolder {
     )
 
     process {
-        $OSPlatform = $env:OS
+        $OSPlatform = Get-OSName
 
         if($OSPlatform.Contains("Linux"))
         {
             $DefualtPath = Join-Path -Path $env:USERPROFILE -ChildPath ".config\Microsoft\SqlAssessment";
 
         }
-        elseif ($OSPlatform.Contains("OSX"))
+        elseif ($OSPlatform.Contains("Darwin"))
         {
             $DefualtPath = Join-Path -Path $env:USERPROFILE -ChildPath "Library\Application Support\Microsoft\SqlAssessment";
         }

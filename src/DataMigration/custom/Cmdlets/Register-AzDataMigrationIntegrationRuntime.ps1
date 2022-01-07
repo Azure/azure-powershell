@@ -48,9 +48,9 @@ function Register-AzDataMigrationIntegrationRuntime
     process 
     {
         # Entry point
-        $OSPlatform = $env:OS
+        $OSPlatform = Get-OSName
 
-        if(-Not $OSPlatform.Contains("Windows"))
+        if(-not $OSPlatform.Contains("Windows"))
         {
             throw "This command cannot be run in non-windows environment"
             Break;

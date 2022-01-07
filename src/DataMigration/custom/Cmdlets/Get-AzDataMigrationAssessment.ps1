@@ -56,6 +56,13 @@ function Get-AzDataMigrationAssessment
     {
         try 
         {
+            $OSPlatform = Get-OSName
+
+            if(-Not $OSPlatform.Contains("Windows"))
+            {
+                throw "This command cannot be run in non-windows environment"
+                Break;
+            }
 
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultOutputFolder
