@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "geoReplicationStats".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("geoReplicationStats", "geoReplicationStats", global::System.Management.Automation.CompletionResultType.ParameterValue, "geoReplicationStats");
+                yield return new global::System.Management.Automation.CompletionResult("'geoReplicationStats'", "geoReplicationStats", global::System.Management.Automation.CompletionResultType.ParameterValue, "geoReplicationStats");
             }
         }
     }

@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             List<ProtectableItemBase> itemModels = new List<ProtectableItemBase>();
 
             foreach (var protectableItem in protectableItems)
-            {
+            {                
                 itemModels.Add(GetProtectableItemModel(protectableItem));
             }
 

@@ -23,7 +23,7 @@ function Test-GetAzureRmLogProfile
         # Test
         $actual = Get-AzLogProfile -Name default
 
-        Assert-AreEqual /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default $actual.Id "Resource Ids not equal"
+        Assert-AreEqual /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/Microsoft.Insights/logprofiles/default $actual.Id "Resource Ids not equal"
         Assert-AreEqual default        $actual.Name "Names not equal"
         Assert-AreEqual "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777" $actual.StorageAccountId "Storage Account Ids not equal"
         Assert-Null $actual.ServiceBusRuleId "ServiceBus rule Id not null"

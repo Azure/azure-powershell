@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.
+
+## Version 1.4.0
+* Introduced Get-AzCosmosDBMongoDBBackupInformation to retrieve latest backup information for MongoDB.
+* Updated New-AzCosmosDBAccount, Update-AzCosmosDBAccount to accept BackupStorageRedundancy
+* Introduced Get-AzCosmosDBLocation to list Azure CosmosDB Account and its locations properties.
 
 ## Version 1.3.1
 * Fixed a bug where the restore of deleted database accounts fail.

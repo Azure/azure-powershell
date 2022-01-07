@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "No".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("No", "No", global::System.Management.Automation.CompletionResultType.ParameterValue, "No");
+                yield return new global::System.Management.Automation.CompletionResult("'No'", "No", global::System.Management.Automation.CompletionResultType.ParameterValue, "No");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Yes".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Yes", "Yes", global::System.Management.Automation.CompletionResultType.ParameterValue, "Yes");
+                yield return new global::System.Management.Automation.CompletionResult("'Yes'", "Yes", global::System.Management.Automation.CompletionResultType.ParameterValue, "Yes");
             }
         }
     }

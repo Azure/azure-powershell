@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ok".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ok", "Ok", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ok");
+                yield return new global::System.Management.Automation.CompletionResult("'Ok'", "Ok", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ok");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvalidCredentials".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvalidCredentials", "InvalidCredentials", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidCredentials");
+                yield return new global::System.Management.Automation.CompletionResult("'InvalidCredentials'", "InvalidCredentials", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidCredentials");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvalidShare".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvalidShare", "InvalidShare", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidShare");
+                yield return new global::System.Management.Automation.CompletionResult("'InvalidShare'", "InvalidShare", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidShare");
             }
         }
     }

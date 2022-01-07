@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -97,6 +98,29 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("azure", "kubenet")]
         public string NetworkPlugin { get; set; } = "azure";
 
+        [Parameter(Mandatory = false, HelpMessage = "Network policy used for building Kubernetes network.")]
+        public string NetworkPolicy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Pod cidr used for building Kubernetes network.")]
+        public string PodCidr { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Service cidr used for building Kubernetes network.")]
+        public string ServiceCidr { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
+        public string DnsServiceIP { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
+        public string DockerBridgeCidr { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
+
+        public Hashtable NodePoolLabel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
+
+        public Hashtable AksCustomHeader { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
         public string LoadBalancerSku { get; set; }
@@ -123,7 +147,26 @@ namespace Microsoft.Azure.Commands.Aks
                 var managedCluster = BuildNewCluster();
                 try
                 {
-                    var cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
+                    ManagedCluster cluster;
+                    if (this.IsParameterBound(c => c.AksCustomHeader))
+                    {
+                        Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+                        foreach (var key in AksCustomHeader.Keys)
+                        {
+                            List<string> values = new List<string>();
+                            foreach (var value in (object[])AksCustomHeader[key])
+                            {
+                                values.Add(value.ToString());
+                            }
+                            customHeaders.Add(key.ToString(), values);
+                        }
+
+                        cluster = Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, managedCluster, customHeaders).GetAwaiter().GetResult().Body;
+                    }
+                    else
+                    {
+                        cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
+                    }
                     var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
@@ -318,9 +361,31 @@ namespace Microsoft.Azure.Commands.Aks
 
         private ContainerServiceNetworkProfile GetNetworkProfile()
         {
-            var networkProfile = new ContainerServiceNetworkProfile();
-            networkProfile.NetworkPlugin = NetworkPlugin;
-            networkProfile.LoadBalancerSku = LoadBalancerSku;
+            var networkProfile = new ContainerServiceNetworkProfile
+            {
+                NetworkPlugin = NetworkPlugin,
+                LoadBalancerSku = LoadBalancerSku
+            };
+            if (this.IsParameterBound(c => c.NodeMinCount))
+            {
+                networkProfile.NetworkPolicy = NetworkPolicy;
+            }
+            if (this.IsParameterBound(c => c.PodCidr))
+            {
+                networkProfile.PodCidr = PodCidr;
+            }
+            if (this.IsParameterBound(c => c.ServiceCidr))
+            {
+                networkProfile.ServiceCidr = ServiceCidr;
+            }
+            if (this.IsParameterBound(c => c.DnsServiceIP))
+            {
+                networkProfile.DnsServiceIP = DnsServiceIP;
+            }
+            if (this.IsParameterBound(c => c.DockerBridgeCidr))
+            {
+                networkProfile.DockerBridgeCidr = DockerBridgeCidr;
+            }
             return networkProfile;
         }
 
@@ -374,6 +439,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeSetPriority))
             {
                 defaultAgentPoolProfile.ScaleSetPriority = NodeSetPriority;
+            }
+            if (this.IsParameterBound(c => c.NodePoolLabel))
+            {
+                defaultAgentPoolProfile.NodeLabels = new Dictionary<string, string>();
+                foreach (var key in NodePoolLabel.Keys)
+                {
+                    defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                }
             }
             defaultAgentPoolProfile.Mode = NodePoolMode;
 

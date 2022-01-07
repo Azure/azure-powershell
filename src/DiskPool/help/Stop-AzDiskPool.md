@@ -10,6 +10,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Shuts down the Disk Pool and releases the compute resources.
 You are not billed for the compute resources that this Disk Pool uses.
+This operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
@@ -28,6 +30,8 @@ Stop-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [-
 ## DESCRIPTION
 Shuts down the Disk Pool and releases the compute resources.
 You are not billed for the compute resources that this Disk Pool uses.
+This operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 

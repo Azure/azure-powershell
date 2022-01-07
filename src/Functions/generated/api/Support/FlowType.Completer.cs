@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Bluefield".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Bluefield", "Bluefield", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bluefield");
+                yield return new global::System.Management.Automation.CompletionResult("'Bluefield'", "Bluefield", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bluefield");
             }
         }
     }

@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public IList<PSWebhookReceiver> WebhookReceivers { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of event hub receviers.
+        /// </summary>
+        public IList<PSEventHubReceiver> EventHubReceivers { get; set; }
+
+        /// <summary>
         /// Gets or sets the list of itsm receviers.
         /// </summary>
         public IList<PSItsmReceiver> ItsmReceivers { get; set; }
@@ -98,6 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.EmailReceivers = actionGroup.EmailReceivers.Select(e => new PSEmailReceiver(e)).ToList();
             this.SmsReceivers = actionGroup.SmsReceivers.Select(s => new PSSmsReceiver(s)).ToList();
             this.WebhookReceivers = actionGroup.WebhookReceivers.Select(w => new PSWebhookReceiver(w)).ToList();
+            this.EventHubReceivers = actionGroup.EventHubReceivers.Select(w => new PSEventHubReceiver(w)).ToList();
             this.ItsmReceivers = actionGroup.ItsmReceivers.Select(w => new PSItsmReceiver(w)).ToList();
             this.VoiceReceivers = actionGroup.VoiceReceivers.Select(w => new PSVoiceReceiver(w)).ToList();
             this.ArmRoleReceivers = actionGroup.ArmRoleReceivers.Select(w => new PSArmRoleReceiver(w)).ToList();

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private int toRemoveNode;
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
-         HelpMessage = "The number of nodes to add")]
+         HelpMessage = "The number of nodes to remove")]
         [ValidateRange(1, 2147483647)]
         [Alias("Number")]
         public int NumberOfNodesToRemove

@@ -8,7 +8,7 @@
     "langExt1": "R",
     "langExt2": "PYTHON",
     "resourceType" : "Microsoft.Synapse/workspaces/kustoPools",
-    "databaseType": "Microsoft.Synapse/workspaces/kustoPools/databases",
+    "databaseType": "Microsoft.Synapse/workspaces/kustoPools/Databases",
     "iothubSharedAccessPolicyName": "registryRead",
     "clusterPrincipalAssignmentResourceType": "Microsoft.Synapse/workspaces/kustoPools/principalAssignments",
     "databasePrincipalAssignmentResourceType": "Microsoft.Synapse/workspaces/kustoPools/databases/principalAssignments",

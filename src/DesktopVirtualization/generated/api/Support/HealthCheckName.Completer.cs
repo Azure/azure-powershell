@@ -28,47 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DomainJoinedCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DomainJoinedCheck", "DomainJoinedCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainJoinedCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'DomainJoinedCheck'", "DomainJoinedCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainJoinedCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DomainTrustCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DomainTrustCheck", "DomainTrustCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainTrustCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'DomainTrustCheck'", "DomainTrustCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainTrustCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FSLogixHealthCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FSLogixHealthCheck", "FSLogixHealthCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "FSLogixHealthCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'FSLogixHealthCheck'", "FSLogixHealthCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "FSLogixHealthCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SxSStackListenerCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SxSStackListenerCheck", "SxSStackListenerCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "SxSStackListenerCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'SxSStackListenerCheck'", "SxSStackListenerCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "SxSStackListenerCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UrlsAccessibleCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UrlsAccessibleCheck", "UrlsAccessibleCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "UrlsAccessibleCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'UrlsAccessibleCheck'", "UrlsAccessibleCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "UrlsAccessibleCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MonitoringAgentCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MonitoringAgentCheck", "MonitoringAgentCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "MonitoringAgentCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'MonitoringAgentCheck'", "MonitoringAgentCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "MonitoringAgentCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DomainReachable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DomainReachable", "DomainReachable", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainReachable");
+                yield return new global::System.Management.Automation.CompletionResult("'DomainReachable'", "DomainReachable", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainReachable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WebRTCRedirectorCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WebRTCRedirectorCheck", "WebRTCRedirectorCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebRTCRedirectorCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'WebRTCRedirectorCheck'", "WebRTCRedirectorCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebRTCRedirectorCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SupportedEncryptionCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SupportedEncryptionCheck", "SupportedEncryptionCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "SupportedEncryptionCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'SupportedEncryptionCheck'", "SupportedEncryptionCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "SupportedEncryptionCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MetaDataServiceCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MetaDataServiceCheck", "MetaDataServiceCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "MetaDataServiceCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'MetaDataServiceCheck'", "MetaDataServiceCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "MetaDataServiceCheck");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AppAttachHealthCheck".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AppAttachHealthCheck", "AppAttachHealthCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppAttachHealthCheck");
+                yield return new global::System.Management.Automation.CompletionResult("'AppAttachHealthCheck'", "AppAttachHealthCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppAttachHealthCheck");
             }
         }
     }

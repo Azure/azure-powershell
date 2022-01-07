@@ -1,10 +1,12 @@
 ﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm")]
     [OutputType(typeof(PSManagedHsm), typeof(PSKeyVaultIdentityItem))]
     public class GetAzureManagedHsm : KeyVaultManagementCmdletBase

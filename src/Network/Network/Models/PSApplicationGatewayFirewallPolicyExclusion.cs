@@ -30,5 +30,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string Selector { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet> ExclusionManagedRuleSets { get; set; }
     }
 }

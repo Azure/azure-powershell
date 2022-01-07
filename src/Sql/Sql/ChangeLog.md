@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]
 
 ## Version 3.5.1
 

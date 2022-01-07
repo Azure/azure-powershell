@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Json".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Json", "Json", global::System.Management.Automation.CompletionResultType.ParameterValue, "Json");
+                yield return new global::System.Management.Automation.CompletionResult("'Json'", "Json", global::System.Management.Automation.CompletionResultType.ParameterValue, "Json");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Xml".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Xml", "Xml", global::System.Management.Automation.CompletionResultType.ParameterValue, "Xml");
+                yield return new global::System.Management.Automation.CompletionResult("'Xml'", "Xml", global::System.Management.Automation.CompletionResultType.ParameterValue, "Xml");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Excel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Excel", "Excel", global::System.Management.Automation.CompletionResultType.ParameterValue, "Excel");
+                yield return new global::System.Management.Automation.CompletionResult("'Excel'", "Excel", global::System.Management.Automation.CompletionResultType.ParameterValue, "Excel");
             }
         }
     }

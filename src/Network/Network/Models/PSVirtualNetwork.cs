@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSVirtualNetworkBgpCommunities BgpCommunities { get; set; }
 
+        public PSVirtualNetworkEncryption Encryption { get; set; }
+
         public List<PSVirtualNetworkPeering> VirtualNetworkPeerings { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -75,6 +77,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BgpCommunitiesText
         {
             get { return JsonConvert.SerializeObject(BgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string EncryptionText
+        {
+            get { return JsonConvert.SerializeObject(Encryption, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

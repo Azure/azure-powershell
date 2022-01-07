@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         protected override IEnumerable<AzureSqlServerFirewallRuleModel> GetEntity()
         {
             ICollection<AzureSqlServerFirewallRuleModel> results = null;
+            ResourceWildcardFilterHelper filterHelper = new ResourceWildcardFilterHelper();
 
             if (this.MyInvocation.BoundParameters.ContainsKey("FirewallRuleName") && !WildcardPattern.ContainsWildcardCharacters(FirewallRuleName))
             {
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
                 results = ModelAdapter.ListFirewallRules(this.ResourceGroupName, this.ServerName);
             }
 
-            return SubResourceWildcardFilter(FirewallRuleName, results);
+            return filterHelper.SqlSubResourceWildcardFilter(FirewallRuleName, results, nameof(AzureSqlServerFirewallRuleModel.FirewallRuleName));
         }
 
         /// <summary>

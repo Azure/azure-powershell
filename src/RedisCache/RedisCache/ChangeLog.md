@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Created new examples in documentation of `New-AzRedisCache` and `Set-AzRedisCache`.
 
 ## Version 1.5.0

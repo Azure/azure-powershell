@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     properties = this.InputObject;
 
                     // Take Name and ResourceId from the input Object
-                    string idSuffix = "/providers/microsoft.insights/diagnosticSettings/" + this.InputObject.Name;
+                    string idSuffix = "/providers/Microsoft.Insights/diagnosticSettings/" + this.InputObject.Name;
                     bool foundCue = this.InputObject.Id.EndsWith(idSuffix);
                     if (foundCue)
                     {

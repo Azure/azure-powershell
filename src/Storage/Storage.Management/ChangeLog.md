@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
+    - `Get-AzRmStorageShare`
+* Supported create or migrate container to enable immutable Storage with versioning.
+    -  `New-AzRmStorageContainer`
+    -  `Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration`
+* Supported set/remove immutability policy on a Storage blob.
+    -  `Set-AzStorageBlobImmutabilityPolicy`
+    -  `Remove-AzStorageBlobImmutabilityPolicy`
+* Supported enable/disable legal hold on a Storage blob.
+    -  `Set-AzStorageBlobLegalHold`
+* Supported create storage account with enable account level immutability with versioning, and create/udpate storage account with account level immutability policy.
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 3.12.1
 * Supported create storage account with enable account level immutability with versioning, and create/udpate storage account with account level immutability policy.

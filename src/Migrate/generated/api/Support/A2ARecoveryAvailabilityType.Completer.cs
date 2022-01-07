@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Single".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Single", "Single", global::System.Management.Automation.CompletionResultType.ParameterValue, "Single");
+                yield return new global::System.Management.Automation.CompletionResult("'Single'", "Single", global::System.Management.Automation.CompletionResultType.ParameterValue, "Single");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AvailabilitySet".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AvailabilitySet", "AvailabilitySet", global::System.Management.Automation.CompletionResultType.ParameterValue, "AvailabilitySet");
+                yield return new global::System.Management.Automation.CompletionResult("'AvailabilitySet'", "AvailabilitySet", global::System.Management.Automation.CompletionResultType.ParameterValue, "AvailabilitySet");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AvailabilityZone".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AvailabilityZone", "AvailabilityZone", global::System.Management.Automation.CompletionResultType.ParameterValue, "AvailabilityZone");
+                yield return new global::System.Management.Automation.CompletionResult("'AvailabilityZone'", "AvailabilityZone", global::System.Management.Automation.CompletionResultType.ParameterValue, "AvailabilityZone");
             }
         }
     }

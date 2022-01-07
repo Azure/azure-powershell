@@ -408,19 +408,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                throw new System.ArgumentException($"linked service {linkedServiceName} for {workspaceName} is not existed");
+                //linkedService was not found - do nothing
+                existingLinkedService = null;
             }
 
             parameters.Tags = parameters.Tags == null
-                ? existingLinkedService.Tags
+                ? existingLinkedService?.Tags
                 : parameters.Tags;
 
             parameters.ResourceId = string.IsNullOrEmpty(parameters.ResourceId)
-                ? existingLinkedService.ResourceId
+                ? existingLinkedService?.ResourceId
                 : parameters.ResourceId;
 
             parameters.WriteAccessResourceId = string.IsNullOrEmpty(parameters.WriteAccessResourceId)
-                ? existingLinkedService.WriteAccessResourceId
+                ? existingLinkedService?.WriteAccessResourceId
                 : parameters.WriteAccessResourceId;
 
             return new PSLinkedService(this.OperationalInsightsManagementClient.LinkedServices.CreateOrUpdate(resourceGroupName, workspaceName, linkedServiceName, parameters.getLinkedService()));

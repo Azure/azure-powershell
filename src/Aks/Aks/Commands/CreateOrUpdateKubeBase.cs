@@ -25,8 +25,6 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -39,7 +37,9 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Aks
     {
         protected const string DefaultParamSet = "defaultParameterSet";
         protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
+        private const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
         [Parameter(
             Position = 0,
@@ -226,6 +227,21 @@ namespace Microsoft.Azure.Commands.Aks
                     clientSecret = RandomBase64String(16);
                 }
 
+                bool supressWarningOrError = false;
+
+                try
+                {
+                    supressWarningOrError = bool.Parse(Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch (Exception)
+                {
+                    //no action
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteWarning(Constants.MSGraphMigrationMessage);
+                }
+
                 acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
                 WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
                 StoreServicePrincipal(acsServicePrincipal);
@@ -235,26 +251,32 @@ namespace Microsoft.Azure.Commands.Aks
 
         private AcsServicePrincipal BuildServicePrincipal(string name, string clientSecret)
         {
-            var pwCreds = new PasswordCredential(
-                value: clientSecret,
-                startDate: DateTime.UtcNow,
-                endDate: DateTime.UtcNow.AddYears(2));
+            var keyCredentials = new List<MicrosoftGraphKeyCredential> {
+                    new MicrosoftGraphKeyCredential {
+                        EndDateTime = DateTime.UtcNow.AddYears(2),
+                        StartDateTime = DateTime.UtcNow,
+                        Key = clientSecret,
+                        Type = "Symmetric",
+                        Usage = "Verify"
+                    }
+            };
+            var appCreateParameters = new MicrosoftGraphApplication
+            {
+                DisplayName = name,
+                KeyCredentials = keyCredentials
+            };
+            var app = GraphClient.Applications.CreateApplication(appCreateParameters);
 
-            var app = GraphClient.Applications.Create(new ApplicationCreateParameters(
-                false,
-                name,
-                new List<string> { },
-                null,
-                passwordCredentials: new List<PasswordCredential> { pwCreds }));
-
-            ServicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             var success = RetryAction(() =>
             {
-                var spCreateParams = new ServicePrincipalCreateParameters(
-                                app.AppId,
-                                true,
-                                passwordCredentials: new List<PasswordCredential> { pwCreds });
-                sp = GraphClient.ServicePrincipals.Create(spCreateParams);
+                var servicePrincipalCreateParams = new MicrosoftGraphServicePrincipal
+                {
+                    AppId = app.AppId,
+                    AccountEnabled = true,
+                    KeyCredentials = keyCredentials
+                };
+                sp = GraphClient.ServicePrincipals.CreateServicePrincipal(servicePrincipalCreateParams);
             }, Resources.ServicePrincipalCreate);
 
             if (!success)
@@ -264,8 +286,8 @@ namespace Microsoft.Azure.Commands.Aks
                     desensitizedMessage: Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
-            AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
-            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.ObjectId };
+            AddSubscriptionRoleAssignment("Contributor", sp.Id);
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
         protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
@@ -314,10 +336,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
-                    //Please note string.Equals doesn't work here, while == works.
-                    var odataQuery = new ODataQuery<ServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
-                    var servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery).First();
-                    spObjectId = servicePrincipal.ObjectId;
+                    ODataQuery<MicrosoftGraphServicePrincipal> oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
+                    var servicePrincipal = GraphClient.FilterServicePrincipals(oDataQuery).First();
+                    spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
                 {

@@ -155,8 +155,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             RootSquashType.RootSquash,
             RootSquashType.AllSquash,
             IgnoreCase = true)]
-        public string RootSquash { get; set; }
-
+        public string RootSquash { get; set; }      
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

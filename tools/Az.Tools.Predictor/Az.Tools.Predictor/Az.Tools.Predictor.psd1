@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -45,8 +45,6 @@ PowerShellVersion = '7.2'
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
-ScriptsToProcess = @("PromptSurvey.ps1")
-
 CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey", "Send-AzPredictorRating")
 
 # Format files (.ps1xml) to be loaded when importing this module
@@ -69,8 +67,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Display Open-AzPredictorSurvey cmdlet as the last suggestion in listview mode
-- Fixed compatibility issues with Powershell 7.2.0-preview 6 and PS Readline 2.2.0-beta3'
+        ReleaseNotes = '* Improvements in command parsing mechanism
+* Fixed end of user input detection when - character is used
+* Optimized collection of anonymized data'
 
         # Prerelease string of this module
         # Prerelease = ''

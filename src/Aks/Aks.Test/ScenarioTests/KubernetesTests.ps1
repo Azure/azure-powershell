@@ -13,9 +13,9 @@ function Test-NewAzAksSimple
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
-        $credObject = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "75M7Q~ADDnS_BMuX7E9NVNL8DQi6N1cGf-.OX")
 
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-NotNull $cluster.DnsPrefix
@@ -47,9 +47,9 @@ function Test-NewAzAksWithAcr
 
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
                 
-        $cred = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "75M7Q~ADDnS_BMuX7E9NVNL8DQi6N1cGf-.OX")
 
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $cred -AcrNameToAttach $acrName
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject -AcrNameToAttach $acrName
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-NotNull $cluster.DnsPrefix
@@ -80,7 +80,7 @@ function Test-NewAzAks
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
-    $kubeVersion = "1.18.10"
+    $kubeVersion = "1.19.11"
     $nodeVmSize = "Standard_D2_v2"
     $maxPodCount = 25
     $nodeName = "defnode"
@@ -96,7 +96,7 @@ function Test-NewAzAks
     $loadBalancerSku = "Standard"
     $linuxAdminUser = "linuxuser"
     $dnsNamePrefix = "mypre"
-    $updatedKubeVersion = "1.18.14"
+    $updatedKubeVersion = "1.19.11"
 
     try
     {
@@ -146,9 +146,8 @@ function Test-NewAzAksByServicePrincipal
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
-
-    $ServicePrincipalId = "e65d50b0-0853-48a9-82d3-77d800f4a9bc"
-    $credObject = $(createTestCredential $ServicePrincipalId "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
+    $ServicePrincipalId = "a6148f60-19b8-49b8-a5a5-54945aec926e"
+    $credObject = $(createTestCredential $ServicePrincipalId "75M7Q~ADDnS_BMuX7E9NVNL8DQi6N1cGf-.OX")
 
     try
     {
@@ -212,12 +211,40 @@ function Test-ResetAzureKubernetesServicePrincipal
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
-
-        $credObject = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "75_4.yHJFjkKaRUUb535aH2d.ty4RG~uax")
+        
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "75M7Q~ADDnS_BMuX7E9NVNL8DQi6N1cGf-.OX")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
         
-        $newCred = $(createTestCredential "6f277dd3-e481-4518-8aab-35c31662bad9" "XITofmnbbyU34uR_Yqx_4TI13OJ9--0C3m")
+        $newCred = $(createTestCredential "eca36736-a58e-48f0-916b-a6c41afd018a" "ain7Q~2kVL6pDFusUSaZTOUgnsot0onxC96Bc")
         Set-AzAksClusterCredential -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $newCred -force
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-UpgradeKubernetesVersion
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
+    $nodeVmSize = "Standard_D2_v2"
+    $kubeVersion = "1.21.2"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
+        
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "75M7Q~ADDnS_BMuX7E9NVNL8DQi6N1cGf-.OX")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject -NodeVmSetType VirtualMachineScaleSets
+        #New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSetType VirtualMachineScaleSets
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -KubernetesVersion $kubeVersion -ControlPlaneOnly
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeImageOnly
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $kubeVersion $cluster.KubernetesVersion
+        Assert-AreEqual $kubeVersion $cluster.AgentPoolProfiles[0].OrchestratorVersion
     }
     finally
     {

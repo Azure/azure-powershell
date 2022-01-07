@@ -31,9 +31,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Message = triggerRun?.Message;
             this.Properties = triggerRun?.Properties;
             this.TriggeredPipelines = triggerRun?.TriggeredPipelines;
-            this.Keys = triggerRun?.Keys;
-            this.Values = triggerRun?.Values;
             this.WorkspaceName = workspaceName;
+            this.AdditionalProperties = triggerRun?.AdditionalProperties;
         }
 
         public string TriggerRunId { get; }
@@ -52,10 +51,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public IReadOnlyDictionary<string, string> TriggeredPipelines { get; }
 
-        public IEnumerable<string> Keys { get; }
-
-        public IEnumerable<object> Values { get; }
-
         public string WorkspaceName { get; set; }
+
+        public IReadOnlyDictionary<string, object> AdditionalProperties { get; }
     }
 }

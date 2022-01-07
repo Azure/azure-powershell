@@ -36,7 +36,7 @@ Disable last access time tracking for the Azure Storage Blob service.
 Disables Blob Restore Policy on a Storage account.
 
 ### [Disable-AzStorageContainerDeleteRetentionPolicy](Disable-AzStorageContainerDeleteRetentionPolicy.md)
-Disable delete retention policy for Azure Storage blob contatiners.
+Disable delete retention policy for Azure Storage blob containers.
 
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
@@ -54,7 +54,7 @@ Enable last access time tracking for the Azure Storage Blob service.
 Enables Blob Restore Policy on a Storage account.
 
 ### [Enable-AzStorageContainerDeleteRetentionPolicy](Enable-AzStorageContainerDeleteRetentionPolicy.md)
-Enable delete retention policy for Azure Storage blob contatiners.
+Enable delete retention policy for Azure Storage blob containers.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.

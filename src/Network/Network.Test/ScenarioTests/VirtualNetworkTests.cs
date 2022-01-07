@@ -177,5 +177,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkEdgeZone");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkEncryption()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkEncryption");
+        }
     }
 }

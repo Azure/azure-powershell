@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -169,6 +171,18 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// keyVaultSecretRef must be specified.
         /// </summary>
         public PSContainerServiceServicePrincipalProfile ServicePrincipalProfile { get; set; }
+
+        /// <summary>
+        /// Gets the ResourceGroupName from ResourceId.
+        /// </summary>
+        public string ResourceGroupName
+        {
+            get
+            {
+                var resource = new ResourceIdentifier(Id);
+                return resource.ResourceGroupName;
+            }
+        }
 
         /// <summary>
         /// This is used by pipeline to autorest based cmdlets.

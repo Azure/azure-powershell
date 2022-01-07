@@ -71,6 +71,9 @@
                 <PropertyName>ClusterArmId</PropertyName>
               </ListItem>
               <ListItem>
+                <PropertyName>DisableLocalAuth</PropertyName>
+              </ListItem>              
+              <ListItem>
                 <Label>Identity</Label>
                 <PropertyName>Identity</PropertyName>
               </ListItem>

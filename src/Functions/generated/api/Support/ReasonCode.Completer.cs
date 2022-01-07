@@ -32,11 +32,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "QuotaId".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("QuotaId", "QuotaId", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuotaId");
+                yield return new global::System.Management.Automation.CompletionResult("'QuotaId'", "QuotaId", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuotaId");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotAvailableForSubscription".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotAvailableForSubscription", "NotAvailableForSubscription", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotAvailableForSubscription");
+                yield return new global::System.Management.Automation.CompletionResult("'NotAvailableForSubscription'", "NotAvailableForSubscription", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotAvailableForSubscription");
             }
         }
     }

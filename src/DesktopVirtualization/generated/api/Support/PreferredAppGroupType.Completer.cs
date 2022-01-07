@@ -30,15 +30,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Desktop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Desktop", "Desktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Desktop");
+                yield return new global::System.Management.Automation.CompletionResult("'Desktop'", "Desktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Desktop");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RailApplications".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RailApplications", "RailApplications", global::System.Management.Automation.CompletionResultType.ParameterValue, "RailApplications");
+                yield return new global::System.Management.Automation.CompletionResult("'RailApplications'", "RailApplications", global::System.Management.Automation.CompletionResultType.ParameterValue, "RailApplications");
             }
         }
     }

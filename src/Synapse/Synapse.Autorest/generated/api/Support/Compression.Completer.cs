@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GZip".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GZip", "GZip", global::System.Management.Automation.CompletionResultType.ParameterValue, "GZip");
+                yield return new global::System.Management.Automation.CompletionResult("'GZip'", "GZip", global::System.Management.Automation.CompletionResultType.ParameterValue, "GZip");
             }
         }
     }

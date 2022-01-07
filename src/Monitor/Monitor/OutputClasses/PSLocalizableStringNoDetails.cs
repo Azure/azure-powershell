@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Monitor.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -28,6 +29,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSLocalizableStringNoDetails(LocalizableString localizableString)
             : base(localizableString)
         {
+        }
+
+        public static implicit operator Management.Monitor.Version2018_09_01.Models.LocalizableString(PSLocalizableStringNoDetails v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -116,7 +116,7 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	Assert-True { $systemMetricResult.Criteria -eq "select deviceId from devices where tags.location='US'"}
 
 	# Expected error while executing configuration metric query
-	$errorMessage = "The configuration doesn't exist."
+	$errorMessage = "The configuration identifier 'InvalidConfig' is invalid."
 	Assert-ThrowsContains { Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name "InvalidConfig" -MetricName "InvalidMetricName" } $errorMessage
 	
 	# Expected error while executing configuration metric query
@@ -133,7 +133,7 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	Assert-True { $systemMetricResult.Criteria -eq "select deviceId from devices where capabilities.iotEdge = true and tags.location='US'"}
 
 	# Expected error while executing deployment metric query
-	$errorMessage = "The deployment doesn't exist."
+	$errorMessage = "The configuration identifier 'InvalidConfig' is invalid."
 	Assert-ThrowsContains { Invoke-AzIotHubDeploymentMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name "InvalidConfig" -MetricName "InvalidMetricName" } $errorMessage
 	
 	# Expected error while executing deployment metric query

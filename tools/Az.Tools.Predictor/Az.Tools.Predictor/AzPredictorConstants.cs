@@ -55,6 +55,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const string CommandsEndpoint = "/commands";
 
         /// <summary>
+        /// The character that separates verb and noun in the cmdlet.
+        /// </summary>
+        public const string CommandSeparator  = "-";
+
+        /// <summary>
+        /// The special parameter name for "-" which is not a parameter name but an indication of a parameter.
+        /// </summary>
+        /// <remarks>
+        /// In the case of the user input <c>Get-AzContext -</c>, we need to know that the command name is complete and there
+        /// is a parameter. So we use ths special parameter name as an indicator.
+        /// </remarks>
+        public static readonly string DashParameterName = string.Empty;
+
+        /// <summary>
         /// The service endpoint to get the list of suggestions.
         /// </summary>
         public const string PredictionsEndpoint = "/predictions";

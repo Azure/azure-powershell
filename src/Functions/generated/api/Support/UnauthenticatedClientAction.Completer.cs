@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RedirectToLoginPage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RedirectToLoginPage", "RedirectToLoginPage", global::System.Management.Automation.CompletionResultType.ParameterValue, "RedirectToLoginPage");
+                yield return new global::System.Management.Automation.CompletionResult("'RedirectToLoginPage'", "RedirectToLoginPage", global::System.Management.Automation.CompletionResultType.ParameterValue, "RedirectToLoginPage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllowAnonymous".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllowAnonymous", "AllowAnonymous", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllowAnonymous");
+                yield return new global::System.Management.Automation.CompletionResult("'AllowAnonymous'", "AllowAnonymous", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllowAnonymous");
             }
         }
     }

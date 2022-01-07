@@ -9,18 +9,23 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create or Update Disk pool.
+This create or update operation can take 15 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
 ```
 New-AzDiskPool -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
  -SubnetId <String> [-SubscriptionId <String>] [-AdditionalCapability <String[]>]
- [-AvailabilityZone <String[]>] [-DiskId <String[]>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AvailabilityZone <String[]>] [-DiskId <String[]>] [-ManagedBy <String>] [-ManagedByExtended <String[]>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Create or Update Disk pool.
+This create or update operation can take 15 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 
@@ -98,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskId
-List of Azure Managed Disk Ids to attach to a Disk Pool.
+List of Azure Managed Disks to attach to a Disk Pool.
 To construct, see NOTES section for DISK properties and create a hash table.
 
 ```yaml
@@ -122,6 +127,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedBy
+Azure resource id.
+Indicates if this resource is managed by another Azure resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedByExtended
+List of Azure resource ids that manage this resource.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-.
+Sku name
 
 ```yaml
 Type: System.String
@@ -190,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Tier to use for the Disk Pool.
+Sku tier
 
 ```yaml
 Type: System.String
@@ -287,7 +323,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
 
 ## NOTES
 

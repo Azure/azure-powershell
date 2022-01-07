@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.Equal("true", this.patchPrms.Enabled);
 
             cmdlet.InputObject = null;
-            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/LogSearchAlertName";
+            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/scheduledqueryrules/LogSearchAlertName";
             cmdlet.Enabled = false;
 
             cmdlet.ExecuteCmdlet();

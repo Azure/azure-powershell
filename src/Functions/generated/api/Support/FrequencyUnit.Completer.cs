@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Day".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Day", "Day", global::System.Management.Automation.CompletionResultType.ParameterValue, "Day");
+                yield return new global::System.Management.Automation.CompletionResult("'Day'", "Day", global::System.Management.Automation.CompletionResultType.ParameterValue, "Day");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hour".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Hour", "Hour", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hour");
+                yield return new global::System.Management.Automation.CompletionResult("'Hour'", "Hour", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hour");
             }
         }
     }

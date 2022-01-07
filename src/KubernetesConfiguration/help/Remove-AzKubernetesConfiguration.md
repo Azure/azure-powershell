@@ -32,7 +32,7 @@ This will delete the YAML file used to set up the Source control configuration, 
 
 ### Example 1: Remove a configuation of kubernetes cluster by name
 ```powershell
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name  k8sconfig-t02 -ClusterType ConnectedClusters
+PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name  azpstestk8s01 -ClusterType ConnectedClusters
 
 ```
 
@@ -40,7 +40,7 @@ This command removes a configuation of kubernetes cluster by name.
 
 ### Example 2: Remove a configuation of kubernetes cluster by object
 ```powershell
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName connaks-dkc29c -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test02 -ClusterRp Microsoft.Kubernetes
+PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s02
 PS C:\> Remove-AzKubernetesConfiguration -InputObject $kubConf
 
 ```
@@ -246,6 +246,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+Remove-AzK8sConfiguration
+
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -255,7 +257,9 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  - `[ExtensionName <String>]`: Name of the Extension.
   - `[Id <String>]`: Resource identity path
+  - `[OperationId <String>]`: operation Id
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
   - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)

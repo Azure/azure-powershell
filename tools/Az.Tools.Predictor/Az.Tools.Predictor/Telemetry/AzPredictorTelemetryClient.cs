@@ -27,15 +27,19 @@ using System.Threading.Tasks.Dataflow;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// A telemetry client implementation to collect the telemetry data for AzPredictor.
+    /// A telemetry client implementation to collect the data at the interested places, aggregate them and send it to
+    /// Application Insight.
     /// </summary>
-    internal class AzPredictorTelemetryClient : ITelemetryClient
+    internal class AzPredictorTelemetryClient : ITelemetryClient, IDisposable
     {
-        /// <inheritdoc/>
-        public string RequestId { get; set; } = Guid.NewGuid().ToString();
+        // The maximum size we can have in the telemetry property
+        // Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
+        // Substract (arbitrary but hopefully enough) 100 as the buffer of other properties in the event.
+        internal const int MaxAppInsightPropertyValueSize = 8192;
+        internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
 
         /// <inheritdoc/>
-        public string SessionId => TelemetryUtilities.SessionId;
+        public string RequestId { get; set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// The client that sends the telemetry to the server.
@@ -59,7 +63,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// We only access it in the thread pool which is to handle the data at the target side of the data flow.
         /// We only handle one item at a time so there is no race condition.
         /// </remarks>
-        private IDictionary<string, string> _userAcceptedAndSuggestion = new Dictionary<string, string>();
+        private readonly IDictionary<string, string> _userAcceptedAndSuggestion = new Dictionary<string, string>();
+
+        /// <summary>
+        /// The cached aggregated telemetry data sent when we process the command history data.
+        /// </summary>
+        /// <remarks>
+        /// We only access it in the thread pool which is to handle the data at the target side of the data flow.
+        /// We only handle one item at a time so there is no race condition.
+        /// </remarks>
+        protected AggregatedTelemetryData CachedAggregatedTelemetryData { get; private set; } = new();
+
+        private bool _isDisposed;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>.
@@ -71,6 +86,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             _azContext = azContext;
             _telemetryDispatcher = new ActionBlock<ITelemetryData>(
                     (telemetryData) => DispatchTelemetryData(telemetryData));
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            _isDisposed = true;
+            Dispose(disposing: true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _telemetryDispatcher.Complete();
+            }
         }
 
         /// <inheritdoc/>
@@ -150,6 +185,124 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         protected virtual TelemetryClient GetApplicationInsightTelemetryClient() => TelemetryUtilities.CreateApplicationInsightTelemetryClient();
 
         /// <summary>
+        /// Dispatches <see cref="ITelemetryData"/> according to its implementation.
+        /// </summary>
+        protected virtual void DispatchTelemetryData(ITelemetryData telemetryData)
+        {
+            // We'll aggregate all the telemetry data into one event. We include the data since last command history (not
+            // inclusive) to this command history (inclusive).
+            // If there is any exceptions, we'll record them separately in a different event.
+
+            switch (telemetryData)
+            {
+                case HistoryTelemetryData history:
+                    ProcessTelemetryData(history);
+                    break;
+                case RequestPredictionTelemetryData requestPrediction:
+                    ProcessTelemetryData(requestPrediction);
+                    break;
+                case GetSuggestionTelemetryData getSuggestion:
+                    ProcessTelemetryData(getSuggestion);
+                    break;
+                case SuggestionDisplayedTelemetryData suggestionDisplayed:
+                    ProcessTelemetryData(suggestionDisplayed);
+                    break;
+                case SuggestionAcceptedTelemetryData suggestionAccepted:
+                    ProcessTelemetryData(suggestionAccepted);
+                    break;
+                case ParameterMapTelemetryData parameterMap:
+                    ProcessTelemetryData(parameterMap);
+                    break;
+                case CommandLineParsingTelemetryData commandLineParsing:
+                    ProcessTelemetryData(commandLineParsing);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Sends the aggregated telemetry data.
+        /// </summary>
+        protected void SendAggregatedTelemetryData()
+        {
+            var aggregatedData = CachedAggregatedTelemetryData;
+            CachedAggregatedTelemetryData = new AggregatedTelemetryData();
+
+            var properties = CreateProperties(aggregatedData);
+
+            // Add the request prediction data.
+            if (aggregatedData.HasSentHttpRequest.HasValue)
+            {
+                properties.Add(RequestPredictionTelemetryData.PropertyNameHttpRequestSent, aggregatedData.HasSentHttpRequest.Value.ToString(CultureInfo.InvariantCulture));
+            }
+
+            var suggestions = new List<Dictionary<string, object>>();
+            for (var i = 0; i < aggregatedData.SuggestionSessions.Count; ++i)
+            {
+                var suggestionSession = aggregatedData.SuggestionSessions[i];
+                var toAddSuggestion = new Dictionary<string, object>();
+
+                // Add the get suggestion data.
+                var foundSuggestions = suggestionSession.FoundSuggestion;
+                if (foundSuggestions != null)
+                {
+                    var suggestionSource = foundSuggestions.SuggestionSources;
+                    var sourceTexts = foundSuggestions.SourceTexts;
+
+#if TELEMETRY_PLACEHOLDER
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameFound, "PLACEHOLDER");
+#else
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameFound, sourceTexts?.Zip(suggestionSource)?.Select((s) => new object[] { s.First, (int)s.Second }));
+#endif
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameIsCancelled, suggestionSession.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
+                }
+
+                if (suggestionSession.UserInput != null)
+                {
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameUserInput, suggestionSession.UserInput);
+                }
+
+                // Add the display suggestion data
+                if (suggestionSession.DisplayedSuggestionCountOrIndex.HasValue)
+                {
+                    toAddSuggestion.Add(SuggestionDisplayedTelemetryData.PropertyNameDisplayed, new int[]
+                    {
+                        (int)suggestionSession.DisplayMode.Value,
+                        suggestionSession.DisplayedSuggestionCountOrIndex.Value
+                    });
+                }
+
+                // Add accept suggestion data
+                if (suggestionSession.AcceptedSuggestion != null)
+                {
+                    toAddSuggestion.Add(SuggestionAcceptedTelemetryData.PropertyNameAccepted, suggestionSession.AcceptedSuggestion);
+                }
+
+                if (!suggestionSession.IsSuggestionComplete)
+                {
+                    // The aggregated data is divided into different telemetry events. SuggestionSessionId is used to
+                    // associate the related suggestion related data in different events.
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameSuggestionSessionId, suggestionSession.SuggestionSessionId.Value);
+                }
+
+                suggestions.Add(toAddSuggestion);
+            }
+
+            if (suggestions.Count > 0)
+            {
+                properties.Add("Suggestion", JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
+            }
+
+            if (aggregatedData.CommandLine != null)
+            {
+                // Add the command history data.
+                properties.Add(HistoryTelemetryData.PropertyNameSuccess, aggregatedData.IsCommandSuccess.ToString(CultureInfo.InvariantCulture));
+                properties.Add(HistoryTelemetryData.PropertyNameHistory, aggregatedData.CommandLine);
+            }
+
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Aggregation", properties);
+        }
+
+        /// <summary>
         /// Sends the telemetry event via Application Insight.
         /// </summary>
         protected virtual void SendTelemetry(string eventName, IDictionary<string, string> properties)
@@ -205,7 +358,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 return;
             }
 
-            telemetryData.SessionId = SessionId;
             telemetryData.RequestId = RequestId;
             telemetryData.CommandId = CommandId;
 
@@ -213,74 +365,60 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         }
 
         /// <summary>
-        /// Dispatches <see cref="ITelemetryData"/> according to its implementation.
+        /// Processes the telemetry with the command history.
         /// </summary>
-        private void DispatchTelemetryData(ITelemetryData telemetryData)
+        private void ProcessTelemetryData(HistoryTelemetryData telemetryData)
         {
-            switch (telemetryData)
+            if (CachedAggregatedTelemetryData == null)
             {
-                case HistoryTelemetryData history:
-                    SendTelemetry(history);
-                    break;
-                case RequestPredictionTelemetryData requestPrediction:
-                    SendTelemetry(requestPrediction);
-                    break;
-                case GetSuggestionTelemetryData getSuggestion:
-                    SendTelemetry(getSuggestion);
-                    break;
-                case SuggestionDisplayedTelemetryData suggestionDisplayed:
-                    SendTelemetry(suggestionDisplayed);
-                    break;
-                case SuggestionAcceptedTelemetryData suggestionAccepted:
-                    SendTelemetry(suggestionAccepted);
-                    break;
-                case ParameterMapTelemetryData parameterMap:
-                    SendTelemetry(parameterMap);
-                    break;
-                case CommandLineParsingTelemetryData commandLineParsing:
-                    SendTelemetry(commandLineParsing);
-                    break;
-                default:
-                    throw new NotImplementedException();
+                CachedAggregatedTelemetryData = new AggregatedTelemetryData();
             }
+
+            if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
+            {
+                var newSuggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
+                newSuggestionSession.IsSuggestionComplete = false; // This can correlate to the suggestions in the previous events.
+            }
+
+            CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
+            CachedAggregatedTelemetryData.CommandLine = telemetryData.Command;
+            CachedAggregatedTelemetryData.IsCommandSuccess = telemetryData.Success;
+
+            SendAggregatedTelemetryData();
         }
 
         /// <summary>
-        /// Sends the telemetry with the command history.
+        /// Processes the telemetry with the commands for prediction.
         /// </summary>
-        private void SendTelemetry(HistoryTelemetryData telemetryData)
+        private void ProcessTelemetryData(RequestPredictionTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("History", telemetryData.Command);
-            properties.Add("Success", telemetryData.Success.ToString(CultureInfo.InvariantCulture));
+            // We may have two consecutive requests.
+            if (CachedAggregatedTelemetryData != null && !string.IsNullOrWhiteSpace(CachedAggregatedTelemetryData.RequestId))
+            {
+                SendAggregatedTelemetryData();
+            }
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/CommandHistory", properties);
-        }
+            if (CachedAggregatedTelemetryData == null)
+            {
+                CachedAggregatedTelemetryData = new AggregatedTelemetryData();
+            }
 
-        /// <summary>
-        /// Sends the telemetry with the commands for prediction.
-        /// </summary>
-        private void SendTelemetry(RequestPredictionTelemetryData telemetryData)
-        {
-            _userAcceptedAndSuggestion.Clear();
+            CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
+            CachedAggregatedTelemetryData.HasSentHttpRequest = telemetryData.HasSentHttpRequest;
 
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("Command", telemetryData.Commands == null ? string.Empty : string.Join(AzPredictorConstants.CommandConcatenator, telemetryData.Commands));
-            properties.Add("HttpRequestSent", telemetryData.HasSentHttpRequest.ToString(CultureInfo.InvariantCulture));
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
-
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/RequestPrediction", properties);
+            if (telemetryData.Exception != null)
+            {
+                SendException("An error occurred when requesting predictions.", telemetryData, telemetryData.Exception);
+            }
         }
 
         /// <summary>
         /// Sends the telemetry with the suggestion returned to the user.
         /// </summary>
-        private void SendTelemetry(GetSuggestionTelemetryData telemetryData)
+        private void ProcessTelemetryData(GetSuggestionTelemetryData telemetryData)
         {
             var suggestions = telemetryData.Suggestion?.PredictiveSuggestions;
-            var suggestionSource = telemetryData.Suggestion?.SuggestionSources;
             var sourceTexts = telemetryData.Suggestion?.SourceTexts;
-            var maskedUserInput = CommandLineUtilities.MaskCommandLine(telemetryData.UserInput?.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
 
             if ((suggestions != null) && (sourceTexts != null))
             {
@@ -290,89 +428,141 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 }
             }
 
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("SuggestionSessionId", telemetryData != null ? telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture) : string.Empty);
-            properties.Add("UserInput", maskedUserInput ?? string.Empty);
-            properties.Add("Suggestion", sourceTexts != null ? JsonSerializer.Serialize(sourceTexts.Zip(suggestionSource).Select((s) => Tuple.Create(s.First, s.Second)), JsonUtilities.TelemetrySerializerOptions) : string.Empty);
-            properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
+            var maskedUserInput = CommandLineUtilities.MaskCommandLine(telemetryData.UserInput.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/GetSuggestion", properties);
-        }
-
-        /// <summary>
-        /// Sends the telemetry about what suggestions are displayed to the user.
-        /// </summary>
-        private void SendTelemetry(SuggestionDisplayedTelemetryData telemetryData)
-        {
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
-            properties.Add("SuggestionDisplayMode", telemetryData.DisplayMode.ToString());
-
-            switch (telemetryData.DisplayMode)
+            var suggestionSession = new SuggestionSession()
             {
-                case SuggestionDisplayMode.InlineView:
-                    properties.Add("SuggestionIndex", telemetryData.SuggestionCountOrIndex.ToString(CultureInfo.InvariantCulture));
-                    break;
-                case SuggestionDisplayMode.ListView:
-                    properties.Add("SuggestionCount", telemetryData.SuggestionCountOrIndex.ToString(CultureInfo.InvariantCulture));
-                    break;
-                default:
-                    break;
+                SuggestionSessionId = telemetryData.SuggestionSessionId,
+                FoundSuggestion = telemetryData.Suggestion,
+                UserInput = maskedUserInput,
+                IsCancellationRequested = telemetryData.IsCancellationRequested,
             };
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/DisplaySuggestion", properties);
+            if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize + suggestionSession.EstimateTelemetrySize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
+            {
+                // GetSuggestion starts a new suggestion session cycle. So let's assume the new suggestion session will be
+                // complete. We will modify it later if it is not.
+                var newSuggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
+                newSuggestionSession.FoundSuggestion = suggestionSession.FoundSuggestion;
+                newSuggestionSession.UserInput = suggestionSession.UserInput;
+                newSuggestionSession.IsCancellationRequested = suggestionSession.IsCancellationRequested;
+            }
+            else
+            {
+                CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
+            }
+
+            if (telemetryData.Exception != null)
+            {
+                SendException("An error occurred when getting suggestions.",
+                        telemetryData,
+                        telemetryData.Exception,
+                        new Dictionary<string, string>()
+                        {
+                            { GetSuggestionTelemetryData.PropertyNameUserInput, maskedUserInput },
+                        });
+            }
         }
 
         /// <summary>
-        /// Sends the telemetry with the suggestion returned to the user.
+        /// Processes the telemetry about what suggestions are displayed to the user.
         /// </summary>
-        private void SendTelemetry(SuggestionAcceptedTelemetryData telemetryData)
+        private void ProcessTelemetryData(SuggestionDisplayedTelemetryData telemetryData)
+        {
+            var suggestionSession = CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault((s) => s.SuggestionSessionId.Value == telemetryData.SuggestionSessionId);
+
+            if (suggestionSession == null)
+            {
+                suggestionSession = new SuggestionSession()
+                {
+                    SuggestionSessionId = telemetryData.SuggestionSessionId,
+                    IsSuggestionComplete = false,
+                };
+
+                CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
+            }
+
+            // Usually GetSuggestion occurs before SuggestionDisplayTelemetryData. In case the property size becomes too large after GetSuggestion, we send it now.
+            if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
+            {
+                suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
+                suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestionsession. So mark it as incomplete.
+            }
+
+            suggestionSession.DisplayMode = telemetryData.DisplayMode;
+            suggestionSession.DisplayedSuggestionCountOrIndex = telemetryData.SuggestionCountOrIndex;
+        }
+
+        /// <summary>
+        /// Processes the telemetry with the suggestion returned to the user.
+        /// </summary>
+        private void ProcessTelemetryData(SuggestionAcceptedTelemetryData telemetryData)
         {
             if (!_userAcceptedAndSuggestion.TryGetValue(telemetryData.Suggestion, out var suggestion))
             {
-                suggestion = telemetryData.Suggestion;
+                suggestion = CommandLineUtilities.MaskCommandLine(telemetryData.Suggestion);
+            }
+            _userAcceptedAndSuggestion.Clear();
+
+            var suggestionSession = CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault(s => s.SuggestionSessionId.Value == telemetryData.SuggestionSessionId);
+
+            if (suggestionSession == null)
+            {
+                suggestionSession = new SuggestionSession()
+                {
+                    SuggestionSessionId = telemetryData.SuggestionSessionId,
+                    IsSuggestionComplete = false,
+                };
+
+                CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
             }
 
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("AcceptedSuggestion", suggestion);
-            properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
+            if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
+            {
+                suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
+                suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestionsession. So mark it as incomplete.
+            }
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/AcceptSuggestion", properties);
+            suggestionSession.AcceptedSuggestion = suggestion;
         }
 
         /// <summary>
-        /// Sends the telemetry with the parameter map file loading information.
+        /// Processes the telemetry when the parmaeter map is loaded.
         /// </summary>
-        private void SendTelemetry(ParameterMapTelemetryData telemetryData)
+        private void ProcessTelemetryData(ParameterMapTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData, client: null);
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
-
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/LoadParameterMap", properties);
+            if (telemetryData.Exception != null)
+            {
+                SendException("An error occurred when loading parameter map.", telemetryData, telemetryData.Exception);
+            }
         }
 
         /// <summary>
-        /// Sends the telemetry with the command line parsing information.
+        /// Processes the telemetry with the command line parsing information.
         /// </summary>
-        private void SendTelemetry(CommandLineParsingTelemetryData telemetryData)
+        private void ProcessTelemetryData(CommandLineParsingTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData, client: null);
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
-            properties.Add("Command", telemetryData.Command);
+            if (telemetryData.Exception != null)
+            {
+                var properties = new Dictionary<string,string>()
+                {
+                    { "Command", telemetryData.Command },
+                };
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/ParseCommandLineFailure", properties);
+                SendException("An error occurred when parsing command line.", telemetryData, telemetryData.Exception, properties);
+            }
         }
 
         /// <summary>
         /// Add the common properties to the telemetry event.
         /// </summary>
-        private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData, PredictionClient client)
+        private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData)
         {
             var properties = TelemetryUtilities.CreateCommonProperties(this._azContext);
             properties.Add("RequestId", telemetryData.RequestId);
             properties.Add("CommandId", telemetryData.CommandId);
 
+            var client = telemetryData.Client;
             if (client != null)
             {
                 properties.Add("ClientId", client.Name);
@@ -380,6 +570,50 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             return properties;
+        }
+
+        /// <summary>
+        /// Sends the exception event when there is an exception is thrown.
+        /// </summary>
+        private void SendException(string message, ITelemetryData telemetryData, Exception exception, IDictionary<string, string> extraProperties = null)
+        {
+            var properties = CreateProperties(telemetryData);
+            properties.Add("Message", message);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(exception));
+
+            if (extraProperties != null)
+            {
+                foreach (var p in extraProperties)
+                {
+                    properties.Add(p.Key, p.Value);
+                }
+            }
+
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Exception", properties);
+        }
+
+        /// <summary>
+        /// Sends the cached aggregated telemetry data when we're aggregating suggestion cycle related data.
+        /// </summary>
+        private SuggestionSession SendAggregateTelemetryDataDuringSuggestionCycle(ITelemetryData telemetryData, uint? suggestionSessionId)
+        {
+            var suggestionSession = CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault(s => s.SuggestionSessionId.Value == suggestionSessionId);
+            if (suggestionSession != null)
+            {
+                suggestionSession.IsSuggestionComplete = false;
+            }
+
+            CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
+            SendAggregatedTelemetryData();
+
+            var newSuggestionSession = new SuggestionSession()
+            {
+                SuggestionSessionId = suggestionSessionId,
+                // Don't need to mark IsSuggestionComplete. If method is called when we process GetSuggestionTelemetryEvent,
+                // all the previous suggestion session should be complete and this starts a new suggestion session.
+            };
+            CachedAggregatedTelemetryData.SuggestionSessions.Add(newSuggestionSession);
+            return newSuggestionSession;
         }
     }
 }

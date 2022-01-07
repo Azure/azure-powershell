@@ -28,59 +28,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dropbox".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dropbox", "Dropbox", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dropbox");
+                yield return new global::System.Management.Automation.CompletionResult("'Dropbox'", "Dropbox", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dropbox");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Tfs".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Tfs", "Tfs", global::System.Management.Automation.CompletionResultType.ParameterValue, "Tfs");
+                yield return new global::System.Management.Automation.CompletionResult("'Tfs'", "Tfs", global::System.Management.Automation.CompletionResultType.ParameterValue, "Tfs");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LocalGit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LocalGit", "LocalGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalGit");
+                yield return new global::System.Management.Automation.CompletionResult("'LocalGit'", "LocalGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalGit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GitHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GitHub", "GitHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "GitHub");
+                yield return new global::System.Management.Automation.CompletionResult("'GitHub'", "GitHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "GitHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CodePlexGit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CodePlexGit", "CodePlexGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "CodePlexGit");
+                yield return new global::System.Management.Automation.CompletionResult("'CodePlexGit'", "CodePlexGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "CodePlexGit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CodePlexHg".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CodePlexHg", "CodePlexHg", global::System.Management.Automation.CompletionResultType.ParameterValue, "CodePlexHg");
+                yield return new global::System.Management.Automation.CompletionResult("'CodePlexHg'", "CodePlexHg", global::System.Management.Automation.CompletionResultType.ParameterValue, "CodePlexHg");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BitbucketGit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BitbucketGit", "BitbucketGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "BitbucketGit");
+                yield return new global::System.Management.Automation.CompletionResult("'BitbucketGit'", "BitbucketGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "BitbucketGit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BitbucketHg".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BitbucketHg", "BitbucketHg", global::System.Management.Automation.CompletionResultType.ParameterValue, "BitbucketHg");
+                yield return new global::System.Management.Automation.CompletionResult("'BitbucketHg'", "BitbucketHg", global::System.Management.Automation.CompletionResultType.ParameterValue, "BitbucketHg");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ExternalGit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ExternalGit", "ExternalGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExternalGit");
+                yield return new global::System.Management.Automation.CompletionResult("'ExternalGit'", "ExternalGit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExternalGit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ExternalHg".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ExternalHg", "ExternalHg", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExternalHg");
+                yield return new global::System.Management.Automation.CompletionResult("'ExternalHg'", "ExternalHg", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExternalHg");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OneDrive".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OneDrive", "OneDrive", global::System.Management.Automation.CompletionResultType.ParameterValue, "OneDrive");
+                yield return new global::System.Management.Automation.CompletionResult("'OneDrive'", "OneDrive", global::System.Management.Automation.CompletionResultType.ParameterValue, "OneDrive");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VSO".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VSO", "VSO", global::System.Management.Automation.CompletionResultType.ParameterValue, "VSO");
+                yield return new global::System.Management.Automation.CompletionResult("'VSO'", "VSO", global::System.Management.Automation.CompletionResultType.ParameterValue, "VSO");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VSTSRM".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VSTSRM", "VSTSRM", global::System.Management.Automation.CompletionResultType.ParameterValue, "VSTSRM");
+                yield return new global::System.Management.Automation.CompletionResult("'VSTSRM'", "VSTSRM", global::System.Management.Automation.CompletionResultType.ParameterValue, "VSTSRM");
             }
         }
     }

@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Available".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Available", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
+                yield return new global::System.Management.Automation.CompletionResult("'Available'", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Leased".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Leased", "Leased", global::System.Management.Automation.CompletionResultType.ParameterValue, "Leased");
+                yield return new global::System.Management.Automation.CompletionResult("'Leased'", "Leased", global::System.Management.Automation.CompletionResultType.ParameterValue, "Leased");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Expired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Expired", "Expired", global::System.Management.Automation.CompletionResultType.ParameterValue, "Expired");
+                yield return new global::System.Management.Automation.CompletionResult("'Expired'", "Expired", global::System.Management.Automation.CompletionResultType.ParameterValue, "Expired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Breaking".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Breaking", "Breaking", global::System.Management.Automation.CompletionResultType.ParameterValue, "Breaking");
+                yield return new global::System.Management.Automation.CompletionResult("'Breaking'", "Breaking", global::System.Management.Automation.CompletionResultType.ParameterValue, "Breaking");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Broken".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Broken", "Broken", global::System.Management.Automation.CompletionResultType.ParameterValue, "Broken");
+                yield return new global::System.Management.Automation.CompletionResult("'Broken'", "Broken", global::System.Management.Automation.CompletionResultType.ParameterValue, "Broken");
             }
         }
     }

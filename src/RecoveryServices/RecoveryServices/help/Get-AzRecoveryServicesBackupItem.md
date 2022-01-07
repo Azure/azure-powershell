@@ -280,12 +280,13 @@ Workload type of the resource. The acceptable values for this parameter are:
 - AzureVM
 - AzureFiles
 - MSSQL
+- FileFolder
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: GetItemsForContainer, GetItemsForVault
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureFiles, MSSQL, FileFolder
 
 Required: True
 Position: 5

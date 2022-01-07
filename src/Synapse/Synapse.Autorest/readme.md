@@ -53,7 +53,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/cde7f150e8d3bf3af2418cc347cae0fb2baed6a7/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/57e4490a06aad262ca9154dc15b40f5a11bf7af5/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 
 ```
 
@@ -74,22 +74,72 @@ output-folder: .
 ``` yaml
 identity-correction-for-post: true
 directive:
-  # Remove all commands except kusto pool
+  # Fix the case mismatch between swagger and RP
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/databases\//g, "/Databases/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/dataConnections\//g, "/DataConnections/")
+  # Remove the unexpanded parameter set
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
     remove: true
+  # Remove the unexpanded parameter set for specific commands
   - where:
-      subject: ^Database$|^DataConnection$|^KustoPoolPrincipalAssignment$|^DatabasePrincipalAssignment$|^KustoOperation$|^KustoPoolLanguageExtension$|^AttachedDatabaseConfiguration$|^KustoPoolFollowerDatabase$|^KustoPoolSku$
-    remove: true
-  - where:
-      verb: Set|Test|Start|Stop|Invoke
+      subject: ^KustoPoolAttachedDatabaseConfiguration$|^KustoPoolPrincipalAssignment$|^KustoPoolDatabasePrincipalAssignment$
+      variant: ^Create$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
       subject: ^KustoPool$
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
   - where:
+      verb: Remove
+      subject: KustoPoolLanguageExtension
+      variant: ^Remove$|^RemoveViaIdentity$
+    remove: true 
+  # Custom commands
+  - where:
       subject: ^KustoPool$
       variant: ^Create$|^CreateExpanded$
     hide: true
+  - where:
+      subject: ^KustoPoolDatabase$|^KustoPoolDataConnection$
+      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+    hide: true
+  # Hide the operation API
+  - where:
+      subject: KustoOperation
+    hide: true
+  # Remove the set-* and test-* cmdlet
+  - where:
+      verb: Set|Test
+    remove: true
+  - where:
+      subject: ^DataKustoPoolDataConnectionValidation$
+    remove: true
+  # Correct some generated code
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property');
+  # set alias for some name
+  - where:
+      verb: Get|Remove
+      subject: KustoPoolDatabase
+      parameter-name: DatabaseName
+    set:
+      alias: Name
+  - where:
+      verb: New|Get|Remove
+      subject: KustoPoolAttachedDatabaseConfiguration
+      parameter-name: AttachedDatabaseConfigurationName
+    set:
+      alias: Name
+  - where:
+      verb: Get|Remove
+      subject: KustoPoolDataConnection
+      parameter-name: DataConnectionName
+    set:
+      alias: Name
 ```

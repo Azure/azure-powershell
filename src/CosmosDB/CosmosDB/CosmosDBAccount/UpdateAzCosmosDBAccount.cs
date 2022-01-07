@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             }
 
-            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue || !string.IsNullOrEmpty(BackupStorageRedundancy))
             {
                 if (BackupPolicyType == "Continuous")
                 {
@@ -171,7 +171,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         PeriodicModeProperties = new PeriodicModeProperties()
                         {
                             BackupIntervalInMinutes = BackupIntervalInMinutes,
-                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                            BackupStorageRedundancy = BackupStorageRedundancy
                         }
                     };
                 }

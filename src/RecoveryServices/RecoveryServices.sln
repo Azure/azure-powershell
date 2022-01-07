@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices", "RecoveryServices\RecoveryServices.csproj", "{604260DC-B392-4CF4-81EC-34B14591E2D2}"
 EndProject
@@ -41,6 +41,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager", "..\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj", "{F83FBA8D-732D-437C-A0E2-02E45B01E123}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Helpers", "..\Compute\Compute.Helpers\Compute.Helpers.csproj", "{DA7F47C7-5B26-487E-93C3-011340F6A9E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.AlcWrapper", "..\Compute\Compute.AlcWrapper\Compute.AlcWrapper.csproj", "{2F7F35C7-945E-44F3-B77F-817FD58663FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,6 +128,14 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7F47C7-5B26-487E-93C3-011340F6A9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7F47C7-5B26-487E-93C3-011340F6A9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7F47C7-5B26-487E-93C3-011340F6A9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7F47C7-5B26-487E-93C3-011340F6A9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F7F35C7-945E-44F3-B77F-817FD58663FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F7F35C7-945E-44F3-B77F-817FD58663FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F7F35C7-945E-44F3-B77F-817FD58663FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F7F35C7-945E-44F3-B77F-817FD58663FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +146,8 @@ Global
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{65E15D74-1E24-4600-8671-D0B420524B17} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{6C7D3D81-37AB-445E-8081-78A1FEC0A774} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{DA7F47C7-5B26-487E-93C3-011340F6A9E9} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{2F7F35C7-945E-44F3-B77F-817FD58663FE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB2C39D2-F569-42FF-92CC-19BD010D75D6}

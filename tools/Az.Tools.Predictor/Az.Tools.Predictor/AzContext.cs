@@ -12,65 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
-    using PowerShell = System.Management.Automation.PowerShell;
-
     /// <summary>
     /// The class for the current Azure PowerShell context.
     /// </summary>
-    internal sealed class AzContext : IAzContext, IDisposable
+    internal sealed class AzContext : IAzContext
     {
         private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
-
-        private PowerShell _powerShellRuntime;
-        private PowerShell PowerShellRuntime
-        {
-            get
-            {
-                if (_powerShellRuntime == null)
-                {
-                    _powerShellRuntime = PowerShell.Create(DefaultRunspace);
-                }
-
-                return _powerShellRuntime;
-            }
-        }
-
-        private readonly Lazy<Runspace> _defaultRunspace = new(() =>
-                {
-                    // Create a mini runspace by remove the types and formats
-                    InitialSessionState minimalState = InitialSessionState.CreateDefault2();
-                    minimalState.Types.Clear();
-                    minimalState.Formats.Clear();
-                    // Refer to the remarks for the property DefaultRunspace.
-                    minimalState.ImportPSModule("Az.Accounts");
-                    var runspace = RunspaceFactory.CreateRunspace(minimalState);
-                    runspace.Open();
-                    return runspace;
-                });
-
-        /// <inheritdoc />
-        /// <remarks>
-        /// We pre-load some common Az service modules.
-        /// Creating the instance is at the first time this is called.
-        /// It can be slow. So the first call must not be in the path of the user interaction.
-        /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
-        /// time.
-        /// </remarks>
-        public Runspace DefaultRunspace => _defaultRunspace.Value;
+        private PowerShellRuntime _powerShellRuntime;
 
         /// <inheritdoc/>
         public Version AzVersion { get; private set; } = DefaultVersion;
@@ -140,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (_powerShellVersion == null)
                 {
-                    var outputs = ExecuteScript<Version>("(Get-Host).Version");
+                    var outputs = _powerShellRuntime.ExecuteScript<Version>("(Get-Host).Version");
 
                     _powerShellVersion = outputs.FirstOrDefault();
                 }
@@ -167,14 +129,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public bool IsInternal { get; internal set; }
 
-        /// <summary>
-        /// The survey session id appended to the survey.
-        /// </summary>
-        /// <remarks>
-        /// We only collect this information in the preview and it'll be removed in GA. That's why it's not defined in the
-        /// interface IAzContext and it's internal.
-        /// </remarks>
-        internal string SurveyId { get; set; }
+        public AzContext(PowerShellRuntime powerShellRuntime) => _powerShellRuntime
+             = powerShellRuntime;
 
         /// <inheritdoc/>
         public void UpdateContext()
@@ -189,21 +145,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
-        public void Dispose()
-        {
-            if (_powerShellRuntime != null)
-            {
-                _powerShellRuntime.Dispose();
-                _powerShellRuntime = null;
-            }
-
-            if (_defaultRunspace.IsValueCreated)
-            {
-                _defaultRunspace.Value.Dispose();
-            }
-        }
-
         internal string RawUserId { get; set; }
+
+        public Runspace DefaultRunspace => _powerShellRuntime.DefaultRunspace;
 
         /// <summary>
         /// Gets the user account id if the user logs in, otherwise empty string.
@@ -212,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             try
             {
-                var output = ExecuteScript<string>("(Get-AzContext).Account.Id");
+                var output = _powerShellRuntime.ExecuteScript<string>("(Get-AzContext).Account.Id");
                 return output.FirstOrDefault() ?? string.Empty;
             }
             catch (Exception)
@@ -227,46 +171,41 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private Version GetAzVersion()
         {
-            Version latestAz = DefaultVersion;
+            Version latestAzVersion = DefaultVersion;
 
             try
             {
-                var outputs = ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
-                foreach (PSObject obj in outputs)
+                var outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+
+                if (!(outputs?.Any() == true))
                 {
-                    string psVersion = obj.Properties["Version"].Value.ToString();
-                    int pos = psVersion.IndexOf('-');
-                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                    if (currentAz > latestAz)
-                    {
-                        latestAz = currentAz;
-                    }
+                    outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+                }
+
+                if (outputs?.Any() == true)
+                {
+                    ExtractAndSetLatestAzVersion(outputs);
                 }
             }
             catch (Exception)
             {
             }
 
-            return latestAz;
-        }
+            return latestAzVersion;
 
-        /// <summary>
-        /// Executes the PowerShell cmdlet in the current powershell session.
-        /// </summary>
-        private List<T> ExecuteScript<T>(string contents)
-        {
-            List<T> output = new List<T>();
-
-            PowerShellRuntime.Commands.Clear();
-            PowerShellRuntime.AddScript(contents);
-            Collection<T> result = PowerShellRuntime.Invoke<T>();
-
-            if (result != null && result.Count > 0)
+            void ExtractAndSetLatestAzVersion(IEnumerable<PSObject> outputs)
             {
-                output.AddRange(result);
+                foreach (var psObject in outputs)
+                {
+                    string versionOutput = psObject.Properties["Version"].Value.ToString();
+                    int positionOfVersion = versionOutput.IndexOf('-');
+                    Version currentAzVersion = (positionOfVersion == -1) ? new Version(versionOutput) : new Version(versionOutput.Substring(0, positionOfVersion));
+                    if (currentAzVersion > latestAzVersion)
+                    {
+                        latestAzVersion = currentAzVersion;
+                    }
+                }
             }
-
-            return output;
         }
 
         /// <summary>

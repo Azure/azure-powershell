@@ -30,15 +30,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServerFarm".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ServerFarm", "ServerFarm", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServerFarm");
+                yield return new global::System.Management.Automation.CompletionResult("'ServerFarm'", "ServerFarm", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServerFarm");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Subscription".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Subscription", "Subscription", global::System.Management.Automation.CompletionResultType.ParameterValue, "Subscription");
+                yield return new global::System.Management.Automation.CompletionResult("'Subscription'", "Subscription", global::System.Management.Automation.CompletionResultType.ParameterValue, "Subscription");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WebSite".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WebSite", "WebSite", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebSite");
+                yield return new global::System.Management.Automation.CompletionResult("'WebSite'", "WebSite", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebSite");
             }
         }
     }

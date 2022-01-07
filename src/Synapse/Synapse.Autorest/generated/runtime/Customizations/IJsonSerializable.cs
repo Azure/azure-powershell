@@ -151,6 +151,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime
                 return Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.JsonSerializable.ToJson(dictionary, null);
             }
 
+            // hashtables are converted to dictionaries for serialization
+            if (value is System.Collections.Hashtable hashtable)
+            {
+                var dict = new System.Collections.Generic.Dictionary<string, object>();
+                DictionaryExtensions.HashTableToDictionary<object>(hashtable, dict);
+                return Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.JsonSerializable.ToJson(dict, null);
+            }
+
             // enumerable collections are handled like arrays (again, fallback to ToJson()/ToJsonString() or literal JsonString) 
             if (value is System.Collections.IEnumerable enumerableValue)
             {

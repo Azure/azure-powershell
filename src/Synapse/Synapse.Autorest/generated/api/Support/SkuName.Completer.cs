@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Compute optimized".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Compute optimized", "Compute optimized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compute optimized");
+                yield return new global::System.Management.Automation.CompletionResult("'Compute optimized'", "Compute optimized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compute optimized");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Storage optimized".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Storage optimized", "Storage optimized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Storage optimized");
+                yield return new global::System.Management.Automation.CompletionResult("'Storage optimized'", "Storage optimized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Storage optimized");
             }
         }
     }
