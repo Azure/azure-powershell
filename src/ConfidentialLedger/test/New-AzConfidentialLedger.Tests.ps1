@@ -36,8 +36,9 @@ Describe 'New-AzConfidentialLedger' {
             -Tag @{Location=$env.Tag0}
 
         $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.NewLedgerName
+        Write-Host ($ledger | Format-List | Out-String)
         
-        $ledger.Properties.ProvisioningState | Should -Be "Succeeded"
+        $ledger.ProvisioningState | Should -Be "Succeeded"
 
         Remove-AzConfidentialLedger -InputObject $ledger
     }
