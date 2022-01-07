@@ -1,0 +1,146 @@
+{
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
+      "Content": "{\n  \"name\": \"pwsh-rafh43i6g51c9\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "84" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f8d77a9a-833e-4096-b93d-4fe8c54d317f" ],
+        "x-ms-correlation-request-id": [ "5fe65134-eb85-4927-bd83-20d0449c948f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220107T204451Z:5fe65134-eb85-4927-bd83-20d0449c948f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Jan 2022 20:44:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "89" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Resource name already exists\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
+      "Content": "{\n  \"name\": \"pwsh-avail-ij3ferx\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "84" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b9cde967-4069-4ece-b483-a89ade0e7d63" ],
+        "x-ms-correlation-request-id": [ "6fbe030b-b9dc-4fb2-88df-0efed17873f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220107T204452Z:6fbe030b-b9dc-4fb2-88df-0efed17873f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Jan 2022 20:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
+      "Content": "{\n  \"name\": \"pwsh-rafh43i6g51c9\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "84" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5fa13334-a4c7-4a5a-8e0c-c6fe39bd5706" ],
+        "x-ms-correlation-request-id": [ "bf68763e-0bd9-413c-b540-e29eab8eb35a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220107T204453Z:bf68763e-0bd9-413c-b540-e29eab8eb35a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Jan 2022 20:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "89" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Resource name already exists\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
+      "Content": "{\n  \"name\": \"pwsh-avail-ij3ferx\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "84" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a9116e9c-6e8f-4da1-adef-b175d427cfb3" ],
+        "x-ms-correlation-request-id": [ "573e2f84-fa9c-483a-b00f-4167005d4e95" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220107T204453Z:573e2f84-fa9c-483a-b00f-4167005d4e95" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 Jan 2022 20:44:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

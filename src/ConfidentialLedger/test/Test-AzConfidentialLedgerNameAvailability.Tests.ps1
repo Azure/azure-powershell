@@ -18,13 +18,15 @@ Describe 'Test-AzConfidentialLedgerNameAvailability' {
     It 'CheckExpanded' {
         $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
             -SubscriptionId $env.SubscriptionId `
-            -Name $env.LedgerName
+            -Name $env.LedgerName `
+            -Type "Microsoft.ConfidentialLedger/ledgers"
 
         $availabilityResult.NameAvailable | Should -Be $false
 
         $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
             -SubscriptionId $env.SubscriptionId `
-            -Name $env.AvailableName
+            -Name $env.AvailableName `
+            -Type "Microsoft.ConfidentialLedger/ledgers"
 
         $availabilityResult.NameAvailable | Should -Be $true
     }
