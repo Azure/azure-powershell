@@ -102,11 +102,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             // Add Azure PowerShell policy into option
 
             // Add user agents
-            if (maxRetries != null && maxRetries >= 0)
-
-                foreach (var user in UserAgents)
+            if (UserAgents != null && UserAgents.Length >= 0)
             {
-                option.AddUserAgent();
+                option.AddUserAgent(UserAgents);
             }
 
             // Set max retries
