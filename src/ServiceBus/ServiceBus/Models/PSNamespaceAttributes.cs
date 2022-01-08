@@ -14,7 +14,9 @@
 
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
@@ -35,23 +37,71 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Sku = new SBSku { Capacity = evResource.Sku.Capacity,
                                 Name = evResource.Sku.Name,
                                 Tier = evResource.Sku.Tier};
+                
                 if(evResource.ProvisioningState != null)
-                ProvisioningState = evResource.ProvisioningState;                
+                    ProvisioningState = evResource.ProvisioningState;                
+                
                 if(evResource.CreatedAt.HasValue)
-                CreatedAt = evResource.CreatedAt;
+                    CreatedAt = evResource.CreatedAt;
+                
                 if(evResource.UpdatedAt.HasValue)
-                UpdatedAt = evResource.UpdatedAt;
+                    UpdatedAt = evResource.UpdatedAt;
+                
                 if(evResource.ServiceBusEndpoint != null)
-                ServiceBusEndpoint = evResource.ServiceBusEndpoint;
+                    ServiceBusEndpoint = evResource.ServiceBusEndpoint;
+                
                 if(evResource.Location != null)
-                Location = evResource.Location;
+                    Location = evResource.Location;
+                
                 if(evResource.Name != null)
-                Name = evResource.Name;
+                    Name = evResource.Name;
+                
                 if(evResource.Id != null)
-                Id = evResource.Id;
+                    Id = evResource.Id;
+
+                if(evResource.Identity != null)
+                {
+                    Identity = new PSIdentityAttributes(evResource.Identity);
+                    
+                    if(evResource.Identity.UserAssignedIdentities != null)
+                        IdentityIds = evResource.Identity.UserAssignedIdentities.Keys.ToArray();
+                }
+                    
+                
+                if(evResource.Encryption != null)
+                {
+
+                    Encryption = new PSEncryptionAttributes(evResource.Encryption);
+
+                    if(evResource.Encryption.KeyVaultProperties != null)
+                    {
+                        EncryptionConfigs = evResource.Encryption.KeyVaultProperties.Where(x => x != null).Select(x => {
+                            PSKeyVaultProperties kvproperty = new PSKeyVaultProperties();
+                            
+                            if (x.KeyName != null)
+                                kvproperty.KeyName = x.KeyName;
+
+                            if (x.KeyVaultUri != null)
+                                kvproperty.KeyVaultUri = x.KeyVaultUri;
+
+                            if (x.KeyVersion != null)
+                                kvproperty.KeyVersion = x.KeyVersion;
+
+                            if (x.Identity != null)
+                                if(x.Identity.UserAssignedIdentity != null)
+                                    kvproperty.UserAssignedIdentity = x.Identity.UserAssignedIdentity;
+
+                            return kvproperty;
+                        }).ToArray();
+                    }
+                }
+                
+                
+                
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
                 Tags = new Dictionary<string, string>(evResource.Tags);
+                if(evResource.ZoneRedundant!=null)
                 ZoneRedundant = evResource.ZoneRedundant;
                 DisableLocalAuth = evResource.DisableLocalAuth;
             }
@@ -121,5 +171,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary>
         public bool? DisableLocalAuth { get; set; }
 
+        public PSIdentityAttributes Identity { get; set; }
+
+        public PSEncryptionAttributes Encryption { get; set; }
+
+        public string[] IdentityIds { get; set; }
+
+        public PSKeyVaultProperties[] EncryptionConfigs { get; set; }
     }
 }

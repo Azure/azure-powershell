@@ -53,6 +53,19 @@
               <ListItem>
                 <PropertyName>DisableLocalAuth</PropertyName>
               </ListItem>
+			 <ListItem>
+                <Label>Identity</Label>
+                <ScriptBlock>
+                  "PrinicipalId : "+ $_.Identity.PrincipalId + ", TenantId: "+ $_.Identity.TenantId + ", Type: " + $_.Identity.Type + ", UserAssignedIdentity: " + $_.Identity.UserAssignedIdentities
+                </ScriptBlock>              
+             </ListItem>
+			 <ListItem>
+                <PropertyName>EncryptionConfigs</PropertyName>
+             </ListItem>
+			 <ListItem>
+                <Label>IdentityIds</Label>
+				<PropertyName>$_.IdentityIds</PropertyName>             
+             </ListItem> 
             </ListItems>
           </ListEntry>
         </ListEntries>

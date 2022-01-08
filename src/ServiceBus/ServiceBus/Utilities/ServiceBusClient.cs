@@ -29,6 +29,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.ServiceBus
 {
@@ -55,6 +56,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
             private set;
         }
 
+        protected const string SystemAssigned = "SystemAssigned";
+        protected const string UserAssigned = "UserAssigned";
+        protected const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
+        protected const string None = "None";
+
         #region Namespace
         public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
@@ -77,7 +83,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, bool isZoneRedundant, bool isDisableLocalAuth, int? skuCapacity = null)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, bool isZoneRedundant, bool isDisableLocalAuth, string identityType, 
+            string[] identityIds, PSKeyVaultProperties[] encryptionconfigs, int? skuCapacity = null)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -91,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
             {
                 parameter.Sku = new SBSku();                
                 parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
-
+                parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
                 if (parameter.Sku.Name == SkuName.Premium && skuCapacity != null)
                 {
                     parameter.Sku.Capacity = skuCapacity;
@@ -103,12 +110,66 @@ namespace Microsoft.Azure.Commands.ServiceBus
             if(isZoneRedundant)
                 parameter.ZoneRedundant = isZoneRedundant;
 
+            if (identityType != null)
+            {
+                parameter.Identity = new Identity();
+                parameter.Identity = FindIdentity(identityType);
+            }
+
+            if (identityIds != null)
+            {
+
+                Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+
+                UserAssignedIdentities = identityIds.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
+
+                if (parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
+                }
+                else
+                {
+                    parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+            }
+
+            if (encryptionconfigs != null)
+            {
+                if (parameter.Encryption == null)
+                {
+                    parameter.Encryption = new Encryption() { KeySource = KeySource.MicrosoftKeyVault };
+                }
+
+                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
+
+                parameter.Encryption.KeyVaultProperties = encryptionconfigs.Where(x => x != null)
+                                                                     .Select(x => {
+                                                                         KeyVaultProperties kvp = new KeyVaultProperties();
+
+                                                                         if (x.KeyName != null)
+                                                                             kvp.KeyName = x.KeyName;
+
+                                                                         if (x.KeyVaultUri != null)
+                                                                             kvp.KeyVaultUri = x.KeyVaultUri;
+                                                                         
+                                                                         if (x.KeyVersion != null)
+                                                                             kvp.KeyVersion = x.KeyVersion;
+                                                                         
+                                                                         if (x.UserAssignedIdentity != null)
+                                                                             kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
+
+                                                                         return kvp;
+                                                                     })
+                                                                     .ToList();
+            }
+
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isDisableLocalAuth)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isDisableLocalAuth, string identityType,
+            string[] identityIds, PSKeyVaultProperties[] encryptionconfigs)
         {
 
             var parameter = new SBNamespace()
@@ -121,30 +182,97 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 parameter.Tags = new Dictionary<string, string>(tags);
             }
 
-            SBSku tempSku = new SBSku();
-
-
-
             if (skuName != null)
             {
-                tempSku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
-                tempSku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                parameter.Sku = new SBSku();
+                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
+                parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                if (parameter.Sku.Name == SkuName.Premium && skuCapacity != null)
+                {
+                    parameter.Sku.Capacity = skuCapacity;
+                }
             }
-
-            if (skuCapacity != null)
-            {
-                tempSku.Capacity = skuCapacity;
-            }
-
-            parameter.Sku = tempSku;
 
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
-            
+
+            if (identityType != null)
+            {
+                parameter.Identity = new Identity();
+                parameter.Identity = FindIdentity(identityType);
+            }
+
+            if (identityIds != null)
+            {
+                Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+                
+                UserAssignedIdentities = identityIds.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
+                
+                if (parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
+                }
+                else
+                {
+                    parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+            }
+
+            if (encryptionconfigs != null)
+            {
+                if (parameter.Encryption == null)
+                {
+                    parameter.Encryption = new Encryption() { KeySource = KeySource.MicrosoftKeyVault };
+                }
+
+                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
+
+                parameter.Encryption.KeyVaultProperties = encryptionconfigs.Where(x => x != null)
+                                                                     .Select(x => {
+                                                                         KeyVaultProperties kvp = new KeyVaultProperties();
+
+                                                                         if (x.KeyName != null)
+                                                                             kvp.KeyName = x.KeyName;
+
+                                                                         if (x.KeyVaultUri != null)
+                                                                             kvp.KeyVaultUri = x.KeyVaultUri;
+
+                                                                         if (x.KeyVersion != null)
+                                                                             kvp.KeyVersion = x.KeyVersion;
+
+                                                                         if (x.UserAssignedIdentity != null)
+                                                                             kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
+
+                                                                         return kvp;
+                                                                     })
+                                                                     .ToList();
+
+            }
+
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
+
+        public Identity FindIdentity(string identityType)
+        {
+            Identity identity = new Identity();
+            
+            if (identityType == SystemAssigned)
+                identity.Type = ManagedServiceIdentityType.SystemAssigned;
+
+            else if (identityType == UserAssigned)
+                identity.Type = ManagedServiceIdentityType.UserAssigned;
+
+            else if (identityType == SystemAssignedUserAssigned)
+                identity.Type = ManagedServiceIdentityType.SystemAssignedUserAssigned;
+
+            else if (identityType == None)
+                identity.Type = ManagedServiceIdentityType.None;
+
+            return identity;
+        }
+
 
         public bool BeginDeleteNamespace(string resourceGroupName, string namespaceName)
         {

@@ -17,6 +17,125 @@
 .SYNOPSIS
 Tests EventHub Namespace Create List Remove operations.
 #>
+function DebugTest{
+     $location = "East US 2"
+     $resourceGroupName = getAssetName "RGName-sdktesting"
+     
+     $namespaceName1 = getAssetName "Namespace1-"
+     $namespaceName2 = getAssetName "Namespace2-"
+     $namespaceName3 = getAssetName "Namespace3-"
+     $namespaceName4 = getAssetName "Namespace4-"
+     
+     $keyvault1 = getAssetName "kv1"
+     $keyvault2 = getAssetName "kv2"
+     $keyName1 = getAssetName "keyName1-"
+     $keyName2 = getAssetName "keyName2-"
+     $keyName3 = getAssetName "keyName3-"
+     
+     $userAssignedIdentity1 = getAssetName "uad1-"
+     $userAssignedIdentity2 = getAssetName "uad2-"
+     $userAssignedIdentity3 = getAssetName "uad3-"
+
+     Write-Debug "Create resource group"    
+     New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+
+
+     #Create KeyVault1
+     $kv1 = New-AzKeyVault -VaultName $keyvault1 -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection
+
+     #Create Keys
+     Add-AzureKeyVaultKey -VaultName $keyvault1 -Name $keyName1 -Destination 'Software'
+     Add-AzureKeyVaultKey -VaultName $keyvault1 -Name $keyName2 -Destination 'Software'
+     Add-AzureKeyVaultKey -VaultName $keyvault1 -Name $keyName3 -Destination 'Software'
+
+     
+     #Create User Assigned Identity 1
+     $uad1 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userAssignedIdentity1
+
+     #Create User Assigned Identity 2
+     $uad2 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userAssignedIdentity2
+
+     #Create User Assigned Identity 3
+     $uad3 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userAssignedIdentity3
+
+     #Give access policy permissions to both MSI
+     Set-AzKeyVaultAccessPolicy -VaultName $keyvault1 -ServicePrincipalName $uad1.ClientId -PermissionsToKeys @('All') -PassThru
+     Set-AzKeyVaultAccessPolicy -VaultName $keyvault1 -ServicePrincipalName $uad2.ClientId -PermissionsToKeys @('All') -PassThru
+     Set-AzKeyVaultAccessPolicy -VaultName $keyvault1 -ServicePrincipalName $uad3.ClientId -PermissionsToKeys @('All') -PassThru
+
+     #Create KeyVault2
+     $kv2 = New-AzKeyVault -VaultName $keyvault2 -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection
+
+     #Create Keys
+     Add-AzureKeyVaultKey -VaultName $keyvault2 -Name $keyName1 -Destination 'Software'
+     Add-AzureKeyVaultKey -VaultName $keyvault2 -Name $keyName2 -Destination 'Software'
+     Add-AzureKeyVaultKey -VaultName $keyvault2 -Name $keyName3 -Destination 'Software'
+
+     #Give access policy permissions to both MSI
+     Set-AzKeyVaultAccessPolicy -VaultName $keyvault2 -ServicePrincipalName $uad1.ClientId -PermissionsToKeys @('All') -PassThru
+     Set-AzKeyVaultAccessPolicy -VaultName $keyvault2 -ServicePrincipalName $uad2.ClientId -PermissionsToKeys @('All') -PassThru
+     Set-AzKeyVaultAccessPolicy -VaultName $keyvault2 -ServicePrincipalName $uad3.ClientId -PermissionsToKeys @('All') -PassThru
+
+     $kvsb1 = New-AzServiceBusEncryptionConfig -KeyName $keyName1 -KeyVaultUri $kv1.VaultUri -UserAssignedIdentity $uad1.Id
+     $kvsb2 = New-AzServiceBusEncryptionConfig -KeyName $keyName2 -KeyVaultUri $kv1.VaultUri -UserAssignedIdentity $uad1.Id
+
+     $createdNamespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1 -Location $location -SkuName Premium -IdentityType UserAssigned -IdentityId @($uad1.Id,$uad2.Id) -EncryptionConfigs $kvsb1,$kvsb2
+
+     $encryptionConfigs = @($kvsb1,$kvsb2)
+     $identityIds = @($uad1.Id,$uad2.Id)
+
+     Assert-AreEqual $createdNamespace.Name $namespaceName1 "Namespace name matches"
+     Assert-AreEqual $createdNamespace.ProvisioningState "Succeeded"
+     Assert-AreEqual $createdNamespace.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+     Assert-AreEqual $createdNamespace.EncryptionConfigs $encryptionConfigs "Encryption Configs match"
+     Assert-AreEqual $createdNamespace.IdentityIds $identityIds
+     Assert-AreEqual $createdNamespace.IdentityType "UserAssigned"
+     Assert-AreEqual $createdNamespace.Location "East US 2"
+     Assert-AreEqual $createdNamespace.SkuName "Premium"
+
+     $getCreatedNamespace = Get-AzServiceBusName -ResourceGroupName $resourceGroupName -Name $namespaceName1
+
+     Assert-AreEqual $getCreatedNamespace.Name $createdNamespace.Name "Namespace name matches"
+     Assert-AreEqual $getCreatedNamespace.ProvisioningState "Succeeded"
+     Assert-AreEqual $getCreatedNamespace.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+     Assert-AreEqual $getCreatedNamespace.EncryptionConfigs $encryptionConfigs "Encryption Configs match"
+     Assert-AreEqual $getCreatedNamespace.IdentityIds $identityIds
+     Assert-AreEqual $getCreatedNamespace.IdentityType "UserAssigned"
+     Assert-AreEqual $getCreatedNamespace.Location $location
+     Assert-AreEqual $getCreatedNamespace.SkuName "Premium"
+
+     $kvsb3 = New-AzServiceBusEncryptionConfig -KeyName $keyName3 -KeyVaultUri $kv2.VaultUri -UserAssignedIdentity $uad1.Id
+     $getCreatedNamespace.EncryptionConfigs += $kvsb3
+
+     $encryptionConfigs = @($kvsb1,$kvsb2,$kvsb3)
+     $identityIds = @($uad1.Id,$uad2.Id,$uad3.Id)
+
+     $updatedNamespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1 -Location $location -SkuName Premium -IdentityType UserAssigned -IdentityId $getCreatedNamespace.IdentityIds @($uad3.Id) -EncryptionConfigs $getCreatedNamespace.EncryptionConfigs
+
+     Assert-AreEqual $updatedNamespace.Name $namespaceName1 "Namespace name matches"
+     Assert-AreEqual $updatedNamespace.ProvisioningState "Succeeded"
+     Assert-AreEqual $updatedNamespace.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+     Assert-AreEqual $updatedNamespace.EncryptionConfigs $encryptionConfigs "Encryption Configs match"
+     Assert-AreEqual $updatedNamespace.IdentityIds $identityIds
+     Assert-AreEqual $updatedNamespace.IdentityType "UserAssigned"
+     Assert-AreEqual $updatedNamespace.Location $location
+     Assert-AreEqual $updatedNamespace.SkuName "Premium"
+
+     Remove-AzKeyVault -Name $keyvault1 -ResourceGroupName $resourceGroupName
+     Remove-AzKeyVault -Name $keyvault2 -ResourceGroupName $resourceGroupName
+
+     Write-Debug " Delete namespaces"
+     #Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName3
+     #Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
+     Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
+     #Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName4
+
+     Write-Debug " Delete resourcegroup"
+     Remove-AzResourceGroup -Name $resourceGroupName -Force
+
+
+}
+
 function ServiceBusTests {
     # Setup    
     $location = "East US 2"

@@ -138,6 +138,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string Send = "Send";
         protected const string Listen = "Listen";
 
+        //KeyVaultProperties
+        protected const string keyName = "keyname";
+        protected const string keyVaultUri = "keyvaulturi";
+        protected const string keyVersion = "keyversion";
+        protected const string userAssignedIdentity = "userassignedidentity";
+        protected readonly List<string> keyVaultProperties = new List<string>{ keyName, keyVaultUri, keyVersion, userAssignedIdentity};
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
@@ -331,6 +338,35 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
 
         #endregion
+
+        public void ValidateKeyPropertyHashtable(List<Hashtable> keyProperty)
+        {
+            if(keyProperty == null)
+            {
+                return;
+            }
+
+            foreach(Hashtable htable in keyProperty)
+            {
+                if (htable.Count > 4)
+                {
+                    throw new Exception("Key Property dictionaries cannot be of size greater than 4.");
+                }
+
+                if(!htable.ContainsKey(keyVaultUri) || !htable.ContainsKey(keyName))
+                {
+                    throw new Exception("All Key Property dictionaries must have keyvaulturi and keyname.(case sensitive)");
+                }
+
+                foreach(var property in htable.Keys)
+                {
+                    if (!keyVaultProperties.Contains(property.ToString()))
+                    {
+                        throw new Exception("Key Vault Property dictionaries can only contain the following keys. "+keyName+", "+keyVaultUri+", "+keyVersion+", "+userAssignedIdentity);
+                    }
+                }
+            }
+        }
     }
 
 
