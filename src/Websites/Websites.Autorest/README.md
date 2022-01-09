@@ -1571,18 +1571,12 @@ directive:
     set:
       subject: SlotWebJob
 
+  # The service response result is "No route registered for '/api/webjobs/webjobname?api-version=2021-02-01'"
   - where:
       verb: Get
       subject: ^WebJob$|^SlotWebJob$
       variant: Get|GetViaIdentity
     remove: true
-
-  # The service response result is "No route registered for '/api/webjobs/webjobname?api-version=2021-02-01'"
-  # - where:
-  #     verb: Get
-  #     subject: ^Get
-  #     variant: GetViaIdentity
-  #   remove: true
 
   - where:
       subject: WebJob|ContinuousWebJob|TriggeredWebJob|TriggeredWebJobHistory|SlotContinuousWebJob|SlotWebJob|SlotTriggeredWebJob|SlotTriggeredWebJobHistory
