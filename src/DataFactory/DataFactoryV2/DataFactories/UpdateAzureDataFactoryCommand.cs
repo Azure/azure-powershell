@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSDataFactory))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
     public class UpdateAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true,
@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpIdentityType)]
         #endregion
         public string IdentityType { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpPublicNetworkAccess)]
+        #endregion
+        public string PublicNetworkAccess { get; set; }
 
         #region Attributes
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
@@ -121,9 +126,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 encryption = new EncryptionConfiguration(this.EncryptionKeyName, this.EncryptionVaultBaseUrl, this.EncryptionKeyVersion, cmkIdentity);
             }
 
+            string publicNetworkAccess = Management.DataFactory.Models.PublicNetworkAccess.Enabled;
+            if (!string.IsNullOrWhiteSpace(this.PublicNetworkAccess))
+            {
+                publicNetworkAccess = this.PublicNetworkAccess;
+            }
+
             var parameters = new UpdatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
+                PublicNetworkAccess = publicNetworkAccess,
                 DataFactoryName = Name,
                 EncryptionConfiguration = encryption,
                 FactoryIdentity = factoryIdentity,

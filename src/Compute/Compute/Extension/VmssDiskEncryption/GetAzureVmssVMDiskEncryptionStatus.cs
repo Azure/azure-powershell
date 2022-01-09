@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -95,7 +96,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
                 else
                 {
-                    var psResult = GetDiskStatus(this.ResourceGroupName, this.VMScaleSetName, this.InstanceId);
+                    var diskStatus = GetDiskStatus(this.ResourceGroupName, this.VMScaleSetName, this.InstanceId);
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVmssVMDiskEncryptionStatusContextList>(diskStatus);
                     WriteObject(psResult);
                 }
             });
@@ -129,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             psResult.Extension = null;
             psResult.DiskEncryptionStatus = string.Format("The Extension, {0}, is not installed.", this.ExtensionName);
 
-            // replace defaults with extension and status data for the instance if found 
+            // replace defaults with extension and status data for the instance if found
             if (vmssVMInstanceView != null && vmssVMInstanceView.Extensions != null)
             {
                 psResult.Extension = vmssVMInstanceView.Extensions.DefaultIfEmpty(null).FirstOrDefault(e => e.Name.Equals(this.ExtensionName));
@@ -142,7 +144,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             psResult.OsVolumeEncrypted = GetOsDiskEncryptionStatus(psResult.Disks, vmssVM.StorageProfile);
-            psResult.DataVolumesEncrypted = GetDataDiskEncryptionStatus(psResult.Disks, vmssVM.StorageProfile);
+            psResult.DataVolumesEncryptionStatus = JsonConvert.SerializeObject(GetDataDisksEncryptionStatus(psResult.Disks, vmssVM.StorageProfile));
 
             return psResult;
         }
@@ -175,38 +177,42 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 : ConvertToEncryptionStatus(status.Code.Replace(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString, ""));
         }
 
-        private EncryptionStatus GetDataDiskEncryptionStatus(List<DiskInstanceView> disks, StorageProfile storage)
+        private JObject GetDataDisksEncryptionStatus(List<DiskInstanceView> disks, StorageProfile storage)
         {
+            JObject DataDisksEncryptionStatus = JObject.Parse("{}");
+            SetDataDisksEncryptionStatus(disks, storage, DataDisksEncryptionStatus, EncryptionStatus.NotMounted);
+
             if (storage == null || storage.DataDisks == null || storage.DataDisks.Count == 0)
             {
-                return EncryptionStatus.NotMounted;
+                return DataDisksEncryptionStatus;
             }
 
-            try
+            InstanceViewStatus status = null;
+            foreach (var disk in disks)
             {
-                InstanceViewStatus status = null;
+                if (disk.Name == storage.OsDisk.Name)
+                    continue;
                 try
                 {
-                    var disk = disks.First(e => e.Name.Equals(storage.DataDisks[0].Name));
-
-                    if (disk == null)
-                    {
-                        return EncryptionStatus.Unknown;
-                    }
                     status = disk.Statuses.First(s => s.Code.Contains(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString));
+                    DataDisksEncryptionStatus[disk.Name] = (status == null) ? EncryptionStatus.NotEncrypted.ToString() : ConvertToEncryptionStatus(status.Code.Replace(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString, "")).ToString();
                 }
                 catch (InvalidOperationException)
                 {
-                    return EncryptionStatus.NotEncrypted;
+                    DataDisksEncryptionStatus[disk.Name] = EncryptionStatus.NotEncrypted.ToString();
                 }
-
-                return (status == null)
-                    ? EncryptionStatus.NotEncrypted
-                    : ConvertToEncryptionStatus(status.Code.Replace(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString, ""));
             }
-            catch (InvalidOperationException)
+            return DataDisksEncryptionStatus;
+        }
+
+        private void SetDataDisksEncryptionStatus(List<DiskInstanceView> disks, StorageProfile storage, JObject DataDisksEncryptionStatus, EncryptionStatus status)
+        {
+            foreach (var disk in disks)
             {
-                return EncryptionStatus.Unknown;
+                if (disk.Name == storage.OsDisk.Name)
+                    continue;
+
+                DataDisksEncryptionStatus[disk.Name] = status.ToString();
             }
         }
 

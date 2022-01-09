@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Flux".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Flux", "Flux", global::System.Management.Automation.CompletionResultType.ParameterValue, "Flux");
+                yield return new global::System.Management.Automation.CompletionResult("'Flux'", "Flux", global::System.Management.Automation.CompletionResultType.ParameterValue, "Flux");
             }
         }
     }

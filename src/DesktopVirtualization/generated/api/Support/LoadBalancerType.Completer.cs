@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BreadthFirst".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BreadthFirst", "BreadthFirst", global::System.Management.Automation.CompletionResultType.ParameterValue, "BreadthFirst");
+                yield return new global::System.Management.Automation.CompletionResult("'BreadthFirst'", "BreadthFirst", global::System.Management.Automation.CompletionResultType.ParameterValue, "BreadthFirst");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DepthFirst".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DepthFirst", "DepthFirst", global::System.Management.Automation.CompletionResultType.ParameterValue, "DepthFirst");
+                yield return new global::System.Management.Automation.CompletionResult("'DepthFirst'", "DepthFirst", global::System.Management.Automation.CompletionResultType.ParameterValue, "DepthFirst");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Persistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Persistent", "Persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "Persistent");
+                yield return new global::System.Management.Automation.CompletionResult("'Persistent'", "Persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "Persistent");
             }
         }
     }

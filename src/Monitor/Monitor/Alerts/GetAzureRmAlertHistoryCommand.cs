@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(24);
 
-        public const string AlertResourceType = "microsoft.insights/alertrules";
+        public const string AlertResourceType = "Microsoft.Insights/alertrules";
 
         #region Parameters declarations
 

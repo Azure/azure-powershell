@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Hot", "Hot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hot");
+                yield return new global::System.Management.Automation.CompletionResult("'Hot'", "Hot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hot");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Cool".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Cool", "Cool", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cool");
+                yield return new global::System.Management.Automation.CompletionResult("'Cool'", "Cool", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cool");
             }
         }
     }

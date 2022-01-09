@@ -1,357 +1,355 @@
 {
-    "Entries":  [
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "9319cf4f-1fb2-4308-b735-284e43f6a035"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-original-request-ids":  [
-                                                                                  "5f7f2757-c3f1-457e-86c8-e0d74160caad",
-                                                                                  "5f7f2757-c3f1-457e-86c8-e0d74160caad"
-                                                                              ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "11998"
-                                                                                                ],
-                                                "x-ms-request-id":  [
-                                                                        "5f7f2757-c3f1-457e-86c8-e0d74160caad"
-                                                                    ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "5f7f2757-c3f1-457e-86c8-e0d74160caad"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210324T125921Z:5f7f2757-c3f1-457e-86c8-e0d74160caad"
-                                                                            ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:02 GMT"
-                                                         ],
-                                                "Content-Type":  [
-                                                                     "application/json; charset=utf-8"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ],
-                                                "Content-Length":  [
-                                                                       "2343"
-                                                                   ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"name\": \"ICMvault\",\r\n      \"etag\": \"W/\\\"datetime\u00272020-11-10T11%3A58%3A16.8044621Z\u0027\\\"\",\r\n      \"identity\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"8268e557-da68-4177-a64b-2f1fc16b4dff\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointConnections\": [],\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"Enabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/ICMvault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"h2atest\",\r\n      \"etag\": \"W/\\\"datetime\u00272021-03-16T17%3A56%3A40.1158413Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"manualTest\",\r\n      \"etag\": \"W/\\\"datetime\u00272020-07-30T05%3A58%3A07.8830552Z\u0027\\\"\",\r\n      \"identity\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"8186c1de-78f4-4e70-8925-a702b5685bb4\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointConnections\": [],\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"Enabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/manualTest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"MSITestError-ccy\",\r\n      \"etag\": \"W/\\\"datetime\u00272020-07-20T09%3A21%3A13.3629661Z\u0027\\\"\",\r\n      \"identity\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"c4b32a12-c99a-4b8c-ae00-60ac83a31527\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/MSITestError-ccy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUmVjb3ZlcnlQbGFucy9FMkVSUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1616587161761)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191961761)\\/\",\"ClientRequestId\":\"eed7d834-2a00-417f-96f9-32717ff63ef7-2021-03-24 12:59:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6aBDqSGro1s6+oV8/wyIBLoTfQHx0lRsWyYrgDq/6YY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "9624"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "becf8fbc-cb69-421f-b90b-6cf69afcbdcb 3/24/2021 12:59:23 PM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "198b4e78-1e08-4d5b-907e-89678d787e67"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210324T125923Z:198b4e78-1e08-4d5b-907e-89678d787e67"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:02 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "2411"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP\",\r\n  \"name\": \"E2ERP\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationRecoveryPlans\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"E2ERP\",\r\n    \"primaryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866\",\r\n    \"primaryFabricFriendlyName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n    \"recoveryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be\",\r\n    \"recoveryFabricFriendlyName\": \"IDCLAB-A412.fareast.corp.microsoft.com\",\r\n    \"failoverDeploymentModel\": \"NotApplicable\",\r\n    \"replicationProviders\": [\r\n      \"HyperVReplica2012R2\"\r\n    ],\r\n    \"allowedOperations\": [\r\n      \"PlannedFailover\",\r\n      \"UnplannedFailover\",\r\n      \"TestFailover\"\r\n    ],\r\n    \"currentScenario\": null,\r\n    \"currentScenarioStatus\": null,\r\n    \"currentScenarioStatusDescription\": null,\r\n    \"groups\": [\r\n      {\r\n        \"groupType\": \"Shutdown\",\r\n        \"replicationProtectedItems\": [],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      },\r\n      {\r\n        \"groupType\": \"Failover\",\r\n        \"replicationProtectedItems\": [],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      },\r\n      {\r\n        \"groupType\": \"Boot\",\r\n        \"replicationProtectedItems\": [\r\n          {\r\n            \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n            \"virtualMachineId\": \"7655da1b-bff2-46f3-97d1-75d3cb863b4f\"\r\n          },\r\n          {\r\n            \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n            \"virtualMachineId\": \"a8d77b68-c910-4dbb-ae17-0c05ae59638a\"\r\n          }\r\n        ],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      },\r\n      {\r\n        \"groupType\": \"Boot\",\r\n        \"replicationProtectedItems\": [],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      }\r\n    ],\r\n    \"providerSpecificDetails\": []\r\n  }\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationProtectedItems?$filter=RecoveryPlanName%20eq%20\u0027E2ERP\u0027\u0026api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUHJvdGVjdGVkSXRlbXM/JGZpbHRlcj1SZWNvdmVyeVBsYW5OYW1lJTIwZXElMjAnRTJFUlAnJmFwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1616587163214)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191963214)\\/\",\"ClientRequestId\":\"5f73956b-7277-453b-bffb-c54a97ca0d52-2021-03-24 12:59:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ymBrGk4OqeNd8pJma5ElUGjvozSk/SsWFDotuBF820A=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "9623"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "becf8fbc-cb69-421f-b90b-6cf69afcbdcb 3/24/2021 12:59:23 PM"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "7fb67ace-9317-41d9-b1d6-81c56283369d"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210324T125923Z:7fb67ace-9317-41d9-b1d6-81c56283369d"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:02 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "9180"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n      \"name\": \"7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"ForE2EPowershell2\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectableItems/7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationRecoveryServicesProviders/03da55c0-1ac3-4220-bde5-9e4b3401eba1\",\r\n        \"primaryFabricFriendlyName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n        \"primaryFabricProvider\": \"VmmFabric\",\r\n        \"recoveryFabricFriendlyName\": \"IDCLAB-A412.fareast.corp.microsoft.com\",\r\n        \"recoveryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be\",\r\n        \"primaryProtectionContainerFriendlyName\": \"PrimaryForPowershellE2E\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"SecondaryForPowershellE2E\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Primary\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Normal\",\r\n        \"healthErrors\": [],\r\n        \"policyId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationPolicies/E2EPolicy1\",\r\n        \"policyFriendlyName\": \"E2EPolicy1\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": \"\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplica2012R2\",\r\n          \"lastReplicatedTime\": \"2021-03-24T18:23:06Z\",\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"ebddcaa5-00d4-442a-b879-df5cac2564b6\",\r\n              \"replicaNicId\": \"df327ed6-f116-4e3a-bc89-c5967cf26762\",\r\n              \"sourceNicArmId\": null,\r\n              \"vMNetworkName\": \"corp\",\r\n              \"recoveryVMNetworkId\": \"c3b4a310-b458-4fbd-93a4-58279b469716\",\r\n              \"ipConfigs\": [\r\n                {\r\n                  \"name\": null,\r\n                  \"isPrimary\": true,\r\n                  \"subnetName\": null,\r\n                  \"staticIPAddress\": null,\r\n                  \"ipAddressType\": \"Dynamic\",\r\n                  \"isSeletedForFailover\": true,\r\n                  \"recoverySubnetName\": null,\r\n                  \"recoveryStaticIPAddress\": null,\r\n                  \"recoveryIPAddressType\": \"Dynamic\",\r\n                  \"recoveryPublicIPAddressId\": null,\r\n                  \"recoveryLBBackendAddressPoolIds\": null,\r\n                  \"tfoSubnetName\": null,\r\n                  \"tfoStaticIPAddress\": null,\r\n                  \"tfoPublicIPAddressId\": null,\r\n                  \"tfoLBBackendAddressPoolIds\": null\r\n                }\r\n              ],\r\n              \"selectionType\": \"NotSelected\",\r\n              \"recoveryNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"recoveryNicName\": null,\r\n              \"recoveryNicResourceGroupName\": null,\r\n              \"reuseExistingNic\": false,\r\n              \"tfoRecoveryNicName\": null,\r\n              \"tfoRecoveryNicResourceGroupName\": null,\r\n              \"tfoReuseExistingNic\": false\r\n            }\r\n          ],\r\n          \"vmId\": \"7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"OverNetwork\",\r\n            \"initialReplicationProgressPercentage\": \"0\"\r\n          },\r\n          \"vMDiskDetails\": [\r\n            {\r\n              \"maxSizeMB\": 40960,\r\n              \"vhdType\": \"Data\",\r\n              \"vhdId\": \"0ac13425-84b1-427d-bdeb-fe080b7e592d\",\r\n              \"vhdName\": null\r\n            }\r\n          ]\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be/replicationProtectionContainers/40270447-dcf6-44fa-9a1d-f10951b03f16\",\r\n        \"eventCorrelationId\": \"a8fe704e-346d-4ac1-a3d4-c1fd74da829c\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n      \"name\": \"a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"ForE2EPowershell1\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectableItems/a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationRecoveryServicesProviders/03da55c0-1ac3-4220-bde5-9e4b3401eba1\",\r\n        \"primaryFabricFriendlyName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n        \"primaryFabricProvider\": \"VmmFabric\",\r\n        \"recoveryFabricFriendlyName\": \"IDCLAB-A412.fareast.corp.microsoft.com\",\r\n        \"recoveryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be\",\r\n        \"primaryProtectionContainerFriendlyName\": \"PrimaryForPowershellE2E\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"SecondaryForPowershellE2E\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Recovery\",\r\n        \"testFailoverState\": \"MarkedForDeletion\",\r\n        \"testFailoverStateDescription\": \"Cleaning up test environment\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Normal\",\r\n        \"healthErrors\": [],\r\n        \"policyId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationPolicies/E2EPolicy1\",\r\n        \"policyFriendlyName\": \"E2EPolicy1\",\r\n        \"lastSuccessfulFailoverTime\": \"2021-03-24T12:44:45.3813353Z\",\r\n        \"lastSuccessfulTestFailoverTime\": \"2021-03-24T12:34:25.2813743Z\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": \"\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplica2012R2\",\r\n          \"lastReplicatedTime\": \"2021-03-24T18:16:01Z\",\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"be8ed67a-8e98-45c3-94e9-b55885fcbe6b\",\r\n              \"replicaNicId\": \"4b0508e4-32df-48d6-90b5-b1b39d3e1cf8\",\r\n              \"sourceNicArmId\": null,\r\n              \"vMNetworkName\": \"corp\",\r\n              \"recoveryVMNetworkId\": \"c3b4a310-b458-4fbd-93a4-58279b469716\",\r\n              \"ipConfigs\": [\r\n                {\r\n                  \"name\": null,\r\n                  \"isPrimary\": true,\r\n                  \"subnetName\": null,\r\n                  \"staticIPAddress\": null,\r\n                  \"ipAddressType\": \"Dynamic\",\r\n                  \"isSeletedForFailover\": true,\r\n                  \"recoverySubnetName\": null,\r\n                  \"recoveryStaticIPAddress\": null,\r\n                  \"recoveryIPAddressType\": \"Dynamic\",\r\n                  \"recoveryPublicIPAddressId\": null,\r\n                  \"recoveryLBBackendAddressPoolIds\": null,\r\n                  \"tfoSubnetName\": null,\r\n                  \"tfoStaticIPAddress\": null,\r\n                  \"tfoPublicIPAddressId\": null,\r\n                  \"tfoLBBackendAddressPoolIds\": null\r\n                }\r\n              ],\r\n              \"selectionType\": \"NotSelected\",\r\n              \"recoveryNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"recoveryNicName\": null,\r\n              \"recoveryNicResourceGroupName\": null,\r\n              \"reuseExistingNic\": false,\r\n              \"tfoRecoveryNicName\": null,\r\n              \"tfoRecoveryNicResourceGroupName\": null,\r\n              \"tfoReuseExistingNic\": false\r\n            }\r\n          ],\r\n          \"vmId\": \"a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"None\",\r\n            \"initialReplicationProgressPercentage\": \"0\"\r\n          },\r\n          \"vMDiskDetails\": [\r\n            {\r\n              \"maxSizeMB\": 40960,\r\n              \"vhdType\": \"Data\",\r\n              \"vhdId\": \"2170d39a-235a-4299-87aa-1cab3d592243\",\r\n              \"vhdName\": null\r\n            }\r\n          ]\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be/replicationProtectionContainers/40270447-dcf6-44fa-9a1d-f10951b03f16\",\r\n        \"eventCorrelationId\": \"aed6121a-58a6-4605-ad71-55cc686d8d26\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-                        "StatusCode":  200
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUmVjb3ZlcnlQbGFucy9FMkVSUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
-                        "RequestMethod":  "DELETE",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "0d24a075-52bb-4483-b1b9-6a1121a7569f"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1616587163857)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191963857)\\/\",\"ClientRequestId\":\"0c2cdbe8-d977-4a07-b8c2-a456ba888116-2021-03-24 12:59:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TIDfRdzdEr8qAFlRKn67q8zBGYuVWG3RS72ZAMyc7JY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "Location":  [
-                                                                 "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP/operationresults/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2021-06-01"
-                                                             ],
-                                                "Retry-After":  [
-                                                                    "30"
-                                                                ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903",
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903"
-                                                                    ],
-                                                "Azure-AsyncOperation":  [
-                                                                             "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationOperationStatus/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2021-06-01"
-                                                                         ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "0d24a075-52bb-4483-b1b9-6a1121a7569f"
-                                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-deletes":  [
-                                                                                                      "14999"
-                                                                                                  ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "7c32b67d-7cf7-454a-904e-fecad871dd20"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210324T125924Z:7c32b67d-7cf7-454a-904e-fecad871dd20"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:02 GMT"
-                                                         ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ],
-                                                "Content-Length":  [
-                                                                       "0"
-                                                                   ]
-                                            },
-                        "ResponseBody":  "",
-                        "StatusCode":  202
-                    },
-                    {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2021-06-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy81MmU4NmNhMy1jMjQyLTRjNDQtOTVjOS0zMzNmNjEzN2U5MDM/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
-                        "RequestMethod":  "GET",
-                        "RequestBody":  "",
-                        "RequestHeaders":  {
-                                               "x-ms-client-request-id":  [
-                                                                              "0d24a075-52bb-4483-b1b9-6a1121a7569f"
-                                                                          ],
-                                               "Accept-Language":  [
-                                                                       "en-US"
-                                                                   ],
-                                               "Agent-Authentication":  [
-                                                                            "{\"NotBeforeTimestamp\":\"\\/Date(1616587164900)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191964900)\\/\",\"ClientRequestId\":\"0182cda4-ee20-45b3-830c-bdfdcb9fb7c2-2021-03-24 12:59:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"3ZXqVkE/9hV2zCBua7viKY+4pIadbrc9+k9jJvrXBnE=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-                                                                        ],
-                                               "User-Agent":  [
-                                                                  "FxVersion/4.6.29812.02",
-                                                                  "OSName/Windows",
-                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
-                                                                  "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.5.0"
-                                                              ]
-                                           },
-                        "ResponseHeaders":  {
-                                                "Cache-Control":  [
-                                                                      "no-cache"
-                                                                  ],
-                                                "Pragma":  [
-                                                               "no-cache"
-                                                           ],
-                                                "x-ms-ratelimit-remaining-subscription-reads":  [
-                                                                                                    "9622"
-                                                                                                ],
-                                                "Server":  [
-                                                               "Microsoft-IIS/10.0",
-                                                               "Kestrel"
-                                                           ],
-                                                "Strict-Transport-Security":  [
-                                                                                  "max-age=31536000; includeSubDomains"
-                                                                              ],
-                                                "x-ms-request-id":  [
-                                                                        "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903"
-                                                                    ],
-                                                "X-Content-Type-Options":  [
-                                                                               "nosniff"
-                                                                           ],
-                                                "x-ms-client-request-id":  [
-                                                                               "0d24a075-52bb-4483-b1b9-6a1121a7569f"
-                                                                           ],
-                                                "x-ms-correlation-request-id":  [
-                                                                                    "96ec4e1e-7f56-450c-a513-a9837f9e3e1e"
-                                                                                ],
-                                                "x-ms-routing-request-id":  [
-                                                                                "CENTRALUSEUAP:20210324T125925Z:96ec4e1e-7f56-450c-a513-a9837f9e3e1e"
-                                                                            ],
-                                                "Date":  [
-                                                             "Tue, 21 Sep 2021 05:21:02 GMT"
-                                                         ],
-                                                "Content-Length":  [
-                                                                       "1479"
-                                                                   ],
-                                                "Content-Type":  [
-                                                                     "application/json"
-                                                                 ],
-                                                "Expires":  [
-                                                                "-1"
-                                                            ]
-                                            },
-                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903\",\r\n  \"name\": \"52e86ca3-c242-4c44-95c9-333f6137e903\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"0d24a075-52bb-4483-b1b9-6a1121a7569f ActivityId: 7c32b67d-7cf7-454a-904e-fecad871dd20\",\r\n    \"scenarioName\": \"DeleteRecoveryPlan\",\r\n    \"friendlyName\": \"Delete a recovery plan\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"de512464-bade-4fc4-b42c-8b9288253ec4\",\r\n        \"name\": \"DeleteRecoveryPlanTask\",\r\n        \"startTime\": \"2021-03-24T12:59:24.6462911Z\",\r\n        \"endTime\": \"2021-03-24T12:59:24.6613052Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Delete a recovery plan task\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-03-24T12:59:24.2921003Z\",\r\n    \"endTime\": \"2021-03-24T12:59:24Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"b3e8a699-d27b-45f7-92f0-50f281c16983\",\r\n    \"targetObjectName\": \"E2ERP\",\r\n    \"targetInstanceType\": \"RecoveryPlan\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"primaryVmmId\": \"03da55c0-1ac3-4220-bde5-9e4b3401eba1\",\r\n        \"primaryVmmName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n        \"recoveryVmmId\": \"27f2504e-87a4-46b9-9c0c-2ca6af910ad9\",\r\n        \"primaryFabricProviderId\": \"VMM\",\r\n        \"recoveryFabricProviderId\": \"VMM\"\r\n      }\r\n    }\r\n  }\r\n}",
-                        "StatusCode":  200
-                    }
-                ],
-    "Names":  {
-
-              },
-    "Variables":  {
-                      "SubscriptionId":  "b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c"
-                  }
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9319cf4f-1fb2-4308-b735-284e43f6a035"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "5f7f2757-c3f1-457e-86c8-e0d74160caad",
+          "5f7f2757-c3f1-457e-86c8-e0d74160caad"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "5f7f2757-c3f1-457e-86c8-e0d74160caad"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f7f2757-c3f1-457e-86c8-e0d74160caad"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210324T125921Z:5f7f2757-c3f1-457e-86c8-e0d74160caad"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:21 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "2343"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westcentralus\",\r\n      \"name\": \"ICMvault\",\r\n      \"etag\": \"W/\\\"datetime'2020-11-10T11%3A58%3A16.8044621Z'\\\"\",\r\n      \"identity\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"8268e557-da68-4177-a64b-2f1fc16b4dff\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointConnections\": [],\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"Enabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/ICMvault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"h2atest\",\r\n      \"etag\": \"W/\\\"datetime'2021-03-16T17%3A56%3A40.1158413Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"manualTest\",\r\n      \"etag\": \"W/\\\"datetime'2020-07-30T05%3A58%3A07.8830552Z'\\\"\",\r\n      \"identity\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"8186c1de-78f4-4e70-8925-a702b5685bb4\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointConnections\": [],\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"Enabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/manualTest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"MSITestError-ccy\",\r\n      \"etag\": \"W/\\\"datetime'2020-07-20T09%3A21%3A13.3629661Z'\\\"\",\r\n      \"identity\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"c4b32a12-c99a-4b8c-ae00-60ac83a31527\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/MSITestError-ccy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUmVjb3ZlcnlQbGFucy9FMkVSUD9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1616587161761)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191961761)\\/\",\"ClientRequestId\":\"eed7d834-2a00-417f-96f9-32717ff63ef7-2021-03-24 12:59:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6aBDqSGro1s6+oV8/wyIBLoTfQHx0lRsWyYrgDq/6YY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "9624"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "becf8fbc-cb69-421f-b90b-6cf69afcbdcb 3/24/2021 12:59:23 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
+        ],
+        "x-ms-correlation-request-id": [
+          "198b4e78-1e08-4d5b-907e-89678d787e67"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210324T125923Z:198b4e78-1e08-4d5b-907e-89678d787e67"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:21 GMT"
+        ],
+        "Content-Length": [
+          "2411"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP\",\r\n  \"name\": \"E2ERP\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationRecoveryPlans\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"E2ERP\",\r\n    \"primaryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866\",\r\n    \"primaryFabricFriendlyName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n    \"recoveryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be\",\r\n    \"recoveryFabricFriendlyName\": \"IDCLAB-A412.fareast.corp.microsoft.com\",\r\n    \"failoverDeploymentModel\": \"NotApplicable\",\r\n    \"replicationProviders\": [\r\n      \"HyperVReplica2012R2\"\r\n    ],\r\n    \"allowedOperations\": [\r\n      \"PlannedFailover\",\r\n      \"UnplannedFailover\",\r\n      \"TestFailover\"\r\n    ],\r\n    \"currentScenario\": null,\r\n    \"currentScenarioStatus\": null,\r\n    \"currentScenarioStatusDescription\": null,\r\n    \"groups\": [\r\n      {\r\n        \"groupType\": \"Shutdown\",\r\n        \"replicationProtectedItems\": [],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      },\r\n      {\r\n        \"groupType\": \"Failover\",\r\n        \"replicationProtectedItems\": [],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      },\r\n      {\r\n        \"groupType\": \"Boot\",\r\n        \"replicationProtectedItems\": [\r\n          {\r\n            \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n            \"virtualMachineId\": \"7655da1b-bff2-46f3-97d1-75d3cb863b4f\"\r\n          },\r\n          {\r\n            \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n            \"virtualMachineId\": \"a8d77b68-c910-4dbb-ae17-0c05ae59638a\"\r\n          }\r\n        ],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      },\r\n      {\r\n        \"groupType\": \"Boot\",\r\n        \"replicationProtectedItems\": [],\r\n        \"startGroupActions\": [],\r\n        \"endGroupActions\": []\r\n      }\r\n    ],\r\n    \"providerSpecificDetails\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationProtectedItems?$filter=RecoveryPlanName%20eq%20'E2ERP'&api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUHJvdGVjdGVkSXRlbXM/JGZpbHRlcj1SZWNvdmVyeVBsYW5OYW1lJTIwZXElMjAnRTJFUlAnJmFwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1616587163214)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191963214)\\/\",\"ClientRequestId\":\"5f73956b-7277-453b-bffb-c54a97ca0d52-2021-03-24 12:59:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ymBrGk4OqeNd8pJma5ElUGjvozSk/SsWFDotuBF820A=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "9623"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "becf8fbc-cb69-421f-b90b-6cf69afcbdcb 3/24/2021 12:59:23 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "becf8fbc-cb69-421f-b90b-6cf69afcbdcb"
+        ],
+        "x-ms-correlation-request-id": [
+          "7fb67ace-9317-41d9-b1d6-81c56283369d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210324T125923Z:7fb67ace-9317-41d9-b1d6-81c56283369d"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:21 GMT"
+        ],
+        "Content-Length": [
+          "9180"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n      \"name\": \"7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"ForE2EPowershell2\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectableItems/7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationRecoveryServicesProviders/03da55c0-1ac3-4220-bde5-9e4b3401eba1\",\r\n        \"primaryFabricFriendlyName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n        \"primaryFabricProvider\": \"VmmFabric\",\r\n        \"recoveryFabricFriendlyName\": \"IDCLAB-A412.fareast.corp.microsoft.com\",\r\n        \"recoveryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be\",\r\n        \"primaryProtectionContainerFriendlyName\": \"PrimaryForPowershellE2E\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"SecondaryForPowershellE2E\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Primary\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Normal\",\r\n        \"healthErrors\": [],\r\n        \"policyId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationPolicies/E2EPolicy1\",\r\n        \"policyFriendlyName\": \"E2EPolicy1\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": \"\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplica2012R2\",\r\n          \"lastReplicatedTime\": \"2021-03-24T18:23:06Z\",\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"ebddcaa5-00d4-442a-b879-df5cac2564b6\",\r\n              \"replicaNicId\": \"df327ed6-f116-4e3a-bc89-c5967cf26762\",\r\n              \"sourceNicArmId\": null,\r\n              \"vMNetworkName\": \"corp\",\r\n              \"recoveryVMNetworkId\": \"c3b4a310-b458-4fbd-93a4-58279b469716\",\r\n              \"ipConfigs\": [\r\n                {\r\n                  \"name\": null,\r\n                  \"isPrimary\": true,\r\n                  \"subnetName\": null,\r\n                  \"staticIPAddress\": null,\r\n                  \"ipAddressType\": \"Dynamic\",\r\n                  \"isSeletedForFailover\": true,\r\n                  \"recoverySubnetName\": null,\r\n                  \"recoveryStaticIPAddress\": null,\r\n                  \"recoveryIPAddressType\": \"Dynamic\",\r\n                  \"recoveryPublicIPAddressId\": null,\r\n                  \"recoveryLBBackendAddressPoolIds\": null,\r\n                  \"tfoSubnetName\": null,\r\n                  \"tfoStaticIPAddress\": null,\r\n                  \"tfoPublicIPAddressId\": null,\r\n                  \"tfoLBBackendAddressPoolIds\": null\r\n                }\r\n              ],\r\n              \"selectionType\": \"NotSelected\",\r\n              \"recoveryNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"recoveryNicName\": null,\r\n              \"recoveryNicResourceGroupName\": null,\r\n              \"reuseExistingNic\": false,\r\n              \"tfoRecoveryNicName\": null,\r\n              \"tfoRecoveryNicResourceGroupName\": null,\r\n              \"tfoReuseExistingNic\": false\r\n            }\r\n          ],\r\n          \"vmId\": \"7655da1b-bff2-46f3-97d1-75d3cb863b4f\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"OverNetwork\",\r\n            \"initialReplicationProgressPercentage\": \"0\"\r\n          },\r\n          \"vMDiskDetails\": [\r\n            {\r\n              \"maxSizeMB\": 40960,\r\n              \"vhdType\": \"Data\",\r\n              \"vhdId\": \"0ac13425-84b1-427d-bdeb-fe080b7e592d\",\r\n              \"vhdName\": null\r\n            }\r\n          ]\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be/replicationProtectionContainers/40270447-dcf6-44fa-9a1d-f10951b03f16\",\r\n        \"eventCorrelationId\": \"a8fe704e-346d-4ac1-a3d4-c1fd74da829c\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectedItems/a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n      \"name\": \"a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"ForE2EPowershell1\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationProtectionContainers/73a5ee52-eeda-4915-a155-0bedb4dc97f3/replicationProtectableItems/a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationRecoveryServicesProviders/03da55c0-1ac3-4220-bde5-9e4b3401eba1\",\r\n        \"primaryFabricFriendlyName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n        \"primaryFabricProvider\": \"VmmFabric\",\r\n        \"recoveryFabricFriendlyName\": \"IDCLAB-A412.fareast.corp.microsoft.com\",\r\n        \"recoveryFabricId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be\",\r\n        \"primaryProtectionContainerFriendlyName\": \"PrimaryForPowershellE2E\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"SecondaryForPowershellE2E\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Recovery\",\r\n        \"testFailoverState\": \"MarkedForDeletion\",\r\n        \"testFailoverStateDescription\": \"Cleaning up test environment\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Normal\",\r\n        \"healthErrors\": [],\r\n        \"policyId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationPolicies/E2EPolicy1\",\r\n        \"policyFriendlyName\": \"E2EPolicy1\",\r\n        \"lastSuccessfulFailoverTime\": \"2021-03-24T12:44:45.3813353Z\",\r\n        \"lastSuccessfulTestFailoverTime\": \"2021-03-24T12:34:25.2813743Z\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": \"\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplica2012R2\",\r\n          \"lastReplicatedTime\": \"2021-03-24T18:16:01Z\",\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"be8ed67a-8e98-45c3-94e9-b55885fcbe6b\",\r\n              \"replicaNicId\": \"4b0508e4-32df-48d6-90b5-b1b39d3e1cf8\",\r\n              \"sourceNicArmId\": null,\r\n              \"vMNetworkName\": \"corp\",\r\n              \"recoveryVMNetworkId\": \"c3b4a310-b458-4fbd-93a4-58279b469716\",\r\n              \"ipConfigs\": [\r\n                {\r\n                  \"name\": null,\r\n                  \"isPrimary\": true,\r\n                  \"subnetName\": null,\r\n                  \"staticIPAddress\": null,\r\n                  \"ipAddressType\": \"Dynamic\",\r\n                  \"isSeletedForFailover\": true,\r\n                  \"recoverySubnetName\": null,\r\n                  \"recoveryStaticIPAddress\": null,\r\n                  \"recoveryIPAddressType\": \"Dynamic\",\r\n                  \"recoveryPublicIPAddressId\": null,\r\n                  \"recoveryLBBackendAddressPoolIds\": null,\r\n                  \"tfoSubnetName\": null,\r\n                  \"tfoStaticIPAddress\": null,\r\n                  \"tfoPublicIPAddressId\": null,\r\n                  \"tfoLBBackendAddressPoolIds\": null\r\n                }\r\n              ],\r\n              \"selectionType\": \"NotSelected\",\r\n              \"recoveryNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoNetworkSecurityGroupId\": null,\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"recoveryNicName\": null,\r\n              \"recoveryNicResourceGroupName\": null,\r\n              \"reuseExistingNic\": false,\r\n              \"tfoRecoveryNicName\": null,\r\n              \"tfoRecoveryNicResourceGroupName\": null,\r\n              \"tfoReuseExistingNic\": false\r\n            }\r\n          ],\r\n          \"vmId\": \"a8d77b68-c910-4dbb-ae17-0c05ae59638a\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"None\",\r\n            \"initialReplicationProgressPercentage\": \"0\"\r\n          },\r\n          \"vMDiskDetails\": [\r\n            {\r\n              \"maxSizeMB\": 40960,\r\n              \"vhdType\": \"Data\",\r\n              \"vhdId\": \"2170d39a-235a-4299-87aa-1cab3d592243\",\r\n              \"vhdName\": null\r\n            }\r\n          ]\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/dd2d0ffb0d5ea0f71b9cccc631e90e119b73e9a7828297cc540bfc4fea4680be/replicationProtectionContainers/40270447-dcf6-44fa-9a1d-f10951b03f16\",\r\n        \"eventCorrelationId\": \"aed6121a-58a6-4605-ad71-55cc686d8d26\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUmVjb3ZlcnlQbGFucy9FMkVSUD9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0d24a075-52bb-4483-b1b9-6a1121a7569f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1616587163857)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191963857)\\/\",\"ClientRequestId\":\"0c2cdbe8-d977-4a07-b8c2-a456ba888116-2021-03-24 12:59:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TIDfRdzdEr8qAFlRKn67q8zBGYuVWG3RS72ZAMyc7JY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP/operationresults/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2021-06-01"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903",
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903"
+        ],
+        "Azure-AsyncOperation": [
+          "https://centraluseuap.management.azure.com/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationOperationStatus/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2021-06-01"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "0d24a075-52bb-4483-b1b9-6a1121a7569f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c32b67d-7cf7-454a-904e-fecad871dd20"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210324T125924Z:7c32b67d-7cf7-454a-904e-fecad871dd20"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:21 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy81MmU4NmNhMy1jMjQyLTRjNDQtOTVjOS0zMzNmNjEzN2U5MDM/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0d24a075-52bb-4483-b1b9-6a1121a7569f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1616587164900)\\/\",\"NotAfterTimestamp\":\"\\/Date(1617191964900)\\/\",\"ClientRequestId\":\"0182cda4-ee20-45b3-830c-bdfdcb9fb7c2-2021-03-24 12:59:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"3ZXqVkE/9hV2zCBua7viKY+4pIadbrc9+k9jJvrXBnE=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "9622"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "0d24a075-52bb-4483-b1b9-6a1121a7569f"
+        ],
+        "x-ms-correlation-request-id": [
+          "96ec4e1e-7f56-450c-a513-a9837f9e3e1e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20210324T125925Z:96ec4e1e-7f56-450c-a513-a9837f9e3e1e"
+        ],
+        "Date": [
+          "Wed, 03 Nov 2021 06:15:21 GMT"
+        ],
+        "Content-Length": [
+          "1479"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903\",\r\n  \"name\": \"52e86ca3-c242-4c44-95c9-333f6137e903\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"0d24a075-52bb-4483-b1b9-6a1121a7569f ActivityId: 7c32b67d-7cf7-454a-904e-fecad871dd20\",\r\n    \"scenarioName\": \"DeleteRecoveryPlan\",\r\n    \"friendlyName\": \"Delete a recovery plan\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"de512464-bade-4fc4-b42c-8b9288253ec4\",\r\n        \"name\": \"DeleteRecoveryPlanTask\",\r\n        \"startTime\": \"2021-03-24T12:59:24.6462911Z\",\r\n        \"endTime\": \"2021-03-24T12:59:24.6613052Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Delete a recovery plan task\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2021-03-24T12:59:24.2921003Z\",\r\n    \"endTime\": \"2021-03-24T12:59:24Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"b3e8a699-d27b-45f7-92f0-50f281c16983\",\r\n    \"targetObjectName\": \"E2ERP\",\r\n    \"targetInstanceType\": \"RecoveryPlan\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"primaryVmmId\": \"03da55c0-1ac3-4220-bde5-9e4b3401eba1\",\r\n        \"primaryVmmName\": \"IDCLAB-A495.fareast.corp.microsoft.com\",\r\n        \"recoveryVmmId\": \"27f2504e-87a4-46b9-9c0c-2ca6af910ad9\",\r\n        \"primaryFabricProviderId\": \"VMM\",\r\n        \"recoveryFabricProviderId\": \"VMM\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c"
+  }
 }

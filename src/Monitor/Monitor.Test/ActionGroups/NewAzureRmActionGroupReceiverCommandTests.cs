@@ -243,6 +243,59 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAzureRmReceiverCommandEventHubParametersProcessing()
+        {
+            Cmdlet.SetParameterSet("NewEventHubReceiver");
+            Cmdlet.EventHubReceiver = true;
+            Cmdlet.Name = "eventhub1";
+            Cmdlet.SubscriptionId = "5def922a-3ed4-49c1-b9fd-05ec533819a3";
+            Cmdlet.EventHubNameSpace = "eventhub1NameSpace1";
+            Cmdlet.EventHubName = "testEventHubName1";
+
+            Cmdlet.ExecuteCmdlet();
+
+            Func<PSEventHubReceiver, bool> verify = r =>
+            {
+                Assert.Equal("eventhub1", r.Name);
+                Assert.Equal("5def922a-3ed4-49c1-b9fd-05ec533819a3", r.SubscriptionId);
+                Assert.Equal("eventhub1NameSpace1", r.EventHubNameSpace);
+                Assert.Equal("testEventHubName1", r.EventHubName);
+                Assert.False(r.UseCommonAlertSchema);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSEventHubReceiver>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAzureRmReceiverCommandEventHubParametersWithExplicitUseCommandAlertSchemaParameterProcessing()
+        {
+            Cmdlet.SetParameterSet("NewEventHubReceiver");
+            Cmdlet.EventHubReceiver = true;
+            Cmdlet.Name = "eventhub1";
+            Cmdlet.SubscriptionId = "5def922a-3ed4-49c1-b9fd-05ec533819a3";
+            Cmdlet.EventHubNameSpace = "eventhub1NameSpace1";
+            Cmdlet.EventHubName = "testEventHubName1";
+            Cmdlet.UseCommonAlertSchema = true;
+
+            Cmdlet.ExecuteCmdlet();
+
+            Func<PSEventHubReceiver, bool> verify = r =>
+            {
+                Assert.Equal("eventhub1", r.Name);
+                Assert.Equal("5def922a-3ed4-49c1-b9fd-05ec533819a3", r.SubscriptionId);
+                Assert.Equal("eventhub1NameSpace1", r.EventHubNameSpace);
+                Assert.Equal("testEventHubName1", r.EventHubName);
+                Assert.True(r.UseCommonAlertSchema);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSEventHubReceiver>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRmReceiverCommandArmRoleParametersProcessing()
         {
             Cmdlet.SetParameterSet("NewArmRoleReceiver");

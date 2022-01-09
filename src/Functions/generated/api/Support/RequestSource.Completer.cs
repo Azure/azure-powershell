@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "rest".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("rest", "rest", global::System.Management.Automation.CompletionResultType.ParameterValue, "rest");
+                yield return new global::System.Management.Automation.CompletionResult("'rest'", "rest", global::System.Management.Automation.CompletionResultType.ParameterValue, "rest");
             }
         }
     }

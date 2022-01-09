@@ -22,6 +22,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -132,5 +133,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public SubResource HostGroup { get; set; }
 
         public CapacityReservationProfile CapacityReservation { get; set; }
+        public PSApplicationProfile ApplicationProfile { get; set; }
     }
 }

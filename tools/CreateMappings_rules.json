@@ -409,6 +409,7 @@
   },
   {
     "regex": "SignalR",
+    "group": "SignalR",
     "alias": "SignalR"
   },
   {
@@ -692,5 +693,22 @@
   {
     "alias": "Elastic",
     "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
+    "regex": "WebPubSub",
+    "group": "SignalR",
+    "alias": "Web PubSub"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
   }
 ]

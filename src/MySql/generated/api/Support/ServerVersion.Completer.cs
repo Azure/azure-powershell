@@ -28,15 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "5.6".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("5.6", "5.6", global::System.Management.Automation.CompletionResultType.ParameterValue, "5.6");
+                yield return new global::System.Management.Automation.CompletionResult("'5.6'", "5.6", global::System.Management.Automation.CompletionResultType.ParameterValue, "5.6");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "5.7".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("5.7", "5.7", global::System.Management.Automation.CompletionResultType.ParameterValue, "5.7");
+                yield return new global::System.Management.Automation.CompletionResult("'5.7'", "5.7", global::System.Management.Automation.CompletionResultType.ParameterValue, "5.7");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "8.0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("8.0", "8.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "8.0");
+                yield return new global::System.Management.Automation.CompletionResult("'8.0'", "8.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "8.0");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "8.0.21".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'8.0.21'", "8.0.21", global::System.Management.Automation.CompletionResultType.ParameterValue, "8.0.21");
             }
         }
     }

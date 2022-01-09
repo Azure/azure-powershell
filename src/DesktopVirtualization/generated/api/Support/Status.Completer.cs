@@ -28,51 +28,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Available".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Available", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
+                yield return new global::System.Management.Automation.CompletionResult("'Available'", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unavailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unavailable", "Unavailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unavailable");
+                yield return new global::System.Management.Automation.CompletionResult("'Unavailable'", "Unavailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unavailable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Shutdown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Shutdown", "Shutdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shutdown");
+                yield return new global::System.Management.Automation.CompletionResult("'Shutdown'", "Shutdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shutdown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disconnected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disconnected", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
+                yield return new global::System.Management.Automation.CompletionResult("'Disconnected'", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Upgrading".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Upgrading", "Upgrading", global::System.Management.Automation.CompletionResultType.ParameterValue, "Upgrading");
+                yield return new global::System.Management.Automation.CompletionResult("'Upgrading'", "Upgrading", global::System.Management.Automation.CompletionResultType.ParameterValue, "Upgrading");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UpgradeFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UpgradeFailed", "UpgradeFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpgradeFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'UpgradeFailed'", "UpgradeFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpgradeFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoHeartbeat".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoHeartbeat", "NoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoHeartbeat");
+                yield return new global::System.Management.Automation.CompletionResult("'NoHeartbeat'", "NoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoHeartbeat");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotJoinedToDomain".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotJoinedToDomain", "NotJoinedToDomain", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotJoinedToDomain");
+                yield return new global::System.Management.Automation.CompletionResult("'NotJoinedToDomain'", "NotJoinedToDomain", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotJoinedToDomain");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DomainTrustRelationshipLost".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DomainTrustRelationshipLost", "DomainTrustRelationshipLost", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainTrustRelationshipLost");
+                yield return new global::System.Management.Automation.CompletionResult("'DomainTrustRelationshipLost'", "DomainTrustRelationshipLost", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainTrustRelationshipLost");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SxSStackListenerNotReady".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SxSStackListenerNotReady", "SxSStackListenerNotReady", global::System.Management.Automation.CompletionResultType.ParameterValue, "SxSStackListenerNotReady");
+                yield return new global::System.Management.Automation.CompletionResult("'SxSStackListenerNotReady'", "SxSStackListenerNotReady", global::System.Management.Automation.CompletionResultType.ParameterValue, "SxSStackListenerNotReady");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FSLogixNotHealthy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FSLogixNotHealthy", "FSLogixNotHealthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "FSLogixNotHealthy");
+                yield return new global::System.Management.Automation.CompletionResult("'FSLogixNotHealthy'", "FSLogixNotHealthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "FSLogixNotHealthy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NeedsAssistance".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NeedsAssistance", "NeedsAssistance", global::System.Management.Automation.CompletionResultType.ParameterValue, "NeedsAssistance");
+                yield return new global::System.Management.Automation.CompletionResult("'NeedsAssistance'", "NeedsAssistance", global::System.Management.Automation.CompletionResultType.ParameterValue, "NeedsAssistance");
             }
         }
     }

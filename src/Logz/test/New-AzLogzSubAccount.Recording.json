@@ -1,0 +1,660 @@
+{
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$PUT+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"userInfo\": {\r\n      \"firstName\": \"Yao\",\r\n      \"lastName\": \"Lucas\",\r\n      \"emailAddress\": \"v-diya@microsoft.com\",\r\n      \"phoneNumber\": \"1111111111\"\r\n    },\r\n    \"planData\": {\r\n      \"usageType\": \"PAYG\",\r\n      \"billingCycle\": \"Monthly\",\r\n      \"planDetails\": \"100gb14days\",\r\n      \"effectiveDate\": \"2021-09-17T07:12:01.8731223Z\"\r\n    }\r\n  },\r\n  \"location\": \"westus2\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "398" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e559-0000-0800-0000-61443fcb0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/56d55149-7f0a-429f-a757-1873cd04c1e2*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/56d55149-7f0a-429f-a757-1873cd04c1e2*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview" ],
+        "x-ms-request-id": [ "56d55149-7f0a-429f-a757-1873cd04c1e2" ],
+        "x-ms-correlation-request-id": [ "675981ae-7970-4e67-8bd9-1cd505a7569d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071213Z:675981ae-7970-4e67-8bd9-1cd505a7569d" ],
+        "Date": [ "Fri, 17 Sep 2021 07:12:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "934" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl\",\"name\":\"subAccountsds1sl\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T07:12:06.7465785Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T07:12:06.7465785Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":null,\"enterpriseAppId\":null,\"singleSignOnUrl\":null},\"userInfo\":null,\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T07:12:01.8731223Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$GET+https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/56d55149-7f0a-429f-a757-1873cd04c1e2*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/56d55149-7f0a-429f-a757-1873cd04c1e2*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "12def7e7-1861-4bb1-8673-4562c49b0c2e" ],
+        "CommandName": [ "New-AzLogzSubAccount" ],
+        "FullCommandName": [ "New-AzLogzSubAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01007b40-0000-0800-0000-61443fe20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "cddd304b-9623-47dc-ad4e-35211d3849e3" ],
+        "x-ms-correlation-request-id": [ "06ad2c92-7d3d-4222-ba63-b004116b364b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071243Z:06ad2c92-7d3d-4222-ba63-b004116b364b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:12:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "589" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/56d55149-7f0a-429f-a757-1873cd04c1e2*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039\",\"name\":\"56d55149-7f0a-429f-a757-1873cd04c1e2*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039\",\"resourceId\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl\",\"status\":\"Succeeded\",\"startTime\":\"2021-09-17T07:12:09.8203568Z\",\"endTime\":\"2021-09-17T07:12:34.3804618Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$GET+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "12def7e7-1861-4bb1-8673-4562c49b0c2e" ],
+        "CommandName": [ "New-AzLogzSubAccount" ],
+        "FullCommandName": [ "New-AzLogzSubAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000035a-0000-0800-0000-61443fe20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "81adf2de-450f-4b51-9842-88f91b9c36a1" ],
+        "x-ms-correlation-request-id": [ "c383a35f-43bf-4279-a827-0932daab90ca" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071243Z:c383a35f-43bf-4279-a827-0932daab90ca" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:12:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "896" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl\",\"name\":\"subAccountsds1sl\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T07:12:06.7465785Z\",\"lastModifiedBy\":\"a5472e16-e1d2-4bbe-81b3-ecdcd459b536\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-17T07:12:34.0649171Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342590\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T07:12:01.873Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$PATCH+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key01\": \"1\",\r\n    \"key02\": \"2\",\r\n    \"key03\": \"3\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "78" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000045a-0000-0800-0000-61443fed0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c52183de-144b-4cdf-a46e-b0169f52fbbd" ],
+        "x-ms-correlation-request-id": [ "5feaf44c-387b-40ae-8500-012340e4521f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071247Z:5feaf44c-387b-40ae-8500-012340e4521f" ],
+        "Date": [ "Fri, 17 Sep 2021 07:12:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "918" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl\",\"name\":\"subAccountsds1sl\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"tags\":{\"key01\":\"1\",\"key02\":\"2\",\"key03\":\"3\"},\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T07:12:06.7465785Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T07:12:44.6616647Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342590\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T07:12:01.873Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$DELETE+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "23a3945b-dc44-4a5b-9368-719275b98caa" ],
+        "CommandName": [ "Remove-AzLogzSubAccount" ],
+        "FullCommandName": [ "Remove-AzLogzSubAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000055a-0000-0800-0000-61443ff00000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview" ],
+        "x-ms-request-id": [ "fe80a7fd-e0f2-41f8-b730-2beec8571353" ],
+        "x-ms-correlation-request-id": [ "263e4666-0fe8-4ca4-a785-71e954f6aad8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071249Z:263e4666-0fe8-4ca4-a785-71e954f6aad8" ],
+        "Date": [ "Fri, 17 Sep 2021 07:12:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$GET+https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "23a3945b-dc44-4a5b-9368-719275b98caa" ],
+        "CommandName": [ "Remove-AzLogzSubAccount" ],
+        "FullCommandName": [ "Remove-AzLogzSubAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01007542-0000-0800-0000-614440070000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "051db7d6-a5d3-4c0b-bc21-481915d2184d" ],
+        "x-ms-correlation-request-id": [ "3ead8acd-80bc-4129-a984-061b38148404" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071319Z:3ead8acd-80bc-4129-a984-061b38148404" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "589" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039\",\"name\":\"fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039\",\"resourceId\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl\",\"status\":\"Succeeded\",\"startTime\":\"2021-09-17T07:12:47.7352789Z\",\"endTime\":\"2021-09-17T07:13:11.4854575Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$GET+https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "23a3945b-dc44-4a5b-9368-719275b98caa" ],
+        "CommandName": [ "Remove-AzLogzSubAccount" ],
+        "FullCommandName": [ "Remove-AzLogzSubAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01007542-0000-0800-0000-614440070000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+        "x-ms-request-id": [ "536080cc-08b0-4d22-a953-538aa3b064f2" ],
+        "x-ms-correlation-request-id": [ "999c5363-1f81-4735-a38d-29e333257881" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071319Z:999c5363-1f81-4735-a38d-29e333257881" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "589" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039\",\"name\":\"fe80a7fd-e0f2-41f8-b730-2beec8571353*050AF275F9DEC2417DE497191D71D12730C0E20F8B20B17703CAD4B7C93AD039\",\"resourceId\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountsds1sl\",\"status\":\"Succeeded\",\"startTime\":\"2021-09-17T07:12:47.7352789Z\",\"endTime\":\"2021-09-17T07:13:11.4854575Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUCase+$GET+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts?api-version=2020-10-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "ecd7c038-5212-4c99-9758-9922a6411544" ],
+        "CommandName": [ "Get-AzLogzSubAccount" ],
+        "FullCommandName": [ "Get-AzLogzSubAccount_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "24c95c3d-f742-4e92-a897-ec6653dbebeb", "217f1b44-a58f-482e-b720-08ee76e443f4", "1ffb88b8-cbbb-4e93-8118-53a55406d276", "a82f7352-b0f8-451c-afbc-8563e8d9fe23" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "f78e19d1-618f-4814-a780-6872a2c2c6e0" ],
+        "x-ms-correlation-request-id": [ "f78e19d1-618f-4814-a780-6872a2c2c6e0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071321Z:f78e19d1-618f-4814-a780-6872a2c2c6e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "1804" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountx50eh2\",\"name\":\"subAccountx50eh2\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:57:26.2475849Z\",\"lastModifiedBy\":\"a5472e16-e1d2-4bbe-81b3-ecdcd459b536\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-17T05:57:46.707144Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342550\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T05:57:24.783Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}},{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccount6en328\",\"name\":\"subAccount6en328\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:58:01.1775592Z\",\"lastModifiedBy\":\"a5472e16-e1d2-4bbe-81b3-ecdcd459b536\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-17T05:58:21.2565509Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342555\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T05:57:59.551Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$PUT+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"userInfo\": {\r\n      \"firstName\": \"Yao\",\r\n      \"lastName\": \"Lucas\",\r\n      \"emailAddress\": \"v-diya@microsoft.com\",\r\n      \"phoneNumber\": \"1111111111\"\r\n    },\r\n    \"planData\": {\r\n      \"usageType\": \"PAYG\",\r\n      \"billingCycle\": \"Monthly\",\r\n      \"planDetails\": \"100gb14days\",\r\n      \"effectiveDate\": \"2021-09-17T07:13:21.5126350Z\"\r\n    }\r\n  },\r\n  \"location\": \"westus2\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "398" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000d5a-0000-0800-0000-614440140000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/768fc779-d00b-4451-91d4-e90832aced60*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/768fc779-d00b-4451-91d4-e90832aced60*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview" ],
+        "x-ms-request-id": [ "768fc779-d00b-4451-91d4-e90832aced60" ],
+        "x-ms-correlation-request-id": [ "d433ea64-5ff2-4a08-beec-18ca919ed981" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071326Z:d433ea64-5ff2-4a08-beec-18ca919ed981" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "933" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl\",\"name\":\"subAccountkln1sl\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T07:13:23.4217207Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T07:13:23.4217207Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":null,\"enterpriseAppId\":null,\"singleSignOnUrl\":null},\"userInfo\":null,\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T07:13:21.512635Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$GET+https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/768fc779-d00b-4451-91d4-e90832aced60*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/768fc779-d00b-4451-91d4-e90832aced60*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "75ab6d9a-c2b5-4bd6-bb18-97bd1c0273a2" ],
+        "CommandName": [ "New-AzLogzSubAccount" ],
+        "FullCommandName": [ "New-AzLogzSubAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01002d44-0000-0800-0000-614440290000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
+        "x-ms-request-id": [ "b52ae162-dbe5-4b56-9340-bd095b8d398e" ],
+        "x-ms-correlation-request-id": [ "62ba1ea3-f204-4a00-8b13-42103a9d3d4f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071356Z:62ba1ea3-f204-4a00-8b13-42103a9d3d4f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "589" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/768fc779-d00b-4451-91d4-e90832aced60*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A\",\"name\":\"768fc779-d00b-4451-91d4-e90832aced60*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A\",\"resourceId\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl\",\"status\":\"Succeeded\",\"startTime\":\"2021-09-17T07:13:24.6253218Z\",\"endTime\":\"2021-09-17T07:13:45.6706507Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$GET+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "75ab6d9a-c2b5-4bd6-bb18-97bd1c0273a2" ],
+        "CommandName": [ "New-AzLogzSubAccount" ],
+        "FullCommandName": [ "New-AzLogzSubAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000945a-0000-0800-0000-614440290000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c3324818-806f-40ab-b374-7eb43b447873" ],
+        "x-ms-correlation-request-id": [ "b01e3125-c5b6-4006-8b73-ea5805f81067" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071356Z:b01e3125-c5b6-4006-8b73-ea5805f81067" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "896" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl\",\"name\":\"subAccountkln1sl\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T07:13:23.4217207Z\",\"lastModifiedBy\":\"a5472e16-e1d2-4bbe-81b3-ecdcd459b536\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-17T07:13:45.5700386Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342595\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T07:13:21.512Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$PATCH+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key01\": \"1\",\r\n    \"key02\": \"2\",\r\n    \"key03\": \"3\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "78" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000955a-0000-0800-0000-614440350000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "95a3afcd-3226-4287-9228-c6cb0e57cf1e" ],
+        "x-ms-correlation-request-id": [ "7e8ff607-c190-497c-bb56-e8a3f31f89e5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071359Z:7e8ff607-c190-497c-bb56-e8a3f31f89e5" ],
+        "Date": [ "Fri, 17 Sep 2021 07:13:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "918" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl\",\"name\":\"subAccountkln1sl\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"tags\":{\"key01\":\"1\",\"key02\":\"2\",\"key03\":\"3\"},\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T07:13:23.4217207Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T07:13:57.2718021Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342595\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T07:13:21.512Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$DELETE+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "34694f1f-4dfa-4333-8009-bc6859ec0bcd" ],
+        "CommandName": [ "Remove-AzLogzSubAccount" ],
+        "FullCommandName": [ "Remove-AzLogzSubAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000975a-0000-0800-0000-614440380000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview" ],
+        "x-ms-request-id": [ "485dc36b-335e-4e71-a5db-b62be57354d5" ],
+        "x-ms-correlation-request-id": [ "ae0db735-698e-45bd-9d90-7a68d898e481" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071401Z:ae0db735-698e-45bd-9d90-7a68d898e481" ],
+        "Date": [ "Fri, 17 Sep 2021 07:14:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$GET+https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "34694f1f-4dfa-4333-8009-bc6859ec0bcd" ],
+        "CommandName": [ "Remove-AzLogzSubAccount" ],
+        "FullCommandName": [ "Remove-AzLogzSubAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01001c46-0000-0800-0000-6144404e0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
+        "x-ms-request-id": [ "178d6e79-cae1-4b15-8e45-73f040b80081" ],
+        "x-ms-correlation-request-id": [ "a48883b3-ccb1-44be-a18d-8564e945bda3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071431Z:a48883b3-ccb1-44be-a18d-8564e945bda3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:14:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "589" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A\",\"name\":\"485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A\",\"resourceId\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl\",\"status\":\"Succeeded\",\"startTime\":\"2021-09-17T07:13:59.7362076Z\",\"endTime\":\"2021-09-17T07:14:22.4442769Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$GET+https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "34694f1f-4dfa-4333-8009-bc6859ec0bcd" ],
+        "CommandName": [ "Remove-AzLogzSubAccount" ],
+        "FullCommandName": [ "Remove-AzLogzSubAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01001c46-0000-0800-0000-6144404e0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
+        "x-ms-request-id": [ "b6619c49-24ed-4a11-995a-9eef33be7424" ],
+        "x-ms-correlation-request-id": [ "3dc93721-4b01-481e-81a1-239211458a06" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071431Z:3dc93721-4b01-481e-81a1-239211458a06" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:14:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "589" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Logz/locations/WESTUS2/operationStatuses/485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A\",\"name\":\"485dc36b-335e-4e71-a5db-b62be57354d5*03A96A9EE17252B85B4980EFDE7A46D61CC0C10CBBB21027C6178E83D5E6C98A\",\"resourceId\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountkln1sl\",\"status\":\"Succeeded\",\"startTime\":\"2021-09-17T07:13:59.7362076Z\",\"endTime\":\"2021-09-17T07:14:22.4442769Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzSubAccount+[NoContext]+CRUViaIdentityCase+$GET+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts?api-version=2020-10-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "ca31d578-f37d-4bd0-b0d9-279bc29b4968" ],
+        "CommandName": [ "Get-AzLogzSubAccount" ],
+        "FullCommandName": [ "Get-AzLogzSubAccount_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "4e7fe67a-d021-4b3f-861b-15f6ea389e5c", "a574bea3-b132-4466-8c95-f545104abfa8", "3d851591-24d1-431e-af55-2f43364c13f8", "97bb028d-9f55-405c-a25d-2f657186d8d4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "8e355185-d475-4ac5-93f7-2aeabd25b700" ],
+        "x-ms-correlation-request-id": [ "8e355185-d475-4ac5-93f7-2aeabd25b700" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T071433Z:8e355185-d475-4ac5-93f7-2aeabd25b700" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:14:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "1804" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccountx50eh2\",\"name\":\"subAccountx50eh2\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:57:26.2475849Z\",\"lastModifiedBy\":\"a5472e16-e1d2-4bbe-81b3-ecdcd459b536\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-17T05:57:46.707144Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342550\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T05:57:24.783Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}},{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-wscj87/accounts/subAccount6en328\",\"name\":\"subAccount6en328\",\"type\":\"microsoft.logz/monitors/accounts\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:58:01.1775592Z\",\"lastModifiedBy\":\"a5472e16-e1d2-4bbe-81b3-ecdcd459b536\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-17T05:58:21.2565509Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"logzOrganizationProperties\":{\"companyName\":\"monitor-wscj87\",\"id\":\"342555\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"Monthly\",\"planDetails\":\"100gb14days\",\"effectiveDate\":\"2021-09-17T05:57:59.551Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}]}",
+      "isContentBase64": false
+    }
+  }
+}

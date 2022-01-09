@@ -123,7 +123,7 @@ function Test-AzMySqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('DatabaseName')
         }
         
-        $Password = $PSBoundParameters['AdministratorLoginPassword']
+        $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
         $AdministratorUserName = [string]::Empty
@@ -134,7 +134,10 @@ function Test-AzMySqlFlexibleServerConnect {
 
         $Server = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $HostAddr = $Server.FullyQualifiedDomainName
-        
+
+        if ($Server.NetworkPublicNetworkAccess -eq 'Disabled'){
+            Write-Host "You have to run the test cmdlet in the subnet your server is linked."
+        }
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {
             $AdministratorUserName = $Server.AdministratorLogin
         }
@@ -144,7 +147,7 @@ function Test-AzMySqlFlexibleServerConnect {
                 Open-MySqlConnection -Database $DatabaseName -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
             }
             else {
-                Open-MySqlConnection -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
+                Open-MySqlConnection -Database "mysql" -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
             }
         } catch {
             Write-Host $_.Exception.GetType().FullName

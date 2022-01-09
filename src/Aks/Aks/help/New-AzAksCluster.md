@@ -17,13 +17,16 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-NodeSetPriority <String>] [-NodePoolMode <String>] [-NodeScaleSetEvictionPolicy <String>]
  [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>] [-SubnetName <String>] [-EnableRbac]
  [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
- [-NetworkPlugin <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-ResourceGroupName] <String>
- [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>]
- [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
- [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
- [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>]
- [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-NetworkPlugin <String>] [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>]
+ [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabel <Hashtable>]
+ [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey]
+ [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
+ [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +83,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AksCustomHeader
+Aks custom headers used for building Kubernetes network.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -112,6 +130,36 @@ Accept wildcard characters: False
 
 ### -DnsNamePrefix
 The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsServiceIP
+DNS service IP used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DockerBridgeCidr
+Docker bridge cidr used for building Kubernetes network.
 
 ```yaml
 Type: System.String
@@ -276,6 +324,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkPolicy
+Network policy used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeCount
 The default number of nodes for the node pools.
 
@@ -356,6 +419,21 @@ Size in GB of the OS disk for each node in the node pool. Minimum 30 GB.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePoolLabel
+Node pool labels used for building Kubernetes network.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -456,6 +534,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PodCidr
+Pod cidr used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name.
 
@@ -466,6 +559,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceCidr
+Service cidr used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

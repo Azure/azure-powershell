@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., Directory.Build.targets))\Directory.Build.targets" />
   <Target Name ="BuildAssemblyLoadContextProject" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
-    <Exec Command="dotnet msbuild ../AuthenticationAssemblyLoadContext/AuthenticationAssemblyLoadContext.csproj"/>
+    <Exec Command="dotnet build ../AuthenticationAssemblyLoadContext/AuthenticationAssemblyLoadContext.csproj"/>
   </Target>
   <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
     <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/AddModulePsm1Dependency.ps1' -ModuleFolder '$(OutDir)' -IgnorePwshVersion &quot;" />

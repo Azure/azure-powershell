@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServiceIncident".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ServiceIncident", "ServiceIncident", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceIncident");
+                yield return new global::System.Management.Automation.CompletionResult("'ServiceIncident'", "ServiceIncident", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceIncident");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AppDeployment".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AppDeployment", "AppDeployment", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppDeployment");
+                yield return new global::System.Management.Automation.CompletionResult("'AppDeployment'", "AppDeployment", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppDeployment");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AppCrash".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AppCrash", "AppCrash", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppCrash");
+                yield return new global::System.Management.Automation.CompletionResult("'AppCrash'", "AppCrash", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppCrash");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RuntimeIssueDetected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RuntimeIssueDetected", "RuntimeIssueDetected", global::System.Management.Automation.CompletionResultType.ParameterValue, "RuntimeIssueDetected");
+                yield return new global::System.Management.Automation.CompletionResult("'RuntimeIssueDetected'", "RuntimeIssueDetected", global::System.Management.Automation.CompletionResultType.ParameterValue, "RuntimeIssueDetected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AseDeployment".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AseDeployment", "AseDeployment", global::System.Management.Automation.CompletionResultType.ParameterValue, "AseDeployment");
+                yield return new global::System.Management.Automation.CompletionResult("'AseDeployment'", "AseDeployment", global::System.Management.Automation.CompletionResultType.ParameterValue, "AseDeployment");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserIssue".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserIssue", "UserIssue", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserIssue");
+                yield return new global::System.Management.Automation.CompletionResult("'UserIssue'", "UserIssue", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserIssue");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PlatformIssue".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PlatformIssue", "PlatformIssue", global::System.Management.Automation.CompletionResultType.ParameterValue, "PlatformIssue");
+                yield return new global::System.Management.Automation.CompletionResult("'PlatformIssue'", "PlatformIssue", global::System.Management.Automation.CompletionResultType.ParameterValue, "PlatformIssue");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Other".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Other", "Other", global::System.Management.Automation.CompletionResultType.ParameterValue, "Other");
+                yield return new global::System.Management.Automation.CompletionResult("'Other'", "Other", global::System.Management.Automation.CompletionResultType.ParameterValue, "Other");
             }
         }
     }

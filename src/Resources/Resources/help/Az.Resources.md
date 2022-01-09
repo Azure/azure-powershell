@@ -234,6 +234,9 @@ Creates a new Template Spec.
 ### [New-AzTenantDeployment](New-AzTenantDeployment.md)
 Create a deployment at tenant scope
 
+### [Publish-AzBicepModule](Publish-AzBicepModule.md)
+Publishes a Bicep file to a registry.
+
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
 

@@ -37,6 +37,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVpnSiteIsSecurity()
+        {
+            TestRunner.RunTestScript("Test-VpnSiteIsSecurity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestCortexExpressRouteCRUD()
         {

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source
@@ -16,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzKubernetesConfiguration_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Alias("Remove-AzK8sConfiguration")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Description(@"This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Generated]

@@ -30,24 +30,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public SuggestionAcceptedTelemetryData SuggestionAcceptedData { get; internal set; }
         public ParameterMapTelemetryData ParameterMapData { get; internal set; }
         public IList<TelemetryRecord> RecordedTelemetry { get; internal set; } = new List<TelemetryRecord>();
+        public IList<ITelemetryData> DispatchedTelemetry { get; internal set; } = new List<ITelemetryData>();
+        public AggregatedTelemetryData RecordedAggregatedData { get; private set; }
+        public bool FlushAtDispatch { get; set; }
 
-        private int _expctedTelemetryRecordCount = 1;
-        public int ExceptedTelemetryRecordCount
+        private int _expctedTelemetryDispatchCount = 1;
+        public int ExceptedTelemetryDispatchCount
         {
             get
             {
-                return _expctedTelemetryRecordCount;
+                return _expctedTelemetryDispatchCount;
             }
             set
             {
                 RecordedTelemetry.Clear();
-                _expctedTelemetryRecordCount = value;
+                DispatchedTelemetry.Clear();
+                _expctedTelemetryDispatchCount = value;
             }
         }
 
         public TaskCompletionSource HistoryTaskCompletionSource { get; private set; }
         public TaskCompletionSource RequestPredictionTaskCompletionSource { get; private set; }
-        public TaskCompletionSource SendTelemetryTaskCompletionSource { get; private set; }
+        public TaskCompletionSource DispatchTelemetryTaskCompletionSource { get; private set; }
 
         public MockAzPredictorTelemetryClient() : base(new MockAzContext())
         {
@@ -97,11 +101,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             ParameterMapData = telemetryData;
         }
 
+        public void FlushTelemetry() => SendAggregatedTelemetryData();
+
         public void ResetWaitingTasks()
         {
             HistoryTaskCompletionSource = new TaskCompletionSource();
             RequestPredictionTaskCompletionSource  = new TaskCompletionSource();
-            SendTelemetryTaskCompletionSource = new TaskCompletionSource();
+            DispatchTelemetryTaskCompletionSource = new TaskCompletionSource();
             HistoryData = default;
             RequestPredictionData = default;
         }
@@ -111,14 +117,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             return null;
         }
 
+        protected override void DispatchTelemetryData(ITelemetryData telemetryData)
+        {
+            base.DispatchTelemetryData(telemetryData);
+            DispatchedTelemetry.Add(telemetryData);
+
+            if (DispatchedTelemetry.Count == ExceptedTelemetryDispatchCount)
+            {
+                RecordedAggregatedData = CachedAggregatedTelemetryData;
+
+                if (FlushAtDispatch && base.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize > 0)
+                {
+                    CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
+                    SendAggregatedTelemetryData();
+                }
+
+                DispatchTelemetryTaskCompletionSource?.TrySetResult();
+            }
+        }
+
         protected override void SendTelemetry(string eventName, IDictionary<string, string> properties)
         {
             RecordedTelemetry.Add(new TelemetryRecord(eventName, properties));
-
-            if (RecordedTelemetry.Count == ExceptedTelemetryRecordCount)
-            {
-                SendTelemetryTaskCompletionSource?.TrySetResult();
-            }
         }
     }
 }

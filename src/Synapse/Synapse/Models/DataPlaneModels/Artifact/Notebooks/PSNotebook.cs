@@ -13,12 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -30,36 +28,40 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.BigDataPool = new PSBigDataPoolReference(notebook?.BigDataPool);
             this.SessionProperties = new PSNotebookSessionProperties(notebook?.SessionProperties);
             this.Metadata = new PSNotebookMetadata(notebook?.Metadata);
+            this.Folder = new PSNotebookFolder(notebook?.Folder);
             this.NotebookFormat = notebook?.Nbformat;
             this.NotebookFormatMinor = notebook?.NbformatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
-            var propertiesEnum = notebook?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebook?.AdditionalProperties;
         }
 
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
+        [JsonIgnore]
         public PSBigDataPoolReference BigDataPool { get; set; }
 
+        [JsonProperty(PropertyName = "sessionProperties")]
         public PSNotebookSessionProperties SessionProperties { get; set; }
 
+        [JsonProperty(PropertyName = "metadata")]
         public PSNotebookMetadata Metadata { get; set; }
 
+        [JsonIgnore]
+        public PSNotebookFolder Folder { get; set; }
+
         [DefaultValue(4)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, PropertyName = "nbformat")]
         public int? NotebookFormat { get; set; }
 
         [DefaultValue(2)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, PropertyName = "nbformat_minor")]
         public int? NotebookFormatMinor { get; set; }
 
+        [JsonProperty(PropertyName = "cells")]
         public IList<PSNotebookCell> Cells { get; set; }
 
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
     }
 }

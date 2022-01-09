@@ -28,47 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Replication".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Replication", "Replication", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replication");
+                yield return new global::System.Management.Automation.CompletionResult("'Replication'", "Replication", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replication");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestFailover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TestFailover", "TestFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestFailover");
+                yield return new global::System.Management.Automation.CompletionResult("'TestFailover'", "TestFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestFailover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Configuration".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Configuration", "Configuration", global::System.Management.Automation.CompletionResultType.ParameterValue, "Configuration");
+                yield return new global::System.Management.Automation.CompletionResult("'Configuration'", "Configuration", global::System.Management.Automation.CompletionResultType.ParameterValue, "Configuration");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FabricInfrastructure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FabricInfrastructure", "FabricInfrastructure", global::System.Management.Automation.CompletionResultType.ParameterValue, "FabricInfrastructure");
+                yield return new global::System.Management.Automation.CompletionResult("'FabricInfrastructure'", "FabricInfrastructure", global::System.Management.Automation.CompletionResultType.ParameterValue, "FabricInfrastructure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VersionExpiry".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VersionExpiry", "VersionExpiry", global::System.Management.Automation.CompletionResultType.ParameterValue, "VersionExpiry");
+                yield return new global::System.Management.Automation.CompletionResult("'VersionExpiry'", "VersionExpiry", global::System.Management.Automation.CompletionResultType.ParameterValue, "VersionExpiry");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateInfra".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateInfra", "AgentAutoUpdateInfra", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateInfra");
+                yield return new global::System.Management.Automation.CompletionResult("'AgentAutoUpdateInfra'", "AgentAutoUpdateInfra", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateInfra");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateArtifactDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateArtifactDeleted", "AgentAutoUpdateArtifactDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateArtifactDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'AgentAutoUpdateArtifactDeleted'", "AgentAutoUpdateArtifactDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateArtifactDeleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateRunAsAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateRunAsAccount", "AgentAutoUpdateRunAsAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccount");
+                yield return new global::System.Management.Automation.CompletionResult("'AgentAutoUpdateRunAsAccount'", "AgentAutoUpdateRunAsAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccount");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateRunAsAccountExpiry".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateRunAsAccountExpiry", "AgentAutoUpdateRunAsAccountExpiry", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccountExpiry");
+                yield return new global::System.Management.Automation.CompletionResult("'AgentAutoUpdateRunAsAccountExpiry'", "AgentAutoUpdateRunAsAccountExpiry", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccountExpiry");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateRunAsAccountExpired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateRunAsAccountExpired", "AgentAutoUpdateRunAsAccountExpired", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccountExpired");
+                yield return new global::System.Management.Automation.CompletionResult("'AgentAutoUpdateRunAsAccountExpired'", "AgentAutoUpdateRunAsAccountExpired", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccountExpired");
             }
         }
     }

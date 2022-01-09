@@ -123,13 +123,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 OutputFolder = ResolveUserPath(OutputFolder);
 
                 string mainTemplateFileName = $"{parentTemplateSpec.Name}.{specificVersion.Name}.json";
+                string uiFormDefinitionFileName = $"{parentTemplateSpec.Name}.{specificVersion.Name}.uiformdefinition.json";
                 string fullRootTemplateFilePath = Path.GetFullPath(
                     Path.Combine(OutputFolder, mainTemplateFileName)
                 );
 
                 if (ShouldProcess(specificVersion.Id, $"Export to '{fullRootTemplateFilePath}'"))
                 {
-                    TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, mainTemplateFileName);
+                    TemplateSpecPackagingEngine.Unpack(
+                        packagedTemplate, OutputFolder, mainTemplateFileName, uiFormDefinitionFileName);
                 }
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", fullRootTemplateFilePath));

@@ -100,8 +100,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            //TODO: Must be removed after Compute team add real logic
-            AzureStorageService servie = new AzureStorageService();
 
             base.ExecuteCmdlet();
 

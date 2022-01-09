@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Extensions;
+    using System;
 
     /// <summary>Create a new Kubernetes Source Control Configuration.</summary>
     /// <remarks>
@@ -13,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKubernetesConfiguration_CreateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Alias("New-AzK8sConfiguration")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Description(@"Create a new Kubernetes Source Control Configuration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Generated]
@@ -130,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Values override for the operator Helm chart.",
         SerializedName = @"chartValues",
         PossibleTypes = new [] { typeof(string) })]
-        public string HelmOperatorChartValues { get => SourceControlConfigurationBody.HelmOperatorPropertyChartValue ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartValue = value; }
+        public string HelmOperatorChartValue { get => SourceControlConfigurationBody.HelmOperatorPropertyChartValue ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartValue = value; }
 
         /// <summary>Version of the operator Helm chart.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of the operator Helm chart.")]
@@ -304,7 +306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances",
         SerializedName = @"sshKnownHostsContents",
         PossibleTypes = new [] { typeof(string) })]
-        public string SshKnownHosts { get => SourceControlConfigurationBody.SshKnownHostsContent ?? null; set => SourceControlConfigurationBody.SshKnownHostsContent = value; }
+        public string SshKnownHost { get => SourceControlConfigurationBody.SshKnownHostsContent ?? null; set => SourceControlConfigurationBody.SshKnownHostsContent = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -412,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Events.Debug:

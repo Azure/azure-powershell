@@ -17,5 +17,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     public static class Constants
     {
         public const string DefaultMsiAccountIdPrefix = "MSI@";
+
+        /// <summary>
+        /// Access token for Microsoft Graph service.
+        /// </summary>
+        public const string MicrosoftGraphAccessToken = "MicrosoftGraphAccessToken";
     }
 }

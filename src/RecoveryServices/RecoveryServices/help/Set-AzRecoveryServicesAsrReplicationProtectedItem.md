@@ -23,8 +23,8 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-DiskTag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryNicTag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryAvailabilityZone <String>] [-RecoveryProximityPlacementGroupId <String>]
- [-RecoveryVirtualMachineScaleSetId <String>] [-EnableAcceleratedNetworkingOnRecovery]
- [-RecoveryBootDiagStorageAccountId <String>]
+ [-RecoveryVirtualMachineScaleSetId <String>] [-RecoveryCapacityReservationGroupId <String>]
+ [-EnableAcceleratedNetworkingOnRecovery] [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
@@ -364,6 +364,21 @@ Accept wildcard characters: False
 
 ### -RecoveryBootDiagStorageAccountId
 Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryCapacityReservationGroupId
+Specify the capacity reservation group Id to be used by the failover VM in target recovery region.
 
 ```yaml
 Type: System.String

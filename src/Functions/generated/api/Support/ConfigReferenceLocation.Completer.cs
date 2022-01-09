@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ApplicationSetting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ApplicationSetting", "ApplicationSetting", global::System.Management.Automation.CompletionResultType.ParameterValue, "ApplicationSetting");
+                yield return new global::System.Management.Automation.CompletionResult("'ApplicationSetting'", "ApplicationSetting", global::System.Management.Automation.CompletionResultType.ParameterValue, "ApplicationSetting");
             }
         }
     }

@@ -58,5 +58,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ResetAzureKubernetesServicePrincipal");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpgradeKubernetesVersion()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpgradeKubernetesVersion");
+        }
     }
 }

@@ -131,6 +131,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
         public List<string []> KeyProperty { get; set; }
 
+        /// <summary>
+        /// Indicates whether DisableLocalAuth is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
+        public SwitchParameter DisableLocalAuth { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Update a EventHub namespace 
@@ -142,11 +149,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 {
                     if (ParameterSetName.Equals(IdentityUpdateParameterSet))
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, null, null, null));
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, null, null, null, DisableLocalAuth.IsPresent));
                     }
                     else
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperty));
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperty, DisableLocalAuth.IsPresent));
                     }                   
                     
                 }

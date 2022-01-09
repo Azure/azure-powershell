@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Build bicep file &apos;{0}&apos; to json failed..
+        /// </summary>
+        internal static string BuildBicepFileToJsonFailed {
+            get {
+                return ResourceManager.GetString("BuildBicepFileToJsonFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling active deployment ....
         /// </summary>
         internal static string CancelDeploymentMessage {

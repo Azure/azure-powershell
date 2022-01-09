@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
 using System.Net;
+
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
@@ -128,16 +128,23 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
-            var asigneeID = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
+            var assigneeID = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
 
-            string asigneeObjectType = parameters.ADObjectFilter?.ObjectType;
-            if (string.IsNullOrWhiteSpace(asigneeObjectType))
+            string assigneeObjectType = parameters.ADObjectFilter?.ObjectType;
+            if (string.IsNullOrWhiteSpace(assigneeObjectType))
             {
-                var asigneeObject = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asigneeID }).SingleOrDefault();
-                asigneeObjectType = (!(asigneeObject is PSErrorHelperObject) && asigneeObject != null) ? asigneeObject.Type : null;
+                try
+                {
+                    var assigneeObject = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { assigneeID }).SingleOrDefault();
+                    assigneeObjectType = (!(assigneeObject is PSErrorHelperObject) && assigneeObject != null) ? assigneeObject.Type : null;
+                }
+                catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe) when (OdataHelper.IsAuthorizationDeniedException(oe))
+                {
+                    // Swallow the error from "Insufficient privileges to retrieve object by object id"
+                }
             }
 
-            string principalId = asigneeID;
+            string principalId = assigneeID;
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = string.IsNullOrEmpty(parameters.RoleDefinitionName)
@@ -149,7 +156,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var createParameters = new RoleAssignmentCreateParameters
             {
                 PrincipalId = principalId.ToString(),
-                PrincipalType = asigneeObjectType,
+                PrincipalType = assigneeObjectType,
                 RoleDefinitionId = roleDefinitionId,
                 Description = parameters.Description,
                 Condition = parameters.Condition,
@@ -509,19 +516,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             PSADObject adObject = null;
             Rest.Azure.OData.ODataQuery<DenyAssignmentFilter> odataQuery = null;
-            if (options.DenyAssignmentId != Guid.Empty)
+            if (!string.IsNullOrEmpty(options.DenyAssignmentId) && 
+                (Guid.Empty != options.DenyAssignmentId.GetGuidFromId()))
             {
-                var scope = !string.IsNullOrEmpty(options.Scope) ? options.Scope : AuthorizationHelper.GetSubscriptionScope(currentSubscription);
+                var scope = !string.IsNullOrEmpty(options.Scope) ? options.Scope : AuthorizationHelper.GetScopeFromFullyQualifiedId(options.DenyAssignmentId) ?? AuthorizationHelper.GetSubscriptionScope(currentSubscription);
                 return new List<PSDenyAssignment>
                 {
-                    AuthorizationManagementClient.DenyAssignments.Get(scope, options.DenyAssignmentId.ToString())
+                    AuthorizationManagementClient.DenyAssignments.Get(scope, options.DenyAssignmentId.GuidFromFullyQualifiedId())
                     .ToPSDenyAssignment(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)
                 };
             }
 
             if (!string.IsNullOrEmpty(options.DenyAssignmentName))
             {
-                odataQuery = new Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>(item => item.DenyAssignmentName == options.DenyAssignmentName);
+                odataQuery = new ODataQuery<DenyAssignmentFilter>(item => item.DenyAssignmentName == options.DenyAssignmentName);
             }
             else if (options.ADObjectFilter.HasFilter)
             {

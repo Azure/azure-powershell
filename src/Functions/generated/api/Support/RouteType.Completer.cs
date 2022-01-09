@@ -34,15 +34,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DEFAULT".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DEFAULT", "DEFAULT", global::System.Management.Automation.CompletionResultType.ParameterValue, "DEFAULT");
+                yield return new global::System.Management.Automation.CompletionResult("'DEFAULT'", "DEFAULT", global::System.Management.Automation.CompletionResultType.ParameterValue, "DEFAULT");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "INHERITED".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("INHERITED", "INHERITED", global::System.Management.Automation.CompletionResultType.ParameterValue, "INHERITED");
+                yield return new global::System.Management.Automation.CompletionResult("'INHERITED'", "INHERITED", global::System.Management.Automation.CompletionResultType.ParameterValue, "INHERITED");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "STATIC".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("STATIC", "STATIC", global::System.Management.Automation.CompletionResultType.ParameterValue, "STATIC");
+                yield return new global::System.Management.Automation.CompletionResult("'STATIC'", "STATIC", global::System.Management.Automation.CompletionResultType.ParameterValue, "STATIC");
             }
         }
     }

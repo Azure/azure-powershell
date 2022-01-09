@@ -57,3 +57,55 @@ function Test-ResourceIdCompleter
     $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
     Assert-AreEqualArray $resourceIds $expectResourceIds
 }
+
+<#
+.SYNOPSIS
+Tests environment completer
+#>
+function Test-EnvironmentCompleter
+{
+    $expectedEnvironments = (Get-AzEnvironment).Name
+
+    # Test EnvironmentCompleterAttribute static method
+    $environments = [Microsoft.Azure.Commands.Profile.Common.EnvironmentCompleterAttribute]::GetEnvironments()
+    Assert-AreEqualArray $environments $expectedEnvironments
+
+    # Test completion results for Connect-AzAccount
+    $connectAzAccount = Get-EnvironmentCompleterResult -CmdletName 'Connect-AzAccount' -ParameterName 'Environment'
+    Assert-AreEqualArray $connectAzAccount $expectedEnvironments
+
+    # Test completion results for Set-AzEnvironment
+    $setAzEnvironment = Get-EnvironmentCompleterResult -CmdletName 'Set-AzEnvironment' -ParameterName 'Name'
+    Assert-AreEqualArray $setAzEnvironment $expectedEnvironments
+
+    # Test completion results for Get-AzEnvironment
+    $getAzEnvironment = Get-EnvironmentCompleterResult -CmdletName 'Get-AzEnvironment' -ParameterName 'Name'
+    Assert-AreEqualArray $getAzEnvironment $expectedEnvironments
+
+    # Test completion results for Remove-AzEnvironment
+    $removeAzEnvironment = Get-EnvironmentCompleterResult -CmdletName 'Remove-AzEnvironment' -ParameterName 'Name'
+    Assert-AreEqualArray $removeAzEnvironment $expectedEnvironments
+}
+
+<#
+.SYNOPSIS
+Helper function to get parameter completer results for specified cmdlet.
+#>
+function Get-EnvironmentCompleterResult
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [string]
+        $CmdletName,
+
+        [Parameter(Mandatory = $true)]
+        [string]
+        $ParameterName
+    )
+
+    $command = Get-Command -Name $CmdletName
+    $environmentCompleterAttribute = $command.Parameters.$ParameterName.Attributes | Where-Object { $_.GetType() -eq [Microsoft.Azure.Commands.Profile.Common.EnvironmentCompleterAttribute]}
+
+    return $environmentCompleterAttribute.ScriptBlock.Invoke().CompletionText
+}

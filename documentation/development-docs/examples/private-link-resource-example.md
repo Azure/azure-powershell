@@ -1,42 +1,52 @@
-## Prerequisite
-API for `Get` private link resource and private endpoint connection need to be ready at:
+## Applicability
+Az.Network supports the retrieval of private link resource in `Get-AzPrivateLinkResource` as well as the management of private endpoint connection in `Approve-AzPrivateEndpointConnect`, `Deny-AzPrivateEndpointConnect`, `Remove-AzPrivateEndpointConnect` and `Set-AzPrivateEndpointConnect`. 
 
-#### Private Link Resource API
+For providers who 
+- supports the features of private linke resource and private endpoint connection already
+- and want to onboard these features in Azure PowerShell, 
+
+they need register provider configuration in [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12).
+
+Notes: No additional commands for the features of private linke resource and private endpoint connection need to be added.
+
+## Prerequisite
+We assume the API for `List` private link resource and `Get` private endpoint connection is available in the provider that claims to support private endpoint connection features. That means it supports following APIs:
+
 ```
+# List Private Link Resource API
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources"
 ```
 ```
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources/{PrivateLinkResource-Name}"
-```
-
-#### Get Private Endpoint Connection API
-```
+# Get Private Endpoint Connection API
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections/{PrivateEndpointConnection-Name}"
 ```
-#### List Private Endpoint Connection API
+
+if "List Private Endpoint Connection API" is not available, `privateEndpointConnections` must be included in the properties of top resource returned by 
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}". So that `Private Endpoint Connections` will be retrieved from the top resource.
+
 ```
+# List Private Endpoint Connection API
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections"
 ```
 
-if "List Private Endpoint Connection API" is not available, `Private Endpoint Connection` will be retrieved from top resource
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}"
-`privateEndpointConnections` need to be defined under this API
-
 ## Code Changes Needed
-Add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12)
+To add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12), we need to follow 
 in following pattern:
 ```
-RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}")
+RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}", bool hasPrivateEndppointConnectionsURI, bool hasPrivateLinkResourceURI)
 ```
-For example:
+- "{Provider}/{Top-Level-Resource}" describes the type of provider. For example, "Microsoft.Sql/servers".
+- "{API-Version}" specifies the API version to be used. For example, "2018-06-01-preview".
+- `hasPrivateEndppointConnectionsURI` marks the provider whether provides "List Private Endpoint Connection API".
+```
+# Get Private Link Resource API
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources/{PrivateLinkResource-Name}"
+```
+- `hasPrivateLinkResourceURI` marks the provider whether providers "Get Private Endpoint Connection API".
 
-if "List Private Endpoint Connection API" is [available](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L74),
+For instance, for provider "Microsoft.Sql/servers" with API version "2018-06-01-preview", it supports "List Private Endpoint Connection API" and "Get Private Endpoint Connection API". So it's registration configuration should be
 ```
-RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview")
-```
-if "List Private Endpoint Connection API" is [not available](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L93), provide extra bool parameter 'false'
-```
-RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false)
+RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview", true, true);
 ```
 
 ## End-To-End Test

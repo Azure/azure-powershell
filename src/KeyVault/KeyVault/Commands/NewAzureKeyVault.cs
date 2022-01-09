@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase

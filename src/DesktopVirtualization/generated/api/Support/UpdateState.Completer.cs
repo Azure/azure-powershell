@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Initial".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Initial", "Initial", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initial");
+                yield return new global::System.Management.Automation.CompletionResult("'Initial'", "Initial", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initial");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pending".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pending", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
+                yield return new global::System.Management.Automation.CompletionResult("'Pending'", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Started".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Started", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
+                yield return new global::System.Management.Automation.CompletionResult("'Started'", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Succeeded", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
+                yield return new global::System.Management.Automation.CompletionResult("'Succeeded'", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
         }
     }

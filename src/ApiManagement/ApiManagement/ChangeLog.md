@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.1
+* Fixed a bug in `Get-AzApiManagementTenantGitAccess` cmdlet.
+
 ## Version 2.3.0
 * Added new `Sync-AzApiManagementKeyVaultSecret` cmdlet.
 * Added new `New-AzApiManagementKeyVaultObject` cmdlet.

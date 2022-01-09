@@ -23,14 +23,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSActivityRun(ActivityRun activityRun)
         {
-            this.Keys = activityRun?.Keys;
             this.Error = activityRun?.Error;
             this.Output = activityRun?.Output;
             this.Input = activityRun?.Input;
             this.DurationInMs = activityRun?.DurationInMs;
             this.ActivityRunEnd = activityRun?.ActivityRunEnd;
             this.ActivityRunStart = activityRun?.ActivityRunStart;
-            this.Values = activityRun?.Values;
             this.Status = activityRun?.Status;
             this.ActivityRunId = activityRun?.ActivityRunId;
             this.ActivityType = activityRun?.ActivityType;
@@ -38,9 +36,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.PipelineRunId = activityRun?.PipelineRunId;
             this.PipelineName = activityRun?.PipelineName;
             this.LinkedServiceName = activityRun?.LinkedServiceName;
+            this.AdditionalProperties = activityRun?.AdditionalProperties;
         }
-
-        public IEnumerable<string> Keys { get; }
         
         public object Error { get; }
         
@@ -53,8 +50,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public DateTimeOffset? ActivityRunEnd { get; }
         
         public DateTimeOffset? ActivityRunStart { get; }
-
-        public IEnumerable<object> Values { get; }
         
         public string Status { get; }
         
@@ -69,5 +64,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string PipelineName { get; }
         
         public string LinkedServiceName { get; }
+
+        public IReadOnlyDictionary<string, object> AdditionalProperties { get; set; }
     }
 }

@@ -344,6 +344,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVirtualMachineScaleSetId { get; set; }
 
         /// <summary>
+        /// Gets or sets capacity reservation group Id for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryCapacityReservationGroupId { get; set; }
+
+        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
@@ -774,7 +782,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
                     RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                     RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
-                    RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId
+                    RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
+                    RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId
                 };
 
                 // Fetch the latest Protected item objects

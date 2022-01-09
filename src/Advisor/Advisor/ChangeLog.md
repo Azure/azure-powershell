@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that `Az.Advisor.psd1` was not signed [#16226]
 
 ## Version 1.1.1
 * Update references in .psd1 to use relative path

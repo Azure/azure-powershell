@@ -45,7 +45,26 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual 'emailreceiver1' $email2.Name
 		Assert-AreEqual 'some email' $email2.EmailAddress
 		Assert-AreEqual true $email2.UseCommonAlertSchema
+
+		Write-Verbose " ****** Creating a new event hub receiver with default UseCommonAlertSchema not explicitly set"
+		$eventhub1 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub1receiver' -SubscriptionId '5def922a-3ed4-49c1-b9fd-05ec533819a3' -EventHubNameSpace 'eventhubNameSpace1' -EventHubName 'testEventHubName1'
+		Assert-NotNull $eventhub1
+		Assert-AreEqual 'eventhub1receiver' $eventhub1.Name
+		Assert-AreEqual '5def922a-3ed4-49c1-b9fd-05ec533819a3' $eventhub1.SubscriptionId
+		Assert-AreEqual 'eventhubNameSpace1' $eventhub1.EventHubNameSpace
+		Assert-AreEqual 'testEventHubName1' $eventhub1.EventHubName
+		# when UseCommonAlertSchema is not set explicitly , then it is false
+		Assert-AreEqual false $eventhub1.UseCommonAlertSchema
 		
+		Write-Verbose " ****** Creating a new event hub receiver with  UseCommonAlertSchema  explicitly set to true"
+		$eventhub2 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub2receiver' -SubscriptionId '5def922a-3ed4-49c1-b9fd-05ec533819a3' -EventHubNameSpace 'eventhubNameSpace2' -EventHubName 'testEventHubName2' -UseCommonAlertSchema
+		Assert-NotNull $eventhub2
+		Assert-AreEqual 'eventhub2receiver' $eventhub2.Name
+		Assert-AreEqual '5def922a-3ed4-49c1-b9fd-05ec533819a3' $eventhub2.SubscriptionId
+		Assert-AreEqual 'eventhubNameSpace2' $eventhub2.EventHubNameSpace
+		Assert-AreEqual 'testEventHubName2' $eventhub2.EventHubName
+		Assert-AreEqual true $eventhub2.UseCommonAlertSchema
+
 		Write-Verbose " ****** Creating a new sms receiver"
 		$sms1 = New-AzActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -CountryCode '1' -PhoneNumber '4254251234'
 		Assert-NotNull $sms1
@@ -168,7 +187,7 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual 'someemaild' $apppush1.EmailAddress
 		
 		Write-Verbose " ****** Creating a new action group"
-		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$email2,$sms1,$webhook1,$webhook2,$itsm1,$voice1,$armrole1,$armrole2,$azureFunc1,$azureFunc2,$logicapp1,$logicapp2,$runbook1,$runbook2,$apppush1
+		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$email2,$eventhub1, $eventhub2, $sms1,$webhook1,$webhook2,$itsm1,$voice1,$armrole1,$armrole2,$azureFunc1,$azureFunc2,$logicapp1,$logicapp2,$runbook1,$runbook2,$apppush1
 		Assert-NotNull $actual
 		Assert-AreEqual $actionGroupName $actual.Name
 		

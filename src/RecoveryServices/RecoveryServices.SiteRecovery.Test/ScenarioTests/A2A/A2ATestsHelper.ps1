@@ -196,6 +196,23 @@ function createAzureVmInProximityPlacementgroup{
 		return $vm.Id
 }
 
+function createAzureVmForCRG{
+    param([string]$primaryLocation)
+    
+        $VMLocalAdminUser = "adminUser"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
+		$VMLocation = getPrimaryLocation
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Size "Standard_Ds1_v2"
+		return $vm.Id
+}
+
+
 function createAzureVmInAvailabilityZone{
     param([string]$primaryLocation)
     

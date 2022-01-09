@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         MAB,
 
         /// <summary>
-        /// represents that the BackupManagementType is Not Applicable.
+        /// Represents that the BackupManagementType is Not Applicable.
         /// </summary>
         NA
     }  

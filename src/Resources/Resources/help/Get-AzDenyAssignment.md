@@ -153,7 +153,7 @@ List all deny assignments in the subscription
 
 ```
 PS C:\> Get-AzDenyAssignment
-Id                      : 22704996-fbd0-4ab1-8625-722d897825d2
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -174,7 +174,7 @@ ExcludePrincipals       : {
                           }
 IsSystemProtected       : True
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment 2
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -203,7 +203,7 @@ Gets all deny assignments made to user john.doe@contoso.com at the scope testRG 
 ```
 PS C:\> Get-AzDenyAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
 
-Id                      : 22704996-fbd0-4ab1-8625-722d897825d2
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -220,7 +220,7 @@ Principals              : {
 ExcludePrincipals       : {}
 IsSystemProtected       : True
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -249,7 +249,7 @@ Gets all deny assignments of the specified service principal
 ```
 PS C:\> Get-AzDenyAssignment -ServicePrincipalName 'http://testapp1.com'
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -266,7 +266,7 @@ Principals              : {
 ExcludePrincipals       : {}
 IsSystemProtected       : True
 
-Id                      : 94e3d9da-3700-4113-aab4-15f6c173d794
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testRG/providers/Microsoft.Web/sites/site1/providers/Microsoft.Authorization/denyAssignments/94e3d9da-3700-4113-aab4-15f6c173d794
 DenyAssignmentName      : Test deny assignment 2
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -295,7 +295,7 @@ Gets deny assignments at the 'site1' website scope.
 ```
 PS C:\> Get-AzDenyAssignment -Scope '/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/testRG/providers/Microsoft.Web/sites/site1'
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -312,7 +312,7 @@ Principals              : {
 ExcludePrincipals       : {}
 IsSystemProtected       : True
 
-Id                      : 94e3d9da-3700-4113-aab4-15f6c173d794
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testRG/providers/Microsoft.Web/sites/site1/providers/Microsoft.Authorization/denyAssignments/594e3d9da-3700-4113-aab4-15f6c173d794
 DenyAssignmentName      : Test deny assignment 2
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -383,7 +383,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Deny assignment id.
+Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.
 
 ```yaml
 Type: System.Guid
