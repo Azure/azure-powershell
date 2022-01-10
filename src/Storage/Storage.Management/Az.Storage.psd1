@@ -200,10 +200,10 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Remove-AzStorageBlobImmutabilityPolicy', 
                'Set-AzStorageBlobLegalHold', 
                'Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration', 
-               'Set-AzStorageAccountLocalUser', 'Get-AzStorageAccountLocalUser', 
-               'Remove-AzStorageAccountLocalUser', 'Get-AzStorageAccountLocalUserPublicKey', 
-               'New-AzStorageAccountLocalUserSshPassword', 'New-AzStorageAccountLocalUserSshPublicKey', 
-               'New-AzStorageAccountLocalUserPermissionScope'
+               'Set-AzStorageLocalUser', 'Get-AzStorageLocalUser', 
+               'Remove-AzStorageLocalUser', 'Get-AzStorageLocalUserKey', 
+               'New-AzStorageLocalUserSshPassword', 'New-AzStorageLocalUserSshPublicKey', 
+               'New-AzStorageLocalUserPermissionScope'
 
 # Variables to export from this module
 # VariablesToExport = @()

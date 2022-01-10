@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountlocaluserpermissionscope
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragelocaluserpermissionscope
 schema: 2.0.0
 ---
 
-# New-AzStorageAccountLocalUserPermissionScope
+# New-AzStorageLocalUserPermissionScope
 
 ## SYNOPSIS
-Creates a permission scope object, which can be used in Set-AzStorageAccountLocalUser.
+Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
 
 ## SYNTAX
 
 ```
-New-AzStorageAccountLocalUserPermissionScope -Permission <String> -Service <String> -ResourceName <String>
+New-AzStorageLocalUserPermissionScope -Permission <String> -Service <String> -ResourceName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzStorageAccountLocalUserPermissionScope** cmdlet creates a permission scope object, which can be used in Set-AzStorageAccountLocalUser.
+The **New-AzStorageLocalUserPermissionScope** cmdlet creates a permission scope object, which can be used in Set-AzStorageLocalUser.
 
 ## EXAMPLES
 
 ### Example 1: Create permission scope objects, then create or update local user with the permission scope objects.
 ```
-PS C:\> $permissionScope1 = New-AzStorageAccountLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
+PS C:\> $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 
-PS C:\> $permissionScope2 = New-AzStorageAccountLocalUserPermissionScope -Permission rwd -Service file -ResourceName share2
+PS C:\> $permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service file -ResourceName share2
 
-PS C:\> $localuser = Set-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -PermissionScope $permissionScope1,$permissionScope2
+PS C:\> $localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -PermissionScope $permissionScope1,$permissionScope2
 
 PS C:\> $localuser
 

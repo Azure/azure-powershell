@@ -19,8 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLocalUserSshPassword", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLocalUserKeys))]
-    public class NewAzureStorageAccountLocalUserSshPasswordCommand : StorageAccountBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageLocalUserSshPassword", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLocalUserKeys))]
+    public class NewAzureStorageLocalUserSshPasswordCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
         /// AccountName Parameter Set

@@ -14,13 +14,12 @@
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLocalUser", DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSLocalUser))]
-    public class GetAzureStorageAccountLocalUserCommand : StorageFileBaseCmdlet
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageLocalUser", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureStorageLocalUserCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
         /// AccountName Parameter Set
@@ -31,6 +30,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Account object parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
+
+        /// <summary>
+        /// User object parameter set 
+        /// </summary>
+        private const string UserObjectParameterSet = "UserObject";
 
         [Parameter(
             Position = 0,
@@ -57,48 +61,57 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public PSStorageAccount StorageAccount { get; set; }
 
         [Alias("Name")]
-        [Parameter(Mandatory = false,
-            HelpMessage = "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.")]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.",
+            ParameterSetName = AccountObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string UserName { get; set; }
+
+        [Parameter(Position = 0,
+            Mandatory = true,
+            HelpMessage = "Local User Object to Remove",
+            ValueFromPipeline = true,
+            ParameterSetName = UserObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSLocalUser InputObject { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             switch (ParameterSetName)
             {
                 case AccountObjectParameterSet:
                     this.ResourceGroupName = StorageAccount.ResourceGroupName;
                     this.StorageAccountName = StorageAccount.StorageAccountName;
                     break;
+                case UserObjectParameterSet:
+                    this.ResourceGroupName = InputObject.ResourceGroupName;
+                    this.StorageAccountName = InputObject.StorageAccountName;
+                    this.UserName = InputObject.Name;
+                    break;
                 default:
                     // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                     break;
             }
 
-            if (this.UserName == null)
+            if (ShouldProcess(this.UserName, "Remove Storage Account LocalUser:"))
             {
-                LocalUsers users = this.StorageClient.LocalUsers.List(
-                        this.ResourceGroupName,
-                        this.StorageAccountName);
-               
-                if (users.Value != null)
-                {
-                    foreach(LocalUser localUser in users.Value)
-                    {
-                        WriteObject(new PSLocalUser(localUser, this.ResourceGroupName, this.StorageAccountName));
-                    }
-                }
-            }
-            else
-            {
-                var localUser = this.StorageClient.LocalUsers.Get(
+
+                this.StorageClient.LocalUsers.Delete(
                             this.ResourceGroupName,
                             this.StorageAccountName,
                             this.UserName);
 
-                WriteObject(new PSLocalUser(localUser, this.ResourceGroupName, this.StorageAccountName));
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

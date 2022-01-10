@@ -17,8 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLocalUserSshPublicKey"), OutputType(typeof(PSSshPublicKey))]
-    public class NewAzureStorageAccountLocalUserSshPublicKeyCommand : StorageAccountBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageLocalUserSshPublicKey"), OutputType(typeof(PSSshPublicKey))]
+    public class NewAzureStorageLocalUserSshPublicKeyCommand : StorageAccountBaseCmdlet
     {
         [Parameter(Mandatory = true,
             HelpMessage = "Specify ssh public key, which is base64 encoded. The format should be: '<keyType> <keyData>', e.g. ssh-rsa AAAABBBB")]

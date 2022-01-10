@@ -22,13 +22,13 @@
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
 * Supported manage local user of a storage account
-    -  `Set-AzStorageAccountLocalUser`
-    -  `Get-AzStorageAccountLocalUser`
-    -  `Remove-AzStorageAccountLocalUser`
-    -  `New-AzStorageAccountLocalUserSshPassword`
-    -  `Get-AzStorageAccountLocalUserPublicKey`
-    -  `New-AzStorageAccountLocalUserSshPublicKey`
-    -  `New-AzStorageAccountLocalUserPermissionScope`
+    -  `Set-AzStorageLocalUser`
+    -  `Get-AzStorageLocalUser`
+    -  `Remove-AzStorageLocalUser`
+    -  `New-AzStorageLocalUserSshPassword`
+    -  `Get-AzStorageLocalUserKey`
+    -  `New-AzStorageLocalUserSshPublicKey`
+    -  `New-AzStorageLocalUserPermissionScope`
 * Fixed the issue that output number in console when update/copy blob sometimes [#16783]
     -  `Set-AzStorageBlobContent` 
     -  `Copy-AzStorageBlob` 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccountlocaluser
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragelocaluser
 schema: 2.0.0
 ---
 
-# Set-AzStorageAccountLocalUser
+# Set-AzStorageLocalUser
 
 ## SYNOPSIS
 Creates or updates a specified local user in a storage account.
@@ -14,7 +14,7 @@ Creates or updates a specified local user in a storage account.
 
 ### AccountName (Default)
 ```
-Set-AzStorageAccountLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> -UserName <String>
+Set-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> -UserName <String>
  [-HomeDirectory <String>] [-SshAuthorizedKey <PSSshPublicKey[]>] [-PermissionScope <PSPermissionScope[]>]
  [-HasSharedKey <Boolean>] [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,33 +22,33 @@ Set-AzStorageAccountLocalUser [-ResourceGroupName] <String> [-StorageAccountName
 
 ### AccountObject
 ```
-Set-AzStorageAccountLocalUser -StorageAccount <PSStorageAccount> -UserName <String> [-HomeDirectory <String>]
+Set-AzStorageLocalUser -StorageAccount <PSStorageAccount> -UserName <String> [-HomeDirectory <String>]
  [-SshAuthorizedKey <PSSshPublicKey[]>] [-PermissionScope <PSPermissionScope[]>] [-HasSharedKey <Boolean>]
  [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzStorageAccountLocalUser** cmdlet creates or updates a specified local user in a storage account.
+The **Set-AzStorageLocalUser** cmdlet creates or updates a specified local user in a storage account.
 To run this cmdlet, the storage account must has already set EnableLocalUser as true.
 
 ## EXAMPLES
 
 ### Example 1: Create or update a local user
 ```
-PS C:\> $sshkey1 = New-AzStorageAccountLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
 
-PS C:\> $permissionScope1 = New-AzStorageAccountLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
+PS C:\> $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 
-PS C:\> $localuser = Set-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1 -PermissionScope $permissionScope1 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+PS C:\> $localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1 -PermissionScope $permissionScope1 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
 
 PS C:\> $localuser
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes SshAuthorizedKeys             
-----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------             
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1]     [ssh-rsa keykeykeykeykey=]
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes        
+----      ---                                          ------------- ------------ --------- -------------- ----------------         
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1]
 
 PS C:\> $localuser.SshAuthorizedKeys 
 
@@ -69,7 +69,7 @@ The following commands show the local user properties.
 
 ### Example 2: Create or update a local user by input permission scope and ssh key with json
 ```
-PS C:\> Set-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
+PS C:\> Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
             -SshAuthorizedKey (@{
                 Description="sshpulickey name1";
                 Key="ssh-rsa keykeykeykeykey=";                
@@ -92,9 +92,9 @@ PS C:\> Set-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -Acco
 
    ResourceGroupName: weitry, StorageAccountName: weisftp3
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes SshAuthorizedKeys             
-----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------             
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...] [ssh-rsa keykeykeykeykey=,...]
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes        
+----      ---                                          ------------- ------------ --------- -------------- ----------------         
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...]
 ```
 
 This command creates or updates a local user by input permission scope and ssh key with json.

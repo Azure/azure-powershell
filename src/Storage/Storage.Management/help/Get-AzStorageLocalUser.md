@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountlocaluser
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragelocaluser
 schema: 2.0.0
 ---
 
-# Get-AzStorageAccountLocalUser
+# Get-AzStorageLocalUser
 
 ## SYNOPSIS
 Gets a specified local user or lists all local users in a storage account.
@@ -14,32 +14,32 @@ Gets a specified local user or lists all local users in a storage account.
 
 ### AccountName (Default)
 ```
-Get-AzStorageAccountLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> [-UserName <String>]
+Get-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> [-UserName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Get-AzStorageAccountLocalUser -StorageAccount <PSStorageAccount> [-UserName <String>]
+Get-AzStorageLocalUser -StorageAccount <PSStorageAccount> [-UserName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageAccountLocalUser** cmdlet gets a specified local user or lists all local users in a storage account.
+The **Get-AzStorageLocalUser** cmdlet gets a specified local user or lists all local users in a storage account.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified local user
 ```
-PS C:\> $localUser = Get-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
+PS C:\> $localUser = Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 
 PS C:\> $localUser 
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes SshAuthorizedKeys
-----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...] 
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes
+----      ---                                          ------------- ------------ --------- -------------- ----------------
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...]
 
 PS C:\> $localUser.PermissionScopes
   
@@ -53,7 +53,7 @@ This command gets a specified local user, and show the properties of it.
 
 ### Example 2: List all local users in a storage account
 ```
-PS C:\> Get-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
+PS C:\> Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 

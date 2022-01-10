@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountlocalusersshpublickey
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragelocalusersshpublickey
 schema: 2.0.0
 ---
 
-# New-AzStorageAccountLocalUserSshPublicKey
+# New-AzStorageLocalUserSshPublicKey
 
 ## SYNOPSIS
-Creates a SSH public key object, which can be used in Set-AzStorageAccountLocalUser.
+Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
 
 ## SYNTAX
 
 ```
-New-AzStorageAccountLocalUserSshPublicKey -Key <String> [-Description <String>]
+New-AzStorageLocalUserSshPublicKey -Key <String> [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzStorageAccountLocalUserSshPublicKey** cmdlet creates a SSH public key object, which can be used in Set-AzStorageAccountLocalUser.
+The **New-AzStorageLocalUserSshPublicKey** cmdlet creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
 
 ## EXAMPLES
 
 ### Example 1: Create SSH public key objects, then create or update local user with the SSH public key objects.
 ```
-PS C:\> $sshkey1 = New-AzStorageAccountLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
 
-PS C:\> $sshkey2 = New-AzStorageAccountLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
+PS C:\> $sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
 
-PS C:\> $localuser = Set-AzStorageAccountLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2
+PS C:\> $localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2
 
 PS C:\> $localuser
 

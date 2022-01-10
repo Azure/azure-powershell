@@ -1342,10 +1342,6 @@
             <Alignment>Left</Alignment>
             <Label>PermissionScopes</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>SshAuthorizedKeys</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1378,11 +1374,6 @@
                 <Alignment>Left</Alignment>
                 <!--PropertyName>PermissionScopes</PropertyName-->
                 <ScriptBlock>if (($_.PermissionScopes -ne $null) -and ($_.PermissionScopes.Count -ne 0)) {if ($_.PermissionScopes.Count -eq 1) {"[" + $_.PermissionScopes[0].ResourceName + "]"} else {"[" + $_.PermissionScopes[0].ResourceName + ",...]"}} else {$null}</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <!--PropertyName>SshAuthorizedKeys</PropertyName-->
-                <ScriptBlock>if (($_.SshAuthorizedKeys -ne $null) -and ($_.SshAuthorizedKeys.Count -ne 0)) {if ($_.SshAuthorizedKeys.Count -eq 1) {"[" + $_.SshAuthorizedKeys[0].Key + "]"} else {"[" + $_.SshAuthorizedKeys[0].Key + ",...]"}} else {$null}</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountlocalusersshpassword
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragelocalusersshpassword
 schema: 2.0.0
 ---
 
-# New-AzStorageAccountLocalUserSshPassword
+# New-AzStorageLocalUserSshPassword
 
 ## SYNOPSIS
 Regenerate SSH password of a specified local user in a storage account.
@@ -14,30 +14,30 @@ Regenerate SSH password of a specified local user in a storage account.
 
 ### AccountName (Default)
 ```
-New-AzStorageAccountLocalUserSshPassword [-ResourceGroupName] <String> [-StorageAccountName] <String>
+New-AzStorageLocalUserSshPassword [-ResourceGroupName] <String> [-StorageAccountName] <String>
  -UserName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-New-AzStorageAccountLocalUserSshPassword -StorageAccount <PSStorageAccount> -UserName <String>
+New-AzStorageLocalUserSshPassword -StorageAccount <PSStorageAccount> -UserName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserObject
 ```
-New-AzStorageAccountLocalUserSshPassword [-InputObject] <PSLocalUser>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStorageLocalUserSshPassword [-InputObject] <PSLocalUser> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzStorageAccountLocalUserSshPassword** cmdlet regenerates SSH password of a specified local user in a storage account.
+The **New-AzStorageLocalUserSshPassword** cmdlet regenerates SSH password of a specified local user in a storage account.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate SSH password of a specified local user
 ```
-PS C:\> New-AzStorageAccountLocalUserSshPassword -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1   
+PS C:\> New-AzStorageLocalUserSshPassword -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1   
 
 SshPassword                                                                             
 -----------                                                                             

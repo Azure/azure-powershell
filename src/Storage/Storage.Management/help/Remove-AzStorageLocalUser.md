@@ -1,50 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountlocaluserpublickey
+online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragelocaluser
 schema: 2.0.0
 ---
 
-# Get-AzStorageAccountLocalUserPublicKey
+# Remove-AzStorageLocalUser
 
 ## SYNOPSIS
-Lists SSH authorized keys and shared key of a specified local user.
+Removes a specified local user in a storage account.
 
 ## SYNTAX
 
 ### AccountName (Default)
 ```
-Get-AzStorageAccountLocalUserPublicKey [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -UserName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> -UserName <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Get-AzStorageAccountLocalUserPublicKey -StorageAccount <PSStorageAccount> -UserName <String>
+Remove-AzStorageLocalUser -StorageAccount <PSStorageAccount> -UserName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserObject
 ```
-Get-AzStorageAccountLocalUserPublicKey [-InputObject] <PSLocalUser> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzStorageLocalUser [-InputObject] <PSLocalUser> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageAccountLocalUserPublicKey** cmdlet lists SSH authorized keys and shared key of a specified local user in a storage account.
+The **Remove-AzStorageLocalUser** cmdlet removes a specified local user from a storage account.
 
 ## EXAMPLES
 
-### Example 1: List SSH authorized keys and shared key of a specified local user.
+### Example 1: Remove a specified local user
 ```
-PS C:\> Get-AzStorageAccountLocalUserPublicKey -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
-
-SshAuthorizedKeys                                    SharedKey                                                                               
------------------                                    ---------                                                                               
-{ssh-rsa keykeykeykeykew=, ssh-rsa keykeykeykeykew=} <hidden>
+PS C:\> Remove-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 ```
 
-This command lists SSH authorized keys and shared key of a specified local user.
+This command removes a specified local user.
 
 ## PARAMETERS
 
@@ -64,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Local User Object to get Keys.
+Local User Object to Remove
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSLocalUser
@@ -75,6 +71,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -180,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.Storage.Models.PSLocalUserKeys
+### System.Boolean
 
 ## NOTES
 

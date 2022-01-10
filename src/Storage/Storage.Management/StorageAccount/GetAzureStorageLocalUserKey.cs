@@ -19,8 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLocalUserPublicKey", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLocalUserKeys))]
-    public class GetAzureStorageAccountLocalUserPublicKeyCommand : StorageAccountBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageLocalUserKey", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLocalUserKeys))]
+    public class GetAzureStorageLocalUserKeyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
         /// AccountName Parameter Set

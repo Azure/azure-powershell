@@ -277,9 +277,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureStorageAccountLocalUserSftp()
+        public void TestAzureStorageLocalUserSftp()
         {
-            TestRunner.RunTestScript("Test-AzureStorageAccountLocalUserSftp");
+            TestRunner.RunTestScript("Test-AzureStorageLocalUserSftp");
         }        
     }
 }

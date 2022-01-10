@@ -1835,7 +1835,7 @@
     }
   ],
   "Names": {
-    "Test-AzureStorageAccountLocalUserSftp": [
+    "Test-AzureStorageLocalUserSftp": [
       "pstestrg1345"
     ]
   },

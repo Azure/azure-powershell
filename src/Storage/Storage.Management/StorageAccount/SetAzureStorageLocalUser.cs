@@ -19,8 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLocalUser", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLocalUser))]
-    public class SetAzureStorageAccountLocalUserCommand : StorageAccountBaseCmdlet
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageLocalUser", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLocalUser))]
+    public class SetAzureStorageLocalUserCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
         /// AccountName Parameter Set

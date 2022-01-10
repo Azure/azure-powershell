@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountLocalUserPermissionScope"), OutputType(typeof(PSPermissionScope))]
-    public class NewAzureStorageAccountLocalUserPermissionScopeCommand : StorageAccountBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageLocalUserPermissionScope"), OutputType(typeof(PSPermissionScope))]
+    public class NewAzureStorageLocalUserPermissionScopeCommand : StorageAccountBaseCmdlet
     {
         [Parameter(Mandatory = true,
             HelpMessage = "Specify the permissions for the local user. Possible values include: Read(r), Write (w), Delete (d), List (l), and Create (c).")]

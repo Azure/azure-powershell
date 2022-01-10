@@ -2106,11 +2106,11 @@ function Test-AzureStorageAccountWorm
 
 <#
 .SYNOPSIS
-Test AzureStorageAccountLocalUserSftp
+Test AzureStorageLocalUserSftp
 .DESCRIPTION
 SmokeTest
 #>
-function Test-AzureStorageAccountLocalUserSftp
+function Test-AzureStorageLocalUserSftp
 {
     # Setup
     $rgname = Get-StorageManagementTestResourceName;
@@ -2149,11 +2149,11 @@ function Test-AzureStorageAccountLocalUserSftp
         # create local user
 		$userName1 = "testuser1"
 		$userName2 = "testuser2"
-		$sshkey1 = New-AzStorageAccountLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
-		$sshkey2 = New-AzStorageAccountLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
-		$permissionScope1 = New-AzStorageAccountLocalUserPermissionScope -Permission rwd -Service blob -ResourceName container1 
-		$permissionScope2 = New-AzStorageAccountLocalUserPermissionScope -Permission rw -Service file -ResourceName share2
-		$localuser1 = Set-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2 -PermissionScope $permissionScope1,$permissionScope2 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+		$sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+		$sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
+		$permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service blob -ResourceName container1 
+		$permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rw -Service file -ResourceName share2
+		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2 -PermissionScope $permissionScope1,$permissionScope2 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
         Assert-AreEqual $userName1 $localuser1.Name;
         Assert-AreEqual $true $localuser1.HasSharedKey;
         Assert-AreEqual $true $localuser1.HasSshKey;
@@ -2171,7 +2171,7 @@ function Test-AzureStorageAccountLocalUserSftp
         Assert-AreEqual "sshpulickey name1"  $localuser1.SshAuthorizedKeys[0].Description;
         Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser1.SshAuthorizedKeys[1].Key;
         Assert-AreEqual "sshpulickey name2"  $localuser1.SshAuthorizedKeys[1].Description;
-        $localuser2 = Set-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir1" 
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir1" 
         Assert-AreEqual $userName2 $localuser2.Name;
         Assert-Null $localuser2.HasSharedKey;
         Assert-Null $localuser2.HasSshKey;
@@ -2181,7 +2181,7 @@ function Test-AzureStorageAccountLocalUserSftp
         Assert-Null $localuser2.SshAuthorizedKeys;
 
         # update local user
-		$localuser2 = Set-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir2" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
+		$localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir2" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
             -SshAuthorizedKey (@{
                 Description="sshpulickey name3";
                 Key="ssh-rsa keykeykeykeykew=";                
@@ -2219,7 +2219,7 @@ function Test-AzureStorageAccountLocalUserSftp
         Assert-AreEqual "sshpulickey name4"  $localuser2.SshAuthorizedKeys[1].Description;
 
         # get single local user
-		$localuser1 = Get-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+		$localuser1 = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
         Assert-AreEqual $userName1 $localuser1.Name;
         Assert-AreEqual $true $localuser1.HasSharedKey;
         Assert-AreEqual $true $localuser1.HasSshKey;
@@ -2235,13 +2235,13 @@ function Test-AzureStorageAccountLocalUserSftp
         Assert-Null $localuser1.SshAuthorizedKeys;
 
         #list all local users
-		$localusers = Get-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
         Assert-AreEqual 2 $localusers.Count;
         Assert-AreEqual $userName1 $localusers[0].Name;
         Assert-AreEqual $userName2 $localusers[1].Name;
 
         # get public key
-		$key = Get-AzStorageAccountLocalUserPublicKey -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+		$key = Get-AzStorageLocalUserKey -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
         Assert-NotNull $key.SharedKey
         Assert-AreEqual 2 $key.SshAuthorizedKeys.Count;
         #Assert-AreEqual "ssh-rsa keykeykeykeykey="  $key.SshAuthorizedKeys[0].Key;
@@ -2250,12 +2250,12 @@ function Test-AzureStorageAccountLocalUserSftp
         Assert-AreEqual "sshpulickey name2"  $key.SshAuthorizedKeys[1].Description;
 
         # regenerate ssh password
-		$password = New-AzStorageAccountLocalUserSshPassword -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+		$password = New-AzStorageLocalUserSshPassword -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
         Assert-NotNull $password.SshPassword
 
         # remove local user
-		Remove-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
-		$localusers = Get-AzStorageAccountLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Remove-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
         Assert-AreEqual 1 $localusers.Count;
         Assert-AreEqual $userName2 $localusers[0].Name;
 
