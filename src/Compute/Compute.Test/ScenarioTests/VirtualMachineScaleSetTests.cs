@@ -220,12 +220,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexibleOModeDefaulting");
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzVmssRunCommand()
         {
             TestRunner.RunTestScript("Test-AddAndRemoveAzVmssRunCommand");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetUserdata()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetUserdata");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetDiffDiskPlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetDiffDiskPlacement");
         }
     }
 }

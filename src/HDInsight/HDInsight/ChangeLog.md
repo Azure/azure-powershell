@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.0
+* Added two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
+  - Added parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
+  - Added parameter `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
+* Added cmdlet New-AzHDInsightIPConfiguration to create ip configuration object in memory.
+* Added cmdlet New-AzHDInsightPrivateLinkConfiguration to create private link configuration object in memory.
+* Fixed the output type in help doc of Set-AzHDInsightClusterDiskEncryptionKey cmdlet from `Microsoft.Azure.Management.HDInsight.Models.Cluster` to  `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster` to keep consistent with the real type of returned object.
+* Breaking change:
+  - Changed the type of parameter "OSType" from `Microsoft.Azure.Management.HDInsight.Models.OSType` to `System.string` in cmdlet `New-AzHDInsightCluster`.
+  - Changed the type of parameter "ClusterTier" from `Microsoft.Azure.Management.HDInsight.Models.ClusterTier` to `System.string` in cmdlets `New-AzHDInsightCluster` and `New-AzHDInsightClusterConfig`.
+  - Changed the type of property "VmSizes" in class `AzureHDInsightCapabilities` from "IDictionary<string, AzureHDInsightVmSizesCapability>" to "IList<string>".
+  - Changed the type of property "AssignedIdentity" in class `AzureHDInsightCluster` from `Microsoft.Azure.Management.HDInsight.Models.ClusterIdentity`  to `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightClusterIdentity`.
+
 ## Version 4.3.0
 * Support new azure monitor feature in HDInsight:
     - Add cmdlet `Get-AzHDInsightAzureMonitor` to allow customer to get the Azure Monitor status of HDInsight cluster.

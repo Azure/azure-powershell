@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId, global::System.Convert.ToString);
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -84,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId, global::System.Convert.ToString);
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeResponseInternal)this).OperationId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

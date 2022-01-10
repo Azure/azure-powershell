@@ -1897,7 +1897,7 @@
           "Microsoft.Azure.Management.Redis.RedisManagementClient/4.4.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/PowerShellTest-6/providers/Microsoft.Cache/Redis/redisteam006\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"redisteam006\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.2.7\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"7500\",\r\n      \"maxmemory-reserved\": \"200\",\r\n      \"maxfragmentationmemory-reserved\": \"300\",\r\n      \"maxmemory-delta\": \"200\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"DXdn34PIZnupyjh4rWE3t8ZIjXnfzVCbXNC3nK48ezk=\",\r\n      \"secondaryKey\": \"P90CVhXznWPxxsNSZZZ3DlX75AcN8JLF5hkrDXrwMjc=\"\r\n    },\r\n    \"hostName\": \"redisteam006.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/PowerShellTest-6/providers/Microsoft.Cache/Redis/redisteam006\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"redisteam006\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.2.7\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"7500\",\r\n      \"maxmemory-reserved\": \"200\",\r\n      \"maxfragmentationmemory-reserved\": \"300\",\r\n      \"maxmemory-delta\": \"200\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"***\",\r\n      \"secondaryKey\": \"****\"\r\n    },\r\n    \"hostName\": \"redisteam006.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "733"
@@ -1966,7 +1966,7 @@
           "Microsoft.Azure.Management.Redis.RedisManagementClient/4.4.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"DXdn34PIZnupyjh4rWE3t8ZIjXnfzVCbXNC3nK48ezk=\",\r\n  \"secondaryKey\": \"P90CVhXznWPxxsNSZZZ3DlX75AcN8JLF5hkrDXrwMjc=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"****\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "123"

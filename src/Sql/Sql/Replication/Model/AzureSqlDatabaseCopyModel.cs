@@ -91,5 +91,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the requested backup storage redundancy for the database
         /// </summary>
         public string RequestedBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zone redundant option of the database.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
     }
 }

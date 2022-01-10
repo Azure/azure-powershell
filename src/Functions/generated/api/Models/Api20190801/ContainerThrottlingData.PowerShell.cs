@@ -65,9 +65,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period = (int?) content.GetValueForProperty("Period",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod = (int?) content.GetValueForProperty("ThrottledPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime = (int?) content.GetValueForProperty("ThrottledTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Period"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period = (int?) content.GetValueForProperty("Period",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ThrottledPeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod = (int?) content.GetValueForProperty("ThrottledPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ThrottledTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime = (int?) content.GetValueForProperty("ThrottledTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,9 +94,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period = (int?) content.GetValueForProperty("Period",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod = (int?) content.GetValueForProperty("ThrottledPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime = (int?) content.GetValueForProperty("ThrottledTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Period"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period = (int?) content.GetValueForProperty("Period",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).Period, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ThrottledPeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod = (int?) content.GetValueForProperty("ThrottledPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ThrottledTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime = (int?) content.GetValueForProperty("ThrottledTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)this).ThrottledTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

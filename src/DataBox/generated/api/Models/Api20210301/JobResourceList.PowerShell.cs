@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobResourceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceListInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

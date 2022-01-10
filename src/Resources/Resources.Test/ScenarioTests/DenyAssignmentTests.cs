@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetDaById");
         }
 
-        [Fact(Skip = "Name filter issue is detected, refer to: https://github.com/Azure/azure-powershell/issues/16410")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void GetDaByIdAndSpecifiedScope()
         {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetDaByName");
         }
 
-        [Fact]
+        [Fact(Skip = "Name filter issue is detected, refer to: https://github.com/Azure/azure-powershell/issues/16410")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void GetDaByNameAndSpecifiedScope()
         {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetDaByObjectIdAndRGName");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip complex scenario temporarily, will test it when bandwidth is allowed")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void GetDaByObjectIdAndRGNameResourceNameResourceType()
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetDaBySignInNameAndRGName");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip complex scenario temporarily, will test it when bandwidth is allowed")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void GetDaBySignInNameAndRGNameResourceNameResourceType()
         {

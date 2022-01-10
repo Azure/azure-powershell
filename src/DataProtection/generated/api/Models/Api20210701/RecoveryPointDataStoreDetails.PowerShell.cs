@@ -101,15 +101,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime = (global::System.DateTime?) content.GetValueForProperty("ExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData = (string) content.GetValueForProperty("MetaData",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible = (bool?) content.GetValueForProperty("Visible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime = (global::System.DateTime?) content.GetValueForProperty("RehydrationExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus?) content.GetValueForProperty("RehydrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus.CreateFrom);
+            if (content.Contains("CreationTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ExpiryTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime = (global::System.DateTime?) content.GetValueForProperty("ExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetaData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData = (string) content.GetValueForProperty("MetaData",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Visible"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible = (bool?) content.GetValueForProperty("Visible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RehydrationExpiryTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime = (global::System.DateTime?) content.GetValueForProperty("RehydrationExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("RehydrationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus?) content.GetValueForProperty("RehydrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,15 +154,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime = (global::System.DateTime?) content.GetValueForProperty("ExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData = (string) content.GetValueForProperty("MetaData",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible = (bool?) content.GetValueForProperty("Visible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime = (global::System.DateTime?) content.GetValueForProperty("RehydrationExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus?) content.GetValueForProperty("RehydrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus.CreateFrom);
+            if (content.Contains("CreationTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ExpiryTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime = (global::System.DateTime?) content.GetValueForProperty("ExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).ExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetaData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData = (string) content.GetValueForProperty("MetaData",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).MetaData, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).State, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Visible"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible = (bool?) content.GetValueForProperty("Visible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).Visible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RehydrationExpiryTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime = (global::System.DateTime?) content.GetValueForProperty("RehydrationExpiryTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationExpiryTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("RehydrationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus?) content.GetValueForProperty("RehydrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetailsInternal)this).RehydrationStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

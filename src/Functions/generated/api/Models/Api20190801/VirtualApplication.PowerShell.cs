@@ -104,10 +104,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled = (bool?) content.GetValueForProperty("PreloadEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]) content.GetValueForProperty("VirtualDirectory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualDirectoryTypeConverter.ConvertFrom));
+            if (content.Contains("VirtualPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PreloadEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled = (bool?) content.GetValueForProperty("PreloadEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VirtualDirectory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]) content.GetValueForProperty("VirtualDirectory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualDirectoryTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,10 +137,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled = (bool?) content.GetValueForProperty("PreloadEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]) content.GetValueForProperty("VirtualDirectory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualDirectoryTypeConverter.ConvertFrom));
+            if (content.Contains("VirtualPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath = (string) content.GetValueForProperty("VirtualPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath = (string) content.GetValueForProperty("PhysicalPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PhysicalPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("PreloadEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled = (bool?) content.GetValueForProperty("PreloadEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).PreloadEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VirtualDirectory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]) content.GetValueForProperty("VirtualDirectory",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualApplicationInternal)this).VirtualDirectory, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualDirectoryTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

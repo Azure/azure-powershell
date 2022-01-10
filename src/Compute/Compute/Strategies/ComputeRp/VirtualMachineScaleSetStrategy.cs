@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int? platformFaultDomainCount,
             string edgeZone,
             string orchestrationMode,
-            string capacityReservationId
+            string capacityReservationId,
+            string userData
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -138,7 +139,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
-                        }
+                        },
+                        UserData = userData
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     HostGroup = hostGroup(engine),

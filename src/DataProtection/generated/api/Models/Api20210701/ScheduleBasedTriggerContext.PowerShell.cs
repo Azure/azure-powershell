@@ -101,11 +101,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupSchedule) content.GetValueForProperty("Schedule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupScheduleTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria[]) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TaggingCriteriaTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval = (string[]) content.GetValueForProperty("ScheduleRepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone = (string) content.GetValueForProperty("ScheduleTimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone, global::System.Convert.ToString);
+            if (content.Contains("Schedule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupSchedule) content.GetValueForProperty("Schedule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TaggingCriterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria[]) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TaggingCriteriaTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleRepeatingTimeInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval = (string[]) content.GetValueForProperty("ScheduleRepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ScheduleTimeZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone = (string) content.GetValueForProperty("ScheduleTimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,11 +138,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupSchedule) content.GetValueForProperty("Schedule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupScheduleTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria[]) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TaggingCriteriaTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval = (string[]) content.GetValueForProperty("ScheduleRepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone = (string) content.GetValueForProperty("ScheduleTimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone, global::System.Convert.ToString);
+            if (content.Contains("Schedule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupSchedule) content.GetValueForProperty("Schedule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).Schedule, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TaggingCriterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria[]) content.GetValueForProperty("TaggingCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).TaggingCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITaggingCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TaggingCriteriaTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContextInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduleRepeatingTimeInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval = (string[]) content.GetValueForProperty("ScheduleRepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleRepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ScheduleTimeZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone = (string) content.GetValueForProperty("ScheduleTimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IScheduleBasedTriggerContextInternal)this).ScheduleTimeZone, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

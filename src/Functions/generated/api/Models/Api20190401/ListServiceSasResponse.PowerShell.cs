@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken = (string) content.GetValueForProperty("ServiceSasToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken, global::System.Convert.ToString);
+            if (content.Contains("ServiceSasToken"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken = (string) content.GetValueForProperty("ServiceSasToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken = (string) content.GetValueForProperty("ServiceSasToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken, global::System.Convert.ToString);
+            if (content.Contains("ServiceSasToken"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken = (string) content.GetValueForProperty("ServiceSasToken",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListServiceSasResponseInternal)this).ServiceSasToken, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

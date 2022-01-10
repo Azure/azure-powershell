@@ -56,6 +56,7 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ### Example 2 Get IoT Central Applications in Subscription.
 ```powershell
@@ -79,6 +80,7 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName2/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName2
@@ -93,6 +95,7 @@ Subdomain         : MyAppSubdomain2
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName2
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ### Example 3 Get IoT Central Applications in Resource Group.
 ```powershell
@@ -116,6 +119,7 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName2
@@ -130,6 +134,7 @@ Subdomain         : MyAppSubdomain2
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ## PARAMETERS
 

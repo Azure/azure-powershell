@@ -101,7 +101,7 @@
                         },
                         "isPreview": true,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     },
                     {
                         "displayVersion": "14",
@@ -308,7 +308,7 @@
                             "use32BitWorkerProcess": false,
                             "linuxFxVersion": "PowerShell|7"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
                     },

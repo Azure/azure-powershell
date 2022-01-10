@@ -325,3 +325,31 @@ function Test-MongoDBCollectionBackupInformationCmdLets {
   Assert-NotNull $backupInfo
   Assert-NotNull $backupInfo.LatestRestorableTimestamp
 }
+
+function Test-UpdateCosmosDBAccountBackupPolicyCmdLet {
+  $rgName = "CosmosDBResourceGroup20"
+  $location = "Central US"
+  $cosmosDBAccountName = "cosmosdb-1220"
+  $apiKind = "Sql"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+
+  Try {
+    New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+  }
+  Catch {
+    Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
+  }
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous
+  Start-Sleep -s 50
+
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState
+  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status
+  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.TargetType
+  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.StartTime
+}

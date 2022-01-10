@@ -1,0 +1,44 @@
+{
+  "Get-AzEdgeOrderItem+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemyg5q?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemyg5q?api-version=2021-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "aa2ed0a2-2f6c-4337-a614-69bb6981fefc" ],
+        "CommandName": [ "Get-AzEdgeOrderItem" ],
+        "FullCommandName": [ "Get-AzEdgeOrderItem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "aa2ed0a2-2f6c-4337-a614-69bb6981fefc" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "ed501afb-4cfe-49ec-96c0-2d7118f9d047" ],
+        "x-ms-correlation-request-id": [ "ed501afb-4cfe-49ec-96c0-2d7118f9d047" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092302Z:ed501afb-4cfe-49ec-96c0-2d7118f9d047" ],
+        "Date": [ "Tue, 23 Nov 2021 09:23:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3082" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"orderItemDetails\": {\r\n      \"productDetails\": {\r\n        \"displayInfo\": {\r\n          \"productFamilyDisplayName\": \"Azure Stack Edge\",\r\n          \"configurationDisplayName\": \"Azure Stack Edge Pro - 2 GPU\"\r\n        },\r\n        \"hierarchyInformation\": {\r\n          \"productFamilyName\": \"azurestackedge\",\r\n          \"productLineName\": \"azurestackedge\",\r\n          \"productName\": \"azurestackedgegpu\",\r\n          \"configurationName\": \"edgep_high\"\r\n        },\r\n        \"count\": 0,\r\n        \"productDoubleEncryptionStatus\": \"Disabled\"\r\n      },\r\n      \"orderItemType\": \"Purchase\",\r\n      \"currentStage\": {\r\n        \"stageStatus\": \"Succeeded\",\r\n        \"stageName\": \"Placed\",\r\n        \"startTime\": \"2021-11-23T09:22:26.779179+00:00\"\r\n      },\r\n      \"orderItemStageHistory\": [\r\n        {\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageName\": \"Placed\",\r\n          \"startTime\": \"2021-11-23T09:22:26.779179+00:00\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"Confirmed\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"ReadyToShip\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"Shipped\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"Delivered\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"InUse\"\r\n        }\r\n      ],\r\n      \"notificationEmailList\": [],\r\n      \"cancellationStatus\": \"Cancellable\",\r\n      \"deletionStatus\": \"NotAllowed\",\r\n      \"returnStatus\": \"NotReturnable\",\r\n      \"managementRpDetailsList\": [\r\n        {\r\n          \"resourceProviderNamespace\": \"Microsoft.DataBoxEdge\"\r\n        }\r\n      ]\r\n    },\r\n    \"addressDetails\": {\r\n      \"forwardAddress\": {\r\n        \"shippingAddress\": {\r\n          \"streetAddress1\": \"101 TOWNSEND ST\",\r\n          \"city\": \"San Francisco\",\r\n          \"stateOrProvince\": \"CA\",\r\n          \"country\": \"US\",\r\n          \"postalCode\": \"94107\",\r\n          \"addressType\": \"Commercial\"\r\n        },\r\n        \"contactDetails\": {\r\n          \"contactName\": \"random\",\r\n          \"phone\": \"1234567891\",\r\n          \"emailList\": [\r\n            \"dhja@microsoft.com\"\r\n          ]\r\n        },\r\n        \"addressValidationStatus\": \"Valid\"\r\n      }\r\n    },\r\n    \"startTime\": \"2021-11-23T09:22:15.1446994+00:00\",\r\n    \"orderId\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/locations/eastus/orders/powershellOrderni79\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"dhja@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2021-11-23T09:22:14.3411921+00:00\",\r\n    \"lastModifiedBy\": \"dhja@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2021-11-23T09:22:14.3411921+00:00\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"name\": \"powershellItemyg5q\",\r\n  \"id\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemyg5q\",\r\n  \"type\": \"Microsoft.EdgeOrder/orderItems\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

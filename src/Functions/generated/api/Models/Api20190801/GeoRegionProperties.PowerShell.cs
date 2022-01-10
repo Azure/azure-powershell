@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain = (string) content.GetValueForProperty("OrgDomain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OrgDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain = (string) content.GetValueForProperty("OrgDomain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain = (string) content.GetValueForProperty("OrgDomain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain, global::System.Convert.ToString);
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OrgDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain = (string) content.GetValueForProperty("OrgDomain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegionPropertiesInternal)this).OrgDomain, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

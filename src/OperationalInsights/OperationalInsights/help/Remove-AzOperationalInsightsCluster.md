@@ -12,9 +12,22 @@ Delete cluster
 
 ## SYNTAX
 
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzOperationalInsightsCluster [-ResourceGroupName] <String> [-ClusterName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByInputObjectParameterSet
+```
+Remove-AzOperationalInsightsCluster -InputCluster <PSCluster> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByResourceIdParameterSet
+```
+Remove-AzOperationalInsightsCluster -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +50,7 @@ Delete cluster
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -52,8 +65,8 @@ Accept wildcard characters: False
 The cluster name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
@@ -67,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,12 +91,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputCluster
+{{ Fill InputCluster Description }}
+
+```yaml
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
@@ -93,11 +121,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The destination resource ID.
+This can be copied from the Properties entry of the destination resource in Azure.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -113,7 +157,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -128,6 +172,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
 ### System.String
 

@@ -22,7 +22,7 @@ $appname = "lketmtestantps10"
 $slot = "testslot"
 $prodHostname = "www.adorenow.net"
 $slotHostname = "testslot.adorenow.net"
-$thumbprint = "16659E73A97D079A389CD8FC8C78B9F2DDD1BABE"
+$thumbprint = "6156D1475113476C55A3064D44DED9ECA0B33864"
 
 <#
 .SYNOPSIS
@@ -175,11 +175,11 @@ function Test-GetWebAppCertificate
 		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
 
 		# Tests - Retrieve web app certificate objects
-		$certificates = Get-AzWebAppCertificate
+		$certificates = Get-AzWebAppCertificate -ResourceGroupName $rgname
 		$thumbprints = $certificates | Select -expand Thumbprint
 		Assert-True { $thumbprints -contains $thumbprint }
 
-		$certificate = Get-AzWebAppCertificate -Thumbprint $thumbprint
+		$certificate = Get-AzWebAppCertificate -ResourceGroupName $rgname -Thumbprint $thumbprint
 		Assert-AreEqual $thumbprint $certificate.Thumbprint
 	}
     finally

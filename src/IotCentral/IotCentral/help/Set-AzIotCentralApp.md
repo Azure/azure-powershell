@@ -14,21 +14,21 @@ Updates the metadata for an IoT Central Application.
 
 ### ResourceIdParameterSet (Default)
 ```
-Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-Sku <String>]
+Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-Sku <String>] [-Identity <String>]
  -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-Sku <String>]
+Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-Sku <String>] [-Identity <String>]
  -InputObject <PSIotCentralApp> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
+Set-AzIotCentralApp [-DisplayName <String>] [-Subdomain <String>] [-Tag <Hashtable>] [-Sku <String>] [-Identity <String>] [-AsJob]
  [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -60,6 +60,7 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ### Example 2 Update Subdomain
 ```powershell
@@ -83,6 +84,7 @@ Subdomain         : new-subdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ### Example 3 Update App Sku Info
 ```powershell
@@ -106,6 +108,7 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 
 ## PARAMETERS
 
@@ -250,6 +253,22 @@ Iot Central Application Resource Tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+The type of managed identity for the IoT Central application.
+Default value is None. System-assigned managed identities are supported.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

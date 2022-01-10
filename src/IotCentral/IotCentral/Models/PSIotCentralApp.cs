@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.IotCentral.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.IotCentral.Models
@@ -51,6 +50,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
             this.DisplayName = iotCentralApp.DisplayName;
             this.Subdomain = iotCentralApp.Subdomain;
             this.Template = iotCentralApp.Template;
+            this.Identity = iotCentralApp.Identity;
         }
         
         /// <summary>
@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// The Resource type.
         /// </summary>
         public string Type { get; private set; }
+
+        /// <summary>
+        /// The supported Managed Identities.
+        /// </summary>
+        public SystemAssignedServiceIdentity Identity { get; set; }
 
         /// <summary>
         /// The subscription identifier.

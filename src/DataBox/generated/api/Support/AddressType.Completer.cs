@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Residential".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Residential", "Residential", global::System.Management.Automation.CompletionResultType.ParameterValue, "Residential");
+                yield return new global::System.Management.Automation.CompletionResult("'Residential'", "Residential", global::System.Management.Automation.CompletionResultType.ParameterValue, "Residential");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Commercial".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Commercial", "Commercial", global::System.Management.Automation.CompletionResultType.ParameterValue, "Commercial");
+                yield return new global::System.Management.Automation.CompletionResult("'Commercial'", "Commercial", global::System.Management.Automation.CompletionResultType.ParameterValue, "Commercial");
             }
         }
     }

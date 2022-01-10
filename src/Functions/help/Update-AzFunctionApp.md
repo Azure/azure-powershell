@@ -15,17 +15,17 @@ Updates a function app.
 ### ByName (Default)
 ```
 Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>]
- [-PlanName <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
+ [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
 Update-AzFunctionApp -InputObject <ISite> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>]
- [-PlanName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
+ [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,28 +35,28 @@ Updates a function app.
 
 ### Example 1: Update function app hosting plan.
 ```powershell
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
 ```
 
 This command updates function app hosting plan.
 
 ### Example 2: Set a SystemAssigned managed identity for a function app.
 ```powershell
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
 ```
 
 This command sets a SystemAssigned managed identity for a function app.
 
 ### Example 3: Update function app Application Insights.
 ```powershell
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
 ```
 
 This command updates function app Application Insights.
 
 ### Example 3: Remove managed identity from a function app.
 ```powershell
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None 
+PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
 ```
 
 This command removes a managed identity from a function app.
@@ -115,6 +115,21 @@ Accept wildcard characters: False
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the cmdlet to update the function app without prompting for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

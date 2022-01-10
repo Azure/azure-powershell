@@ -87,17 +87,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy definition API version.
         /// </summary>
-        public static readonly string PolicyDefinitionApiVersion = "2020-09-01";
+        public static readonly string PolicyDefinitionApiVersion = "2021-06-01";
 
         /// <summary>
         /// The default policy set definition API version.
         /// </summary>
-        public static readonly string PolicySetDefintionApiVersion = "2020-09-01";
+        public static readonly string PolicySetDefintionApiVersion = "2021-06-01";
 
         /// <summary>
         /// The default policy assignment API version.
         /// </summary>
-        public static readonly string PolicyAssignmentApiVersion = "2020-09-01";
+        public static readonly string PolicyAssignmentApiVersion = "2021-06-01";
 
         /// <summary>
         /// The default policy exemption API version.

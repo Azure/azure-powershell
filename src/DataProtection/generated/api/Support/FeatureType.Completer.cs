@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataSourceType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DataSourceType", "DataSourceType", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataSourceType");
+                yield return new global::System.Management.Automation.CompletionResult("'DataSourceType'", "DataSourceType", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataSourceType");
             }
         }
     }

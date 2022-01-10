@@ -66,21 +66,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName = (string) content.GetValueForProperty("StorageAccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType?) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId = (string) content.GetValueForProperty("AccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed = (long?) content.GetValueForProperty("BytesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess = (long?) content.GetValueForProperty("TotalBytesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed = (long?) content.GetValueForProperty("FilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess = (long?) content.GetValueForProperty("TotalFilesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed = (long?) content.GetValueForProperty("InvalidFilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded = (long?) content.GetValueForProperty("InvalidFileBytesUploaded",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount = (long?) content.GetValueForProperty("RenamedContainerCount",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut = (long?) content.GetValueForProperty("FilesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut = (long?) content.GetValueForProperty("DirectoriesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed = (long?) content.GetValueForProperty("InvalidDirectoriesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress = (bool?) content.GetValueForProperty("IsEnumerationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("StorageAccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName = (string) content.GetValueForProperty("StorageAccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType?) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("AccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId = (string) content.GetValueForProperty("AccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BytesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed = (long?) content.GetValueForProperty("BytesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalBytesToProcess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess = (long?) content.GetValueForProperty("TotalBytesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("FilesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed = (long?) content.GetValueForProperty("FilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalFilesToProcess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess = (long?) content.GetValueForProperty("TotalFilesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InvalidFilesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed = (long?) content.GetValueForProperty("InvalidFilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InvalidFileBytesUploaded"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded = (long?) content.GetValueForProperty("InvalidFileBytesUploaded",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RenamedContainerCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount = (long?) content.GetValueForProperty("RenamedContainerCount",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("FilesErroredOut"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut = (long?) content.GetValueForProperty("FilesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("DirectoriesErroredOut"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut = (long?) content.GetValueForProperty("DirectoriesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InvalidDirectoriesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed = (long?) content.GetValueForProperty("InvalidDirectoriesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("IsEnumerationInProgress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress = (bool?) content.GetValueForProperty("IsEnumerationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -98,21 +143,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName = (string) content.GetValueForProperty("StorageAccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType?) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId = (string) content.GetValueForProperty("AccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed = (long?) content.GetValueForProperty("BytesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess = (long?) content.GetValueForProperty("TotalBytesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed = (long?) content.GetValueForProperty("FilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess = (long?) content.GetValueForProperty("TotalFilesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed = (long?) content.GetValueForProperty("InvalidFilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded = (long?) content.GetValueForProperty("InvalidFileBytesUploaded",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount = (long?) content.GetValueForProperty("RenamedContainerCount",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut = (long?) content.GetValueForProperty("FilesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut = (long?) content.GetValueForProperty("DirectoriesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed = (long?) content.GetValueForProperty("InvalidDirectoriesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress = (bool?) content.GetValueForProperty("IsEnumerationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("StorageAccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName = (string) content.GetValueForProperty("StorageAccountName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).StorageAccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType?) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType?) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("AccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId = (string) content.GetValueForProperty("AccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).AccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BytesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed = (long?) content.GetValueForProperty("BytesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).BytesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalBytesToProcess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess = (long?) content.GetValueForProperty("TotalBytesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalBytesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("FilesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed = (long?) content.GetValueForProperty("FilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalFilesToProcess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess = (long?) content.GetValueForProperty("TotalFilesToProcess",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).TotalFilesToProcess, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InvalidFilesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed = (long?) content.GetValueForProperty("InvalidFilesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFilesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InvalidFileBytesUploaded"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded = (long?) content.GetValueForProperty("InvalidFileBytesUploaded",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidFileBytesUploaded, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RenamedContainerCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount = (long?) content.GetValueForProperty("RenamedContainerCount",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).RenamedContainerCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("FilesErroredOut"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut = (long?) content.GetValueForProperty("FilesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).FilesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("DirectoriesErroredOut"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut = (long?) content.GetValueForProperty("DirectoriesErroredOut",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).DirectoriesErroredOut, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InvalidDirectoriesProcessed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed = (long?) content.GetValueForProperty("InvalidDirectoriesProcessed",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).InvalidDirectoriesProcessed, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("IsEnumerationInProgress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress = (bool?) content.GetValueForProperty("IsEnumerationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICopyProgressInternal)this).IsEnumerationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

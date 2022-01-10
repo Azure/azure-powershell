@@ -14,13 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
+    using System;
+    using System.Globalization;
+    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-    using Microsoft.Azure.Cosmos.Table;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
 
     [TestClass]
     public class NewAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
@@ -30,35 +29,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestInitialize]
         public void InitCommand()
         {
-            command = new NewAzureStorageTableStoredAccessPolicyCommand(tableMock)
+            this.command = new NewAzureStorageTableStoredAccessPolicyCommand(this.tableMock)
             {
-                CommandRuntime = MockCmdRunTime
+                CommandRuntime = this.MockCmdRunTime
             };
         }
 
         [TestCleanup]
         public void CleanCommand()
         {
-            command = null;
+            this.clearTest();
+            this.command = null;
         }
 
         [TestMethod]
         public void CreateAzureTableStoredAccessPolicyWithInvalidNameTest()
         {
-            clearTest();
             //policy name lenght longer than 64
             string policyName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             string tableName = "sampleTable";
             AssertThrows<ArgumentException>(() => command.CreateAzureTableStoredAccessPolicy(command.Channel, tableName, policyName, null, null, null),
                 String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
-            clearTest();
         }
-
 
         [TestMethod]
         public void CreateAzureTableStoredAccessPolicySuccessTest()
         {
-            clearTest();
             string policyName = "Policy" + Guid.NewGuid();
             string tableName = "sampleTable";
 
@@ -75,14 +71,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             Assert.AreEqual<SharedAccessTablePermissions>(expectedPermissions, resultPolicy.Permissions);
             Assert.AreEqual<DateTimeOffset?>(startTime.ToUniversalTime(), resultPolicy.SharedAccessStartTime);
             Assert.AreEqual<DateTimeOffset?>(expiryTime.ToUniversalTime(), resultPolicy.SharedAccessExpiryTime);
-            clearTest();
         }
-
 
         [TestMethod]
         public void CreateStoredAccessPolicyAlreadyExistsTest()
         {
-            clearTest();
             string policyName = "Policy" + Guid.NewGuid();
             string tableName = "sampleTable";
 
@@ -91,13 +84,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             command.CreateAzureTableStoredAccessPolicy(command.Channel, tableName, policyName, null, null, null);
             AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTableStoredAccessPolicy(command.Channel, tableName, policyName, null, null, null),
                 String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
-            clearTest();
         }
 
         [TestMethod]
-        public void CreateStoredAccessPolicyInvalidExpirtTime()
+        public void CreateStoredAccessPolicyInvalidExpiryTime()
         {
-            clearTest();
             string policyName = "Policy" + Guid.NewGuid();
             string tableName = "sampleTable";
 
@@ -107,8 +98,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             DateTimeOffset? expectedSharedAccessExpiryTime = expiryTime.Value.ToUniversalTime();
             AssertThrows<ArgumentException>(() => command.CreateAzureTableStoredAccessPolicy(command.Channel, tableName, policyName, startTime, expiryTime, null),
                 String.Format(CultureInfo.CurrentCulture, Resources.ExpiryTimeGreatThanStartTime, expectedSharedAccessExpiryTime, expectedSharedAccessStartTime));
-            clearTest();
         }
-
     }
 }

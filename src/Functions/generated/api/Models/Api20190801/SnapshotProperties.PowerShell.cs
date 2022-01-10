@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time = (string) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time, global::System.Convert.ToString);
+            if (content.Contains("Time"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time = (string) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time = (string) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time, global::System.Convert.ToString);
+            if (content.Contains("Time"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time = (string) content.GetValueForProperty("Time",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotPropertiesInternal)this).Time, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

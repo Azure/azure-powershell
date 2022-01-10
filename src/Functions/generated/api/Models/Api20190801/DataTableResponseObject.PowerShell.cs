@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[]) content.GetValueForProperty("Column",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataTableResponseColumnTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row = (string[][]) content.GetValueForProperty("Row",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row, __y => TypeConverterExtensions.SelectToArray<string[]>(__y, __w => TypeConverterExtensions.SelectToArray<string>(__w, global::System.Convert.ToString)));
+            if (content.Contains("TableName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Column"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[]) content.GetValueForProperty("Column",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataTableResponseColumnTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Row"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row = (string[][]) content.GetValueForProperty("Row",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row, __y => TypeConverterExtensions.SelectToArray<string[]>(__y, __w => TypeConverterExtensions.SelectToArray<string>(__w, global::System.Convert.ToString)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[]) content.GetValueForProperty("Column",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataTableResponseColumnTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row = (string[][]) content.GetValueForProperty("Row",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row, __y => TypeConverterExtensions.SelectToArray<string[]>(__y, __w => TypeConverterExtensions.SelectToArray<string>(__w, global::System.Convert.ToString)));
+            if (content.Contains("TableName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).TableName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Column"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[]) content.GetValueForProperty("Column",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Column, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataTableResponseColumnTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Row"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row = (string[][]) content.GetValueForProperty("Row",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)this).Row, __y => TypeConverterExtensions.SelectToArray<string[]>(__y, __w => TypeConverterExtensions.SelectToArray<string>(__w, global::System.Convert.ToString)));
+            }
             AfterDeserializePSObject(content);
         }
 

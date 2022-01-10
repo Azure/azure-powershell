@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Profile
         public PSAzureSubscription SubscriptionObject { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
-                    HelpMessage = "Tenant name or ID")]
+                    HelpMessage = "Tenant domain name or ID")]
         [Parameter(ParameterSetName = TenantNameParameterSet, Mandatory = true,
-                    HelpMessage = "Tenant name or ID")]
+                    HelpMessage = "Tenant domain name or ID")]
         [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }

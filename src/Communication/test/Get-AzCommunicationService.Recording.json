@@ -1,12 +1,12 @@
 {
-  "Get-AzCommunicationService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20-preview+1": {
+  "Get-AzCommunicationService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "611a3a60-c72d-424f-b3a9-8578dae546cc" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "acf7aec8-4651-4123-8bad-df848f54f764" ],
         "CommandName": [ "Get-AzCommunicationService" ],
         "FullCommandName": [ "Get-AzCommunicationService_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,30 +22,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "b5e8f95e-432c-4709-909a-647163413556" ],
-        "x-ms-correlation-request-id": [ "97591af5-8ca3-43d0-a3c1-cd9879a57d5c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214558Z:97591af5-8ca3-43d0-a3c1-cd9879a57d5c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e1c2019d-28e7-491c-88a4-b60964ea5852" ],
+        "x-ms-correlation-request-id": [ "ded4c236-0e37-44c4-b2e9-1b11c8ee4525" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T214009Z:ded4c236-0e37-44c4-b2e9-1b11c8ee4525" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:45:58 GMT" ]
+        "Date": [ "Thu, 28 Oct 2021 21:40:08 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "4681" ],
+        "Content-Length": [ "59090" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/AnpeaResource1\",\"name\":\"AnpeaResource1\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"tags\":{\"ExampleTagName1\":\"ExampleTagValue1\",\"ExampleTagName2\":\"ExampleTagValue2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"anpearesource1.communication.azure.com\",\"immutableResourceId\":\"e1b50ade-1e68-426f-b602-fdda5fda7eb1\",\"dataLocation\":\"UnitedStates\",\"notificationHubId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/SpoolRP/providers/Microsoft.NotificationHubs/namespaces/talosnotificationhubnamespace/notificationHubs/talosnotificationhub\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/AnpeaResource4\",\"name\":\"AnpeaResource4\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"tags\":{\"ExampleTagValue1\":\"ExampleTagName1\",\"ExampleTagValue2\":\"ExampleTagName2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"anpearesource4.communication.azure.com\",\"immutableResourceId\":\"3b67a38d-20a3-43a3-8d61-23459da06998\",\"dataLocation\":\"UnitedStates\",\"notificationHubId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/SpoolRP/providers/Microsoft.NotificationHubs/namespaces/talosnotificationhubnamespace/notificationHubs/talosnotificationhub\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/AnpeaResource3\",\"name\":\"AnpeaResource3\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"anpearesource3.communication.azure.com\",\"immutableResourceId\":\"333dd398-6fd1-4f41-94e5-35a6af704d9d\",\"dataLocation\":\"UnitedStates\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/AnpeaResource5\",\"name\":\"AnpeaResource5\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"tags\":{\"foo1\":\"bar2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"anpearesource5.communication.azure.com\",\"immutableResourceId\":\"37ebed3a-be37-451c-9134-07368a364d84\",\"dataLocation\":\"UnitedStates\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/rg-py-sample-515810/providers/Microsoft.Communication/communicationServices/py-sample-91357\",\"name\":\"py-sample-91357\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"py-sample-91357.communication.azure.com\",\"immutableResourceId\":\"310b7898-d708-493f-9867-ed32db705aef\",\"dataLocation\":\"UnitedStates\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/AnpeaResource6\",\"name\":\"AnpeaResource6\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"anpearesource6.communication.azure.com\",\"immutableResourceId\":\"6a451c94-d50c-4ad3-83e6-c392427f88de\",\"dataLocation\":\"UnitedStates\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/new-anpea\",\"name\":\"new-anpea\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"new-anpea.communication.azure.com\",\"immutableResourceId\":\"c8ef0099-bf2b-4deb-b0f8-b083383311f6\",\"dataLocation\":\"UnitedStates\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/SpoolRP/providers/Microsoft.Communication/communicationServices/acsResource6ymbfx\",\"name\":\"acsResource6ymbfx\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"acsresource6ymbfx.communication.azure.com\",\"immutableResourceId\":\"ba3534f9-0bbe-4824-844b-2506315737fe\",\"dataLocation\":\"UnitedStates\"}},{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\"}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz\",\"name\":\"persistentResourceName8wn6lz\",\"type\":\"microsoft.communication/communicationservices\",\"location\":\"Global\",\"systemData\":{\"createdBy\":\"contoso@outlook.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-28T21:38:33.3701063Z\",\"lastModifiedBy\":\"contoso@outlook.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-28T21:38:33.3701063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcename8wn6lz.communication.azure.com\",\"immutableResourceId\":\"94c32911-4bfa-46f2-aef9-555b76097712\",\"dataLocation\":\"UnitedStates\"}}]}"
     }
   },
-  "Get-AzCommunicationService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview+1": {
+  "Get-AzCommunicationService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz?api-version=2020-08-20+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz?api-version=2020-08-20",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "3695b67b-8a20-4a3a-b466-9c1c045dc4ac" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "478ebc5b-f6de-4899-a548-8feca5fc9f16" ],
         "CommandName": [ "Get-AzCommunicationService" ],
         "FullCommandName": [ "Get-AzCommunicationService_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,32 +60,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"91028dcd-0000-0700-0000-5fab09f80000\"" ],
+        "ETag": [ "\"16002668-0000-0700-0000-617b18600000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "bf03d05d-aea4-4531-ba92-1eef3af86773" ],
-        "x-ms-correlation-request-id": [ "1267f087-1f77-41bc-9827-0500e79a557d" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214558Z:1267f087-1f77-41bc-9827-0500e79a557d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9e3c7b16-7d32-4795-a8b5-9cdd3ed5128f" ],
+        "x-ms-correlation-request-id": [ "597e3436-b19a-4285-a3e0-487d1e710bb9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T214010Z:597e3436-b19a-4285-a3e0-487d1e710bb9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:45:58 GMT" ]
+        "Date": [ "Thu, 28 Oct 2021 21:40:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "493" ],
+        "Content-Length": [ "721" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\"}}"
+      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz\",\"name\":\"persistentResourceName8wn6lz\",\"type\":\"microsoft.communication/communicationservices\",\"location\":\"Global\",\"systemData\":{\"createdBy\":\"contoso@outlook.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-28T21:38:33.3701063Z\",\"lastModifiedBy\":\"contoso@outlook.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-28T21:38:33.3701063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcename8wn6lz.communication.azure.com\",\"immutableResourceId\":\"94c32911-4bfa-46f2-aef9-555b76097712\",\"dataLocation\":\"UnitedStates\"}}"
     }
   },
-  "Get-AzCommunicationService+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20-preview+1": {
+  "Get-AzCommunicationService+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices?api-version=2020-08-20",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "30198de5-8f13-4213-9b66-0657dab83f18" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "60b759ac-2e8d-43cc-b398-eb648632a38f" ],
         "CommandName": [ "Get-AzCommunicationService" ],
         "FullCommandName": [ "Get-AzCommunicationService_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -101,30 +101,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "460faa8a-7b05-44e3-a7c6-8e9427c2424a" ],
-        "x-ms-correlation-request-id": [ "bb2e2c05-b47f-4bc1-8d21-7de3aac0070c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214558Z:bb2e2c05-b47f-4bc1-8d21-7de3aac0070c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "78958250-3e6b-47c3-b548-d42ac0f62544" ],
+        "x-ms-correlation-request-id": [ "fd146bfa-91f8-430a-912e-b061b5813227" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T214010Z:fd146bfa-91f8-430a-912e-b061b5813227" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:45:58 GMT" ]
+        "Date": [ "Thu, 28 Oct 2021 21:40:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "505" ],
+        "Content-Length": [ "733" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\"}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz\",\"name\":\"persistentResourceName8wn6lz\",\"type\":\"microsoft.communication/communicationservices\",\"location\":\"Global\",\"systemData\":{\"createdBy\":\"contoso@outlook.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-28T21:38:33.3701063Z\",\"lastModifiedBy\":\"contoso@outlook.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-28T21:38:33.3701063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcename8wn6lz.communication.azure.com\",\"immutableResourceId\":\"94c32911-4bfa-46f2-aef9-555b76097712\",\"dataLocation\":\"UnitedStates\"}}]}"
     }
   },
-  "Get-AzCommunicationService+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview+1": {
+  "Get-AzCommunicationService+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz?api-version=2020-08-20+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz?api-version=2020-08-20",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "eb68f395-d525-4505-b9eb-9498dfe8f5ce" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "def99438-7fa5-418b-b8e7-4d7ee936dc6d" ],
         "CommandName": [ "Get-AzCommunicationService" ],
         "FullCommandName": [ "Get-AzCommunicationService_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -139,32 +139,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"91028dcd-0000-0700-0000-5fab09f80000\"" ],
+        "ETag": [ "\"16002668-0000-0700-0000-617b18600000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-request-id": [ "1d812c06-9e37-4e9f-948a-6c0df566a7cb" ],
-        "x-ms-correlation-request-id": [ "e87a191a-394d-4494-9904-6947b5392a6a" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214559Z:e87a191a-394d-4494-9904-6947b5392a6a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9d2e293a-1a03-4a34-aae2-708f901d13e7" ],
+        "x-ms-correlation-request-id": [ "939636bd-a61d-46ad-9725-2ff9cf30b740" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T214011Z:939636bd-a61d-46ad-9725-2ff9cf30b740" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:45:58 GMT" ]
+        "Date": [ "Thu, 28 Oct 2021 21:40:10 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "493" ],
+        "Content-Length": [ "721" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\"}}"
+      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz\",\"name\":\"persistentResourceName8wn6lz\",\"type\":\"microsoft.communication/communicationservices\",\"location\":\"Global\",\"systemData\":{\"createdBy\":\"contoso@outlook.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-28T21:38:33.3701063Z\",\"lastModifiedBy\":\"contoso@outlook.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-28T21:38:33.3701063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcename8wn6lz.communication.azure.com\",\"immutableResourceId\":\"94c32911-4bfa-46f2-aef9-555b76097712\",\"dataLocation\":\"UnitedStates\"}}"
     }
   },
-  "Get-AzCommunicationService+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview+2": {
+  "Get-AzCommunicationService+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz?api-version=2020-08-20+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz?api-version=2020-08-20",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "7ed3e811-1f23-436e-8adb-93288593a13d" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "f88db2b7-1c6b-46d6-b228-b1a351266ea8" ],
         "CommandName": [ "Get-AzCommunicationService" ],
         "FullCommandName": [ "Get-AzCommunicationService_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -179,22 +179,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"91028dcd-0000-0700-0000-5fab09f80000\"" ],
+        "ETag": [ "\"16002668-0000-0700-0000-617b18600000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "a03eb24c-287b-45c5-b39c-c2353112262b" ],
-        "x-ms-correlation-request-id": [ "57f4ba45-eb0f-4a45-b7f0-8e2f99b6aab3" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214559Z:57f4ba45-eb0f-4a45-b7f0-8e2f99b6aab3" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "fee8a247-68fe-4a11-af43-e34aad7e3fe0" ],
+        "x-ms-correlation-request-id": [ "e6ab7cf3-4f80-4096-9ded-c04a08ccac37" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T214011Z:e6ab7cf3-4f80-4096-9ded-c04a08ccac37" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:45:58 GMT" ]
+        "Date": [ "Thu, 28 Oct 2021 21:40:10 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "493" ],
+        "Content-Length": [ "721" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\"}}"
+      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz\",\"name\":\"persistentResourceName8wn6lz\",\"type\":\"microsoft.communication/communicationservices\",\"location\":\"Global\",\"systemData\":{\"createdBy\":\"contoso@outlook.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-28T21:38:33.3701063Z\",\"lastModifiedBy\":\"contoso@outlook.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-28T21:38:33.3701063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcename8wn6lz.communication.azure.com\",\"immutableResourceId\":\"94c32911-4bfa-46f2-aef9-555b76097712\",\"dataLocation\":\"UnitedStates\"}}"
     }
   }
 }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 track1Key = new Track1Sdk.JsonWebKey(track2Key.ToRSA());
             }
             // SDK doesn't have a definition of OctHSM, so I need to use string comparison
-            else if (track2Key.KeyType == Track2Sdk.KeyType.Oct || track2Key.KeyType.ToString() == @"oct-HSM")
+            else if (track2Key.KeyType == Track2Sdk.KeyType.Oct || track2Key.KeyType == Track2Sdk.KeyType.OctHsm)
             {
                 track1Key = new Track1Sdk.JsonWebKey();
                 track1Key.Kty = track2Key.KeyType.ToString();

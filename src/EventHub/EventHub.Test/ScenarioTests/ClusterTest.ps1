@@ -28,10 +28,6 @@ function ClusterTest
     Write-Debug " Resource Group Name : $resourceGroupName"
     $ResultResourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Force   
 
-	# Get Available Clusters
-	$regionList = Get-AzEventHubClustersAvailableRegion
-	Assert-True {$regionList -ne $null}
-
     Write-Debug " Create a Cluster in South Central US"
     Write-Debug "Cluster Name : $clusterName" 
     $result = New-AzEventHubCluster -ResourceGroup $resourceGroupName -Name $clusterName -Location $location  -Capacity "1"

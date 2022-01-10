@@ -36,28 +36,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ErrorAdditionalInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ErrorAdditionalInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ErrorDetail</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ErrorDetail</TypeName>
@@ -101,18 +79,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -130,9 +102,6 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -141,9 +110,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
@@ -176,9 +142,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedCluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedCluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -189,7 +155,7 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -202,7 +168,7 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -210,9 +176,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -221,9 +187,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -235,18 +198,15 @@
               <TableColumnItem>
                 <PropertyName>TenantId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -266,9 +226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -288,9 +248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.ConnectedClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -376,9 +336,105 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.CredentialResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.CredentialResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.HybridConnectionConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.HybridConnectionConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpirationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HybridConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Relay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Token</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpirationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HybridConnectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Relay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Token</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ListClusterUserCredentialProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ListClusterUserCredentialProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AuthenticationMethod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientProxy</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AuthenticationMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientProxy</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.Operation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -398,9 +454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -438,9 +494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.OperationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -460,9 +516,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

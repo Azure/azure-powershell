@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceIdentityType.</summary>
+    /// <summary>
+    /// The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The
+    /// type 'None' means no identity is assigned to the connected cluster.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityTypeTypeConverter))]
     public partial struct ResourceIdentityType :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SystemAssigned", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned'", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
             }
         }
     }

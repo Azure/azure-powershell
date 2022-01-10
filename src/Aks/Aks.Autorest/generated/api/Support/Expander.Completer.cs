@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "least-waste".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("least-waste", "least-waste", global::System.Management.Automation.CompletionResultType.ParameterValue, "least-waste");
+                yield return new global::System.Management.Automation.CompletionResult("'least-waste'", "least-waste", global::System.Management.Automation.CompletionResultType.ParameterValue, "least-waste");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "most-pods".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("most-pods", "most-pods", global::System.Management.Automation.CompletionResultType.ParameterValue, "most-pods");
+                yield return new global::System.Management.Automation.CompletionResult("'most-pods'", "most-pods", global::System.Management.Automation.CompletionResultType.ParameterValue, "most-pods");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "random".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("random", "random", global::System.Management.Automation.CompletionResultType.ParameterValue, "random");
+                yield return new global::System.Management.Automation.CompletionResult("'random'", "random", global::System.Management.Automation.CompletionResultType.ParameterValue, "random");
             }
         }
     }

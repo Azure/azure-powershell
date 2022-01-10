@@ -468,12 +468,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.PowerShell
         {
             var parameters = variant.Metadata.Parameters.AsEnumerable();
             var parameterHelp = variant.HelpInfo.Parameters.AsEnumerable();
+
             if (variant.HasParameterSets)
             {
                 parameters = parameters.Where(p => p.Value.ParameterSets.Keys.Any(k => k == variant.VariantName || k == AllParameterSets));
-                parameterHelp = parameterHelp.Where(ph => !ph.ParameterSetNames.Any() || ph.ParameterSetNames.Any(psn => psn == variant.VariantName || psn == AllParameterSets));
+                parameterHelp = parameterHelp.Where(ph => (!ph.ParameterSetNames.Any() || ph.ParameterSetNames.Any(psn => psn == variant.VariantName || psn == AllParameterSets)) && ph.Name != "IncludeTotalCount");
             }
-            return parameters.Select(p => new Parameter(variant.VariantName, p.Key, p.Value, parameterHelp.FirstOrDefault(ph => ph.Name == p.Key))).ToArray();
+            var result = parameters.Select(p => new Parameter(variant.VariantName, p.Key, p.Value, parameterHelp.FirstOrDefault(ph => ph.Name == p.Key)));
+            if (variant.SupportsPaging) {
+                // If supportsPaging is set, we will need to add First and Skip parameters since they are treated as common parameters which as not contained on Metadata>parameters
+                variant.Info.Parameters["First"].Attributes.OfType<ParameterAttribute>().FirstOrDefault(pa => pa.ParameterSetName == variant.VariantName || pa.ParameterSetName == AllParameterSets).HelpMessage = "Gets only the first 'n' objects.";
+                variant.Info.Parameters["Skip"].Attributes.OfType<ParameterAttribute>().FirstOrDefault(pa => pa.ParameterSetName == variant.VariantName || pa.ParameterSetName == AllParameterSets).HelpMessage = "Ignores the first 'n' objects and then gets the remaining objects.";
+                result = result.Append(new Parameter(variant.VariantName, "First", variant.Info.Parameters["First"], parameterHelp.FirstOrDefault(ph => ph.Name == "First")));
+                result = result.Append(new Parameter(variant.VariantName, "Skip", variant.Info.Parameters["Skip"], parameterHelp.FirstOrDefault(ph => ph.Name == "Skip")));
+            }
+            return result.ToArray();
         }
 
         public static Attribute[] ToAttributes(this Variant variant) => variant.IsFunction

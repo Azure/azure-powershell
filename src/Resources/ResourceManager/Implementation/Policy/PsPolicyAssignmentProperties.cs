@@ -77,7 +77,7 @@
         /// <summary>
         /// Convert to JSON
         /// </summary>
-        /// <returns>JSON representatnion of policy assignment properties</returns>
+        /// <returns>JSON representation of policy assignment properties</returns>
         public JToken ToJToken()
         {
             var returnValue = new JObject();

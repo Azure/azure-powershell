@@ -48,5 +48,29 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PrivateDnsZoneGroupCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azdevxps)]
+        public void TestPrivateEndpointApplicationSecurityGroup()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointApplicationSecurityGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azdevxps)]
+        public void TestPrivateEndpointIpConfiguration()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointIpConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azdevxps)]
+        public void TestPrivateEndpointCustomNetworkInterfaceName()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointCustomNetworkInterfaceName");
+        }
     }
 }

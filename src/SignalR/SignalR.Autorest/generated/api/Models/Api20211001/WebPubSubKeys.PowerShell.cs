@@ -104,10 +104,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey = (string) content.GetValueForProperty("PrimaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey = (string) content.GetValueForProperty("SecondaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString = (string) content.GetValueForProperty("PrimaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString = (string) content.GetValueForProperty("SecondaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString, global::System.Convert.ToString);
+            if (content.Contains("PrimaryKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey = (string) content.GetValueForProperty("PrimaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey = (string) content.GetValueForProperty("SecondaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString = (string) content.GetValueForProperty("PrimaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString = (string) content.GetValueForProperty("SecondaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,10 +137,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey = (string) content.GetValueForProperty("PrimaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey = (string) content.GetValueForProperty("SecondaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString = (string) content.GetValueForProperty("PrimaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString = (string) content.GetValueForProperty("SecondaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString, global::System.Convert.ToString);
+            if (content.Contains("PrimaryKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey = (string) content.GetValueForProperty("PrimaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey = (string) content.GetValueForProperty("SecondaryKey",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString = (string) content.GetValueForProperty("PrimaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).PrimaryConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString = (string) content.GetValueForProperty("SecondaryConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeysInternal)this).SecondaryConnectionString, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

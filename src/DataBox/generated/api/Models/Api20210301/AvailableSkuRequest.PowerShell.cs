@@ -66,10 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName[]) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom));
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName[]) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -87,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName[]) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom));
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Country, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName[]) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAvailableSkuRequestInternal)this).SkuName, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

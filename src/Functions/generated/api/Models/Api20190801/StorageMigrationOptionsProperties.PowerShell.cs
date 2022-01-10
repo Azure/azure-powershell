@@ -101,10 +101,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString = (string) content.GetValueForProperty("AzurefilesConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare = (string) content.GetValueForProperty("AzurefilesShare",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration = (bool?) content.GetValueForProperty("SwitchSiteAfterMigration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite = (bool?) content.GetValueForProperty("BlockWriteAccessToSite",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("AzurefilesConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString = (string) content.GetValueForProperty("AzurefilesConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzurefilesShare"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare = (string) content.GetValueForProperty("AzurefilesShare",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare, global::System.Convert.ToString);
+            }
+            if (content.Contains("SwitchSiteAfterMigration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration = (bool?) content.GetValueForProperty("SwitchSiteAfterMigration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlockWriteAccessToSite"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite = (bool?) content.GetValueForProperty("BlockWriteAccessToSite",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,10 +134,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString = (string) content.GetValueForProperty("AzurefilesConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare = (string) content.GetValueForProperty("AzurefilesShare",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration = (bool?) content.GetValueForProperty("SwitchSiteAfterMigration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite = (bool?) content.GetValueForProperty("BlockWriteAccessToSite",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("AzurefilesConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString = (string) content.GetValueForProperty("AzurefilesConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzurefilesShare"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare = (string) content.GetValueForProperty("AzurefilesShare",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).AzurefilesShare, global::System.Convert.ToString);
+            }
+            if (content.Contains("SwitchSiteAfterMigration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration = (bool?) content.GetValueForProperty("SwitchSiteAfterMigration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).SwitchSiteAfterMigration, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlockWriteAccessToSite"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite = (bool?) content.GetValueForProperty("BlockWriteAccessToSite",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStorageMigrationOptionsPropertiesInternal)this).BlockWriteAccessToSite, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

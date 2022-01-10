@@ -101,7 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.TagsResourceTagsTypeConverter.ConvertFrom);
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.TagsResourceTagsTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,7 +122,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.TagsResourceTagsTypeConverter.ConvertFrom);
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ITagsResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.TagsResourceTagsTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

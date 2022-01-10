@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode.CreateFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ReasonCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode.CreateFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ReasonCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IRestrictionInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ReasonCode.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

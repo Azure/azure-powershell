@@ -15,13 +15,15 @@ Operation to update an existing CommunicationService.
 ### UpdateExpanded (Default)
 ```
 Update-AzCommunicationService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DataLocation <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzCommunicationService -InputObject <ICommunicationIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzCommunicationService -InputObject <ICommunicationIdentity> [-DataLocation <String>]
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +43,21 @@ Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 Attaches the given tags to the specified ACS resource.
 
 ## PARAMETERS
+
+### -DataLocation
+The location where the communication service stores its data at rest.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -73,6 +90,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Location
+The Azure location where the CommunicationService is running.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the CommunicationService resource.
 
@@ -89,8 +121,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -105,8 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -175,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 
 ## NOTES
 
@@ -189,10 +220,8 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The Azure region
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
