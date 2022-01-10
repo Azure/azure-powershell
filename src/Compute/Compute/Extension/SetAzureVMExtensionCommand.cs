@@ -89,6 +89,9 @@ namespace Microsoft.Azure.Commands.Compute
                             : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
                     }
 
+                    var operation = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                    this.Location = operation.Body.Location;
+
                     var parameters = new VirtualMachineExtension
                     {
                         Location = this.Location,

@@ -55,11 +55,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string TypeHandlerVersion { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
-        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
