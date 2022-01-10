@@ -1,12 +1,11 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Models;
+﻿using Microsoft.Azure.Commands.KeyVault.Helpers;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm")]
     [OutputType(typeof(PSManagedHsm), typeof(PSKeyVaultIdentityItem))]
     public class GetAzureManagedHsm : KeyVaultManagementCmdletBase
@@ -58,16 +57,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 PSManagedHsm mhsm = KeyVaultManagementClient.GetManagedHsm(
                                                 Name,
                                                 ResourceGroupName,
-                                                ActiveDirectoryClient);
+                                                GraphClient);
                 WriteObject(FilterByTag(mhsm, Tag));
             }
             else
-            {              
+            {
                 WriteObject(
                     TopLevelWildcardFilter(
                         ResourceGroupName, Name,
                         FilterByTag(
-                            KeyVaultManagementClient.ListManagedHsms(ResourceGroupName, ActiveDirectoryClient), Tag)),
+                            KeyVaultManagementClient.ListManagedHsms(ResourceGroupName, GraphClient), Tag)),
                     true);
             }
         }

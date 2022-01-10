@@ -24,8 +24,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
+ [-UserData <String>] [-PlatformFaultDomain <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -46,8 +47,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
+ [-PlatformFaultDomain <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,8 +171,33 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
-This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
+### Example 4: Create a VM with a UserData value:
+```
+PS C:\> 
+## VM Account
+$VMLocalAdminUser = "LocalAdminUser";
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
+
+## Azure Account
+$LocationName = "eastus";
+$ResourceGroupName = "MyResourceGroup";
+
+# VM Profile & Hardware
+$VMName = 'v' + $ResourceGroupName;
+$domainNameLabel = "d1" + $ResourceGroupName;
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+# Create UserData value
+$text = "text for UserData";
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+$userData = [Convert]::ToBase64String($bytes);
+
+# Create VM
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
+```
+
+The UserData value must always be Base64 encoded. 
 
 ## PARAMETERS
 
@@ -615,6 +642,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PlatformFaultDomain
+Specifies the fault domain of the virtual machine.
+
+```yaml
+Type: System.Int32
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Priority
 The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
 'Regular' is for regular virtual machine.
@@ -809,6 +851,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserData
+UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

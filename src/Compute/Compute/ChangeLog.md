@@ -20,14 +20,25 @@
 
 -->
 ## Upcoming Release
+* Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
+
+## Version 4.22.0
+* Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.
+* Changed `New-AzVM` cmdlet when using the SimpleParameterSet to not create a `PublicIPAddress` when a `PublicIPAddress` name is not provided.
+* Added `PlatformFaultDomain` parameter to cmdlets: `New-AzVM` and `New-AzVMConfig`
+* Added `-Feature` parameter for `New-AzGalleryImageDefinition`
+* Added `DiffDiskPlacement` string parameter to `Set-AzVmOSDisk` and `Set-AzVmssStorageProfile` cmdlets.
+
+## Version 4.21.0
 * Contains updates to the following powershell cmdlets
     - `SetAzVmssDiskEncryptionExtension` : Added extension parameters for the cmdlet to work with test extensions and parameter `EncryptFormatAll` for Virtual Machine Scale Sets
     - `GetAzVmssVMDiskEncryptionStatus`	 : Modified the functionality of the cmdlet to properly display the encryption status of data disks of Virtual Machine Scale Sets
     - `SetAzDiskEncryptionExtension`     : Fixed a bug in the cmdlet in the migrate scenario from 2pass to 1pass encryption
-* `Add-AzVhd` has the following new functionalities:
-    - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
-    - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
-    - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
+* Added `Add-AzVhd` to convert VHD using Hyper-V
+* Added `UserData` parameter to VM and VMSS cmdlets
+* Added string parameter `PublicNetworkAccess` to DiskConfig and SnapshotConfig cmdlets
+* Added boolean parameter `AcceleratedNetwork` to DiskConfig and SnapshotConfig cmdlets
+* Added `CompletionPercent` property to the PSSnapshot model so it is visible to the user.
 
 ## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:

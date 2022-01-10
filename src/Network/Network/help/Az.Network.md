@@ -933,6 +933,9 @@ Creates a private DNS zone group in the specified private endpoint.
 ### [New-AzPrivateEndpoint](New-AzPrivateEndpoint.md)
 Creates a private endpoint.
 
+### [New-AzPrivateEndpointIpConfiguration](New-AzPrivateEndpointIpConfiguration.md)
+Creates an IpConfiguration object for private endpoint.
+
 ### [New-AzPrivateLinkService](New-AzPrivateLinkService.md)
 Creates a private link service
 

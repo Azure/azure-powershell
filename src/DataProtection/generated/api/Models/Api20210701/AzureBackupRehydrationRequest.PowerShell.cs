@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority?) content.GetValueForProperty("RehydrationPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration = (string) content.GetValueForProperty("RehydrationRetentionDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration, global::System.Convert.ToString);
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RehydrationPriority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority?) content.GetValueForProperty("RehydrationPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority.CreateFrom);
+            }
+            if (content.Contains("RehydrationRetentionDuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration = (string) content.GetValueForProperty("RehydrationRetentionDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority?) content.GetValueForProperty("RehydrationPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration = (string) content.GetValueForProperty("RehydrationRetentionDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration, global::System.Convert.ToString);
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RehydrationPriority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority?) content.GetValueForProperty("RehydrationPriority",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationPriority, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority.CreateFrom);
+            }
+            if (content.Contains("RehydrationRetentionDuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration = (string) content.GetValueForProperty("RehydrationRetentionDuration",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRehydrationRequestInternal)this).RehydrationRetentionDuration, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -67,10 +67,10 @@ function Test-CreateNewAppServicePlanHyperV
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$whpName = Get-WebHostPlanName
-	$location = Get-Location
+	$location = "East US 2"
     $capacity = 1
-	$skuName = "PC2"
-    $tier = "PremiumContainer"
+	$skuName = "P1V3"
+    $tier = "PremiumV3"
 
 	try
 	{
@@ -92,7 +92,7 @@ function Test-CreateNewAppServicePlanHyperV
 
 		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
 		Assert-AreEqual $whpName $getResult.Name
-		Assert-AreEqual PremiumContainer $getResult.Sku.Tier
+		Assert-AreEqual PremiumV3 $getResult.Sku.Tier
 		Assert-AreEqual $skuName $getResult.Sku.Name
 		Assert-AreEqual $capacity $getResult.Sku.Capacity
         Assert-AreEqual $true $getResult.IsXenon

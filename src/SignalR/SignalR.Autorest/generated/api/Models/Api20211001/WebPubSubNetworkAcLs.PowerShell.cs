@@ -104,11 +104,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("PublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("PrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            if (content.Contains("PublicNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("PublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DefaultAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
+            }
+            if (content.Contains("PrivateEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("PrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("PublicNetworkAllow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
+            if (content.Contains("PublicNetworkDeny"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,11 +141,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("PublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("PrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            if (content.Contains("PublicNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INetworkAcl) content.GetValueForProperty("PublicNetwork",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetwork, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAclTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DefaultAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction?) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).DefaultAction, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction.CreateFrom);
+            }
+            if (content.Contains("PrivateEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]) content.GetValueForProperty("PrivateEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PrivateEndpoint, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("PublicNetworkAllow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkAllow",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkAllow, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
+            if (content.Contains("PublicNetworkDeny"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]) content.GetValueForProperty("PublicNetworkDeny",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubNetworkAcLsInternal)this).PublicNetworkDeny, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType>(__y, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType.CreateFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.CosmosDB Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure CosmosDB in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB and Azure Managed Instance for Apache Cassandra in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
@@ -42,7 +42,7 @@ Gets the CosmosDB Gremlin Graph.
 Gets the throughput of a CosmosDB Gremlin Graph.
 
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
-List Azure CosmosDB locations and their properties. Get Azure CosmosDB location properties for a specific location.
+List Azure Cosmos DB locations and their properties. Get Azure Cosmos DB location properties for a specific location.
 
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
 Gets the CosmosDB MongoDB Collection.
@@ -389,3 +389,28 @@ Updates the CosmosDB Table. Performs a client side patch operation by reading th
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
 
+## Azure Managed Instance for Apache Cassandra Cmdlets
+
+### [Get-AzManagedCassandraCluster](Get-AzManagedCassandraCluster.md)
+Gets a managed Cassandra cluster.
+
+### [Get-AzManagedCassandraDataCenter](Get-AzManagedCassandraDataCenter.md)
+Gets a managed Cassandra data center.
+
+### [New-AzManagedCassandraCluster](New-AzManagedCassandraCluster.md)
+Creates a new managed Cassandra cluster.
+
+### [New-AzManagedCassandraDataCenter](New-AzManagedCassandraDataCenter.md)
+Creates a new managed Cassandra data center.
+
+### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
+Remove a managed Cassandra cluster.
+
+### [Remove-AzManagedCassandraDataCenter](Remove-AzManagedCassandraDataCenter.md)
+Remove a managed Cassandra data center.
+
+### [Update-AzManagedCassandraCluster](Update-AzManagedCassandraCluster.md)
+Update an existing managed Cassandra cluster.
+
+### [Update-AzManagedCassandraDataCenter](Update-AzManagedCassandraDataCenter.md)
+Update an existing managed Cassandra data center.

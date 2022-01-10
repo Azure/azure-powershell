@@ -1311,32 +1311,32 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AllowedActions</Label>
+            <Label>Actions</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DeniedActions</Label>
+            <Label>NotActions</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AllowedDataActions</Label>
+            <Label>DataActions</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DeniedDataActions</Label>
+            <Label>NotDataActions</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <ScriptBlock>"$($_.AllowedActions.Length) action(s)"</ScriptBlock>
+                <ScriptBlock>"$($_.Actions.Length) action(s)"</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>"$($_.DeniedActions.Length) action(s)"</ScriptBlock>
+                <ScriptBlock>"$($_.NotActions.Length) action(s)"</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>"$($_.AllowedDataActions.Length) action(s)"</ScriptBlock>
+                <ScriptBlock>"$($_.DataActions.Length) action(s)"</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>"$($_.DeniedDataActions.Length) action(s)"</ScriptBlock>
+                <ScriptBlock>"$($_.NotDataActions.Length) action(s)"</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

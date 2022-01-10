@@ -19,10 +19,30 @@
 -->
 
 ## Upcoming Release
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
+
+## Version 5.2.0
+* Fixed incorrect alias for `Get-AzADSpCredential` [#16592]
+* Fixed `ServicePrincipalName` and `InputObject` parameters for `Update-AzADServicePrincipal` [#16620]
+* Fixed example for `New-AzADAppCredential` [#16682]
+* Added parameter `Web` for `New-AzADApplication` [#16659]
+* Added secret text in response of `New-AzADApplication` and `New-AzADServicePrincipal` [#16659]
+* Deserialized the `Value` in `DeploymentVariable` as object array if its type is Array [#16523]
+* Fixed the usage of `SignInName` in `New-AzRoleAssignment` [#16627]
+* Formatted the output format of `DeploymentVariable`
+* Remove `isUser` operation filter from GetAzureProviderOperation Cmdlet
+
+## Version 5.1.0
+* Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.
+* Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
 * [Breaking change] Migrated from AAD Graph to Microsoft Graph
 * [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
 * Allowed parameter `Id` in `Get-AzDenyAssignment` to accept fully qualified ID
 * Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
+* Added deprecation message for `AssignIdentity` parameter in `*-AzPolicyAssignment` cmdlets.
+* Added support for user assigned managed identities in policy assignments by adding `IdentityType` and `IdentityId` parameters to `*-AzPolicyAssignment` cmdlets.
+* Updated policy cmdlets to use new api version 2021-06-01 that introduces support for user assigned managed identities in policy assignments.
+* Narrowed API permission when get information about active directory object for *-AzRoleAssignment [#16054]
 
 ## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]

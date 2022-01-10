@@ -112,13 +112,20 @@ function CreateModelCmdlet {
                     $ParameterDefinePropertyList.Add("HelpMessage=`"${Description}.`"")
                 }
                 $ParameterDefineProperty = [System.String]::Join(", ", $ParameterDefinePropertyList)
+                # check whether completer is needed
+                $completer = '';
+                if($Type.Split('.').Split('.')[-2] -eq 'Support') {
+                    $completer += "`n        [ArgumentCompleter([${Type}])]"
+                }
                 $ParameterDefineScript = "
-        [Parameter($ParameterDefineProperty)]
+        [Parameter($ParameterDefineProperty)]${completer}
         [${Type}]
         `$${Identifier}"
                 $ParameterDefineScriptList.Add($ParameterDefineScript)
                 $ParameterAssignScriptList.Add("
-        `$Object.${Identifier} = `$${Identifier}")
+        if (`$PSBoundParameters.ContainsKey('${Identifier}')) {
+            `$Object.${Identifier} = `$${Identifier}
+        }")
             }
         }
         $ParameterDefineScript = $ParameterDefineScriptList | Join-String -Separator ","
@@ -142,9 +149,9 @@ function CreateModelCmdlet {
 
 <#
 .Synopsis
-Create a in-memory object for ${ObjectType}
+Create an in-memory object for ${ObjectType}.
 .Description
-Create a in-memory object for ${ObjectType}
+Create an in-memory object for ${ObjectType}.
 
 .Outputs
 ${ObjectTypeWithNamespace}

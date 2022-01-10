@@ -37,7 +37,7 @@ Install-AzModule -Repository PSGallery
 
 ### EXAMPLE 2
 ```
-Install-AzModule Storage,Compute,Network,Blockchain -Repository PSGallery -AllowPrerelease
+Install-AzModule Storage,Compute,Network -Repository PSGallery -AllowPrerelease
 ```
 
 ### EXAMPLE 3

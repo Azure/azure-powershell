@@ -107,7 +107,8 @@ function Test-AzureFSUnregisterContainer
 		-Force;
 	Unregister-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
-		-Container $container
+		-Container $container `
+		-Force;
 
 	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `

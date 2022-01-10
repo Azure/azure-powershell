@@ -39,8 +39,6 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-.Link
-https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey
 {

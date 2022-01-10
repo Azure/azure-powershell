@@ -20,12 +20,12 @@ Create a in-memory object for ImageRegistryCredential
 Create a in-memory object for ImageRegistryCredential
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ImageRegistryCredential
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
 function New-AzContainerGroupImageRegistryCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ImageRegistryCredential')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,19 +35,23 @@ function New-AzContainerGroupImageRegistryCredentialObject {
         [Parameter(Mandatory, HelpMessage="The Docker image registry server without a protocol such as `"http`" and `"https`".")]
         [string]
         $Server,
-        [Parameter(Mandatory, HelpMessage="The username for the private registry.")]
+        [Parameter(HelpMessage="The username for the private registry.")]
         [string]
-        $Username
+        $Username,
+        [Parameter(HelpMessage="The identity with access to the ACR.")]
+        [string]
+        $AcrIdentity
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ImageRegistryCredential]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential]::New()
         if ($PSBoundParameters.ContainsKey('Password')) {
             $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
         }
         $Object.Password = $psTxt
         $Object.Server = $Server
         $Object.Username = $Username
+        $Object.Identity = $AcrIdentity
         return $Object
     }
 }

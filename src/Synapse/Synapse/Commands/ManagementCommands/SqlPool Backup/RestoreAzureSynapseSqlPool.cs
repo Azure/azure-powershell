@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
@@ -21,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -129,6 +131,15 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.DeletionDate)]
         public DateTime DeletionDate { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Tag)]
+        [ValidateNotNull]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.StorageAccountType)]
+        [ValidateSet(Management.Synapse.Models.StorageAccountType.GRS, Management.Synapse.Models.StorageAccountType.LRS, IgnoreCase = true)]
+        [ValidateNotNull]
+        public string StorageAccountType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -153,7 +164,9 @@ namespace Microsoft.Azure.Commands.Synapse
 
             var createParams = new SqlPool
             {
-                Location = existingWorkspace.Location
+                Location = existingWorkspace.Location,
+                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                StorageAccountType = this.StorageAccountType
             };
 
             switch (this.ParameterSetName)

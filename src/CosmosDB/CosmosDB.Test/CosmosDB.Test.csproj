@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PsModuleName>CosmosDB</PsModuleName>
   </PropertyGroup>
@@ -6,5 +6,5 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="3.3.0" />
-</ItemGroup>
+  </ItemGroup>
 </Project>

@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc = (global::System.DateTime?) content.GetValueForProperty("ActionDateTimeInUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer = (bool?) content.GetValueForProperty("IsPerformedByCustomer",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode?) content.GetValueForProperty("CustomerResolution",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            if (content.Contains("ActionDateTimeInUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc = (global::System.DateTime?) content.GetValueForProperty("ActionDateTimeInUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("IsPerformedByCustomer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer = (bool?) content.GetValueForProperty("IsPerformedByCustomer",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CustomerResolution"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode?) content.GetValueForProperty("CustomerResolution",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc = (global::System.DateTime?) content.GetValueForProperty("ActionDateTimeInUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer = (bool?) content.GetValueForProperty("IsPerformedByCustomer",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode?) content.GetValueForProperty("CustomerResolution",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            if (content.Contains("ActionDateTimeInUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc = (global::System.DateTime?) content.GetValueForProperty("ActionDateTimeInUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).ActionDateTimeInUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("IsPerformedByCustomer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer = (bool?) content.GetValueForProperty("IsPerformedByCustomer",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).IsPerformedByCustomer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CustomerResolution"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode?) content.GetValueForProperty("CustomerResolution",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ILastMitigationActionOnJobInternal)this).CustomerResolution, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

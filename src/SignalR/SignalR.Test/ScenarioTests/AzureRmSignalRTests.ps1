@@ -308,7 +308,58 @@ function Test-AzureRmSignalRSetUpstream {
     }
 
 }
-function New-Environment {
+
+<#
+.SYNOPSIS
+Test the Update SignalR cmdlet
+#>
+function Test-AzureRmSignalRUpdate
+{
+    $location = Get-ProviderLocation "Microsoft.SignalRService/SignalR"
+    $nameSuffix = "update-signalr"
+    $resourceGroupName = Get-RandomResourceGroupName $nameSuffix
+    $signalrName =  Get-RandomSignalRName  $nameSuffix
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+        $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+
+        # a. Resource name parameter set
+        $result = Update-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+        # verify nothing changed.
+        Assert-AreEqualObjectProperties $signalr.Sku $result.Sku
+        Assert-Null $result.Tag
+        Assert-Null $result.Features
+        Assert-AreEqualArray $signalr.Cors $result.Cors
+
+        $tag  = New-Object System.Collections.Generic.Dictionary"[String,String]"
+        $tag.Add("key1", "value1")
+        $result = Update-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -UnitCount 2 -Tag $tag -ServiceMode "Serverless" -AllowedOrigin "https://bing.com","https://google.com"
+        Assert-AreEqual 2 $result.Sku.Capacity
+        Assert-AreEqual 1 $result.Tags.Count
+        Assert-AreEqual "value1" $result.Tags["key1"]
+        Assert-AreEqual "Serverless" $result.Features[0].value
+        Assert-AreEqualArray "https://bing.com","https://google.com" $result.Cors.AllowedOrigins
+
+        # b. Resource ID parameter Set
+        $result = Update-AzSignalR -ResourceId $signalr.Id -UnitCount 1 -Sku Free_F1
+        Assert-AreEqual 1 $result.Sku.Capacity
+        Assert-AreEqual "Free_F1" $result.Sku.Name
+
+        # c. InputObject parameter set
+        $result = $( $signalr | Update-AzSignalR -UnitCount 2 -Sku "Standard_S1" )
+        Assert-AreEqual 2 $result.Sku.Capacity
+        Assert-AreEqual "Standard_S1" $result.Sku.Name
+    } finally
+    {
+        Remove-AzResourceGroup  -Name $resourceGroupName
+    }
+}
+
+function New-Environment
+{
     param (
         [string] $signalRName,
         [string] $resourceGroupName

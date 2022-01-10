@@ -16,13 +16,12 @@ Create a in-memory object for Container
 New-AzContainerInstanceObject -Image <String> -Name <String> [-Command <String[]>]
  [-EnvironmentVariable <IEnvironmentVariable[]>] [-LimitCpu <Double>] [-LimitMemoryInGb <Double>]
  [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>] [-LivenessProbeExecCommand <String[]>]
- [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeHttpGetHttpHeadersName <String>]
- [-LivenessProbeHttpGetHttpHeadersValue <String>] [-LivenessProbeHttpGetPath <String>]
- [-LivenessProbeHttpGetPort <Int32>] [-LivenessProbeHttpGetScheme <String>]
- [-LivenessProbeInitialDelaySecond <Int32>] [-LivenessProbePeriodSecond <Int32>]
- [-LivenessProbeSuccessThreshold <Int32>] [-LivenessProbeTimeoutSecond <Int32>] [-Port <IContainerPort[]>]
- [-ReadinessProbeExecCommand <String[]>] [-ReadinessProbeFailureThreshold <Int32>]
- [-ReadinessProbeHttpGetHttpHeadersName <String>] [-ReadinessProbeHttpGetHttpHeadersValue <String>]
+ [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>]
+ [-LivenessProbeHttpGetPath <String>] [-LivenessProbeHttpGetPort <Int32>]
+ [-LivenessProbeHttpGetScheme <String>] [-LivenessProbeInitialDelaySecond <Int32>]
+ [-LivenessProbePeriodSecond <Int32>] [-LivenessProbeSuccessThreshold <Int32>]
+ [-LivenessProbeTimeoutSecond <Int32>] [-Port <IContainerPort[]>] [-ReadinessProbeExecCommand <String[]>]
+ [-ReadinessProbeFailureThreshold <Int32>] [-ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>]
  [-ReadinessProbeHttpGetPath <String>] [-ReadinessProbeHttpGetPort <Int32>]
  [-ReadinessProbeHttpGetScheme <String>] [-ReadinessProbeInitialDelaySecond <Int32>]
  [-ReadinessProbePeriodSecond <Int32>] [-ReadinessProbeSuccessThreshold <Int32>]
@@ -46,14 +45,16 @@ test-container
 
 Create a container instance using image alphine with request cpu 1.0 and request memory 1.5Gb
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzContainerInstanceObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
 
-{{ Add output here }}
+Name
+----
+test-container
 ```
 
-{{ Add description here }}
+Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
 
 ## PARAMETERS
 
@@ -77,7 +78,7 @@ The environment variables to set in the container instance.
 To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEnvironmentVariable[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IEnvironmentVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -193,26 +194,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LivenessProbeHttpGetHttpHeadersName
-The header name.
+### -LivenessProbeHttpGetHttpHeader
+The HTTP headers for liveness probe.
+To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LivenessProbeHttpGetHttpHeadersValue
-The header value.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -348,7 +335,7 @@ The exposed ports on the container instance.
 To construct, see NOTES section for PORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -389,26 +376,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReadinessProbeHttpGetHttpHeadersName
-The header name.
+### -ReadinessProbeHttpGetHttpHeader
+The HTTP headers for readiness probe.
+To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReadinessProbeHttpGetHttpHeadersValue
-The header value.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -589,7 +562,7 @@ The volume mounts available to the container instance.
 To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeMount[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -607,7 +580,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Container
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container
 
 ## NOTES
 
@@ -623,9 +596,17 @@ ENVIRONMENTVARIABLE <IEnvironmentVariable[]>: The environment variables to set i
   - `[SecureValue <String>]`: The value of the secure environment variable.
   - `[Value <String>]`: The value of the environment variable.
 
+LIVENESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers for liveness probe.
+  - `[Name <String>]`: The header name.
+  - `[Value <String>]`: The header value.
+
 PORT <IContainerPort[]>: The exposed ports on the container instance.
   - `Port <Int32>`: The port number exposed within the container group.
   - `[Protocol <ContainerNetworkProtocol?>]`: The protocol associated with the port.
+
+READINESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers for readiness probe.
+  - `[Name <String>]`: The header name.
+  - `[Value <String>]`: The header value.
 
 VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the container instance.
   - `MountPath <String>`: The path within the container where the volume should be mounted. Must not contain colon (:).

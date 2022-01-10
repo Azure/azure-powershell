@@ -102,8 +102,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName = (string) content.GetValueForProperty("FunctionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes?) content.GetValueForProperty("TriggerType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes.CreateFrom);
+            if (content.Contains("FunctionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName = (string) content.GetValueForProperty("FunctionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes?) content.GetValueForProperty("TriggerType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,8 +127,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName = (string) content.GetValueForProperty("FunctionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes?) content.GetValueForProperty("TriggerType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes.CreateFrom);
+            if (content.Contains("FunctionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName = (string) content.GetValueForProperty("FunctionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).FunctionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes?) content.GetValueForProperty("TriggerType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStaticSiteFunctionOverviewArmResourcePropertiesInternal)this).TriggerType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggerTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

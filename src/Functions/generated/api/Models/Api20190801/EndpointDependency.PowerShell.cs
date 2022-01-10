@@ -94,8 +94,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail[]) content.GetValueForProperty("EndpointDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDetailTypeConverter.ConvertFrom));
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail[]) content.GetValueForProperty("EndpointDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDetailTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +119,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail[]) content.GetValueForProperty("EndpointDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDetailTypeConverter.ConvertFrom));
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail[]) content.GetValueForProperty("EndpointDetail",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDependencyInternal)this).EndpointDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IEndpointDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EndpointDetailTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

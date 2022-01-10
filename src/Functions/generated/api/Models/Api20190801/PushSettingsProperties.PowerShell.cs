@@ -99,10 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled = (bool) content.GetValueForProperty("IsPushEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson = (string) content.GetValueForProperty("TagWhitelistJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth = (string) content.GetValueForProperty("TagsRequiringAuth",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson = (string) content.GetValueForProperty("DynamicTagsJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson, global::System.Convert.ToString);
+            if (content.Contains("IsPushEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled = (bool) content.GetValueForProperty("IsPushEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TagWhitelistJson"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson = (string) content.GetValueForProperty("TagWhitelistJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagsRequiringAuth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth = (string) content.GetValueForProperty("TagsRequiringAuth",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth, global::System.Convert.ToString);
+            }
+            if (content.Contains("DynamicTagsJson"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson = (string) content.GetValueForProperty("DynamicTagsJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +132,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled = (bool) content.GetValueForProperty("IsPushEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson = (string) content.GetValueForProperty("TagWhitelistJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth = (string) content.GetValueForProperty("TagsRequiringAuth",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson = (string) content.GetValueForProperty("DynamicTagsJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson, global::System.Convert.ToString);
+            if (content.Contains("IsPushEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled = (bool) content.GetValueForProperty("IsPushEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).IsPushEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TagWhitelistJson"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson = (string) content.GetValueForProperty("TagWhitelistJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagWhitelistJson, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagsRequiringAuth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth = (string) content.GetValueForProperty("TagsRequiringAuth",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).TagsRequiringAuth, global::System.Convert.ToString);
+            }
+            if (content.Contains("DynamicTagsJson"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson = (string) content.GetValueForProperty("DynamicTagsJson",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPushSettingsPropertiesInternal)this).DynamicTagsJson, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
 {
 
+    /// <summary>The level code.</summary>
     public partial struct StatusLevelTypes :
         System.IEquatable<StatusLevelTypes>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
         /// <param name="value">the value to convert to an instance of <see cref="StatusLevelTypes" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new StatusLevelTypes(System.Convert.ToString(value));
+            return new StatusLevelTypes(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type StatusLevelTypes</summary>

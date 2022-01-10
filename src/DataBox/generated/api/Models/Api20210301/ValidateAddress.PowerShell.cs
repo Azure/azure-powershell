@@ -106,11 +106,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("TransportPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ShippingAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeviceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
+            if (content.Contains("TransportPreferencePreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,11 +143,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            if (content.Contains("TransportPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences) content.GetValueForProperty("TransportPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreference, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransportPreferencesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ShippingAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress) content.GetValueForProperty("ShippingAddress",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).ShippingAddress, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddressTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeviceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("DeviceType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).DeviceType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("ValidationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator) content.GetValueForProperty("ValidationType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidationInputRequestInternal)this).ValidationType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ValidationInputDiscriminator.CreateFrom);
+            }
+            if (content.Contains("TransportPreferencePreferredShipmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) content.GetValueForProperty("TransportPreferencePreferredShipmentType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IValidateAddressInternal)this).TransportPreferencePreferredShipmentType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

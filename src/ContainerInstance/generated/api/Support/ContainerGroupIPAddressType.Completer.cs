@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Public".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Public", "Public", global::System.Management.Automation.CompletionResultType.ParameterValue, "Public");
+                yield return new global::System.Management.Automation.CompletionResult("'Public'", "Public", global::System.Management.Automation.CompletionResultType.ParameterValue, "Public");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Private".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Private", "Private", global::System.Management.Automation.CompletionResultType.ParameterValue, "Private");
+                yield return new global::System.Management.Automation.CompletionResult("'Private'", "Private", global::System.Management.Automation.CompletionResultType.ParameterValue, "Private");
             }
         }
     }

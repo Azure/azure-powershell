@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "azure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("azure", "azure", global::System.Management.Automation.CompletionResultType.ParameterValue, "azure");
+                yield return new global::System.Management.Automation.CompletionResult("'azure'", "azure", global::System.Management.Automation.CompletionResultType.ParameterValue, "azure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "kubenet".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("kubenet", "kubenet", global::System.Management.Automation.CompletionResultType.ParameterValue, "kubenet");
+                yield return new global::System.Management.Automation.CompletionResult("'kubenet'", "kubenet", global::System.Management.Automation.CompletionResultType.ParameterValue, "kubenet");
             }
         }
     }
