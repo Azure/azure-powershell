@@ -26,6 +26,17 @@ This extension lets your virtual machine join a domain.
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Set-AzVMADDomainExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -DomainName "abc.com"
+```
+
+```Output
+RequestId IsSuccessStatusCode StatusCode ReasonPhrase
+--------- ------------------- ---------- ------------
+                         True         OK OK
+```
+
 ## PARAMETERS
 
 ### -Credential
