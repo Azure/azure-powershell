@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Tenant and Subscription auto completer to the cmdlets: `Set-AzContext` [#16514]
 * Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
 
 ## Version 2.7.0
