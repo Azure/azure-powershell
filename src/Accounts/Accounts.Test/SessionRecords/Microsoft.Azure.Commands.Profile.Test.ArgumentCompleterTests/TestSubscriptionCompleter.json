@@ -1,0 +1,1148 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49900a2c-ed5f-4ca3-8ac3-536d12fde876"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "96c4ff0e-450b-4145-be54-467fa0ebab77"
+        ],
+        "x-ms-correlation-request-id": [
+          "96c4ff0e-450b-4145-be54-467fa0ebab77"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063508Z:96c4ff0e-450b-4145-be54-467fa0ebab77"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:08 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "35accdeb-7de2-4bf8-b8fc-3ede0f85277a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "39a8f7e6-8ae5-4496-85e2-fa99ba9d417b"
+        ],
+        "x-ms-correlation-request-id": [
+          "39a8f7e6-8ae5-4496-85e2-fa99ba9d417b"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063509Z:39a8f7e6-8ae5-4496-85e2-fa99ba9d417b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:09 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "802e5395-a81e-488f-a4d5-f06a9044a694"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "fc73a54f-5b91-4ae6-8d7f-9412a078d425"
+        ],
+        "x-ms-correlation-request-id": [
+          "fc73a54f-5b91-4ae6-8d7f-9412a078d425"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063511Z:fc73a54f-5b91-4ae6-8d7f-9412a078d425"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:10 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6cd13241-99af-4c9e-9d89-edaaac2f75a0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "e4330eae-20e6-4d75-a061-5c11a633483b"
+        ],
+        "x-ms-correlation-request-id": [
+          "e4330eae-20e6-4d75-a061-5c11a633483b"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063512Z:e4330eae-20e6-4d75-a061-5c11a633483b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:11 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6c7264da-0c7d-4a73-bbe7-f0fc194f864a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "4ac8da89-e630-48d8-ba1b-74b8f8541753"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ac8da89-e630-48d8-ba1b-74b8f8541753"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063514Z:4ac8da89-e630-48d8-ba1b-74b8f8541753"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:13 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "34461f79-d60c-45a2-9ac2-046fcda635f7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "ff0512ee-3bb5-4e46-ab5d-cdb03b0dcac8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ff0512ee-3bb5-4e46-ab5d-cdb03b0dcac8"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063515Z:ff0512ee-3bb5-4e46-ab5d-cdb03b0dcac8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:15 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5928dac1-f2ed-4f47-8be8-35937e2fdc1e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "f6280ee8-5f71-48b1-bbeb-ee24f62de068"
+        ],
+        "x-ms-correlation-request-id": [
+          "f6280ee8-5f71-48b1-bbeb-ee24f62de068"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063516Z:f6280ee8-5f71-48b1-bbeb-ee24f62de068"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:15 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a23c09e0-e41a-47f8-8a5a-488d05566108"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "23acf746-0e32-4482-a7e4-9992a667b0ae"
+        ],
+        "x-ms-correlation-request-id": [
+          "23acf746-0e32-4482-a7e4-9992a667b0ae"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063517Z:23acf746-0e32-4482-a7e4-9992a667b0ae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:17 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2021-01-01",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aaf80d76-cfbf-4d03-a3c9-6c8176283e82"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "0650b253-2935-43fc-b937-a7d7d22149b6"
+        ],
+        "x-ms-correlation-request-id": [
+          "0650b253-2935-43fc-b937-a7d7d22149b6"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063519Z:0650b253-2935-43fc-b937-a7d7d22149b6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:18 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "140"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantCategory\": \"Home\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49900a2c-ed5f-4ca3-8ac3-536d12fde876"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "0afa2f1c-c751-4247-b424-d6ea03dfd6b3"
+        ],
+        "x-ms-correlation-request-id": [
+          "0afa2f1c-c751-4247-b424-d6ea03dfd6b3"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063509Z:0afa2f1c-c751-4247-b424-d6ea03dfd6b3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:08 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "35accdeb-7de2-4bf8-b8fc-3ede0f85277a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "92077f4c-202c-4b8e-9359-f236a6522a80"
+        ],
+        "x-ms-correlation-request-id": [
+          "92077f4c-202c-4b8e-9359-f236a6522a80"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063510Z:92077f4c-202c-4b8e-9359-f236a6522a80"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:09 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d14ef68c-835b-40b4-b696-5fec2dbedf46"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "fef49350-9f7e-40fe-8c6a-b084d798ff3e"
+        ],
+        "x-ms-correlation-request-id": [
+          "fef49350-9f7e-40fe-8c6a-b084d798ff3e"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063511Z:fef49350-9f7e-40fe-8c6a-b084d798ff3e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:11 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "14343d2d-de77-4fad-b443-0109504aabab"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "f8fe5884-f860-4265-87a8-c93887cd87b6"
+        ],
+        "x-ms-correlation-request-id": [
+          "f8fe5884-f860-4265-87a8-c93887cd87b6"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063513Z:f8fe5884-f860-4265-87a8-c93887cd87b6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:12 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a0d2b9b4-5a46-4c19-9e5a-d463fcf311f0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "017511ad-766f-42d5-b739-5e1adbea76e6"
+        ],
+        "x-ms-correlation-request-id": [
+          "017511ad-766f-42d5-b739-5e1adbea76e6"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063513Z:017511ad-766f-42d5-b739-5e1adbea76e6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:13 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "31b8b1d0-432f-433f-b1d8-5995e446c7ec"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "a79ae976-0220-44e5-a454-b79b22eae87b"
+        ],
+        "x-ms-correlation-request-id": [
+          "a79ae976-0220-44e5-a454-b79b22eae87b"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063514Z:a79ae976-0220-44e5-a454-b79b22eae87b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:14 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "da19af5b-4387-4626-ac5c-8b664096de4e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "9abca4bc-026c-4bac-adb9-e6d1f07d7974"
+        ],
+        "x-ms-correlation-request-id": [
+          "9abca4bc-026c-4bac-adb9-e6d1f07d7974"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063516Z:9abca4bc-026c-4bac-adb9-e6d1f07d7974"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:15 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c83dd029-6dad-456d-8aac-928e854f06f5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "2a2f8fcf-b7fb-4978-bbcf-c8a34d245f0d"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a2f8fcf-b7fb-4978-bbcf-c8a34d245f0d"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063517Z:2a2f8fcf-b7fb-4978-bbcf-c8a34d245f0d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:16 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a5f5c5ee-21b5-4d57-9556-b7c10f61379f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "0a7d3203-6595-4ee0-abdf-b5ae0c0d89c4"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a7d3203-6595-4ee0-abdf-b5ae0c0d89c4"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063518Z:0a7d3203-6595-4ee0-abdf-b5ae0c0d89c4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:17 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2021-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a372d434-0066-4446-9aee-02661a60d5be"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.Version2021.01.01.SubscriptionClient/1.3.53"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "790e2f14-9154-4950-8274-49d0ae02ab57"
+        ],
+        "x-ms-correlation-request-id": [
+          "790e2f14-9154-4950-8274-49d0ae02ab57"
+        ],
+        "x-ms-routing-request-id": [
+          "KOREACENTRAL:20220110T063519Z:790e2f14-9154-4950-8274-49d0ae02ab57"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 10 Jan 2022 06:35:19 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [\r\n        {\r\n          \"tenantId\": \"2f4a9838-26b7-47ee-be60-ccc1fdec5953\"\r\n        }\r\n      ],\r\n      \"tags\": {},\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"displayName\": \"Azure SDK Powershell Test - Manual\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+  }
+}

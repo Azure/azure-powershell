@@ -158,7 +158,7 @@ function Test-SubscriptionCompleter
 {
     $expectedSubIds = (Get-AzSubscription).Id
     $expectedSubNames = (Get-AzSubscription).Name
-    $expectedSubs = $expectedSubNames + $expectedSubIds
+    $expectedSubs = $expectedSubNames,$expectedSubIds
 
     $tenantIds = (Get-AzTenant).Id
     $expectedSubIds01 = Get-AzSubscription -TenantId $tenantIds[0]
@@ -174,8 +174,8 @@ function Test-SubscriptionCompleter
     Assert-AreEqualArray $subs $expectedSubs
 
     # Test completion results for Set-AzContext
-    # Subscriptionid and SubscriptionName as alias of the Subscription. Cannot as parameter name of the cmdlet.
-    $paramSubs = Get-SubscriptionCompleterResult -CmdletName 'Set-AzContext' -ParameterName 'Subscription'
+    # SubscriptionId and SubscriptionName as alias of the Subscription. Cannot as parameter name of the cmdlet.
+    $paramSubs = (Get-SubscriptionCompleterResult -CmdletName 'Set-AzContext' -ParameterName 'Subscription') | ForEach-Object { $_.TrimStart("'").TrimEnd("'") }
     Assert-AreEqualArray $paramSubs $expectedSubs
 }
 

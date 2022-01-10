@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// </summary>
         public IEnumerable<CompletionResult> CompleteArgument(string commandName, string parameterName, string wordToComplete, CommandAst commandAst, IDictionary fakeBoundParameters)
         {
-            var tenantId = fakeBoundParameters["Tenant"];
-            string autoCompeterParam = commandAst.CommandElements.Last().ToString().ToLower().TrimStart('-');
+            var tenantId = fakeBoundParameters?["Tenant"];
+            string autoCompeterParam = commandAst?.CommandElements.Last().ToString().ToLower().TrimStart('-');
             char[] charsToTrim = { '"', '\'' };
             IEnumerable<string> names = GetSubscriptions(autoCompeterParam, tenantId?.ToString()).Where(name => name.ToLower().StartsWith(wordToComplete.Trim(charsToTrim).ToLower()));
             foreach (string name in names)
