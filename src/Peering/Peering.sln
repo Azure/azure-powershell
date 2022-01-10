@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\Resou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{266CBF7F-4C80-4D7A-A415-44C142369101}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
