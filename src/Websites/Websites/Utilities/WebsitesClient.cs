@@ -500,12 +500,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 id: aseRecourceId,
                 name: aseName,
                 type: CmdletHelpers.AppServiceEnvironmentResourcesName);
-                //string rg, aseName;
-                //CmdletHelpers.TryParseAppServiceEnvironmentMetadataFromResourceId(aseRecourceId, out rg, out aseName);
-                //appServicePlan.HostingEnvironmentProfile = new HostingEnvironmentProfile(
-                //id: aseRecourceId,
-                //    name: aseName,
-                //    type: CmdletHelpers.AppServiceEnvironmentResourcesName);
             }
 
             return WrappedWebsitesClient.AppServicePlans().CreateOrUpdate(resourceGroupName, appServicePlanName, appServicePlan);
