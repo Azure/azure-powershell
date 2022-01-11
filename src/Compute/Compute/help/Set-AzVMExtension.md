@@ -16,19 +16,19 @@ Updates extension properties or adds an extension to a virtual machine.
 ### Settings (Default)
 ```
 Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
- [-ProtectedSettings <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
- [-EnableAutomaticUpgrade <Boolean>] [-ForceRerun <String>] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtectedSettings <Hashtable>] [-EnableAutomaticUpgrade <Boolean>] [-AsJob] [-ResourceGroupName] <String>
+ [-VMName] <String> -Name <String> [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingString
 ```
 Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
- [-ProtectedSettingString <String>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
- [-EnableAutomaticUpgrade <Boolean>] [-ForceRerun <String>] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtectedSettingString <String>] [-EnableAutomaticUpgrade <Boolean>] [-AsJob] [-ResourceGroupName] <String>
+ [-VMName] <String> -Name <String> [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

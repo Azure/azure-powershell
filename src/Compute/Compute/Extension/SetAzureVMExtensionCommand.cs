@@ -68,6 +68,10 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The protected setting raw string.")]
         public string ProtectedSettingString { get; set; }
 
+        [Parameter(
+            Mandatory = false)]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -89,8 +93,10 @@ namespace Microsoft.Azure.Commands.Compute
                             : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
                     }
 
-                    var operation = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
-                    this.Location = operation.Body.Location;
+                    if (string.IsNullOrEmpty(this.Location))
+                    {
+                        this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                    }
 
                     var parameters = new VirtualMachineExtension
                     {

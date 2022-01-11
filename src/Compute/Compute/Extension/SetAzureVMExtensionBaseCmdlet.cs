@@ -68,10 +68,6 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
         [Parameter(
-            Mandatory = false)]
-        public bool? EnableAutomaticUpgrade { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Force re-run even if extension configuration has not changed")]
