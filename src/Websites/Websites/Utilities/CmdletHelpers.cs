@@ -275,11 +275,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         internal static bool TryParseAppServiceEnvironmentMetadataFromResourceId(string resourceId, out string resourceGroupName,
             out string aseName)
         {
-            var match = AppServicePlanResourceIdRegex.Match(resourceId);
+            var match = AppServiceEnvironmentResourceIdRegex.Match(resourceId);
             if (match.Success)
             {
                 resourceGroupName = match.Groups["resourceGroupName"].Value;
-                aseName = match.Groups["hostingEnvironments"].Value;
+                aseName = match.Groups["aseName"].Value;
 
                 return true;
             }

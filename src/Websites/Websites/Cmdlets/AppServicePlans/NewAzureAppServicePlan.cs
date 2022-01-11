@@ -127,16 +127,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             AppServicePlan retPlan = null;
 
-            if (!string.IsNullOrEmpty(AseName)
-               && string.IsNullOrEmpty(aseResourceGroupName))
-            {
-                retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
-            }
-            else if (!string.IsNullOrEmpty(AseResourceId))
+            if (!string.IsNullOrEmpty(AseResourceId))
             {
                 retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseResourceId);
             }
-            
+            else
+            {
+                retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
+            }
+
             PSAppServicePlan psPlan = new PSAppServicePlan(retPlan);
 
             WriteObject(psPlan, true);
