@@ -526,8 +526,6 @@ namespace Microsoft.Azure.Commands.Compute
                         vUltraSSDEnabled = true;
                     }
                 }
-                
-
 
                 _cmdlet.ConfigAsyncVisited = true;
 
