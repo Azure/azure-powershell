@@ -1,37 +1,34 @@
 ---
 external help file:
 Module Name: Az.Quota
-online version: https://docs.microsoft.com/powershell/module/az.quota/get-azquotarequeststatus
+online version: https://docs.microsoft.com/powershell/module/az.quota/get-azquotausage
 schema: 2.0.0
 ---
 
-# Get-AzQuotaRequestStatus
+# Get-AzQuotaUsage
 
 ## SYNOPSIS
-Get the quota request details and status by quota request ID for the resources of the resource provider at a specific location.
-The quota request ID **id** is returned in the response of the PUT operation.
+Get the current usage of a resource.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzQuotaRequestStatus -Scope <String> [-Filter <String>] [-Skiptoken <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaUsage -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzQuotaRequestStatus -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaUsage -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzQuotaRequestStatus -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaUsage -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the quota request details and status by quota request ID for the resources of the resource provider at a specific location.
-The quota request ID **id** is returned in the response of the PUT operation.
+Get the current usage of a resource.
 
 ## EXAMPLES
 
@@ -70,41 +67,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-| Field | Supported operators 
-|---------------------|------------------------
-
-|requestSubmitTime | ge, le, eq, gt, lt
- |provisioningState eq {QuotaRequestState}
- |resourceName eq {resourceName}
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Quota request ID.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -118,6 +80,25 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceName
+Resource name for a given resource provider.
+For example:
+- SKU name for Microsoft.Compute
+- SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
+ For Microsoft.Network PublicIPAddresses.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -139,37 +120,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skiptoken
-The **Skiptoken** parameter is used only if a previous operation returned a partial result.
-If a previous response contains a **nextLink** element, its value includes a **skiptoken** parameter that specifies a starting point to use for subsequent calls.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-Number of records to return.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -179,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IQuotaRequestDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentUsagesBase
 
 ## NOTES
 

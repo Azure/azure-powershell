@@ -8,8 +8,8 @@ schema: 2.0.0
 # Get-AzQuota
 
 ## SYNOPSIS
-Gets the quota limit and current quota usage of a resource.
-The response can be used to determine the remaining quota and calculate a new quota limit that can be submitted with a PUT request.
+Get the quota limit of a resource.
+The response can be used to determine the remaining quota to calculate a new quota limit that can be submitted with a PUT request.
 
 ## SYNTAX
 
@@ -29,8 +29,8 @@ Get-AzQuota -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [<CommonP
 ```
 
 ## DESCRIPTION
-Gets the quota limit and current quota usage of a resource.
-The response can be used to determine the remaining quota and calculate a new quota limit that can be submitted with a PUT request.
+Get the quota limit of a resource.
+The response can be used to determine the remaining quota to calculate a new quota limit that can be submitted with a PUT request.
 
 ## EXAMPLES
 
@@ -89,7 +89,8 @@ Accept wildcard characters: False
 Resource name for a given resource provider.
 For example:
 - SKU name for Microsoft.Compute
-- Sku or TotalLowPriorityCores for Microsoft.MachineLearningServices
+- SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
+ For Microsoft.Network PublicIPAddresses.
 
 ```yaml
 Type: System.String
@@ -105,9 +106,9 @@ Accept wildcard characters: False
 
 ### -Scope
 The target Azure resource URI.
-For example, `/subscriptions/9f6cce51-6baf-4de5-a3c4-6f58b85315b9/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
+For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
 This is the target Azure resource URI for the List GET operation.
-If a `{resourceName}` is added after `/quotaLimits`, then it's the target Azure resource URI in the GET operation for the specific resource.
+If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 
 ```yaml
 Type: System.String
@@ -130,7 +131,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315.ICurrentQuotaLimitBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
 
 ## NOTES
 
@@ -144,8 +145,8 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IQuotaIdentity>: Identity Parameter
   - `[Id <String>]`: Quota request ID.
   - `[Id1 <String>]`: Resource identity path
-  - `[ResourceName <String>]`: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - Sku or TotalLowPriorityCores for Microsoft.MachineLearningServices
-  - `[Scope <String>]`: The target Azure resource URI. For example, `/subscriptions/9f6cce51-6baf-4de5-a3c4-6f58b85315b9/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotaLimits`, then it's the target Azure resource URI in the GET operation for the specific resource.
+  - `[ResourceName <String>]`: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
+  - `[Scope <String>]`: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 
 ## RELATED LINKS
 

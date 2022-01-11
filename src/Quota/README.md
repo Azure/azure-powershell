@@ -31,11 +31,11 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: a6302e8490871f3619de9cd7001fd5f9cba887bf
+branch: 21ffb64fdcbc0da039117af64f13c028c20d1286
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/quota/resource-manager/Microsoft.Quota/stable/2021-03-15/quota.json
+  - $(repo)/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/quota.json
 
 title: Quota
 module-version: 0.1.0

@@ -8,19 +8,20 @@ schema: 2.0.0
 # New-AzQuota
 
 ## SYNOPSIS
-Create or update the quota limit for the specified resource to the requested value.
+Create or update the quota limit for the specified resource with the requested value.
 To update the quota, follow these steps:\n1.
-Use the GET operation to determine how much quota remains for the specific resource and to calculate the new quota limit.
+Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
 Use this PUT operation to update the quota limit.
+Please check the URI in location header for the detailed status of the request.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-Limit <Int32>]
- [-NameValue <String>] [-ResourceType <ResourceType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-NameValue <String>]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -37,17 +38,17 @@ New-AzQuota -InputObject <IQuotaIdentity> -CreateQuotaRequest <ICurrentQuotaLimi
 
 ### CreateViaIdentityExpanded
 ```
-New-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-Limit <Int32>] [-NameValue <String>]
- [-ResourceType <ResourceType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-NameValue <String>] [-ResourceType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the quota limit for the specified resource to the requested value.
+Create or update the quota limit for the specified resource with the requested value.
 To update the quota, follow these steps:\n1.
-Use the GET operation to determine how much quota remains for the specific resource and to calculate the new quota limit.
+Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
 Use this PUT operation to update the quota limit.
+Please check the URI in location header for the detailed status of the request.
 
 ## EXAMPLES
 
@@ -106,7 +107,7 @@ Quota limit.
 To construct, see NOTES section for CREATEQUOTAREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315.ICurrentQuotaLimitBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -148,21 +149,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Limit
-Quota limit.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NameValue
 Resource name.
 
@@ -197,7 +183,8 @@ Accept wildcard characters: False
 Resource name for a given resource provider.
 For example:
 - SKU name for Microsoft.Compute
-- Sku or TotalLowPriorityCores for Microsoft.MachineLearningServices
+- SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
+ For Microsoft.Network PublicIPAddresses.
 
 ```yaml
 Type: System.String
@@ -215,7 +202,7 @@ Accept wildcard characters: False
 Resource type name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Support.ResourceType
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -228,9 +215,9 @@ Accept wildcard characters: False
 
 ### -Scope
 The target Azure resource URI.
-For example, `/subscriptions/9f6cce51-6baf-4de5-a3c4-6f58b85315b9/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
+For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
 This is the target Azure resource URI for the List GET operation.
-If a `{resourceName}` is added after `/quotaLimits`, then it's the target Azure resource URI in the GET operation for the specific resource.
+If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 
 ```yaml
 Type: System.String
@@ -280,13 +267,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315.ICurrentQuotaLimitBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315.ICurrentQuotaLimitBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
 
 ## NOTES
 
@@ -300,15 +287,14 @@ To create the parameters described below, construct a hash table containing the 
 CREATEQUOTAREQUEST <ICurrentQuotaLimitBase>: Quota limit.
   - `[AnyProperty <IAny>]`: Additional properties for the specific resource provider.
   - `[ETag <String>]`: 
-  - `[Limit <Int32?>]`: Quota limit.
   - `[NameValue <String>]`: Resource name.
-  - `[ResourceType <ResourceType?>]`: Resource type name.
+  - `[ResourceType <String>]`: Resource type name.
 
 INPUTOBJECT <IQuotaIdentity>: Identity Parameter
   - `[Id <String>]`: Quota request ID.
   - `[Id1 <String>]`: Resource identity path
-  - `[ResourceName <String>]`: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - Sku or TotalLowPriorityCores for Microsoft.MachineLearningServices
-  - `[Scope <String>]`: The target Azure resource URI. For example, `/subscriptions/9f6cce51-6baf-4de5-a3c4-6f58b85315b9/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotaLimits`, then it's the target Azure resource URI in the GET operation for the specific resource.
+  - `[ResourceName <String>]`: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
+  - `[Scope <String>]`: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 
 ## RELATED LINKS
 
