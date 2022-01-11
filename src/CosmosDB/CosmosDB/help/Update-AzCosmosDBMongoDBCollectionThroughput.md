@@ -41,14 +41,13 @@ Updates the throughput value of a CosmosDB MongoDB Collection.
 ### Example 1
 ```powershell
 PS C:\> Update-AzCosmosDBMongoDBCollectionThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -DatabaseName {mydatabaseName} -Name {myCollectionName} -Throughput {updatedThroughputValue}
+
 Name                : mxGp
 Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/mongodbDatabase/{mydatabaseName}/collections/{myCollectionName}/throughputSettings/default
 Throughput          : {updatedThroughputValue}
 MinimumThroughput   : 400
 OfferReplacePending :
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

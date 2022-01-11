@@ -43,19 +43,17 @@ RoleDefinitionId and Id can be either fully qualified or just the Guid.
 
 ### Example 1
 ```
-PS C:\> Update-AzCosmosDBSqlRoleAssignment 
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-Id roleAssignmentId
-	-RoleDefinitionId "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId" 
+PS C:\> Update-AzCosmosDBSqlRoleAssignment `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-Id roleAssignmentId `
+	-RoleDefinitionId "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId"
 
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleAssignments/roleAssignmentId
 Scope            : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/
 RoleDefinitionId : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId
 PrincipalId      : principalId
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
