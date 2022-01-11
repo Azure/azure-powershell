@@ -309,8 +309,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             try
             {
-                keyBundle = client.UpdateKeyPropertiesAsync(keyProperties, keyAttributes.KeyOps?.Cast<KeyOperation>().ToList())
-                    .GetAwaiter().GetResult();
+                keyBundle = client.UpdateKeyProperties(keyProperties, keyAttributes.KeyOps?.Select(op => new KeyOperation(op)));
             }
             catch (Exception ex)
             {

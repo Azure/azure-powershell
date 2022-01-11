@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]
+* Fixed a bug when updating key operations on managed HSM [#16774]
 * Fixed the issue when importing no-password certificate [#16742]
 
 ## Version 4.2.0
