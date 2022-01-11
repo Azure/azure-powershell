@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
-        public SwitchParameter Hibernate { get; set; }
+        public SwitchParameter HibernationEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -213,13 +213,13 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
             }
 
-            if (this.Hibernate.IsPresent)
+            if (this.HibernationEnabled.IsPresent)
             {
                 if (vm.AdditionalCapabilities == null)
                 {
                     vm.AdditionalCapabilities = new AdditionalCapabilities();
                 }
-                vm.AdditionalCapabilities.HibernationEnabled = this.Hibernate;
+                vm.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
             }
 
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
