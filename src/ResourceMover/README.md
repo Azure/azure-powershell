@@ -54,7 +54,7 @@ title: ResourceMover
 service-name: ResourceMover
 prefix: Az
 subject-prefix: $(service-name)
-branch: master
+branch: 7a56078
 repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
