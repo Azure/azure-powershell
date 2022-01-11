@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.12.0
+* Supported piping for the `-Query` parameter of `Search-AzGraph` by pipeline property name
+
 ## Version 0.11.0
 * Fixed the output print issue for `Search-AzGraph` by updating the output type to Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject]].
 * Fixed the issue when Search-AzGraph fails if no subscriptions are stored in the context.

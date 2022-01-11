@@ -18,11 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
-  - Add parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
-  - Add parameter `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
-* Add cmdlet New-AzHDInsightIPConfiguration to create ip configuration object in memory.
-* Add cmdlet New-AzHDInsightPrivateLinkConfiguration to create private link configuration object in memory.
+
+## Version 5.0.0
+* Added two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
+  - Added parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
+  - Added parameter `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
+* Added cmdlet New-AzHDInsightIPConfiguration to create ip configuration object in memory.
+* Added cmdlet New-AzHDInsightPrivateLinkConfiguration to create private link configuration object in memory.
 * Fixed the output type in help doc of Set-AzHDInsightClusterDiskEncryptionKey cmdlet from `Microsoft.Azure.Management.HDInsight.Models.Cluster` to  `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster` to keep consistent with the real type of returned object.
 * Breaking change:
   - Changed the type of parameter "OSType" from `Microsoft.Azure.Management.HDInsight.Models.OSType` to `System.string` in cmdlet `New-AzHDInsightCluster`.

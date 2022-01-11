@@ -51,7 +51,7 @@ While the JSON method doesn't require type of the artifact to be provided inline
 ### Example 1
 ```powershell
 PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
-PS C:\> New-AzBlueprintArtifact -Name PolicyStorage -Blueprint $bp -ArtifactFile C:\PolicyAssignmentStorageTag.json
+PS C:\> Set-AzBlueprintArtifact -Name PolicyStorage -Blueprint $bp -ArtifactFile C:\PolicyAssignmentStorageTag.json
 
 DisplayName        :
 Description        : Apply storage tag and the parameter also used by the template to resource groups
@@ -69,7 +69,7 @@ Update an artifact through an artifact JSON file.
 ### Example 2
 ```powershell
 PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
-PS C:\> New-AzBlueprintArtifact -Type PolicyAssignmentArtifact -Name "ApplyTag-RG" -Blueprint $bp -PolicyDefinitionId "/providers/Microsoft.Authorization/policyDefinitions/49c88fc8-6fd1-46fd-a676-f12d1d3a4c71" -PolicyDefinitionParameter @{tagName="[parameters('tagName')]"; tagValue="[parameters('tagValue')]"} -ResourceGroupName storageRG
+PS C:\> Set-AzBlueprintArtifact -Type PolicyAssignmentArtifact -Name "ApplyTag-RG" -Blueprint $bp -PolicyDefinitionId "/providers/Microsoft.Authorization/policyDefinitions/49c88fc8-6fd1-46fd-a676-f12d1d3a4c71" -PolicyDefinitionParameter @{tagName="[parameters('tagName')]"; tagValue="[parameters('tagValue')]"} -ResourceGroupName storageRG
 
 DisplayName        : ApplyTag-RG
 Description        :
@@ -89,7 +89,7 @@ Update an artifact through inline parameters.
 ### Example 3
 ```powershell
 PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
-PS C:\> New-AzBlueprintArtifact -Type TemplateArtifact -Name storage-account -Blueprint $bp -TemplateFile C:\StorageAccountArmTemplate.json -ResourceGroup "storageRG" -TemplateParameterFile C:\Workspace\BlueprintTemplates\RestTemplatesSomeInline\StorageAccountParameters.json
+PS C:\> Set-AzBlueprintArtifact -Type TemplateArtifact -Name storage-account -Blueprint $bp -TemplateFile C:\StorageAccountArmTemplate.json -ResourceGroup "storageRG" -TemplateParameterFile C:\Workspace\BlueprintTemplates\RestTemplatesSomeInline\StorageAccountParameters.json
 
 DisplayName   : storage-account
 Description   :

@@ -162,7 +162,7 @@ function Remove-AzADApplication {
             }
         }
     
-        MSGraph.internal\Remove-AzADApplication @PSBoundParameters
+        Az.MSGraph.internal\Remove-AzADApplication @PSBoundParameters
     }
     }
     

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the query.
         /// </summary>s
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Graph query")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Graph query")]
         [AllowEmptyString]
         public string Query
         {

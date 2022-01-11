@@ -66,13 +66,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType = (string) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation = (string) content.GetValueForProperty("ResourceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri, global::System.Convert.ToString);
+            if (content.Contains("DatasourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType = (string) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation = (string) content.GetValueForProperty("ResourceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -90,13 +111,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType = (string) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation = (string) content.GetValueForProperty("ResourceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri, global::System.Convert.ToString);
+            if (content.Contains("DatasourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType = (string) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).DatasourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation = (string) content.GetValueForProperty("ResourceLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSetInternal)this).ResourceUri, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

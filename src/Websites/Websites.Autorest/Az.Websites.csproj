@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PsModuleName>Websites</PsModuleName>
+    <PsRootModuleName>Websites</PsRootModuleName>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.hybrid.props" />

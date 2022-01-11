@@ -104,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint = (bool?) content.GetValueForProperty("IgnoreMissingVnetServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState.CreateFrom);
+            if (content.Contains("VirtualNetworkSubnetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IgnoreMissingVnetServiceEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint = (bool?) content.GetValueForProperty("IgnoreMissingVnetServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint = (bool?) content.GetValueForProperty("IgnoreMissingVnetServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState.CreateFrom);
+            if (content.Contains("VirtualNetworkSubnetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IgnoreMissingVnetServiceEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint = (bool?) content.GetValueForProperty("IgnoreMissingVnetServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.VirtualNetworkRuleState.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

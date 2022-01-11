@@ -19,6 +19,22 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
+* General availability of Az.Synapse
+* Migrated Azure AD features in Az.Synapse to MSGraph APIs. The cmdlets below called MSGraph API according to input parameters:
+    - `New-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Remove-AzSynapseRoleAssignment` cmdlet
+    - `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+* Added a default value for [-AutoPauseDelayInMinute] parameter of command `New-AzSynapseSparkpool` and `Update-AzSynapseSparkpool`
+
+## Version 0.19.0
+* Added support for Synapse KQL script
+    - Added `Get-AzSynapseKqlScript` cmdlet
+    - Added `Export-AzSynapseKqlScript` cmdlet
+    - Added `Remove-AzSynapseKqlScript` cmdlet
+    - Added `New-AzSynapseKqlScript` cmdlet
 * Updated `New-AzSynapseSqlPool` to support new parameter [-StorageAccountType]
 * Updated `Restore-AzSynapseSqlPool` to support new parameter [-Tag] and [-StorageAccountType]
 * Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential
 schema: 2.0.0
@@ -14,83 +14,107 @@ Creates key credentials or password credentials for an application.
 
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzADAppCredential -ObjectId <String> [-CustomKeyIdentifier <String>] [-EndDate <DateTime>]
- [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApplicationIdWithCertValueParameterSet
-```
-New-AzADAppCredential -ApplicationId <Guid> -CertValue <String> [-CustomKeyIdentifier <String>]
- [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationIdWithCredentialParameterSet
-```
-New-AzADAppCredential -ApplicationId <Guid> [-CustomKeyIdentifier <String>]
- [-KeyCredentials <MicrosoftGraphKeyCredential[]>] [-PasswordCredentials <MicrosoftGraphPasswordCredential[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApplicationIdWithPasswordParameterSet
-```
-New-AzADAppCredential -ApplicationId <Guid> [-CustomKeyIdentifier <String>] [-EndDate <DateTime>]
- [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADAppCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-CustomKeyIdentifier <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithCertValueParameterSet
 ```
-New-AzADAppCredential -CertValue <String> -ObjectId <String> [-CustomKeyIdentifier <String>]
- [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzADAppCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-CustomKeyIdentifier <String>] -CertValue <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ApplicationObjectIdWithCredentialParameterSet
+### ApplicationObjectIdWithKeyCredentialParameterSet
 ```
 New-AzADAppCredential -ObjectId <String> [-CustomKeyIdentifier <String>]
- [-KeyCredentials <MicrosoftGraphKeyCredential[]>] [-PasswordCredentials <MicrosoftGraphPasswordCredential[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -KeyCredentials <MicrosoftGraphKeyCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ApplicationObjectWithCertValueParameterSet
+### ApplicationObjectIdWithPasswordCredentialParameterSet
 ```
-New-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> -CertValue <String>
- [-CustomKeyIdentifier <String>] [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApplicationObjectWithCredentialParameterSet
-```
-New-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-CustomKeyIdentifier <String>]
- [-KeyCredentials <MicrosoftGraphKeyCredential[]>] [-PasswordCredentials <MicrosoftGraphPasswordCredential[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADAppCredential -ObjectId <String> [-CustomKeyIdentifier <String>]
+ -PasswordCredentials <MicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordParameterSet
 ```
-New-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-CustomKeyIdentifier <String>]
- [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### DisplayNameWithCertValueParameterSet
+### ApplicationObjectWithCertValueParameterSet
 ```
-New-AzADAppCredential -CertValue <String> -DisplayName <String> [-CustomKeyIdentifier <String>]
- [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DisplayNameWithCredentialParameterSet
-```
-New-AzADAppCredential -DisplayName <String> [-CustomKeyIdentifier <String>]
- [-KeyCredentials <MicrosoftGraphKeyCredential[]>] [-PasswordCredentials <MicrosoftGraphPasswordCredential[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
+ -CertValue <String> -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordParameterSet
 ```
-New-AzADAppCredential -DisplayName <String> [-CustomKeyIdentifier <String>] [-EndDate <DateTime>]
- [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
+ -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DisplayNameWithCertValueParameterSet
+```
+New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
+ -CertValue <String> -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ApplicationIdWithCertValueParameterSet
+```
+New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
+ -CertValue <String> -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ApplicationIdWithPasswordParameterSet
+```
+New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
+ -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationObjectWithPasswordCredentialParameterSet
+```
+New-AzADAppCredential [-CustomKeyIdentifier <String>] -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DisplayNameWithPasswordCredentialParameterSet
+```
+New-AzADAppCredential [-CustomKeyIdentifier <String>] -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
+ -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationIdWithPasswordCredentialParameterSet
+```
+New-AzADAppCredential [-CustomKeyIdentifier <String>] -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
+ -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationObjectWithKeyCredentialParameterSet
+```
+New-AzADAppCredential [-CustomKeyIdentifier <String>] -KeyCredentials <MicrosoftGraphKeyCredential[]>
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DisplayNameWithKeyCredentialParameterSet
+```
+New-AzADAppCredential [-CustomKeyIdentifier <String>] -KeyCredentials <MicrosoftGraphKeyCredential[]>
+ -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationIdWithKeyCredentialParameterSet
+```
+New-AzADAppCredential [-CustomKeyIdentifier <String>] -KeyCredentials <MicrosoftGraphKeyCredential[]>
+ -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,11 +132,11 @@ PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.R
 PS C:\> New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 ```
 
-Create key credentials for application
+Create key credentials for application with object Id $Id
 
 ### Example 2: Create password credentials for application
 ```powershell
-
+PS C:\> Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 ```
 
 Create password credentials for application
@@ -124,7 +148,7 @@ The application Id.
 
 ```yaml
 Type: System.Guid
-Parameter Sets: ApplicationIdWithCertValueParameterSet, ApplicationIdWithCredentialParameterSet, ApplicationIdWithPasswordParameterSet
+Parameter Sets: ApplicationIdWithCertValueParameterSet, ApplicationIdWithPasswordParameterSet, ApplicationIdWithPasswordCredentialParameterSet, ApplicationIdWithKeyCredentialParameterSet
 Aliases:
 
 Required: True
@@ -140,7 +164,7 @@ To construct, see NOTES section for APPLICATIONOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-Parameter Sets: ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithCredentialParameterSet, ApplicationObjectWithPasswordParameterSet
+Parameter Sets: ApplicationObjectWithPasswordParameterSet, ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, ApplicationObjectWithKeyCredentialParameterSet
 Aliases:
 
 Required: True
@@ -156,7 +180,7 @@ It represents the base 64 encoded certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationIdWithCertValueParameterSet, ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectWithCertValueParameterSet, DisplayNameWithCertValueParameterSet
+Parameter Sets: ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectWithCertValueParameterSet, DisplayNameWithCertValueParameterSet, ApplicationIdWithCertValueParameterSet
 Aliases:
 
 Required: True
@@ -167,7 +191,6 @@ Accept wildcard characters: False
 ```
 
 ### -CustomKeyIdentifier
-
 
 ```yaml
 Type: System.String
@@ -201,7 +224,7 @@ The display name of application.
 
 ```yaml
 Type: System.String
-Parameter Sets: DisplayNameWithCertValueParameterSet, DisplayNameWithCredentialParameterSet, DisplayNameWithPasswordParameterSet
+Parameter Sets: DisplayNameWithPasswordParameterSet, DisplayNameWithCertValueParameterSet, DisplayNameWithPasswordCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet
 Aliases:
 
 Required: True
@@ -218,7 +241,7 @@ For an 'asymmetric' type credential, this must be set to on or before the date t
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ApplicationIdWithCertValueParameterSet, ApplicationIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet, DisplayNameWithCertValueParameterSet, DisplayNameWithPasswordParameterSet
+Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet, ApplicationObjectWithCertValueParameterSet, DisplayNameWithPasswordParameterSet, DisplayNameWithCertValueParameterSet, ApplicationIdWithCertValueParameterSet, ApplicationIdWithPasswordParameterSet
 Aliases:
 
 Required: False
@@ -234,10 +257,10 @@ To construct, see NOTES section for KEYCREDENTIALS properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]
-Parameter Sets: ApplicationIdWithCredentialParameterSet, ApplicationObjectIdWithCredentialParameterSet, ApplicationObjectWithCredentialParameterSet, DisplayNameWithCredentialParameterSet
+Parameter Sets: ApplicationObjectIdWithKeyCredentialParameterSet, ApplicationObjectWithKeyCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet, ApplicationIdWithKeyCredentialParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,7 +272,7 @@ The object Id of application.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectIdWithCredentialParameterSet, ApplicationObjectIdWithPasswordParameterSet
+Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectIdWithKeyCredentialParameterSet, ApplicationObjectIdWithPasswordCredentialParameterSet
 Aliases: Id
 
 Required: True
@@ -265,10 +288,10 @@ To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]
-Parameter Sets: ApplicationIdWithCredentialParameterSet, ApplicationObjectIdWithCredentialParameterSet, ApplicationObjectWithCredentialParameterSet, DisplayNameWithCredentialParameterSet
+Parameter Sets: ApplicationObjectIdWithPasswordCredentialParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, DisplayNameWithPasswordCredentialParameterSet, ApplicationIdWithPasswordCredentialParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -282,7 +305,7 @@ For an 'asymmetric' type credential, this must be set to on or after the date th
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ApplicationIdWithCertValueParameterSet, ApplicationIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet, DisplayNameWithCertValueParameterSet, DisplayNameWithPasswordParameterSet
+Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet, ApplicationObjectWithCertValueParameterSet, DisplayNameWithPasswordParameterSet, DisplayNameWithCertValueParameterSet, ApplicationIdWithCertValueParameterSet, ApplicationIdWithPasswordParameterSet
 Aliases:
 
 Required: False
@@ -492,3 +515,4 @@ PASSWORDCREDENTIALS <MicrosoftGraphPasswordCredential[]>: Password credentials a
 
 ## RELATED LINKS
 
+## RELATED LINKS

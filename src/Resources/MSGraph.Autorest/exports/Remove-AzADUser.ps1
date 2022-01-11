@@ -178,11 +178,11 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UPNOrObjectIdParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            UPNParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            DisplayNameParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADUser';
+            UPNOrObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            UPNParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -141,13 +141,19 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = DefaultParameterSetName,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -239,6 +245,11 @@ namespace Microsoft.Azure.Commands.Compute
                     this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                 }
                 vm.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.PlatformFaultDomain))
+            {
+                vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 
             WriteObject(vm);

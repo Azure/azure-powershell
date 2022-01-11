@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.1
+* Fixed trigger schedule client for `New-AzDataProtectionPolicyTriggerScheduleClientObject`
+
 ## Version 0.3.0
 * Added support for AzureDatabaseForPostgreSQL workload
 

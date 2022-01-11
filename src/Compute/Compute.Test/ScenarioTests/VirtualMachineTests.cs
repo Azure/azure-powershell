@@ -451,6 +451,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMUserDataBase64Encoded");
         }
-
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMNoPublicIPAddress()
+        {
+            TestRunner.RunTestScript("Test-VMNoPublicIPAddress");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDiffDiskPlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineDiffDiskPlacement");
+        }
     }
 }

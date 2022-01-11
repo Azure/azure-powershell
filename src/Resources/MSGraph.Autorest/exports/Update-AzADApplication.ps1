@@ -580,9 +580,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
-            ApplicationIdWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
-            InputObjectWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
+            ApplicationObjectIdWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
+            ApplicationIdWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
+            InputObjectWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

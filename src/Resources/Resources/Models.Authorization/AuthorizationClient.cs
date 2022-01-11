@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 try
                 {
                     var assigneeObject = ActiveDirectoryClient.GetADObject(parameters.ADObjectFilter);
-                    assigneeID = assigneeID ?? assigneeObject?.Type;
+                    assigneeID = assigneeID ?? assigneeObject?.Id;
                     assigneeObjectType = assigneeObjectType ?? assigneeObject?.Type;
                 }
                 catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException) when (!string.IsNullOrEmpty(assigneeID))
