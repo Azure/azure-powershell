@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                WriteWarning("Specifying parameter `Disable`, `Expires`, `NotBefore` and `Tag` is not supported when importing key on Managed HSM. Please use `Update-AzKeyVaultKey`.");
+                WriteWarning("Specifying parameter `Disable`, `Expires`, `NotBefore` and `Tag` is not supported when importing key on Managed HSM. Please use `Update-AzKeyVaultKey` after importing.");
                 return this.Track2DataClient.ImportManagedHsmKey(
                     HsmName, Name,
                     CreateTrack2WebKeyFromFile());
