@@ -222,7 +222,7 @@ function New-AzADAppCredential {
 
         $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
-            { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithCredentialParameterSet'} {
+            { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithKeyCredentialParameterSet', 'ApplicationObjectIdWithPasswordCredentialParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
