@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/upgrade storage account by enable sftp and enable localuser
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported manage local user of a storage account
+    -  `Set-AzStorageLocalUser`
+    -  `Get-AzStorageLocalUser`
+    -  `Remove-AzStorageLocalUser`
+    -  `New-AzStorageLocalUserSshPassword`
+    -  `Get-AzStorageLocalUserKey`
+    -  `New-AzStorageLocalUserSshPublicKey`
+    -  `New-AzStorageLocalUserPermissionScope`
 * Fixed the issue that output number in console when update/copy blob sometimes [#16783]
     -  `Set-AzStorageBlobContent` 
     -  `Copy-AzStorageBlob` 
