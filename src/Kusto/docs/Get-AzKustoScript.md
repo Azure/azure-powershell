@@ -34,23 +34,28 @@ Gets a Kusto cluster database script.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+### Example 1: List all Kusto cluster database scripts
 
-{{ Add output here }}
+```powershell
+PS C:\> Get-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -DatabaseName mykustodatabase
+
+Name                                               Type
+----                                               ----
+testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
 ```
 
-{{ Add description here }}
+The above command returns all Kusto cluster database scripts in the cluster "testnewkustocluster" found in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Kusto database script by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -DatabaseName mykustodatabase -Name newkustoscript
 
-{{ Add output here }}
+Name                                               Type
+----                                               ----
+testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
 ```
 
-{{ Add description here }}
+The above command returns the Kusto database script named "newkustoscript" in the cluster "testnewkustocluster" found in the resource group "testrg".
 
 ## PARAMETERS
 
