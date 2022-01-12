@@ -1,3 +1,31 @@
+<!-- region Generated -->
+# Az.OperationalInsights
+This directory contains the PowerShell module for the OperationalInsights service.
+
+---
+## Status
+[![Az.OperationalInsights](https://img.shields.io/powershellgallery/v/Az.OperationalInsights.svg?style=flat-square&label=Az.OperationalInsights "Az.OperationalInsights")](https://www.powershellgallery.com/packages/Az.OperationalInsights/)
+
+## Info
+- Modifiable: yes
+- Generated: all
+- Committed: yes
+- Packaged: yes
+
+---
+## Detail
+This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
+
+## Module Requirements
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+
+## Authentication
+AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
+
+## Development
+For information on how to develop for `Az.OperationalInsights`, see [how-to.md](how-to.md).
+<!-- endregion -->
+
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
@@ -8,8 +36,8 @@ require:
 input-file:
 # You need to specify your swagger files here.
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Tables.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Workspaces.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Operations.json
+  # - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Workspaces.json
+  # - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Operations.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
