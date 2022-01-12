@@ -21,6 +21,8 @@
 -->
 ## Upcoming Release
 * Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
+* Added `Hibernate` parameter to `Stop-AzVm` cmdlet. 
+  Added `HibernationEnabled` parameter to `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
 
 ## Version 4.22.0
 * Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.
