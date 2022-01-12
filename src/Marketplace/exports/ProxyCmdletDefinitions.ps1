@@ -20,13 +20,7 @@ transferring offers (copy or move) from source collection to target collection(s
 .Description
 transferring offers (copy or move) from source collection to target collection(s)
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
@@ -337,7 +331,7 @@ For a given subscriptions list, the API will return a map of collections and the
 .Description
 For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.
 .Example
-PS C:\>  $res = Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "53425a7b-4ac1-4729-8340-e1da5046212c"}
+PS C:\>  $res = Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "53425a7b-4ac1-4729-8340-e1da5046212c"}
 PS C:\> $res.keys
 e58535dc-1be3-4d2c-904c-1f97984ebe5d
 fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
@@ -364,9 +358,9 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
 PAYLOAD <ICollectionsToSubscriptionsMappingPayload>: The subscriptions list to get the related collections
   [SubscriptionId <String[]>]: Subscriptions ids list
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectionprivatestoretosubscriptionmapping
+https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping
 #>
-function Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping {
+function Get-AzMarketplaceCollectionToSubscriptionMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingResponseProperties])]
 [CmdletBinding(DefaultParameterSetName='CollectionsExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -458,10 +452,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Collections = 'Az.Marketplace.private\Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping_Collections';
-            CollectionsExpanded = 'Az.Marketplace.private\Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping_CollectionsExpanded';
-            CollectionsViaIdentity = 'Az.Marketplace.private\Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping_CollectionsViaIdentity';
-            CollectionsViaIdentityExpanded = 'Az.Marketplace.private\Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping_CollectionsViaIdentityExpanded';
+            Collections = 'Az.Marketplace.private\Get-AzMarketplaceCollectionToSubscriptionMapping_Collections';
+            CollectionsExpanded = 'Az.Marketplace.private\Get-AzMarketplaceCollectionToSubscriptionMapping_CollectionsExpanded';
+            CollectionsViaIdentity = 'Az.Marketplace.private\Get-AzMarketplaceCollectionToSubscriptionMapping_CollectionsViaIdentity';
+            CollectionsViaIdentityExpanded = 'Az.Marketplace.private\Get-AzMarketplaceCollectionToSubscriptionMapping_CollectionsViaIdentityExpanded';
         }
         if (('CollectionsExpanded', 'CollectionsViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
@@ -944,7 +938,7 @@ List of offers, regardless the collections
 .Example
 PS C:\> Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
 
-CreatedAt ETag                                   ModifiedAt OfferDisplayName PrivateStoreId                       PublisherDisplayName SpecificPlanIdsLimitation                                                     UniqueOfferId
+CreatedAt ETag                                   ModifiedAt OfferDisplayName PrivateStoreId                       PublisherDisplayName SpecificPlanIdLimitation                                                     UniqueOfferId
 --------- ----                                   ---------- ---------------- --------------                       -------------------- -------------------------                                                     -------------
           "ed0093ae-0000-0100-0000-61a4dab30000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {d3-azure-health-check, data3-azure-optimiser-plan, data3-managed-azure-plan} data3-limite…
           "750547d8-0000-0100-0000-61b752010000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {mgmt-limited-free, mgmt-assessment}                                          viacode_cons…
@@ -1144,7 +1138,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String[]]
     # Plan ids limitation for this offer
-    ${SpecificPlanIdsLimitation},
+    ${SpecificPlanIdLimitation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
@@ -1863,13 +1857,7 @@ Perform an action on bulk collections
 .Description
 Perform an action on bulk collections
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
@@ -2071,7 +2059,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String[]]
     # Plan ids limitation for this offer
-    ${SpecificPlanIdsLimitation},
+    ${SpecificPlanIdLimitation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
@@ -2320,7 +2308,7 @@ Changes private store properties
 .Description
 Changes private store properties
 .Example
-PS C:\> New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
+PS C:\> Set-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
 
 
 

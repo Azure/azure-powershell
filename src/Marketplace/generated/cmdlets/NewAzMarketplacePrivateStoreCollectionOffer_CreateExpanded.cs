@@ -187,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         Description = @"Plan ids limitation for this offer",
         SerializedName = @"specificPlanIdsLimitation",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] SpecificPlanIdsLimitation { get => PayloadBody.SpecificPlanIdsLimitation ?? null /* arrayOf */; set => PayloadBody.SpecificPlanIdsLimitation = value; }
+        public string[] SpecificPlanIdLimitation { get => PayloadBody.SpecificPlanIdsLimitation ?? null /* arrayOf */; set => PayloadBody.SpecificPlanIdsLimitation = value; }
 
         /// <summary>
         /// Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed

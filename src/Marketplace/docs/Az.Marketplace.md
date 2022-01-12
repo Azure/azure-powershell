@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Marketplace
-Module Guid: 8520ac69-18c8-470e-9c72-dc1fd5643887
+Module Guid: 4db1f51a-b835-4783-be47-0b8939492ea5
 Download Help Link: https://docs.microsoft.com/powershell/module/az.marketplace
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,7 +17,7 @@ transferring offers (copy or move) from source collection to target collection(s
 ### [Get-AzMarketplaceBillingPrivateStoreAccount](Get-AzMarketplaceBillingPrivateStoreAccount.md)
 Tenant billing accounts names
 
-### [Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping](Get-AzMarketplaceCollectionPrivateStoreToSubscriptionMapping.md)
+### [Get-AzMarketplaceCollectionToSubscriptionMapping](Get-AzMarketplaceCollectionToSubscriptionMapping.md)
 For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.
 
 ### [Get-AzMarketplacePrivateStore](Get-AzMarketplacePrivateStore.md)

@@ -56,6 +56,8 @@ directive:
   - where:
       variant: ^CreateViaIdentity$
     hide: true
+
+    # Remove notification commands
   - where:
       verb: Get
       subject: PrivateStoreRequestApproval
@@ -118,6 +120,7 @@ directive:
       subject: CollectionPrivateStoreToSubscriptionMapping
     set:
       verb: Get
+      subject: CollectionToSubscriptionMapping
   - where:
       verb: Invoke
       subject: QueryPrivateStoreOffer
@@ -144,6 +147,9 @@ directive:
       subject: PrivateStoreCollectionOffer
     set:
       verb: Copy
-	  
+  - where:
+      parameter-name: SpecificPlanIdsLimitation 
+    set:
+      parameter-name: SpecificPlanIdLimitation 
 
 ```

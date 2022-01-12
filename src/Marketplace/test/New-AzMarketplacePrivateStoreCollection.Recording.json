@@ -3,13 +3,13 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1?api-version=2021-06-01",
-      "Content": "{\n  \"properties\": {\n    \"collectionName\": \"test1\",\n    \"subscriptionsList\": [ \"1052ff5a-aa43-4ca1-bd18-010399494ce5\" ]\n  }\n}",
+      "Content": "{\n  \"properties\": {\n    \"collectionName\": \"test187\",\n    \"subscriptionsList\": [ \"1052ff5a-aa43-4ca1-bd18-010399494ce5\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "124" ]
+        "Content-Length": [ "126" ]
       }
     },
     "Response": {
@@ -21,23 +21,23 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
-        "Set-Cookie": [ "ARRAffinity=6c5458dd548284d7396cd2cba264e633b6118968d745d1e82e3c3f7fc14794d7;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=6c5458dd548284d7396cd2cba264e633b6118968d745d1e82e3c3f7fc14794d7;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=96b32ba767f19bc2be802a1a84fdc00853c28f5d538f067794a88bb9cdc29727;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=96b32ba767f19bc2be802a1a84fdc00853c28f5d538f067794a88bb9cdc29727;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1195" ],
-        "x-ms-request-id": [ "147a64d4-b7f6-413e-b2d9-509cd1da6036" ],
-        "x-ms-correlation-request-id": [ "147a64d4-b7f6-413e-b2d9-509cd1da6036" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150847Z:147a64d4-b7f6-413e-b2d9-509cd1da6036" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1189" ],
+        "x-ms-request-id": [ "cbf3851f-8d6e-45ac-918f-589e0f6c8fb2" ],
+        "x-ms-correlation-request-id": [ "cbf3851f-8d6e-45ac-918f-589e0f6c8fb2" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220112T142542Z:cbf3851f-8d6e-45ac-918f-589e0f6c8fb2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sun, 26 Dec 2021 15:08:46 GMT" ]
+        "Date": [ "Wed, 12 Jan 2022 14:25:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "663" ],
+        "Content-Length": [ "665" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-26T15:08:46.8271385Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-26T15:08:46.8521416Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"collectionName\":\"test1\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":false,\"numberOfOffers\":0}}",
+      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2022-01-12T14:25:42.1285476Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-01-12T14:25:42.1635552Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"collectionName\":\"test187\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":false,\"numberOfOffers\":0}}",
       "isContentBase64": false
     }
   }

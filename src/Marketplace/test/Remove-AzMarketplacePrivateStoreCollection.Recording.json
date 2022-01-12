@@ -21,23 +21,23 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
-        "Set-Cookie": [ "ARRAffinity=6915894304dda5088a4956a5bf7a84ac06d25dc86c67b8df917e89aa9350af97;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=6915894304dda5088a4956a5bf7a84ac06d25dc86c67b8df917e89aa9350af97;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1193" ],
-        "x-ms-request-id": [ "0daf4020-1601-4831-bcc8-f5a1fc8f4ec8" ],
-        "x-ms-correlation-request-id": [ "0daf4020-1601-4831-bcc8-f5a1fc8f4ec8" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150854Z:0daf4020-1601-4831-bcc8-f5a1fc8f4ec8" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1187" ],
+        "x-ms-request-id": [ "586b19bf-d9db-4240-9cb9-c39cabef0c69" ],
+        "x-ms-correlation-request-id": [ "586b19bf-d9db-4240-9cb9-c39cabef0c69" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220112T142549Z:586b19bf-d9db-4240-9cb9-c39cabef0c69" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sun, 26 Dec 2021 15:08:53 GMT" ]
+        "Date": [ "Wed, 12 Jan 2022 14:25:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "676" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-26T15:08:53.9705921Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-12-26T15:08:53.9906059Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f2\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f2\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f2\",\"collectionName\":\"collectionToDelete\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":false,\"numberOfOffers\":0}}",
+      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2022-01-12T14:25:49.6595571Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-01-12T14:25:49.6844964Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f2\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f2\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f2\",\"collectionName\":\"collectionToDelete\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":false,\"numberOfOffers\":0}}",
       "isContentBase64": false
     }
   },
@@ -48,8 +48,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "554f2ac2-c71f-44d5-ade6-912720685c22" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "39fd38e9-dd20-4ae0-992d-bcb23a1d8c4b" ],
         "CommandName": [ "Remove-AzMarketplacePrivateStoreCollection" ],
         "FullCommandName": [ "Remove-AzMarketplacePrivateStoreCollection_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,16 +67,16 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
-        "Set-Cookie": [ "ARRAffinity=4a014563a369de7f4f41f8caf8a9cb56db69e48e6792350a13b8bd563d129a0f;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=4a014563a369de7f4f41f8caf8a9cb56db69e48e6792350a13b8bd563d129a0f;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=6c5458dd548284d7396cd2cba264e633b6118968d745d1e82e3c3f7fc14794d7;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=6c5458dd548284d7396cd2cba264e633b6118968d745d1e82e3c3f7fc14794d7;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-tenant-deletes": [ "14996" ],
-        "x-ms-request-id": [ "4f3945f3-8521-44c4-83a1-b325fa2f6478" ],
-        "x-ms-correlation-request-id": [ "4f3945f3-8521-44c4-83a1-b325fa2f6478" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150855Z:4f3945f3-8521-44c4-83a1-b325fa2f6478" ],
+        "x-ms-request-id": [ "da2de757-4988-419b-8a84-3bad9afd33ef" ],
+        "x-ms-correlation-request-id": [ "da2de757-4988-419b-8a84-3bad9afd33ef" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220112T142550Z:da2de757-4988-419b-8a84-3bad9afd33ef" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sun, 26 Dec 2021 15:08:54 GMT" ]
+        "Date": [ "Wed, 12 Jan 2022 14:25:50 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -93,8 +93,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "eeccaeb9-c0c6-470d-9de4-a9715a03c0e1" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "a2d84d2e-27d9-416c-87b0-e0364fb54e1a" ],
         "CommandName": [ "Get-AzMarketplacePrivateStoreCollection" ],
         "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollection_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,16 +112,16 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
-        "Set-Cookie": [ "ARRAffinity=9a4ccea8379f299e8d7188a1e64268fdd53fa391960ddbaf1933188eede43423;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=9a4ccea8379f299e8d7188a1e64268fdd53fa391960ddbaf1933188eede43423;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=1a93607e9fcb97085e8118866770525e13b7dd2091a9c6f61c90879ccfd37bf7;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=1a93607e9fcb97085e8118866770525e13b7dd2091a9c6f61c90879ccfd37bf7;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11962" ],
-        "x-ms-request-id": [ "0f60a27d-3551-4edd-9157-96fbac9ef934" ],
-        "x-ms-correlation-request-id": [ "0f60a27d-3551-4edd-9157-96fbac9ef934" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150855Z:0f60a27d-3551-4edd-9157-96fbac9ef934" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11947" ],
+        "x-ms-request-id": [ "afd9f743-db86-4257-b5c0-2a38d93f8f9c" ],
+        "x-ms-correlation-request-id": [ "afd9f743-db86-4257-b5c0-2a38d93f8f9c" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220112T142551Z:afd9f743-db86-4257-b5c0-2a38d93f8f9c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sun, 26 Dec 2021 15:08:55 GMT" ]
+        "Date": [ "Wed, 12 Jan 2022 14:25:50 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

@@ -82,7 +82,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String[]]
     # Plan ids limitation for this offer
-    ${SpecificPlanIdsLimitation},
+    ${SpecificPlanIdLimitation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]

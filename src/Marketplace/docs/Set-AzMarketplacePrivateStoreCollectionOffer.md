@@ -14,7 +14,7 @@ Update or add an offer to a specific collection of the private store.
 
 ```
 Set-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String> -PrivateStoreId <String>
- [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdsLimitation <String[]>]
+ [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdLimitation <String[]>]
  [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -147,7 +147,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpecificPlanIdsLimitation
+### -SpecificPlanIdLimitation
 Plan ids limitation for this offer
 
 ```yaml

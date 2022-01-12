@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "596c84dd-edbb-4484-950c-51a47a59a198" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "efb2146b-51b3-4b93-8d8e-d62d2b7b4be8" ],
         "CommandName": [ "Get-AzMarketplaceBillingPrivateStoreAccount" ],
         "FullCommandName": [ "Get-AzMarketplaceBillingPrivateStoreAccount_Billing" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -26,16 +26,16 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
-        "Set-Cookie": [ "ARRAffinity=abf1036e2f3790403ac58f08d1b47435658b34cce752f94ea35941d932846147;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=abf1036e2f3790403ac58f08d1b47435658b34cce752f94ea35941d932846147;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-request-id": [ "50df954f-2a8e-482e-a170-2e73a05dbacb" ],
-        "x-ms-correlation-request-id": [ "50df954f-2a8e-482e-a170-2e73a05dbacb" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20211226T150823Z:50df954f-2a8e-482e-a170-2e73a05dbacb" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1192" ],
+        "x-ms-request-id": [ "ef32fb2c-844f-4035-bd6b-fa2a55557928" ],
+        "x-ms-correlation-request-id": [ "ef32fb2c-844f-4035-bd6b-fa2a55557928" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220112T142519Z:ef32fb2c-844f-4035-bd6b-fa2a55557928" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sun, 26 Dec 2021 15:08:22 GMT" ]
+        "Date": [ "Wed, 12 Jan 2022 14:25:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
