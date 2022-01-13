@@ -40,14 +40,16 @@ using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Microsoft.Azure.Commands.KeyVault.Track2Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [SupportsSubscriptionId]
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
-        private VaultManagementClient _keyVaultManagementClient;
         private DataServiceCredential _dataServiceCredential;
+
+        private VaultManagementClient _keyVaultManagementClient;
         public VaultManagementClient KeyVaultManagementClient
         {
             get
@@ -58,6 +60,16 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { _keyVaultManagementClient = value; }
         }
 
+        private Track2VaultManagementClient _track2VaultManagementClient;
+        public Track2VaultManagementClient Track2VaultManagementClient
+        {
+            get
+            {
+                return _track2VaultManagementClient ?? (_track2VaultManagementClient = new Track2VaultManagementClient(AzureSession.Instance.ClientFactory, DefaultContext));
+            }
+
+            set { _track2VaultManagementClient = value; }
+        }
 
         private IMicrosoftGraphClient _graphClient;
         public IMicrosoftGraphClient GraphClient

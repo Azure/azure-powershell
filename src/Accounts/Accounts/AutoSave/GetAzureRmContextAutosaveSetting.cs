@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
+            var client =  AzureSession.Instance.ClientFactory.CreateArmClient(DefaultContext, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
             if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
             {
                 WriteDebug(Resources.TokenCacheEncryptionNotSupportedWithFallback);

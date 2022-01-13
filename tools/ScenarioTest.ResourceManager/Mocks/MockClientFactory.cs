@@ -33,6 +33,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Azure.ResourceManager;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -294,6 +295,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public void RemoveUserAgent(string name)
         {
             UniqueUserAgents.RemoveWhere((p) => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public ArmClient CreateArmClient(IAzureContext context, string endpoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ArmClient CreateCustomArmClient(IAzureContext context, string endpoint, ArmClientOptions option)
+        {
+            throw new NotImplementedException();
         }
     }
 }

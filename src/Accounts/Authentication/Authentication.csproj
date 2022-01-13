@@ -14,7 +14,12 @@
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.5.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Common\Common.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Graph.Rbac\Graph.Rbac.csproj" />
+  </ItemGroup>  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
