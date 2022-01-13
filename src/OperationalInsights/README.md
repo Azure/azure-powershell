@@ -63,5 +63,22 @@ directive:
   - where:
       verb: Set
     remove: true
-
+  - from: swagger-document
+    where: $.definitions.WorkspaceSku.properties.capacityReservationLevel
+    transform: >-
+      return {
+          "type": "integer",
+          "format": "int32",
+          "description": "The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.",
+          "enum": [
+            100,
+            200,
+            300,
+            400,
+            500,
+            1000,
+            2000,
+            5000
+          ]
+        }
 ```
