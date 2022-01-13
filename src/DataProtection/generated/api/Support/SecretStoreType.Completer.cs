@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureKeyVault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureKeyVault", "AzureKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureKeyVault");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureKeyVault'", "AzureKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureKeyVault");
             }
         }
     }

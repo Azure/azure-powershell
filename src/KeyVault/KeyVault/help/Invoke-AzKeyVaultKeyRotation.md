@@ -30,8 +30,7 @@ The cmdlet will rotate the key based on the key policy. It requires the keys/rot
 ## EXAMPLES
 
 ### Example 1
-```azurepowershell
--interactive
+```powershell
 Invoke-AzKeyVaultKeyRotation -VaultName test-kv -Name test-key
 ```
 
@@ -163,3 +162,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzKeyVaultKeyRotationPolicy.md](./Get-AzKeyVaultKeyRotationPolicy.md)
+
+[Set-AzKeyVaultKeyRotationPolicy.md](./Set-AzKeyVaultKeyRotationPolicy.md)

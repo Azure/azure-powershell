@@ -101,9 +101,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue = (string) content.GetValueForProperty("MinMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue = (string) content.GetValueForProperty("MaxMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("MinMatchingValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue = (string) content.GetValueForProperty("MinMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxMatchingValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue = (string) content.GetValueForProperty("MaxMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,9 +130,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue = (string) content.GetValueForProperty("MinMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue = (string) content.GetValueForProperty("MaxMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("MinMatchingValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue = (string) content.GetValueForProperty("MinMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MinMatchingValue, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxMatchingValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue = (string) content.GetValueForProperty("MaxMatchingValue",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRangeBasedItemLevelRestoreCriteriaInternal)this).MaxMatchingValue, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteriaInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

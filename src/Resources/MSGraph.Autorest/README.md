@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Resources
+# Az.MSGraph
 This directory contains the PowerShell module for the MSGraph service.
 
 ---
 ## Status
-[![Az.Resources](https://img.shields.io/powershellgallery/v/Az.Resources.svg?style=flat-square&label=Az.Resources "Az.Resources")](https://www.powershellgallery.com/packages/Az.Resources/)
+[![Az.MSGraph](https://img.shields.io/powershellgallery/v/Az.MSGraph.svg?style=flat-square&label=Az.MSGraph "Az.MSGraph")](https://www.powershellgallery.com/packages/Az.MSGraph/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Resources`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.MSGraph`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -56,16 +56,10 @@ input-file:
   - ../Users.yml
   - ../CommonTypes.yml
 
-module-name: $(prefix).Resources
+root-module-name: $(prefix).Resources
 title: MSGraph
-dll-name: Az.Resources.MSGraph.private
-csproj: MSGraph.csproj
-psm1: MSGraph.psm1
-psm1-internal: internal/MSGraph.internal.psm1
-psm1-custom: custom/MSGraph.custom.psm1
-format-ps1xml: MSGraph.format.ps1xml
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
-subject-prefix: Ad
+subject-prefix: AD
 identity-correction-for-post: true
 endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false

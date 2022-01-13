@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Direct".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Direct", "Direct", global::System.Management.Automation.CompletionResultType.ParameterValue, "Direct");
+                yield return new global::System.Management.Automation.CompletionResult("'Direct'", "Direct", global::System.Management.Automation.CompletionResultType.ParameterValue, "Direct");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Descendant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Descendant", "Descendant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Descendant");
+                yield return new global::System.Management.Automation.CompletionResult("'Descendant'", "Descendant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Descendant");
             }
         }
     }

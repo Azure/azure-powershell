@@ -142,6 +142,6 @@ param(
     }
     $PSBoundParameters['Id'] = $id
 
-    MSGraph.internal\Remove-AzADGroup @PSBoundParameters
+    Az.MSGraph.internal\Remove-AzADGroup @PSBoundParameters
   }
 }

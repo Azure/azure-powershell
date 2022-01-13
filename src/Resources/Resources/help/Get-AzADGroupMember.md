@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 schema: 2.0.0
@@ -8,28 +8,28 @@ schema: 2.0.0
 # Get-AzADGroupMember
 
 ## SYNOPSIS
-Lists members from group.
+Lists members from group. Currently service principals are not listed as group members due to staged roll-out of service principals on Graph V1.0 endpoint. Please see [documentation of the REST API](https://docs.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http).
 
 ## SYNTAX
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADGroupMember -GroupObjectId <String> [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
- [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+Get-AzADGroupMember -GroupObjectId <String> [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>]
+ [-Search <String>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADGroupMember -GroupDisplayName <String> [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
- [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzADGroupMember -GroupObject <IMicrosoftGraphGroup> [-Expand <String[]>] [-Filter <String>]
- [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
+Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupObject <IMicrosoftGraphGroup>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -89,21 +89,6 @@ Filter items by property values
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-Gets only the first 'n' objects.
-
-```yaml
-Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -220,6 +205,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -283,4 +283,3 @@ GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pi
   - `[Visibility <String>]`: Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. Hiddenmembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. See group visibility options to learn more. Returned by default.
 
 ## RELATED LINKS
-

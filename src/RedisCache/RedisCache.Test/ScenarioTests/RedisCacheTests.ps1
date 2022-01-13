@@ -173,6 +173,17 @@ function Test-RedisCachePipeline
 
     # Updating Cache using pipeline
     Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false -RedisVersion 6
+    # Wait for update to complete
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep 30000
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
     $cacheUpdatedPiped = Get-AzRedisCache -Name $cacheName
 
     Assert-AreEqual $cacheName $cacheUpdatedPiped.Name
@@ -796,6 +807,7 @@ function Test-FirewallRule
     Assert-True {Remove-AzRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -PassThru} "Removing firewall rule 'ruleone' failed."
 
     # Verify that rule is deleted
+    Start-TestSleep 6000
     $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 2 $allRulesGet.Count
 
@@ -803,6 +815,7 @@ function Test-FirewallRule
     Get-AzRedisCacheFirewallRule -Name $cacheName | Remove-AzRedisCacheFirewallRule -PassThru
 
     # Verify that all rules are deleted
+    Start-TestSleep 6000
     $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 0 $allRulesGet.Count
 
@@ -865,6 +878,101 @@ function Test-Zones
     # Delete resource group
     Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
+
+<#
+.SYNOPSIS
+Tests redis cache Managed Identity.
+#>
+function Test-ManagedIdentity
+{
+    # Setup
+    $resourceGroupName = "PowerShellTest-10"
+    $cacheName = "redisteam010"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
+
+    # Create resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Creating Cache
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test","/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2"
+    
+    Assert-AreEqual $cacheName $cacheCreated.Name
+    Assert-AreEqual $location $cacheCreated.Location
+    Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    Assert-AreEqual "SystemAssignedUserAssigned" $cacheCreated.IdentityType
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
+    Assert-AreEqual 2 $cacheCreated.UserAssignedIdentity.Count
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2")
+    
+    
+    $cacheCreated =  Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+
+    Assert-AreEqual "SystemAssignedUserAssigned" $cacheCreated.IdentityType
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
+    Assert-AreEqual 2 $cacheCreated.UserAssignedIdentity.Count
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2")
+
+
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep 30000
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+
+
+    # Test updating user assigned identity
+    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2"
+    
+    Assert-AreEqual "SystemAssignedUserAssigned" $cacheCreated.IdentityType
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
+    Assert-AreEqual 1 $cacheCreated.UserAssignedIdentity.Count
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2")
+
+    Start-TestSleep 60000
+    # Test removing user assigned identity
+    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType SystemAssigned
+
+    Assert-AreEqual "SystemAssigned" $cacheCreated.IdentityType
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
+    Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
+    Assert-Null $cacheCreated.UserAssignedIdentity
+
+    Start-TestSleep 60000
+    # Test removing system assigned identity
+    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType UserAssigned -UserAssignedIdentity "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2"
+    
+    Assert-AreEqual "UserAssigned" $cacheCreated.IdentityType
+    Assert-Null $cacheCreated.SystemAssignedIdentity
+    Assert-AreEqual 1 $cacheCreated.UserAssignedIdentity.Count
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2")
+
+    Start-TestSleep 60000
+    # Test removing identity
+    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType None
+
+    Assert-Null $cacheCreated.IdentityType
+    Assert-Null $cacheCreated.SystemAssignedIdentity
+    Assert-Null $cacheCreated.UserAssignedIdentity
+    
+    # Delete cache
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+    # Delete resource group
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
 
 <#
 .SYNOPSIS

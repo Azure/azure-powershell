@@ -44,15 +44,14 @@ Updates the CosmosDB Cassandra Table. Performs a client side patch operation by 
 ### Example 1
 ```powershell
 PS C:\> Update-AzCosmosDBCassandraTable -AccountName myAccountName -ResourceGroupName myRgName -KeyspaceName myKeyspaceName -Name myTableName -Schema updatedSchema
-        Name     : myTable
-        Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName/t
-                ables/myTableName
-        Location :
-        Tags     :
-        Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraTableGetPropertiesResource
-```
 
-{{ Add example description here }}
+Name     : myTable
+Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName/t
+           ables/myTableName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraTableGetPropertiesResource
+```
 
 ## PARAMETERS
 

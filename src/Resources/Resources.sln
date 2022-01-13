@@ -1,10 +1,8 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSGraph", "MSGraph.Autorest\MSGraph.csproj", "{8C3B3618-CBF3-43BC-98FA-286A83207BCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
@@ -27,6 +25,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager", "..\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj", "{F83FBA8D-732D-437C-A0E2-02E45B01E123}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "MSGraph.Autorest\Az.MSGraph.csproj", "{5874AEF9-3D19-40B4-91F7-81E05F3BAA4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +82,10 @@ Global
 		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C3B3618-CBF3-43BC-98FA-286A83207BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5874AEF9-3D19-40B4-91F7-81E05F3BAA4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5874AEF9-3D19-40B4-91F7-81E05F3BAA4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5874AEF9-3D19-40B4-91F7-81E05F3BAA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5874AEF9-3D19-40B4-91F7-81E05F3BAA4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

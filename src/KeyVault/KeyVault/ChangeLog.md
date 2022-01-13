@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added default access policies for Key Vault key as "All but purge"
+* Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]
+* Fixed a bug when updating key operations on managed HSM [#16774]
+* Fixed the issue when importing no-password certificate [#16742]
+
+## Version 4.2.0
+* Added cmdlets: `Invoke-AzKeyVaultKeyRotation`, `Get-AzKeyVaultKeyRotationPolicy` and `Set-AzKeyVaultKeyRotationPolicy`
 
 ## Version 4.1.0
 * [Breaking Change] Renamed properties of `PSKeyVaultPermission` type to follow the pattern of Azure RBAC.

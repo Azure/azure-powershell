@@ -28,51 +28,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotProtected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotProtected", "NotProtected", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotProtected");
+                yield return new global::System.Management.Automation.CompletionResult("'NotProtected'", "NotProtected", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotProtected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConfiguringProtection".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ConfiguringProtection", "ConfiguringProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtection");
+                yield return new global::System.Management.Automation.CompletionResult("'ConfiguringProtection'", "ConfiguringProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtection");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProtectionConfigured".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProtectionConfigured", "ProtectionConfigured", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionConfigured");
+                yield return new global::System.Management.Automation.CompletionResult("'ProtectionConfigured'", "ProtectionConfigured", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionConfigured");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BackupSchedulesSuspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BackupSchedulesSuspended", "BackupSchedulesSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "BackupSchedulesSuspended");
+                yield return new global::System.Management.Automation.CompletionResult("'BackupSchedulesSuspended'", "BackupSchedulesSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "BackupSchedulesSuspended");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RetentionSchedulesSuspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RetentionSchedulesSuspended", "RetentionSchedulesSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "RetentionSchedulesSuspended");
+                yield return new global::System.Management.Automation.CompletionResult("'RetentionSchedulesSuspended'", "RetentionSchedulesSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "RetentionSchedulesSuspended");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProtectionStopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProtectionStopped", "ProtectionStopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionStopped");
+                yield return new global::System.Management.Automation.CompletionResult("'ProtectionStopped'", "ProtectionStopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionStopped");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProtectionError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProtectionError", "ProtectionError", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionError");
+                yield return new global::System.Management.Automation.CompletionResult("'ProtectionError'", "ProtectionError", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionError");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConfiguringProtectionFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ConfiguringProtectionFailed", "ConfiguringProtectionFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtectionFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'ConfiguringProtectionFailed'", "ConfiguringProtectionFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtectionFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SoftDeleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SoftDeleting", "SoftDeleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleting");
+                yield return new global::System.Management.Automation.CompletionResult("'SoftDeleting'", "SoftDeleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SoftDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SoftDeleted", "SoftDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'SoftDeleted'", "SoftDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UpdatingProtection".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UpdatingProtection", "UpdatingProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpdatingProtection");
+                yield return new global::System.Management.Automation.CompletionResult("'UpdatingProtection'", "UpdatingProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpdatingProtection");
             }
         }
     }

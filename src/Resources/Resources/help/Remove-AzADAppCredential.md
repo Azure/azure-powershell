@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/Remove-azadappcredential
 schema: 2.0.0
@@ -14,26 +14,26 @@ Removes key credentials or password credentials for an application.
 
 ### ApplicationObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADAppCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApplicationDisplayNameParameterSet
-```
-Remove-AzADAppCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADAppCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithKeyIdParameterSet
 ```
-Remove-AzADAppCredential -ApplicationId <Guid> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADAppCredential [-KeyId <Guid>] -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationDisplayNameParameterSet
+```
+Remove-AzADAppCredential [-KeyId <Guid>] -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyIdParameterSet
 ```
-Remove-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-KeyId <Guid>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADAppCredential [-KeyId <Guid>] -ApplicationObject <IMicrosoftGraphApplication>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -344,3 +344,4 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
 
 ## RELATED LINKS
 
+## RELATED LINKS

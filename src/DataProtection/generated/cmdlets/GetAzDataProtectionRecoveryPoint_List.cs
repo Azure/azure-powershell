@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
+    using System;
 
     /// <summary>Returns a list of Recovery Points for a DataSource in a vault.</summary>
     /// <remarks>

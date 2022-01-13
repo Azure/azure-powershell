@@ -151,7 +151,7 @@ function Get-AzADGroupMember {
 
         $PSBOundParameters['ConsistencyLevel'] = 'eventual'
 
-        MSGraph.internal\Get-AzADGroupMember @PSBoundParameters
+        Az.MSGraph.internal\Get-AzADGroupMember @PSBoundParameters
     }
     
 }

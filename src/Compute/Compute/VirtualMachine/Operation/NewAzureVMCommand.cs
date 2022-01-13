@@ -329,13 +329,25 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = DiskFileParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -517,7 +529,8 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData
+                        userData: _cmdlet.UserData,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null
                         );
                 }
                 else
@@ -549,7 +562,8 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData
+                        userData: _cmdlet.UserData,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null
                     );
                 }
             }

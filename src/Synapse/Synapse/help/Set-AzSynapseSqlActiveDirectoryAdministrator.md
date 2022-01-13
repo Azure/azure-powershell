@@ -61,6 +61,12 @@ Microsoft accounts, such as those in the Outlook.com, Hotmail.com, or Live.com d
 Other guest accounts, such as those in the Gmail.com or Yahoo.com domains, are not supported as administrators.
 We recommend that you provision a dedicated Azure AD group as an administrator.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+* GET /users/{id}
+* GET /servicePrincipals/{id}
+* GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1

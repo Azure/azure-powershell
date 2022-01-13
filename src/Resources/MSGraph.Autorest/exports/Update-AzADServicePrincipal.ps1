@@ -290,19 +290,6 @@ param(
     ${ObjectId},
 
     [Parameter()]
-    [Alias('SPN')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # Contains the list of identifiersUris, copied over from the associated application.
-    # Additional values can be added to hybrid applications.
-    # These values can be used to identify the permissions exposed by this app within Azure AD.
-    # For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
-    # Not nullable.
-    # Supports $filter (eq, NOT, ge, le, startsWith).
-    ${ServicePrincipalName},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
@@ -624,6 +611,19 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='SPNWithDisplayNameParameterSet', Mandatory)]
+    [Alias('SPN')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Contains the list of identifiersUris, copied over from the associated application.
+    # Additional values can be added to hybrid applications.
+    # These values can be used to identify the permissions exposed by this app within Azure AD.
+    # For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le, startsWith).
+    ${ServicePrincipalName},
+
     [Parameter()]
     [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -686,10 +686,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            SpObjectIdWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
-            SpApplicationIdWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
-            InputObjectWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
-            SPNWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
+            SpObjectIdWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
+            SpApplicationIdWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
+            InputObjectWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
+            SPNWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
