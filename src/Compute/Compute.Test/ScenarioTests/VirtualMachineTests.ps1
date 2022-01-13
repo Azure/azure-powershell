@@ -4057,7 +4057,8 @@ function Test-VirtualMachineRemoteDesktop
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS2_v2';
+        #adam $vmsize = 'Standard_DS2_v2';
+        $vmSize = "Standard_E64s_v3";
         $vmname = 'vm' + $rgname;
 
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -EnableUltraSSD -Zone "1";
@@ -4083,15 +4084,15 @@ function Test-VirtualMachineRemoteDesktop
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         # adam $imgRef = Get-DefaultCRPImage -loc $loc;
+        # $imgRef = Create-ComputeVMImageObject -loc "southeastasia" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2019-Datacenter" -version "17763.1637.2012040632";
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
-
 
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
-        Assert-ThrowsContains { `
-            New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } `
-            "'Microsoft.Compute/UltraSSD' feature is not enabled for this subscription.";
+        # adam Assert-ThrowsContains { `
+            #New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } `
+            #"'Microsoft.Compute/UltraSSD' feature is not enabled for this subscription.";
 
         $p.AdditionalCapabilities.UltraSSDEnabled = $false;
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
