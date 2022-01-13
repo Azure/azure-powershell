@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Common
     using GetParameterDelegate = Func<string, string, System.Management.Automation.InvocationInfo, string, string, object>;
     using ModuleLoadPipelineDelegate = Action<string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
     using NewRequestPipelineDelegate = Action<System.Management.Automation.InvocationInfo, string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
+    using NewProxyRequestPipelineDelegate = global::System.Action<global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using ArgumentCompleterDelegate = Func<string, System.Management.Automation.InvocationInfo, string, string[], string[], string[]>;
     using AuthorizeRequestDelegate = global::System.Action<System.Management.Automation.InvocationInfo,
                                         string,
@@ -80,6 +81,13 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="prependStep">a delegate which allows the module to prepend a step in the HTTP Pipeline</param>
         /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
         public NewRequestPipelineDelegate OnNewRequest;
+
+        /// <summary>
+        /// Called when the cmdlet is constructing a new Request by using proxy client
+        /// </summary>
+        /// <param name="prependStep">a delegate which allows the module to prepend a step in the HTTP Pipeline</param>
+        /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
+        public NewProxyRequestPipelineDelegate OnNewProxyRequest;
 
         public NewRequestPipelineDelegate AddRequestUserAgentHandler;
 

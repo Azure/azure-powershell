@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -43,6 +44,8 @@ namespace Microsoft.Azure.Commands.Common
         private readonly IAuthenticationFactory _authenticator = AzureSession.Instance.AuthenticationFactory;
 
         internal static ContextAdapter Instance => new ContextAdapter();
+
+        private const string _subscription = "/subscriptions/default";
 
         /// <summary>
         /// The name of the selected profile
@@ -73,6 +76,11 @@ namespace Microsoft.Azure.Commands.Common
         {
             appendStep(new UserAgent(invocationInfo).SendAsync);
             appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
+        }
+
+        public void OnNewProxyRequest(PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
+        {
+            appendStep(this.SendHandler(_provider?.Profile?.DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
         }
 
         internal void AddRequestUserAgentHandler(
@@ -250,8 +258,19 @@ namespace Microsoft.Azure.Commands.Common
 
         internal void PatchRequestUri(IAzureContext context, HttpRequestMessage request)
         {
+            PatchDefaultSubscription(context, request);
             var requestUri = context?.Environment?.GetUriFromBaseRequestUri(request.RequestUri);
             request.RequestUri = requestUri ?? request.RequestUri;
+        }
+
+        internal void PatchDefaultSubscription(IAzureContext context, HttpRequestMessage request)
+        {
+            string uri = request.RequestUri.ToString();
+            if (uri.Contains(_subscription)) {
+                string value = $"/subscriptions/{context.Subscription.Id}";
+                uri = uri.Replace(_subscription, value);
+                request.RequestUri = new System.Uri(uri);
+            }
         }
 
         /// <summary>

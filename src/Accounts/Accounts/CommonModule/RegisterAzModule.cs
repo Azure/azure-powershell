@@ -54,6 +54,9 @@ namespace Microsoft.Azure.Commands.Common
                     // this gets called before the generated cmdlet makes a call across the wire (allows you to change the HTTP pipeline)
                     OnNewRequest = ContextAdapter.Instance.OnNewRequest,
 
+                    // this gets called before the generated cmdlet makes a call across the wire (allows you to change the HTTP pipeline)
+                    OnNewProxyRequest = ContextAdapter.Instance.OnNewProxyRequest,
+
                     //OnNewRequest = AddRequestUserAgentHandler + AddPatchRequestUriHandler + AddAuthorizeRequestHandler
                     AddRequestUserAgentHandler = ContextAdapter.Instance.AddRequestUserAgentHandler,
 
