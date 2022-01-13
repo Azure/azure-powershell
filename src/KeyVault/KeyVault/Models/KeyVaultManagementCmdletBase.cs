@@ -357,17 +357,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             return DefaultProfile.DefaultContext.Environment.OnPremise || IsValidGUid(objectId);
         }
 
+        // All but purge
         protected readonly string[] DefaultPermissionsToKeys =
         {
-            KeyPerms.Get,
-            KeyPerms.Create,
-            KeyPerms.Delete,
-            KeyPerms.List,
-            KeyPerms.Update,
-            KeyPerms.Import,
-            KeyPerms.Backup,
-            KeyPerms.Restore,
-            KeyPerms.Recover
+            KeyPerms.All
         };
 
         protected readonly string[] DefaultPermissionsToSecrets =
