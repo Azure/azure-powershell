@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Azure.ResourceManager;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -35,6 +36,15 @@ namespace Microsoft.Azure.Commands.TestFx
         public TestClientFactory(MockContext mockContext)
         {
             _mockContext = mockContext ?? throw new ArgumentNullException(nameof(mockContext));
+        }
+        public ArmClient CreateArmClient(IAzureContext context, string endpoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ArmClient CreateCustomArmClient(IAzureContext context, string endpoint, ArmClientOptions option)
+        {
+            throw new NotImplementedException();
         }
 
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
@@ -140,7 +150,6 @@ namespace Microsoft.Azure.Commands.TestFx
         {
             throw new NotImplementedException();
         }
-
         #endregion
 
     }
