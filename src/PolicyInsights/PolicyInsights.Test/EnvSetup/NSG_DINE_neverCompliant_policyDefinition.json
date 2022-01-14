@@ -1,7 +1,15 @@
 ﻿{
   "if": {
-    "field": "type",
-    "equals": "Microsoft.KeyVault/vaults"
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Network/networkSecurityGroups"
+      },
+      {
+        "field": "name",
+        "like": "pstests*"
+      }
+    ]
   },
   "then": {
     "effect": "deployIfNotExists",
