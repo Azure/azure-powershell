@@ -45,4 +45,3 @@
 "Az.Compute","Microsoft.Azure.Commands.Compute.SetAzureVMExtensionCommand","Set-AzVMExtension","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Set-AzVMExtension' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Set-AzVMExtension'."
 "Az.Compute","Microsoft.Azure.Commands.Compute.SetAzureVMExtensionCommand","Set-AzVMExtension","0","1050","The parameter set 'Settings' for cmdlet 'Set-AzVMExtension' has been removed.","Add parameter set 'Settings' back to cmdlet 'Set-AzVMExtension'."
 "Az.Compute","Microsoft.Azure.Commands.Compute.SetAzureVMExtensionCommand","Set-AzVMExtension","0","1050","The parameter set 'SettingString' for cmdlet 'Set-AzVMExtension' has been removed.","Add parameter set 'SettingString' back to cmdlet 'Set-AzVMExtension'."
-
