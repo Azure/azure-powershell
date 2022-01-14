@@ -31,6 +31,16 @@ The **Unpublish-AzCdnEndpointContent** cmdlet purges the content from an Azure C
 
 ## EXAMPLES
 
+### Example 1: Purge some assets
+```powershell
+Unpublish-AzCdnEndpointContent -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -PurgeContent "/images/kitten.png","/video/rickroll.mp4"
+```
+
+### Example 2: Purge everything in /images/ on all endpoints
+```powershell
+Get-AzCdnProfile | Get-AzCdnEndpoint | Unpublish-AzCdnEndpointContent -PurgeContent "/images/*"
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint
