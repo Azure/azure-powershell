@@ -344,8 +344,10 @@ Test Virtual Machines
 function Test-VirtualMachineInEdgeZone
 {
     $ResourceGroup = Get-ComputeTestResourceName;
-    $LocationName = "westus";
-    $EdgeZone = "microsoftlosangeles1";
+    # adam$LocationName = "westus";
+    $LocationName = "eastus2euap";
+    #adam $EdgeZone = "microsoftlosangeles1";
+    $EdgeZone = "microsoftrrdclab1";
     $VMName = "MyVM";
 
     try
