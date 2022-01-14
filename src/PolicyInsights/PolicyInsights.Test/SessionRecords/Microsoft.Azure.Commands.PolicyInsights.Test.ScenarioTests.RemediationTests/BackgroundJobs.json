@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL3JlbWVkaWF0aW9ucy9QU1Rlc3RSZW1lZGlhdGlvbj9hcGktdmVyc2lvbj0yMDE5LTA3LTAx",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL3JlbWVkaWF0aW9ucy9SZW1lZGlhdGlvbi1CYWNrZ3JvdW5kSm9icz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyAssignments/fcddeb6113ec43798567dce2\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/Microsoft.Authorization/policyAssignments/PSTestDeployAssignmentSub\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"resourceCount\": 1\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1ff11ec4-347b-40cb-a519-b7ce805bc173"
+          "942d5e49-c68c-47dd-afd9-8a6f0cac3a99"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "262"
+          "288"
         ]
       },
       "ResponseHeaders": {
@@ -32,35 +32,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "599"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":67529f5c-2fff-48b1-b259-ae7b39358117"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "143"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
+        "x-ms-request-id": [
+          "70d4462e-600d-46e4-a927-2da2d5dcf034"
+        ],
         "x-ms-correlation-request-id": [
-          "bf44df60-37ca-4394-abf4-fdfb43e33901"
+          "70d4462e-600d-46e4-a927-2da2d5dcf034"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005532Z:bf44df60-37ca-4394-abf4-fdfb43e33901"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231137Z:70d4462e-600d-46e4-a927-2da2d5dcf034"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:55:31 GMT"
+          "Thu, 13 Jan 2022 23:11:36 GMT"
         ],
         "Content-Length": [
-          "660"
+          "1030"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,32 +69,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"createdOn\": \"2019-12-06T00:55:30.826595Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:55:31.3666546Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"createdOn\": \"2022-01-13T23:11:36.9633601Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:11:36.963453Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 0,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"70d4462e-600d-46e4-a927-2da2d5dcf034\",\r\n    \"resourceCount\": 1\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:11:36.7678586Z\"\r\n  }\r\n}",
+      "StatusCode": 201
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL3JlbWVkaWF0aW9ucy9QU1Rlc3RSZW1lZGlhdGlvbj9hcGktdmVyc2lvbj0yMDE5LTA3LTAx",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL3JlbWVkaWF0aW9ucy9SZW1lZGlhdGlvbi1CYWNrZ3JvdW5kSm9icz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyAssignments/fcddeb6113ec43798567dce2\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/Microsoft.Authorization/policyAssignments/PSTestDeployAssignmentSub\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1c3e2674-1142-4dcd-8dbf-8f991aa4de09"
+          "25b2cbe5-b84b-4141-bd12-461238afd13e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "269"
+          "270"
         ]
       },
       "ResponseHeaders": {
@@ -104,35 +104,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "598"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":e28c919f-a71c-4ae1-8b01-ee9839593127"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "146"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
+        "x-ms-request-id": [
+          "e3ffbfc5-904a-4c51-92ae-2c3f80f9a461"
+        ],
         "x-ms-correlation-request-id": [
-          "a57f6155-74c3-4c00-ae39-b969c1f1762e"
+          "e3ffbfc5-904a-4c51-92ae-2c3f80f9a461"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005704Z:a57f6155-74c3-4c00-ae39-b969c1f1762e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231308Z:e3ffbfc5-904a-4c51-92ae-2c3f80f9a461"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:57:04 GMT"
+          "Thu, 13 Jan 2022 23:13:07 GMT"
         ],
         "Content-Length": [
-          "668"
+          "1019"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -141,26 +141,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"createdOn\": \"2019-12-06T00:57:03.1092623Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:57:03.5681112Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 2,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"createdOn\": \"2022-01-13T23:13:07.7934772Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:13:07.793576Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 0,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"e3ffbfc5-904a-4c51-92ae-2c3f80f9a461\"\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:13:07.5827386Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnM/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "902b0aa1-827f-495a-8865-b5609750e2ad"
+          "d4f22a27-c637-4d4d-b1b2-5fe75f07067e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -170,35 +170,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "598"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":91936c1b-18d7-431f-9d39-a74b8d823b2d"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "143"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "x-ms-request-id": [
+          "8476d735-fab6-4d8e-9cc5-6b92b3680223"
+        ],
         "x-ms-correlation-request-id": [
-          "28cba0fd-cac2-4101-b3f5-a0fd1c10be55"
+          "8476d735-fab6-4d8e-9cc5-6b92b3680223"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005602Z:28cba0fd-cac2-4101-b3f5-a0fd1c10be55"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231207Z:8476d735-fab6-4d8e-9cc5-6b92b3680223"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:56:01 GMT"
+          "Thu, 13 Jan 2022 23:12:06 GMT"
         ],
         "Content-Length": [
-          "659"
+          "1030"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -207,26 +207,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Running\",\r\n    \"createdOn\": \"2019-12-06T00:55:30.826595Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:55:34.5689616Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Running\",\r\n    \"createdOn\": \"2022-01-13T23:11:36.9633601Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:11:52.8498763Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"70d4462e-600d-46e4-a927-2da2d5dcf034\",\r\n    \"resourceCount\": 1\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:11:36.7678586Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnM/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ec7a52cb-f42d-4935-8d8c-b39e1b7667c7"
+          "74c6ee6c-1edf-40be-80ba-677e4e7c14ee"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -236,35 +236,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "597"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":f5af8acd-6a2b-42c5-92b4-dba7c88decc4"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "143"
+        ],
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11998"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "x-ms-request-id": [
+          "5e7d8e7d-2002-478e-98e4-a3d3e0126e8d"
         ],
         "x-ms-correlation-request-id": [
-          "e83e6e51-6452-4d45-ba44-dc7d7c496bba"
+          "5e7d8e7d-2002-478e-98e4-a3d3e0126e8d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005632Z:e83e6e51-6452-4d45-ba44-dc7d7c496bba"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231237Z:5e7d8e7d-2002-478e-98e4-a3d3e0126e8d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:56:31 GMT"
+          "Thu, 13 Jan 2022 23:12:36 GMT"
         ],
         "Content-Length": [
-          "659"
+          "1030"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -273,26 +273,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Running\",\r\n    \"createdOn\": \"2019-12-06T00:55:30.826595Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:55:34.5689616Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Running\",\r\n    \"createdOn\": \"2022-01-13T23:11:36.9633601Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:11:52.8498763Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"70d4462e-600d-46e4-a927-2da2d5dcf034\",\r\n    \"resourceCount\": 1\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:11:36.7678586Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnM/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "712684cc-d579-4d81-b183-361a2a047f08"
+          "b6d20f1b-d56f-495b-a10b-349a9db41df9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -302,35 +302,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "599"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":8a1391f3-911c-4aa2-9bf4-7a3f3c38d040"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "147"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11997"
         ],
+        "x-ms-request-id": [
+          "b1526e83-09e7-4509-9440-07aaa82a78e8"
+        ],
         "x-ms-correlation-request-id": [
-          "45c7165e-fd02-4f59-b104-918e9564eb4d"
+          "b1526e83-09e7-4509-9440-07aaa82a78e8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005702Z:45c7165e-fd02-4f59-b104-918e9564eb4d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231307Z:b1526e83-09e7-4509-9440-07aaa82a78e8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:57:02 GMT"
+          "Thu, 13 Jan 2022 23:13:07 GMT"
         ],
         "Content-Length": [
-          "661"
+          "1031"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -339,26 +339,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createdOn\": \"2019-12-06T00:55:30.826595Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:56:36.2846687Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 1,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createdOn\": \"2022-01-13T23:11:36.9633601Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:13:05.312316Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"westus2\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 1,\r\n      \"successfulDeployments\": 1,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"70d4462e-600d-46e4-a927-2da2d5dcf034\",\r\n    \"resourceCount\": 1\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:11:36.7678586Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnM/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "df9f80a5-9236-4053-b237-4d5c19988135"
+          "04d47bbf-73d3-45ca-b3c0-1f9566b4715d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -368,35 +368,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "597"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":c003d1f3-85c5-46c2-901b-72719efc0209"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "145"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11996"
         ],
+        "x-ms-request-id": [
+          "90451660-2b42-4a16-ba54-97fa867d6c3d"
+        ],
         "x-ms-correlation-request-id": [
-          "3832933a-43f3-4631-acfc-972934d0d042"
+          "90451660-2b42-4a16-ba54-97fa867d6c3d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005704Z:3832933a-43f3-4631-acfc-972934d0d042"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231308Z:90451660-2b42-4a16-ba54-97fa867d6c3d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:57:04 GMT"
+          "Thu, 13 Jan 2022 23:13:07 GMT"
         ],
         "Content-Length": [
-          "668"
+          "1019"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -405,26 +405,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"createdOn\": \"2019-12-06T00:57:03.1092623Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:57:03.5681112Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 2,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"createdOn\": \"2022-01-13T23:13:07.7934772Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:13:07.793576Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 0,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"e3ffbfc5-904a-4c51-92ae-2c3f80f9a461\"\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:13:07.5827386Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnM/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "449774c6-832b-4ca9-875d-1f73e7b2ba84"
+          "d5a7b1ac-1db9-40e4-a104-32a51bdd81eb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -434,35 +434,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "595"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":e507b7bd-0666-4695-beec-8170e58a0028"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "144"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11995"
         ],
+        "x-ms-request-id": [
+          "722745b4-a475-438f-a61f-cd4c7d6e2088"
+        ],
         "x-ms-correlation-request-id": [
-          "83db62e9-3aa7-4ed5-958b-31b723e6e70a"
+          "722745b4-a475-438f-a61f-cd4c7d6e2088"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005734Z:83db62e9-3aa7-4ed5-958b-31b723e6e70a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231338Z:722745b4-a475-438f-a61f-cd4c7d6e2088"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:57:34 GMT"
+          "Thu, 13 Jan 2022 23:13:37 GMT"
         ],
         "Content-Length": [
-          "668"
+          "1018"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -471,26 +471,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Canceled\",\r\n    \"createdOn\": \"2019-12-06T00:57:03.1092623Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:57:05.3825195Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 2,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Canceled\",\r\n    \"createdOn\": \"2022-01-13T23:13:07.7934772Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:13:23.0662844Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 0,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"e3ffbfc5-904a-4c51-92ae-2c3f80f9a461\"\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:13:08.17778Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation/cancel?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24vY2FuY2VsP2FwaS12ZXJzaW9uPTIwMTktMDctMDE=",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs/cancel?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnMvY2FuY2VsP2FwaS12ZXJzaW9uPTIwMjEtMTAtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fdbbe420-f03a-4545-a4c1-d04beb3f97eb"
+          "4fd3bed1-b5c4-40d2-aab6-3588a51777ab"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -500,35 +500,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "596"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":3abbb60c-eb1f-4b61-bb0e-7d6c8d8e9758"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "144"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
+        "x-ms-request-id": [
+          "d177c0b3-d924-4431-83b0-08ca514e7351"
+        ],
         "x-ms-correlation-request-id": [
-          "5bddf473-3a25-4335-9102-0e413d5f35e7"
+          "d177c0b3-d924-4431-83b0-08ca514e7351"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005704Z:5bddf473-3a25-4335-9102-0e413d5f35e7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231308Z:d177c0b3-d924-4431-83b0-08ca514e7351"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:57:04 GMT"
+          "Thu, 13 Jan 2022 23:13:08 GMT"
         ],
         "Content-Length": [
-          "670"
+          "1020"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -537,26 +537,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Cancelling\",\r\n    \"createdOn\": \"2019-12-06T00:57:03.1092623Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:57:04.6518751Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 2,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Cancelling\",\r\n    \"createdOn\": \"2022-01-13T23:13:07.7934772Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:13:08.2435129Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 0,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"e3ffbfc5-904a-4c51-92ae-2c3f80f9a461\"\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:13:08.17778Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41//providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2Y2N2NjOTE4LWY2NGYtNGMzZi1hYTI0LWE4NTU0NjVmOWQ0MS8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUFNUZXN0UmVtZWRpYXRpb24/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322//providers/Microsoft.PolicyInsights/remediations/Remediation-BackgroundJobs?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi8vcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9yZW1lZGlhdGlvbnMvUmVtZWRpYXRpb24tQmFja2dyb3VuZEpvYnM/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5fcd89a9-befc-46e6-899b-97701ec1cbfb"
+          "50b5a8aa-314e-48f4-9c07-d6b6d3fd685a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -566,35 +566,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
-          "594"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":b2722d00-3dfa-40df-892d-88e1b9503aea"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "143"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
+        "x-ms-request-id": [
+          "bd5d6297-ee60-4be4-94f1-d5d0e3e0f7bc"
+        ],
         "x-ms-correlation-request-id": [
-          "f618ef32-72f7-47e3-9a7f-b7e325566e10"
+          "bd5d6297-ee60-4be4-94f1-d5d0e3e0f7bc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191206T005735Z:f618ef32-72f7-47e3-9a7f-b7e325566e10"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T231338Z:bd5d6297-ee60-4be4-94f1-d5d0e3e0f7bc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 00:57:34 GMT"
+          "Thu, 13 Jan 2022 23:13:38 GMT"
         ],
         "Content-Length": [
-          "668"
+          "1018"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -603,12 +603,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.authorization/policyassignments/fcddeb6113ec43798567dce2\",\r\n    \"provisioningState\": \"Canceled\",\r\n    \"createdOn\": \"2019-12-06T00:57:03.1092623Z\",\r\n    \"lastUpdatedOn\": \"2019-12-06T00:57:05.3825195Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 2,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\"\r\n  },\r\n  \"id\": \"/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/microsoft.policyinsights/remediations/pstestremediation\",\r\n  \"name\": \"PSTestRemediation\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestdeployassignmentsub\",\r\n    \"provisioningState\": \"Canceled\",\r\n    \"createdOn\": \"2022-01-13T23:13:07.7934772Z\",\r\n    \"lastUpdatedOn\": \"2022-01-13T23:13:23.0662844Z\",\r\n    \"filters\": {\r\n      \"locations\": [\r\n        \"northcentralus\"\r\n      ]\r\n    },\r\n    \"deploymentStatus\": {\r\n      \"totalDeployments\": 0,\r\n      \"successfulDeployments\": 0,\r\n      \"failedDeployments\": 0\r\n    },\r\n    \"resourceDiscoveryMode\": \"ExistingNonCompliant\",\r\n    \"correlationId\": \"e3ffbfc5-904a-4c51-92ae-2c3f80f9a461\"\r\n  },\r\n  \"id\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.policyinsights/remediations/remediation-backgroundjobs\",\r\n  \"name\": \"Remediation-BackgroundJobs\",\r\n  \"type\": \"Microsoft.PolicyInsights/remediations\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-01-13T23:11:36.7678586Z\",\r\n    \"lastModifiedBy\": \"aa1a7d99-cf7d-4af9-8a92-e466ddeee946\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-01-13T23:13:08.17778Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f67cc918-f64f-4c3f-aa24-a855465f9d41"
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
   }
 }
