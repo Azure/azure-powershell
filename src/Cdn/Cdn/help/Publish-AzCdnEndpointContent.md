@@ -30,6 +30,11 @@ The **Publish-AzCdnEndpointContent** cmdlet loads content from an origin server 
 
 ## EXAMPLES
 
+### Example 1: Pre-load some assets
+```powershell
+Publish-AzCdnEndpointContent -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -LoadContent "/images/kitten.png","/video/rickroll.mp4"
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint
