@@ -598,7 +598,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkInterfaceDeleteOption
-{{ Fill NetworkInterfaceDeleteOption Description }}
+Specifies what action to perform on the NetworkInterface resource when the VM is deleted. Options are: Detach, Delete.
 
 ```yaml
 Type: System.String
