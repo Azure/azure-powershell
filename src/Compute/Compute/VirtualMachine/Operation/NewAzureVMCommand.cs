@@ -513,7 +513,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // AdditionalCapabilities
                 var vAdditionalCapabilities = new AdditionalCapabilities();
-                bool vUltraSSDEnabled = false;
                 if (_cmdlet.IsParameterBound(c => c.HibernationEnabled))
                 {
                     vAdditionalCapabilities.HibernationEnabled = _cmdlet.HibernationEnabled;
@@ -521,10 +520,6 @@ namespace Microsoft.Azure.Commands.Compute
                 if (_cmdlet.IsParameterBound(c => c.EnableUltraSSD))
                 {
                     vAdditionalCapabilities.UltraSSDEnabled = _cmdlet.EnableUltraSSD;
-                    if (_cmdlet.EnableUltraSSD == true)
-                    {
-                        vUltraSSDEnabled = true;
-                    }
                 }
 
                 _cmdlet.ConfigAsyncVisited = true;
@@ -576,7 +571,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
-                        ultraSSDEnabled: vUltraSSDEnabled,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
