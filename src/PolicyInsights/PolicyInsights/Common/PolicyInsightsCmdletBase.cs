@@ -98,19 +98,12 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         /// </summary>
         protected override void BeginProcessing()
         {
-            try
+            if (this.cancellationSource == null)
             {
-                if (this.cancellationSource == null)
-                {
-                    this.cancellationSource = new CancellationTokenSource();
-                }
+                this.cancellationSource = new CancellationTokenSource();
+            }
 
-                base.BeginProcessing();
-            }
-            finally
-            {
-                this.DisposeOfCancellationSource();
-            }
+            base.BeginProcessing();
         }
 
         /// <summary>
