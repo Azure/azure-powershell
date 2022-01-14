@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.4.1'
+ModuleVersion = '1.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -112,7 +112,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging'
+        ReleaseNotes = '* Support new remediation properties. Added support for getting all available policy states and policy events.'
 
         # Prerelease string of this module
         # Prerelease = ''

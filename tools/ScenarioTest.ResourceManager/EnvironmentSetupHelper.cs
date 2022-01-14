@@ -135,7 +135,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
 
             // Set RunningMocked
-            TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
+            var mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            TestMockSupport.RunningMocked = mode == null || !mode.Equals("Record", StringComparison.OrdinalIgnoreCase);
 
             if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json")))
             {
