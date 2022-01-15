@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.2
 * Supported create/upgrade storage account by enable sftp and enable localuser
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
