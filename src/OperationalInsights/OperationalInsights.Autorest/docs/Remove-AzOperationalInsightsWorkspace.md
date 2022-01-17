@@ -18,13 +18,13 @@ To remove the workspace completely and release the name, use the force flag.
 ### Delete (Default)
 ```
 Remove-AzOperationalInsightsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-Force]
+Remove-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-ForceDelete]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
+### -ForceDelete
 Deletes the workspace without the recovery option.
 A workspace that was deleted with this flag cannot be recovered.
 

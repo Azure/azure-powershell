@@ -97,6 +97,12 @@ directive:
     set:
       parameter-name: DailyQuotaGb
 
+  - where: 
+      verb: Remove
+      subject: Workspace
+      parameter-name: Force
+    set:
+      parameter-name: ForceDelete
   # For memory object that generate cmdlet.  
   #- model-cmdlet:
     # - Column # Successfull generated after hide it for custom.
