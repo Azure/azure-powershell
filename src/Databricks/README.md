@@ -51,23 +51,20 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
-
+  # - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/cfe9bfd432231086b92cda77a327756a90758a8f/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/a3c9363637ad7d30407cd6dd26d280cbb166cbf9/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/vnetpeering.json
 module-version: 1.1.0
 title: Databricks
 subject-prefix: $(service-name)
 
-inlining-threshold: 50
+inlining-threshold: 100
 
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
-  # Hide CreateViaIdentity for customization
-  - where:
-      variant: ^CreateViaIdentity$
-    hide: true
   # Rename the parameter name to follow Azure PowerShell best practice
   - where:
       parameter-name: SkuName
@@ -112,7 +109,60 @@ directive:
   - where:
       parameter-name: PeeringName
     set:
-      parameter-name: Name 
+      parameter-name: Name
+  # For 2021-04-01-preview swagger.
+  - where:
+      parameter-name: AmlWorkspaceIdValue
+    set:
+      parameter-name: AmlWorkspaceId
+
+  - where:
+      parameter-name: EnableNoPublicIPValue
+    set:
+      parameter-name: EnableNoPublicIP
+
+  - where:
+      parameter-name: KeyVaultPropertyKeyName
+    set:
+      parameter-name: KeyVaultKeyName
+  - where:
+      parameter-name: KeyVaultPropertyKeyVaultUri
+    set:
+      parameter-name: KeyVaultUri
+  - where:
+      parameter-name: KeyVaultPropertyKeyVersion
+    set:
+      parameter-name: KeyVaultKeyVersion
+
+  - where:
+      parameter-name: LoadBalancerBackendPoolNameValue
+    set:
+      parameter-name: LoadBalancerBackendPoolName
+  - where:
+      parameter-name: LoadBalancerIdValue
+    set:
+      parameter-name: LoadBalancerId
+
+  - where:
+      parameter-name: NatGatewayNameValue
+    set:
+      parameter-name: NatGatewayName
+
+  - where:
+      parameter-name: StorageAccountNameValue
+    set:
+      parameter-name: StorageAccountName
+
+  - where:
+      parameter-name: StorageAccountSkuNameValue
+    set:
+      parameter-name: StorageAccountSku
+
+  - where:
+      parameter-name: VnetAddressPrefixValue
+    set:
+      parameter-name: VnetAddressPrefix
+
   # Rename parameters of Set VNetPeering cmdlet
   - where:
       verb: New
@@ -138,15 +188,15 @@ directive:
       subject: Workspace
     remove: true
   # Hide the New Workspace cmdlet for customization
-  - where:
-      verb: New
-      subject: Workspace
-    hide: true
+  # - where:
+  #     verb: New
+  #     subject: Workspace
+  #   hide: true
   # Hide the Update Workspace cmdlet for customization
-  - where:
-      verb: Update
-      subject: Workspace
-    hide: true
+  # - where:
+  #     verb: Update
+  #     subject: Workspace
+  #   hide: true
   # Hide the Set VNetPeering cmdlet for customization
   - where:
       verb: Set
@@ -198,4 +248,7 @@ directive:
       property-name: EnableNoPublicIPValue
     set:
       property-name: EnableNoPublicIP
+
+  - modle-cmdlet:
+    - WorkspaceProviderAuthorization
 ```
