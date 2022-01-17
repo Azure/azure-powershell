@@ -8,7 +8,7 @@ schema: 2.0.0
 # Copy-AzMarketplacePrivateStoreCollectionOffer
 
 ## SYNOPSIS
-transferring offers copy  from source collection to target collection(s)
+transferring offers (copy or move) from source collection to target collection(s)
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity
 ```
 
 ## DESCRIPTION
-transferring offers copy from source collection to target collection(s)
+transferring offers (copy or move) from source collection to target collection(s)
 
 ## EXAMPLES
 
@@ -55,6 +55,8 @@ Failed Succeeded
 ```
 
 This command copy offers from source collection to target collections.
+
+
 
 ## PARAMETERS
 
