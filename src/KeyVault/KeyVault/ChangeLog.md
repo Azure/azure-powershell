@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved the error message of Az.KeyVault.Extension [#16798]
 * Added default access policies for Key Vault key as "All but purge"
 * Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]
 * Fixed a bug when updating key operations on managed HSM [#16774]
