@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Administrators and EncryptDCConnections to ActiveDirectory
+* Added Administrators to ActiveDirectory
+* Added Get-AzNetAppFilesQuotaLimit to get the default and current limits for quotas
+* Added VolumeGroup CapacityPoolResourceId, ProximityPlacementGroup, VolumeSpecName and PlacementRules to Volume
+* Added CapacityPoolResourceId, ProximityPlacementGroup, VolumeSpecName and PlacementRules to Volume
 
 ## Version 0.8.0
 * Added list NetAppAccounts by subscription
