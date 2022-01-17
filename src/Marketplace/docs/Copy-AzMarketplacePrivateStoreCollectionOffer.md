@@ -52,6 +52,7 @@ PS C:\\>  Copy-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId 3ac32d8c
 Failed Succeeded
 ------ ---------
 {}     {DefaultCollection}
+```
 
 This command moves or copy offers from source collection to target collections.
 
