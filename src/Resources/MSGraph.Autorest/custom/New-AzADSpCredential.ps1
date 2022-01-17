@@ -197,7 +197,7 @@ function New-AzADSpCredential {
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
-            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithKeyCredentialParameterSet', 'SPNWithKeyCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
+            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithKeyCredentialParameterSet', 'SPNWithPasswordCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
                 $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
                 $sp = Get-AzADServicePrincipal @param
                 if($sp) {
