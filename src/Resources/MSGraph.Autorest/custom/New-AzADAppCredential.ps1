@@ -227,7 +227,7 @@ function New-AzADAppCredential {
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
-            { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithKeyCredentialParameterSet', 'ApplicationIdWithKeyCredentialParameterSet', 'ApplicationIdWithCertValueParameterSet'} {
+            { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithKeyCredentialParameterSet', 'ApplicationIdWithPasswordCredentialParameterSet', 'ApplicationIdWithCertValueParameterSet'} {
                 $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
                 $app = Get-AzADApplication @param
                 if ($app) {
