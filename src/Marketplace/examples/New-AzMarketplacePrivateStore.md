@@ -5,6 +5,6 @@ PS C:\> New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -
 
 ```
 
-Thins command changes private store properties
+This command changes private store properties.
 
 

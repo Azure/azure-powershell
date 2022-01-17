@@ -44,9 +44,6 @@ transferring offers (copy or move) from source collection to target collection(s
 ## EXAMPLES
 
 ### Example 1: Moves or copy offers from source collection to target collections.
-```powershell
-
-```
 
 ```powershell
 PS C:\\> $payload = @{OfferIdsList = "aumatics.azure_managedservices"; Operation = "Copy"; TargetCollection = "3ac32d8c-e888-4dc6-b4ff-be4d755af13a"}

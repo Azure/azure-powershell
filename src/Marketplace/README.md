@@ -38,8 +38,9 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
+branch: 8dc5f1df21caf602944de05e68945c2bbf009c2d
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-06-01/Marketplace.json
+  - $(repo)/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-06-01/Marketplace.json
 
 module-version: 1.1.0
 title: Marketplace
