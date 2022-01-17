@@ -2295,6 +2295,14 @@
                 <PropertyName>Target</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>TargetType</Label>
+                <PropertyName>TargetType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TargetType</Label>
+                <PropertyName>TargetType</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>BytesToCapturePerPacket</Label>
                 <PropertyName>BytesToCapturePerPacket</PropertyName>
               </ListItem>
@@ -2313,6 +2321,10 @@
               <ListItem>
                 <Label>Filters</Label>
                 <PropertyName>FiltersText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Scope</Label>
+                <PropertyName>ScopeText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2349,6 +2361,10 @@
                 <PropertyName>Target</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>TargetType</Label>
+                <PropertyName>TargetType</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>BytesToCapturePerPacket</Label>
                 <PropertyName>BytesToCapturePerPacket</PropertyName>
               </ListItem>
@@ -2367,6 +2383,10 @@
               <ListItem>
                 <Label>Filters</Label>
                 <PropertyName>FiltersText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Scope</Label>
+                <PropertyName>ScopeText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>CaptureStartTime</Label>

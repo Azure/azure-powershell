@@ -213,6 +213,16 @@ namespace Microsoft.Azure.Commands.Network
             packetCaptureProperties.StorageLocation.StorageId = this.StorageAccountId;
             packetCaptureProperties.StorageLocation.StoragePath = this.StoragePath;
 
+            packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVM;
+
+            if (!string.IsNullOrEmpty(this.TargetType))
+            {
+                if (this.TargetType.ToLower() == "vmss" || this.TargetType.ToLower() == "azurevmss")
+                {
+                    packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVMSS;
+                }
+            }
+
             if (this.Filter != null)
             {
                 packetCaptureProperties.Filters = new List<MNM.PacketCaptureFilter>();

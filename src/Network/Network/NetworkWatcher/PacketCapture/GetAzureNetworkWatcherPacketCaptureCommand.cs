@@ -135,6 +135,8 @@ namespace Microsoft.Azure.Commands.Network
                 pcResult.StorageLocation = psPacketCapture.StorageLocation;
                 pcResult.Target = psPacketCapture.Target;
                 pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
+                pcResult.Scope = psPacketCapture.Scope;
+                pcResult.TargetType = psPacketCapture.TargetType;
 
                 WriteObject(pcResult);
             }
@@ -178,6 +180,8 @@ namespace Microsoft.Azure.Commands.Network
                     pcResult.StorageLocation = psPacketCapture.StorageLocation;
                     pcResult.Target = psPacketCapture.Target;
                     pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
+                    pcResult.Scope = psPacketCapture.Scope;
+                    pcResult.TargetType = psPacketCapture.TargetType;
 
                     pcResultList.Add(pcResult);
                 }
