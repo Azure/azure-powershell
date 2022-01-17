@@ -117,8 +117,7 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ResourceManager;
                     var context = GetDefaultContext(_provider, invocationInfo);
-                    await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
-                    return await next(request, cancelToken, cancelAction, signal);
+                    return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
                 });
         }
 
@@ -193,6 +192,35 @@ namespace Microsoft.Azure.Commands.Common
             return string.Empty;
         }
 
+        internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, TokenAudienceConverterDelegate tokenAudienceConverter = null)
+        {
+            IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
+            var response = await next(request, cancelToken, cancelAction, signal);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
+            {
+                //get token again with claims challenge
+                if (accessToken is IClaimsChallengeProcessor processor)
+                {
+                    try
+                    {
+                        var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
+                        if (!string.IsNullOrEmpty(claimsChallenge))
+                        {
+                            await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken).ConfigureAwait(false);
+                            response = await next(request, cancelToken, cancelAction, signal);
+                        }
+                    }
+                    catch (AuthenticationFailedException e)
+                    {
+                        string message = response?.GetWwwAuthenticateMessage() ?? string.Empty;
+                        throw e.FromExceptionAndAdditionalMessage(message);
+                    }
+                }
+            }
+            return response;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -204,31 +232,7 @@ namespace Microsoft.Azure.Commands.Common
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
                 PatchRequestUri(context, request);
-                IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, resourceId, resourceId);
-                var response = await next(request, cancelToken, cancelAction, signal);
-
-                if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
-                {
-                    //get token again with claims challenge
-                    if(accessToken is IClaimsChallengeProcessor processor)
-                    {
-                        try
-                        {
-                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
-                            if (!string.IsNullOrEmpty(claimsChallenge))
-                            {
-                                await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken).ConfigureAwait(false);
-                                response = await next(request, cancelToken, cancelAction, signal);
-                            }
-                        }
-                        catch (AuthenticationFailedException e)
-                        {
-                            string message = response?.GetWwwAuthenticateMessage() ?? string.Empty;
-                            throw e.FromExceptionAndAdditionalMessage(message);
-                        }
-                    }
-                }
-                return response;
+                return await AuthenticationHelper(context, resourceId, resourceId, request, cancelToken, cancelAction, signal, next);
             };
         }
 
