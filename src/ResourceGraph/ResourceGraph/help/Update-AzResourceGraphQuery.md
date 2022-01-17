@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceGraph-help.xml
 Module Name: Az.ResourceGraph
 online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/update-azresourcegraphquery
 schema: 2.0.0
@@ -15,14 +15,14 @@ Updates a graph query that has already been added.
 ### UpdateExpanded (Default)
 ```
 Update-AzResourceGraphQuery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-File <String>] [-Query <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-Query <String>] [-File <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-Description <String>] [-File <String>]
- [-Query <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-Description <String>] [-Query <String>]
+ [-File <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,4 +249,3 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
-

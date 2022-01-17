@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
 schema: 2.0.0
@@ -14,52 +14,8 @@ Adds new entity to servicePrincipals
 
 ### SimpleParameterSet (Default)
 ```
-New-AzADServicePrincipal [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
- [-AppDescription <String>] [-ApplicationId <Guid>] [-AppOwnerOrganizationId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-DisplayName <String>] [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationObjectWithKeyCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
- -KeyCredential <IMicrosoftGraphKeyCredential[]> [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>]
- [-AlternativeName <String[]>] [-AppDescription <String>] [-AppOwnerOrganizationId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationObjectWithKeyPlainParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> -CertValue <String> [-AccountEnabled]
+New-AzADServicePrincipal [-DisplayName <String>] [-ApplicationId <Guid>] [-Role <String>] [-Scope <String>]
+ [-Homepage <String>] [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
  [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
  [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
  [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
@@ -67,183 +23,211 @@ New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> -CertVa
  [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
  [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
  [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
  [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
  [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationObjectWithPasswordCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
- -PasswordCredential <IMicrosoftGraphPasswordCredential[]> [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>]
- [-AlternativeName <String[]>] [-AppDescription <String>] [-AppOwnerOrganizationId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationObjectWithPasswordPlainParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-AccountEnabled]
- [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationWithKeyCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -KeyCredential <IMicrosoftGraphKeyCredential[]>
- [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationWithKeyPlainParameterSet
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -CertValue <String> [-AccountEnabled]
- [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationWithPasswordCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -PasswordCredential <IMicrosoftGraphPasswordCredential[]>
- [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DisplayNameWithKeyCredentialParameterSet
-```
-New-AzADServicePrincipal -DisplayName <String> -KeyCredential <IMicrosoftGraphKeyCredential[]>
- [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DisplayNameWithKeyPlainParameterSet
-```
-New-AzADServicePrincipal -CertValue <String> -DisplayName <String> [-AccountEnabled]
- [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordCredentialParameterSet
 ```
-New-AzADServicePrincipal -DisplayName <String> -PasswordCredential <IMicrosoftGraphPasswordCredential[]>
+New-AzADServicePrincipal -DisplayName <String> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>]
+ -PasswordCredential <IMicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DisplayNameWithKeyCredentialParameterSet
+```
+New-AzADServicePrincipal -DisplayName <String> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -KeyCredential <IMicrosoftGraphKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DisplayNameWithKeyPlainParameterSet
+```
+New-AzADServicePrincipal -DisplayName <String> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -CertValue <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationWithPasswordCredentialParameterSet
+```
+New-AzADServicePrincipal -ApplicationId <Guid> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>]
+ -PasswordCredential <IMicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ApplicationWithKeyCredentialParameterSet
+```
+New-AzADServicePrincipal -ApplicationId <Guid> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -KeyCredential <IMicrosoftGraphKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationWithKeyPlainParameterSet
+```
+New-AzADServicePrincipal -ApplicationId <Guid> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -CertValue <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationObjectWithPasswordPlainParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>]
+ [-AlternativeName <String[]>] [-AppDescription <String>] [-AppOwnerOrganizationId <String>]
+ [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -ApplicationObject <IMicrosoftGraphApplication>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationObjectWithKeyPlainParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>]
+ [-AlternativeName <String[]>] [-AppDescription <String>] [-AppOwnerOrganizationId <String>]
+ [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -CertValue <String>
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ApplicationObjectWithKeyCredentialParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
  [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
  [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
  [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
@@ -251,17 +235,42 @@ New-AzADServicePrincipal -DisplayName <String> -PasswordCredential <IMicrosoftGr
  [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
  [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
  [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
  [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
  [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
  [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -KeyCredential <IMicrosoftGraphKeyCredential[]>
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ApplicationObjectWithPasswordCredentialParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
+ [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>]
+ -PasswordCredential <IMicrosoftGraphPasswordCredential[]> -ApplicationObject <IMicrosoftGraphApplication>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -362,7 +371,19 @@ The unique identifier for the associated application (its appId property).
 
 ```yaml
 Type: System.Guid
-Parameter Sets: ApplicationWithKeyCredentialParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationWithPasswordCredentialParameterSet, SimpleParameterSet
+Parameter Sets: SimpleParameterSet
+Aliases: AppId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Guid
+Parameter Sets: ApplicationWithPasswordCredentialParameterSet, ApplicationWithKeyCredentialParameterSet, ApplicationWithKeyPlainParameterSet
 Aliases: AppId
 
 Required: True
@@ -378,7 +399,7 @@ To construct, see NOTES section for APPLICATIONOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-Parameter Sets: ApplicationObjectWithKeyCredentialParameterSet, ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, ApplicationObjectWithPasswordPlainParameterSet
+Parameter Sets: ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithKeyCredentialParameterSet, ApplicationObjectWithPasswordCredentialParameterSet
 Aliases:
 
 Required: True
@@ -479,7 +500,7 @@ It represents the base 64 encoded certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet
+Parameter Sets: DisplayNameWithKeyPlainParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationObjectWithKeyPlainParameterSet
 Aliases:
 
 Required: True
@@ -512,7 +533,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -594,7 +615,19 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
 
 ```yaml
 Type: System.String
-Parameter Sets: DisplayNameWithKeyCredentialParameterSet, DisplayNameWithKeyPlainParameterSet, DisplayNameWithPasswordCredentialParameterSet, SimpleParameterSet
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DisplayNameWithPasswordCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet, DisplayNameWithKeyPlainParameterSet
 Aliases:
 
 Required: True
@@ -611,7 +644,7 @@ For an 'asymmetric' type credential, this must be set to on or before the date t
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet, SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DisplayNameWithKeyPlainParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithKeyPlainParameterSet
 Aliases:
 
 Required: False
@@ -692,7 +725,7 @@ To construct, see NOTES section for KEYCREDENTIAL properties and create a hash t
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]
-Parameter Sets: ApplicationObjectWithKeyCredentialParameterSet, ApplicationWithKeyCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet
+Parameter Sets: DisplayNameWithKeyCredentialParameterSet, ApplicationWithKeyCredentialParameterSet, ApplicationObjectWithKeyCredentialParameterSet
 Aliases: KeyCredentials
 
 Required: True
@@ -791,7 +824,7 @@ To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]
-Parameter Sets: ApplicationObjectWithPasswordCredentialParameterSet, ApplicationWithPasswordCredentialParameterSet, DisplayNameWithPasswordCredentialParameterSet
+Parameter Sets: DisplayNameWithPasswordCredentialParameterSet, ApplicationWithPasswordCredentialParameterSet, ApplicationObjectWithPasswordCredentialParameterSet
 Aliases: PasswordCredentials
 
 Required: True
@@ -942,7 +975,7 @@ For an 'asymmetric' type credential, this must be set to on or after the date th
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet, SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DisplayNameWithKeyPlainParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithKeyPlainParameterSet
 Aliases:
 
 Required: False
@@ -1340,3 +1373,4 @@ TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
 
 ## RELATED LINKS
 
+## RELATED LINKS

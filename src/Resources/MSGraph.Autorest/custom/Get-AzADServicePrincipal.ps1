@@ -207,7 +207,7 @@ process {
             break
         }
         'SPNParameterSet' {
-            $PSBoundParameters['Filter'] = "ServicePrincipalNames/any(s:s eq $($PSBoundParameters['ServicePrincipalName']))'"
+            $PSBoundParameters['Filter'] = "ServicePrincipalNames/any(s:s eq '$($PSBoundParameters['ServicePrincipalName'])')"
             $null = $PSBoundParameters.Remove('ServicePrincipalName')
             break
         }
@@ -216,6 +216,6 @@ process {
         }
     }
 
-    MSGraph.internal\Get-AzADServicePrincipal @PSBoundParameters
+    Az.MSGraph.internal\Get-AzADServicePrincipal @PSBoundParameters
 }
 }

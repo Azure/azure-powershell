@@ -280,7 +280,7 @@ Function Move-Generation2MasterHybrid {
             #EndRegion
 
             # Generate csproj file and add the dependency in the solution file
-            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath $DestPath -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName
+            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName
 
             $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
 
@@ -316,7 +316,15 @@ Function Move-Generation2MasterHybrid {
                 $Psd1Metadata.Remove("PrivateData")
             }
             New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
+            
+            # Copy the assemblyinfo file
+            Copy-Template -SourceName AssemblyInfo.cs -DestPath (Join-Path (Join-Path $DestPath $submoduleDir.Name) "Properties") -DestName AssemblyInfo.cs -ModuleName $submoduleName
         }
+
+        #update module page
+        dotnet build "$DestPath\$ModuleName.sln"
+        Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+        Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
     }
 }
 
@@ -356,7 +364,7 @@ Function Copy-Template {
         $DestPath = Join-Path -Path $DestPath -ChildPath $DestName
         If (-not (Test-Path -Path $DestPath)) {
             Write-Host "Copying template: $SourceName." -ForegroundColor Yellow
-            New-Item -Path $DestPath
+            New-Item -Path $DestPath -Force
             $TemplatePath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath "Templates") -ChildPath $SourceName
             $TemplateContent = Get-Content -Path $TemplatePath
             If ($TemplateContent -Match "{GUID}") {

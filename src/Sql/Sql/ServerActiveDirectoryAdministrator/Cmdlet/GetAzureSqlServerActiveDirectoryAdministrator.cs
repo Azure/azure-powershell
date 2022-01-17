@@ -18,10 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
     public class GetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -29,7 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> GetEntity()
         {
             ICollection<AzureSqlServerActiveDirectoryAdministratorModel> results;
-
             results = ModelAdapter.ListServerActiveDirectoryAdministrators(this.ResourceGroupName, this.ServerName);
 
             return results;

@@ -30,6 +30,11 @@ The **Remove-AzCdnEndpoint** cmdlet removes an Azure Content Delivery Network (C
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Remove-AzCdnEndpoint -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -Force
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint

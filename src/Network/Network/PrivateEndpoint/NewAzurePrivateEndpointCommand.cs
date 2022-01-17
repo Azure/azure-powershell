@@ -21,6 +21,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
+using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -91,6 +92,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The application security group")]
+        public PSApplicationSecurityGroup[] ApplicationSecurityGroup { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The private endpoint IP configuration")]
+        public PSPrivateEndpointIPConfiguration[] IpConfiguration { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The custom network interface name")]
+        public string CustomNetworkInterfaceName { get; set; }
+
         private PSPrivateEndpoint CreatePSPrivateEndpoint()
         {
             var psPrivateEndpoint = new PSPrivateEndpoint
@@ -114,6 +124,21 @@ namespace Microsoft.Azure.Commands.Network
             {
                 psPrivateEndpoint.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
+
+            // Add support for new properties ApplicationSecurityGroup, IpConfiguration, CustomNetworkInterfaceName
+            if (this.ApplicationSecurityGroup != null && this.ApplicationSecurityGroup.Length > 0)
+            {
+                psPrivateEndpoint._psApplicationSecurityGroups = ApplicationSecurityGroup.ToList();
+            }
+            if (this.IpConfiguration != null && this.IpConfiguration.Length > 0)
+            {
+                psPrivateEndpoint._psIpConfigurations = this.IpConfiguration.ToList();
+            }
+            if (this.CustomNetworkInterfaceName != null)
+            {
+                psPrivateEndpoint.CustomNetworkInterfaceName = this.CustomNetworkInterfaceName;
+            }
+
 
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);
             peModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);

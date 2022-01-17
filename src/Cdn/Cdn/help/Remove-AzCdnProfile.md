@@ -30,6 +30,11 @@ The **Remove-AzCdnProfile** cmdlet removes a Azure Content Delivery Network (CDN
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Remove-AzCdnProfile -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -Force
+```
+
 ## PARAMETERS
 
 ### -CdnProfile

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RequiredForPrepare".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RequiredForPrepare", "RequiredForPrepare", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequiredForPrepare");
+                yield return new global::System.Management.Automation.CompletionResult("'RequiredForPrepare'", "RequiredForPrepare", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequiredForPrepare");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RequiredForMove".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RequiredForMove", "RequiredForMove", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequiredForMove");
+                yield return new global::System.Management.Automation.CompletionResult("'RequiredForMove'", "RequiredForMove", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequiredForMove");
             }
         }
     }
