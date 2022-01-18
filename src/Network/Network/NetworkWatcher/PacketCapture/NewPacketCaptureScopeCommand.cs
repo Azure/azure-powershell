@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NewPacketCaptureScopeConfig"),OutputType(typeof(PSPacketCaptureMachineScope))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureScopeConfig"),OutputType(typeof(PSPacketCaptureMachineScope))]
     public class NewPacketCaptureScopeCommand : NetworkBaseCmdlet
     {
         [Parameter(
