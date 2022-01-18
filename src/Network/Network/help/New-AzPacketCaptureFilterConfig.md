@@ -33,13 +33,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName contosoResourceGroup -
 
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
 $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP 
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
-```
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vmss.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
-```
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vmssInstance.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
-```
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vmss.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2 -Machines $vm.Id
+New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 

@@ -15,7 +15,7 @@ Creates a new packet capture resource and starts a packet capture session on a V
 ### SetByResource (Default)
 ```
 New-AzNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -PacketCaptureName <String>
- -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>]
+ -TargetVirtualMachineId <String> [-StorageAccountId <String>] [-StoragePath <String>]
  [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
  [-TimeLimitInSeconds <Int32>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -PacketCapt
 ### SetByName
 ```
 New-AzNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupName <String>
- -PacketCaptureName <String> -TargetId <String> [-StorageAccountId <String>]
+ -PacketCaptureName <String> -TargetVirtualMachineId <String> [-StorageAccountId <String>]
  [-StoragePath <String>] [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>]
  [-TotalBytesPerSession <Int32>] [-TimeLimitInSeconds <Int32>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,14 +33,14 @@ New-AzNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupNam
 ### SetByLocation
 ```
 New-AzNetworkWatcherPacketCapture -Location <String> -PacketCaptureName <String>
- -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>]
+ -TargetVirtualMachineId <String> [-StorageAccountId <String>] [-StoragePath <String>]
  [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
  [-TimeLimitInSeconds <Int32>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzNetworkWatcherPacketCapture cmdlet creates a new packet capture resource and starts a packet capture session on a VM, a single or multiple instances of a VMSS.
+The New-AzNetworkWatcherPacketCapture cmdlet creates a new packet capture resource and starts a packet capture session on a VM.
 The length of the Packet Capture sessions can be configured via a time constraint or a size constraint. The amount of data captured for each packet can also be configured.
 Filters can be applied to a given packet capture session, allowing you to customize the type of packets captured. Filters can restrict packets on local and remote IP addresses & address ranges, local and remote ports & port ranges, and the session level protocol to be captured. Filters are composable, and multiple filters can be applied to provide you with granularity of capture.
 
@@ -55,13 +55,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName contosoResourceGroup -
 
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
 $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP 
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
-```
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vmssInstance.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
-```
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vmss.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
-```
-New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetId $vmss.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2 -Machines $vm1.Id, $vm2.Id
+New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
@@ -249,8 +243,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetId
-The target resource Id of either virtual machine, virtual machine scale set, virtual machine scale set instance.
+### -TargetVirtualMachineId
+The target virtual machine ID.
 
 ```yaml
 Type: System.String
