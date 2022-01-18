@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.StorageAccountResourceId = storageInsight.StorageAccount?.Id;
             this.StorageAccountKey = storageInsight.StorageAccount?.Key;
             this.Tables = storageInsight.Tables.ToList();
-            this.Containers = storageInsight.Containers.ToList();
+            this.Containers = storageInsight.Containers?.ToList();
             this.State = storageInsight.Status?.State;
             this.StateDescription = storageInsight.Status?.Description;
             this.ETag = storageInsight.ETag;
