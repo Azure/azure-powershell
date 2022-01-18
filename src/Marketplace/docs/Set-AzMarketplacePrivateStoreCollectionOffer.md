@@ -24,9 +24,9 @@ Update or add an offer to a specific collection of the private store.
 ## EXAMPLES
 
 ### Example 1: Creates or updates offer to private store collection 
-```powershell
 
-```
+
+
 
 ```powershell
 PS C:\\>$acc = @{Accessibility = "azure_managedservices_professional"}
@@ -35,7 +35,7 @@ PS C:\\> New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3
 Name                           SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                           ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
 aumatics.azure_managedservices
-
+```
 
 This command creates or updates offer to private store collection.
 
