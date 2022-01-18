@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public IList<string> Include { get; set; }
+        public List<string> Include { get; set; }
 
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public IList<string> Exclude { get; set; }
+        public List<string> Exclude { get; set; }
     }
 }

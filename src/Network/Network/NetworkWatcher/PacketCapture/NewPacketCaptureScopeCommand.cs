@@ -30,33 +30,45 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Machines to be Included in Scope")]
-        [ValidateNotNullOrEmpty]
-        public IList<string> Include { get; set; }
+        public string[] Include { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Machines to be Included in Scope")]
-        [ValidateNotNullOrEmpty]
-        public IList<string> Exclude { get; set; }
+        public string[] Exclude { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if ((this.Include == null || this.Include.Count == 0) && (this.Exclude == null || this.Exclude.Count == 0))
+            if ((this.Include == null || this.Include.Length == 0) && (this.Exclude == null || this.Exclude.Length == 0))
             {
                 throw new ArgumentException("Parameters cannot be all empty to create new Packet Capture Scope.");
             }
 
-            if (this.Include != null && this.Include.Count > 0 && this.Exclude != null && this.Exclude.Count > 0)
+            if (this.Include != null && this.Include.Length > 0 && this.Exclude != null && this.Exclude.Length > 0)
             {
                 throw new ArgumentException("Packet Capture Scope can either have Include Scope or Exclude Scope, but not both.");
             }
 
             var packetCaptureScope = new PSPacketCaptureMachineScope();
-            packetCaptureScope.Include = this.Include;
-            packetCaptureScope.Exclude = this.Exclude;
+
+            List<string> include = new List<string>();
+            List<string> exclude = new List<string>();
+
+            foreach (string includeInstance in this.Include)
+            {
+                include.Add(includeInstance);
+            }
+
+            foreach (string excludeInstance in this.Exclude)
+            {
+                exclude.Add(excludeInstance);
+            }
+
+            packetCaptureScope.Include = include;
+            packetCaptureScope.Exclude = exclude;
 
             WriteObject(packetCaptureScope);
         }

@@ -236,7 +236,8 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Scope != null)
             {
                 packetCaptureProperties.Scope = new MNM.PacketCaptureMachineScope();
-                packetCaptureProperties.Scope = NetworkResourceManagerProfile.Mapper.Map<MNM.PacketCaptureMachineScope>(this.Scope);
+                packetCaptureProperties.Scope.Include = this.Scope.Include;
+                packetCaptureProperties.Scope.Exclude = this.Scope.Exclude;
             }
 
             PSPacketCaptureResult getPacketCapture = new PSPacketCaptureResult();
