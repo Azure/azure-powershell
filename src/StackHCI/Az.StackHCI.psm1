@@ -4548,6 +4548,7 @@ function Invoke-DeploymentModuleDownload{
     New-Directory -Path $DownloadCacheDirectory
     Write-Progress("Downloading Remote Support Deployment module from the BLOB $BlobLocation")
     $retryCount = 3
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupport"
     Retry-Command -Attempts $retryCount -RetryIfNullOutput $false -ScriptBlock { Invoke-WebRequest -Uri $BlobLocation -outfile $OutFile }
 }
 
@@ -4571,7 +4572,7 @@ function Install-DeployModule {
         $ModuleName
     )
 
-    if(Get-Module -ListAvailable | Where-Object { $_.Name -eq $ModuleName }){
+    if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
         Write-Host "$ModuleName is loaded already ..."
     }
     else{
