@@ -43,17 +43,23 @@ Gets a workspace instance.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
-```
+Get-AzOperationalInsightsWorkspace -name {WS_Name} -ResourceGroupName {RG_Name}
 
-{{ Add output here }}
+Location Name             ETag
+-------- ----             ----
+eastus   WS_Name
+```
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-{{ Add code here }}
-```
+Get-AzOperationalInsightsWorkspace  -ResourceGroupName {RG_Name}
 
-{{ Add output here }}
+Location    Name                        ETag
+--------    ----                        ----
+eastus      WS_Name1
+eastus      WS_Name2
+eastus      WS_Name3
+```
 
 ## PARAMETERS
 
