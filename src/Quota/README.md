@@ -39,10 +39,42 @@ input-file:
 
 title: Quota
 module-version: 0.1.0
-subject-prefix: Quota
+subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 
+inlining-threshold: 50
+
+directive:
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+    # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: ""
+    remove: true
+  - where:
+      werb: New
+      subject: ""
+      parameter-name: NameValue
+    set:
+      parameter-name: Name
+  - where:
+      model-name: CurrentQuotaLimitBase
+    set:
+      format-table:
+        properties:
+          - Name
+          - LimitObjectType
+          - Unit
+          - ETag
+  - no-inline:
+    - LimitJsonObject
+    
+  - modle-cmdlet:
+    - LimitValue
 ```

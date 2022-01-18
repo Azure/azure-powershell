@@ -18,28 +18,16 @@ Please check the URI in location header for the detailed status of the request.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-NameValue <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzQuota -ResourceName <String> -Scope <String> -CreateQuotaRequest <ICurrentQuotaLimitBase>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzQuota -InputObject <IQuotaIdentity> -CreateQuotaRequest <ICurrentQuotaLimitBase>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>]
+ [-Name <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-NameValue <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>]
+ [-Name <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +64,7 @@ Additional properties for the specific resource provider.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -101,22 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CreateQuotaRequest
-Quota limit.
-To construct, see NOTES section for CREATEQUOTAREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -138,7 +110,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -148,12 +120,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NameValue
+### -Limit
+Resource quota limit properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ILimitJsonObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
 Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -187,7 +174,7 @@ For example:
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -202,7 +189,7 @@ Resource type name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,7 +207,7 @@ If a `{resourceName}` is added after `/quotas`, then it's the target Azure resou
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -266,8 +253,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
 
 ## OUTPUTS
@@ -282,12 +267,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CREATEQUOTAREQUEST <ICurrentQuotaLimitBase>: Quota limit.
-  - `[AnyProperty <IAny>]`: Additional properties for the specific resource provider.
-  - `[ETag <String>]`: 
-  - `[NameValue <String>]`: Resource name.
-  - `[ResourceType <String>]`: Resource type name.
 
 INPUTOBJECT <IQuotaIdentity>: Identity Parameter
   - `[Id <String>]`: Quota request ID.

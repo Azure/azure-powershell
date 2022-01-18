@@ -19,9 +19,9 @@ Please check the URI in location header for the detailed status of the request.
 
 ### CreateExpanded (Default)
 ```
-New-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-NameValue <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>]
+ [-Name <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -38,8 +38,9 @@ New-AzQuota -InputObject <IQuotaIdentity> -CreateQuotaRequest <ICurrentQuotaLimi
 
 ### CreateViaIdentityExpanded
 ```
-New-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-NameValue <String>] [-ResourceType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>] [-Name <String>]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +150,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NameValue
+### -Limit
+Resource quota limit properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ILimitJsonObject
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
 Resource name.
 
 ```yaml
@@ -287,6 +303,7 @@ To create the parameters described below, construct a hash table containing the 
 CREATEQUOTAREQUEST <ICurrentQuotaLimitBase>: Quota limit.
   - `[AnyProperty <IAny>]`: Additional properties for the specific resource provider.
   - `[ETag <String>]`: 
+  - `[Limit <ILimitJsonObject>]`: Resource quota limit properties.
   - `[NameValue <String>]`: Resource name.
   - `[ResourceType <String>]`: Resource type name.
 
