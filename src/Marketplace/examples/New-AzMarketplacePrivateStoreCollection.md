@@ -5,6 +5,6 @@ PS C:\> New-AzMarketplacePrivateStoreCollection -CollectionName test -Collection
 Name                                 SystemDataCreatedAt    SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                                 -------------------    ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
 fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 12/13/2021 11:12:27 AM                     User                    12/13/2021 11:12:27 AM                            User
-
+```
 
 This command create or updates private store collection

@@ -6,6 +6,6 @@ PS C:\> New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e
 Name                           SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                           ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
 aumatics.azure_managedservices
-
+```
 
 This command creates or updates offer to private store collection.

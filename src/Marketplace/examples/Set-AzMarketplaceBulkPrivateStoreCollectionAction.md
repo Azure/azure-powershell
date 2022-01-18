@@ -5,5 +5,5 @@ PS C:\> Set-AzMarketplaceBulkPrivateStoreCollectionAction -PrivateStoreId 3ac32d
 Failed Succeeded
 ------ ---------
 {}     {DefaultCollection, test}
-
+```
 This command Preforms bulk action on collections 
