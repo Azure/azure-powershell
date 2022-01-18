@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Machines to be Included in Scope")]
+            HelpMessage = "Machines to be Excluded in Scope")]
         public string[] Exclude { get; set; }
 
         public override void Execute()
