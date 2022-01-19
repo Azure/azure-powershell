@@ -51,7 +51,6 @@ PS C:\> Remove-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionI
 This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 3: Remove a step using an object returned by New-AzDeploymentManagerStep
-### Example 1
 ```powershell
 PS C:\> Remove-AzDeploymentManagerStep -InputObject $stepObject
 ```
