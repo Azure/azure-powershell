@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
             Mandatory = false,
             HelpMessage = "If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter EncryptDCConnections { get; set; }
+        public SwitchParameter EncryptDCConnection { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -266,9 +266,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                     anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
                 }
                 anfADConfig.Administrators = Administrators ?? anfADConfig.Administrators;
-                if (EncryptDCConnections)
+                if (EncryptDCConnection)
                 {
-                    anfADConfig.EncryptDCConnections = EncryptDCConnections;
+                    anfADConfig.EncryptDCConnections = EncryptDCConnection;
                 }
 
                 var netAppAccountBody = new NetAppAccountPatch()

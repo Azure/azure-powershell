@@ -19,7 +19,7 @@ New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <Strin
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
  [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrators <String[]>]
- [-EncryptDCConnections] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptDCConnection] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -28,7 +28,7 @@ New-AzNetAppFilesActiveDirectory [-Dns <String[]>] -Domain <String> [-Site <Stri
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrators <String[]>] [-EncryptDCConnections] -AccountObject <PSNetAppFilesAccount>
+ [-Administrators <String[]>] [-EncryptDCConnection] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -199,7 +199,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptDCConnections
+### -EncryptDCConnection
 If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
 
 ```yaml

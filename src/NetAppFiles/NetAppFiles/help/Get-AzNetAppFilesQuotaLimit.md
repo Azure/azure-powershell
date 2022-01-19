@@ -41,7 +41,7 @@ This command gets the Quota Limits named totalTiBsPerSubscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The name of the Quota Limit
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: QuotaLimitName
 

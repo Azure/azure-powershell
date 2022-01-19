@@ -24,7 +24,7 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-CoolnessPeriod <Int32>] [-UnixPermissions <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>]
  [-CapacityPoolResourceId <String>] [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
- [-PlacementRules <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
+ [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-UnixPermissions <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
- [-PlacementRules <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
+ [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
  [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -342,7 +342,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlacementRules
+### -PlacementRule
 Application specific placement rules for the particular volume.
 
 ```yaml

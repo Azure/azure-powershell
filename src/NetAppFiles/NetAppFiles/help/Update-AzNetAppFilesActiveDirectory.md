@@ -19,7 +19,7 @@ Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <St
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrators <String[]>] [-EncryptDCConnections] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Administrators <String[]>] [-EncryptDCConnection] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Update-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> [-Dns <String[]>
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
  [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrators <String[]>]
- [-EncryptDCConnections] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
+ [-EncryptDCConnection] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Update-AzNetAppFilesActiveDirectory [-Dns <String[]>] [-Domain <String>] [-Site 
  [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
  [-KdcIP <String>] [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrators <String[]>] [-EncryptDCConnections] -InputObject <PSNetAppFilesActiveDirectory>
+ [-Administrators <String[]>] [-EncryptDCConnection] -InputObject <PSNetAppFilesActiveDirectory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -225,7 +225,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptDCConnections
+### -EncryptDCConnection
 If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
 
 ```yaml

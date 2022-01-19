@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "Application specific placement rules for the particular volume.")]
         [ValidateNotNullOrEmpty]
-        public IList<PSKeyValuePairs> PlacementRules { get; set; }
+        public IList<PSKeyValuePairs> PlacementRule { get; set; }
 
 
         [Parameter(
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 CapacityPoolResourceId = CapacityPoolResourceId,
                 ProximityPlacementGroup = ProximityPlacementGroup,
                 VolumeSpecName = VolumeSpecName,
-                PlacementRules = PlacementRules?.ToPlacementKeyValuePairs()
+                PlacementRules = PlacementRule?.ToPlacementKeyValuePairs()
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
