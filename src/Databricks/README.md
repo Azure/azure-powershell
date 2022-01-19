@@ -120,6 +120,10 @@ directive:
       parameter-name: EnableNoPublicIPValue
     set:
       parameter-name: EnableNoPublicIP
+  - where:
+      parameter-name: PublicIPNameValue
+    set:
+      parameter-name: PublicIPName
 
   - where:
       parameter-name: KeyVaultPropertyKeyName
@@ -249,6 +253,6 @@ directive:
     set:
       property-name: EnableNoPublicIP
 
-  - modle-cmdlet:
-    - WorkspaceProviderAuthorization
+  # - model-cmdlet:
+  #   - WorkspaceProviderAuthorization # Successfull generated then hide it to custom(Rename cmdle)
 ```
