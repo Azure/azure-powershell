@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor
 {
     using NewProxyRequestPipelineDelegate = global::System.Action<global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
+    using EventListenerWithoutTelemetryDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task>;
+    using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
+    using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Extensions;
 
     public partial class Module 
     {
@@ -18,5 +21,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor
 
         /// <summary>The delegate to call before each new proxy request (supporting a commmon module).</summary>
         public NewProxyRequestPipelineDelegate OnNewProxyRequest { get; set; }
+
+        public EventListenerWithoutTelemetryDelegate EventListenerWithoutTelemetry { get; set; }
+
+        public async global::System.Threading.Tasks.Task Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<global::System.EventArgs> getEventData, SignalDelegate signal)
+        {
+            using( NoSynchronizationContext )
+            {
+                await EventListenerWithoutTelemetry?.Invoke(id,token,getEventData, signal);
+            }
+        }
     }
 }

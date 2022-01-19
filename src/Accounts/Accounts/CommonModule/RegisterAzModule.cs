@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Commands.Common
                     // this gets called for every event that is signaled
                     EventListener = module.EventListener,
 
+                    // this gets called for every event that is signaled
+                    EventListenerWithoutTelemetry = module.EventListenerWithoutTelemetry,
+
                     // this gets called at module load time (allows you to change the http pipeline)
                     OnModuleLoad = module.OnModuleLoad,
 

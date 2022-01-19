@@ -152,6 +152,85 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        public async Task EventListenerWithoutTelemetry(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal)
+        {
+            /// Drain the queue of ADAL events whenever an event is fired
+            DrainDeferredEvents(signal, cancellationToken);
+            var data = EventDataConverter.ConvertFrom(getEventData()); // also, we manually use our TypeConverter to return an appropriate type
+            switch (id)
+            {
+                case Events.CmdletBeginProcessing:
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent($"[{id}]: Starting command"));
+                    break;
+                case Events.BeforeCall:
+                    var request = data?.RequestMessage as HttpRequestMessage;
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+                    break;
+                case Events.CmdletProcessRecordAsyncEnd:
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));
+                    break;
+                case Events.CmdletException:
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
+                    break;
+                case Events.ResponseCreated:
+                    var response = data?.ResponseMessage as HttpResponseMessage;
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+                    break;
+                case Events.Polling:
+                    if (data?.RequestMessage is HttpRequestMessage requestPolling)
+                    {
+                        try {
+                            // Print formatted request message
+                            await signal(Events.Debug, cancellationToken,
+                                () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(requestPolling)));
+                        } catch {
+                            // request was disposed, ignore
+                        }
+                    }
+                    if (data?.ResponseMessage is HttpResponseMessage responsePolling)
+                    {
+                        try {
+                            // Print formatted response message
+                            await signal(Events.Debug, cancellationToken,
+                                () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(responsePolling)));
+                        } catch {
+                            // response was disposed, ignore
+                        }
+                    }
+                    break;
+                case Events.Finally:
+                    if (data?.ResponseMessage is HttpResponseMessage responseFinally)
+                    {
+                        if(!responseFinally.IsSuccessStatusCode)
+                        {
+                            // add "InternalException" as message because it is just for telemtry tracking.
+                            AzPSCloudException ex = (responseFinally.StatusCode == HttpStatusCode.NotFound) ?
+                                new AzPSResourceNotFoundCloudException("InternalException") : new AzPSCloudException("InternalException");
+                            try
+                            {
+                                string responseContent = await responseFinally.Content.ReadAsStringAsync().ConfigureAwait(false);
+                                CloudError cloudError = SafeJsonConvert.DeserializeObject<CloudError>(responseContent, DeserializationSettings);
+                                ex.Body = cloudError;
+                                ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = cloudError.Code;
+                            }
+                            catch (Exception exception)
+                            {
+                                await signal(Events.Debug, cancellationToken,
+                                    () => EventHelper.CreateLogEvent($"[{id}]: Cannot deserialize due to {exception.Message}"));
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
         internal async Task OnResponseCreated(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
         {
             var data = EventDataConverter.ConvertFrom(getEventData());

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 {
@@ -81,11 +82,11 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                     // Getting by alert name
                     output = new List<IActivityLogAlertResource>
                     {
-                        Microsoft.Azure.PowerShell.Cmdlets.Monitor.Module.Instance.ProxyClientAPI.ActivityLogAlertsGet(this.ResourceGroupName, this.Name)
+                        new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ProxyClient(this).ActivityLogAlerts.Get(this.ResourceGroupName, this.Name)
                     };
                 }
+                
             }
-
             WriteObject(sendToPipeline: output, enumerateCollection: true);
         }
     }

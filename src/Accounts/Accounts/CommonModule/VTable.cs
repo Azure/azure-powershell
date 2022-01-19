@@ -20,6 +20,7 @@ using System.Net.Http;
 namespace Microsoft.Azure.Commands.Common
 {
     using EventListenerDelegate = Func<string, CancellationToken, Func<EventArgs>, Func<string, CancellationToken, Func<EventArgs>, Task>, System.Management.Automation.InvocationInfo, string, string, string, System.Exception, Task>;
+    using EventListenerWithoutTelemetryDelegate = Func<string, CancellationToken, Func<EventArgs>, Func<string, CancellationToken, Func<EventArgs>, Task>, Task>;
     using GetParameterDelegate = Func<string, string, System.Management.Automation.InvocationInfo, string, string, object>;
     using ModuleLoadPipelineDelegate = Action<string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
     using NewRequestPipelineDelegate = Action<System.Management.Automation.InvocationInfo, string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
@@ -62,6 +63,8 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="processRecordId">The <see cref="string" /> containing the correlation id for the individual process record. (if available)</param>
         /// <param name="exception">The <see cref="System.Exception" /> that is being thrown (if available)</param>
         public EventListenerDelegate EventListener;
+
+        public EventListenerWithoutTelemetryDelegate EventListenerWithoutTelemetry;
 
         /// <summary>
         /// Called when the module is loading. Allows adding HTTP pipeline steps that will always be present.

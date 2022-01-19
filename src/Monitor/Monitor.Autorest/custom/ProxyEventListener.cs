@@ -7,19 +7,12 @@ using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Extensions;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime
 {
-    public class ProxyEventListener<T> : Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener, global::System.IDisposable
+    public class ProxyEventListener : Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener
     {
-        /// <summary>The reference to the client API class.</summary>
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Monitor Client => Microsoft.Azure.PowerShell.Cmdlets.Monitor.Module.Instance.ClientAPI;
-
-        private T _result;
-
-        public T GetResult => _result;
-
          /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
-        private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+        private global::System.Threading.CancellationTokenSource _cancellationTokenSource;
         
         /// <summary><see cref="IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
@@ -29,72 +22,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        
+        global::System.Management.Automation.PSCmdlet _cmdlet;
+
         async global::System.Threading.Tasks.Task Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener.Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.EventData> messageData)
-        {
-        
-        }
-
-        private ProxyEventListener () {}
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener<T> CreateProxyEventListener() => new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener<T>();
-
-        public async global::System.Threading.Tasks.Task GetAsync (global::System.String viaIdentity, 
-                                                                                global::System.Func<
-                                                                                global::System.String,
-                                                                                global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<T>, global::System.Threading.Tasks.Task>,
-                                                                                global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IErrorResponse>, global::System.Threading.Tasks.Task>, 
-                                                                                Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener,
-                                                                                Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ISendAsync,
-                                                                                global::System.Threading.Tasks.Task> operation) 
-        {
-            using( NoSynchronizationContext ) 
-            {
-                try
-                {
-                    await operation.Invoke(viaIdentity, onOk, onDefault, this, Microsoft.Azure.PowerShell.Cmdlets.Monitor.Module.Instance.CreateProxyPipeline());
-                } catch {
-
-                }
-            }
-            
-        }
-
-        /// <summary>
-        /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IErrorResponse"
-        /// /> from the remote call</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IErrorResponse> response)
-        {
-
-        }
-
-        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource"
-        /// /> from the remote call</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<T> response)
         {
             using( NoSynchronizationContext )
             {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                if ((null != _returnNow && await _returnNow))
+                if (token.IsCancellationRequested)
                 {
                     return ;
                 }
-                _result = await response;
+
+                switch ( id )
+                {
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Verbose:
+                    {
+                        _cmdlet.WriteVerbose($"{(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Warning:
+                    {
+                        _cmdlet.WriteWarning($"{(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Information:
+                    {
+                        var data = messageData();
+                        _cmdlet.WriteInformation(data.Message, new string[]{});
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Debug:
+                    {
+                        _cmdlet.WriteDebug($"{(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Error:
+                    {
+                        _cmdlet.WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
+                        return ;
+                    }
+                }
+                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.EventData ));
+                if (token.IsCancellationRequested)
+                {
+                    return ;
+                }
             }
         }
 
-        public void Dispose() {}
+        private ProxyEventListener (System.Management.Automation.PSCmdlet cmdlet) 
+        {
+            _cmdlet = cmdlet;
+            _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+        }
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener CreateProxyEventListener(System.Management.Automation.PSCmdlet cmdlet) => new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener(cmdlet);
     }
 
 }
