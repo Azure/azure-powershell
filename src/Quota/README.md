@@ -50,7 +50,7 @@ inlining-threshold: 50
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
     # Remove the set Workspace cmdlet
   - where:
@@ -63,18 +63,46 @@ directive:
       parameter-name: NameValue
     set:
       parameter-name: Name
+      
+  - where:
+      werb: Get
+      subject: Usage
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
   - where:
       model-name: CurrentQuotaLimitBase
     set:
       format-table:
         properties:
           - Name
+          - ResourceGroupName
           - LimitObjectType
           - Unit
           - ETag
+  - where:
+      model-name: CurrentUsagesBase
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - UsageUsagesType
+          - UsageValue
+          - ETag
+  - where:
+      model-name: QuotaRequestDetails
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - ErrorMessage
+          - Code
   - no-inline:
     - LimitJsonObject
     
-  - modle-cmdlet:
-    - LimitValue
+  # - model-cmdlet:
+  #   - LimitValue # Successfull generated then hide it to custom(Rename cmdlet and parameter).
 ```

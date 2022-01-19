@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the quota request details and status for the scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzQuotaRequestStatus -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus"
 
-{{ Add output here }}
+Name                                 ProvisioningState ErrorMessage    Code
+----                                 ----------------- ------------    ----
+6cf5716a-3df8-421a-8457-719e10381dbc Failed            Request failed. QuotaReductionNotSupported
 ```
 
-{{ Add description here }}
+This command lists the quota request details and status for the scope.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the quota request details and status by quota request ID for the resources of the resource provider at a specific location
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzQuotaRequestStatus -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -Id "6cf5716a-3df8-421a-8457-719e10381dbc"
 
-{{ Add output here }}
+Name                                 ProvisioningState ErrorMessage    Code
+----                                 ----------------- ------------    ----
+6cf5716a-3df8-421a-8457-719e10381dbc Failed            Request failed. QuotaReductionNotSupported
 ```
 
-{{ Add description here }}
-
+This command gets the quota request details and status by quota request ID for the resources of the resource provider at a specific location.
+The quota request ID **id** is returned in the response of the PUT operation.

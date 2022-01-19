@@ -30,6 +30,9 @@ These steps are detailed in [this example](https://techcommunity.microsoft.com/t
 Use this PUT operation to update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 
+### [New-AzQuotaLimitObject](New-AzQuotaLimitObject.md)
+Create an in-memory object for LimitValue.
+
 ### [Update-AzQuota](Update-AzQuota.md)
 Update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
