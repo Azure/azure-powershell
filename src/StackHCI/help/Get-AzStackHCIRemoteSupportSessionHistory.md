@@ -13,7 +13,8 @@ Gets Remote Support Session History Details.
 ## SYNTAX
 
 ```
-Get-AzStackHCIRemoteSupportSessionHistory [[-SessionId] <String>] [-IncludeSessionTranscript] [[FromDate] <DateTime>]
+Get-AzStackHCIRemoteSupportSessionHistory [[-SessionId] <String>] [-IncludeSessionTranscript]
+ [[-FromDate] <DateTime>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,17 +29,17 @@ PS C:\> Get-AzStackHCIRemoteSupportSessionHistory -SessionId 467e3234-13f4-42f2-
 
 ## PARAMETERS
 
-### -SessionId
-Session Id to get details for a specific session. If omitted then lists all sessions starting from date 'FromDate'.
+### -FromDate
+Indicates date from where to start listing sessions from until now.
 
 ```yaml
-Type: System.String
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: [System.String]::Empty
+Position: 2
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -58,25 +59,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FromDate
-Indicates date from where to start listing sessions from until now.
+### -SessionId
+Session Id to get details for a specific session. If omitted then lists all sessions starting from date 'FromDate'.
 
 ```yaml
-Type: Microsoft.PowerShell.Utility.DateTime
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 1
+Default value: [System.String]::Empty
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+## NOTES
 
 ## RELATED LINKS
