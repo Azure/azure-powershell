@@ -19,9 +19,7 @@
 --->
 
 ## Upcoming Release
-
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
-=======
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
