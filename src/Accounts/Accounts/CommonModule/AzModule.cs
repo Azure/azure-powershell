@@ -27,6 +27,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -157,77 +159,78 @@ namespace Microsoft.Azure.Commands.Common
             /// Drain the queue of ADAL events whenever an event is fired
             DrainDeferredEvents(signal, cancellationToken);
             var data = EventDataConverter.ConvertFrom(getEventData()); // also, we manually use our TypeConverter to return an appropriate type
+            var request = data?.RequestMessage as HttpRequestMessage;
+            var response = data?.ResponseMessage as HttpResponseMessage;
             switch (id)
             {
                 case Events.CmdletBeginProcessing:
-                    await signal(Events.Debug, cancellationToken,
-                        () => EventHelper.CreateLogEvent($"[{id}]: Starting command"));
+                    await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent($"[{id}]: Starting command").Message));
                     break;
                 case Events.BeforeCall:
-                    var request = data?.RequestMessage as HttpRequestMessage;
-                    await signal(Events.Debug, cancellationToken,
-                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+                    await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)).Message));
                     break;
                 case Events.CmdletProcessRecordAsyncEnd:
-                    await signal(Events.Debug, cancellationToken,
-                        () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));
+                    await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process").Message));
                     break;
                 case Events.CmdletException:
-                    await signal(Events.Debug, cancellationToken,
-                        () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
+                    await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'").Message));
                     break;
                 case Events.ResponseCreated:
-                    var response = data?.ResponseMessage as HttpResponseMessage;
-                    await signal(Events.Debug, cancellationToken,
-                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+                    await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)).Message));
                     break;
                 case Events.Polling:
-                    if (data?.RequestMessage is HttpRequestMessage requestPolling)
+                    if (data?.RequestMessage is HttpRequestMessage)
                     {
                         try {
                             // Print formatted request message
-                            await signal(Events.Debug, cancellationToken,
-                                () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(requestPolling)));
+                            await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)).Message));
                         } catch {
                             // request was disposed, ignore
                         }
                     }
-                    if (data?.ResponseMessage is HttpResponseMessage responsePolling)
+                    if (data?.ResponseMessage is HttpResponseMessage)
                     {
                         try {
                             // Print formatted response message
-                            await signal(Events.Debug, cancellationToken,
-                                () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(responsePolling)));
+                            await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)).Message));
                         } catch {
                             // response was disposed, ignore
                         }
                     }
                     break;
                 case Events.Finally:
-                    if (data?.ResponseMessage is HttpResponseMessage responseFinally)
+                    if (data?.ResponseMessage is HttpResponseMessage)
                     {
-                        if(!responseFinally.IsSuccessStatusCode)
+                        if(!response.IsSuccessStatusCode)
                         {
                             // add "InternalException" as message because it is just for telemtry tracking.
-                            AzPSCloudException ex = (responseFinally.StatusCode == HttpStatusCode.NotFound) ?
+                            AzPSCloudException ex = (response.StatusCode == HttpStatusCode.NotFound) ?
                                 new AzPSResourceNotFoundCloudException("InternalException") : new AzPSCloudException("InternalException");
                             try
                             {
-                                string responseContent = await responseFinally.Content.ReadAsStringAsync().ConfigureAwait(false);
+                                string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                                 CloudError cloudError = SafeJsonConvert.DeserializeObject<CloudError>(responseContent, DeserializationSettings);
                                 ex.Body = cloudError;
                                 ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = cloudError.Code;
                             }
                             catch (Exception exception)
                             {
-                                await signal(Events.Debug, cancellationToken,
-                                    () => EventHelper.CreateLogEvent($"[{id}]: Cannot deserialize due to {exception.Message}"));
+                                await Task.Run(() => EnqueueDebugMessage(EventHelper.CreateLogEvent($"[{id}]: Cannot deserialize due to {exception.Message}").Message));
                             }
                         }
                     }
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void EnqueueDebugMessage(string message)
+        {
+            EventHandler<StreamEventArgs> enqueueDebugEvent;
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
+            {
+                enqueueDebugEvent(this, new StreamEventArgs() { Message = message });
             }
         }
 

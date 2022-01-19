@@ -14,12 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor
 
         public T Result => _result;
 
-        internal async global::System.Threading.Tasks.Task<T> Execute(global::System.Func<global::System.Object[], global::System.Threading.Tasks.Task> method, params global::System.Object[] parameters)
-        {
-            await method.Invoke(parameters);
-            return _result;
-        }
-
         public void Dispose() {}
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource> response)
+        internal async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<T> response)
         {
         
         }

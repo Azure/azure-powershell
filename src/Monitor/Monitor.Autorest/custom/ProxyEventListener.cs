@@ -22,8 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        global::System.Management.Automation.PSCmdlet _cmdlet;
-
         async global::System.Threading.Tasks.Task Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener.Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.EventData> messageData)
         {
             using( NoSynchronizationContext )
@@ -33,35 +31,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime
                     return ;
                 }
 
-                switch ( id )
-                {
-                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Verbose:
-                    {
-                        _cmdlet.WriteVerbose($"{(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Warning:
-                    {
-                        _cmdlet.WriteWarning($"{(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Information:
-                    {
-                        var data = messageData();
-                        _cmdlet.WriteInformation(data.Message, new string[]{});
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Debug:
-                    {
-                        _cmdlet.WriteDebug($"{(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Events.Error:
-                    {
-                        _cmdlet.WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
-                        return ;
-                    }
-                }
                 await Microsoft.Azure.PowerShell.Cmdlets.Monitor.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.EventData ));
                 if (token.IsCancellationRequested)
                 {
@@ -70,13 +39,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime
             }
         }
 
-        private ProxyEventListener (System.Management.Automation.PSCmdlet cmdlet) 
+        private ProxyEventListener () 
         {
-            _cmdlet = cmdlet;
             _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
         }
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener CreateProxyEventListener(System.Management.Automation.PSCmdlet cmdlet) => new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener(cmdlet);
+        public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener CreateProxyEventListener() => new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.ProxyEventListener();
     }
 
 }

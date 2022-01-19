@@ -10,8 +10,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor
     //Need to have an instance of ProxyClient in Module.cs, See "ClientAPI"
     public class ProxyClient
     {
-        private global::System.Management.Automation.PSCmdlet _cmdlet;
-        internal global::System.Management.Automation.PSCmdlet Cmdlet => _cmdlet;
         private ActivityLogAlertsOperations _activityLogAlerts;
         public ActivityLogAlertsOperations ActivityLogAlerts => _activityLogAlerts;
 
@@ -25,7 +23,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor
             {
                 _subscriptionId = "default";
             }
-            _cmdlet = cmdlet;
             _activityLogAlerts = new ActivityLogAlertsOperations(this);
             
         }
