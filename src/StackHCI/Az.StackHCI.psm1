@@ -4599,6 +4599,10 @@ function Install-DeployModule {
 .NOTES
 #>
 function Install-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Bool])]
+    param()
+
     Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
     Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
 }
@@ -4616,6 +4620,10 @@ function Install-AzStackHCIRemoteSupport{
 .NOTES
 #>
 function Remove-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Bool])]
+    param()
+
     Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
     Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
 }
@@ -4647,7 +4655,8 @@ function Remove-AzStackHCIRemoteSupport{
     Requires Support VM to have stable internet connectivity.
 #>
 function Enable-AzStackHCIRemoteSupport{
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Bool])]
     param (
         [Parameter(Mandatory=$true)]
         [ValidateSet("Diagnostics","DiagnosticsRepair")]
@@ -4658,7 +4667,7 @@ function Enable-AzStackHCIRemoteSupport{
         [int]
         $ExpireInMinutes = 480,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$false)]
         [string]
         $SasCredential,
 
@@ -4687,6 +4696,9 @@ function Enable-AzStackHCIRemoteSupport{
 
 #>
 function Disable-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Bool])]
+    param()
     Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
 
     Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
@@ -4713,6 +4725,7 @@ function Disable-AzStackHCIRemoteSupport{
 
 #>
 function Get-AzStackHCIRemoteSupportAccess{
+    [OutputType([Bool])]
     Param(
         [Parameter(Mandatory=$false)]
         [switch]
@@ -4756,6 +4769,7 @@ function Get-AzStackHCIRemoteSupportAccess{
 
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory{
+    [OutputType([Bool])]
     Param(
         [Parameter(Mandatory=$false)]
         [string]
