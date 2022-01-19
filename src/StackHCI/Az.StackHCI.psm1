@@ -4600,7 +4600,7 @@ function Install-DeployModule {
 #>
 function Install-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
-    [OutputType([Bool])]
+    [OutputType([Boolean])]
     param()
 
     Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -4621,7 +4621,7 @@ function Install-AzStackHCIRemoteSupport{
 #>
 function Remove-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
-    [OutputType([Bool])]
+    [OutputType([Boolean])]
     param()
 
     Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -4656,7 +4656,7 @@ function Remove-AzStackHCIRemoteSupport{
 #>
 function Enable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
-    [OutputType([Bool])]
+    [OutputType([Boolean])]
     param (
         [Parameter(Mandatory=$true)]
         [ValidateSet("Diagnostics","DiagnosticsRepair")]
@@ -4697,7 +4697,7 @@ function Enable-AzStackHCIRemoteSupport{
 #>
 function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
-    [OutputType([Bool])]
+    [OutputType([Boolean])]
     param()
     Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
 
@@ -4725,7 +4725,7 @@ function Disable-AzStackHCIRemoteSupport{
 
 #>
 function Get-AzStackHCIRemoteSupportAccess{
-    [OutputType([Bool])]
+    [OutputType([Boolean])]
     Param(
         [Parameter(Mandatory=$false)]
         [switch]
@@ -4769,7 +4769,7 @@ function Get-AzStackHCIRemoteSupportAccess{
 
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory{
-    [OutputType([Bool])]
+    [OutputType([Boolean])]
     Param(
         [Parameter(Mandatory=$false)]
         [string]
