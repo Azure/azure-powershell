@@ -3045,8 +3045,6 @@ function Test-VirtualMachineScaleSetEnableHotPatching
 
     try
     {
-        
-        #$loc = "westcentralus";
         $loc = "eastus";
         $vmssName = "myVmssSlb";
         $vmNamePrefix = "vmSlb";
@@ -3065,9 +3063,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
 
         # set up networking
         # VMSS Flex requires explicit outbound access
-
         # Create a virtual network 
-
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
         $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
