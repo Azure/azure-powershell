@@ -31,17 +31,74 @@ Gets recently deleted workspaces in a subscription, available for recovery.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name}
 ```
 
-{{ Add output here }}
+Name                            : {WS-Name1}
+ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
+ResourceGroupName               : {RG-Name}
+Location                        : eastus2euap
+Tags                            : {}
+Sku                             : pergb2018
+CapacityReservationLevel        :
+LastSkuUpdate                   : Tue, 12 Jan 2021 11:25:15 GMT
+retentionInDays                 : 30
+CustomerId                      : 43eda0ea-004a-48e8-9c40-1219418083de
+ProvisioningState               : Succeeded
+PublicNetworkAccessForIngestion : Enabled
+PublicNetworkAccessForQuery     : Enabled
+PrivateLinkScopedResources      :
+WorkspaceCapping                : Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping
+CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
+ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
+ForceCmkForQuery                :
+WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
+
+Name                            : {WS-Name2}
+ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name2}
+ResourceGroupName               : {RG-Name}
+Location                        : eastus2euap
+Tags                            : {}
+Sku                             : pergb2018
+CapacityReservationLevel        :
+LastSkuUpdate                   : Tue, 12 Jan 2021 11:25:15 GMT
+retentionInDays                 : 30
+CustomerId                      : 43eda0ea-004a-48e8-9c40-1219418083de
+ProvisioningState               : Succeeded
+PublicNetworkAccessForIngestion : Enabled
+PublicNetworkAccessForQuery     : Enabled
+PrivateLinkScopedResources      :
+WorkspaceCapping                : Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping
+CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
+ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
+ForceCmkForQuery                :
+WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
+
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name1}
 ```
 
-{{ Add output here }}
+Name                            : {WS-Name1}
+ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
+ResourceGroupName               : {RG-Name}
+Location                        : eastus2euap
+Tags                            : {}
+Sku                             : pergb2018
+CapacityReservationLevel        :
+LastSkuUpdate                   : Tue, 12 Jan 2021 11:25:15 GMT
+retentionInDays                 : 30
+CustomerId                      : 43eda0ea-004a-48e8-9c40-1219418083de
+ProvisioningState               : Succeeded
+PublicNetworkAccessForIngestion : Enabled
+PublicNetworkAccessForQuery     : Enabled
+PrivateLinkScopedResources      :
+WorkspaceCapping                : Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping
+CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
+ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
+ForceCmkForQuery                :
+WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
 
 ## PARAMETERS
 

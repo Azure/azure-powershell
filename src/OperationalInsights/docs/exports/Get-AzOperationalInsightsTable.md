@@ -37,17 +37,29 @@ Gets a Log Analytics workspace table.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzOperationalInsightsTable -ResourceGroupName {RG-Name} -WorkspaceName {WS-Name}
 ```
 
-{{ Add output here }}
+Name                                         Id                                                                                                                                                                                                      RetentionInDays
+----                                         --                                                                                                                                                                                                      ---------------
+DatabricksTables                             /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/DatabricksTables                                          30
+BlockchainProxyLog                           /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/BlockchainProxyLog                                        30
+BlockchainApplicationLog                     /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/BlockchainApplicationLog                                  30
+AADDomainServicesAccountLogon                /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/AADDomainServicesAccountLogon                             30
+AADDomainServicesAccountManagement           /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/AADDomainServicesAccountManagement                        30
+.
+.
+.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzOperationalInsightsTable -ResourceGroupName {RG-Name} -WorkspaceName {WS-Name} -TableName {Table-Name}
 ```
 
-{{ Add output here }}
+Name  Id                                                                                                                                                               RetentionInDays
+----  --                                                                                                                                                               ---------------
+{Table-Name} /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/{Table-Name}              90
+
 
 ## PARAMETERS
 

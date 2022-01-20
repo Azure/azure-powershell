@@ -38,17 +38,12 @@ To remove the workspace completely and release the name, use the force flag.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+Remove-AzOperationalInsightsWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name}
 ```
 
-{{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
+Confirm
+Are you sure you want to remove workspace '{WS-Name}' in resource group '{RG-Name}'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 
 ## PARAMETERS
 
