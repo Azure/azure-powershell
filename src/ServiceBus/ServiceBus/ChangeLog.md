@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.1
+* Public Network Access property is now returned while getting network rule sets
+
 ## Version 1.6.0
 * Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to `New-AzServiceBusNamespace` and `Set-AzServiceBusNamespace` 
 
