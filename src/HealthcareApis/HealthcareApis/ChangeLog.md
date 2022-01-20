@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * HealthcareApis will bump API version to new version and change cmdlet implementation from SDK based to autorest based. All cmdlets need to show upcoming breaking change warning message.
+
 ## Version 1.3.1
 * Added support for Acr LoginServers
 
