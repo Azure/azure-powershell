@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Bug fix - prevent exceptions while using StorageInsight cmdlets 
-* Bug fix - when updating a cluster, it's SKU is set even if no value is passed
+* Bug fix - when updating a cluster, it's SKU was set even if no value was passed
 
 ## Version 3.0.0
 * Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets
