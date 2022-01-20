@@ -3160,12 +3160,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
             -ImageReferencePublisher "MicrosoftWindowsServer" `
             -ImageReferenceOffer "WindowsServer" `
             -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
-            -ImageReferenceVersion "latest";
-            #-ImageReferencePublisher "Canonical" `
-            #-ImageReferenceOffer "UbuntuServer" `
-            #-ImageReferenceSku "18.04-LTS" `
-            #-ImageReferenceVersion "latest";
-            
+            -ImageReferenceVersion "latest";    
 
         # Set up information for authenticating with the virtual machine
         Set-AzVmssOsProfile $vmssConfig `
