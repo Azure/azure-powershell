@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
     /// <summary>
     /// Class that creates a new instance of fhir service.
     /// </summary>
+    [GenericBreakingChange("New-AzRmHealthcareApisService alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
     public class NewAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {

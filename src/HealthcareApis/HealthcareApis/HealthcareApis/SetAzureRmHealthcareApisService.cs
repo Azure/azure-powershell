@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
+    [GenericBreakingChange("HealthcareApis cmdlets will bump API version which may introduce breaking change. Please contact us for more information.")]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
     public class SetAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {

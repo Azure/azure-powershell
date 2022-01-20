@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,6 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
+    [GenericBreakingChange("HealthcareApis cmdlets will bump API version which may introduce breaking change. Please contact us for more information.")]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {
