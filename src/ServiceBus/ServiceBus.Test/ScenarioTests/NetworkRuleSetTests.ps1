@@ -84,6 +84,7 @@ function NetworkRuleSetTests {
 
     Assert-AreEqual $getResult.IpRules.Count 2 "IPRules count did not matched after deleting one IPRule"
     Assert-AreEqual $getResult.VirtualNetworkRules.Count 3 "VirtualNetworkRules count did not matched"
+    Assert-AreEqual $getResult.PublicNetworkAccess "Enabled"
 
     # Set-AzServiceBusNetworkRuleSet with InputObject
     $setResult = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -InputObject $getResult1

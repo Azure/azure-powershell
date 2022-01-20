@@ -200,6 +200,10 @@
                   }
                 </ScriptBlock>
               </ListItem>
+			  <ListItem>
+				  <Label>PublicNetworkAccess</Label>
+			      <PropertyName>PublicNetworkAccess</PropertyName>
+		      </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

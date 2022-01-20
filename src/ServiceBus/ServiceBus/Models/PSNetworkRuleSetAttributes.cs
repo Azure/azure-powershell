@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             Id = networkRuleSet.Id;
             Name = networkRuleSet.Name;
             Type = networkRuleSet.Type;
+            PublicNetworkAccess = networkRuleSet?.PublicNetworkAccess;
         }
 
         /// <summary>
@@ -82,6 +83,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets or sets list of IpRules
         /// </summary>
         public IList<PSNWRuleSetIpRulesAttributes> IpRules { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
     }
 }
