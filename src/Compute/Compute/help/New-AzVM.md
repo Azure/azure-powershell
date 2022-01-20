@@ -613,7 +613,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkInterfaceDeleteOption
-Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.
+Specifies what action to perform on the NetworkInterface resource when the VM is deleted. Options are: Detach, Delete.
 
 ```yaml
 Type: System.String
