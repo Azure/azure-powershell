@@ -3034,103 +3034,11 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
     }
 }
 
-
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set EnableHotPatching feature. 
 #>
 function Test-VirtualMachineScaleSetEnableHotPatching
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName;
-
-    try
-    {
-        
-        $loc = "eastus";
-        $vmssSize = 'Standard_DS3_v2';
-        $vmssName = 'vmss' + $rgname;
-        $domainNameLabel = "dnl" + $rgname;
-        $vmname = 'vm' + $rgname;
-        $compname = "test";
-
-        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
-
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $vneid = $vnet.Id
-        $subnetId = $vnet.Subnets[0].Id;
-
-        $ipConfig = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId
-
-        $vmssConfig = New-AzVmssConfig `
-            -Location $loc `
-            -SkuCapacity 2 `
-            -SkuName "Standard_DS1_v2" `
-            -OrchestrationMode 'Flexible' `
-            -PlatformFaultDomainCount 2
-
-        Set-AzVmssStorageProfile $vmssConfig `
-          -OsDiskCreateOption "FromImage" `
-          -ImageReferencePublisher "MicrosoftWindowsServer" `
-          -ImageReferenceOffer "WindowsServer" `
-          -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
-          -ImageReferenceVersion "latest"
-
-        Set-AzVmssOsProfile $vmssConfig `
-          -AdminUsername $cred.UserName `
-          -AdminPassword $cred.Password `
-          -ComputerNamePrefix $compname `
-          -WindowsConfigurationPatchMode "AutomaticByPlatform" `
-          -EnableHotPatching
-
-        Add-AzVmssNetworkInterfaceConfiguration `
-          -VirtualMachineScaleSet $vmssConfig `
-          -Name 'test' `
-          -Primary $true `
-          -IPConfiguration $ipConfig `
-          -networkApiVersion "2020-11-01"
-
-        $VmssFlex = New-AzVmss `
-          -ResourceGroupName $rgname `
-          -Name $vmssName `
-          -VirtualMachineScaleSet $vmssConfig
-        #$imgRef = Create-ComputeVMImageObject -loc $loc -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter-azure-edition-core-smalldisk" -version "20348.112.2110151130";
-        #$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        #$ipCfg = New-AzVmssIPConfig -Name 'test' `
-        #    -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
-        #    -SubnetId $subnetId;
-            #adam -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
-            
-                    
-        #$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -OrchestrationMode $omode -UpgradePolicyMode 'Manual' `
-        #    | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-        #    | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword -WindowsConfigurationPatchMode "AutomaticByPlatform" -EnableHotPatching `
-        #    | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
-        #    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-        #    -ImageReferencePublisher $imgRef.PublisherName ;#-DiffDiskSetting 'Local';
-
-        
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
-}
-
-
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set EnableHotPatching feature. 
-#>
-function TestTest-VirtualMachineScaleSetEnableHotPatching
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -3163,7 +3071,6 @@ function TestTest-VirtualMachineScaleSetEnableHotPatching
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
         $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
-        #Optionally you can place instances behind a standard load balancer
         # # Create a public IP address
         $publicIP = New-AzPublicIpAddress `
             -ResourceGroupName $rgname `
@@ -3276,7 +3183,21 @@ function TestTest-VirtualMachineScaleSetEnableHotPatching
             -Primary $true `
             -IPConfiguration $ipConfig `
             -NetworkApiVersion '2020-11-01' ;
-  
+
+        # Health extension attempt
+        # Define the Application Health extension properties
+        $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+        $extensionName = "myHealthExtension";
+        $extensionType = "ApplicationHealthWindows";
+        $publisher = "Microsoft.ManagedServices";
+        # Add the Application Health extension to the scale set model
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmssConfig `
+            -Name $extensionName `
+            -Publisher $publisher `
+            -Setting $publicConfig `
+            -Type $extensionType `
+            -TypeHandlerVersion "1.0" `
+            -AutoUpgradeMinorVersion $True;
 
         # Create the scale set with the config object (this step might take a few minutes)
         New-AzVmss `
