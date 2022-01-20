@@ -18,7 +18,7 @@ New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <Strin
  -Domain <String> [-Site <String>] -SmbServerName <String> [-Username <String>] [-Password <SecureString>]
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
- [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrators <String[]>]
+ [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrator <String[]>]
  [-EncryptDCConnection] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzNetAppFilesActiveDirectory [-Dns <String[]>] -Domain <String> [-Site <Stri
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrators <String[]>] [-EncryptDCConnection] -AccountObject <PSNetAppFilesAccount>
+ [-Administrator <String[]>] [-EncryptDCConnection] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Administrators
+### -Administrator
 Domain Users to be added to the Built-in Administrators Active Directory group. A list of unique usernames without domain specifier.
 
 ```yaml

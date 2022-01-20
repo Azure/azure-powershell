@@ -19,7 +19,7 @@ Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <St
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrators <String[]>] [-EncryptDCConnection] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Administrator <String[]>] [-EncryptDCConnection] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Update-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> [-Dns <String[]>
  [-Site <String>] [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>]
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
- [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrators <String[]>]
+ [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrator <String[]>]
  [-EncryptDCConnection] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ Update-AzNetAppFilesActiveDirectory [-Dns <String[]>] [-Domain <String>] [-Site 
  [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
  [-KdcIP <String>] [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrators <String[]>] [-EncryptDCConnection] -InputObject <PSNetAppFilesActiveDirectory>
+ [-Administrator <String[]>] [-EncryptDCConnection] -InputObject <PSNetAppFilesActiveDirectory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,7 +103,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Administrators
+### -Administrator
 Domain Users to be added to the Built-in Administrators Active Directory group. A list of unique usernames without domain specifier.
 
 ```yaml

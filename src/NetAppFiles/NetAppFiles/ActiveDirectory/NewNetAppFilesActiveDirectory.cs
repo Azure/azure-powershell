@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             Mandatory = false,
             HelpMessage = "Domain Users to be added to the Built-in Administrators Active Directory group. A list of unique usernames without domain specifier.")]
         [ValidateNotNullOrEmpty]
-        public string[] Administrators { get; set; }
+        public string[] Administrator { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     LdapSigning = LdapSigning,
                     LdapOverTLS = LdapOverTLS,
                     AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap,
-                    Administrators = Administrators,
+                    Administrators = Administrator,
                     EncryptDCConnections = EncryptDCConnection
                 };
                 if (anfAccount.ActiveDirectories == null)
