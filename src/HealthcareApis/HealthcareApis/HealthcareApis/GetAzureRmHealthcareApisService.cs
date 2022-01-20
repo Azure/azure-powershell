@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -27,7 +26,6 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
-    [GenericBreakingChange("HealthcareApis cmdlets will bump API version which may introduce breaking change. Please contact us for more information.")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSHealthcareApisService))]
     public class GetAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {
