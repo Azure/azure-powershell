@@ -34,7 +34,7 @@ Update-AzCosmosDBAccountRegion [-Location <String[]>] [-LocationObject <PSLocati
 
 ## DESCRIPTION
 Update Regions of a CosmosDB Account. Location can be provided either as an object of type PSLocation or as strings of Location Name ordered by failover priority.
-LocationObject parameter expects the list of current locations (failover prioritiies included) appended by the new LocationObjects corresponding to new locations to be added.
+LocationObject parameter expects the list of current locations (failover priorities included) appended by the new LocationObjects corresponding to new locations to be added.
 Location parameter expects the list of current location(ordered by failover priority) and the new locations. 
 Please note, we only support Addition of Regions. Please provide either Location or LocationObject.
 
@@ -42,27 +42,28 @@ Please note, we only support Addition of Regions. Please provide either Location
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBAccountRegion -ResourceGroupName rg1 -Name dbname -Location "location1, location2"
+PS C:\> Update-AzCosmosDBAccountRegion -ResourceGroupName rg -Name dbname -Location "location1", "location2"
 
-Kind                          : GlobalDocumentDB
-ProvisioningState             : Succeeded
-DocumentEndpoint              : https://dbname.documents.azure.com:443/
-DatabaseAccountOfferType      : Standard
-IpRangeFilter                 :
-IsVirtualNetworkFilterEnabled : False
-EnableAutomaticFailover       : False
-ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
-Capabilities                  : {}
-WriteLocations                : {dbname-location1}
-ReadLocations                 : {dbname-location2}
-FailoverPolicies              : {dbname-location1, dbname-location2}
-VirtualNetworkRules           : {}
-EnableMultipleWriteLocations  : False
+Id                            : /subscriptions/{subscriptionid}/resourceGroups/rg/providers/Microsoft.DocumentDB/databaseAccounts/dbname
+Name                          : dbname
 Location                      : location1
 Tags                          : {}
-Id                            : /subscriptions/{subscriptionid}/resourceGroups/rg1/providers/Microsoft.DocumentDB/databaseAccounts/dbname
-Name                          : dbname
-Type                          : Microsoft.DocumentDB/databaseAccounts
+EnableCassandraConnector      :
+EnableMultipleWriteLocations  : True
+VirtualNetworkRules           : {}
+FailoverPolicies              : {dbname-location1, dbname-location2}
+Locations                     : {dbname-location1, dbname-location2}
+ReadLocations                 : {dbname-location1, dbname-location2}
+WriteLocations                : {dbname-location1}
+Capabilities                  : {}
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+EnableAutomaticFailover       : False
+IsVirtualNetworkFilterEnabled : False
+IpRules                       : {}
+DatabaseAccountOfferType      : Standard
+DocumentEndpoint              : https://dbname.documents.azure.com:443/
+ProvisioningState             : Succeeded
+Kind                          : GlobalDocumentDB
 ```
 
 ## PARAMETERS

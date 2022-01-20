@@ -31,6 +31,27 @@ The **New-AzCdnCustomDomain** cmdlet creates a custom domain for the Azure Conte
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+New-AzCdnCustomDomain -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -CustomDomainName cdn-example-com -HostName cdn.example.com
+```
+
+```Output
+HostName                        : cdn.example.com
+ValidationData                  :
+ResourceState                   : Active
+CustomHttpsProvisioningState    : Disabled
+CustomHttpsProvisioningSubstate : None
+ResourceGroupName               : myresourcegroup
+ProfileName                     : mycdnprofile
+EndpointName                    : myendpoint
+Id                              : /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/myresourcegroup/providers
+                                  /Microsoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/customdomains/cdn-example-com
+Name                            : cdn-example-com
+Type                            : Microsoft.Cdn/profiles/endpoints/customdomains
+ProvisioningState               : Succeeded
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint

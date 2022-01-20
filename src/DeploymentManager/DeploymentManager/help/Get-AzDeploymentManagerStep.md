@@ -46,7 +46,6 @@ PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Nam
 This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 2: Get a step using the resource identifier
-### Example 1
 ```powershell
 PS C:\> Get-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
 ```

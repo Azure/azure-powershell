@@ -28,16 +28,23 @@ New-AzOperationalInsightsAzureActivityLogDataSource [-Workspace] <PSWorkspace> [
 ```
 
 ## DESCRIPTION
-The New-AzOperationalInsightsAzureActivityLogDataSource enable Log Analytics to collect Azure activity log from given subscription.
+The New-AzOperationalInsightsAzureActivityLogDataSource cmdlet enables Log Analytics to collect Azure activity log from given subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzOperationalInsightsAzureActivityLogDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsworkspace -Name test -SubscriptionId 0b1f6471-1bf0-4dda-aec3-cb9272f09590
+
+Name              : test
+ResourceGroupName : testrg
+WorkspaceName     : LogAnalyticsworkspace
+ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testrg/providers/Microsoft.OperationalInsights/workspaces/LogAnalyticsworkspace/datasources/test
+Kind              : AzureActivityLog
+Properties        : {"linkedResourceId":"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.insights/eventtypes/management","backfillStartTime":"0001-01-01T00:00:00+00:00"}
 ```
 
-{{ Add example description here }}
+This command enables Log Analytics to collect Azure activity log from given subscription.
 
 ## PARAMETERS
 
