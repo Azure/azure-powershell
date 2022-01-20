@@ -59,9 +59,11 @@ The context includes tenant, subscription, and environment information.
 ## EXAMPLES
 
 ### Example 1: Set the subscription context
+```powershell
+Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 ```
-PS C:\>Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 
+```Output
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------
 Work    test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
