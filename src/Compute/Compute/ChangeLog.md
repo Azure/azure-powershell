@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `Set-AzVmExtension` cmdlet to properly display `-Name` and `-Location` parameters as mandatory.
 * Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
 
 ## Version 4.22.0

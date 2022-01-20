@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private DateTime _lastCheckedTime = DateTime.MinValue;
         private Timer _promptDelayTimer;
 
-        public AzPredictorSurveyHelper(PowerShellRuntime powerShellRuntime)
+        public AzPredictorSurveyHelper(IPowerShellRuntime powerShellRuntime)
         {
             var promptMessageScript = @"
                 if ([Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle) {
