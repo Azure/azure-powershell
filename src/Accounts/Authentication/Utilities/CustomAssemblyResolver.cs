@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},
                 {"System.Security.Permissions", new Version("4.0.1.0")},
                 {"System.Security.Principal.Windows", new Version("4.1.1.0")},
-                {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
                 {"System.Text.Encodings.Web", new Version("4.0.5.1")},
                 {"System.Text.Json", new Version("4.0.0.0")},
                 {"System.Threading.Tasks.Extensions", new Version("4.2.0.1")},
