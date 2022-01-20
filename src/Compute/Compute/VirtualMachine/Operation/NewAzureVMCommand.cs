@@ -147,8 +147,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.",
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.",
+            Mandatory = false)]
         public string NetworkInterfaceDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
