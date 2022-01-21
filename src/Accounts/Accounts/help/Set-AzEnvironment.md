@@ -58,21 +58,15 @@ Add-AzEnvironment -Name TestEnvironment `
         -ResourceManagerEndpoint TestRMEndpoint `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
-```
 
-```Output
 Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
-```
 
-```powershell
 Set-AzEnvironment -Name TestEnvironment
         -ActiveDirectoryEndpoint NewTestADEndpoint
         -GraphEndpoint NewTestGraphEndpoint | Format-List
-```
 
-```Output
 Name                                              : TestEnvironment
 EnableAdfsAuthentication                          : False
 ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId

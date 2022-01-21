@@ -30,19 +30,13 @@ Add-AzEnvironment -Name TestEnvironment `
         -ResourceManagerEndpoint TestRMEndpoint `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
-```
 
-```Output
 Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
-```
 
-```powershell
 Remove-AzEnvironment -Name TestEnvironment
-```
 
-```Output
 Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
