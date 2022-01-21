@@ -3194,7 +3194,10 @@ function Test-VirtualMachineScaleSetEnableHotPatching
         New-AzVmss `
             -ResourceGroupName $rgname `
             -Name $vmssName `
-            -VirtualMachineScaleSet $vmssConfig;       
+            -VirtualMachineScaleSet $vmssConfig;   
+            
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        Assert-AreEqual $true $vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
     }
     finally
     {
