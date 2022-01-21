@@ -42,16 +42,36 @@ module-version: 0.1.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
-resourcegroup-append: true
+# resouces usage id does not contain resource group name.
+# resourcegroup-append: true
 nested-object-to-string: true
 
 inlining-threshold: 50
 
 directive:
+  # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
+  # Replace regex to fixed it. 
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
+
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+
+  - where:
+      verb: Get
+      subject: RequestStatus
+      variant: ^GetViaIdentity$
+    remove: true
+
+  - where:
+      verb: Get
+      subject: Usage
+      variant: ^GetViaIdentity$
+    remove: true
+
     # Remove the set Workspace cmdlet
   - where:
       verb: Set
@@ -77,7 +97,6 @@ directive:
       format-table:
         properties:
           - Name
-          - ResourceGroupName
           - LimitObjectType
           - Unit
           - ETag
@@ -87,7 +106,6 @@ directive:
       format-table:
         properties:
           - Name
-          - ResourceGroupName
           - UsageUsagesType
           - UsageValue
           - ETag

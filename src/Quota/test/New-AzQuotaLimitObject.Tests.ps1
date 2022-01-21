@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuotaLimitObject'))
 }
 
 Describe 'New-AzQuotaLimitObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { New-AzQuotaLimitObject -Value 1007 } | Should -Not -Throw
     }
 }

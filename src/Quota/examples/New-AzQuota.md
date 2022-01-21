@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update the quota limit for the specified resource with the requested value
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $limit = New-AzQuotaLimitObject -Value 1003
+PS C:\> New-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
 
-{{ Add output here }}
+Name              ResourceGroupName Unit  ETag
+----              ----------------- ----  ----
+PublicIPAddresses                   Count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command create or update the quota limit for the specified resource with the requested value.

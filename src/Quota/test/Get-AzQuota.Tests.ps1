@@ -15,15 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuota'))
 }
 
 Describe 'Get-AzQuota' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -ResourceName "MinPublicIpInterNetworkPrefixLength" } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -ResourceName "MinPublicIpInterNetworkPrefixLength" 
+            Get-AzQuota -InputObject $quota.Id
+        } | Should -Not -Throw
     }
 }

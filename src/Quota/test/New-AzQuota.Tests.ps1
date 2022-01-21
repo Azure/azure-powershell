@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuota'))
 
 Describe 'New-AzQuota' {
     It 'CreateExpanded' {
-        $limit = New-AzQuotaLimitObject -Value 1002
-        {
-            New-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Limit $limit -Name "PublicIPAddresses"
-        } | Should -Not -Throw
+        $limit = New-AzQuotaLimitObject -Value 1007
+        New-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+        $quota.Limit.Value | Should -Be 1007
     }
 }

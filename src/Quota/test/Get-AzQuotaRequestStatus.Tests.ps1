@@ -15,15 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaRequestStatus'))
 }
 
 Describe 'Get-AzQuotaRequestStatus' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzQuotaRequestStatus -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzQuotaRequestStatus -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -Id "6cf5716a-3df8-421a-8457-719e10381dbc" } | Should -Not -Throw
     }
 }

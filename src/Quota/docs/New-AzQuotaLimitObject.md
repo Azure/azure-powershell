@@ -21,23 +21,16 @@ Create an in-memory object for LimitValue.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for LimitValue
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzQuotaLimitObject -Value 1003
 
-{{ Add output here }}
+LimitObjectType LimitType Value
+--------------- --------- -----
+LimitValue                1003
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command create an in-memory object for LimitValue as value of the parameter Limit in the New/Update-AzQuota cmdlet.
 
 ## PARAMETERS
 
