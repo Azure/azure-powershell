@@ -18,7 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+        [GenericBreakingChange("MaxTasksPerComputeNode alias will be removed in an upcoming breaking change release", "4.2.0")]
+        [Alias("MaxTasksPerComputeNode")]
         public int? TaskSlotsPerNode { get; set; }
 
         [Parameter]
