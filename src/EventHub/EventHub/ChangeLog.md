@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Vesrion 1.9.2
+* Added New-AzEventHubSchemaGroup, Remove-AzEventHubSchemaGroup and Get-AzEventHubSchemaGroup in the eventhubs PS.
+
 ## Version 1.9.1
 * Fixed the issue that `New-AzEventHubKey` always generates a new primary key instead of a secondary key since version 1.9.0 [#16362]
 
