@@ -67,14 +67,16 @@ function Test-NestedEndpointsCreateUpdate
 	Assert-AreEqual 1 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv6
 	Assert-AreEqual "West Europe" $retrievedParentProfile.Endpoints[1].Location
 
-	$anotherNestedEndpoint.MinChildEndpoints = 4
+	$anotherNestedEndpoint.MinChildEndpoints = 6
+	$anotherNestedEndpoint.MinChildEndpointsIPv4 = 2
 	$anotherNestedEndpoint.MinChildEndpointsIPv6 = 3
 	$anotherNestedEndpoint.Location = "West US"
 
 	$anotherNestedEndpoint = Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $anotherNestedEndpoint
 
 	Assert-NotNull $anotherNestedEndpoint
-	Assert-AreEqual 4 $anotherNestedEndpoint.MinChildEndpoints
+	Assert-AreEqual 6 $anotherNestedEndpoint.MinChildEndpoints
+	Assert-AreEqual 2 $anotherNestedEndpoint.MinChildEndpointsIPv4
 	Assert-AreEqual 3 $anotherNestedEndpoint.MinChildEndpointsIPv6
 	Assert-AreEqual "West US" $anotherNestedEndpoint.Location
 
@@ -82,7 +84,8 @@ function Test-NestedEndpointsCreateUpdate
 
 	Assert-NotNull $retrievedParentProfile
 	Assert-AreEqual 2 $retrievedParentProfile.Endpoints.Count
-	Assert-AreEqual 4 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
+	Assert-AreEqual 6 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
+	Assert-AreEqual 2 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv4
 	Assert-AreEqual 3 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv6
 	Assert-AreEqual "West US" $retrievedParentProfile.Endpoints[1].Location
 	}
