@@ -247,6 +247,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string IdentityType { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance backup storage redundancy
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone")]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -343,6 +351,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
             updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
+            updateData[0].RequestedBackupStorageRedundancy = this.BackupStorageRedundancy ?? updateData[0].CurrentBackupStorageRedundancy;
             return updateData;
         }
 
@@ -393,6 +402,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     {
                         return;
                     }
+                }
+            }
+
+            if (string.Equals(this.BackupStorageRedundancy, "Geo", StringComparison.OrdinalIgnoreCase))
+            {
+                var model = GetEntity();
+                if (model.FirstOrDefault().CurrentBackupStorageRedundancy != "Geo" && !Force.IsPresent && !ShouldContinue(
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning, this.Name)))
+                {
+                    return;
                 }
             }
 
