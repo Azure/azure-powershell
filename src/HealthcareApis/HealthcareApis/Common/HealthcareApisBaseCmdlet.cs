@@ -27,7 +27,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Common
 {
-    [GenericBreakingChange("HealthcareApis cmdlets will bump API version which may introduce breaking change. Please contact us for more information.")]
+    [GenericBreakingChange("HealthcareApis cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.")]
     public abstract class HealthcareApisBaseCmdlet : AzureRMCmdlet
     {
         private HealthcareApisManagementClientWrapper _healthcareApisManagementClientWrapper;
