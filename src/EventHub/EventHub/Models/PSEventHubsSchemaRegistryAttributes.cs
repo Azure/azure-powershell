@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Text;
+using System.Collections;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
@@ -28,8 +30,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 SchemaCompatibility = schemaGroup.SchemaCompatibility;
                 SchemaType = schemaGroup.SchemaType;
 
-                if(schemaGroup.GroupProperties.Count > 0)
-                    GroupProperties = schemaGroup.GroupProperties;
+                if(schemaGroup.GroupProperties != null)
+                {
+                    var groupPropertiesDictionary = new Dictionary<string, string>(schemaGroup.GroupProperties);
+                    GroupProperties = new Hashtable(groupPropertiesDictionary);
+                }
+                        
 
                 if (schemaGroup.Id != null)
                     Id = schemaGroup.Id;
@@ -76,7 +82,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// </summary>
         public string SchemaType { get; set; }
 
-        public IDictionary<string, string> GroupProperties { get; set; }
+        public Hashtable GroupProperties { get; set; }
 
     }
 }

@@ -40,18 +40,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 
         public override void ExecuteCmdlet()
         {
-            Dictionary<string, string> groupPropertiesDictionary = TagsConversionHelper.CreateTagDictionary(GroupProperty, validate: true);
+            
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamespaceSchemaGroup, Name, Namespace)))
             {
                 try
                 {
-                    WriteObject(Client.BeginCreateNamespaceSchemaGroup(ResourceGroupName,
-                            Namespace, 
-                            Name, 
-                            SchemaCompatibility, 
-                            SchemaType, 
-                            groupPropertiesDictionary));
+                    WriteObject(Client.BeginCreateNamespaceSchemaGroup(resourceGroupName: ResourceGroupName,
+                            namespaceName: Namespace, 
+                            schemaGroupName: Name, 
+                            schemaCompatibility: SchemaCompatibility, 
+                            schemaType: SchemaType, 
+                            groupProperties: GroupProperty));
                 }
                    
                 catch (Management.EventHub.Models.ErrorResponseException ex)

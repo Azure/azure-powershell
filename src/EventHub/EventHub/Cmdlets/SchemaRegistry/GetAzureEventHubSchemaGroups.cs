@@ -35,10 +35,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        /*[Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
-        [ValidateNotNullOrEmpty]
-        public PSNamespaceAttributes InputObject { get; set; }*/
-
         [Parameter(Mandatory = true, ParameterSetName = SchemaGroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -54,18 +50,22 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
             {
                 if (ParameterSetName.Equals(SchemaGroupResourceIdParameterSet))
                 {
-                    LocalResourceIdentifier getParamSchemaGroup = new LocalResourceIdentifier(ResourceId);
+                    ResourceIdentifier getParamSchemaGroup = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = getParamSchemaGroup.ResourceGroupName;
-                    if (getParamSchemaGroup.ParentResource == null)
+                    if(getParamSchemaGroup.ResourceType == NamespaceURL)
                     {
                         Namespace = getParamSchemaGroup.ResourceName;
                     }
+                    else if(getParamSchemaGroup.ResourceType == SchemaGroupURL)
+                    {
+                        string[] resourceNames = getParamSchemaGroup.ParentResource.Split(new[] { '/' });
+                        Namespace = resourceNames[1];
+                        Name = getParamSchemaGroup.ResourceName;
+                    }
                     else
                     {
-                        Name = getParamSchemaGroup.ResourceName;
-                        Namespace = getParamSchemaGroup.ParentResource;
+                        throw new Exception("Invalid Resource Id");
                     }
-
                 }
 
 

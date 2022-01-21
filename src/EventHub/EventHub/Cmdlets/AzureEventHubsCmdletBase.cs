@@ -143,6 +143,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string SecondaryKey = "SecondaryKey";
         }
 
+        protected const string NamespaceURL = "Microsoft.EventHub/namespaces";
+        protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
+
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
         
@@ -244,4 +247,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public string ParentResource2 { get; set; }
 
     }
+
 }

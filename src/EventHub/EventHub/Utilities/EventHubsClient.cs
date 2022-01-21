@@ -23,6 +23,8 @@ using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Management.Automation;
 using Newtonsoft.Json;
+using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Eventhub
 {
@@ -747,12 +749,12 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         public PSEventHubsSchemaRegistryAttributes BeginCreateNamespaceSchemaGroup(string resourceGroupName, string namespaceName, string schemaGroupName
-            , string schemaCompatibility, string schemaType, IDictionary<string, string> groupProperties)
+            , string schemaCompatibility, string schemaType, Hashtable groupProperties)
         {
             SchemaGroup schemaGroup = new SchemaGroup(schemaCompatibility: schemaCompatibility, schemaType: schemaType);
             if (groupProperties != null)
             {
-                schemaGroup.GroupProperties = groupProperties;
+                schemaGroup.GroupProperties = TagsConversionHelper.CreateTagDictionary(groupProperties, validate: true); ;
             }
             var response = Client.SchemaRegistry.CreateOrUpdate(resourceGroupName: resourceGroupName, namespaceName: namespaceName, schemaGroupName: schemaGroupName, parameters: schemaGroup);
             return new PSEventHubsSchemaRegistryAttributes(response);

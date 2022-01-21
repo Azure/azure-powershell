@@ -9,7 +9,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubSchemaGroup", SupportsShouldProcess = true), OutputType(typeof(PSEventHubsSchemaRegistryAttributes))]
-    public class RemoveAzureEventHubSchemaGroup: AzureEventHubsCmdletBase
+    public class RemoveAzureEventHubSchemaGroup : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespaceSchemaGroupParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
         public string Namespace { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceSchemaGroupParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Name of Schema Group")]
-        [Parameter(Mandatory = true, ParameterSetName = SchemaGroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Name of Schema Group")]
         [Alias(AliasSchemaGroupName)]
         public string Name { get; set; }
 
@@ -38,50 +37,64 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 
         public override void ExecuteCmdlet()
         {
-            if(ShouldProcess(target: Name, action: string.Format(Resources.RemoveNamespacesSchemaGroup, Name, ResourceGroupName)))
+            try
             {
-                try
-                {
 
-                    if (ParameterSetName == SchemaGroupInputObjectParameterSet)
+                if (ParameterSetName == SchemaGroupInputObjectParameterSet)
+                {
+                    ResourceIdentifier getParamSchemaGroup = new ResourceIdentifier(InputObject.Id);
+                    if (getParamSchemaGroup.ResourceType.Equals(SchemaGroupURL))
                     {
-                        LocalResourceIdentifier getParamSchemaGroup = new LocalResourceIdentifier(InputObject.Id);
                         ResourceGroupName = getParamSchemaGroup.ResourceGroupName;
-                        Namespace = getParamSchemaGroup.ParentResource;
+                        string[] resourceNames = getParamSchemaGroup.ParentResource.Split(new[] { '/' });
+                        Namespace = resourceNames[1];
                         Name = getParamSchemaGroup.ResourceName;
                     }
+                    else
+                        throw new Exception("Invalid Resource Id");
+                }
 
-                    if(ParameterSetName == SchemaGroupResourceIdParameterSet)
+                if (ParameterSetName == SchemaGroupResourceIdParameterSet)
+                {
+                    ResourceIdentifier getParamSchemaGroup = new ResourceIdentifier(ResourceId);
+                    if (getParamSchemaGroup.ResourceType.Equals(SchemaGroupURL))
                     {
-                        LocalResourceIdentifier getParamSchemaGroup = new LocalResourceIdentifier(ResourceId);
                         ResourceGroupName = getParamSchemaGroup.ResourceGroupName;
-                        Namespace = getParamSchemaGroup.ParentResource;
+                        string[] resourceNames = getParamSchemaGroup.ParentResource.Split(new[] { '/' });
+                        Namespace = resourceNames[1];
                         Name = getParamSchemaGroup.ResourceName;
                     }
+                    else
+                        throw new Exception("Invalid Resource Id");
+                }
 
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveNamespacesSchemaGroup, Name, Namespace)))
+                if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveNamespacesSchemaGroup, Name, Namespace)))
+                {
+                    try
                     {
-                        try
+                        Client.DeleteNamespaceSchemaGroup(ResourceGroupName, Namespace, Name);
+                        if (PassThru)
                         {
-                            Client.DeleteNamespaceSchemaGroup(ResourceGroupName, Namespace, Name);
-                            if (PassThru)
-                            {
-                                WriteObject(true);
-                            }
-                        }
-                        catch (Management.EventHub.Models.ErrorResponseException ex)
-                        {
-                            WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                            WriteObject(true);
                         }
                     }
-                        
-                    
+                    catch (Management.EventHub.Models.ErrorResponseException ex)
+                    {
+                        WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                    }
                 }
-                catch (Management.EventHub.Models.ErrorResponseException ex)
-                {
-                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
-                }
+
+
             }
+            catch (Management.EventHub.Models.ErrorResponseException ex)
+            {
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
+            }
+
         }
     }
 }
