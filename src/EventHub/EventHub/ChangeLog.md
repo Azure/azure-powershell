@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.2
+* Added public network access to the Set-AzEventHubNetworkRuleSet set cmdlet
+
 ## Version 1.9.1
 * Fixed the issue that `New-AzEventHubKey` always generates a new primary key instead of a secondary key since version 1.9.0 [#16362]
 
