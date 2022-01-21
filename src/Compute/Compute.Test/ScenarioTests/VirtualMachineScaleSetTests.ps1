@@ -3165,7 +3165,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
             -ComputerNamePrefix $vmNamePrefix `
             -WindowsConfigurationProvisionVMAgent $true `
             -WindowsConfigurationPatchMode "AutomaticByPlatform" `
-            -EnableHotPatching;
+            -EnableHotpatching;
 
         # Attach the virtual network to the config object
         Add-AzVmssNetworkInterfaceConfiguration `
@@ -3189,6 +3189,12 @@ function Test-VirtualMachineScaleSetEnableHotPatching
             -Type $extensionType `
             -TypeHandlerVersion "1.0" `
             -AutoUpgradeMinorVersion $True;
+
+        # Test updating the value. Updating after the Vmss is created is not supported.
+        Set-AzVmssOsProfile $vmssConfig -EnableHotPatching:$false;
+        Assert-AreEqual $false $vmssConfig.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
+        Set-AzVmssOsProfile $vmssConfig -EnableHotPatching:$true;
+        Assert-AreEqual $true $vmssConfig.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
 
         # Create the scale set with the config object (this step might take a few minutes)
         New-AzVmss `

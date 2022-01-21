@@ -429,11 +429,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings = new PatchSettings();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.PatchMode = this.WindowsConfigurationPatchMode;
-                // EnableHotPatching in PatchSettings
-                if (this.IsParameterBound(c => c.EnableHotpatching))
+            }
+
+            // EnableHotPatching in PatchSettings
+            if (this.IsParameterBound(c => c.EnableHotpatching))
+            {
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotpatching = this.EnableHotpatching;
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
+                // OsProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile();
+                }
+                // WindowsConfiguration
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new WindowsConfiguration();
+                }
+                // PatchSettings
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings = new PatchSettings();
+                }
+
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotpatching = this.EnableHotpatching;
             }
 
             if (this.IsParameterBound(c => c.LinuxConfigurationPatchMode))
