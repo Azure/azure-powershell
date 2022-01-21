@@ -57,14 +57,20 @@ namespace Microsoft.Azure.Commands.Network
             List<string> include = new List<string>();
             List<string> exclude = new List<string>();
 
-            foreach (string includeInstance in this.Include)
+            if(this.Include != null)
             {
-                include.Add(includeInstance);
+                foreach (string includeInstance in this.Include)
+                {
+                    include.Add(includeInstance);
+                }
             }
 
-            foreach (string excludeInstance in this.Exclude)
+            if (this.Exclude != null)
             {
-                exclude.Add(excludeInstance);
+                foreach (string excludeInstance in this.Exclude)
+                {
+                    exclude.Add(excludeInstance);
+                }
             }
 
             packetCaptureScope.Include = include;

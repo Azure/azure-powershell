@@ -2299,10 +2299,6 @@
                 <PropertyName>TargetType</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TargetType</Label>
-                <PropertyName>TargetType</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>BytesToCapturePerPacket</Label>
                 <PropertyName>BytesToCapturePerPacket</PropertyName>
               </ListItem>

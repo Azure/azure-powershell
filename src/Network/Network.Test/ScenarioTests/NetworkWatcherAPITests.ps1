@@ -503,7 +503,6 @@ function Test-PacketCapture
 
         #Install networkWatcherAgent on Vm
         Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -AutoUpgradeMinorVersion $True -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher"
         Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vmIndex -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
         Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vmIndex2 -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
 
