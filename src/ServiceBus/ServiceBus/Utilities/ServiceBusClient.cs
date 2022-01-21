@@ -182,6 +182,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
 
+            networkRuleSet.PublicNetworkAccess = psNetworkRuleSetAttributes.PublicNetworkAccess;
+
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {
                 networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
