@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
             endpoint.EndpointStatus = this.EndpointStatus;
             endpoint.GeoMapping = this.GeoMapping;
             endpoint.MinChildEndpoints = this.MinChildEndpoints;
-            endpoint.MinChildEndpointsIPv6 = this.MinChildEndpointsIPv4;
+            endpoint.MinChildEndpointsIPv4 = this.MinChildEndpointsIPv4;
             endpoint.MinChildEndpointsIPv6 = this.MinChildEndpointsIPv6;
             endpoint.Priority = this.Priority;
             endpoint.Target = this.Target;
