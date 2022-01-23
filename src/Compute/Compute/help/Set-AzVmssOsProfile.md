@@ -36,8 +36,12 @@ PS C:\> $vmss = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standar
 PS C:\> Set-AzVmssOSProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
 ```
 
+This command sets operating system profile properties for the $vmss object.
+The command sets the computer name prefix for all the virtual machine instances in the VMSS to Test and supplies the administrator username and password.
+
 ### Example 2: Set the operating system profile properties for a Vmss in Flexible mode with Hotpatching enabled.
 ```
+# Setup variables.
 $loc = "eastus";
 $rgname = "<Resource Group Name>";
 $vmssName = "myVmssSlb";
@@ -51,12 +55,12 @@ $subnetAddress = "10.0.2.0/24";
 $securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ("<Username>", $securePassword);
 
-# VMSS Flex requires explicit outbound access
-# Create a virtual network 
+# VMSS Flex requires explicit outbound access.
+# Create a virtual network.
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
 $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
-# Create a public IP address
+# Create a public IP address.
 $publicIP = New-AzPublicIpAddress `
     -ResourceGroupName $rgname `
     -Location $loc `
@@ -65,14 +69,14 @@ $publicIP = New-AzPublicIpAddress `
     -IpAddressVersion "IPv4" `
     -Name "myLBPublicIP";
 
-# Create a frontend and backend IP pool
+# Create a frontend and backend IP pool.
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
     -Name "myFrontEndPool" `
     -PublicIpAddress $publicIP;
 
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool" ;
 
-# Create the load balancer
+# Create the load balancer.
 $lb = New-AzLoadBalancer `
     -ResourceGroupName $rgname `
     -Name "myLoadBalancer" `
@@ -82,7 +86,7 @@ $lb = New-AzLoadBalancer `
     -FrontendIpConfiguration $frontendIP `
     -BackendAddressPool $backendPool;
 
-# Create a load balancer health probe for TCP port 80
+# Create a load balancer health probe for TCP port 80.
 Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
     -LoadBalancer $lb `
     -Protocol TCP `
@@ -90,9 +94,9 @@ Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
     -IntervalInSeconds 15 `
     -ProbeCount 2;
 
-# Create a load balancer rule to distribute traffic on port TCP 80
+# Create a load balancer rule to distribute traffic on port TCP 80.
 # The health probe from the previous step is used to make sure that traffic is
-# only directed to healthy VM instances
+# only directed to healthy VM instances.
 Add-AzLoadBalancerRuleConfig `
     -Name "myLoadBalancerRule" `
     -LoadBalancer $lb `
@@ -104,7 +108,7 @@ Add-AzLoadBalancerRuleConfig `
     -DisableOutboundSNAT `
     -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb);
 
-# Add outbound connectivity rule
+# Add outbound connectivity rule.
 Add-AzLoadBalancerOutboundRuleConfig `
     -Name "outboundrule" `
     -LoadBalancer $lb `
@@ -114,23 +118,23 @@ Add-AzLoadBalancerOutboundRuleConfig `
     -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
     -BackendAddressPool $lb.BackendAddressPools[0];
 
-# # Update the load balancer configuration
+# Update the load balancer configuration.
 Set-AzLoadBalancer -LoadBalancer $lb;
 
-# Create IP address configurations
+# Create IP address configurations.
 # Instances will require explicit outbound connectivity, for example
 #   - NAT Gateway on the subnet (recommended)
 #   - Instances in backend pool of Standard LB with outbound connectivity rules
 #   - Public IP address on each instance
-# See aka.ms/defaultoutboundaccess for more info
+# See aka.ms/defaultoutboundaccess for more info.
 $ipConfig = New-AzVmssIpConfig `
     -Name "myIPConfig" `
     -SubnetId $virtualNetwork.Subnets[0].Id `
     -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
     -Primary;
 
-# Create a config object
-# The VMSS config object stores the core information for creating a scale set
+# Create a config object.
+# The Vmss config object stores the core information for creating a scale set.
 $vmssConfig = New-AzVmssConfig `
     -Location $loc `
     -SkuCapacity $vmssInstanceCount `
@@ -138,7 +142,7 @@ $vmssConfig = New-AzVmssConfig `
     -OrchestrationMode 'Flexible' `
     -PlatformFaultDomainCount 1;
 
-# Reference a virtual machine image from the gallery
+# Reference a virtual machine image from the gallery.
 Set-AzVmssStorageProfile $vmssConfig `
     -OsDiskCreateOption "FromImage" `
     -ImageReferencePublisher "MicrosoftWindowsServer" `
@@ -146,7 +150,7 @@ Set-AzVmssStorageProfile $vmssConfig `
     -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
     -ImageReferenceVersion "latest";  
 
-# Set up information for authenticating with the virtual machine
+# Set up information for authenticating with the virtual machine.
 Set-AzVmssOsProfile $vmssConfig `
     -AdminUsername $cred.UserName `
     -AdminPassword $cred.Password `
@@ -155,7 +159,7 @@ Set-AzVmssOsProfile $vmssConfig `
     -WindowsConfigurationPatchMode "AutomaticByPlatform" `
     -EnableHotpatching;
 
-# Attach the virtual network to the config object
+# Attach the virtual network to the config object.
 Add-AzVmssNetworkInterfaceConfiguration `
     -VirtualMachineScaleSet $vmssConfig `
     -Name "network-config" `
@@ -163,13 +167,12 @@ Add-AzVmssNetworkInterfaceConfiguration `
     -IPConfiguration $ipConfig `
     -NetworkApiVersion '2020-11-01';
 
-# Health extension attempt
-# Define the Application Health extension properties
+# Define the Application Health extension properties.
 $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
 $extensionName = "myHealthExtension";
 $extensionType = "ApplicationHealthWindows";
 $publisher = "Microsoft.ManagedServices";
-# Add the Application Health extension to the scale set model
+# Add the Application Health extension to the scale set model.
 Add-AzVmssExtension -VirtualMachineScaleSet $vmssConfig `
     -Name $extensionName `
     -Publisher $publisher `
@@ -185,9 +188,6 @@ $vmss = New-AzVmss `
     -VirtualMachineScaleSet $vmssConfig;
 ```
 
-
-This command sets operating system profile properties for the $vmss object.
-The command sets the computer name prefix for all the virtual machine instances in the VMSS to Test and supplies the administrator username and password.
 
 ## PARAMETERS
 
