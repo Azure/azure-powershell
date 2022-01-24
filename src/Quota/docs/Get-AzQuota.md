@@ -54,9 +54,9 @@ This command lists the quota limits of a scope.
 ```powershell
 PS C:\> Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -ResourceName "MinPublicIpInterNetworkPrefixLength"
 
-Name                                ResourceGroupName Unit  ETag
-----                                ----------------- ----  ----
-MinPublicIpInterNetworkPrefixLength                   Count
+Name                                NameLocalizedValue        Unit  ETag
+----                                ------------------        ----  ----
+MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length Count
 ```
 
 This command gets the quota limit of a resource.

@@ -97,6 +97,7 @@ directive:
       format-table:
         properties:
           - Name
+          - NameLocalizedValue
           - LimitObjectType
           - Unit
           - ETag
@@ -106,6 +107,7 @@ directive:
       format-table:
         properties:
           - Name
+          - NameLocalizedValue
           - UsageUsagesType
           - UsageValue
           - ETag

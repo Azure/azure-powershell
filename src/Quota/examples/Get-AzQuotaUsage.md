@@ -27,9 +27,9 @@ This command lists the currents usage of a resource
 ```powershell
 PS C:\> Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -Name "MinPublicIpInterNetworkPrefixLength"
 
-Name                                ResourceGroupName UsageUsagesType UsageValue ETag
-----                                ----------------- --------------- ---------- ----
-MinPublicIpInterNetworkPrefixLength                                   0
+Name                                NameLocalizedValue        UsageUsagesType UsageValue ETag
+----                                ------------------        --------------- ---------- ----
+MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length                 0
 ```
 
 This command lists the currents usage of a resource.

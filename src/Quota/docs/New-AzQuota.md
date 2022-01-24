@@ -38,9 +38,9 @@ Please check the URI in location header for the detailed status of the request.
 PS C:\> $limit = New-AzQuotaLimitObject -Value 1003
 PS C:\> New-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
 
-Name              ResourceGroupName Unit  ETag
-----              ----------------- ----  ----
-PublicIPAddresses                   Count
+Name              NameLocalizedValue          UsageUsagesType UsageValue ETag
+----              ------------------          --------------- ---------- ----
+PublicIPAddresses Public IP Addresses - Basic                 0
 ```
 
 This command create or update the quota limit for the specified resource with the requested value.
