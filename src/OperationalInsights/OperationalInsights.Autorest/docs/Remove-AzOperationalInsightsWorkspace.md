@@ -18,13 +18,13 @@ To remove the workspace completely and release the name, use the force flag.
 ### Delete (Default)
 ```
 Remove-AzOperationalInsightsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-ForceDelete]
+Remove-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-Force]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,23 +36,14 @@ To remove the workspace completely and release the name, use the force flag.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a workapce by resource group name and workspace name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-AzOperationalInsightsWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Confirm
+Are you sure you want to remove workspace '{WS-Name}' in resource group '{RG-Name}'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 
 ## PARAMETERS
 
@@ -86,7 +77,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceDelete
+### -Force
 Deletes the workspace without the recovery option.
 A workspace that was deleted with this flag cannot be recovered.
 
