@@ -33,9 +33,9 @@ For information on how to develop for `Az.OperationalInsights`, see [how-to.md](
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/23ca45b7dfce24112bc686bae70c4424f33ae69e/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Tables.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/0460de892c2310600c5d908fb3a7dc2153315f8f/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Workspaces.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/0460de892c2310600c5d908fb3a7dc2153315f8f/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Operations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Operations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Tables.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/Workspaces.json
 
 title: OperationalInsights
 module-version: 0.1.0
