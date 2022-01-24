@@ -19,11 +19,11 @@
 -->
 
 ## Upcoming Release
-* Implement CAE by adding handler to http pipeline
+* Implemented CAE by adding handler to http pipeline
 * Improved error message when login is blocked by AAD
 * Improved error message when silent reauthentication failed
 * Enabled CAE for Get-AzTenant and Get-AzSubcription
-* Enable CAE for MSGraph
+* Enabled CAE for MSGraph
 * Added test cases
 
 ## Version 2.7.2
