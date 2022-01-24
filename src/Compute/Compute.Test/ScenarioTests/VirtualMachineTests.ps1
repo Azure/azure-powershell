@@ -5384,7 +5384,7 @@ function Test-ForceDelete
         $vmname = 'v' + $rgname;
         $domainNameLabel = "d1" + $rgname;
 
-        # Creating a VM using simple parameter set
+        # Creating a VM using simple parameterset
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
