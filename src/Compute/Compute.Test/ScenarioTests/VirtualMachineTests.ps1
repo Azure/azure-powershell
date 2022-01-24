@@ -5391,7 +5391,8 @@ function Test-ForceDelete
 
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
 
-        $vm = Remove-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeletion -Force;
+        Remove-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeletion -Force;
+
     }
     finally 
     {
