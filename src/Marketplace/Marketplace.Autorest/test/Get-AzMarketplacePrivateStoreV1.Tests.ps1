@@ -15,15 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplacePrivateStore
 }
 
 Describe 'Get-AzMarketplacePrivateStoreV1' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $res = Get-AzMarketplacePrivateStoreV1
+	$res.Count | Should -Be 1
     }
 }

@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "efb2146b-51b3-4b93-8d8e-d62d2b7b4be8" ],
+        "x-ms-client-request-id": [ "46e59431-831d-4ca8-ace2-b207e858b1cd" ],
         "CommandName": [ "Get-AzMarketplaceBillingPrivateStoreAccount" ],
         "FullCommandName": [ "Get-AzMarketplaceBillingPrivateStoreAccount_Billing" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,17 +25,17 @@
         "Vary": [ "Accept-Encoding" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.01808.0002-f172fc53" ],
-        "Set-Cookie": [ "ARRAffinity=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
+        "Set-Cookie": [ "ARRAffinity=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1192" ],
-        "x-ms-request-id": [ "ef32fb2c-844f-4035-bd6b-fa2a55557928" ],
-        "x-ms-correlation-request-id": [ "ef32fb2c-844f-4035-bd6b-fa2a55557928" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220112T142519Z:ef32fb2c-844f-4035-bd6b-fa2a55557928" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-request-id": [ "52a15ae6-9137-4bc0-8f30-76005c9e138b" ],
+        "x-ms-correlation-request-id": [ "52a15ae6-9137-4bc0-8f30-76005c9e138b" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135827Z:52a15ae6-9137-4bc0-8f30-76005c9e138b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 12 Jan 2022 14:25:19 GMT" ]
+        "Date": [ "Mon, 24 Jan 2022 13:58:27 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
