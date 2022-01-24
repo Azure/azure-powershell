@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            bool? forcedelete = this.ForceDeletion.IsPresent;
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Remove)
@@ -53,11 +54,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Rest.Azure.AzureOperationResponse result = null;
                     if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)
                     {
-                        result = VirtualMachineScaleSetsClient.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        result = VirtualMachineScaleSetsClient.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, forceDeletion:forcedelete).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        result = VirtualMachineScaleSetsClient.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                        result = VirtualMachineScaleSetsClient.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, forceDeletion:forcedelete).GetAwaiter().GetResult();
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -98,6 +99,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
         public string[] InstanceId { get; set; }
+
+        [Parameter(
+            HelpMessage = "Optional parameter to force delete a VM.")]
+        public SwitchParameter ForceDeletion { get; set; }
+
 
         [Parameter(
             Mandatory = false)]
