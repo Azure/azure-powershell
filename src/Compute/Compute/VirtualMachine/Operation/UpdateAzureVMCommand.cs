@@ -136,6 +136,12 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -244,6 +250,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.AdditionalCapabilities = new AdditionalCapabilities();
                         }
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
+                    }
+
+                    if (this.IsParameterBound(c => c.HibernationEnabled))
+                    {
+                        if (parameters.AdditionalCapabilities == null)
+                        {
+                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
+                        }
+                        parameters.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
                     }
 
                     if (this.IsParameterBound(c => c.MaxPrice))
