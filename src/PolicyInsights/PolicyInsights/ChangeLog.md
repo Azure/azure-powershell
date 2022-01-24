@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling
+* Policy states and policy events commands now support fetching very large sets of results by internally using paginated API calls
+
 ## Version 1.4.1
 * Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
 
