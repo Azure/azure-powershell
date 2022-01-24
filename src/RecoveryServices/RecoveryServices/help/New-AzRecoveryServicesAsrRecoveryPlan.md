@@ -29,7 +29,8 @@ New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> 
 ### AzureZoneToZone
 ```
 New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryZone <String>
- -RecoveryZone <String> [-AzureZoneToZone] -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
+ -RecoveryZone <String> [-AzureZoneToZone] [-PrimaryEdgeZone <string>] [-RecoveryEdgeZone <string>] 
+ -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,6 +60,14 @@ PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -Prima
 ```
 
 Starts the recovery plan creation operation for Azure zone to zone replicated items and returns the ASR job used to track the operation.
+
+### Example 3
+```
+PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryEdgeZone $pEdgeZone 
+-RecoveryZone $rZone -ReplicationProtectedItem $RPI
+```
+
+Starts the recovery plan creation operation for Azure EdgeZone to Availability Zone replicated items and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
@@ -201,6 +210,36 @@ Accept wildcard characters: False
 
 ### -RecoveryZone
 Specifies the primary Availabilty zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryEdgeZone
+Specifies the primary edge zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryEdgeZone
+Specifies the recovery edge zone of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: System.String
