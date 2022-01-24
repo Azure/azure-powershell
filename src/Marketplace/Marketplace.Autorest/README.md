@@ -70,15 +70,15 @@ directive:
   - where:
       verb: Invoke
       subject: WithdrawPrivateStorePlan
-    remove: true	
+    remove: true
   - where:
       verb: Invoke
       subject: QueryPrivateStoreNotificationState
-    remove: true	
+    remove: true
   - where:
       verb: Invoke
       subject: AcknowledgePrivateStoreOfferNotification
-    remove: true		
+    remove: true
   - where:
       verb: Invoke
       subject: QueryPrivateStoreApprovedPlan
@@ -116,7 +116,7 @@ directive:
       subject: PrivateStore
     remove: true
 
-	# Change commads names to Get
+    # Change commads names to Get
   - where:
       verb: Invoke
       subject: CollectionPrivateStoreToSubscriptionMapping
