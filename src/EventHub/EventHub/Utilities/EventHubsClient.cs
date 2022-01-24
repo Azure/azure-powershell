@@ -141,6 +141,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             if (tags != null)
             {
+
                 parameter.Tags = new Dictionary<string, string>(tags);
             }
 
@@ -715,6 +716,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
             networkRuleSet.TrustedServiceAccessEnabled = psNetworkRuleSetAttributes.TrustedServiceAccessEnabled;
+            networkRuleSet.PublicNetworkAccess = psNetworkRuleSetAttributes.PublicNetworkAccess;
 
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {
