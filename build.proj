@@ -261,13 +261,6 @@
               BuildInParallel="$(BuildInParallel)"
               ContinueOnError="false" />
 
-    <MSBuild  Projects="@(StackSolution)"
-              Targets="Build"
-              Properties="Configuration=$(Configuration);Platform=Any CPU"
-              BuildInParallel="$(BuildInParallel)"
-              Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
-              ContinueOnError="false" />
-
     <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>

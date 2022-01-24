@@ -454,7 +454,7 @@ function Add-TestMappings
 $Script:RootPath = (Get-Item -Path $PSScriptRoot).Parent.FullName
 $Script:SrcPath = Join-Path -Path $Script:RootPath -ChildPath "src"
 $Script:ResourceManagerPath = Join-Path $Script:SrcPath -ChildPath "ResourceManager"
-$Script:ServiceFolders = Get-ChildItem -Path $Script:ResourceManagerPath -Directory
+$Script:ServiceFolders = @(Join-Path -Path $Script:ResourceManagerPath -ChildPath "Profile")
 $Script:ServiceManagementPath = Join-Path -Path $Script:SrcPath -ChildPath "ServiceManagement"
 $Script:StoragePath = Join-Path -Path $Script:SrcPath -ChildPath "Storage"
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
