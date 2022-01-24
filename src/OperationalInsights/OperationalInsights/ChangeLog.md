@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bug fix - prevent exceptions while using StorageInsight cmdlets 
 
 ## Version 3.0.0
 * Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets

@@ -81,6 +81,7 @@ function NetworkRuleSetTests {
     $result = Remove-AzServiceBusIPRule -ResourceGroup $resourceGroupName -Name $namespaceName -IpMask "3.3.3.3"	
 
     $getResult = Get-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName
+    Assert-AreEqual $getResult.PublicNetworkAccess "Enabled"
 
     Assert-AreEqual $getResult.IpRules.Count 2 "IPRules count did not matched after deleting one IPRule"
     Assert-AreEqual $getResult.VirtualNetworkRules.Count 3 "VirtualNetworkRules count did not matched"
@@ -90,10 +91,20 @@ function NetworkRuleSetTests {
     Assert-AreEqual $setResult.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
     Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
 
+    # Set-AzServiceBusNetworkRuleSet with parameters
+    $setResult = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -IPRule $setResult.IpRules -VirtualNetworkRule $setResult.VirtualNetworkRules -DefaultAction "Allow" -PublicNetworkAccess "Disabled"
+    Assert-AreEqual $setResult.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult.PublicNetworkAccess "Disabled"
+    Assert-AreEqual $setResult.DefaultAction "Allow"
+
     # Set-AzServiceBusNetworkRuleSet with Resource ID
     $setResult1 = Set-AzServiceBusNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -ResourceId $getResult.Id
     Assert-AreEqual $setResult1.IpRules.Count 2 "Set1 - IPRules count did not matched after deleting one IPRule"
     Assert-AreEqual $setResult1.VirtualNetworkRules.Count 3 "Set1 - VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult1.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult1.DefaultAction "Allow"
+
 
     Write-Debug "Add a new VirtualNetworkRule to the default NetwrokRuleSet"
     $result = Remove-AzServiceBusVirtualNetworkRule -ResourceGroup $resourceGroupName -Name $namespaceName -SubnetId "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"
