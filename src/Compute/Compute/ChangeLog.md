@@ -22,6 +22,7 @@
 ## Upcoming Release
 * Updated `Set-AzVmExtension` cmdlet to properly display `-Name` and `-Location` parameters as mandatory.
 * Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
+* Added `EnableHotpatching` parameter to the `Set-AzVmssOSProfile` cmdlet.
 
 ## Version 4.22.0
 * Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.
