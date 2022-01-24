@@ -102,7 +102,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'New-AzNetAppFilesActiveDirectory', 
                'Get-AzNetAppFilesActiveDirectory', 
                'Update-AzNetAppFilesActiveDirectory', 
-               'Remove-AzNetAppFilesActiveDirectory'
+               'Remove-AzNetAppFilesActiveDirectory', 
+               'Get-AzNetAppFilesQuotaLimit'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -125,7 +126,8 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'New-AnfBackup', 'Remove-AnfBackup', 'Update-AnfBackup', 
                'Get-AnfVolumeBackupStatus', 'Get-AnfVolumeRestoreStatus', 
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 
-               'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory'
+               'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory',
+               'Get-AnfQuotaLimit'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

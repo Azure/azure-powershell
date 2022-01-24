@@ -131,7 +131,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         public string[] SecurityOperator { get; set; }
 
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "When AES is enabled, set if AES encryption will be enabled for SMB communication.")]
@@ -155,6 +154,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             HelpMessage = "If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowLocalNfsUsersWithLdap { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Domain Users to be added to the Built-in Administrators Active Directory group. A list of unique usernames without domain specifier.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Administrator { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter EncryptDCConnection { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -198,7 +209,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     AesEncryption = AesEncryption,
                     LdapSigning = LdapSigning,
                     LdapOverTLS = LdapOverTLS,
-                    AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap
+                    AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap,
+                    Administrators = Administrator,
+                    EncryptDCConnections = EncryptDCConnection
                 };
                 if (anfAccount.ActiveDirectories == null)
                 {
