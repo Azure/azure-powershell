@@ -1370,7 +1370,3 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
 TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
-
-## RELATED LINKS
-
-## RELATED LINKS
