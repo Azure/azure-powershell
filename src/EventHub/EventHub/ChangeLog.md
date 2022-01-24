@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.9.2
 * Added public network access to the Set-AzEventHubNetworkRuleSet set cmdlet
 
 ## Version 1.9.1
