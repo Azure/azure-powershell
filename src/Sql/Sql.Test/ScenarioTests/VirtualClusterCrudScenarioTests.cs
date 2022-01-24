@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetRemoveVirtualCluster()
+        public void TestGetVirtualCluster()
         {
-            RunPowerShellTest("Test-GetRemoveVirtualCluster");
+            RunPowerShellTest("Test-GetVirtualCluster");
         }
     }
 }

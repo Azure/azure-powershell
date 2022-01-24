@@ -232,7 +232,8 @@ Creates the basic test environment needed to perform the Sql data security tests
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 {
 	$collation = "SQL_Latin1_General_CP1_CI_AS"
-	$dbName = "sql-va-cmdlet-db" + Get-DatabaseName
+	$temp1 = Get-DatabaseName
+	$dbName = "sql-va-cmdlet-db" + $temp1
 	$rg = New-AzResourceGroup -Name $params.rgname -Location $location
 	$managedInstance = Create-ManagedInstanceForTest $rg
 	$db = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.Name -Name $dbName -Collation $collation

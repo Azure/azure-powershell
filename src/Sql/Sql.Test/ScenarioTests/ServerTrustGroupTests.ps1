@@ -14,6 +14,10 @@
 
 function Test-ServerTrustGroup()
 {	
+	$params = Get-DefaultManagedInstanceParameters
+	$stgName = "stg-ps-test"
+	$location = $params.location
+	
 	# Setup
 	$rg = Create-ResourceGroupForTest
 
