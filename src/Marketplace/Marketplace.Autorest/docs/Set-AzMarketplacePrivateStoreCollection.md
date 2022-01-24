@@ -24,10 +24,8 @@ Create or update private store collection
 ## EXAMPLES
 
 ### Example 1: Creates or updates private store collection
-
-
 ```powershell
-PS C:\\>Set-AzMarketplacePrivateStoreCollection -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b -AllSubscription
+PS C:\>Set-AzMarketplacePrivateStoreCollection -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b -AllSubscription
 
 Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------

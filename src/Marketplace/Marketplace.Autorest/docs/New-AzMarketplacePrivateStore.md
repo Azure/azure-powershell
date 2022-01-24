@@ -20,7 +20,7 @@ New-AzMarketplacePrivateStore -Id <String> [-Availability <Availability>] [-Bran
 ```
 
 ## DESCRIPTION
-This command changes private store properties.
+Changes private store properties
 
 ## EXAMPLES
 

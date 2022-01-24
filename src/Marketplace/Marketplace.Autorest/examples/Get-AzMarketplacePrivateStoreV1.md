@@ -1,6 +1,6 @@
 ### Example 1: Get Private Store details
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStore
+PS C:\> Get-AzMarketplacePrivateStoreV1
 
 Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------

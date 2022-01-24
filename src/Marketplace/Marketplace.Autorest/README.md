@@ -153,16 +153,11 @@ directive:
       parameter-name: SpecificPlanIdsLimitation 
     set:
       parameter-name: SpecificPlanIdLimitation 
-	
   - where:
       verb: Get
       subject: PrivateStore
     set:
       subject: PrivateStoreV1
-  
-  - where:
-      subject: PrivateStoreOffer
-    set:
-      subject: PrivateStoreCollectionOffer
+
    
 ```

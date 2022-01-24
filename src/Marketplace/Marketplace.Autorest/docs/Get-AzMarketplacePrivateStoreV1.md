@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestore
+online version: https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1
 schema: 2.0.0
 ---
 
-# Get-AzMarketplacePrivateStore
+# Get-AzMarketplacePrivateStoreV1
 
 ## SYNOPSIS
 Get information about the private store
@@ -14,17 +14,17 @@ Get information about the private store
 
 ### List (Default)
 ```
-Get-AzMarketplacePrivateStore [-UseCache <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreV1 [-UseCache <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMarketplacePrivateStore -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreV1 -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMarketplacePrivateStore -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
+Get-AzMarketplacePrivateStoreV1 -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Get information about the private store
 
 ### Example 1: Get Private Store details
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStore
+PS C:\> Get-AzMarketplacePrivateStoreV1
 
 Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
@@ -43,6 +43,7 @@ a260d38c-96cf-492d-a340-404d0c4b3ad6                                         Use
 ```
 
 This command Gets the private store details
+
 
 ## PARAMETERS
 

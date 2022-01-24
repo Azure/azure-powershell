@@ -20,14 +20,14 @@ Tenant billing accounts names
 ### [Get-AzMarketplaceCollectionToSubscriptionMapping](Get-AzMarketplaceCollectionToSubscriptionMapping.md)
 For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.
 
-### [Get-AzMarketplacePrivateStore](Get-AzMarketplacePrivateStore.md)
-Get information about the private store
-
 ### [Get-AzMarketplacePrivateStoreCollection](Get-AzMarketplacePrivateStoreCollection.md)
 Gets private store collection
 
 ### [Get-AzMarketplacePrivateStoreCollectionOffer](Get-AzMarketplacePrivateStoreCollectionOffer.md)
 Gets information about a specific offer.
+
+### [Get-AzMarketplacePrivateStoreV1](Get-AzMarketplacePrivateStoreV1.md)
+Get information about the private store
 
 ### [Get-AzMarketplaceQueryPrivateStoreOffer](Get-AzMarketplaceQueryPrivateStoreOffer.md)
 List of offers, regardless the collections
