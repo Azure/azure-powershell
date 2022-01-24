@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Vesrion 1.9.2
 * Added New-AzEventHubSchemaGroup, Remove-AzEventHubSchemaGroup and Get-AzEventHubSchemaGroup in the eventhubs PS.
 
 ## Version 1.9.1
