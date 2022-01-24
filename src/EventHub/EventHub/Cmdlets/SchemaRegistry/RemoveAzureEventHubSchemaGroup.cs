@@ -8,7 +8,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubSchemaGroup", SupportsShouldProcess = true), OutputType(typeof(PSEventHubsSchemaRegistryAttributes))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubSchemaGroup", DefaultParameterSetName = NamespaceSchemaGroupParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubsSchemaRegistryAttributes))]
     public class RemoveAzureEventHubSchemaGroup : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespaceSchemaGroupParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
