@@ -35,7 +35,18 @@ The **New-AzOperationalInsightsWindowsPerformanceCounterDataSource** cmdlet adds
 ## EXAMPLES
 
 ## PARAMETERS
-
+```powershell
+New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace -Name performance1 -ObjectName object -CounterName counters
+```
+```output
+Name              : performance1
+ResourceGroupName : testrg
+WorkspaceName     : LogAnalyticsWorkspace
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.OperationalInsights/workspaces/LogAnalyticsWorkspace/datasources/performance1
+Kind              : WindowsPerformanceCounter
+Properties        : {"objectName":"object","instanceName":"*","intervalSeconds":15,"counterName":"counters","collectorType":"Default"}
+```
+Add a Windows performance counter data source for connected computers that run the Windows operating system.
 ### -CounterName
 Specifies the name of a counter.
 
