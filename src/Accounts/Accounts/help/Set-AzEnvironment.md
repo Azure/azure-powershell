@@ -63,8 +63,8 @@ Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 
-Set-AzEnvironment -Name TestEnvironment
-        -ActiveDirectoryEndpoint NewTestADEndpoint
+Set-AzEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint NewTestADEndpoint `
         -GraphEndpoint NewTestGraphEndpoint | Format-List
 
 Name                                              : TestEnvironment
