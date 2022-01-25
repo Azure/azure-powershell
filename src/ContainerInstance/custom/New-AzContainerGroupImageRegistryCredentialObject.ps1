@@ -18,9 +18,6 @@
 Create a in-memory object for ImageRegistryCredential
 .Description
 Create a in-memory object for ImageRegistryCredential
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
