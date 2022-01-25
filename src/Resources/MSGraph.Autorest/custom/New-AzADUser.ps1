@@ -48,11 +48,9 @@ param(
     ${AboutMe},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # true if the account is enabled; otherwise, false.
-    # This property is required when a user is created.
-    # Supports $filter (eq, ne, NOT, and in).
+    [System.Boolean]
+    [Alias('EnableAccount')]
+    # true for enabling the account; otherwise, false.
     ${AccountEnabled},
 
     [Parameter()]
@@ -476,7 +474,7 @@ param(
       $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
       $null = $PSBoundParameters.Remove('Password')
       $null = $PSBoundParameters.Remove('ForceChangePasswordNextLogin')
-      $PSBoundParameters['accountEnabled'] = $true
+      $PSBoundParameters['AccountEnabled'] = $true
       $PSBoundParameters['PasswordProfile'] = $passwordProfile
     }
 
