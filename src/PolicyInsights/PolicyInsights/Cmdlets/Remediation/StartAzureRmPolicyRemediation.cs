@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.RemediationParallelDeployments)]
         [ValidateRange(1, int.MaxValue)]
-        public int? ParallelDeployments { get; set; }
+        public int? ParallelDeploymentCount { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.RemediationFailureThreshold)]
         [ValidateRange(0.0, 1.0)]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
             }
 
             remediation.ResourceCount = this.ResourceCount;
-            remediation.ParallelDeployments = this.ParallelDeployments;
+            remediation.ParallelDeployments = this.ParallelDeploymentCount;
 
             if (this.FailureThreshold != null)
             {

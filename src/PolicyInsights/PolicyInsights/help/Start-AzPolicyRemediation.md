@@ -17,7 +17,7 @@ Creates and starts a policy remediation for a policy assignment.
 Start-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
  [-ResourceGroupName <String>] -PolicyAssignmentId <String> [-PolicyDefinitionReferenceId <String>]
  [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>] [-ResourceCount <Int32>]
- [-ParallelDeployments <Int32>] [-FailureThreshold <Double>] [-AsJob]
+ [-ParallelDeploymentCount <Int32>] [-FailureThreshold <Double>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Start-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName
 ```
 Start-AzPolicyRemediation -ResourceId <String> -PolicyAssignmentId <String>
  [-PolicyDefinitionReferenceId <String>] [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>]
- [-ResourceCount <Int32>] [-ParallelDeployments <Int32>] [-FailureThreshold <Double>] [-AsJob]
+ [-ResourceCount <Int32>] [-ParallelDeploymentCount <Int32>] [-FailureThreshold <Double>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -193,7 +193,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ParallelDeployments
+### -ParallelDeploymentCount
 How many resources to remediate at any given time. Can be used to control the pace of the remediation. If not provided, the default parallel deployments value is used.
 
 ```yaml

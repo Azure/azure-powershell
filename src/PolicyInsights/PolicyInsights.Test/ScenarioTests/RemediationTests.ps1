@@ -21,7 +21,7 @@ function Remediation-SubscriptionScope-Crud {
    $remediationName = "Remediation-SubscriptionScope-Crud"
 
    # Create a new remediation
-   $job = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus" -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20 -AsJob
+   $job = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus" -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20 -AsJob
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $remediation = $job | Receive-Job
@@ -77,7 +77,7 @@ function Remediation-SubscriptionScope-Crud {
    Assert-AreEqual $true $result
 
    # Create a new remediation
-   $remediation = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus" -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20
+   $remediation = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus" -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20
    Validate-Remediation $remediation
    Assert-AreEqual "ExistingNonCompliant" $remediation.ResourceDiscoveryMode
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
@@ -120,7 +120,7 @@ function Remediation-ResourceGroupScope-Crud {
    $resourceGroupName = Get-FirstTestResourceGroupName
 
    # Create a new remediation
-   $job = Start-AzPolicyRemediation -ResourceGroupName $resourceGroupName -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20 -AsJob
+   $job = Start-AzPolicyRemediation -ResourceGroupName $resourceGroupName -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20 -AsJob
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $remediation = $job | Receive-Job
@@ -173,7 +173,7 @@ function Remediation-ResourceGroupScope-Crud {
    Assert-AreEqual $true $result
 
    # Create a new remediation
-   $remediation = Start-AzPolicyRemediation -ResourceGroupName $resourceGroupName -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20
+   $remediation = Start-AzPolicyRemediation -ResourceGroupName $resourceGroupName -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -211,7 +211,7 @@ function Remediation-ResourceScope-Crud {
    $scope = Get-TestResourceId
 
    # Create a new remediation
-   $job = Start-AzPolicyRemediation -Scope $scope -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20 -AsJob
+   $job = Start-AzPolicyRemediation -Scope $scope -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20 -AsJob
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $remediation = $job | Receive-Job
@@ -259,7 +259,7 @@ function Remediation-ResourceScope-Crud {
    Assert-AreEqual $true $result
 
    # Create a new remediation
-   $remediation = Start-AzPolicyRemediation -Scope $scope -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20
+   $remediation = Start-AzPolicyRemediation -Scope $scope -PolicyAssignmentId $assignmentId -Name $remediationName -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -298,7 +298,7 @@ function Remediation-ManagementGroupScope-Crud {
    $managementGroupId = Get-TestManagementGroupName
 
    # Create a new remediation
-   $job = Start-AzPolicyRemediation -ManagementGroupName $managementGroupId -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus"  -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20 -AsJob
+   $job = Start-AzPolicyRemediation -ManagementGroupName $managementGroupId -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus"  -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20 -AsJob
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $remediation = $job | Receive-Job
@@ -351,7 +351,7 @@ function Remediation-ManagementGroupScope-Crud {
    Assert-AreEqual $true $result
 
    # Create a new remediation
-   $remediation = Start-AzPolicyRemediation -ManagementGroupName $managementGroupId -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus"  -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeployments 20
+   $remediation = Start-AzPolicyRemediation -ManagementGroupName $managementGroupId -PolicyAssignmentId $assignmentId -Name $remediationName -LocationFilter "westus2", "northcentralus"  -FailureThreshold 0.9 -ResourceCount 3 -ParallelDeploymentCount 20
    Validate-Remediation $remediation
    Assert-AreEqual $assignmentId $remediation.PolicyAssignmentId
    Assert-Null $remediation.PolicyDefinitionReferenceId
@@ -460,7 +460,7 @@ function Remediation-LargeRemediation {
    $assignmentId = Get-TestRemediationSubscriptionModifyPolicyAssignmentId
    $remediationName = "Remediation-LargeRemediation"
 
-   $job = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -ParallelDeployments 30 -ResourceCount 1010 -AsJob
+   $job = Start-AzPolicyRemediation -PolicyAssignmentId $assignmentId -Name $remediationName -ParallelDeploymentCount 30 -ResourceCount 1010 -AsJob
    $job | Wait-Job
    Assert-AreEqual "Completed" $job.State
    $remediation = $job | Receive-Job
