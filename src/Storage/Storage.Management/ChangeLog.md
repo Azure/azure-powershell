@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/upgrade storage account with Keyvault from another tenant and access Keyvault with FederatedClientId
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
 * Supported create storage account with DnsEndpointType
     -  `New-AzStorageAccount`
 
+## Version 4.4.0
 * Updated examples in reference documentation for `Close-AzStorageFileHandle`
 * Supported create storage context with customized blob, queue, file, table service endpoint
     - `New-AzStorageContext`
