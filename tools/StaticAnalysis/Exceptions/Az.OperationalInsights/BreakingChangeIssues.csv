@@ -1,0 +1,2 @@
+AssemblyFileName,ClassName,Target,Severity,ProblemId,Description,Remediation
+Az.OperationalInsights,UpdateAzureOperationalInsightsClusterCommand.cs,Update-AzOperationalInsightsCluster,0,2020,The parameter SkuCapacity was changed from long to nullable long to prevent a scenario which no value is passed and 0 value is being used,"The cmdlet 'Update-AzOperationalInsightsCluster' no longer supports the type 'System.Int64' for parameter 'SkuCapacity'."",""Change the type for parameter 'SkuCapacity' back to 'System.Int64'."
