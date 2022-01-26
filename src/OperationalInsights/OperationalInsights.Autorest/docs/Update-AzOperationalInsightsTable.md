@@ -39,23 +39,44 @@ Update a Log Analytics workspace table.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update table's retention 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name {TableName_CL} -RetentionInDay 40
 
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+dabenhamKuku1_CL
 ```
 
-{{ Add description here }}
+Update of custom table retention
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a default table will not work at first try 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name Heartbeat -RetentionInDay 40
 
-{{ Add output here }}
+Update-AzOperationalInsightsTable_UpdateExpanded: 'Patch' cannot be used for table creation - Heartbeat. Use 'Put' instead.
+
+PS C:\>$tempTable = New-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name Heartbeat -RetentionInDay 50 
+PS C:\>$tempTable
+Name      ResourceGroupName
+----      -----------------
+Heartbeat
+
+$tempTable.RetentionInDay
+50
+
+PS C:\>$tempTable = Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name Heartbeat -RetentionInDay 30
+PS C:\>$tempTable
+Name      ResourceGroupName
+----      -----------------
+Heartbeat
+
+$tempTable.RetentionInDay
+30
 ```
 
-{{ Add description here }}
+To update a default table for the first time, please use New-AzOperationalInsightsTable as you would use Update-AzOperationalInsightsTable. 
+After the using New-AzOperationalInsightsTable for the first time, you can use Update-AzOperationalInsightsTable normally
 
 ## PARAMETERS
 

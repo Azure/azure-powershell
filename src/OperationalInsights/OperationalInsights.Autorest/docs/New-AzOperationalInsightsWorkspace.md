@@ -27,23 +27,15 @@ Create or update a workspace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new LogAnalytics workspace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzOperationalInsightsWorkspace -ResourceGroupName {RG-name} -Name {WS-name} -Location {Resource-location}
 
-{{ Add output here }}
+Location Name                   ETag ResourceGroupName
+-------- ----                   ---- -----------------
+{Resource-location}   {WS-name}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

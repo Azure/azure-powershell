@@ -38,23 +38,28 @@ Updates a workspace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing Worksapce retrntion
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>$workspace =  Update-AzOperationalInsightsWorkspace -ResourceGroupName {RG-name} -Name {WS-name} -RetentionInDay 42
+PS C:\>$workspace
+Location Name                   ETag ResourceGroupName
+-------- ----                   ---- -----------------
+eastus   {WS-name}t
 
-{{ Add output here }}
+PS C:\> $workspace.RetentionInDay
+42
 ```
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a workspace that does not exist
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzOperationalInsightsWorkspace -ResourceGroupName {RG-name} -Name {WS-name} -RetentionInDay 42
 
-{{ Add output here }}
+Update-AzOperationalInsightsWorkspace_UpdateExpanded: The Resource 'Microsoft.OperationalInsights/workspaces/{WS-name}' under resource group '{RG-name}' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 ```
 
-{{ Add description here }}
+Please create a workspace using 'New-AzOperationalInsightsWorkspace' cmdlet before updating it
 
 ## PARAMETERS
 
