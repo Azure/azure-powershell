@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            bool? forcedelete = this.ForceDeletion.IsPresent;
+            bool? forcedelete = this.ForceDeletion.IsPresent ? true : (bool?)null;
             ExecuteClientAction(() =>
             {
                 if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
