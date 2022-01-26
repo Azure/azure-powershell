@@ -1,11 +1,11 @@
-# Examples
-This directory contains examples from the exported cmdlets of the module. When `build-module.ps1` is ran, example stub files will be generated here. If your module support Azure Profiles, the example stubs will be in individual profile folders. These example stubs should be updated to show how the cmdlet is used. The examples are imported into the documentation when `generate-help.ps1` is ran.
+# Docs
+This directory contains the documentation of the cmdlets for the `Az.OperationalInsights` module. To run documentation generation, use the `generate-help.ps1` script at the root module folder. Files in this folder will *always be overridden on regeneration*. To update documentation examples, please use the `../examples` folder.
 
 ## Info
-- Modifiable: yes
-- Generated: partial
+- Modifiable: no
+- Generated: all
 - Committed: yes
-- Packaged: no
+- Packaged: yes
 
-## Purpose
-This separates the example documentation details from the generated documentation information provided directly from the generated cmdlets. Since the cmdlets don't have examples from the REST spec, this provides a means to add examples easily. The example stubs provide the markdown format that is required. The 3 core elements are: the name of the example, the code information of the example, and the description of the example. That information, if the markdown format is followed, will be available to documentation generation and be part of the documents in the `../docs` folder.
+## Details
+The process of documentation generation loads `Az.OperationalInsights` and analyzes the exported cmdlets from the module. It recognizes the [help comments](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) that are generated into the scripts in the `../exports` folder. Additionally, when writing custom cmdlets in the `../custom` folder, you can use the help comments syntax, which decorate the exported scripts at build-time. The documentation examples are taken from the `../examples` folder.
