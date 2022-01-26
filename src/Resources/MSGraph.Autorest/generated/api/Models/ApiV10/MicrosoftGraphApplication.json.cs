@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 }
                 container.Add("keyCredentials",__h);
             }
-            AddIf( null != this._logo ? global::System.Convert.ToBase64String( this._logo) : null ,(v)=> container.Add( "logo",v) );
+            AddIf( null != this._logo ? global::System.Convert.ToBase64String( this._logo).TrimEnd(new char[] {'='}).Replace('+', '-').Replace('/', '_') : null ,(v)=> container.Add( "logo",v) );
             AddIf( null != (((object)this._note)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._note.ToString()) : null, "notes" ,container.Add );
             AddIf( null != this._oauth2RequirePostResponse ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean((bool)this._oauth2RequirePostResponse) : null, "oauth2RequirePostResponse" ,container.Add );
             if (null != this._passwordCredentials)
