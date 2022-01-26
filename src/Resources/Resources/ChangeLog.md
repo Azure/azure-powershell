@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]
+* Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]
+* Fixed `DisplayName` and `ApplicationId` for `New-AzADAppCredential` [#16764]
+* Enabled password reset for `Update-AzADUser` [#16869]
 * Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
 * Fix for https://github.com/Azure/azure-powershell/issues/15828 (Set-AzPolicyAssignment)
 
