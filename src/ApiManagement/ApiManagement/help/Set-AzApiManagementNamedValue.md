@@ -25,9 +25,9 @@ The **Set-AzApiManagementNamedValue** cmdlet modifies an Azure API Management Na
 
 ### Example 1: Change the tags on the named value
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> Set-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Tags $Tags -PassThru
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$Tags = 'sdk', 'powershell'
+Set-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Tags $Tags -PassThru
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -36,8 +36,8 @@ The command assigns the strings in $Tags as tags on the named value.
 
 ### Example 2: Modify the named value to have a secret value
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property12" -Secret $True -PassThru
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Set-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property12" -Secret $True -PassThru
 ```
 
 This command changes the named value to be Encrypted.

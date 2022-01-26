@@ -25,8 +25,8 @@ The **Remove-AzApiManagementProduct** cmdlet removes an existing API Management 
 
 ### Example 1: Remove an existing product and all subscriptions
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -DeleteSubscriptions
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -DeleteSubscriptions
 ```
 
 This command removes an existing product and all subscriptions.

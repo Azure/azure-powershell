@@ -31,17 +31,17 @@ The **Get-AzApiManagementCertificate** cmdlet gets all Azure API Management cert
 ## EXAMPLES
 
 ### Example 1: Get all certificates
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementCertificate -Context $ApiMgmtContext
 ```
 
 This command gets all API Management certificates.
 
 ### Example 2: Get a certificate by its ID
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
 ```
 
 This command gets the API Management certificate with the specified ID.
