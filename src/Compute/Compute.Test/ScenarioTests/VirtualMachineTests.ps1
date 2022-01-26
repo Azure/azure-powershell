@@ -5468,3 +5468,88 @@ function Test-VirtualMachineDiffDiskPlacement
         Clean-ResourceGroup $rgname2;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Hibernate feature.
+#>
+function Test-VirtualMachineHibernate
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New-AzVMConfig test
+        $vmname = 'vm2' + $rgname;
+        $vmsize = "Standard_B1s";
+        $domainNameLabel2 = "d2" + $rgname;
+        $computerName2 = "v2" + $rgname;
+        $identityType = "SystemAssigned";
+        $hibernationEnabled = $true;
+        $hibernationDisabled = $false;
+
+        # Creating a VM 
+        $vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize -IdentityType $identityType -HibernationEnabled;
+
+        $publisherName = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $sku = "2019-DataCenter";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nicId;
+
+        # OS & Image
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $vmconfig;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $hibernationEnabled $vm.AdditionalCapabilities.HibernationEnabled;
+
+        # Update HibernationEnabled
+        $job = Stop-AzVm -ResourceGroupName $rgname -Name $vmname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Update-AzVm -ResourceGroupName $rgname -VM $vm -HibernationEnabled:$false;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $hibernationDisabled $vm.AdditionalCapabilities.HibernationEnabled;
+        Update-AzVm -ResourceGroupName $rgname -VM $vm -HibernationEnabled:$true;
+        
+        $job = Start-AzVm -ResourceGroupName $rgname -Name $vmname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        # Stop with Hibernate
+        $job = Stop-AzVm -ResourceGroupName $rgname -Name $vmname -Hibernate -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
