@@ -23,7 +23,7 @@
 * Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]
 * Fixed `DisplayName` and `ApplicationId` for `New-AzADAppCredential` [#16764]
 * Enabled password reset for `Update-AzADUser` [#16869]
-* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753] [#16795]
 * Fix for https://github.com/Azure/azure-powershell/issues/15828 (Set-AzPolicyAssignment)
 
 ## Version 5.2.0
