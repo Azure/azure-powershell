@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.1.0
 * First preview release for module Az.DataMigration
 
+## Version 0.7.4
+* Update references in .psd1 to use relative path
+
+## Version 0.7.3
+* Fixed miscellaneous typos across module
+
+## Version 0.7.2
+* Added `New-AzDataMigrationAzureActiveDirectoryApp` cmdlet
+    - Used as input for MI online sync migration
