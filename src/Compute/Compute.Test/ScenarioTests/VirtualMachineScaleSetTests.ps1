@@ -3242,7 +3242,7 @@ function Test-RemoveVmssForceDeletion
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
         #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
         
-        Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ForceDeletion -Force
+        Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ForceDeletion $true -Force
 
     } 
     finally

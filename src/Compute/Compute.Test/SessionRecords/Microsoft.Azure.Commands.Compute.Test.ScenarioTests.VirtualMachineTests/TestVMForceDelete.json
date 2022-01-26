@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fe1209a0-e9b4-449a-ba16-013d43281636"
+          "759a2144-2970-456e-b80f-7fec3c02191c"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "967c0a61-eed4-4327-82ac-8c8aca04c63c"
+          "235492a6-057f-4bc3-9562-c73223774c73"
         ],
         "x-ms-correlation-request-id": [
-          "967c0a61-eed4-4327-82ac-8c8aca04c63c"
+          "235492a6-057f-4bc3-9562-c73223774c73"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225048Z:967c0a61-eed4-4327-82ac-8c8aca04c63c"
+          "CENTRALUS:20220126T042309Z:235492a6-057f-4bc3-9562-c73223774c73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:47 GMT"
+          "Wed, 26 Jan 2022 04:23:09 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -67,7 +67,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -87,16 +87,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-request-id": [
-          "db7fa79e-cb74-476e-b0e0-e7d1ad0de144"
+          "eda33b15-17a0-49f8-b0df-1377361b6593"
         ],
         "x-ms-correlation-request-id": [
-          "db7fa79e-cb74-476e-b0e0-e7d1ad0de144"
+          "eda33b15-17a0-49f8-b0df-1377361b6593"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225051Z:db7fa79e-cb74-476e-b0e0-e7d1ad0de144"
+          "CENTRALUS:20220126T042312Z:eda33b15-17a0-49f8-b0df-1377361b6593"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,7 +105,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:51 GMT"
+          "Wed, 26 Jan 2022 04:23:12 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -121,13 +121,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourcegroups/crptestps7526?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlZ3JvdXBzL2NycHRlc3Rwczc1MjY/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourcegroups/crptestps2689?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczI2ODk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"EastUS\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7dde7ee1-ef3a-48e3-bd75-5dae7f570066"
+          "f8ecb1b0-0f5c-41f8-9b6f-ad50f37e4791"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,13 +156,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "ff221b77-ee6e-45b2-a776-4ab2b0f73700"
+          "b53f3c31-f1f8-470d-be8e-6964c1c79b29"
         ],
         "x-ms-correlation-request-id": [
-          "ff221b77-ee6e-45b2-a776-4ab2b0f73700"
+          "b53f3c31-f1f8-470d-be8e-6964c1c79b29"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225049Z:ff221b77-ee6e-45b2-a776-4ab2b0f73700"
+          "CENTRALUS:20220126T042311Z:b53f3c31-f1f8-470d-be8e-6964c1c79b29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,7 +171,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:49 GMT"
+          "Wed, 26 Jan 2022 04:23:10 GMT"
         ],
         "Content-Length": [
           "179"
@@ -183,17 +183,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526\",\r\n  \"name\": \"crptestps7526\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689\",\r\n  \"name\": \"crptestps2689\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/images/Win2016Datacenter?api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ltYWdlcy9XaW4yMDE2RGF0YWNlbnRlcj9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/images/Win2016Datacenter?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ltYWdlcy9XaW4yMDE2RGF0YWNlbnRlcj9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -216,13 +216,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "c1a3480a-6e0d-465b-8cde-c1fa8f666427"
+          "60c44542-ca67-455d-b5c5-9b0072568965"
         ],
         "x-ms-correlation-request-id": [
-          "c1a3480a-6e0d-465b-8cde-c1fa8f666427"
+          "60c44542-ca67-455d-b5c5-9b0072568965"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225051Z:c1a3480a-6e0d-465b-8cde-c1fa8f666427"
+          "CENTRALUS:20220126T042312Z:60c44542-ca67-455d-b5c5-9b0072568965"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -231,7 +231,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:50 GMT"
+          "Wed, 26 Jan 2022 04:23:11 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -243,17 +243,17 @@
           "227"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Compute/images/Win2016Datacenter' under resource group 'crptestps7526' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Compute/images/Win2016Datacenter' under resource group 'crptestps2689' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/virtualMachines/vcrptestps7526?api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/virtualMachines/vcrptestps2689?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -276,13 +276,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8722710d-d87c-45e6-8e79-cd457423629f"
+          "8d2f1fa7-0de0-4351-8f24-2416e7780f99"
         ],
         "x-ms-correlation-request-id": [
-          "8722710d-d87c-45e6-8e79-cd457423629f"
+          "8d2f1fa7-0de0-4351-8f24-2416e7780f99"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225053Z:8722710d-d87c-45e6-8e79-cd457423629f"
+          "CENTRALUS:20220126T042313Z:8d2f1fa7-0de0-4351-8f24-2416e7780f99"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -291,7 +291,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:52 GMT"
+          "Wed, 26 Jan 2022 04:23:13 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -303,17 +303,17 @@
           "233"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Compute/virtualMachines/vcrptestps7526' under resource group 'crptestps7526' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Compute/virtualMachines/vcrptestps2689' under resource group 'crptestps2689' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/virtualMachines/vcrptestps7526?api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/virtualMachines/vcrptestps2689?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -330,32 +330,32 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/LowCostGet3Min;3998,Microsoft.Compute/LowCostGet30Min;31996"
+          "Microsoft.Compute/LowCostGet3Min;3998,Microsoft.Compute/LowCostGet30Min;31990"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bf4f5045-3249-4dca-b433-5539dd549055"
+          "eb0958b8-2954-4c8e-b942-284ac471d93e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "61e797bc-29ff-45ab-a488-cd2274ec7fed"
+          "e2bcee6e-eab4-4587-b59b-48391efe2773"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225123Z:61e797bc-29ff-45ab-a488-cd2274ec7fed"
+          "CENTRALUS:20220126T042347Z:e2bcee6e-eab4-4587-b59b-48391efe2773"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:23 GMT"
+          "Wed, 26 Jan 2022 04:23:46 GMT"
         ],
         "Content-Length": [
           "2056"
@@ -367,17 +367,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/virtualMachines/vcrptestps7526\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"azsecpack\": \"nonprod\",\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"properties\": {\r\n    \"vmId\": \"0a5a30e7-5676-4a3b-b9ec-379578c71d6d\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D2s_v3\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2016-Datacenter\",\r\n        \"version\": \"latest\",\r\n        \"exactVersion\": \"14393.4908.220116\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vcrptestps7526_disk1_dcc2d512623f43ab893731de2c60db3b\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\",\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/disks/vcrptestps7526_disk1_dcc2d512623f43ab893731de2c60db3b\"\r\n        },\r\n        \"deleteOption\": \"Detach\",\r\n        \"diskSizeGB\": 127\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vcrptestps7526\",\r\n      \"adminUsername\": \"admin01\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true,\r\n        \"patchSettings\": {\r\n          \"patchMode\": \"AutomaticByOS\",\r\n          \"assessmentMode\": \"ImageDefault\"\r\n        }\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/virtualMachines/vcrptestps2689\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"azsecpack\": \"nonprod\",\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"properties\": {\r\n    \"vmId\": \"c208c9f5-cad2-439d-84c8-1c34a5542e4e\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D2s_v3\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2016-Datacenter\",\r\n        \"version\": \"latest\",\r\n        \"exactVersion\": \"14393.4908.220116\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"vcrptestps2689_disk1_42ddd8fa950a42e3bd0555e36d769417\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\",\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/disks/vcrptestps2689_disk1_42ddd8fa950a42e3bd0555e36d769417\"\r\n        },\r\n        \"deleteOption\": \"Detach\",\r\n        \"diskSizeGB\": 127\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vcrptestps2689\",\r\n      \"adminUsername\": \"admin01\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true,\r\n        \"patchSettings\": {\r\n          \"patchMode\": \"AutomaticByOS\",\r\n          \"assessmentMode\": \"ImageDefault\"\r\n        }\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourcegroups/crptestps7526?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlZ3JvdXBzL2NycHRlc3Rwczc1MjY/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourcegroups/crptestps2689?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczI2ODk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -400,13 +400,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "7720fb61-7864-4013-a04b-91278cbaed09"
+          "72b80817-b696-4dd4-8505-c18263f36e2c"
         ],
         "x-ms-correlation-request-id": [
-          "7720fb61-7864-4013-a04b-91278cbaed09"
+          "72b80817-b696-4dd4-8505-c18263f36e2c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225053Z:7720fb61-7864-4013-a04b-91278cbaed09"
+          "CENTRALUS:20220126T042313Z:72b80817-b696-4dd4-8505-c18263f36e2c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -415,7 +415,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:53 GMT"
+          "Wed, 26 Jan 2022 04:23:13 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -427,17 +427,17 @@
           "179"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526\",\r\n  \"name\": \"crptestps7526\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689\",\r\n  \"name\": \"crptestps2689\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL3ZjcnB0ZXN0cHM3NTI2P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL3ZjcnB0ZXN0cHMyNjg5P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -460,13 +460,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "4e580aef-3fca-46ca-9dbd-d15a7eeeff2e"
+          "b55ec0ac-c404-4f2a-acff-c7c683e2a9fd"
         ],
         "x-ms-correlation-request-id": [
-          "4e580aef-3fca-46ca-9dbd-d15a7eeeff2e"
+          "b55ec0ac-c404-4f2a-acff-c7c683e2a9fd"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225053Z:4e580aef-3fca-46ca-9dbd-d15a7eeeff2e"
+          "CENTRALUS:20220126T042313Z:b55ec0ac-c404-4f2a-acff-c7c683e2a9fd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -475,7 +475,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:53 GMT"
+          "Wed, 26 Jan 2022 04:23:13 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -487,17 +487,17 @@
           "235"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/networkInterfaces/vcrptestps7526' under resource group 'crptestps7526' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/networkInterfaces/vcrptestps2689' under resource group 'crptestps2689' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL3ZjcnB0ZXN0cHM3NTI2P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL3ZjcnB0ZXN0cHMyNjg5P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -514,16 +514,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"f693d0cb-c55c-49b8-a09e-459fb3e6adb8\""
+          "W/\"22e740f2-194b-4b5d-8b7c-2a9a3f7c0301\""
         ],
         "x-ms-request-id": [
-          "a6290994-f0f1-4979-9570-5f61910d0643"
+          "d8e59813-c697-4542-adf2-5c3889d6c598"
         ],
         "x-ms-correlation-request-id": [
-          "f8dfdd72-6a54-4188-876f-9889bfd5ab4c"
+          "12e7dd79-8237-48fd-a9ff-e07e09c785a6"
         ],
         "x-ms-arm-service-request-id": [
-          "b3a3c4a3-64aa-4578-afee-8ffc795398a1"
+          "afa2de05-d2e1-4903-a794-3a3dae05af96"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -536,13 +536,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225101Z:f8dfdd72-6a54-4188-876f-9889bfd5ab4c"
+          "CENTRALUS:20220126T042321Z:12e7dd79-8237-48fd-a9ff-e07e09c785a6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:01 GMT"
+          "Wed, 26 Jan 2022 04:23:21 GMT"
         ],
         "Content-Length": [
           "1908"
@@ -554,17 +554,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526\",\r\n  \"etag\": \"W/\\\"f693d0cb-c55c-49b8-a09e-459fb3e6adb8\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"d1604f53-a355-431c-933a-0f41ca4abba8\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"vcrptestps7526\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526/ipConfigurations/vcrptestps7526\",\r\n        \"etag\": \"W/\\\"f693d0cb-c55c-49b8-a09e-459fb3e6adb8\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"192.168.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526/subnets/vcrptestps7526\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"3cbauidinyoulh5otoxtoqv0md.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"vnetEncryptionSupported\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526\"\r\n    },\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": [],\r\n    \"nicType\": \"Standard\"\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689\",\r\n  \"etag\": \"W/\\\"22e740f2-194b-4b5d-8b7c-2a9a3f7c0301\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c81e8e88-710f-45ee-bfab-e71260725270\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"vcrptestps2689\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689/ipConfigurations/vcrptestps2689\",\r\n        \"etag\": \"W/\\\"22e740f2-194b-4b5d-8b7c-2a9a3f7c0301\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"192.168.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689/subnets/vcrptestps2689\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"ug2xcxy4bqyufhqkovl3mba5fe.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"vnetEncryptionSupported\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689\"\r\n    },\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": [],\r\n    \"nicType\": \"Standard\"\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -587,13 +587,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "c51c6448-18e8-4eb5-9cec-1a7030087fda"
+          "9adac610-c5b4-4949-84d4-fabd3b9604ca"
         ],
         "x-ms-correlation-request-id": [
-          "c51c6448-18e8-4eb5-9cec-1a7030087fda"
+          "9adac610-c5b4-4949-84d4-fabd3b9604ca"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225054Z:c51c6448-18e8-4eb5-9cec-1a7030087fda"
+          "CENTRALUS:20220126T042314Z:9adac610-c5b4-4949-84d4-fabd3b9604ca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -602,134 +602,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:53 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "233"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/virtualNetworks/vcrptestps7526' under resource group 'crptestps7526' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000.",
-          "Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.NetworkManagementClient/4.22.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"2ca6616a-b870-4bcf-a20b-c05806b2dbc7\""
-        ],
-        "x-ms-request-id": [
-          "64ddaa1e-fe2e-4548-936a-b0bbc30361e2"
-        ],
-        "x-ms-correlation-request-id": [
-          "e9adc83d-d20d-48f2-aa91-e3a67830fcca"
-        ],
-        "x-ms-arm-service-request-id": [
-          "33f0ae61-e6c5-4c31-8e32-f83513101099"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225059Z:e9adc83d-d20d-48f2-aa91-e3a67830fcca"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 24 Jan 2022 22:50:59 GMT"
-        ],
-        "Content-Length": [
-          "1259"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526\",\r\n  \"etag\": \"W/\\\"2ca6616a-b870-4bcf-a20b-c05806b2dbc7\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"200a82e8-6e68-451d-9fee-9baf3742ba63\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"vcrptestps7526\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526/subnets/vcrptestps7526\",\r\n        \"etag\": \"W/\\\"2ca6616a-b870-4bcf-a20b-c05806b2dbc7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000.",
-          "Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.NetworkManagementClient/4.22.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "87081d08-4775-43cb-acdb-503deab146b8"
-        ],
-        "x-ms-correlation-request-id": [
-          "87081d08-4775-43cb-acdb-503deab146b8"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225054Z:87081d08-4775-43cb-acdb-503deab146b8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 24 Jan 2022 22:50:53 GMT"
+          "Wed, 26 Jan 2022 04:23:13 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -741,17 +614,17 @@
           "239"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/networkSecurityGroups/vcrptestps7526' under resource group 'crptestps7526' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/networkSecurityGroups/vcrptestps2689' under resource group 'crptestps2689' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -768,16 +641,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"729d7892-6d21-41d3-a63b-006f2e80ed4d\""
+          "W/\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\""
         ],
         "x-ms-request-id": [
-          "b6a60a3d-aeab-4257-a645-fc50e0e3c964"
+          "3c4f8616-f4c3-45cd-b654-00f63a53bf96"
         ],
         "x-ms-correlation-request-id": [
-          "3c1c91ca-6435-4f6e-8280-2338b7e30a2c"
+          "c8c05674-3fc0-4731-b349-9af0bab8cf08"
         ],
         "x-ms-arm-service-request-id": [
-          "eb93e00d-0a42-4aca-bddf-72ee026947bd"
+          "15edb48f-9773-405f-ac5f-83ae57f5b1d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -790,13 +663,13 @@
           "11998"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225059Z:3c1c91ca-6435-4f6e-8280-2338b7e30a2c"
+          "CENTRALUS:20220126T042319Z:c8c05674-3fc0-4731-b349-9af0bab8cf08"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:59 GMT"
+          "Wed, 26 Jan 2022 04:23:18 GMT"
         ],
         "Content-Length": [
           "8417"
@@ -808,17 +681,144 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526\",\r\n  \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n  \"type\": \"Microsoft.Network/networkSecurityGroups\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"ecddd990-f3ef-4fad-96f8-cb12c15410d8\",\r\n    \"securityRules\": [\r\n      {\r\n        \"name\": \"vcrptestps75263389\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/securityRules/vcrptestps75263389\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"3389\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"vcrptestps75265985\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/securityRules/vcrptestps75265985\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"5985\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ],\r\n    \"defaultSecurityRules\": [\r\n      {\r\n        \"name\": \"AllowVnetInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowVnetInBound\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow inbound traffic from all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowAzureLoadBalancerInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowAzureLoadBalancerInBound\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow inbound traffic from azure load balancer\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"AzureLoadBalancer\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/DenyAllInBound\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Deny all inbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowVnetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowVnetOutBound\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow outbound traffic from all VMs to all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowInternetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowInternetOutBound\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow outbound traffic from all VMs to Internet\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"Internet\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/DenyAllOutBound\",\r\n        \"etag\": \"W/\\\"729d7892-6d21-41d3-a63b-006f2e80ed4d\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Deny all outbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689\",\r\n  \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n  \"type\": \"Microsoft.Network/networkSecurityGroups\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"3d2ae8f2-4d78-4302-af32-42c40a027422\",\r\n    \"securityRules\": [\r\n      {\r\n        \"name\": \"vcrptestps26893389\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/securityRules/vcrptestps26893389\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"3389\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"vcrptestps26895985\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/securityRules/vcrptestps26895985\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"5985\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ],\r\n    \"defaultSecurityRules\": [\r\n      {\r\n        \"name\": \"AllowVnetInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowVnetInBound\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow inbound traffic from all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowAzureLoadBalancerInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowAzureLoadBalancerInBound\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow inbound traffic from azure load balancer\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"AzureLoadBalancer\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/DenyAllInBound\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Deny all inbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowVnetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowVnetOutBound\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow outbound traffic from all VMs to all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowInternetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowInternetOutBound\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Allow outbound traffic from all VMs to Internet\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"Internet\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/DenyAllOutBound\",\r\n        \"etag\": \"W/\\\"5795eae9-b1a1-48eb-8c95-9b97694eee4b\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"description\": \"Deny all outbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"192.168.1.0/24\"\r\n        },\r\n        \"name\": \"vcrptestps7526\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.NetworkManagementClient/4.22.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "50c98ddf-944c-4cc0-8889-1a5e796e4fc8"
+        ],
+        "x-ms-correlation-request-id": [
+          "50c98ddf-944c-4cc0-8889-1a5e796e4fc8"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042314Z:50c98ddf-944c-4cc0-8889-1a5e796e4fc8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:23:14 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "233"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/virtualNetworks/vcrptestps2689' under resource group 'crptestps2689' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.NetworkManagementClient/4.22.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"57ea748f-3dae-4c5a-a269-d08a2c4cf792\""
+        ],
+        "x-ms-request-id": [
+          "f04a6280-3929-4fbc-a46b-68dd041a6a82"
+        ],
+        "x-ms-correlation-request-id": [
+          "a093c8e1-cfa8-43cf-bebf-31cb57cb0aa9"
+        ],
+        "x-ms-arm-service-request-id": [
+          "817f53e1-7b2b-4083-a18a-641e64e1a267"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042319Z:a093c8e1-cfa8-43cf-bebf-31cb57cb0aa9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:23:18 GMT"
+        ],
+        "Content-Length": [
+          "1259"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689\",\r\n  \"etag\": \"W/\\\"57ea748f-3dae-4c5a-a269-d08a2c4cf792\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5f71b9a1-0c1e-4231-9e0a-7557d6041f2c\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"vcrptestps2689\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689/subnets/vcrptestps2689\",\r\n        \"etag\": \"W/\\\"57ea748f-3dae-4c5a-a269-d08a2c4cf792\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"192.168.1.0/24\"\r\n        },\r\n        \"name\": \"vcrptestps2689\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -847,19 +847,19 @@
           "3"
         ],
         "x-ms-request-id": [
-          "0c536ad3-59ef-436d-9f1f-d2f10864d7f4"
+          "c8e9ac45-1171-4022-b451-9db15f914dba"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/0c536ad3-59ef-436d-9f1f-d2f10864d7f4?api-version=2020-11-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/c8e9ac45-1171-4022-b451-9db15f914dba?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
-          "49bc057b-79b2-4989-a1cb-5940406e4b1f"
+          "d04c7a81-a0f4-4bff-b51b-da2d826e872c"
         ],
         "Azure-AsyncNotification": [
           "Enabled"
         ],
         "x-ms-arm-service-request-id": [
-          "e0a8f9b2-e547-40a4-828b-78c73466962e"
+          "7b749dd4-0132-4925-b41b-7c2b2f15e289"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -872,13 +872,13 @@
           "1199"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225056Z:49bc057b-79b2-4989-a1cb-5940406e4b1f"
+          "CENTRALUS:20220126T042316Z:d04c7a81-a0f4-4bff-b51b-da2d826e872c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:55 GMT"
+          "Wed, 26 Jan 2022 04:23:15 GMT"
         ],
         "Content-Length": [
           "1257"
@@ -890,17 +890,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526\",\r\n  \"etag\": \"W/\\\"deea084a-4da5-419a-9c79-c584f652e3ff\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"200a82e8-6e68-451d-9fee-9baf3742ba63\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"vcrptestps7526\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526/subnets/vcrptestps7526\",\r\n        \"etag\": \"W/\\\"deea084a-4da5-419a-9c79-c584f652e3ff\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689\",\r\n  \"etag\": \"W/\\\"bd0927d8-c40e-4d46-b9b8-f50f7a61b56f\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"5f71b9a1-0c1e-4231-9e0a-7557d6041f2c\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"192.168.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"vcrptestps2689\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689/subnets/vcrptestps2689\",\r\n        \"etag\": \"W/\\\"bd0927d8-c40e-4d46-b9b8-f50f7a61b56f\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIwLTExLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"securityRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"3389\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1000,\r\n          \"direction\": \"Inbound\"\r\n        },\r\n        \"name\": \"vcrptestps75263389\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"5985\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1001,\r\n          \"direction\": \"Inbound\"\r\n        },\r\n        \"name\": \"vcrptestps75265985\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"securityRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"3389\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1000,\r\n          \"direction\": \"Inbound\"\r\n        },\r\n        \"name\": \"vcrptestps26893389\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"5985\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1001,\r\n          \"direction\": \"Inbound\"\r\n        },\r\n        \"name\": \"vcrptestps26895985\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -929,19 +929,19 @@
           "3"
         ],
         "x-ms-request-id": [
-          "52edc716-00e9-4fcf-ac39-cc2ca8da2f4d"
+          "ded51bd8-b93d-495d-8b03-e2323fdcdbc5"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/52edc716-00e9-4fcf-ac39-cc2ca8da2f4d?api-version=2020-11-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/ded51bd8-b93d-495d-8b03-e2323fdcdbc5?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
-          "0e5793ef-197e-4676-ab09-4bcdb826cb7d"
+          "52593d07-1102-4711-bbbf-2878278d01ec"
         ],
         "Azure-AsyncNotification": [
           "Enabled"
         ],
         "x-ms-arm-service-request-id": [
-          "254c93e4-0405-48a4-be70-8d15536c4d1b"
+          "31ae3d01-b63a-4d9e-b455-0fb8b2de7c5d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -954,13 +954,13 @@
           "1199"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225056Z:0e5793ef-197e-4676-ab09-4bcdb826cb7d"
+          "CENTRALUS:20220126T042316Z:52593d07-1102-4711-bbbf-2878278d01ec"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:56 GMT"
+          "Wed, 26 Jan 2022 04:23:15 GMT"
         ],
         "Content-Length": [
           "8408"
@@ -972,17 +972,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526\",\r\n  \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n  \"type\": \"Microsoft.Network/networkSecurityGroups\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"ecddd990-f3ef-4fad-96f8-cb12c15410d8\",\r\n    \"securityRules\": [\r\n      {\r\n        \"name\": \"vcrptestps75263389\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/securityRules/vcrptestps75263389\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"3389\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"vcrptestps75265985\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/securityRules/vcrptestps75265985\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"5985\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ],\r\n    \"defaultSecurityRules\": [\r\n      {\r\n        \"name\": \"AllowVnetInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowVnetInBound\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow inbound traffic from all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowAzureLoadBalancerInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowAzureLoadBalancerInBound\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow inbound traffic from azure load balancer\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"AzureLoadBalancer\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/DenyAllInBound\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Deny all inbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowVnetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowVnetOutBound\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow outbound traffic from all VMs to all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowInternetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/AllowInternetOutBound\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow outbound traffic from all VMs to Internet\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"Internet\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526/defaultSecurityRules/DenyAllOutBound\",\r\n        \"etag\": \"W/\\\"7ca88076-d022-400d-88e5-ef58a3a59065\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Deny all outbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689\",\r\n  \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n  \"type\": \"Microsoft.Network/networkSecurityGroups\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"3d2ae8f2-4d78-4302-af32-42c40a027422\",\r\n    \"securityRules\": [\r\n      {\r\n        \"name\": \"vcrptestps26893389\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/securityRules/vcrptestps26893389\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"3389\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"vcrptestps26895985\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/securityRules/vcrptestps26895985\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/securityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"protocol\": \"Tcp\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"5985\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 1001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ],\r\n    \"defaultSecurityRules\": [\r\n      {\r\n        \"name\": \"AllowVnetInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowVnetInBound\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow inbound traffic from all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowAzureLoadBalancerInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowAzureLoadBalancerInBound\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow inbound traffic from azure load balancer\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"AzureLoadBalancer\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllInBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/DenyAllInBound\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Deny all inbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Inbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowVnetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowVnetOutBound\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow outbound traffic from all VMs to all VMs in VNET\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"VirtualNetwork\",\r\n          \"destinationAddressPrefix\": \"VirtualNetwork\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65000,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"AllowInternetOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/AllowInternetOutBound\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Allow outbound traffic from all VMs to Internet\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"Internet\",\r\n          \"access\": \"Allow\",\r\n          \"priority\": 65001,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"DenyAllOutBound\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689/defaultSecurityRules/DenyAllOutBound\",\r\n        \"etag\": \"W/\\\"6de88645-fc45-49c0-9481-faaeabad12ce\\\"\",\r\n        \"type\": \"Microsoft.Network/networkSecurityGroups/defaultSecurityRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"description\": \"Deny all outbound traffic\",\r\n          \"protocol\": \"*\",\r\n          \"sourcePortRange\": \"*\",\r\n          \"destinationPortRange\": \"*\",\r\n          \"sourceAddressPrefix\": \"*\",\r\n          \"destinationAddressPrefix\": \"*\",\r\n          \"access\": \"Deny\",\r\n          \"priority\": 65500,\r\n          \"direction\": \"Outbound\",\r\n          \"sourcePortRanges\": [],\r\n          \"destinationPortRanges\": [],\r\n          \"sourceAddressPrefixes\": [],\r\n          \"destinationAddressPrefixes\": []\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/0c536ad3-59ef-436d-9f1f-d2f10864d7f4?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvMGM1MzZhZDMtNTllZi00MzZkLTlmMWYtZDJmMTA4NjRkN2Y0P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/ded51bd8-b93d-495d-8b03-e2323fdcdbc5?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvZGVkNTFiZDgtYjkzZC00OTVkLThiMDMtZTIzMjNmZGNkYmM1P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -999,13 +999,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cedcf5e2-a8f2-4911-9091-5c98fc07c846"
+          "ab6c9a0f-ea59-4f93-b43c-259e8fe7908d"
         ],
         "x-ms-correlation-request-id": [
-          "cc4e605d-0f88-44cb-916c-42bd79119757"
+          "f4a17cc3-342d-4673-8c28-a649e4a58e18"
         ],
         "x-ms-arm-service-request-id": [
-          "16e107df-d7e4-48c2-8794-04a90f49f4c7"
+          "5b1cf2b1-55c1-4350-9351-24bcf1f43ce0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1018,13 +1018,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225059Z:cc4e605d-0f88-44cb-916c-42bd79119757"
+          "CENTRALUS:20220126T042319Z:f4a17cc3-342d-4673-8c28-a649e4a58e18"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:59 GMT"
+          "Wed, 26 Jan 2022 04:23:18 GMT"
         ],
         "Content-Length": [
           "29"
@@ -1040,13 +1040,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/52edc716-00e9-4fcf-ac39-cc2ca8da2f4d?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNTJlZGM3MTYtMDBlOS00ZmNmLWFjMzktY2MyY2E4ZGEyZjRkP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/c8e9ac45-1171-4022-b451-9db15f914dba?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYzhlOWFjNDUtMTE3MS00MDIyLWI0NTEtOWRiMTVmOTE0ZGJhP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -1063,13 +1063,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a9c3f1a2-6478-4b35-b266-6dcb6cf6cc65"
+          "2047f38c-5fae-48cc-b0b3-bdcc7da35110"
         ],
         "x-ms-correlation-request-id": [
-          "44c4e494-e26b-4619-a8ba-cb10b99239cc"
+          "8144e1ce-607b-4aa5-852e-aa43f4614c87"
         ],
         "x-ms-arm-service-request-id": [
-          "5f099ea2-a914-41a0-9a15-0ddda68785be"
+          "cf1c7ae9-5a5a-4479-b6a3-343831f73356"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1082,13 +1082,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225059Z:44c4e494-e26b-4619-a8ba-cb10b99239cc"
+          "CENTRALUS:20220126T042319Z:8144e1ce-607b-4aa5-852e-aa43f4614c87"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:50:59 GMT"
+          "Wed, 26 Jan 2022 04:23:18 GMT"
         ],
         "Content-Length": [
           "29"
@@ -1104,13 +1104,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526?api-version=2020-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL3ZjcnB0ZXN0cHM3NTI2P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689?api-version=2020-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtJbnRlcmZhY2VzL3ZjcnB0ZXN0cHMyNjg5P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526\"\r\n    },\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526/subnets/vcrptestps7526\"\r\n          }\r\n        },\r\n        \"name\": \"vcrptestps7526\"\r\n      }\r\n    ],\r\n    \"enableAcceleratedNetworking\": false\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689\"\r\n    },\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689/subnets/vcrptestps2689\"\r\n          }\r\n        },\r\n        \"name\": \"vcrptestps2689\"\r\n      }\r\n    ],\r\n    \"enableAcceleratedNetworking\": false\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -1136,19 +1136,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e017a744-02d7-4479-a14c-5009c3b2d5e9"
+          "efe64afd-8762-4062-9c2c-a60740f36405"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/e017a744-02d7-4479-a14c-5009c3b2d5e9?api-version=2020-11-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Network/locations/eastus/operations/efe64afd-8762-4062-9c2c-a60740f36405?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
-          "e7196a80-8748-437f-88d5-f15a62c8d803"
+          "834fe611-d628-4ebf-8780-8dd33ddd80ba"
         ],
         "Azure-AsyncNotification": [
           "Enabled"
         ],
         "x-ms-arm-service-request-id": [
-          "0ab9f569-18fe-4906-a616-40da68149ea0"
+          "163395b7-66d6-49f6-9e4e-c79f9941d9ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1161,13 +1161,13 @@
           "1199"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225101Z:e7196a80-8748-437f-88d5-f15a62c8d803"
+          "CENTRALUS:20220126T042321Z:834fe611-d628-4ebf-8780-8dd33ddd80ba"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:01 GMT"
+          "Wed, 26 Jan 2022 04:23:21 GMT"
         ],
         "Content-Length": [
           "1908"
@@ -1179,17 +1179,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526\",\r\n  \"etag\": \"W/\\\"f693d0cb-c55c-49b8-a09e-459fb3e6adb8\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"d1604f53-a355-431c-933a-0f41ca4abba8\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"vcrptestps7526\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526/ipConfigurations/vcrptestps7526\",\r\n        \"etag\": \"W/\\\"f693d0cb-c55c-49b8-a09e-459fb3e6adb8\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"192.168.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/virtualNetworks/vcrptestps7526/subnets/vcrptestps7526\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"3cbauidinyoulh5otoxtoqv0md.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"vnetEncryptionSupported\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkSecurityGroups/vcrptestps7526\"\r\n    },\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": [],\r\n    \"nicType\": \"Standard\"\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689\",\r\n  \"etag\": \"W/\\\"22e740f2-194b-4b5d-8b7c-2a9a3f7c0301\\\"\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c81e8e88-710f-45ee-bfab-e71260725270\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"vcrptestps2689\",\r\n        \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689/ipConfigurations/vcrptestps2689\",\r\n        \"etag\": \"W/\\\"22e740f2-194b-4b5d-8b7c-2a9a3f7c0301\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"192.168.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/virtualNetworks/vcrptestps2689/subnets/vcrptestps2689\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"ug2xcxy4bqyufhqkovl3mba5fe.bx.internal.cloudapp.net\"\r\n    },\r\n    \"enableAcceleratedNetworking\": false,\r\n    \"vnetEncryptionSupported\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkSecurityGroups/vcrptestps2689\"\r\n    },\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": [],\r\n    \"nicType\": \"Standard\"\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/virtualMachines/vcrptestps7526?api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzNzUyNj9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/virtualMachines/vcrptestps2689?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzMjY4OT9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D2s_v3\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2016-Datacenter\",\r\n        \"version\": \"latest\"\r\n      }\r\n    },\r\n    \"additionalCapabilities\": {},\r\n    \"osProfile\": {\r\n      \"computerName\": \"vcrptestps7526\",\r\n      \"adminUsername\": \"admin01\",\r\n      \"adminPassword\": \"ps6206_196Ab!@\",\r\n      \"windowsConfiguration\": {}\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D2s_v3\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2016-Datacenter\",\r\n        \"version\": \"latest\"\r\n      }\r\n    },\r\n    \"additionalCapabilities\": {},\r\n    \"osProfile\": {\r\n      \"computerName\": \"vcrptestps2689\",\r\n      \"adminUsername\": \"admin01\",\r\n      \"adminPassword\": \"ps5328_196Ab!@\",\r\n      \"windowsConfiguration\": {}\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -1218,7 +1218,7 @@
           "10"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/c38c73e7-fe55-4f16-bbac-ec57b715af94?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/73c17bf3-856c-497a-90f8-ce98294c6f41?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01"
         ],
         "Azure-AsyncNotification": [
           "Enabled"
@@ -1230,7 +1230,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c38c73e7-fe55-4f16-bbac-ec57b715af94"
+          "73c17bf3-856c-497a-90f8-ce98294c6f41"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -1240,16 +1240,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "a3b74a5b-459c-4ff7-8ba6-f383613e4656"
+          "48948ed7-0c8b-404d-bfe7-bb9efca03634"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225104Z:a3b74a5b-459c-4ff7-8ba6-f383613e4656"
+          "CENTRALUS:20220126T042324Z:48948ed7-0c8b-404d-bfe7-bb9efca03634"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:04 GMT"
+          "Wed, 26 Jan 2022 04:23:23 GMT"
         ],
         "Content-Length": [
           "1792"
@@ -1261,17 +1261,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"vcrptestps7526\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/virtualMachines/vcrptestps7526\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"azsecpack\": \"nonprod\",\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"properties\": {\r\n    \"vmId\": \"0a5a30e7-5676-4a3b-b9ec-379578c71d6d\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D2s_v3\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2016-Datacenter\",\r\n        \"version\": \"latest\",\r\n        \"exactVersion\": \"14393.4908.220116\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\"\r\n        },\r\n        \"deleteOption\": \"Detach\",\r\n        \"diskSizeGB\": 127\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vcrptestps7526\",\r\n      \"adminUsername\": \"admin01\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true,\r\n        \"patchSettings\": {\r\n          \"patchMode\": \"AutomaticByOS\",\r\n          \"assessmentMode\": \"ImageDefault\"\r\n        }\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Network/networkInterfaces/vcrptestps7526\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"vcrptestps2689\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/virtualMachines/vcrptestps2689\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"azsecpack\": \"nonprod\",\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"properties\": {\r\n    \"vmId\": \"c208c9f5-cad2-439d-84c8-1c34a5542e4e\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_D2s_v3\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"MicrosoftWindowsServer\",\r\n        \"offer\": \"WindowsServer\",\r\n        \"sku\": \"2016-Datacenter\",\r\n        \"version\": \"latest\",\r\n        \"exactVersion\": \"14393.4908.220116\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\"\r\n        },\r\n        \"deleteOption\": \"Detach\",\r\n        \"diskSizeGB\": 127\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"vcrptestps2689\",\r\n      \"adminUsername\": \"admin01\",\r\n      \"windowsConfiguration\": {\r\n        \"provisionVMAgent\": true,\r\n        \"enableAutomaticUpdates\": true,\r\n        \"patchSettings\": {\r\n          \"patchMode\": \"AutomaticByOS\",\r\n          \"assessmentMode\": \"ImageDefault\"\r\n        }\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Network/networkInterfaces/vcrptestps2689\"\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/c38c73e7-fe55-4f16-bbac-ec57b715af94?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYzM4YzczZTctZmU1NS00ZjE2LWJiYWMtZWM1N2I3MTVhZjk0P3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/73c17bf3-856c-497a-90f8-ce98294c6f41?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNzNjMTdiZjMtODU2Yy00OTdhLTkwZjgtY2U5ODI5NGM2ZjQxP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -1291,13 +1291,13 @@
           "4"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14999,Microsoft.Compute/GetOperation30Min;29999"
+          "Microsoft.Compute/GetOperation3Min;14999,Microsoft.Compute/GetOperation30Min;29991"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4ecd28d4-de6b-45ca-8630-4b6f6e22f847"
+          "a766c726-23d3-4025-8c72-e78dd0888370"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -1307,290 +1307,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "aef0e47b-cf5f-4667-b324-678d80772f5b"
+          "404c577b-c836-401a-a47c-dbb3f986ef75"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225115Z:aef0e47b-cf5f-4667-b324-678d80772f5b"
+          "CENTRALUS:20220126T042334Z:404c577b-c836-401a-a47c-dbb3f986ef75"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:14 GMT"
-        ],
-        "Content-Length": [
-          "132"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-24T17:51:03.88546-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c38c73e7-fe55-4f16-bbac-ec57b715af94\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/c38c73e7-fe55-4f16-bbac-ec57b715af94?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYzM4YzczZTctZmU1NS00ZjE2LWJiYWMtZWM1N2I3MTVhZjk0P3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000.",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "4"
-        ],
-        "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14998,Microsoft.Compute/GetOperation30Min;29998"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "ef35c6bf-21b7-43db-b5f9-d2d192b8f729"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "7347ee96-d650-4c72-ab63-ab58b8807a30"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225119Z:7347ee96-d650-4c72-ab63-ab58b8807a30"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 24 Jan 2022 22:51:19 GMT"
-        ],
-        "Content-Length": [
-          "132"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-24T17:51:03.88546-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c38c73e7-fe55-4f16-bbac-ec57b715af94\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/c38c73e7-fe55-4f16-bbac-ec57b715af94?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYzM4YzczZTctZmU1NS00ZjE2LWJiYWMtZWM1N2I3MTVhZjk0P3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2fed0044-da6c-42ec-ac4f-4695f6cf9c27"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000.",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14997,Microsoft.Compute/GetOperation30Min;29997"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "b04214e6-b208-4df2-b079-7d686d73571a"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "37731e53-ae84-4f7a-8d85-743e70ec4ef5"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225123Z:37731e53-ae84-4f7a-8d85-743e70ec4ef5"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 24 Jan 2022 22:51:23 GMT"
-        ],
-        "Content-Length": [
-          "182"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-24T17:51:03.88546-05:00\",\r\n  \"endTime\": \"2022-01-24T17:51:22.6197654-05:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"c38c73e7-fe55-4f16-bbac-ec57b715af94\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps7526/providers/Microsoft.Compute/virtualMachines/vcrptestps7526?forceDeletion=true&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3Rwczc1MjYvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzNzUyNj9mb3JjZURlbGV0aW9uPXRydWUmYXBpLXZlcnNpb249MjAyMS0wNy0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0b62704c-3efe-42c1-b894-2264484d03ac"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000.",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/3dbbdd3c-ca72-4f55-b461-d19d618fac47?p=4bed644a-a596-4634-b1fa-8009f92f8b59&monitor=true&api-version=2021-07-01"
-        ],
-        "Retry-After": [
-          "10"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/3dbbdd3c-ca72-4f55-b461-d19d618fac47?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01"
-        ],
-        "Azure-AsyncNotification": [
-          "Enabled"
-        ],
-        "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/DeleteVM3Min;239,Microsoft.Compute/DeleteVM30Min;1199"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "3dbbdd3c-ca72-4f55-b461-d19d618fac47"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-correlation-request-id": [
-          "a8a853cd-07e3-44cc-b1f5-1fb24e5f5ca9"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20220124T225126Z:a8a853cd-07e3-44cc-b1f5-1fb24e5f5ca9"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 24 Jan 2022 22:51:25 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/3dbbdd3c-ca72-4f55-b461-d19d618fac47?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvM2RiYmRkM2MtY2E3Mi00ZjU1LWI0NjEtZDE5ZDYxOGZhYzQ3P3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0b62704c-3efe-42c1-b894-2264484d03ac"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000.",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "10"
-        ],
-        "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14996,Microsoft.Compute/GetOperation30Min;29996"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "ca165dba-8382-4598-9b05-26098440be4e"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "77cd0308-9bd5-4c31-a54c-3d8e0e7fbfcd"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20220124T225136Z:77cd0308-9bd5-4c31-a54c-3d8e0e7fbfcd"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 24 Jan 2022 22:51:35 GMT"
+          "Wed, 26 Jan 2022 04:23:34 GMT"
         ],
         "Content-Length": [
           "134"
@@ -1602,17 +1328,151 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-24T17:51:26.2603523-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"3dbbdd3c-ca72-4f55-b461-d19d618fac47\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:23.3764287-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"73c17bf3-856c-497a-90f8-ce98294c6f41\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/3dbbdd3c-ca72-4f55-b461-d19d618fac47?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvM2RiYmRkM2MtY2E3Mi00ZjU1LWI0NjEtZDE5ZDYxOGZhYzQ3P3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/73c17bf3-856c-497a-90f8-ce98294c6f41?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNzNjMTdiZjMtODU2Yy00OTdhLTkwZjgtY2U5ODI5NGM2ZjQxP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0b62704c-3efe-42c1-b894-2264484d03ac"
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "4"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14998,Microsoft.Compute/GetOperation30Min;29990"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ee8fea57-7868-4aad-ae92-c7285fe8485c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "c25d3475-e702-4ef7-8a37-bda251c3747b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042338Z:c25d3475-e702-4ef7-8a37-bda251c3747b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:23:38 GMT"
+        ],
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:23.3764287-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"73c17bf3-856c-497a-90f8-ce98294c6f41\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/73c17bf3-856c-497a-90f8-ce98294c6f41?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNzNjMTdiZjMtODU2Yy00OTdhLTkwZjgtY2U5ODI5NGM2ZjQxP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "4"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14997,Microsoft.Compute/GetOperation30Min;29989"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "466e935d-3f65-46ce-ac6f-54998b2fd15d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ba458bb-456a-43e6-8112-240994ff8fbe"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042342Z:5ba458bb-456a-43e6-8112-240994ff8fbe"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:23:42 GMT"
+        ],
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:23.3764287-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"73c17bf3-856c-497a-90f8-ce98294c6f41\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/73c17bf3-856c-497a-90f8-ce98294c6f41?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNzNjMTdiZjMtODU2Yy00OTdhLTkwZjgtY2U5ODI5NGM2ZjQxP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5c5d5d5f-70bc-461a-a002-553baf76a4e5"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -1629,32 +1489,32 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14995,Microsoft.Compute/GetOperation30Min;29995"
+          "Microsoft.Compute/GetOperation3Min;14996,Microsoft.Compute/GetOperation30Min;29988"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0bbd836c-940d-46b8-a11f-774e7fa14158"
+          "12ba0d8a-bbc1-406d-a081-f6a41cab2321"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "cb53d6b5-373c-4abb-9186-45e843541364"
+          "f07a1599-1ff2-44fa-a8d7-c4b175f4acd3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20220124T225146Z:cb53d6b5-373c-4abb-9186-45e843541364"
+          "CENTRALUS:20220126T042347Z:f07a1599-1ff2-44fa-a8d7-c4b175f4acd3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:45 GMT"
+          "Wed, 26 Jan 2022 04:23:46 GMT"
         ],
         "Content-Length": [
           "184"
@@ -1666,17 +1526,227 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-24T17:51:26.2603523-05:00\",\r\n  \"endTime\": \"2022-01-24T17:51:46.0572155-05:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"3dbbdd3c-ca72-4f55-b461-d19d618fac47\"\r\n}",
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:23.3764287-05:00\",\r\n  \"endTime\": \"2022-01-25T23:23:44.1889383-05:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"73c17bf3-856c-497a-90f8-ce98294c6f41\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/3dbbdd3c-ca72-4f55-b461-d19d618fac47?p=4bed644a-a596-4634-b1fa-8009f92f8b59&monitor=true&api-version=2021-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvM2RiYmRkM2MtY2E3Mi00ZjU1LWI0NjEtZDE5ZDYxOGZhYzQ3P3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5Jm1vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps2689/providers/Microsoft.Compute/virtualMachines/vcrptestps2689?forceDeletion=true&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI2ODkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92Y3JwdGVzdHBzMjY4OT9mb3JjZURlbGV0aW9uPXRydWUmYXBpLXZlcnNpb249MjAyMS0wNy0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3c7cf243-914c-419f-9667-ff06e2f4d2a6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/abddba50-ca94-49f5-9514-cfc772362c13?p=4bed644a-a596-4634-b1fa-8009f92f8b59&monitor=true&api-version=2021-07-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/abddba50-ca94-49f5-9514-cfc772362c13?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/DeleteVM3Min;239,Microsoft.Compute/DeleteVM30Min;1198"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "abddba50-ca94-49f5-9514-cfc772362c13"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae6b2e82-8036-4128-8997-e53a16b45d44"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042348Z:ae6b2e82-8036-4128-8997-e53a16b45d44"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:23:48 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/abddba50-ca94-49f5-9514-cfc772362c13?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYWJkZGJhNTAtY2E5NC00OWY1LTk1MTQtY2ZjNzcyMzYyYzEzP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0b62704c-3efe-42c1-b894-2264484d03ac"
+          "3c7cf243-914c-419f-9667-ff06e2f4d2a6"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14995,Microsoft.Compute/GetOperation30Min;29987"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "64bfd00b-9a73-41ec-9110-c7ce17d2f927"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "735e29ab-21b6-4cd4-b7e8-408a65c08b48"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042359Z:735e29ab-21b6-4cd4-b7e8-408a65c08b48"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:23:58 GMT"
+        ],
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:48.9389386-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"abddba50-ca94-49f5-9514-cfc772362c13\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/abddba50-ca94-49f5-9514-cfc772362c13?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYWJkZGJhNTAtY2E5NC00OWY1LTk1MTQtY2ZjNzcyMzYyYzEzP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3c7cf243-914c-419f-9667-ff06e2f4d2a6"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14994,Microsoft.Compute/GetOperation30Min;29986"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0ad0057e-824e-4e9d-bb8b-2f9e291d39a1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "dadc8e49-5345-4cc3-8190-59e121edc8cd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042409Z:dadc8e49-5345-4cc3-8190-59e121edc8cd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:24:08 GMT"
+        ],
+        "Content-Length": [
+          "134"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:48.9389386-05:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"abddba50-ca94-49f5-9514-cfc772362c13\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/abddba50-ca94-49f5-9514-cfc772362c13?p=4bed644a-a596-4634-b1fa-8009f92f8b59&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYWJkZGJhNTAtY2E5NC00OWY1LTk1MTQtY2ZjNzcyMzYyYzEzP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5JmFwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3c7cf243-914c-419f-9667-ff06e2f4d2a6"
         ],
         "User-Agent": [
           "FxVersion/4.6.28207.03",
@@ -1693,13 +1763,13 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/GetOperation3Min;14994,Microsoft.Compute/GetOperation30Min;29994"
+          "Microsoft.Compute/GetOperation3Min;14993,Microsoft.Compute/GetOperation30Min;29985"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "45fdd6f1-4a2a-4499-8ec8-cb3bc0d0e139"
+          "ce51a1b7-fbca-473a-99d5-04afa2289241"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -1709,16 +1779,80 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "7d374309-b8da-449b-a784-7dab3dbf9794"
+          "f6ab4b95-67ef-4d16-ad3b-92e5c8742278"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20220124T225146Z:7d374309-b8da-449b-a784-7dab3dbf9794"
+          "CENTRALUS:20220126T042419Z:f6ab4b95-67ef-4d16-ad3b-92e5c8742278"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:45 GMT"
+          "Wed, 26 Jan 2022 04:24:19 GMT"
+        ],
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2022-01-25T23:23:48.9389386-05:00\",\r\n  \"endTime\": \"2022-01-25T23:24:13.2982977-05:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"abddba50-ca94-49f5-9514-cfc772362c13\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/abddba50-ca94-49f5-9514-cfc772362c13?p=4bed644a-a596-4634-b1fa-8009f92f8b59&monitor=true&api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYWJkZGJhNTAtY2E5NC00OWY1LTk1MTQtY2ZjNzcyMzYyYzEzP3A9NGJlZDY0NGEtYTU5Ni00NjM0LWIxZmEtODAwOWY5MmY4YjU5Jm1vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3c7cf243-914c-419f-9667-ff06e2f4d2a6"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/49.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;14992,Microsoft.Compute/GetOperation30Min;29984"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "796eb824-853a-4ea3-a421-010876741125"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "e669a84e-d87b-4f0a-a2fa-91cc9facd920"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220126T042419Z:e669a84e-d87b-4f0a-a2fa-91cc9facd920"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:24:19 GMT"
         ],
         "Expires": [
           "-1"
@@ -1731,13 +1865,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourcegroups/crptestps7526?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlZ3JvdXBzL2NycHRlc3Rwczc1MjY/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourcegroups/crptestps2689?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczI2ODk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "25757141-b3b5-4182-bdc2-0dd3ef0d091d"
+          "9144fc85-d836-49d9-b332-14277eca1f1a"
         ],
         "Accept-Language": [
           "en-US"
@@ -1757,7 +1891,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1766,13 +1900,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "b223c756-1059-4532-b940-76fad69a94cb"
+          "d61dc67e-1c26-407e-bdf3-2c7427ba5ab0"
         ],
         "x-ms-correlation-request-id": [
-          "b223c756-1059-4532-b940-76fad69a94cb"
+          "d61dc67e-1c26-407e-bdf3-2c7427ba5ab0"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225148Z:b223c756-1059-4532-b940-76fad69a94cb"
+          "CANADACENTRAL:20220126T042420Z:d61dc67e-1c26-407e-bdf3-2c7427ba5ab0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1781,7 +1915,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:51:48 GMT"
+          "Wed, 26 Jan 2022 04:24:19 GMT"
         ],
         "Expires": [
           "-1"
@@ -1794,8 +1928,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1814,7 +1948,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1823,13 +1957,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "42979742-3d5c-4bfa-a932-6938ac9d4dc2"
+          "98b33e80-45f0-475e-a513-60080c5c7677"
         ],
         "x-ms-correlation-request-id": [
-          "42979742-3d5c-4bfa-a932-6938ac9d4dc2"
+          "98b33e80-45f0-475e-a513-60080c5c7677"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225203Z:42979742-3d5c-4bfa-a932-6938ac9d4dc2"
+          "CANADACENTRAL:20220126T042435Z:98b33e80-45f0-475e-a513-60080c5c7677"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1838,7 +1972,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:52:03 GMT"
+          "Wed, 26 Jan 2022 04:24:34 GMT"
         ],
         "Expires": [
           "-1"
@@ -1851,8 +1985,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1871,7 +2005,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1880,13 +2014,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "a8c14b06-b96c-4d3f-933c-1c37247bd7c5"
+          "51e36e3a-d5d1-4134-8e1d-703d259f7ac7"
         ],
         "x-ms-correlation-request-id": [
-          "a8c14b06-b96c-4d3f-933c-1c37247bd7c5"
+          "51e36e3a-d5d1-4134-8e1d-703d259f7ac7"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225218Z:a8c14b06-b96c-4d3f-933c-1c37247bd7c5"
+          "CANADACENTRAL:20220126T042450Z:51e36e3a-d5d1-4134-8e1d-703d259f7ac7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1895,7 +2029,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:52:18 GMT"
+          "Wed, 26 Jan 2022 04:24:49 GMT"
         ],
         "Expires": [
           "-1"
@@ -1908,8 +2042,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1928,7 +2062,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1937,13 +2071,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "51714a47-f7ec-413b-8ba4-79ea911e20a1"
+          "f2480360-207f-4e9f-a9c8-fcae0027bbc1"
         ],
         "x-ms-correlation-request-id": [
-          "51714a47-f7ec-413b-8ba4-79ea911e20a1"
+          "f2480360-207f-4e9f-a9c8-fcae0027bbc1"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225233Z:51714a47-f7ec-413b-8ba4-79ea911e20a1"
+          "CANADACENTRAL:20220126T042505Z:f2480360-207f-4e9f-a9c8-fcae0027bbc1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1952,7 +2086,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:52:33 GMT"
+          "Wed, 26 Jan 2022 04:25:04 GMT"
         ],
         "Expires": [
           "-1"
@@ -1965,8 +2099,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1985,7 +2119,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1994,13 +2128,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "fb229966-18eb-4340-9dde-80da7714c14d"
+          "199cb2c2-d668-4da0-826c-8576ece863c1"
         ],
         "x-ms-correlation-request-id": [
-          "fb229966-18eb-4340-9dde-80da7714c14d"
+          "199cb2c2-d668-4da0-826c-8576ece863c1"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225248Z:fb229966-18eb-4340-9dde-80da7714c14d"
+          "CANADACENTRAL:20220126T042520Z:199cb2c2-d668-4da0-826c-8576ece863c1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2009,7 +2143,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:52:48 GMT"
+          "Wed, 26 Jan 2022 04:25:19 GMT"
         ],
         "Expires": [
           "-1"
@@ -2022,8 +2156,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2042,7 +2176,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2051,13 +2185,13 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "b4873119-8a9e-4b8e-817f-bb2da13c8e81"
+          "0aee0abc-4d5f-4145-94b9-7b939bf83a3f"
         ],
         "x-ms-correlation-request-id": [
-          "b4873119-8a9e-4b8e-817f-bb2da13c8e81"
+          "0aee0abc-4d5f-4145-94b9-7b939bf83a3f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225303Z:b4873119-8a9e-4b8e-817f-bb2da13c8e81"
+          "CANADACENTRAL:20220126T042535Z:0aee0abc-4d5f-4145-94b9-7b939bf83a3f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2066,7 +2200,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:53:03 GMT"
+          "Wed, 26 Jan 2022 04:25:35 GMT"
         ],
         "Expires": [
           "-1"
@@ -2079,8 +2213,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2099,7 +2233,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2108,13 +2242,13 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "f4b7b343-f0ba-43d9-9478-25feb6cdd592"
+          "faa17374-6563-4ace-be47-03b2367f5ac1"
         ],
         "x-ms-correlation-request-id": [
-          "f4b7b343-f0ba-43d9-9478-25feb6cdd592"
+          "faa17374-6563-4ace-be47-03b2367f5ac1"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225319Z:f4b7b343-f0ba-43d9-9478-25feb6cdd592"
+          "CANADACENTRAL:20220126T042551Z:faa17374-6563-4ace-be47-03b2367f5ac1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2123,7 +2257,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:53:18 GMT"
+          "Wed, 26 Jan 2022 04:25:51 GMT"
         ],
         "Expires": [
           "-1"
@@ -2136,8 +2270,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2156,7 +2290,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2165,13 +2299,13 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "adce36a0-86dd-4660-83d2-5efb981483f2"
+          "dda35460-2bfa-4945-a34c-b9b489f5937f"
         ],
         "x-ms-correlation-request-id": [
-          "adce36a0-86dd-4660-83d2-5efb981483f2"
+          "dda35460-2bfa-4945-a34c-b9b489f5937f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225334Z:adce36a0-86dd-4660-83d2-5efb981483f2"
+          "CANADACENTRAL:20220126T042606Z:dda35460-2bfa-4945-a34c-b9b489f5937f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2180,7 +2314,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:53:33 GMT"
+          "Wed, 26 Jan 2022 04:26:05 GMT"
         ],
         "Expires": [
           "-1"
@@ -2193,8 +2327,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2212,17 +2346,23 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11992"
         ],
         "x-ms-request-id": [
-          "d37ae29c-1951-4d74-a5f7-5a7175b0d974"
+          "a75824d5-98dd-498c-a68d-a0410e6705fa"
         ],
         "x-ms-correlation-request-id": [
-          "d37ae29c-1951-4d74-a5f7-5a7175b0d974"
+          "a75824d5-98dd-498c-a68d-a0410e6705fa"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225349Z:d37ae29c-1951-4d74-a5f7-5a7175b0d974"
+          "CANADACENTRAL:20220126T042621Z:a75824d5-98dd-498c-a68d-a0410e6705fa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2231,7 +2371,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:53:49 GMT"
+          "Wed, 26 Jan 2022 04:26:21 GMT"
         ],
         "Expires": [
           "-1"
@@ -2241,11 +2381,11 @@
         ]
       },
       "ResponseBody": "",
-      "StatusCode": 200
+      "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3NTI2LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTlRJMkxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2267,13 +2407,13 @@
           "11991"
         ],
         "x-ms-request-id": [
-          "5922f6a3-bc08-4921-a68e-25c75f39271a"
+          "d96335ef-58ae-4839-9a13-26a30db1aa9a"
         ],
         "x-ms-correlation-request-id": [
-          "5922f6a3-bc08-4921-a68e-25c75f39271a"
+          "d96335ef-58ae-4839-9a13-26a30db1aa9a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220124T225349Z:5922f6a3-bc08-4921-a68e-25c75f39271a"
+          "CANADACENTRAL:20220126T042636Z:d96335ef-58ae-4839-9a13-26a30db1aa9a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2282,7 +2422,58 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 24 Jan 2022 22:53:49 GMT"
+          "Wed, 26 Jan 2022 04:26:36 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMyNjg5LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk15TmpnNUxVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "a8354570-ab8c-435a-b539-81d8adb17cf7"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8354570-ab8c-435a-b539-81d8adb17cf7"
+        ],
+        "x-ms-routing-request-id": [
+          "CANADACENTRAL:20220126T042636Z:a8354570-ab8c-435a-b539-81d8adb17cf7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 26 Jan 2022 04:26:36 GMT"
         ],
         "Expires": [
           "-1"
@@ -2297,8 +2488,8 @@
   ],
   "Names": {
     "Test-ForceDelete": [
-      "crptestps7526",
-      "ps6206"
+      "crptestps2689",
+      "ps5328"
     ]
   },
   "Variables": {

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             HelpMessage = "Optional parameter to force delete a VM.")]
-        public SwitchParameter ForceDeletion { get; set; }
+        public bool? ForceDeletion { get; set; }
 
         [Parameter(
             Position = 2,
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            bool? forcedelete = this.ForceDeletion.IsPresent ? true : (bool?)null;
+            bool? forcedelete = ForceDeletion.HasValue ? ForceDeletion.Value : (bool?)null;
             ExecuteClientAction(() =>
             {
                 if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))

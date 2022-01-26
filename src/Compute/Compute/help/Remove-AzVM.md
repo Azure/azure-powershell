@@ -15,13 +15,13 @@ Removes a virtual machine from Azure.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Remove-AzVM [-Name] <String> [-ForceDeletion] [-Force] [-NoWait] [-ResourceGroupName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVM [-Name] <String> [-ForceDeletion <Boolean>] [-Force] [-NoWait] [-ResourceGroupName] <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Remove-AzVM [-ForceDeletion] [-Force] [-NoWait] [-Id] <String> [-AsJob]
+Remove-AzVM [-ForceDeletion <Boolean>] [-Force] [-NoWait] [-Id] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Optional parameter to force delete a VM.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
