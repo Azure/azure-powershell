@@ -28,16 +28,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //
         // Summary:
         //     Gets the provisioning state of the restore point.
+        public string ProvisioningState { get; set; }
         //
         // Summary:
         //     Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints
         //     for more details. Possible values include: 'CrashConsistent', 'FileSystemConsistent',
         //     'ApplicationConsistent'
         public string ConsistencyMode { get; set; }
-        //
-        // Summary:
-        //     Gets the provisioning details set by the server during Create restore point operation.
-        public RestorePointProvisioningDetails ProvisioningDetails { get; set; }
+
         //
         // Summary:
         //     Gets or sets list of disk resource ids that the customer wishes to exclude from
