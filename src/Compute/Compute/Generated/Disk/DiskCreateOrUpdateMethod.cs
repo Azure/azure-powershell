@@ -49,11 +49,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string diskName = this.DiskName;
                     Disk disk = new Disk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
-                    Disk result;
-                    
+
+                    Dictionary<string, List<string>> auxAuthHeader = null;
                     if (!string.IsNullOrEmpty(disk.CreationData?.GalleryImageReference?.Id))
                     {
-                        Dictionary<string, List<string>> auxAuthHeader = null;
                         var resourceId = ResourceId.TryParse(disk.CreationData.GalleryImageReference.Id);
 
                         if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
@@ -67,10 +66,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
                             }
                         }
+                    }
 
+                    Disk result;
+                    if (auxAuthHeader != null)
+                    {
                         var res = this.DisksClient.CreateOrUpdateWithHttpMessagesAsync(
                             this.ResourceGroupName,
-                            disk.Name,
+                            diskName,
                             disk,
                             auxAuthHeader).GetAwaiter().GetResult();
 

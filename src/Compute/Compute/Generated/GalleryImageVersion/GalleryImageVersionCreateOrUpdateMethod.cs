@@ -29,6 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Strategies;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -50,19 +51,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     GalleryImageVersion galleryImageVersion = new GalleryImageVersion();
 
                     galleryImageVersion.Location = this.Location;
-
-                    if (this.IsParameterBound(c => c.SourceImageId))
-                    {
-                        if (galleryImageVersion.StorageProfile == null)
-                        {
-                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
-                        }
-                        if (galleryImageVersion.StorageProfile.Source == null)
-                        {
-                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
-                        }
-                        galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
-                    }
 
                     if (this.IsParameterBound(c => c.Tag))
                     {
@@ -163,7 +151,50 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
-                    var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    if (this.IsParameterBound(c => c.SourceImageId))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        if (galleryImageVersion.StorageProfile.Source == null)
+                        {
+                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
+                        }
+                        galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
+
+                        var resourceId = ResourceId.TryParse(this.SourceImageId);
+
+                        if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                         && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            List<string> resourceIds = new List<string>();
+                            resourceIds.Add(this.SourceImageId);
+                            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                            {
+                                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                            }
+                        }
+                    }
+
+                    GalleryImageVersion result;
+                    if (auxAuthHeader != null) { 
+                        var res = GalleryImageVersionsClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            galleryName,
+                            galleryImageName, 
+                            galleryImageVersionName, galleryImageVersion,
+                            auxAuthHeader).GetAwaiter().GetResult();
+
+                        result = res.Body;
+                    }
+                    else
+                    {
+                        result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                    }
+
                     var psObject = new PSGalleryImageVersion();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
                     WriteObject(psObject);
