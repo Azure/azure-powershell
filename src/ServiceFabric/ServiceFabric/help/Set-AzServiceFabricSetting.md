@@ -39,6 +39,8 @@ This command will set 'MaxFileOperationTimeout' to value '5000' under the sectio
 
 ### Example 2
 ```
+Import-Module Az.ServiceFabric
+
 $fabricSettings = @(
     @{ 
         "name" = "NamingService";
