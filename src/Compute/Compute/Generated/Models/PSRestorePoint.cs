@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //
         // Summary:
         //     Gets the provisioning state of the restore point.
-        public string ProvisioningState { get; set; }
         //
         // Summary:
         //     Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints
