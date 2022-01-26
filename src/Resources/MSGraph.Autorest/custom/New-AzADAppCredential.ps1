@@ -242,7 +242,7 @@ function New-AzADAppCredential {
             }
             { $_ -in 'DisplayNameWithPasswordParameterSet', 'DisplayNameWithKeyCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet', 'DisplayNameWithCertValueParameterSet'} {
                 $param['DisplayName'] = $PSBoundParameters['DisplayName']
-                $app = Get-AzADApplication @param
+                [System.Array]$app = Get-AzADApplication @param
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
