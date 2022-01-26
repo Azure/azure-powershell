@@ -20,7 +20,7 @@ Get-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-Subsc
 
 ### Get
 ```
-Get-AzVMwareAddon -AddonType <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMwareAddon -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -59,21 +59,6 @@ Get an addon by name in a private cloud
 
 ## PARAMETERS
 
-### -AddonType
-Name of the addon for the private cloud
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: AddonName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -102,6 +87,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the addon for the private cloud
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: AddonName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
 
 ## NOTES
 
@@ -185,6 +185,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure region
+  - `[PlacementPolicyName <String>]`: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
   - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
   - `[PrivateCloudName <String>]`: Name of the private cloud
   - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name

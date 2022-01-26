@@ -47,18 +47,19 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 87fe548940e52c5f46fd86ac587de9c1f4bdde83
+branch: 69e98508ef71f09851b2a79971d2d8e12560adc5
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-06-01/vmware.json
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
 
 module-version: 0.3.0
 title: VMware
 subject-prefix: $(service-name)
-resourcegroup-append: true
 
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   - from: swagger-document 
@@ -85,6 +86,9 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
+      variant: ^Restrict$|^RestrictViaIdentity$
+    remove: true
+  - where:
       verb: Set
     remove: true
   - where:
@@ -95,35 +99,36 @@ directive:
       verb: New|Remove
       subject: PrivateCloud
     hide: true
-  - where:
-      verb: Get
-      subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
-    hide: true
-  - where:
-      verb: Get|New|Remove
-      subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
-    hide: true
-  - where:
-      verb: Get|New|Update|Remove
-      subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
-    hide: true
-  - where:
-      verb: New|Get|Remove
-      subject: HcxEnterpriseSite
-    remove: true
+  # - where:
+  #     verb: Get
+  #     subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
+  #   hide: true
+  # - where:
+  #     verb: Get|New|Remove
+  #     subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
+  #   hide: true
+  # - where:
+  #     verb: Get|New|Update|Remove
+  #     subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
+  #   hide: true
+  # - where:
+  #     verb: New|Get|Remove
+  #     subject: HcxEnterpriseSite
+  #   remove: true
+  # - where:
+  #     verb: Test
+  #     subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
+  #     variant: ^CheckViaIdentity$
+  #   remove: true
   - no-inline:
       - AddonProperties
-  - model-cmdlet:
-      - ScriptSecureStringExecutionParameter
-      - ScriptStringExecutionParameter
-      - PSCredentialExecutionParameter
-      - AddonSrmProperties
-      - AddonVrProperties
-  - where:
-      verb: Test
-      subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
-      variant: ^CheckViaIdentity$
-    remove: true
+  # Re-name and custom it
+  # - model-cmdlet:
+  #     - ScriptSecureStringExecutionParameter
+  #     - ScriptStringExecutionParameter
+  #     - PSCredentialExecutionParameter
+  #     - AddonSrmProperties
+  #     - AddonVrProperties
   - where:
       verb: Get
       subject: ^PrivateCloudAdminCredentials$
