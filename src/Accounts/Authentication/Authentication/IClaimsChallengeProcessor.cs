@@ -18,8 +18,18 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
+    /// <summary>
+    /// Processor to handle claims changllenge
+    /// </summary>
     public interface IClaimsChallengeProcessor
     {
+        /// <summary>
+        /// Handle the clamin challenge
+        /// </summary>
+        /// <param name="request">The origin request that responds with a claim challenge</param>
+        /// <param name="claimsChallenge">Claims challenge string</param>
+        /// <param name="cancellationToken">Cancelation token</param>
+        /// <returns>Successful or not
         ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken);
     }
 }

@@ -20,11 +20,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public static class AuthenticationFailedExceptionExtention
     {
-        public static AuthenticationFailedException FromExceptionAndAdditionalMessage(this AuthenticationFailedException e, string additonal)
+        public static AuthenticationFailedException WithAdditionalMessage(this AuthenticationFailedException e, string additonal)
         {
-            var errorMessage = new StringBuilder(e.Message);
-            errorMessage.Append(Environment.NewLine).Append(additonal);
-            return new AuthenticationFailedException(errorMessage.ToString(), e);
+            return string.IsNullOrEmpty(additonal) ? e : new AuthenticationFailedException($"{e.Message}{Environment.NewLine}{additonal}", e);
         }
     }
 }

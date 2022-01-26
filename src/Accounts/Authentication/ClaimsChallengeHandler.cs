@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class ClaimsChallengeHandler : DelegatingHandler, ICloneable
     {
-        //TODO: TokenCredential may not support CAE: SP; MSI(?)
+        //TokenCredential doesn't support CAE for SP, MSI.
         private IClaimsChallengeProcessor ClaimsChallengeProcessor { get; set; }
 
         public ClaimsChallengeHandler(IClaimsChallengeProcessor claimsChallengeProcessor)
@@ -34,19 +34,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var response = await base.SendAsync(request, cancellationToken);
-            if (response.StatusCode == HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
+            if (response.MatchClaimsChallengePattern())
             {
                 try
                 {
-                    if (await OnChallengeAsync(request, response, cancellationToken, true))
+                    if (await OnChallengeAsync(request, response, cancellationToken))
                     {
                         return await base.SendAsync(request, cancellationToken);
                     }
                 }
                 catch (AuthenticationFailedException e)
                 {
-                    string errorMessage = response?.GetWwwAuthenticateMessage() ?? string.Empty;
-                    throw e.FromExceptionAndAdditionalMessage(errorMessage);
+                    throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
                 }
             }
             return response;
@@ -61,9 +60,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <remarks>This implementation handles common authentication challenges such as claims challenges. Service client libraries may derive from this and extend to handle service specific authentication challenges.</remarks>
         /// <param name="message">The HttpMessage to be authenticated.</param>
-        /// <param name="async">Specifies if the method is being called in an asynchronous context</param>
         /// <returns>A boolean indicated whether the request should be retried</returns>
-        protected virtual async Task<bool> OnChallengeAsync(HttpRequestMessage requestMessage, HttpResponseMessage responseMessage, CancellationToken cancellationToken, bool async)
+        protected virtual async Task<bool> OnChallengeAsync(HttpRequestMessage requestMessage, HttpResponseMessage responseMessage, CancellationToken cancellationToken)
         {
             var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(responseMessage);
 

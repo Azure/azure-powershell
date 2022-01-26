@@ -123,7 +123,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public async ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
         {
-            //TODO: Credential may not support
+            TracingAdapter.Information($"{DateTime.Now:T} - [ClaimsChallengeProcessor] Calling {TokenCredential.GetType().Name}.GetTokenAsync- claimsChallenge:'{claimsChallenge}'");
             var newRequestContext = new TokenRequestContext(TokenRequestContext.Scopes, null, claimsChallenge);
             var token = await TokenCredential.GetTokenAsync(newRequestContext, cancellationToken).ConfigureAwait(false);
             AccessToken = token.Token;

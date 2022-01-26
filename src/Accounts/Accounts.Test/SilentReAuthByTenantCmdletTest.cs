@@ -316,14 +316,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
             PowerShellTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
-            IAuthenticatorBuilder builder = null;
-            if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
+            if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out IAuthenticatorBuilder builder))
             {
                 builder = new DefaultAuthenticatorBuilder();
                 AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
             }
-            var profile = new AzureRmProfile();
-            profile.DefaultContext = defaultContext;
+            var profile = new AzureRmProfile
+            {
+                DefaultContext = defaultContext
+            };
             cmdlet.profileClient = new RMProfileClient(profile);
         }
 

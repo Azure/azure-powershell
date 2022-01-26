@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Common
             IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
             var response = await next(request, cancelToken, cancelAction, signal);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
+            if (response.MatchClaimsChallengePattern())
             {
                 //get token again with claims challenge
                 if (accessToken is IClaimsChallengeProcessor processor)
@@ -213,8 +213,7 @@ namespace Microsoft.Azure.Commands.Common
                     }
                     catch (AuthenticationFailedException e)
                     {
-                        string message = response?.GetWwwAuthenticateMessage() ?? string.Empty;
-                        throw e.FromExceptionAndAdditionalMessage(message);
+                        throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
                     }
                 }
             }

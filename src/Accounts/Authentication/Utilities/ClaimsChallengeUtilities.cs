@@ -35,45 +35,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static string GetClaimsChallenge(HttpResponseMessage response)
         {
-            foreach (var parameter in ParseWwwAuthenticate(response))
-            {
-                if (string.Equals(parameter.Item1, "claims", StringComparison.OrdinalIgnoreCase))
-                {
-                    // currently we are only handling ARM claims challenges which are always b64url encoded, and must be decoded.
-                    // some handling will have to be added if we intend to handle claims challenges from Graph as well since they
-                    // are not encoded.
-                    return Base64UrlHelper.DecodeToString(parameter.Item2);
-                }
-            }
-
-            return null;
+            return ParseWwwAuthenticate(response)?
+                .Where((p) => string.Equals(p.Item1, "claims", StringComparison.OrdinalIgnoreCase))
+                .Select(p => Base64UrlHelper.DecodeToString(p.Item2))
+                .FirstOrDefault();
         }
 
         public static string GetWwwAuthenticateMessage(this HttpResponseMessage response)
         {
-            var message = new StringBuilder();
-            foreach (var parameter in ParseWwwAuthenticate(response))
-            {
-                message.Append(parameter.Item1).Append(": ").Append(parameter.Item2).Append(Environment.NewLine);
-            }
-            return message.ToString();
+            return string.Join(string.Empty, ParseWwwAuthenticate(response)?.Select(p => $"{p.Item1}: {p.Item2}{Environment.NewLine}"));
+        }
+
+        public static bool MatchClaimsChallengePattern(this HttpResponseMessage response)
+        {
+            return response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0;
         }
 
         private static IEnumerable<(string, string)> ParseWwwAuthenticate(HttpResponseMessage response)
         {
-            if (response.StatusCode == HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate != null)
-            {
-                var headerValue = response.Headers.WwwAuthenticate.FirstOrDefault()?.ToString();//??
-                foreach (var challenge in ParseChallenges(headerValue))
-                {
-                    if (string.Equals(challenge.Item1, "Bearer", StringComparison.OrdinalIgnoreCase))
-                    {
-                        return ParseChallengeParameters(challenge.Item2);
-                    }
-                }
-            }
-
-            return null;
+            return Enumerable.Repeat(response, 1)
+                .Where(r => r.MatchClaimsChallengePattern())
+                .Select(r => r.Headers.WwwAuthenticate.FirstOrDefault().ToString())
+                .SelectMany(h => ParseChallenges(h))
+                .Where(c => string.Equals(c.Item1, "Bearer", StringComparison.OrdinalIgnoreCase))
+                .SelectMany(b => ParseChallengeParameters(b.Item2));
         }
 
         private static IEnumerable<(string, string)> ParseChallenges(string headerValue)

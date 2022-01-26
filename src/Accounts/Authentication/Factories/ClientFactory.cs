@@ -78,8 +78,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             List<Type> types = new List<Type>();
             List<object> parameterList = new List<object>();
             List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler};
-            var claimsChallengeProcessor = parameters.FirstOrDefault(parameter => parameter is IClaimsChallengeProcessor) as IClaimsChallengeProcessor;
-            if(claimsChallengeProcessor !=  null)
+            if (parameters.FirstOrDefault(parameter => parameter is IClaimsChallengeProcessor) is IClaimsChallengeProcessor claimsChallengeProcessor)
             {
                 handlerList.Add(new ClaimsChallengeHandler(claimsChallengeProcessor));
             }

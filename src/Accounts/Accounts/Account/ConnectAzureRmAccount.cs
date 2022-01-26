@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.Profile
                        else if (TryParseUnknownAuthenticationException(ex, out message))
                        {
                            WriteDebug(ex.ToString());
-                           throw ex.FromExceptionAndAdditionalMessage(message);
+                           throw ex.WithAdditionalMessage(message);
                        }
                        else
                        {
