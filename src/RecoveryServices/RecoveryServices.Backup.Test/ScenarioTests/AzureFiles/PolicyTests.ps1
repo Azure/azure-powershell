@@ -22,7 +22,7 @@ $skuName="Standard_LRS"
 $newPolicyName = "newFilePolicy"
 $newHourlyPolicyName = "afsHourlyPolicy"
 $scheduleWindowStartTime = "2021-12-22T06:00:00.00+00:00"
-$windowStartTime = "12/22/2021 6:00:00 AM"
+$windowStartTime = "6:00:00"
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -119,8 +119,9 @@ function Test-AzureFSHourlyPolicy
 
 	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newHourlyPolicyName
 
-	Assert-AreEqual $policy.SchedulePolicy.ScheduleRunTimeZone $timeZone.Id
-	Assert-AreEqual $policy.SchedulePolicy.ScheduleWindowStartTime.ToString() $windowStartTime
+	Assert-True { $policy.SchedulePolicy.ScheduleRunTimeZone -match "India" }	
+
+	Assert-True { $policy.SchedulePolicy.ScheduleWindowStartTime.ToString() -match $windowStartTime }
 	
 	# Modify policy to Russian Standard Time
 	$retentionPolicy.DailySchedule.DurationCountInDays = 6
@@ -131,7 +132,7 @@ function Test-AzureFSHourlyPolicy
 	Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy -RetentionPolicy $retentionPolicy
 	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newHourlyPolicyName
 
-	Assert-AreEqual $policy.SchedulePolicy.ScheduleRunTimeZone $timeZone.Id
+	Assert-True { $policy.SchedulePolicy.ScheduleRunTimeZone -match "Russia" }
 
 	# Delete policy
 	Remove-AzRecoveryServicesBackupProtectionPolicy `
