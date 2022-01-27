@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets:
+ - `Get-AzDataMigrationAssessment`
+ - `Get-AzDataMigrationSqlService`
+ - `Get-AzDataMigrationSqlServiceAuthKey`
+ - `Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric`
+ - `Get-AzDataMigrationSqlServiceMigration`
+ - `Get-AzDataMigrationToSqlManagedInstance`
+ - `Get-AzDataMigrationToSqlVM`
+ - `Invoke-AzDataMigrationCutoverToSqlManagedInstance`
+ - `Invoke-AzDataMigrationCutoverToSqlVM`
+ - `New-AzDataMigrationSqlService`
+ - `New-AzDataMigrationSqlServiceAuthKey`
+ - `New-AzDataMigrationToSqlManagedInstance`
+ - `New-AzDataMigrationToSqlVM`
+ - `Register-AzDataMigrationIntegrationRuntime`
+ - `Remove-AzDataMigrationSqlService`
+ - `Remove-AzDataMigrationSqlServiceNode`
+ - `Stop-AzDataMigrationToSqlManagedInstance`
+ - `Stop-AzDataMigrationToSqlVM`
+ - `Update-AzDataMigrationSqlService`
 
 ## Version 0.7.4
 * Update references in .psd1 to use relative path

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataMigration", "DataMigration\DataMigration.csproj", "{A03670F6-F8D1-4890-9939-21B546927238}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager", "..\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj", "{F83FBA8D-732D-437C-A0E2-02E45B01E123}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.DataMigration", "DataMigration.Autorest\Az.DataMigration.csproj", "{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,12 @@ Global
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Powershell|Any CPU.Build.0 = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Powershell|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Powershell|Any CPU.Build.0 = Debug|Any CPU
+		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Powershell|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +77,12 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Powershell|Any CPU.Build.0 = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}.Powershell|Any CPU.ActiveCfg = Release|Any CPU
+		{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}.Powershell|Any CPU.Build.0 = Release|Any CPU
+		{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
