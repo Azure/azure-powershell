@@ -4556,7 +4556,7 @@ function Test-SetAzVMOperatingSystemError
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
        
         # Virtual Machine
-        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The patchMode 'AutomaticByPlatform' is invalid. For patchMode 'AutomaticByPlatform', the properties 'provisionVMAgent' and 'enableAutomaticUpdates' must be set to true.";
+        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The patchMode 'AutomaticByPlatform' is invalid. For patchMode 'AutomaticByPlatform', the property 'enableAutomaticUpdates' must be set to true. Also, this operation cannot be performed when extension operations are disallowed. To allow, please ensure VM Agent is installed on the VM and the osProfile.allowExtensionOperations property is true.";
     }
     finally
     {
