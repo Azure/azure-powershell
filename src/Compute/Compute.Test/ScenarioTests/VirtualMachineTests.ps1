@@ -4549,7 +4549,6 @@ function Test-SetAzVMOperatingSystemError
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -DisableVMAgent -Patchmode "AutomaticByPlatform";
       
-        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
 
 
