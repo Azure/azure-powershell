@@ -33,11 +33,11 @@ The **Start-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys a Desire
 ## EXAMPLES
 
 ### Example 1: Deploy an Azure DSC node configuration in Automation
-```
-PS C:\> $pilot = @("WebServerPilot1", "WebServerPilot2")
-PS C:\> $prod = @("WebServerProd1", "WebServerProd2")
-PS C:\> $nodes = @($pilot, $prod)
-PS C:\> Start-AzAutomationDscNodeConfigurationDeployment `
+```powershell
+$pilot = @("WebServerPilot1", "WebServerPilot2")
+$prod = @("WebServerProd1", "WebServerProd2")
+$nodes = @($pilot, $prod)
+PStart-AzAutomationDscNodeConfigurationDeployment `
             -NodeConfigurationName "Config01.Node1" `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01" `
@@ -46,7 +46,8 @@ PS C:\> Start-AzAutomationDscNodeConfigurationDeployment `
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Yes
-
+```
+```output
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
@@ -61,16 +62,16 @@ JobScheduleId         : 00000000-0000-0000-0000-000000000000
 The above command deploys the DSC node configuration named "Config01.Node1" to the given two-dimensional array of Node Names. The deployment happens in a staged manner.
 
 ### Example 2: Schedule an Azure DSC node configuration deployment in Automation
-```
-PS C:\> $sched = New-AzAutomationSchedule -AutomationAccountName "Contoso01" `
+```powershell
+$sched = New-AzAutomationSchedule -AutomationAccountName "Contoso01" `
             -ResourceGroupName "ResourceGroup01" `
             -Name "TestSchedule" `
             -StartTime "23:00" `
             -OneTime
-PS C:\> $pilot = @("WebServerPilot1", "WebServerPilot2")
-PS C:\> $prod = @("WebServerProd1", "WebServerProd2")
-PS C:\> $nodes = @($pilot, $prod)
-PS C:\> Start-AzAutomationDscNodeConfigurationDeployment `
+$pilot = @("WebServerPilot1", "WebServerPilot2")
+$prod = @("WebServerProd1", "WebServerProd2")
+$nodes = @($pilot, $prod)
+Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeConfigurationName "Config01.Node1" `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01" `
@@ -80,7 +81,8 @@ PS C:\> Start-AzAutomationDscNodeConfigurationDeployment `
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
+```
+```output
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 00000000-0000-0000-0000-000000000000

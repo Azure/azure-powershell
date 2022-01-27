@@ -28,7 +28,7 @@ This command removes the Automation source control named VSTSNative in the accou
 This command specifies the *Force* parameter. Therefore, it does not prompt you for confirmation.
 
 ```powershell
-PS C:\> Remove-AzAutomationSourceControl -ResourceGroupName "rg1" `
+Remove-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                               -AutomationAccountName "devAccount" `
                                               -Name "VSTSNative" `
                                               -Force
