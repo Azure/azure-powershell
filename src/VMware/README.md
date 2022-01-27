@@ -99,31 +99,34 @@ directive:
       verb: New|Remove
       subject: PrivateCloud
     hide: true
-  # - where:
-  #     verb: Get
-  #     subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
-  #   hide: true
-  # - where:
-  #     verb: Get|New|Remove
-  #     subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
-  #   hide: true
-  # - where:
-  #     verb: Get|New|Update|Remove
-  #     subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
-  #   hide: true
-  # - where:
-  #     verb: New|Get|Remove
-  #     subject: HcxEnterpriseSite
-  #   remove: true
-  # - where:
-  #     verb: Test
-  #     subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
-  #     variant: ^CheckViaIdentity$
-  #   remove: true
+  - where:
+      verb: Get
+      subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
+    hide: true
+  - where:
+      verb: Get|New|Remove
+      subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
+    hide: true
+  - where:
+      verb: Get|New|Update|Remove
+      subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
+    hide: true
+  - where:
+      verb: New|Get|Remove
+      subject: HcxEnterpriseSite
+    remove: true
+  - where:
+      verb: Test
+      subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
+      variant: ^CheckViaIdentity$
+    remove: true
   - no-inline:
       - AddonProperties
+      - PlacementPolicyProperties
   # Re-name and custom it
   # - model-cmdlet:
+  #     - VMPlacementPolicyProperties
+  #     - VmHostPlacementPolicyProperties
   #     - ScriptSecureStringExecutionParameter
   #     - ScriptStringExecutionParameter
   #     - PSCredentialExecutionParameter
