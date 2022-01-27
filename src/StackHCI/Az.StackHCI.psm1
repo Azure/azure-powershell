@@ -224,10 +224,6 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
-# Remote Support
-New-Variable -Name RemoteSupportPackageUri -Value "https://remotesupportpackages.blob.core.windows.net/packages" -Option Constant
-$DownloadCacheDirectory = Join-Path $env:Temp "RemoteSupportPkgCache"
-
 enum DiagnosticLevel
 {
     Off;
@@ -4543,6 +4539,10 @@ function New-Directory{
 .NOTES
 #>
 function Invoke-DeploymentModuleDownload{
+    # Remote Support
+    New-Variable -Name RemoteSupportPackageUri -Value "https://remotesupportpackages.blob.core.windows.net/packages" -Option Constant -Scope Script
+    $DownloadCacheDirectory = Join-Path $env:Temp "RemoteSupportPkgCache"
+
     $BlobLocation = "$script:RemoteSupportPackageUri/Microsoft.AzureStack.Deployment.RemoteSupport.psm1"
     $OutFile = (Join-Path $DownloadCacheDirectory "Microsoft.AzureStack.Deployment.RemoteSupport.psm1")
     New-Directory -Path $DownloadCacheDirectory
@@ -4583,6 +4583,7 @@ function Install-DeployModule {
     }
 
     # Import Remote Support Deployment module
+    $DownloadCacheDirectory = Join-Path $env:Temp "RemoteSupportPkgCache"
     Import-Module (Join-Path $DownloadCacheDirectory "Microsoft.AzureStack.Deployment.RemoteSupport.psm1") -Force
 }
 
