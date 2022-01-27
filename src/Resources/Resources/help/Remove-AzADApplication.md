@@ -328,5 +328,3 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
     - `[RedirectUri <String[]>]`: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 
 ## RELATED LINKS
-
-## RELATED LINKS

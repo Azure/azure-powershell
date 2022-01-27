@@ -8387,10 +8387,11 @@ param(
     ${UPNOrObjectId},
 
     [Parameter()]
+    [Alias('EnableAccount')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Boolean]
     # true for enabling the account; otherwise, false.
-    ${EnableAccount},
+    ${AccountEnabled},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]

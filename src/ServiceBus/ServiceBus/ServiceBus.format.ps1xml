@@ -154,9 +154,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes</Name>
+      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -169,6 +169,10 @@
               <ListItem>
                 <Label>DefaultAction</Label>
                 <PropertyName>DefaultAction</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublicNetworkAccess</Label>
+                <PropertyName>PublicNetworkAccess</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Id</Label>

@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                     else
                     {
                         WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperty, DisableLocalAuth.IsPresent));
-                    }                   
+                    }          
                     
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)

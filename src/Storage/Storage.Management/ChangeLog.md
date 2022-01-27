@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that output number in console when update/copy blob sometimes [#16783]
+    -  `Set-AzStorageBlobContent` 
+    -  `Copy-AzStorageBlob` 
 
 ## Version 4.1.1
 * Fixed the failure of sync copy blob with long destination blob name [#16628]

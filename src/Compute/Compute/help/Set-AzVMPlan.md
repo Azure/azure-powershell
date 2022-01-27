@@ -24,6 +24,18 @@ Before being able to deploy a Marketplace image through the command-line, progra
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_B1s" |
+    Set-AzVMPlan -Publisher "Canonical" -Product "UbuntuServer" -Name "18.04-LTS"
+```
+
+```Output
+Name            : VirtualMachine07
+HardwareProfile : {VmSize}
+Plan            : {Name, Publisher, Product}
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile

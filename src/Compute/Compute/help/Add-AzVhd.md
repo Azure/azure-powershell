@@ -13,7 +13,7 @@ Uploads a virtual hard disk from an on-premises machine to Azure (managed disk o
 
 ## SYNTAX
 
-### DefaultParameterSet
+### DefaultParameterSet (Default)
 ```
 Add-AzVhd [[-ResourceGroupName] <String>] [-Destination] <Uri> [-LocalFilePath] <FileInfo>
  [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-skipResizing] [-AsJob]
