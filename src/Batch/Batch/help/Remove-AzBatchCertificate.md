@@ -25,15 +25,15 @@ The **Remove-AzBatchCertificate** cmdlet removes a certificate from the specifie
 ## EXAMPLES
 
 ### Example 1: Remove a certificate
-```
-PS C:\>Remove-AzBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "c1e494a415149c5f211c4778b52f2e834a07247c" -BatchContext $Context
+```powershell
+Remove-AzBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "c1e494a415149c5f211c4778b52f2e834a07247c" -BatchContext $Context
 ```
 
 This command removes the certificate that has the specified thumbprint.
 
 ### Example 2:Remove all active certificates
-```
-PS C:\>Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -Force -BatchContext $Context
+```powershell
+Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -Force -BatchContext $Context
 ```
 
 This command gets all certificates that are active by using the Get-AzBatchCertificate cmdlet.
