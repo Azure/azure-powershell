@@ -5553,3 +5553,52 @@ function Test-VirtualMachineHibernate
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine creation process does not create a Public IP Address when it is 
+not provided as a parameter. 
+When using a VM Config object, this problem does not occur. 
+#>
+function Test-VMvCPUFeatures
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus";
+    #$loc = "westus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        # $vmSize = "Standard_F64s_v2";
+        $vmSize = 'Standard_DS3_v2';
+        $vCPUsCore1 = 1;
+        $vCPUsAvailable1 = 1;
+        $vCPUsCore2 = 2;
+        $vCPUsAvailable3 = 3;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+        Assert-AreEqual $vCPUsAvailable1 $vm.HardWareProfile.VmSizeProperties.vCPUsAvailable;
+        Assert-AreEqual $vCPUsCore1 $vm.HardWareProfile.VmSizeProperties.$vCPUsCore;
+
+        $vmUp = Update-AzVm -vCPUsAvailable $vCPUsAvailable3 -vCPUsPerCore $vCPUsCore2;
+
+        $vmGet = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $vCPUsAvailable3 $vmGet.HardwareProfile.VmSizeProperties.vCPUsAvailable;
+        Assert-AreEqual $vCPUsCore2 $vmGet.HardwareProfile.VmSizeProperties.$vCPUsCore;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
