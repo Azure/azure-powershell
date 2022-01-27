@@ -32,7 +32,7 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 ``` yaml
 branch: 7086ee861c3a6196bb98f8b327af11d03e545a05
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2021-10-30-preview/sqlmigration.json
 
