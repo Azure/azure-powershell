@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.billing/get-azco
 schema: 2.0.0
 ---
 
-# Get-AzConsumptionUsageDetail
+# Get-AzConsumptionUsageDetail (This Command not working properly, please check).
 
 ## SYNOPSIS
 Get usage details of the subscription.
@@ -308,7 +308,7 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
+This Command not working properly, please check.
 ### None
 
 ## OUTPUTS
