@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Automation.Common;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -41,6 +43,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
+
+            if (agentRegistration.Keys == null)
+            {
+                throw new AzureAutomationOperationException("Insufficient permission. Please refer https://docs.microsoft.com/azure/role-based-access-control/built-in-roles");
+            }
+    
             if (agentRegistration.Keys != null)
             {
                 this.PrimaryKey = agentRegistration.Keys.Primary;
