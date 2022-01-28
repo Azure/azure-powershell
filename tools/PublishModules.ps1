@@ -238,7 +238,7 @@ function Get-ClientModules {
         $packageFolder, $resourceManagerRootFolder = Get-Directories -BuildConfig $BuildConfig -Scope $Scope
 
         # Everyone but Storage
-        $AllScopes = @('Stack', 'All', 'Latest', 'NetCore')
+        $AllScopes = @('Stack', 'All', 'Latest', 'NetCore', 'ServiceManagement')
         if ($Scope -in $AllScopes -or $PublishLocal) {
             if ($Scope -eq "Netcore")
             {
@@ -250,7 +250,7 @@ function Get-ClientModules {
             }
         }
 
-        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage')
+        $StorageScopes = @('All', 'Latest', 'Stack', 'ServiceManagement', 'AzureStorage')
         if ($Scope -in $StorageScopes) {
             $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         }
