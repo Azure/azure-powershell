@@ -18,9 +18,9 @@ Please check the URI in location header for the detailed status of the request.
 ## SYNTAX
 
 ```
-New-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>]
- [-Name <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,29 +38,14 @@ Please check the URI in location header for the detailed status of the request.
 PS C:\> $limit = New-AzQuotaLimitObject -Value 1003
 PS C:\> New-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
 
-Name              NameLocalizedValue          UsageUsagesType UsageValue ETag
-----              ------------------          --------------- ---------- ----
-PublicIPAddresses Public IP Addresses - Basic                 0
+Name              NameLocalizedValue          Unit  ETag
+----              ------------------          ----  ----
+PublicIPAddresses Public IP Addresses - Basic Count
 ```
 
 This command create or update the quota limit for the specified resource with the requested value.
 
 ## PARAMETERS
-
-### -AnyProperty
-Additional properties for the specific resource provider.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job

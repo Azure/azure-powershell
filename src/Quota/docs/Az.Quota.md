@@ -15,6 +15,9 @@ Microsoft Azure PowerShell: Quota cmdlets
 Get the quota limit of a resource.
 The response can be used to determine the remaining quota to calculate a new quota limit that can be submitted with a PUT request.
 
+### [Get-AzQuotaOperation](Get-AzQuotaOperation.md)
+List all the operations supported by the Microsoft.Quota resource provider.
+
 ### [Get-AzQuotaRequestStatus](Get-AzQuotaRequestStatus.md)
 Get the quota request details and status by quota request ID for the resources of the resource provider at a specific location.
 The quota request ID **id** is returned in the response of the PUT operation.
@@ -31,7 +34,7 @@ Use this PUT operation to update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 
 ### [New-AzQuotaLimitObject](New-AzQuotaLimitObject.md)
-Create an in-memory object for LimitValue.
+Create an in-memory object for LimitObject.
 
 ### [Update-AzQuota](Update-AzQuota.md)
 Update the quota limit for a specific resource to the specified value:\n1.

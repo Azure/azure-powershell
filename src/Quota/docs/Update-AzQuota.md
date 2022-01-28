@@ -18,16 +18,16 @@ Please check the URI in location header for the detailed status of the request.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzQuota -ResourceName <String> -Scope <String> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>]
- [-Name <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzQuota -InputObject <IQuotaIdentity> [-AnyProperty <IAny>] [-Limit <ILimitJsonObject>]
- [-Name <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name <String>]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,21 +65,6 @@ PublicIPAddresses Public IP Addresses - Basic                 0
 This command update the quota limit for a specific resource to the specified value by pipeline.
 
 ## PARAMETERS
-
-### -AnyProperty
-Additional properties for the specific resource provider.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job

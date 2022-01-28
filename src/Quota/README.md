@@ -31,7 +31,7 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: 21ffb64fdcbc0da039117af64f13c028c20d1286
+branch: 679887ace44697c726aba8d2814ee415a5d25e6f
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -39,7 +39,6 @@ input-file:
 
 title: Quota
 module-version: 0.1.0
-subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 # resouces usage id does not contain resource group name.
@@ -55,6 +54,12 @@ directive:
     where: $
     transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
 
+  # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: ""
+    remove: true
+    
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -62,28 +67,25 @@ directive:
 
   - where:
       verb: Get
-      subject: RequestStatus
+      subject: RequestStatus|Usage
       variant: ^GetViaIdentity$
     remove: true
 
-  - where:
-      verb: Get
-      subject: Usage
-      variant: ^GetViaIdentity$
-    remove: true
-
-    # Remove the set Workspace cmdlet
-  - where:
-      verb: Set
-      subject: ""
-    remove: true
+  # Rename parameter
   - where:
       werb: New
       subject: ""
       parameter-name: NameValue
     set:
       parameter-name: Name
-      
+  # Hide parameter
+  # future extendibility. It’s not used currently
+  - where:
+      verb: New|Update
+      subject: ""
+      parameter-name: AnyProperty
+    hide: true
+
   - where:
       werb: Get
       subject: Usage
@@ -120,9 +122,10 @@ directive:
           - ProvisioningState
           - ErrorMessage
           - Code
+  
   - no-inline:
     - LimitJsonObject
     
   # - model-cmdlet:
-  #   - LimitValue # Successfull generated then hide it to custom(Rename cmdlet and parameter).
+  #   - LimitObject  # Successfull generated then hide it to custom(Rename cmdlet and parameter).
 ```

@@ -1,23 +1,23 @@
 ---
 external help file:
 Module Name: Az.Quota
-online version: https://docs.microsoft.com/powershell/module/az.Quota/new-AzQuotaLimitObject
+online version: https://docs.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
 schema: 2.0.0
 ---
 
 # New-AzQuotaLimitObject
 
 ## SYNOPSIS
-Create an in-memory object for LimitValue.
+Create an in-memory object for LimitObject.
 
 ## SYNTAX
 
 ```
-New-AzQuotaLimitObject -Value <Int32> [-Type <QuotaLimitTypes>] [<CommonParameters>]
+New-AzQuotaLimitObject -Value <Int32> [-LimitType <QuotaLimitTypes>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for LimitValue.
+Create an in-memory object for LimitObject.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ This command create an in-memory object for LimitValue as value of the parameter
 
 ## PARAMETERS
 
-### -Type
+### -LimitType
 The quota or usages limit types.
 
 ```yaml
@@ -71,7 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitValue
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
 
 ## NOTES
 

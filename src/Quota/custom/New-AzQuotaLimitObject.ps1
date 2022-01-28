@@ -16,34 +16,34 @@
 
 <#
 .Synopsis
-Create an in-memory object for LimitValue.
+Create an in-memory object for LimitObject.
 .Description
-Create an in-memory object for LimitValue.
+Create an in-memory object for LimitObject.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitValue
+Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
 .Link
-https://docs.microsoft.com/powershell/module/az.Quota/new-AzQuotaLimitObject
+https://docs.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
 #>
 function New-AzQuotaLimitObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitValue')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The quota or usages limit types.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Quota.Support.QuotaLimitTypes])]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Support.QuotaLimitTypes]
-        $Type,
+        $LimitType,
         [Parameter(Mandatory, HelpMessage="The quota/limit value.")]
         [int]
         $Value
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitValue]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject]::New()
 
         if ($PSBoundParameters.ContainsKey('LimitType')) {
-            $Object.LimitType = $Type
+            $Object.LimitType = $LimitType
         }
         if ($PSBoundParameters.ContainsKey('Value')) {
             $Object.Value = $Value
