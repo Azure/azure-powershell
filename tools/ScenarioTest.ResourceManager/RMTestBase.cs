@@ -70,8 +70,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             TestMockSupport.RunningMocked = true;
-
-
             //This is needed for AutoRest Authentication
             SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
         }
