@@ -25,8 +25,8 @@ The **Remove-AzBatchApplicationPackage** cmdlet deletes an application package r
 ## EXAMPLES
 
 ### Example 1: Delete an application package from a Batch account
-```
-PS C:\>Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "litware" -ApplicationVersion "1.0"
+```powershell
+Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "litware" -ApplicationVersion "1.0"
 ```
 
 This command deletes version 1.0 of the Litware application from the ContosoBatchGroup account.
