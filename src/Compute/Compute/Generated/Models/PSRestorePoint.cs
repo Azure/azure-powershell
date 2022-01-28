@@ -35,10 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     for more details. Possible values include: 'CrashConsistent', 'FileSystemConsistent',
         //     'ApplicationConsistent'
         public string ConsistencyMode { get; set; }
-        //
-        // Summary:
-        //     Gets the provisioning details set by the server during Create restore point operation.
-        public RestorePointProvisioningDetails ProvisioningDetails { get; set; }
+
         //
         // Summary:
         //     Gets or sets list of disk resource ids that the customer wishes to exclude from
