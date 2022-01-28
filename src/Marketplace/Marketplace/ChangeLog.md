@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets:
+ - `Copy-AzMarketplacePrivateStoreCollectionOffer`
+ - `Get-AzMarketplaceBillingPrivateStoreAccount`
+ - `Get-AzMarketplaceCollectionToSubscriptionMapping`
+ - `Get-AzMarketplacePrivateStoreCollection`
+ - `Get-AzMarketplacePrivateStoreCollectionOffer`
+ - `Get-AzMarketplacePrivateStoreV1`
+ - `Get-AzMarketplaceQueryPrivateStoreOffer`
+ - `New-AzMarketplacePrivateStore`
+ - `New-AzMarketplacePrivateStoreCollection`
+ - `New-AzMarketplacePrivateStoreCollectionOffer`
+ - `Remove-AzMarketplacePrivateStoreCollection`
+ - `Remove-AzMarketplacePrivateStoreCollectionOffer`
+ - `Set-AzMarketplaceBulkPrivateStoreCollectionAction`
+ - `Set-AzMarketplacePrivateStore`
+ - `Set-AzMarketplacePrivateStoreCollection`
+ - `Set-AzMarketplacePrivateStoreCollectionOffer'`
 
 ## Version 0.3.0
 * Preview release , support private offers in private store under subscription level

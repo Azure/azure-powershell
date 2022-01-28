@@ -69,6 +69,14 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public uint? MinChildEndpoints { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of  IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpointsIPv4 { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpointsIPv6 { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
         [ValidateCount(1, 350)]
         public List<string> GeoMapping { get; set; }
@@ -104,6 +112,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     Priority = this.Priority,
                     Location = this.EndpointLocation,
                     MinChildEndpoints = this.MinChildEndpoints,
+                    MinChildEndpointsIPv4 = this.MinChildEndpointsIPv4,
+                    MinChildEndpointsIPv6 = this.MinChildEndpointsIPv6,
                     GeoMapping = this.GeoMapping,
                     SubnetMapping = this.SubnetMapping,
                     CustomHeaders = this.CustomHeader,

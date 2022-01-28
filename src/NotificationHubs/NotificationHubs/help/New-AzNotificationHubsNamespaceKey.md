@@ -20,16 +20,24 @@ New-AzNotificationHubsNamespaceKey [-ResourceGroup] <String> [-Namespace] <Strin
 ```
 
 ## DESCRIPTION
-New-AzNotificationHubNamespaceKey cmdlet regenerates the Primary Key/Secondary Key for the Namespace Authorization Rule.
+New-AzNotificationHubsNamespaceKey cmdlet regenerates the Primary Key/Secondary Key for the Namespace Authorization Rule.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+New-AzNotificationHubsNamespaceKey -ResourceGroup "ContosoNotificationsGroup" -Namespace "ContosoNamespace" -AuthorizationRule "RootManageSharedAccessKey" -PolicyKey "PrimaryKey"
 ```
 
-{{ Add example description here }}
+```Output
+PrimaryConnectionString   : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
+                            cessKey;SharedAccessKey=VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
+SecondaryConnectionString : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
+                            cessKey;SharedAccessKey=VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
+PrimaryKey                : VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
+SecondaryKey              : VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
+KeyName                   : RootManageSharedAccessKey
+```
 
 ## PARAMETERS
 

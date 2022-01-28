@@ -51,7 +51,7 @@ if(Test-Path -Path $localModulesPath)
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }
 
-$modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.Resources.psd1')
+$modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.MSGraph.psd1')
 $modulePath = $modulePsd1.FullName
 $moduleName = $modulePsd1.BaseName
 

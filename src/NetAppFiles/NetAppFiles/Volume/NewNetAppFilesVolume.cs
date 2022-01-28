@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
         public double? ThroughputMibps { get; set; }
 
         [Parameter(
@@ -249,12 +249,30 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [PSArgumentCompleter("Basic", "Standard")]
         public string NetworkFeature { get; set; }
 
-        [Parameter(
-            ParameterSetName = FieldsParameterSet,
+        [Parameter(            
             Mandatory = false,
-            HelpMessage = "Network Sibling Set ID (GUID) for the group of volumes sharing networking resources example (9760acf5-4638-11e7-9bdb-020073ca3333).")]
+            HelpMessage = "Pool Resource Id used in case of creating a volume through volume group.")]
         [ValidateNotNullOrEmpty]
-        public string NetworkSiblingSetId { get; set; }
+        public string CapacityPoolResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Proximity placement group associated with the volume.")]
+        [ValidateNotNullOrEmpty]
+        public string ProximityPlacementGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log.")]
+        [ValidateNotNullOrEmpty]
+        public string VolumeSpecName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application specific placement rules for the particular volume.")]
+        [ValidateNotNullOrEmpty]
+        public IList<PSKeyValuePairs> PlacementRule { get; set; }
+
 
         [Parameter(
             Mandatory = false,
@@ -317,7 +335,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
                 Tags = tagPairs,
-                SnapshotId = SnapshotId,
+                SnapshotId = SnapshotId,                
                 SnapshotDirectoryVisible = SnapshotDirectoryVisible,
                 SecurityStyle = SecurityStyle,
                 BackupId = BackupId,
@@ -333,7 +351,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
                 DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
                 DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
-                NetworkFeatures = NetworkFeature
+                NetworkFeatures = NetworkFeature,
+                CapacityPoolResourceId = CapacityPoolResourceId,
+                ProximityPlacementGroup = ProximityPlacementGroup,
+                VolumeSpecName = VolumeSpecName,
+                PlacementRules = PlacementRule?.ToPlacementKeyValuePairs()
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

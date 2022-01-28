@@ -309,8 +309,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             try
             {
-                keyBundle = client.UpdateKeyPropertiesAsync(keyProperties, keyAttributes.KeyOps?.Cast<KeyOperation>().ToList())
-                    .GetAwaiter().GetResult();
+                keyBundle = client.UpdateKeyProperties(keyProperties, keyAttributes.KeyOps?.Select(op => new KeyOperation(op)));
             }
             catch (Exception ex)
             {
@@ -517,7 +516,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyRotationPolicy(client.GetKeyRotationPolicy(keyName), managedHsmName, keyName);
         }
 
-        internal PSKeyRotationPolicy UpdateKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        internal PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
         {
             var client = CreateKeyClient(psKeyRotationPolicy.VaultName);
             var policy = new KeyRotationPolicy()
@@ -526,21 +525,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 LifetimeActions = { }
             };
 
-            foreach (var psKeyRotationLifetimeAction in psKeyRotationPolicy.LifetimeActions)
-            {
-                policy.LifetimeActions.Add(
+            psKeyRotationPolicy.LifetimeActions?.ForEach(
+                psKeyRotationLifetimeAction => policy.LifetimeActions.Add(
                     new KeyRotationLifetimeAction()
                     {
                         Action = psKeyRotationLifetimeAction.Action,
                         TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
                         TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
                     }
-                );
-            }
-            return UpdateKeyRotationPolicy(client, psKeyRotationPolicy.VaultName, psKeyRotationPolicy.KeyName, policy);
+                ));
+
+            return SetKeyRotationPolicy(client, psKeyRotationPolicy.VaultName, psKeyRotationPolicy.KeyName, policy);
         }
 
-        private PSKeyRotationPolicy UpdateKeyRotationPolicy(KeyClient client, string managedHsmName, string keyName, KeyRotationPolicy keyRotationPolicy)
+        private PSKeyRotationPolicy SetKeyRotationPolicy(KeyClient client, string managedHsmName, string keyName, KeyRotationPolicy keyRotationPolicy)
         {
             return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, keyRotationPolicy), managedHsmName, keyName);
         }

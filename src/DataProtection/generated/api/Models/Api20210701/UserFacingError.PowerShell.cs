@@ -106,15 +106,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("InnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable = (bool?) content.GetValueForProperty("IsRetryable",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError = (bool?) content.GetValueForProperty("IsUserError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction = (string[]) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target, global::System.Convert.ToString);
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("InnerError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("InnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IsRetryable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable = (bool?) content.GetValueForProperty("IsRetryable",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsUserError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError = (bool?) content.GetValueForProperty("IsUserError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction = (string[]) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -132,15 +159,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("InnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable = (bool?) content.GetValueForProperty("IsRetryable",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError = (bool?) content.GetValueForProperty("IsUserError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction = (string[]) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target, global::System.Convert.ToString);
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("InnerError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IInnerError) content.GetValueForProperty("InnerError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).InnerError, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.InnerErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IsRetryable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable = (bool?) content.GetValueForProperty("IsRetryable",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsRetryable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsUserError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError = (bool?) content.GetValueForProperty("IsUserError",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).IsUserError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction = (string[]) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).RecommendedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingErrorInternal)this).Target, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

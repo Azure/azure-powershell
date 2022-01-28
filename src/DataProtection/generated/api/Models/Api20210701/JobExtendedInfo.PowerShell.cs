@@ -99,17 +99,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("SourceRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("TargetRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobExtendedInfoAdditionalDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState = (string) content.GetValueForProperty("BackupInstanceState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte = (double?) content.GetValueForProperty("DataTransferredInByte",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination = (string) content.GetValueForProperty("RecoveryDestination",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask[]) content.GetValueForProperty("SubTask",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId = (string) content.GetValueForProperty("SourceRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("SourceRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId = (string) content.GetValueForProperty("TargetRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("TargetRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("SourceRecoverPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("SourceRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetRecoverPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("TargetRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdditionalDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobExtendedInfoAdditionalDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BackupInstanceState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState = (string) content.GetValueForProperty("BackupInstanceState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataTransferredInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte = (double?) content.GetValueForProperty("DataTransferredInByte",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("RecoveryDestination"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination = (string) content.GetValueForProperty("RecoveryDestination",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubTask"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask[]) content.GetValueForProperty("SubTask",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SourceRecoverPointRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId = (string) content.GetValueForProperty("SourceRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceRecoverPointRecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("SourceRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("TargetRecoverPointRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId = (string) content.GetValueForProperty("TargetRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetRecoverPointRecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("TargetRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,17 +160,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("SourceRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("TargetRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobExtendedInfoAdditionalDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState = (string) content.GetValueForProperty("BackupInstanceState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte = (double?) content.GetValueForProperty("DataTransferredInByte",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination = (string) content.GetValueForProperty("RecoveryDestination",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask[]) content.GetValueForProperty("SubTask",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId = (string) content.GetValueForProperty("SourceRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("SourceRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId = (string) content.GetValueForProperty("TargetRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("TargetRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("SourceRecoverPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("SourceRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetRecoverPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreJobRecoveryPointDetails) content.GetValueForProperty("TargetRecoverPoint",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPoint, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RestoreJobRecoveryPointDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdditionalDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoAdditionalDetails) content.GetValueForProperty("AdditionalDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).AdditionalDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobExtendedInfoAdditionalDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BackupInstanceState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState = (string) content.GetValueForProperty("BackupInstanceState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).BackupInstanceState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataTransferredInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte = (double?) content.GetValueForProperty("DataTransferredInByte",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).DataTransferredInByte, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("RecoveryDestination"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination = (string) content.GetValueForProperty("RecoveryDestination",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).RecoveryDestination, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubTask"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask[]) content.GetValueForProperty("SubTask",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SubTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobSubTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.JobSubTaskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SourceRecoverPointRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId = (string) content.GetValueForProperty("SourceRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceRecoverPointRecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("SourceRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).SourceRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("TargetRecoverPointRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId = (string) content.GetValueForProperty("TargetRecoverPointRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetRecoverPointRecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("TargetRecoverPointRecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IJobExtendedInfoInternal)this).TargetRecoverPointRecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

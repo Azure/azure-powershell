@@ -23,6 +23,18 @@ The **Remove-AzVMNetworkInterface** cmdlet removes a network interface from a vi
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Remove-AzVMNetworkInterface -VM $vmConfig
+$vmConfig.NetworkProfile
+```
+
+```Output
+NetworkInterfaces NetworkApiVersion NetworkInterfaceConfigurations
+----------------- ----------------- ------------------------------
+{}
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile

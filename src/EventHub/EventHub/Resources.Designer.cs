@@ -275,5 +275,38 @@ namespace Microsoft.Azure.Commands.EventHub {
                 return ResourceManager.GetString("UpdateNamespaceAuthorizationrule", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Schema Group named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string CreateNamespaceSchemaGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateEventHubSchemaGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Schema Group named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string UpdateNamespaceSchemaGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("UpdateEventHubSchemaGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RemoveNamespacesSchemaGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveEventHubSchemaGroup", resourceCulture);
+            }
+        }
     }
 }

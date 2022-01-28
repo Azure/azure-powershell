@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplication
 schema: 2.0.0
@@ -14,26 +14,26 @@ Deletes entity from applications
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADApplication -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationDisplayNameParameterSet
-```
-Remove-AzADApplication -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzADApplication -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Remove-AzADApplication -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzADApplication -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ApplicationDisplayNameParameterSet
+```
+Remove-AzADApplication -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzADApplication -InputObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -329,3 +329,4 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
 
 ## RELATED LINKS
 
+## RELATED LINKS

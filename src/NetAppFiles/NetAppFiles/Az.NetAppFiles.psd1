@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.NetApp.dll'
@@ -102,7 +102,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'New-AzNetAppFilesActiveDirectory', 
                'Get-AzNetAppFilesActiveDirectory', 
                'Update-AzNetAppFilesActiveDirectory', 
-               'Remove-AzNetAppFilesActiveDirectory'
+               'Remove-AzNetAppFilesActiveDirectory', 
+               'Get-AzNetAppFilesQuotaLimit'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -125,7 +126,8 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'New-AnfBackup', 'Remove-AnfBackup', 'Update-AnfBackup', 
                'Get-AnfVolumeBackupStatus', 'Get-AnfVolumeRestoreStatus', 
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 
-               'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory'
+               'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory',
+               'Get-AnfQuotaLimit'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

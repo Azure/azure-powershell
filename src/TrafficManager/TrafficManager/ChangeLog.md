@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added two new optional parameters 'MinChildEndpointsIPv4' and 'MinChildEndpointsIPv6' for nested endpoints
 
 ## Version 1.0.4
 * Fixed incorrect profile name in `DisableAzureTrafficManagerEndpoint` verbose output
