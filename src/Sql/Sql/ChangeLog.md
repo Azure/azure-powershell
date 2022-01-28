@@ -19,8 +19,7 @@
 -->
 ## Upcoming Release
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
-* Hotfix for Azure Active Directory Admin
-    - AzureSqlServerActiveDirectoryAdministratorAdapter and AzureSqlInstanceActiveDirectoryAdministratorAdapter both used AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph instead of AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl
+* Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
 
 ## Version 3.7.0
 * Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases

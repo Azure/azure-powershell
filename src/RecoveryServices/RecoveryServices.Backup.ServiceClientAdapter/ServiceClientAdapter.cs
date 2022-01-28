@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Configuration;
 using System.Reflection;
 using RecoveryServicesBackupNS = Microsoft.Azure.Management.RecoveryServices.Backup;
+using RecoveryServicesBackupCRRNS = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
 
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public const string ResourceProviderProductionNamespace = "Microsoft.RecoveryServices";
 
         public ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
-
+        public ClientProxy<RecoveryServicesBackupCRRNS.RecoveryServicesBackupClient> CrrAdapter;
         ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
 
         ClientProxy<ResourcesNS.ResourceManagementClient> RMAdapter;
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public ServiceClientAdapter(IAzureContext context)
         {
             BmsAdapter = new ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient>(context);
+            CrrAdapter = new ClientProxy<RecoveryServicesBackupCRRNS.RecoveryServicesBackupClient>(context);
             RSAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesClient>(context);
             RMAdapter = new ClientProxy<ResourcesNS.ResourceManagementClient>(context);
             SubscriptionId = context.Subscription.Id;
