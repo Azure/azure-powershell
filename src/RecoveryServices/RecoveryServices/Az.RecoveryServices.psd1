@@ -62,12 +62,13 @@ RequiredAssemblies = 'AutoMapper.dll',
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Helpers.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Logger.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Providers.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter.dll',                
                'Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
                'Microsoft.Azure.Management.RecoveryServices.dll', 
                'Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
                'System.Configuration.ConfigurationManager.dll', 
-               'TimeZoneConverter.dll'
+               'TimeZoneConverter.dll',
+               'Microsoft.Azure.Management.Compute'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

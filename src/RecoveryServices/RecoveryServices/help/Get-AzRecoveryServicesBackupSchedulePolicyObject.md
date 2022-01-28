@@ -16,7 +16,7 @@ Gets a base schedule policy object.
 ```
 Get-AzRecoveryServicesBackupSchedulePolicyObject [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [-DefaultProfile <IAzureContextContainer>]
- [[-ScheduleRunFrequency] <ScheduleRunType>] [<CommonParameters>]
+ [[-ScheduleRunFrequency] <ScheduleRunType>] [[-PolicySubType] <PolicyType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ The fourth command replaces the scheduled run times with the current time.
 You can only backup AzureVM once per day, so to reset the backup time you must replace the original schedule.
 The last command creates a backup protection policy using the new schedule.
 
-### Example 3: Get hourly schedule for fileshare policy 
+### Example 3: Get hourly schedule for fileshare policy
 ```powershell
 $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
 $timeZone = Get-TimeZone
@@ -107,6 +107,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PolicySubType
+Type of schedule policy to be fetched: Standard, Enhanced
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Standard, Enhanced
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScheduleRunFrequency
 Schedule run frequency for the policy schedule.
 
@@ -114,7 +130,7 @@ Schedule run frequency for the policy schedule.
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Daily, Hourly
+Accepted values: Daily, Hourly, Weekly
 
 Required: False
 Position: 2
