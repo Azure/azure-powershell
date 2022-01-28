@@ -24,13 +24,13 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 
 ### Example 1: Create a Backend Proxy In-Memory Object
 ```powershell
-PS C:\>$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
-PS C:\>$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
-PS C:\>$credential = New-AzApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
+$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
+$credential = New-AzApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
 
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 
-PS C:\>$backend = New-AzApiManagementBackend -Context  $apimContext -BackendId 123 -Url 'https://contoso.com/awesomeapi' -Protocol http -Title "first backend" -SkipCertificateChainValidation $true -Proxy $credential -Description "backend with proxy server"
+$backend = New-AzApiManagementBackend -Context  $apimContext -BackendId 123 -Url 'https://contoso.com/awesomeapi' -Protocol http -Title "first backend" -SkipCertificateChainValidation $true -Proxy $credential -Description "backend with proxy server"
 ```
 
 Creates a Backend Proxy Object and sets up Backend

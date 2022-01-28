@@ -47,41 +47,43 @@ The **Get-AzApiManagementPolicy** cmdlet gets the specified scope policy.
 
 ### Example 1: Get the tenant level policy
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementPolicy -Context $apimContext -SaveAs "C:\contoso\policies\tenantpolicy.xml"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementPolicy -Context $apimContext -SaveAs "C:\contoso\policies\tenantpolicy.xml"
 ```
 
 This command gets tenant level policy and saves it to a file named tenantpolicy.xml.
 
 ### Example 2: Get the product-scope policy
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementPolicy -Context $apimContext -ProductId "0123456789"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementPolicy -Context $apimContext -ProductId "0123456789"
 ```
 
 This command gets product-scope policy
 
 ### Example 3: Get the API-scope policy
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210"
 ```
 
 This command gets API-scope policy.
 
 ### Example 4: Get the operation-scope policy
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
 ```
 
 This command gets the operation-scope policy.
 
 ### Example 5: Get the Tenant scope policy in RawXml format
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS c:\> Get-AzApiManagementPolicy -Context $apimContext -Format rawxml
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementPolicy -Context $apimContext -Format rawxml
+```
 
+```output
 <policies>
         <inbound>
                 <set-header name="correlationid" exists-action="skip">
