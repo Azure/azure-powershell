@@ -298,6 +298,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         Daily = 1,
         Weekly = 2,
+        Hourly = 3
     }
 
     /// <summary>

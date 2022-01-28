@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
                     }
-
                     WriteObject(ConversionHelpers.GetPolicyModel(policy));
                 }
                 else
