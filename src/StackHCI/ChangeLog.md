@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Adding support cmdlet for Remote Support 
+    - New cmdlets - Install-AzStackHCIRemoteSupport, Remove-AzStackHCIRemoteSupport, Enable-AzStackHCIRemoteSupport, Disable-AzStackHCIRemoteSupport, Get-AzStackHCIRemoteSupportAccess,Get-AzStackHCIRemoteSupportSessionHistory
+    
 ## Version 1.0.0
 * Promoted Az.StackHCI to GA
 
