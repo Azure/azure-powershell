@@ -1,7 +1,8 @@
 ### Example 1: Get all BotServices
 ```powershell
-PS C:\> Get-AzBotService
-
+Get-AzBotService
+```
+```output
 Etag                                   Kind Location Name             SkuName SkuTier Type
 ----                                   ---- -------- ----             ------- ------- ----
 "06008351-0000-0200-0000-5fd732870000" sdk  global   youri-apptest  F0              Microsoft.BotService/botServices
@@ -14,8 +15,9 @@ Get all BotServices
 
 ### Example 2: Get the BotService by ResourceGroupName and Name
 ```powershell
-PS C:\> Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
-
+Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
+```
+```output
 Etag                                   Kind Location Name       SkuName SkuTier Type
 ----                                   ---- -------- ----       ------- ------- ----
 "060085fb-0000-1800-0000-5fd71d7c0000" bot  global   youri-bot F0              Microsoft.BotService/botServices
@@ -25,8 +27,9 @@ Get the BotService by ResourceGroupName and Name
 
 ### Example 3: Get all BotServices by ResourceGroupName
 ```powershell
-PS C:\> Get-AzBotService -ResourceGroupName 'youriBotTest'
-
+Get-AzBotService -ResourceGroupName 'youriBotTest'
+```
+```output
 Etag                                   Kind Location Name             SkuName SkuTier Type
 ----                                   ---- -------- ----             ------- ------- ----
 "06008351-0000-0200-0000-5fd732870000" sdk  global   youri-apptest  F0              Microsoft.BotService/botServices
@@ -39,9 +42,10 @@ Get all BotServices by ResourceGroupName
 
 ### Example 4: Get the BotService by inputObject
 ```powershell
-PS C:\> $getAzbot = Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
+$getAzbot = Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
 Get-AzBotService -InputObject $getAzbot
-
+```
+```output
 Etag                                   Kind Location Name       SkuName SkuTier Type
 ----                                   ---- -------- ----       ------- ------- ----
 "060085fb-0000-1800-0000-5fd71d7c0000" bot  global   youri-bot1 F0              Microsoft.BotService/botServices
