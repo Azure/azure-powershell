@@ -32,6 +32,9 @@ The **Get-AzCdnEndpointResourceUsage** cmdlet gets resource limits and current u
 ### Example 1
 ```powershell
 Get-AzCdnEndpointResourceUsage -ProfileName profile1 -ResourceGroupName rg -EndpointName endpoint1
+```
+
+```output
 ResourceType          Unit  CurrentValue Limit
 ------------          ----  ------------ -----
 customdomain          count            2    20

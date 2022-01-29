@@ -51,7 +51,9 @@ The **New-AzCdnDeliveryRule** cmdlet creates a delivery rule for CDN endpoint cr
 ### Example 1
 ```powershell
 New-AzCdnDeliveryRuleAction -HeaderActionType ModifyRequestHeader -Action Append -HeaderName "Accept-Encoding" -Value "gzip"
+```
 
+```output
 HeaderActionType    Action HeaderName      Value
 ----------------    ------ ----------      -----
 ModifyRequestHeader Append Accept-Encoding gzip

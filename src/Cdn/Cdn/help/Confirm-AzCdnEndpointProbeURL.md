@@ -25,6 +25,9 @@ The **Confirm-AzCdnEndpointProbeURL** cmdlet confirms if the probe URL provided 
 ### Example 1
 ```powershell
 Confirm-AzCdnEndpointProbeURL -ProbeUrl "http://www.bing.com/images"
+```
+
+```output
 IsValid: true
 ErrorCode: None
 Message:

@@ -26,7 +26,9 @@ The **New-AzCdnDeliveryRule** cmdlet creates a delivery rule for CDN endpoint cr
 ### Example 1
 ```powershell
 New-AzCdnDeliveryRuleCondition -MatchVariable UrlPath -Operator Equal -MatchValue "abc"
+```
 
+```output
 MatchVariable   : UrlPath
 Operator        : Equal
 Selector        :
