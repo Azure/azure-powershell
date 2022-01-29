@@ -22,11 +22,27 @@ Get-AzSecuritySecureScoreControl [-DefaultProfile <IAzureContextContainer>] [<Co
 Get-AzSecuritySecureScoreControl -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+## DESCRIPTION
+The Get-AzSecuritySecureScoreControl comlet gets security secure score controls and their results on a subscription.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Get-AzSecuritySecureScoreControl
+
+Id : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Security/secureSco
+res/ascScore/secureScoreControls/8fd574ec-43cf-426e-a439-a67cbaf2d564
+Name : 8fd574ec-43cf-426e-a439-a67cbaf2d564
+Type : Microsoft.Security/secureScores/secureScoreControls
+DisplayName : Enable encryption at rest
+CurrentScore : 0
+MaxScore : 4
+Percentage : 0
+Weight : 6
+HealthyResourceCount : 0
+UnhealthyResourceCount : 6
+NotApplicableResourceCount : 0
 ```
 
 Gets all the security secure scores in a subscription

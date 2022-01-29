@@ -32,8 +32,10 @@ selected context.
 
 ### Example 1: Target a named context
 ```powershell
-PS C:\> Select-AzContext "Work"
+Select-AzContext "Work"
+```
 
+```Output
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------
 Work    test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...

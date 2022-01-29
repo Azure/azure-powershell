@@ -15,14 +15,26 @@ Stops an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-ResourceGroupName] <String>
+Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceGroupHibernateParameterSet
+```
+Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-Hibernate] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
 Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdHibernateParameterSet
+```
+Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Hibernate
+Optional parameter to hibernate a virtual machine. (Feature in Preview)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ResourceGroupHibernateParameterSet, IdHibernateParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Id
 The ID of the virtual machine.
 
@@ -104,7 +131,7 @@ The virtual machine name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName
+Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupHibernateParameterSet
 Aliases:
 
 Required: True
@@ -134,7 +161,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName
+Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupHibernateParameterSet
 Aliases:
 
 Required: True
@@ -149,7 +176,7 @@ To request non-graceful VM shutdown when keeping the VM provisioned.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName, IdParameterSetName
 Aliases:
 
 Required: False
@@ -165,7 +192,7 @@ is charged for the stopped virtual machines.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName, IdParameterSetName
 Aliases:
 
 Required: False

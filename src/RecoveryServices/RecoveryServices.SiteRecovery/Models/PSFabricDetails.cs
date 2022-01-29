@@ -2123,6 +2123,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.InitialRecoveryZone = details.InitialRecoveryZone;
             this.RecoveryAvailabilityZone = details.RecoveryAvailabilityZone;
             this.PrimaryAvailabilityZone = details.PrimaryAvailabilityZone;
+            this.InitialPrimaryExtendedLocation = details.InitialPrimaryExtendedLocation;
+            this.InitialRecoveryExtendedLocation = details.InitialRecoveryExtendedLocation;
+            this.PrimaryExtendedLocation = details.PrimaryExtendedLocation;
+            this.RecoveryExtendedLocation = details.RecoveryExtendedLocation;
             this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
@@ -2324,6 +2328,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the primary availability zone.
         /// </summary>
         public string PrimaryAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary extended location.
+        /// </summary>
+        public ExtendedLocation InitialPrimaryExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery extended location.
+        /// </summary>
+        public ExtendedLocation InitialRecoveryExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery extended location.
+        /// </summary>
+        public ExtendedLocation RecoveryExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary extended location.
+        /// </summary>
+        public ExtendedLocation PrimaryExtendedLocation { get; set; }
+
 
         /// <summary>
         /// Gets or sets the only constant ID throught out the enable disable cycle.
