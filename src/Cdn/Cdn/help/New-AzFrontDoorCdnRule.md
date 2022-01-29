@@ -28,7 +28,7 @@ Creates the rule.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorCdnRule -Action $action -Condition $condition -ProfileName $profileName -ResourceGroupName $resourceGroupName -RuleSetName $ruleSetName -RuleName $ruleName -Order $order
+New-AzFrontDoorCdnRule -Action $action -Condition $condition -ProfileName $profileName -ResourceGroupName $resourceGroupName -RuleSetName $ruleSetName -RuleName $ruleName -Order $order
 ```
 
 Creates the rule.
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -Order
 The order in which the rules are applied for the endpoint.
-Possible values {0,1,2,3,………}.
+Possible values {0,1,2,3,â€¦â€¦â€¦}.
 A rule with a lesser order will be applied before a rule with a greater order.
 
 ```yaml
