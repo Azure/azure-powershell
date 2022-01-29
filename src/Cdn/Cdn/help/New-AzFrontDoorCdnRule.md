@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -Order
 The order in which the rules are applied for the endpoint.
-Possible values {0,1,2,3,â€¦â€¦â€¦}.
+Possible values {0,1,2,3,………}.
 A rule with a lesser order will be applied before a rule with a greater order.
 
 ```yaml
