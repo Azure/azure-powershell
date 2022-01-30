@@ -39,22 +39,22 @@ Force manual platform update domain walk to update virtual machines in a service
 
 ### Example 1
 ```
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -ResourceGroupName $rgname -VMScaleSetName $vmssName -PlatformUpdateDomain 0
+Repair-AzVmssServiceFabricUpdateDomain -ResourceGroupName $rgname -VMScaleSetName $vmssName -PlatformUpdateDomain 0
 ```
 
 This command forces service fabric update walk on UD 0 for the virtual machine scale set specified by resource group name and scale set name.
 
 ### Example 2
 ```
-PS C:\> $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -VirtualMachineScaleSet $vmss -PlatformUpdateDomain 1
+$vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+Repair-AzVmssServiceFabricUpdateDomain -VirtualMachineScaleSet $vmss -PlatformUpdateDomain 1
 ```
 
 This command forces service fabric update walk on UD 1 for the virtual machine scale set specified by VM scale set object.
 
 ### Example 3
 ```
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -ResourceId $resourceId  -PlatformUpdateDomain 2;
+Repair-AzVmssServiceFabricUpdateDomain -ResourceId $resourceId  -PlatformUpdateDomain 2;
 ```
 
 This command forces service fabric update walk on UD 2 for the virtual machine scale set specified by resource id.

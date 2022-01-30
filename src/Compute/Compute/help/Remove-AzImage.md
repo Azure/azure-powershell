@@ -24,7 +24,7 @@ The **Remove-AzImage** cmdlet removes an image..
 
 ### Example 1
 ```
-PS C:\> Remove-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Force;
+Remove-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Force;
 ```
 
 This command removes the image named 'Image01' in the resource group 'ResourceGroup01'.

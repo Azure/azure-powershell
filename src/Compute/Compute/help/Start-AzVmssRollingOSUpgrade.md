@@ -25,7 +25,7 @@ Instances which are already running the latest available OS version are not affe
 
 ### Example 1
 ```
-PS C:\> Start-AzVmssRollingOSUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+Start-AzVmssRollingOSUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command starts a rolling upgrade of all vm instances of VM scale set "VMSS001" in resource group "Group001".

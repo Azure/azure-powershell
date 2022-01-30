@@ -25,7 +25,7 @@ The **Update-AzAvailabilitySet** cmdlet updates an availability set.
 
 ### Example 1
 ```
-PS C:\> Get-AzAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzAvailabilitySet -Managed;
+Get-AzAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzAvailabilitySet -Managed;
 ```
 
 This command updates the availability set named 'AvSet01' in the resource group named 'ResourceGroup01' to a managed availability set.

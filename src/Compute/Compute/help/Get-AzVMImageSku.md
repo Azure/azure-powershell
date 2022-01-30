@@ -25,7 +25,7 @@ The **Get-AzVMImageSku** cmdlet gets VMImage SKUs.
 
 ### Example 1: Get VMImage SKUs
 ```
-PS C:\> Get-AzVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"
+Get-AzVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"
 ```
 
 This command gets the SKUs for the specified publisher and offer.

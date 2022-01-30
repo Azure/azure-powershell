@@ -23,7 +23,7 @@ The **New-AzDiskAccess** cmdlet creates a Disk Access resource
 
 ### Example 1
 ```
-PS C:\> New-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" -Location "NorthCentralUS"
+New-AzDiskAccess -ResourceGroupName "ResourceGroup01" -Name "DiskAccess01" -Location "NorthCentralUS"
 ```
 
 This command will create a Disk Access with given properties. 

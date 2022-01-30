@@ -25,7 +25,7 @@ The **Remove-AzAvailabilitySet** cmdlet removes an availability set from Azure.
 
 ### Example 1: Remove an availability set
 ```
-PS C:\> Remove-AzAvailabilitySet -Name "AvailabilitySet03" -ResourceGroupName "ResourceGroup11"
+Remove-AzAvailabilitySet -Name "AvailabilitySet03" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command removes an availability set named AvailabilitySet03 in the resource group named ResourceGroup11.

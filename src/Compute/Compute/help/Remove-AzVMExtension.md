@@ -25,7 +25,7 @@ The **Remove-AzVMExtension** cmdlet removes an extension from the Virtual Machin
 
 ### Example 1: Remove an extension from a virtual machine
 ```
-PS C:\> Remove-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
+Remove-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
 ```
 
 This command removes the extension named ContosoTest from the virtual machine named VirtualMachine22 in ResourceGroup11.

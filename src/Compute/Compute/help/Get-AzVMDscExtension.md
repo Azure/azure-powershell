@@ -32,7 +32,7 @@ The **Get-AzVMDscExtension** cmdlet gets the settings of the Desired State Confi
 
 ### Example 1: Get the settings of a DSC extension
 ```
-PS C:\> Get-AzVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
+Get-AzVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
 ```
 
 This command gets the settings of extension named DSC on the virtual machine named VM07.

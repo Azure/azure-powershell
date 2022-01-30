@@ -25,7 +25,7 @@ The **Get-AzVMImageOffer** cmdlet gets the VMImage offer types.
 
 ### Example 1: Get offer types for a publisher
 ```
-PS C:\> Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
+Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the offer types for the specified publisher in the Central US region.

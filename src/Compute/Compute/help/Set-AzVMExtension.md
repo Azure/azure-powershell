@@ -38,9 +38,9 @@ The **Set-AzVMExtension** cmdlet updates properties for existing Virtual Machine
 
 ### Example 1: Modify settings by using hash tables
 ```
-PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
-PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
-PS C:\> Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
+$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+$ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
+Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
 ```
 
 The first two commands use standard Windows PowerShell syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables.
@@ -51,9 +51,9 @@ The command specifies other required information that includes the publisher and
 
 ### Example 2: Modify settings by using strings
 ```
-PS C:\> $SettingsString = '{"fileUris":[],"commandToExecute":""}';
-PS C:\> $ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-PS C:\> Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
+$SettingsString = '{"fileUris":[],"commandToExecute":""}';
+$ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
+Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
 ```
 
 The first two commands create strings that contain settings, and then stores them in the $SettingsString and $ProtectedSettingsString variables.

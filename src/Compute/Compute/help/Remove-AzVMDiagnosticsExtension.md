@@ -26,7 +26,7 @@ You must pass the output of this cmdlet to the Update-AzVM cmdlet to implement y
 
 ### Example 1: Remove the Diagnostics extension from a virtual machine
 ```
-PS C:\> Remove-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzVM
+Remove-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzVM
 ```
 
 This command removes the Diagnostics extension from a virtual machine named ContosoVM22.

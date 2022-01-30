@@ -31,7 +31,7 @@ Caution: This cmdlet reboots the virtual machine.
 
 ### Example 1: Disable encryption for all volumes on a Windows virtual machine
 ```
-PS C:\> Disable-AzVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"
+Disable-AzVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"
 ```
 
 This command disables encryption for volumes of type all for the virtual machine named VM002 that belongs to the resource group named Group001.
@@ -39,10 +39,10 @@ Since the *VolumeType* parameter is not specified, the cmdlet sets the value to 
 
 ### Example 2: Disable encryption for data volumes on a Windows virtual machine
 ```
-PS C:\> $ResourceGroup = "Group002"
-PS C:\> $VMName = "VM004"
-PS C:\> $VolumeType = "Data"
-PS C:\> Disable-AzVMDiskEncryption -ResourceGroupName $ResourceGroup -VMName $VMName -VolumeType $VolumeType
+$ResourceGroup = "Group002"
+$VMName = "VM004"
+$VolumeType = "Data"
+Disable-AzVMDiskEncryption -ResourceGroupName $ResourceGroup -VMName $VMName -VolumeType $VolumeType
 ```
 
 This command disables encryption for volumes of type data for the virtual machine named VM004 that belongs to the resource group named Group002.

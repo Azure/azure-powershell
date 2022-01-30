@@ -28,7 +28,7 @@ In addition to encryption status, it also displays the encryption secret URL, ke
 
 ### Example 1: Get the encryption status of a virtual machine
 ```
-PS C:\> Get-AzVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
+Get-AzVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
 ```
 
 This command gets the encryption status of the virtual machine named VM001.

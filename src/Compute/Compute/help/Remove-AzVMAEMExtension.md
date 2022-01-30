@@ -25,7 +25,7 @@ The **Remove-AzVMAEMExtension** cmdlet removes the Azure Enhanced Monitoring (AE
 
 ### Example 1: Remove the AEM extension
 ```
-PS C:\> Remove-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+Remove-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command removes the AEM extension for the virtual machine named contoso-server.

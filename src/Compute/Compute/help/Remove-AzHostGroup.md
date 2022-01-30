@@ -37,14 +37,14 @@ This cmdlet will delete a Host group
 
 ### Example 1
 ```
-PS C:\> Get-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName | Remove-AzHostGroup
+Get-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName | Remove-AzHostGroup
 ```
 
 This command gets and removes the given host group.
 
 ### Example 2
 ```
-PS C:\> Remove-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
+Remove-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
 ```
 
 This command removes the given host group.

@@ -25,7 +25,7 @@ The **Remove-AzVmssDiagnosticsExtension** cmdlet removes a diagnostics extension
 
 ### Example 1: Remove a diagnostics extension from the VMSS
 ```
-PS C:\> Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -Name $extName
+Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -Name $extName
 ```
 
 This command removes diagnostics extension from the VMSS.

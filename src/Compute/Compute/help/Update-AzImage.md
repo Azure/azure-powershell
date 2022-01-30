@@ -38,10 +38,10 @@ Currently, only the Tags can be updated.
 
 ### Example 1
 ```
-PS C:\> $image = Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' 
-PS C:\> $image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\> $image.Tags.Add("key1", "val1")
-PS C:\> Update-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Image $image
+$image = Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' 
+$image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$image.Tags.Add("key1", "val1")
+Update-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Image $image
 ```
 
 This command updates the Tag value of the existing image 'Image01' in the resource group 'ResourceGroup01'.

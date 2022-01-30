@@ -39,14 +39,14 @@ Sets the orchestration service state for the VMSS.
 
 ### Example 1
 ```
-PS C:\> Set-AzVmssOrchestrationServiceState -ResourceGroupName "rg" -VMScaleSetName "vmss1" -ServiceName "AutomaticRepairs" -Action "Suspend"
+Set-AzVmssOrchestrationServiceState -ResourceGroupName "rg" -VMScaleSetName "vmss1" -ServiceName "AutomaticRepairs" -Action "Suspend"
 ```
 
 This command suspends Automatic Repairs service on the VMSS "vmss1" in the resource group "rg".
 
 ### Example 2
 ```
-PS C:\> Get-AzVmss -ResourceGroupName "rg" -VMScaleSetName "vmss1" | Set-AzVmssOrchestrationServiceState -ServiceName "AutomaticRepairs" -Action "Resume"
+Get-AzVmss -ResourceGroupName "rg" -VMScaleSetName "vmss1" | Set-AzVmssOrchestrationServiceState -ServiceName "AutomaticRepairs" -Action "Resume"
 ```
 
 This command resumes Automatic Repairs service on the VMSS "vmss1" in the resource group "rg".

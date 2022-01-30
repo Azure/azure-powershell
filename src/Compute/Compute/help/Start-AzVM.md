@@ -32,7 +32,7 @@ The **Start-AzVM** cmdlet starts an Azure virtual machine.
 
 ### Example 1: Start a virtual machine
 ```
-PS C:\> Start-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+Start-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command starts the virtual machine named VirtualMachine07 in ResourceGroup11.

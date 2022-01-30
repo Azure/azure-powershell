@@ -25,7 +25,7 @@ The **Remove-AzVMSqlServerExtension** cmdlet removes an AzureSQL Server extensio
 
 ### Example 1: Remove a SQL Server extension
 ```
-PS C:\> Remove-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"
+Remove-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"
 ```
 
 This command removes a SQL Server extension from the virtual machine named ContosoVM22.

@@ -36,7 +36,7 @@ Assesses the patch status of a VM and reports all detected patches that are avai
 
 ### Example 1
 ```
-PS C:\> Invoke-AzVmPatchAssessment -ResourceGroupName "myRG" -VMName "myVM"
+Invoke-AzVmPatchAssessment -ResourceGroupName "myRG" -VMName "myVM"
 ```
 
 ## PARAMETERS

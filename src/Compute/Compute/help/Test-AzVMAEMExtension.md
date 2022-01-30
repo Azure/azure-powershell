@@ -28,7 +28,7 @@ This cmdlet checks whether performance data is available.
 
 ### Example 1: Check the configuration of the AEM extension
 ```
-PS C:\> Test-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+Test-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command checks the configuration of the AEM extension for the virtual machine named contoso-server.

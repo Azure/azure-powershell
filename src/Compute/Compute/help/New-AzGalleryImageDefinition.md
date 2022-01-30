@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimagedefinition
@@ -41,7 +41,7 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $description = "My gallery"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux" -Description $description
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux" -Description $description
 ```
 
 Creates a gallery image definition to contain image versions for specialized linux images.
@@ -57,7 +57,7 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $description = "My gallery"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -Description $description
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -Description $description
 ```
 
 Creates a gallery image definition to contain image versions for generalized linux images.
@@ -73,7 +73,7 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $description = "My gallery"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Windows" -Description $description
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Windows" -Description $description
 ```
 
 Creates a gallery image definition to contain image versions for specialized windows images.
@@ -92,7 +92,7 @@ $description = "My gallery"
 $IsHibernateSupported = @{​​​​​Name='IsHibernateSupported';Value='True'}​​​​​ 
 $IsAcceleratedNetworkSupported = @{​​​​​Name='IsAcceleratedNetworkSupported';Value='False'}​​​​​
 $features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported)
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
 ```
 
 Creates a gallery image definition to contain image versions for generalized windows images.
@@ -110,7 +110,7 @@ $skuName = "GreatSku"
 $purchasePlanName = "myPlanName"
 $purchasePlanProduct = "myPlanProduct"
 $purchasePlanPublisher = "myPlanPublisher"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -PurchasePlanName $purchasePlanName -PurchasePlanProduct $purchasePlanProduct -PurchasePlanPublisher $purchasePlanPublisher
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -PurchasePlanName $purchasePlanName -PurchasePlanProduct $purchasePlanProduct -PurchasePlanPublisher $purchasePlanPublisher
 ```
 
 Creates a gallery image definition for linux generalized images and define the plan name, product, and publisher. Only image versions that match the plan information can be added to this definition.
@@ -126,7 +126,7 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $endOfLifeDate = "2024-08-02T00:00:00+00:00"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -EndOfLifeDate $endOfLifeDate
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -EndOfLifeDate $endOfLifeDate
 ```
 
 This example has the end-of-life date for image definitions set to August 2, 2024 at mignight UTC. End-of-life dates can be specified for image definitions and image versions. Image definitions can still be used after the end-of-life dates.
@@ -145,7 +145,7 @@ $minMemory = 32
 $maxMemory = 128
 $minVCPU = 2
 $maxVCPU = 8
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -MinimumMemory $minMemory -MaximumMemory $maxMemory -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -MinimumMemory $minMemory -MaximumMemory $maxMemory -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU
 ```
 
 Creates a gallery image definition and recommends the minimum and maximum ranges for the CPU and memory that the image versions in this image definition support. Image versions can still be used to create virtual machines with memory and vCPU settings outside the recommended ranges.
@@ -161,7 +161,7 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 $disallowedDiskTypes = @("Standard_LRS")
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -DisallowedDiskType $disallowedDiskTypes
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -DisallowedDiskType $disallowedDiskTypes
 ```
 
 Creates a gallery image definition and indicate which OS disk types may not be compatible with image versions within this image definition. Image versions can still be used to create virtual machines with an OS disk that is one of the disallowed disk types.
@@ -179,7 +179,7 @@ $skuName = "GreatSku"
 $eula = "https://myeula"
 $privacyStatementUri = "https://mystatement"
 $releaseNoteUri = "https://myreleasenotes"
-PS C:\> New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -Eula $eula -PrivacyStatementUri $privacyStatementUri -ReleaseNoteUri $releaseNoteUri
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -Eula $eula -PrivacyStatementUri $privacyStatementUri -ReleaseNoteUri $releaseNoteUri
 ```
 
 Creates a gallery image definition for linux generalized images and specify either the string or path to an EULA agreement, privacy statement, and release notes tied to all image versions in the image definition.
