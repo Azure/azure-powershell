@@ -26,7 +26,7 @@ Creates the rule condition.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorCdnRuleCondition -MatchVariable RequestMethod -MatchValue "PUT" 
+New-AzFrontDoorCdnRuleCondition -MatchVariable RequestMethod -MatchValue "PUT" 
 ```
 
 Creates the rule condition.
