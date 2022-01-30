@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Added public network access to the `Set-AzEventHubNetworkRuleSet` set cmdlet
 * Added `New-AzEventHubSchemaGroup`, `Remove-AzEventHubSchemaGroup` and `Get-AzEventHubSchemaGroup` in the eventhubs PS.
 

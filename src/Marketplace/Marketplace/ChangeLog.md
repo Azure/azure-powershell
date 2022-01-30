@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Added new cmdlets:
  - `Copy-AzMarketplacePrivateStoreCollectionOffer`
  - `Get-AzMarketplaceBillingPrivateStoreAccount`
@@ -36,7 +38,7 @@
  - `Set-AzMarketplacePrivateStoreCollection`
  - `Set-AzMarketplacePrivateStoreCollectionOffer'`
 
-## Version 0.3.0
+## Version 0.2.0
 * Preview release , support private offers in private store under subscription level
 
 ## Version 0.1.0

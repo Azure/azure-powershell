@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.0
 * Fixed the issue that output number in console when update/copy blob sometimes [#16783]
     -  `Set-AzStorageBlobContent` 
     -  `Copy-AzStorageBlob` 
