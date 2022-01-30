@@ -23,7 +23,7 @@ Cancels the current virtual machine scale set rolling upgrade.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Stop-AzVmssRollingUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 

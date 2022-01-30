@@ -31,7 +31,7 @@ The **Set-AzVMSourceImage** cmdlet specifies the platform image to use for a vir
 ## EXAMPLES
 
 ### Example 1: Set values for an image
-```
+```powershell
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id 
 Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"

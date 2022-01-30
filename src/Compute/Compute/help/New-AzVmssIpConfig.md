@@ -30,7 +30,7 @@ Specify the configuration from this cmdlet as the *IPConfiguration* parameter of
 ## EXAMPLES
 
 ### Example 1: Create an IP configuration object for a VMSS interface
-```
+```powershell
 $IPConfiguration = New-AzVmssIPConfig -Name "ContosoVmssInterface02" -SubnetId $SubnetId
 ```
 
@@ -39,7 +39,7 @@ The command uses a previously defined subnet ID stored in $SubnetId.
 The command stores the configuration settings in the $IPConfiguration variable for later use with **Add-AzVmssNetworkInterfaceConfiguration**.
 
 ### Example 2: Create an IP configuration object that includes NAT pool settings
-```
+```powershell
 $IPConfiguration = New-AzVmssIPConfig -Name "ContosoVmssInterface03" -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id -SubnetId $SubnetId
 ```
 

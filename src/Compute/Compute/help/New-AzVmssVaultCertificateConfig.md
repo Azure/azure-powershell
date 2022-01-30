@@ -25,7 +25,7 @@ The output of this cmdlet is intended to be used with the Add-AzVmssSecret cmdle
 ## EXAMPLES
 
 ### Example 1: Create a Key Vault certificate configuration
-```
+```powershell
 New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "MyCerts"
 ```
 

@@ -30,7 +30,7 @@ For Linux virtual machines, the *VolumeType* parameter must be present and must 
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VmssName = "MyTestVmss"
 $VaultName= "MyKeyVault"
@@ -44,7 +44,7 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $Vm
 This command enables encryption on all disks of all Windows VMs in a VM scale set.
 
 ### Example 2
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VmssName = "MyTestVmss"
 $VaultName= "MyKeyVault"

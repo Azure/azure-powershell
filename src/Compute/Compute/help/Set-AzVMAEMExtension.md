@@ -27,7 +27,7 @@ The cmdlet installs the Azure Enhanced Monitoring (AEM) extension that collects 
 ## EXAMPLES
 
 ### Example 1: Use AEM extension
-```
+```powershell
 Set-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server" -WADStorageAccountName "stdstorage"
 ```
 

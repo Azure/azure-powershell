@@ -24,7 +24,7 @@ The **Grant-AzSnapshotAccess** cmdlet grants an access to a snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Grant-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Access 'Read' -DurationInSecond 60;
 ```
 

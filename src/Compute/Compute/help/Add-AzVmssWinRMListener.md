@@ -25,7 +25,7 @@ The **Add-AzVmssWinRMListener** cmdlet adds a Windows Remote Management (WinRM) 
 ## EXAMPLES
 
 ### Example 1: Add a WinRM listener to the VMSS
-```
+```powershell
 $VMSS = New-AzVmssConfig
 Add-AzVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol Https -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion"
 ```

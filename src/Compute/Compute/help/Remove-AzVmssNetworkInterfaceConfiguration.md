@@ -31,7 +31,7 @@ The **Remove-AzVmssNetworkInterfaceConfiguration** cmdlet removes a network inte
 ## EXAMPLES
 
 ### Example 1: Remove an interface configuration
-```
+```powershell
 $VMSS = Get-AzVmss -ResourceGroupName "ResourceGroup11" -VMScaleSetName "ContosoVMSS14"
 Remove-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "ContosoVmssInterface02"
 ```

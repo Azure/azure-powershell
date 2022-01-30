@@ -26,7 +26,7 @@ Sets the VMSS rolling upgrade policy properties.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Set-AzVmssRollingUpgradePolicy -VirtualMachineScaleSet $vmss -VirtualMachineScaleSet $vmss -MaxBatchInstancePercent 40 -MaxUnhealthyInstancePercent 35 -MaxUnhealthyUpgradedInstancePercent 30 -PauseTimeBetweenBatches "PT30S"
 ```
 

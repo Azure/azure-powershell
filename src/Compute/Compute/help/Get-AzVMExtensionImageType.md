@@ -24,7 +24,7 @@ The **Get-AzVMExtensionImageType** cmdlet gets the type of an Azure extension.
 ## EXAMPLES
 
 ### Example 1: Get an extension image type
-```
+```powershell
 Get-AzVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
 ```
 

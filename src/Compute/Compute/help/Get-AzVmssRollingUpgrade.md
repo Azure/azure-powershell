@@ -23,7 +23,7 @@ Shows the status of the latest virtual machine scale set rolling upgrade.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzVmssRollingUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 

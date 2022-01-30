@@ -25,14 +25,14 @@ This cmdlet can also be used to restart a specific virtual machine inside the VM
 ## EXAMPLES
 
 ### Example 1: Restart the VMSS
-```
+```powershell
 Restart-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001";
 ```
 
 This command restarts the VMSS named VMSS001 that belongs to the resource group named Group001.
 
 ### Example 2: Restart a specific virtual machine within the VMSS
-```
+```powershell
 Restart-AzVmss -ResourceGroupName "Group004" -VMScaleSetName "VMSS001" -InstanceId "1"
 ```
 

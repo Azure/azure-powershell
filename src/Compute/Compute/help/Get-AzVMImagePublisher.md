@@ -23,7 +23,7 @@ The **Get-AzVMImagePublisher** cmdlet gets the VMImage publishers.
 ## EXAMPLES
 
 ### Example 1: Get VMImage publishers for a region
-```
+```powershell
 Get-AzVMImagePublisher -Location "Central US"
 ```
 

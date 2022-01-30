@@ -23,7 +23,7 @@ The Remove-AzVMSecret cmdlet removes (a) secret(s) from a virtual machine object
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzVMSecret | Update-AzVM
 ```
 

@@ -24,7 +24,7 @@ The **Update-AzAvailabilitySet** cmdlet updates an availability set.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzAvailabilitySet -Managed;
 ```
 

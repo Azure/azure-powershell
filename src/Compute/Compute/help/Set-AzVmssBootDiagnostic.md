@@ -23,7 +23,7 @@ Sets the virtual machine scale set boot diagnostics profile.
 ## EXAMPLES
 
 ### Example 1: Set the boot diagnostics profile property for a VMSS
-```
+```powershell
 $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0'
 Set-AzVmssBootDiagnostic -VirtualMachineScaleSet $vmss -Enabled $true -StorageUri $storageUri;
 New-AzVmss -ResourceGroupName $rgname -Name "ContosoVMSS" -VirtualMachineScaleSet $vmss;

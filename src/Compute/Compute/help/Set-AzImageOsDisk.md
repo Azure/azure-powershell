@@ -26,7 +26,7 @@ The **Set-AzImageOsDisk** cmdlet sets the operating system disk properties on an
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $imageConfig = New-AzImageConfig -Location 'West US';
 $osDiskVhdUri = "https://contoso.blob.core.windows.net/test/os.vhd"
 $dataDiskVhdUri1 = "https://contoso.blob.core.windows.net/test/data1.vhd"

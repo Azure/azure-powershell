@@ -27,7 +27,7 @@ In addition to encryption status, it also displays the encryption secret URL, ke
 ## EXAMPLES
 
 ### Example 1: Get the encryption status of a virtual machine
-```
+```powershell
 Get-AzVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
 ```
 

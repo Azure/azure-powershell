@@ -22,7 +22,7 @@ List all compute resource Skus
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzComputeResourceSku "westus";
 ```
 

@@ -23,7 +23,7 @@ The **Remove-AzImage** cmdlet removes an image..
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Force;
 ```
 

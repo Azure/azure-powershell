@@ -33,14 +33,14 @@ You can use the *InstanceId* parameter to select a set of virtual machines.
 ## EXAMPLES
 
 ### Example 1: Stop all the virtual machines within the VMSS
-```
+```powershell
 Stop-AzVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command stops all virtual machines that belong to the VMSS named ContosoVMSS.
 
 ### Example 2: Stop a specific set of virtual machines within the VMSS
-```
+```powershell
 Stop-AzVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS" -InstanceId "3","5"
 ```
 

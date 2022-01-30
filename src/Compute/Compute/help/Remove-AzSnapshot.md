@@ -23,7 +23,7 @@ The **Remove-AzSnapshot** cmdlet removes a snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Force;
 ```
 

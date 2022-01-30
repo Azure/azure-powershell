@@ -24,7 +24,7 @@ The virtual machine must be stop-deallocated before invoking this operation.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 ConvertTo-AzVMManagedDisk -ResourceGroupName 'ResourceGroup01' -VMName 'VM01'
 ```
 

@@ -27,7 +27,7 @@ This cmdlet checks whether performance data is available.
 ## EXAMPLES
 
 ### Example 1: Check the configuration of the AEM extension
-```
+```powershell
 Test-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 

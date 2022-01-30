@@ -29,7 +29,7 @@ The **New-AzDiskUpdateConfig** cmdlet creates a configurable disk update object.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -SkuName Premium_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
@@ -47,7 +47,7 @@ The last command takes the disk update object and updates an existing disk with 
 resource group 'ResourceGroup01'.
 
 ### Example 2
-```
+```powershell
 New-AzDiskUpdateConfig -DiskSizeGB 10 | Update-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01';
 ```
 

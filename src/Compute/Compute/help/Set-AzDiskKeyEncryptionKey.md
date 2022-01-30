@@ -23,7 +23,7 @@ The **Set-AzDiskKeyEncryptionKey** cmdlet sets the key encryption key properties
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 5 -SkuName StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';

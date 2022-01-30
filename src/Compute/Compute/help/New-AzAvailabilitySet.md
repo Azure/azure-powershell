@@ -26,7 +26,7 @@ The **New-AzAvailabilitySet** cmdlet creates an Azure availability set.
 ## EXAMPLES
 
 ### Example 1: Create an availability set
-```
+```powershell
 New-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
 ```
 

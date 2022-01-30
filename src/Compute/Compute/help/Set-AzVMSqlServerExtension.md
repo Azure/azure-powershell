@@ -26,7 +26,7 @@ The **Set-AzVMSqlServerExtension** cmdlet sets the AzureSQL Server extension on 
 ## EXAMPLES
 
 ### Example 1: Set automatic patching settings on a virtual machine
-```
+```powershell
 $AutoPatchingConfig = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 Get-AzVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzVMSqlServerExtension -AutoPatchingSettings $AutoPatchingConfig | Update-AzVM
 ```
@@ -39,7 +39,7 @@ The current cmdlet sets the automatic patching settings in $AutoPatchingConfig f
 The command passes the virtual machine to the Update-AzVM cmdlet.
 
 ### Example 2: Set automatic backup settings on a virtual machine
-```
+```powershell
 $AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $StorageUrl -StorageKey $StorageAccountKeySecure
 Get-AzVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzVMSqlServerExtension -AutoBackupSettings $AutoBackupConfig | Update-AzVM
 ```
@@ -51,7 +51,7 @@ The current cmdlet sets the automatic backup settings in $AutoBackupConfig for t
 The command passes the virtual machine to the Update-AzVM cmdlet.
 
 ### Example 3: Disable a SQL Server extension on a virtual machine
-```
+```powershell
 Get-AzVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzVMSqlServerExtension -Disable
 ```
 
@@ -59,7 +59,7 @@ This command gets a virtual machine named VirtualMachine08 on Service03, and the
 The command disables SQL Server virtual machine extension on that virtual machine.
 
 ### Example 4: Uninstall a SQL Server extension on a specific virtual machine
-```
+```powershell
 Get-AzVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzVMSqlServerExtension -Uninstall
 ```
 

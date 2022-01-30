@@ -24,7 +24,7 @@ The **Set-AzDiskUpdateDiskEncryptionKey** cmdlet sets the disk encryption key pr
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -SkuName Premium_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';

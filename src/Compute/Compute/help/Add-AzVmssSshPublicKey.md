@@ -24,7 +24,7 @@ The **Add-AzVmssSshPublicKey** cmdlet adds the public keys that you can use to c
 ## EXAMPLES
 
 ### Example 1: Add an SSH public key to the VMSS
-```
+```powershell
 $VMSS = New-AzVmssConfig
 Add-AzVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV" -Path "/home/admin/.ssh/authorized_keys"
 ```

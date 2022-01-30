@@ -24,7 +24,7 @@ The **Grant-AzDiskAccess** cmdlet grants an access to a disk.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Grant-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Access 'Read' -DurationInSecond 60;
 ```
 

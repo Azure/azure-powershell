@@ -31,7 +31,7 @@ The **Remove-AzVM** cmdlet removes a virtual machine from Azure.
 ## EXAMPLES
 
 ### Example 1: Remove a virtual machine
-```
+```powershell
 Remove-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 

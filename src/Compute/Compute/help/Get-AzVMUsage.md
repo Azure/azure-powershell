@@ -23,7 +23,7 @@ The **Get-AzVMUsage** cmdlet gets the virtual machine core count usage for a loc
 ## EXAMPLES
 
 ### Example 1: Get core count usage for a location
-```
+```powershell
 Get-AzVMUsage -Location "Central US"
 ```
 

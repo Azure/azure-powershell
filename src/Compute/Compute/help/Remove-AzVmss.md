@@ -26,14 +26,14 @@ You can use the *InstanceId* parameter to remove a specific virtual machine insi
 ## EXAMPLES
 
 ### Example 1: Remove a VMSS
-```
+```powershell
 Remove-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"
 ```
 
 This command removes the VMSS named VMScaleSet001 that belongs to the resource group named Group001.
 
 ### Example 2: Remove a virtual machine from within a VMSS
-```
+```powershell
 Remove-AzVmss -ResourceGroupName "Group002" -VMScaleSetName "VMScaleSet002" -InstanceId "3";
 ```
 

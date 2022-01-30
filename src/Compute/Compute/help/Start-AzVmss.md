@@ -25,14 +25,14 @@ You can use the *InstanceId* parameter to select a set of virtual machines.
 ## EXAMPLES
 
 ### Example 1: Start a specific set of virtual machines within the VMSS
-```
+```powershell
 Start-AzVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"-InstanceId "0", "1"
 ```
 
 This command starts a specific set of virtual machines specified by the instance ID string array that belong to the VMSS named ContosoVMSS.
 
 ### Example 2: Start all virtual machines within the VMSS
-```
+```powershell
 Start-AzVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"
 ```
 

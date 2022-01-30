@@ -24,7 +24,7 @@ The **Get-AzVmssSku** cmdlet gets the available SKUs for the Virtual Machine Sca
 ## EXAMPLES
 
 ### Example 1: Get all available SKUs from the VMSS
-```
+```powershell
 Get-AzVmssSku -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 

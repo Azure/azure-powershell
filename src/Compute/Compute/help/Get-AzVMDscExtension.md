@@ -31,7 +31,7 @@ The **Get-AzVMDscExtension** cmdlet gets the settings of the Desired State Confi
 ## EXAMPLES
 
 ### Example 1: Get the settings of a DSC extension
-```
+```powershell
 Get-AzVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
 ```
 

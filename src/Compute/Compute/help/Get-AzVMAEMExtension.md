@@ -24,7 +24,7 @@ The **Get-AzVMAEMExtension** cmdlet gets information about the Azure Enhanced Mo
 ## EXAMPLES
 
 ### Example 1: Get the AEM extension
-```
+```powershell
 Get-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 

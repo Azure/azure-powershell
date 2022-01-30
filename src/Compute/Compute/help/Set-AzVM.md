@@ -67,7 +67,7 @@ Before you run this cmdlet, log on to the virtual machine and use Sysprep to pre
 ## EXAMPLES
 
 ### Example 1: Mark a virtual machine as generalized
-```
+```powershell
 Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
 ```
 

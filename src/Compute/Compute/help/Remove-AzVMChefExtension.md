@@ -31,14 +31,14 @@ The **Remove-AzVMChefExtension** cmdlet removes the Chef extension from a virtua
 ## EXAMPLES
 
 ### Example 1: Remove a Chef extension from a Windows virtual machine
-```
+```powershell
 Remove-AzVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
 ```
 
 This command removes a Chef extension from a Windows based virtual machine named WindowsVM001 that belongs to the resource group named ResourceGroup001.
 
 ### Example 2: Remove a Chef extension from a Linux virtual machine
-```
+```powershell
 Remove-AzVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux
 ```
 

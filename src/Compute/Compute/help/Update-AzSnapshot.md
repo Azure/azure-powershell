@@ -30,7 +30,7 @@ The **Update-AzSnapshot** cmdlet updates a snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $snapshotupdateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
@@ -46,14 +46,14 @@ The second and third commands set the disk encryption key and key encryption key
 The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ### Example 2
-```
+```powershell
 New-AzSnapshotUpdateConfig -DiskSizeGB 10 | Update-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';
 ```
 
 This command updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01' to 10 GB disk size.
 
 ### Example 3
-```
+```powershell
 $snapshot = Get-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';
 $snapshot.DiskSizeGB = 10;
 Update-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshot;

@@ -36,21 +36,21 @@ The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
 ## EXAMPLES
 
 ### Example 1: Get virtual machine sizes for a location
-```
+```powershell
 Get-AzVMSize -Location "Central US"
 ```
 
 This command gets the available sizes for virtual machines in the specified location.
 
 ### Example 2: Get sizes for an availability set
-```
+```powershell
 Get-AzVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
 ```
 
 This command gets available sizes for virtual machines that you can deploy in the availability set named AvailabilitySet17.
 
 ### Example 3: Get sizes for an existing virtual machine
-```
+```powershell
 Get-AzVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
 ```
 

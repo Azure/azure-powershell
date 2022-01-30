@@ -24,7 +24,7 @@ The **Set-AzSnapshotUpdateDiskEncryptionKey** cmdlet sets the disk encryption ke
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $snapshotupdateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';

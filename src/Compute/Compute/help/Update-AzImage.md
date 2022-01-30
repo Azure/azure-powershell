@@ -37,7 +37,7 @@ Currently, only the Tags can be updated.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $image = Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' 
 $image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 $image.Tags.Add("key1", "val1")

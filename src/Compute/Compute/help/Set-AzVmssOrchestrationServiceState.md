@@ -38,14 +38,14 @@ Sets the orchestration service state for the VMSS.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Set-AzVmssOrchestrationServiceState -ResourceGroupName "rg" -VMScaleSetName "vmss1" -ServiceName "AutomaticRepairs" -Action "Suspend"
 ```
 
 This command suspends Automatic Repairs service on the VMSS "vmss1" in the resource group "rg".
 
 ### Example 2
-```
+```powershell
 Get-AzVmss -ResourceGroupName "rg" -VMScaleSetName "vmss1" | Set-AzVmssOrchestrationServiceState -ServiceName "AutomaticRepairs" -Action "Resume"
 ```
 

@@ -31,7 +31,7 @@ The **Remove-AzVmssExtension** cmdlet removes an extension from the Virtual Mach
 ## EXAMPLES
 
 ### Example 1: Remove a VMSS extension
-```
+```powershell
 $vmss = Get-AzVmss -ResourceGroupName $RGName -VMScaleSetName $vmssName 
 Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName
 Update-AzVmss -ResourceGroupName $RGName -Name $vmssName -VirtualMachineScaleSet $vmss
@@ -40,7 +40,7 @@ Update-AzVmss -ResourceGroupName $RGName -Name $vmssName -VirtualMachineScaleSet
 This command removes the extension of a VMSS and update the VMSS after the modification.
 
 ### Example 2: Remove an instance from within a VMSS
-```
+```powershell
 $vmss = Get-AzVmss -ResourceGroupName $RGName -VMScaleSetName $vmssName 
 Remove-AzVmssExtension -ResourceGroupName "Group002" -VirtualMachineScaleSet $vmss -Id $extensionId
 ```

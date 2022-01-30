@@ -23,7 +23,7 @@ The **Remove-AzImageDataDisk** cmdlet removes a data disk from an image object.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' | Remove-AzImageDataDisk -Lun 1 | Update-AzImage;
 ```
 

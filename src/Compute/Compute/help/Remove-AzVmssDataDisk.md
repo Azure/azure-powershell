@@ -30,14 +30,14 @@ The **Remove-AzVmssDataDisk** cmdlet removes a data disk from the Virtual Machin
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Name 'DataDisk1'
 ```
 
 This command removes the data disk named 'DataDisk1' from the VMSS object.
 
 ### Example 2
-```
+```powershell
 Remove-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 0
 ```
 
