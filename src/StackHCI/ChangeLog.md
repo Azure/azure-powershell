@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Removal of Admin consent related support, since the HCI cloud services does not require Admin Consent any more.
+* Removal of cluster name from clusterScheduledTask related operations since it is already in cluster's context
 ## Version 1.0.0
 * Promoted Az.StackHCI to GA
 
