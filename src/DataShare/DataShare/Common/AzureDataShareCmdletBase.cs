@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 namespace Microsoft.Azure.Commands.DataShare.Common
 {
     using Microsoft.Azure.Management.DataShare;
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Commands.DataShare.Common
     /// <summary>
     /// Base class of azure data share cmdlet.
     /// </summary>
+    [GenericBreakingChange("DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.")]
     public class AzureDataShareCmdletBase : AzureRMCmdlet
     {
         private IDataShareManagementClient dataShareManagementClient;
