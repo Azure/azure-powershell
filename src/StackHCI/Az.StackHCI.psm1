@@ -134,7 +134,7 @@ $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/pro
 $Region_EASTUSEUAP = 'eastus2euap'
 
 [hashtable] $ServiceEndpointsAzureCloud = @{
-        $Region_EASTUSEUAP = 'https://eus2euap-azurestackhci-usage.azurewebsites.net';
+        $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com';
         }
 
 $ServiceEndpointAzureCloudFrontDoor = "https://azurestackhci.azurefd.net"
