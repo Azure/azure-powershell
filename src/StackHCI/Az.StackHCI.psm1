@@ -691,7 +691,7 @@ param(
         $azEnv = (Get-AzEnvironment -Name $AzureCloud)
         $azEnv.Name = $ConnectAzAccountEnvironmentName
         $azEnv.ResourceManagerUrl = ('https://{0}.management.azure.com/' -f $Region)
-        $azEnv | Add-AzEnvironment | Out-Null
+        $azEnv | Add-AzEnvironment -MicrosoftGraphEndpointResourceId "https://graph.microsoft.com" -MicrosoftGraphUrl "https://graph.microsoft.com" | Out-Null
     }
 
     Disconnect-AzAccount -ErrorAction Ignore | Out-Null
