@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 Func<CloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
                 return PSPagedEnumerable<PSCloudTask, CloudTask>.CreateWithMaxCount(
-                    tasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    tasks, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             Func<SubtaskInformation, PSSubtaskInformation> mappingFunction = s => { return new PSSubtaskInformation(s); };
             return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(
-                subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                subtasks, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
         }
 
         /// <summary>
