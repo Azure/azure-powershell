@@ -10,7 +10,6 @@ $V2OSBuildNumber = 20348
 $V2OSUBR = 288
 #region User visible strings
 
-$AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzStackHCI again with same parameters to complete registration."
 $NoClusterError = "Computer {0} is not part of an Azure Stack HCI cluster. Use the -ComputerName parameter to specify an Azure Stack HCI cluster node and try again."
 $CloudResourceDoesNotExist = "The Azure resource with ID {0} doesn't exist. Unregister the cluster using Unregister-AzStackHCI and then try again."
 $RegisteredWithDifferentResourceId = "Azure Stack HCI is already registered with Azure resource ID {0}. To register or change registration, first unregister the cluster using Unregister-AzStackHCI, then try again."
@@ -46,7 +45,6 @@ $RegisterAzureStackRPMessage = "Registering Microsoft.AzureStackHCI provider to 
 $CreatingAADAppMessage = "Creating AAD application {0} in Azure AD directory {1}"
 $CreatingResourceGroupMessage = "Creating Azure Resource Group {0}"
 $CreatingCloudResourceMessage = "Creating Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
-$GrantingAdminConsentMessage = "Trying to grant admin consent for the required permissions needed for Azure AD application identity {0}"
 $GettingCertificateMessage = "Getting new certificate from on-premises cluster to use as application credential"
 $AddAppCredentialMessage = "Adding certificate as application credential for the Azure AD application {0}"
 $RegisterAndSyncMetadataMessage = "Registering Azure Stack HCI cluster and syncing cluster census information from the on-premises cluster to the cloud"
@@ -131,25 +129,7 @@ $AzurePPE = "AzurePPE"
 $AzureCanary = "AzureCanary"
 
 $PortalCanarySuffix = '?feature.armendpointprefix={0}'
-$PortalAADAppPermissionUrl = '#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/{0}/isMSAApp/'
 $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/providers/Microsoft.AzureStackHCI/clusters/{3}/overview'
-
-# GUID's of the scopes generated in first party portal
-$ClusterReadPermission = "2344a320-6a09-4530-bed7-c90485b5e5e2"
-$ClusterReadWritePermission = "493bd689-9082-40db-a506-11f40b68128f"
-$ClusterNodeReadPermission = "8fa5445e-80fb-4c71-a3b1-9a16a81a1966"
-$ClusterNodeReadWritePermission = "bbe8afc9-f3ba-4955-bb5f-1cfb6960b242"
-
-# Deprecated scopes. Will be deleted during RepairRegistration
-$BillingSyncPermission = "e4359fc6-82ee-4411-9a4d-edfc7812cf24"
-$CensusSyncPermission = "8c83ab0a-0f96-40e9-940b-20cc5c5ecca9"
-
-$PermissionIds = New-Object System.Collections.Generic.List[string]
-
-$PermissionIds.Add($ClusterReadPermission)
-$PermissionIds.Add($ClusterReadWritePermission)
-$PermissionIds.Add($ClusterNodeReadPermission)
-$PermissionIds.Add($ClusterNodeReadWritePermission)
 
 $Region_EASTUSEUAP = 'eastus2euap'
 
@@ -192,7 +172,6 @@ $HCIArcExtensions = "/Extensions"
 $OutputPropertyResult = "Result"
 $OutputPropertyResourceId = "AzureResourceId"
 $OutputPropertyPortalResourceURL = "AzurePortalResourceURL"
-$OutputPropertyPortalAADAppPermissionsURL = "AzurePortalAADAppPermissionsURL"
 $OutputPropertyDetails = "Details"
 $OutputPropertyTest = "Test"
 $OutputPropertyEndpointTested = "EndpointTested"
@@ -598,19 +577,6 @@ param(
     }
 }
 
-function Get-PortalAppPermissionsPageUrl{
-param(
-    [string] $AppId,
-    [string] $TenantId,
-    [string] $EnvironmentName,
-    [string] $Region
-    )
-
-    $portalBaseUrl = Get-PortalDomain -TenantId $TenantId -EnvironmentName $EnvironmentName -Region $Region
-    $portalAADAppRelativeUrl = $PortalAADAppPermissionUrl -f $AppId
-    return $portalBaseUrl + $portalAADAppRelativeUrl
-}
-
 function Get-PortalHCIResourcePageUrl{
 param(
     [string] $TenantId,
@@ -636,207 +602,20 @@ param(
     return "/Subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.AzureStackHCI/clusters/" + $ResourceName
 }
 
-function Get-RequiredResourceAccess{
-    $requiredResourcesAccess = New-Object System.Collections.Generic.List[Microsoft.Open.AzureAD.Model.RequiredResourceAccess] 
-
-    $requiredAccess = New-Object Microsoft.Open.AzureAD.Model.RequiredResourceAccess
-    $requiredAccess.ResourceAppId = $UsageServiceFirstPartyAppId
-    $requiredAccess.ResourceAccess = New-Object System.Collections.Generic.List[Microsoft.Open.AzureAD.Model.ResourceAccess]
-
-    Foreach ($permId in $PermissionIds)
-    {
-        $permAccess = New-Object Microsoft.Open.AzureAD.Model.ResourceAccess
-        $permAccess.Type = "Role"
-        $permAccess.Id = $permId 
-        $requiredAccess.ResourceAccess.Add($permAccess)
-    }
-
-    $requiredResourcesAccess.Add($requiredAccess)
-    return $requiredResourcesAccess
-}
-
-# Called during repair registration.
-function AddRequiredPermissionsIfNotPresent{
-param(
-    [string] $AppId
-    )
-
-    Write-Verbose "Adding the required permissions to AAD Application $AppId if not already added"
-    $app = Retry-Command -ScriptBlock { Get-AzureADApplication -Filter "AppId eq '$AppId'"}
-    $shouldAddRequiredPerms = $false
-
-    if($app.RequiredResourceAccess -eq $Null)
-    {
-        $shouldAddRequiredPerms = $true
-    }
-    else
-    {
-        $reqResourceAccess = $app.RequiredResourceAccess | Where-Object {$_.ResourceAppId -eq $UsageServiceFirstPartyAppId}
-
-        if($reqResourceAccess -eq $Null)
-        {
-            $shouldAddRequiredPerms = $true
-        }
-        else
-        {
-            if ($reqResourceAccess.ResourceAccess -eq $Null)
-            {
-                $shouldAddRequiredPerms = $true
-            }
-            else
-            {
-                $spReqPermClusRW = $reqResourceAccess.ResourceAccess | Where-Object {$_.Id -eq $ClusterReadWritePermission}
-                $spReqPermClusR = $reqResourceAccess.ResourceAccess | Where-Object {$_.Id -eq $ClusterReadPermission}
-                $spReqPermClusNodeRW = $reqResourceAccess.ResourceAccess | Where-Object {$_.Id -eq $ClusterNodeReadWritePermission}
-                $spReqPermClusNodeR = $reqResourceAccess.ResourceAccess | Where-Object {$_.Id -eq $ClusterNodeReadPermission}
-
-                # If App has these permissions, we have already added the required permissions earlier. Not need to add again.
-                if(($spReqPermClusRW -ne $Null) -and ($spReqPermClusR -ne $Null) -and ($spReqPermClusNodeRW -ne $Null) -and ($spReqPermClusNodeR -ne $Null))
-                {
-                    $shouldAddRequiredPerms = $false
-                }
-                else
-                {
-                    $shouldAddRequiredPerms = $true
-                }
-            }
-        }
-    }
-
-    # Add the required permissions
-    if($shouldAddRequiredPerms -eq $true)
-    {
-        $requiredResourcesAccess = Get-RequiredResourceAccess
-        Retry-Command -ScriptBlock { Set-AzureADApplication -ObjectId $app.ObjectId -RequiredResourceAccess $requiredResourcesAccess | Out-Null} -RetryIfNullOutput $false
-    }
-}
-
-function Check-UsageAppRoles{
-param(
-    [string] $AppId
-    )
-
-    Write-Verbose "Checking admin consent status for AAD Application $AppId"
-
-    $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
-
-    # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
-    $assignedPerms = Retry-Command -ScriptBlock { @(Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId) + @(Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId)} -RetryIfNullOutput $false
-
-    $clusterRead = $assignedPerms | where { ($_.Id -eq $ClusterReadPermission) }
-    $clusterReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterReadWritePermission) }
-    $clusterNodeRead = $assignedPerms | where { ($_.Id -eq $ClusterNodeReadPermission) }
-    $clusterNodeReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterNodeReadWritePermission) }
-
-    $assignedPermsList = New-Object System.Collections.Generic.List[Microsoft.Open.AzureAD.Model.DirectoryObject]
-    $assignedPermsList.Add($clusterRead)
-    $assignedPermsList.Add($clusterReadWrite)
-    $assignedPermsList.Add($clusterNodeRead)
-    $assignedPermsList.Add($clusterNodeReadWrite)
-
-    Foreach ($perm in $assignedPermsList)
-    {
-        if($perm -eq $null)
-        {
-            return $false
-        }
-
-        if($perm.DeletionTimestamp -ne $Null -and ($perm.DeletionTimestamp -gt $perm.CreationTimestamp))
-        {
-            return $false
-        }
-    }
-
-    return $true
-}
-
 function Create-Application{
 param(
     [string] $AppName
     )
 
     Write-Verbose "Creating AAD Application $AppName"
-    # If the subscription is just registered to have HCI resources, sometimes it may take a while for the billing service principal to propogate
-
-    $usagesp = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"}
-
-    $requiredResourcesAccess = Get-RequiredResourceAccess
 
     # Create application
-    $app = Retry-Command -ScriptBlock { New-AzureADApplication -DisplayName $AppName -RequiredResourceAccess $requiredResourcesAccess }
+    $app = Retry-Command -ScriptBlock { New-AzureADApplication -DisplayName $AppName }
     $sp = Retry-Command -ScriptBlock { New-AzureADServicePrincipal -AppId $app.AppId }
 
     Write-Verbose "Created new AAD Application $app.AppId"
 
     return $app.AppId
-}
-
-function Grant-AdminConsent{
-param(
-    [string] $AppId
-    )
-
-    Write-Verbose "Granting admin consent for AAD Application Id $AppId"
-    $usagesp = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"}
-    $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
-
-    try 
-    {
-        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterReadPermission} -RetryIfNullOutput $false
-        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterReadWritePermission} -RetryIfNullOutput $false
-        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterNodeReadPermission} -RetryIfNullOutput $false
-        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterNodeReadWritePermission} -RetryIfNullOutput $false
-    }
-    catch 
-    {
-        Write-Debug "Exception occurred when granting admin consent"
-        $ErrorMessage = $_.Exception.Message
-        Write-Debug $ErrorMessage
-        return $False
-    }
-
-    return $True
-}
-
-function Remove-OldScopes{
-param(
-    [string] $AppId
-    )
-
-    Write-Verbose "Removing old scopes on AAD Application with Id $AppId"
-    $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
-
-    # Remove AzureStackHCI.Billing.Sync and AzureStackHCI.Census.Sync permissions if present as we dont need them
-    $assignedPerms = Retry-Command -ScriptBlock { Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId} -RetryIfNullOutput $false
-
-    $billingSync = $assignedPerms | where { ($_.Id -eq $BillingSyncPermission) }
-    $censusSync = $assignedPerms | where { ($_.Id -eq $CensusSyncPermission) }
-
-    if($billingSync -eq $Null -or $censusSync -eq $Null)
-    {
-        # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
-        $assignedPerms = Retry-Command -ScriptBlock { Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId} -RetryIfNullOutput $false
-    }
-
-    if($billingSync -eq $Null)
-    {
-        $billingSync = $assignedPerms | where { ($_.Id -eq $BillingSyncPermission) }
-    }
-
-    if($censusSync -eq $Null)
-    {
-        $censusSync = $assignedPerms | where { ($_.Id -eq $CensusSyncPermission) }
-    }
-
-    if($billingSync -ne $Null)
-    {
-        Retry-Command -ScriptBlock { Remove-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -AppRoleAssignmentId $billingSync.ObjectId | Out-Null} -RetryIfNullOutput $false
-    }
-
-    if($censusSync -ne $Null)
-    {
-        Retry-Command -ScriptBlock { Remove-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -AppRoleAssignmentId $censusSync.ObjectId | Out-Null} -RetryIfNullOutput $false
-    }
 }
 
 function Azure-Login{
@@ -1822,7 +1601,6 @@ enum OperationStatus
     Unused;
     Failed;
     Success;
-    PendingForAdminConsent;
     Cancelled;
     RegisterSucceededButArcFailed
 }
@@ -1899,10 +1677,9 @@ enum ErrorDetail
 
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
-    Result: Success or Failed or PendingForAdminConsent or Cancelled.
+    Result: Success or Failed or Cancelled.
     ResourceId: Resource ID of the resource created in Azure.
     PortalResourceURL: Azure Portal Resource URL.
-    PortalAADAppPermissionsURL: Azure Portal URL for AAD App permissions page.
 
     .EXAMPLE
     Invoking on one of the cluster node.
@@ -1910,7 +1687,6 @@ enum ErrorDetail
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1/overview
-    PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/980be58d-578c-4cff-b4cd-43e9c3a77826/isMSAApp/
 
     .EXAMPLE
     Invoking from the management node
@@ -1918,15 +1694,13 @@ enum ErrorDetail
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2/overview
-    PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/950be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
 
     .EXAMPLE
     Invoking from WAC
     C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG
-    Result: PendingForAdminConsent
+    Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3/overview
-    PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/980be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
 
     .EXAMPLE
     Invoking with all the parameters
@@ -1934,7 +1708,6 @@ enum ErrorDetail
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciClusterRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciClusterRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
-    PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/990be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
 #>
 function Register-AzStackHCI{
 param(
@@ -2173,7 +1946,6 @@ param(
                 {
                     # Already registered with same resource Id and resource exists
                     $appId = $resource.Properties.aadClientId
-                    $appPermissionsPageUrl = Get-PortalAppPermissionsPageUrl -AppId $appId -TenantId $TenantId -EnvironmentName $EnvironmentName -Region $Region
                     $operationStatus = [OperationStatus]::Success
                 }
                 else
@@ -2234,8 +2006,6 @@ param(
 
                 $appId = Create-Application -AppName $ResourceName
 
-                $appPermissionsPageUrl = Get-PortalAppPermissionsPageUrl -AppId $appId -TenantId $TenantId -EnvironmentName $EnvironmentName -Region $Region
-
                 Write-Verbose "Created AAD Application with Id $appId"
 
                 # Create new resource by calling RP
@@ -2252,158 +2022,115 @@ param(
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60
                 $properties = @{"aadClientId"="$appId";"aadTenantId"="$TenantId"}
                 $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Tag $Tag -Force
-
-                # Try Granting admin consent for requested permissions
-
-                $GrantingAdminConsentMessageProgress = $GrantingAdminConsentMessage -f $ResourceName
-                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $GrantingAdminConsentMessageProgress -percentcomplete 65
-                $adminConsented = Grant-AdminConsent -AppId $appId
-
-                if($adminConsented -eq $False)
-                {
-                    $AdminConsentWarningMsg = $AdminConsentWarning -f $ResourceName, $appPermissionsPageUrl
-                    Write-Warning $AdminConsentWarningMsg
-                    $operationStatus = [OperationStatus]::PendingForAdminConsent
-                }
             }
             else
             {
-                # Resource and Application exists. Check admin consent status
+                # Resource and Application exists.
 
                 $appId = $resource.Properties.aadClientId
-
-                $appPermissionsPageUrl = Get-PortalAppPermissionsPageUrl -AppId $appId -TenantId $TenantId -EnvironmentName $EnvironmentName -Region $Region
-
-                # Existing AAD app might not have the newly added scopes, if so add them.
-                AddRequiredPermissionsIfNotPresent -AppId $appId
-                $rolesPresent = Check-UsageAppRoles -AppId $appId
-        
-                $GrantingAdminConsentMessageProgress = $GrantingAdminConsentMessage -f $ResourceName
-                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $GrantingAdminConsentMessageProgress -percentcomplete 65
-
-                if($rolesPresent -eq $False)
-                {
-                    # Try Granting admin consent for requested permissions
-
-                    $adminConsented = Grant-AdminConsent -AppId $appId
-
-                    if($adminConsented -eq $False)
-                    {
-                        $AdminConsentWarningMsg = $AdminConsentWarning -f $ResourceName, $appPermissionsPageUrl
-                        Write-Warning $AdminConsentWarningMsg
-                        $operationStatus = [OperationStatus]::PendingForAdminConsent
-                    }
-                }
             }
 
-            if($operationStatus -ne [OperationStatus]::PendingForAdminConsent)
+            $appId = $resource.Properties.aadClientId
+            $cloudId = $resource.Properties.cloudId 
+            $app = Retry-Command -ScriptBlock { Get-AzureADApplication -Filter "AppId eq '$appId'"}
+            $objectId = $app.ObjectId
+            $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$appId'"}
+            $spObjectId = $appSP.ObjectId
+
+            # Add certificate
+
+            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $GettingCertificateMessage -percentcomplete 70
+
+            $CertificatesToBeMaintained = @{}
+            $NewCertificateFailedNodes = [System.Collections.ArrayList]::new()
+            $SetCertificateFailedNodes = [System.Collections.ArrayList]::new()
+            $OSNotLatestOnNodes = [System.Collections.ArrayList]::new()
+
+            $ServiceEndpoint = ""
+            $Authority = ""
+            $BillingServiceApiScope = ""
+            $GraphServiceApiScope = ""
+
+            Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$ServiceEndpoint) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
+
+            $setupCertsError = Setup-Certificates -ClusterNodes $clusterNodes -Credential $Credential -ResourceName $ResourceName -ObjectId $objectId -CertificateThumbprint $CertificateThumbprint -AppId $appId -TenantId $TenantId -CloudId $cloudId `
+                                -ServiceEndpoint $ServiceEndpoint -BillingServiceApiScope $BillingServiceApiScope -GraphServiceApiScope $GraphServiceApiScope -Authority $Authority -NewCertificateFailedNodes $NewCertificateFailedNodes `
+                                -SetCertificateFailedNodes $SetCertificateFailedNodes -OSNotLatestOnNodes $OSNotLatestOnNodes -CertificatesToBeMaintained $CertificatesToBeMaintained -ClusterDNSSuffix $clusterDNSSuffix
+
+            if($setupCertsError -ne $null)
             {
-                # At this point Application should be created and consented by admin.
+                Write-Error -Message $setupCertsError
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                Write-Output $registrationOutput
+                return
+            }
 
-                $appId = $resource.Properties.aadClientId
-                $cloudId = $resource.Properties.cloudId 
-                $app = Retry-Command -ScriptBlock { Get-AzureADApplication -Filter "AppId eq '$appId'"}
-                $objectId = $app.ObjectId
-                $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$appId'"}
-                $spObjectId = $appSP.ObjectId
+            if(($SetCertificateFailedNodes.Count -ge 1) -or ($NewCertificateFailedNodes.Count -ge 1))
+            {
+                # Failed on atleast 1 node
+                $SettingCertificateFailedMessage = $SettingCertificateFailed -f ($NewCertificateFailedNodes -join ","),($SetCertificateFailedNodes -join ",")
+                Write-Error -Message $SettingCertificateFailedMessage
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                Write-Output $registrationOutput
+                return
+            }
 
-                # Add certificate
+            if($OSNotLatestOnNodes.Count -ge 1)
+            {
+                $NotAllTheNodesInClusterAreGAError = $NotAllTheNodesInClusterAreGA -f ($OSNotLatestOnNodes -join ",")
+                Write-Error -Message $NotAllTheNodesInClusterAreGAError
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                Write-Output $registrationOutput
+                return
+            }
 
-                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $GettingCertificateMessage -percentcomplete 70
+            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterAndSyncMetadataMessage -percentcomplete 90
 
-                $CertificatesToBeMaintained = @{}
-                $NewCertificateFailedNodes = [System.Collections.ArrayList]::new()
-                $SetCertificateFailedNodes = [System.Collections.ArrayList]::new()
-                $OSNotLatestOnNodes = [System.Collections.ArrayList]::new()
+            # Register by calling on-prem usage service Cmdlet
 
-                $ServiceEndpoint = ""
-                $Authority = ""
-                $BillingServiceApiScope = ""
-                $GraphServiceApiScope = ""
+            $RegistrationParams = @{
+                                        ServiceEndpoint = $ServiceEndpoint
+                                        BillingServiceApiScope = $BillingServiceApiScope
+                                        GraphServiceApiScope = $GraphServiceApiScope
+                                        AADAuthority = $Authority
+                                        AppId = $appId
+                                        TenantId = $TenantId
+                                        CloudId = $cloudId
+                                        SubscriptionId = $SubscriptionId
+                                        ObjectId = $objectId
+                                        ResourceName = $ResourceName
+                                        ProviderNamespace = "Microsoft.AzureStackHCI"
+                                        ResourceArmId = $resourceId
+                                        ServicePrincipalClientId = $spObjectId
+                                        CertificateThumbprint = $CertificateThumbprint
+                                    }
 
-                Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$ServiceEndpoint) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
+            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Set-AzureStackHCIRegistration @Using:RegistrationParams }
 
-                $setupCertsError = Setup-Certificates -ClusterNodes $clusterNodes -Credential $Credential -ResourceName $ResourceName -ObjectId $objectId -CertificateThumbprint $CertificateThumbprint -AppId $appId -TenantId $TenantId -CloudId $cloudId `
-                                    -ServiceEndpoint $ServiceEndpoint -BillingServiceApiScope $BillingServiceApiScope -GraphServiceApiScope $GraphServiceApiScope -Authority $Authority -NewCertificateFailedNodes $NewCertificateFailedNodes `
-                                    -SetCertificateFailedNodes $SetCertificateFailedNodes -OSNotLatestOnNodes $OSNotLatestOnNodes -CertificatesToBeMaintained $CertificatesToBeMaintained -ClusterDNSSuffix $clusterDNSSuffix
-
-                if($setupCertsError -ne $null)
+            # Delete all certificates except certificates which we created in this current registration flow.
+            if(($RepairRegistration -eq $true) -or (-Not ([string]::IsNullOrEmpty($CertificateThumbprint))) )
+            {
+                $aadAppKeyCreds = Retry-Command -ScriptBlock {Get-AzureADApplicationKeyCredential -ObjectId $objectId}
+                Foreach ($keyCred in $aadAppKeyCreds)
                 {
-                    Write-Error -Message $setupCertsError
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                    Write-Output $registrationOutput
-                    return
-                }
-
-                if(($SetCertificateFailedNodes.Count -ge 1) -or ($NewCertificateFailedNodes.Count -ge 1))
-                {
-                    # Failed on atleast 1 node
-                    $SettingCertificateFailedMessage = $SettingCertificateFailed -f ($NewCertificateFailedNodes -join ","),($SetCertificateFailedNodes -join ",")
-                    Write-Error -Message $SettingCertificateFailedMessage
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                    Write-Output $registrationOutput
-                    return
-                }
-
-                if($OSNotLatestOnNodes.Count -ge 1)
-                {
-                    $NotAllTheNodesInClusterAreGAError = $NotAllTheNodesInClusterAreGA -f ($OSNotLatestOnNodes -join ",")
-                    Write-Error -Message $NotAllTheNodesInClusterAreGAError
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                    Write-Output $registrationOutput
-                    return
-                }
-
-                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterAndSyncMetadataMessage -percentcomplete 90
-
-                # Register by calling on-prem usage service Cmdlet
-
-                $RegistrationParams = @{
-                                            ServiceEndpoint = $ServiceEndpoint
-                                            BillingServiceApiScope = $BillingServiceApiScope
-                                            GraphServiceApiScope = $GraphServiceApiScope
-                                            AADAuthority = $Authority
-                                            AppId = $appId
-                                            TenantId = $TenantId
-                                            CloudId = $cloudId
-                                            SubscriptionId = $SubscriptionId
-                                            ObjectId = $objectId
-                                            ResourceName = $ResourceName
-                                            ProviderNamespace = "Microsoft.AzureStackHCI"
-                                            ResourceArmId = $resourceId
-                                            ServicePrincipalClientId = $spObjectId
-                                            CertificateThumbprint = $CertificateThumbprint
-                                        }
-
-                Invoke-Command -Session $clusterNodeSession -ScriptBlock { Set-AzureStackHCIRegistration @Using:RegistrationParams }
-
-                # Delete all certificates except certificates which we created in this current registration flow.
-                if(($RepairRegistration -eq $true) -or (-Not ([string]::IsNullOrEmpty($CertificateThumbprint))) )
-                {
-                    $aadAppKeyCreds = Retry-Command -ScriptBlock {Get-AzureADApplicationKeyCredential -ObjectId $objectId}
-                    Foreach ($keyCred in $aadAppKeyCreds)
+                    if($CertificatesToBeMaintained[$keyCred.KeyId] -eq $true)
                     {
-                        if($CertificatesToBeMaintained[$keyCred.KeyId] -eq $true)
-                        {
-                            Write-Verbose ($SkippingDeleteCertificateFromAADApp -f $keyCred.KeyId)
-                            continue
-                        }
-                        else
-                        {
-                            Write-Verbose ($DeletingCertificateFromAADApp -f $keyCred.KeyId)
-                            Retry-Command -ScriptBlock { Remove-AzureADApplicationKeyCredential -ObjectId $objectId -KeyId $keyCred.KeyId} -RetryIfNullOutput $false
-                        }
+                        Write-Verbose ($SkippingDeleteCertificateFromAADApp -f $keyCred.KeyId)
+                        continue
+                    }
+                    else
+                    {
+                        Write-Verbose ($DeletingCertificateFromAADApp -f $keyCred.KeyId)
+                        Retry-Command -ScriptBlock { Remove-AzureADApplicationKeyCredential -ObjectId $objectId -KeyId $keyCred.KeyId} -RetryIfNullOutput $false
                     }
                 }
-
-                # Delete old unused scopes if present
-                Remove-OldScopes -AppId $appId
-
-                $operationStatus = [OperationStatus]::Success
             }
+
+            $operationStatus = [OperationStatus]::Success
         }
 
-        if (($operationStatus -ne [OperationStatus]::PendingForAdminConsent) -and ($EnableAzureArcServer -eq $true))
+
+        if ( $EnableAzureArcServer -eq $true )
         {
             Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 91
 
@@ -2499,16 +2226,7 @@ param(
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $operationStatus
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyPortalResourceURL -Value $portalResourceUrl
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResourceId -Value $resourceId
-        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyPortalAADAppPermissionsURL -Value $appPermissionsPageUrl
-
-        if($operationStatus -eq [OperationStatus]::PendingForAdminConsent)
-        {
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $AdminConsentWarningMsg
-        }
-        else
-        {
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $RegistrationSuccessDetailsMessage
-        }
+        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $RegistrationSuccessDetailsMessage
 
         Write-Output $registrationOutput
     }
