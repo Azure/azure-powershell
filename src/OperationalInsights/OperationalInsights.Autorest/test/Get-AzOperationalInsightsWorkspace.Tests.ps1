@@ -15,16 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOperationalInsightsWork
 }
 
 Describe 'Get-AzOperationalInsightsWorkspace' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    BeforeAll { 
+        $subscriptionId = "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
+        $rgName = "dabenham-dev"
+        $wsName = "dabenham-PSH2"
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $workspaces = Get-AzOperationalInsightsWorkspace
+        $workspaces.Count | Should BeGreaterThan 0
+    }
+
+    It 'Get'  {
+        $singleWorkspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName
+        $singleWorkspace.Count | Should BeGreaterThan 0
     }
 
     It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $workspaces = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName
+        $workspaces.Count | Should BeGreaterThan 0
     }
 
     It 'GetViaIdentity' -skip {
