@@ -17,27 +17,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOperationalInsightsWork
 Describe 'Get-AzOperationalInsightsWorkspace' {
 
     BeforeAll { 
-        $subscriptionId = "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
         $rgName = "dabenham-dev"
         $wsName = "dabenham-PSH2"
     }
 
-    It 'List'  {
+    It 'List' {
         $workspaces = Get-AzOperationalInsightsWorkspace
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsWorkspace List rturned with: $($workspaces.Count) results"
         $workspaces.Count | Should BeGreaterThan 0
     }
 
-    It 'Get'  {
+    It 'Get' {
         $singleWorkspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsWorkspace Get for rg:${rgName}, workspaces:${wsName} returned with: $($singleWorkspace.Count) results"
         $singleWorkspace.Count | Should BeGreaterThan 0
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $workspaces = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsWorkspace List1 for rg:${rgName} returned with: $($workspaces.Count) results"
         $workspaces.Count | Should BeGreaterThan 0
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' -skip {        
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

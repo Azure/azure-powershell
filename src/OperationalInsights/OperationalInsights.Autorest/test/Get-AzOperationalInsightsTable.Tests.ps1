@@ -15,12 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOperationalInsightsTabl
 }
 
 Describe 'Get-AzOperationalInsightsTable' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        
+    BeforeAll { 
+        $rgName = "dabenham-dev"
+        $wsName = "dabenham-PSH2"
+        $tableName = "dabenhamKuku1_CL"
+    }
+    It 'List' {
+        $allTablesForWs = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName  
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable List rturned with: $($allTablesForWs.Count) results"
+        $allTablesForWs.Count | Should BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $allTablesForWs = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName -TableName $tableName
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable Get rturned with: $($allTablesForWs.Count) results"
+        $allTablesForWs.Count | Should BeGreaterThan 0
     }
 
     It 'GetViaIdentity' -skip {

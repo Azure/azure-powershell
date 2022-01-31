@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOperationalInsightsTabl
 }
 
 Describe 'New-AzOperationalInsightsTableColumnObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' { 
+        $col1 = New-AzOperationalInsightsTableColumnObject -Name 'SourceSystem' -Description 'Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.' -Type 'string'
+        $col2 = New-AzOperationalInsightsTableColumnObject -Name 'TimeGenerated' -Description 'Date and time the record was created.' -Type 'datetime'
+        Write-Host -ForegroundColor Yellow "New-AzOperationalInsightsTableColumnObject returned with: $($col1) and $($col2)"
     }
 }
