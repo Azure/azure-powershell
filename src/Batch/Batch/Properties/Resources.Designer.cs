@@ -412,6 +412,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting compute node extension &quot;{0}&quot; from compute node &quot;{1}&quot; on pool &quot;{2}&quot;..
+        /// </summary>
+        internal static string GetComputeNodeExtensionByName {
+            get {
+                return ResourceManager.GetString("GetComputeNodeExtensionByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting compute nodes extensions from pool &quot;{0}&quot;, compute node {1}..
+        /// </summary>
+        internal static string GetComputeNodeExtensions {
+            get {
+                return ResourceManager.GetString("GetComputeNodeExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting all compute nodes under pool &quot;{0}&quot;..
         /// </summary>
         internal static string GetComputeNodeNoFilter {

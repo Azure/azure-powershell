@@ -558,6 +558,50 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a ComputeNodeExtensionGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.NodeVMExtension, ProxyModels.ComputeNodeExtensionGetHeaders> CreateComputeNodeExtensionGetResponse(Azure.Batch.VMExtension extension)
+        {
+            var response = new AzureOperationResponse<ProxyModels.NodeVMExtension, ProxyModels.ComputeNodeExtensionGetHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            ProxyModels.NodeVMExtension proxyExtension = CreateProxyExtension(extension);
+            response.Body = proxyExtension;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ComputeNodeExtensionListResponse object
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.NodeVMExtension>, ProxyModels.ComputeNodeExtensionListHeaders> CreateComputeNodeExtensionListResponse(IEnumerable<Azure.Batch.VMExtension> extensions)
+        {
+            var response = new AzureOperationResponse<IPage<ProxyModels.NodeVMExtension>, ProxyModels.ComputeNodeExtensionListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            List<ProxyModels.NodeVMExtension> proxyExtensions = new List<ProxyModels.NodeVMExtension>();
+
+            foreach (Azure.Batch.VMExtension extension in extensions)
+            {
+                ProxyModels.NodeVMExtension proxyExtension = CreateProxyExtension(extension);
+                proxyExtensions.Add(proxyExtension);
+            }
+
+            response.Body = new MockPagedEnumerable<ProxyModels.NodeVMExtension>(proxyExtensions);
+
+            return response;
+        }
+
+        private static ProxyModels.NodeVMExtension CreateProxyExtension(Azure.Batch.VMExtension extension)
+        {
+            ProxyModels.NodeVMExtension proxyExtension = new ProxyModels.NodeVMExtension();
+            proxyExtension.InstanceView = new ProxyModels.VMExtensionInstanceView();
+            proxyExtension.VmExtension = new ProxyModels.VMExtension(extension.Name, extension.Publisher, extension.Type);
+            proxyExtension.ProvisioningState = ProvisioningState.Succeeded.ToString();
+            return proxyExtension;
+        }
+
+        /// <summary>
         /// Builds a CloudJobScheduleGetResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders> CreateCloudJobScheduleGetResponse(string jobScheduleId)
