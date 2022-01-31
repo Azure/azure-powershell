@@ -1379,12 +1379,12 @@ param(
 
             if (-Not $task)
             {
-                Register-ClusteredScheduledTask -TaskName $using:ArcRegistrationTaskName -TaskType ClusterWide -Action $action -Trigger $dailyTrigger -Cluster $Using:clusterName
+                Register-ClusteredScheduledTask -TaskName $using:ArcRegistrationTaskName -TaskType ClusterWide -Action $action -Trigger $dailyTrigger
             }
             else
             {
                 # Update cluster schedule task.
-                Set-ClusteredScheduledTask -TaskName $using:ArcRegistrationTaskName -Action $action -Trigger $dailyTrigger -Cluster $Using:clusterName
+                Set-ClusteredScheduledTask -TaskName $using:ArcRegistrationTaskName -Action $action -Trigger $dailyTrigger
             }
         } | Out-Null
     }
@@ -1535,7 +1535,7 @@ param(
             $task =  Get-ScheduledTask -TaskName $using:ArcRegistrationTaskName -ErrorAction SilentlyContinue
             if ($task)
             {
-                Unregister-ClusteredScheduledTask -Cluster $Using:clusterName -TaskName $using:ArcRegistrationTaskName
+                Unregister-ClusteredScheduledTask -TaskName $using:ArcRegistrationTaskName
             }
         } | Out-Null
     }
