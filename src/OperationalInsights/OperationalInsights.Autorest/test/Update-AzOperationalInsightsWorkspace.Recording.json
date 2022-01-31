@@ -1,0 +1,79 @@
+{
+  "Update-AzOperationalInsightsWorkspace+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2?api-version=2021-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "f367c418-c0ad-4e0d-9d0f-9f0fd2859ae6" ],
+        "CommandName": [ "Get-AzOperationalInsightsWorkspace" ],
+        "FullCommandName": [ "Get-AzOperationalInsightsWorkspace_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1090fc96-efc1-462f-80a3-63c3fbabaf0c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "65fd386e-8fe9-454b-b0f2-dc0bd836c9f4" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164552Z:65fd386e-8fe9-454b-b0f2-dc0bd836c9f4" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1057" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"149228ec-6bae-47fa-8f80-cb3e7877c406\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Wed, 26 Jan 2022 09:33:59 GMT\"\r\n    },\r\n    \"retentionInDays\": 33,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 01 Feb 2022 10:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Wed, 26 Jan 2022 09:33:59 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:36:29 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/dabenham-psh2\",\r\n  \"name\": \"dabenham-PSH2\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzOperationalInsightsWorkspace+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2?api-version=2021-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"retentionInDays\": 34\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "51" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "48b5d622-f7ab-452e-ba56-b3b7a9238293" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "f759070d-8aca-441f-9d48-57aed05cd92a" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164553Z:f759070d-8aca-441f-9d48-57aed05cd92a" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1057" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"149228ec-6bae-47fa-8f80-cb3e7877c406\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Wed, 26 Jan 2022 09:33:59 GMT\"\r\n    },\r\n    \"retentionInDays\": 34,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 01 Feb 2022 10:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Wed, 26 Jan 2022 09:33:59 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:36:29 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/dabenham-psh2\",\r\n  \"name\": \"dabenham-PSH2\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

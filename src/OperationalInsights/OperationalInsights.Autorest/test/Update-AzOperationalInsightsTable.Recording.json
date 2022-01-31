@@ -1,0 +1,85 @@
+{
+  "Update-AzOperationalInsightsTable+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/dabenhamKuku1_CL?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/dabenhamKuku1_CL?api-version=2021-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "b2a7021c-12f3-4874-b142-20514b99ead8" ],
+        "CommandName": [ "Get-AzOperationalInsightsTable" ],
+        "FullCommandName": [ "Get-AzOperationalInsightsTable_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "c039265a-e0ce-498e-b4e1-052d416a127f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "3772d2ac-33f0-428e-9429-6ff8041304c0" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164546Z:3772d2ac-33f0-428e-9429-6ff8041304c0" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 55,\r\n    \"archiveRetentionInDays\": 13,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-01-26T10:03:38.813\",\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamKuku1_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"description\": \"Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"description\": \"Date and time the record was created.\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 42\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/dabenhamKuku1_CL\",\r\n  \"name\": \"dabenhamKuku1_CL\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzOperationalInsightsTable+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/dabenhamKuku1_CL?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/dabenhamKuku1_CL?api-version=2021-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"retentionInDays\": 43\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "51" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AMS-APIVersion": [ "WebAPI1.0" ],
+        "CacheControl": [ "no-cache" ],
+        "x-ms-request-id": [ "0b1deb34-1d94-4524-8633-3dba39881c10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "207bc005-d98c-4c7d-a26b-b43ad12b6495" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164548Z:207bc005-d98c-4c7d-a26b-b43ad12b6495" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 55,\r\n    \"archiveRetentionInDays\": 12,\r\n    \"plan\": \"Analytics\",\r\n    \"lastPlanModifiedDate\": \"2022-01-26T10:03:38.813\",\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamKuku1_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"SourceSystem\",\r\n          \"type\": \"string\",\r\n          \"description\": \"Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"datetime\",\r\n          \"description\": \"Date and time the record was created.\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 43\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-PSH2/tables/dabenhamKuku1_CL\",\r\n  \"name\": \"dabenhamKuku1_CL\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

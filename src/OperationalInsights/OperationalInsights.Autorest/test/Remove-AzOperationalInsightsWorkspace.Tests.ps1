@@ -15,8 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOperationalInsightsW
 }
 
 Describe 'Remove-AzOperationalInsightsWorkspace' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            
+    BeforeAll { 
+        $rgName = "dabenham-dev"
+        $wsName = "danielKukuPsh2"
+        $location = "EastUS"
+
+        # Create a test workspace:
+        Write-Host -ForegroundColor Yellow "Creating a test workspace: $($wsName)"
+        $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName -Location $location
+        Write-Host -ForegroundColor Yellow "Workspace: $($wsName) was created"
+        $workspace.Count | Should BeGreaterThan 0
+    }
+    It 'Delete' {
+        Write-Host -ForegroundColor Yellow "Deleting test workspace: $($wsName)"
+        Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName
+        Write-Host -ForegroundColor Yellow "Workspace: $($wsName) was deleted"
     }
 
     It 'DeleteViaIdentity' -skip {

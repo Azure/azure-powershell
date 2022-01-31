@@ -1,0 +1,160 @@
+{
+  "Remove-AzOperationalInsightsWorkspace+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview",
+      "Content": "{\n  \"location\": \"EastUS\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "60957134-0265-4b1a-9e3c-0aa694fa6515" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "916facf4-6f95-4e9e-81dc-dfe08b509468" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164502Z:916facf4-6f95-4e9e-81dc-dfe08b509468" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1002" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"7e76b39e-5e45-4953-bf45-49a0919f7f11\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Mon, 31 Jan 2022 22:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 31 Jan 2022 15:37:03 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:36:10 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh2\",\r\n  \"name\": \"danielKukuPsh2\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzOperationalInsightsWorkspace+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "d264d2a7-bc62-4444-8398-f23a90563dc7" ],
+        "CommandName": [ "New-AzOperationalInsightsWorkspace" ],
+        "FullCommandName": [ "New-AzOperationalInsightsWorkspace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "86b18409-1da4-456f-9750-86d93d31fd45" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "cd36c761-ad2d-403a-a922-2794007ca03f" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164533Z:cd36c761-ad2d-403a-a922-2794007ca03f" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1002" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"7e76b39e-5e45-4953-bf45-49a0919f7f11\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Mon, 31 Jan 2022 22:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 31 Jan 2022 15:37:03 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:45:02 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh2\",\r\n  \"name\": \"danielKukuPsh2\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzOperationalInsightsWorkspace+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "d264d2a7-bc62-4444-8398-f23a90563dc7" ],
+        "CommandName": [ "New-AzOperationalInsightsWorkspace" ],
+        "FullCommandName": [ "New-AzOperationalInsightsWorkspace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "865a817c-7c70-4565-b323-8f5c506d5b6a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "20b45015-da76-46f6-b557-b72380bd357d" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164536Z:20b45015-da76-46f6-b557-b72380bd357d" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1002" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"7e76b39e-5e45-4953-bf45-49a0919f7f11\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Mon, 31 Jan 2022 22:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 31 Jan 2022 15:37:03 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:45:02 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh2\",\r\n  \"name\": \"danielKukuPsh2\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzOperationalInsightsWorkspace+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/danielKukuPsh2?api-version=2021-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "a995814b-b16a-425c-83a5-4c07c0211743" ],
+        "CommandName": [ "Remove-AzOperationalInsightsWorkspace" ],
+        "FullCommandName": [ "Remove-AzOperationalInsightsWorkspace_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "01a117c4-774a-4670-8eb0-4e39add56921" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "27f17379-bb37-481d-8349-f1afe403b3d9" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164541Z:27f17379-bb37-481d-8349-f1afe403b3d9" ],
+        "Date": [ "Mon, 31 Jan 2022 16:45:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -26,6 +26,10 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
+    $rgName = "dabenham-dev"
+    $wsName = "danielKukuPsh"
+    Write-Host -ForegroundColor Yellow "Deleting test workspace: $($wsName)"
+    Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName
+    Write-Host -ForegroundColor Yellow "Workspace: $($wsName) was deleted"
 }
 

@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOperationalInsightsWork
 }
 
 Describe 'New-AzOperationalInsightsWorkspace' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        BeforeAll { 
+        $rgName = "dabenham-dev"
+        $wsName = "danielKukuPsh"
+        $location = "EastUS"
+    }
+    It 'CreateExpanded' {
+        Write-Host -ForegroundColor Yellow "Creating a test workspace: $($wsName)"
+        $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName -Location $location
+        Write-Host -ForegroundColor Yellow "Workspace: $($wsName) was created"
+        $workspace.Count | Should BeGreaterThan 0
     }
 }

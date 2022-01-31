@@ -23,14 +23,14 @@ Describe 'Get-AzOperationalInsightsTable' {
     }
     It 'List' {
         $allTablesForWs = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName  
-        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable List rturned with: $($allTablesForWs.Count) results"
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable List returned with: $($allTablesForWs.Count) results"
         $allTablesForWs.Count | Should BeGreaterThan 0
     }
 
     It 'Get' {
-        $allTablesForWs = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName -TableName $tableName
-        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable Get rturned with: $($allTablesForWs.Count) results"
-        $allTablesForWs.Count | Should BeGreaterThan 0
+        $table = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName -TableName $tableName
+        Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable Get returned with: $($table.Count) results"
+        $table.Count | Should BeGreaterThan 0
     }
 
     It 'GetViaIdentity' -skip {

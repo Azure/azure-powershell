@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOperationalInsightsW
 }
 
 Describe 'Update-AzOperationalInsightsWorkspace' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll { 
+        $rgName = "dabenham-dev"
+        $wsName = "dabenham-PSH2"
+        $workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName
+        $worksapceRetention = $workspace.RetentionInDay
+    }
+    It 'UpdateExpanded' {
+        $workspaceUpdate =  Update-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName -RetentionInDay ($worksapceRetention +1)
+        $workspaceUpdate.RetentionInDay | Should Be ($worksapceRetention +1)
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOperationalInsightsTabl
 }
 
 Describe 'New-AzOperationalInsightsTable' {
-        BeforeAll { 
+    BeforeAll { 
         $rgName = "dabenham-dev"
         $wsName = "dabenham-PSH2"
         $tableName = "danielKukuTest_CL"
@@ -26,6 +26,7 @@ Describe 'New-AzOperationalInsightsTable' {
         $schemaColumns = ($col1, $col2)
 
         $table = New-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName -Name $tableName -RetentionInDay 33 -TotalRetentionInDay 55 -SchemaName $tableName -SchemaColumn $schemaColumns
-        Write-Host -ForegroundColor Yellow "New-AzOperationalInsightsTable returned with: $($table)"
+        $table.RetentionInDay | Should Be 33
+        $table.TotalRetentionInDay | Should Be 55
     }
 }

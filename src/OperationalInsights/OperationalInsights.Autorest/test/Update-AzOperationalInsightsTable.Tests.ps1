@@ -15,8 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOperationalInsightsT
 }
 
 Describe 'Update-AzOperationalInsightsTable' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll { 
+        $rgName = "dabenham-dev"
+        $wsName = "dabenham-PSH2"
+        $tableName = "dabenhamKuku1_CL"
+        $existingTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName -TableName $tableName
+        $currentRetention = $existingTable.RetentionInDay
+    }
+
+    It 'UpdateExpanded' {
+        $updatedTable = Update-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName -Name $tableName -RetentionInDay ($currentRetention + 1)
+        $updatedTable.RetentionInDay | Should Be ($currentRetention +1)
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
