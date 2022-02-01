@@ -41,14 +41,19 @@ Creates or updates an Application Insights web test definition.
 
 ### Example 1: Creates or updates an standard kind of the Application Insights web test
 ```powershell
-PS C:\> $geoLocation = @()
-PS C:\> $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
-PS C:\> $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
-PS C:\> New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name standard-pwsh01 -Location 'westus2' `
+$geoLocation = @()
+```
+```powershell
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
+```
+```powershell
+New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name standard-pwsh01 -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsights-portal01" = "Resource"} `
 -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'standard-pwsh01' `
 -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
-
+```
+```output
 Name            Location WebTestKind ResourceGroupName  Enabled
 ----            -------- ----------- -----------------  -------
 standard-pwsh01 westus2  standard    azpwsh-rg-test     True
@@ -60,15 +65,22 @@ We enter hidden-link in the `Tag` parameter to associate WebTest and Application
 
 ### Example 2: Creates or updates an ping kind of the Application Insights web test
 ```powershell
-PS C:\> $geoLocation = @()
-PS C:\> $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
-PS C:\> $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
-PS C:\> New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwebtest-pwsh01' -TestName 'pingwentest-pwsh01testname' -Location 'westus2' `
+$geoLocation = @()
+```
+```powershell
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+```
+```powershell
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
+```
+```powershell
+New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwebtest-pwsh01' -TestName 'pingwentest-pwsh01testname' -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsights-portal01" = "Resource"} `
 -GeoLocation $geoLocation -RetryEnabled -Enabled -Frequency 300 -Timeout 90 `
 -Kind 'ping' -RequestUrl 'https://cn.bing.com' -RequestParseDependent -RuleExpectedHttpStatusCode 200 `
 -ContentMatch "status"
-
+```
+```output
 Name               Location WebTestKind ResourceGroupName   Enabled
 ----               -------- ----------- -----------------   -------
 pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True
@@ -78,10 +90,16 @@ This command creates or updates an ping kind of the Application Insights web tes
 
 ### Example 3: Creates or updates an ping kind of the Application Insights web test with custom configuration
 ```powershell
-PS C:\> $geoLocation = @()
-PS C:\> $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
-PS C:\> $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
-PS C:\> New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwebtest-pwsh01' -TestName 'pingwentest-pwsh01testname' -Location 'westus2' `
+$geoLocation = @()
+```
+```powershell
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+```
+```powershell
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
+```
+```powershell
+New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwebtest-pwsh01' -TestName 'pingwentest-pwsh01testname' -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsights-portal01" = "Resource"} `
 -GeoLocation $geoLocation -RetryEnabled -Enabled -Frequency 300 -Timeout 90 `
 -Kind 'ping' `
@@ -100,7 +118,8 @@ PS C:\> New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name
         </ValidationRule> 
     </ValidationRules> 
 </WebTest>"
-
+```
+```output
 Name               Location WebTestKind ResourceGroupName   Enabled
 ----               -------- ----------- -----------------   -------
 pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True

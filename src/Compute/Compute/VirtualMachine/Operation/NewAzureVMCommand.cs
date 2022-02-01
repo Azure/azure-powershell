@@ -147,8 +147,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.",
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.",
+            Mandatory = false)]
         public string NetworkInterfaceDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
@@ -329,12 +335,12 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = DiskFileParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
 
         [Parameter(
@@ -348,6 +354,18 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
         public int PlatformFaultDomain { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -499,6 +517,17 @@ namespace Microsoft.Azure.Commands.Compute
                     };
                 }
 
+                // AdditionalCapabilities
+                var vAdditionalCapabilities = new AdditionalCapabilities();
+                if (_cmdlet.IsParameterBound(c => c.HibernationEnabled))
+                {
+                    vAdditionalCapabilities.HibernationEnabled = _cmdlet.HibernationEnabled;
+                }
+                if (_cmdlet.IsParameterBound(c => c.EnableUltraSSD))
+                {
+                    vAdditionalCapabilities.UltraSSDEnabled = _cmdlet.EnableUltraSSD;
+                }
+
                 _cmdlet.ConfigAsyncVisited = true;
 
                 if (_cmdlet.DiskFile == null)
@@ -514,7 +543,6 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
-                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
@@ -530,7 +558,8 @@ namespace Microsoft.Azure.Commands.Compute
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
-                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null,
+                        additionalCapabilities: vAdditionalCapabilities
                         );
                 }
                 else
@@ -548,7 +577,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
-                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
@@ -563,7 +592,8 @@ namespace Microsoft.Azure.Commands.Compute
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
-                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null,
+                        additionalCapabilities: vAdditionalCapabilities
                     );
                 }
             }

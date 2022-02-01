@@ -15,10 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.Azure.Storage;
 using Microsoft.Azure.Cosmos.Table;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using XTable = Microsoft.Azure.Cosmos.Table;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
@@ -26,8 +24,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
     /// <summary>
     /// Mocked table management
     /// </summary>
-    public class MockStorageTableManagement : IStorageTableManagement
+    public partial class MockStorageTableManagement : IStorageTableManagement
     {
+        /// <summary>
+        /// Table end point
+        /// </summary>
+        public const string TableEndPoint = "https://127.0.0.1/account/";
+
         /// <summary>
         /// Exists table lists
         /// </summary>
@@ -38,10 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// </summary>
         public TablePermissions tablePermissions = new TablePermissions();
 
-        /// <summary>
-        /// Table end point
-        /// </summary>
-        private string TableEndPoint = "http://127.0.0.1/account/";
+        public bool IsTokenCredential { get; set; }
 
         /// <summary>
         /// List azure storage tables
@@ -211,13 +211,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// <returns></returns>
         public Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
         {
-            return Task.Factory.StartNew(() => this.GetTablePermissions(table,
-                requestOptions, operationContext));
+            return Task.FromResult(this.GetTablePermissions(table, requestOptions, operationContext));
         }
 
         public AzureStorageContext StorageContext
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return null;
+            }
         }
 
         public Azure.Cosmos.Table.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext)

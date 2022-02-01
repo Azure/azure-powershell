@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallPolicyExclusionManagedRule** creates an ex
 
 ### Example 1
 ```powershell
-PS C:\> ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId $ruleId
+PS C:\> $ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId $ruleId
 ```
 
 Creates an exclusion rule Entry with RuleId as $ruleId.

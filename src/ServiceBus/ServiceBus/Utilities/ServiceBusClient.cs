@@ -173,27 +173,24 @@ namespace Microsoft.Azure.Commands.ServiceBus
             string[] identityIds, PSEncryptionConfigAttributes[] encryptionconfigs)
         {
 
-            var parameter = new SBNamespace()
-            {
-                Location = location
-            };
+            var parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
+            parameter.Location = location;           
 
             if (tags != null)
             {
                 parameter.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true); ;
             }
 
-            SBSku tempSku = new SBSku();
 
             if (skuName != null)
             {
-                tempSku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
-                tempSku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
+                parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
             }
 
             if (skuCapacity != null)
             {
-                tempSku.Capacity = skuCapacity;
+                parameter.Sku.Capacity = skuCapacity;
             }
 
             parameter.Sku = tempSku;
@@ -314,6 +311,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
             networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
 
             networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
+
+            networkRuleSet.PublicNetworkAccess = psNetworkRuleSetAttributes.PublicNetworkAccess;
 
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {

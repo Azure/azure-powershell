@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             Id = networkRuleSet.Id;
             Name = networkRuleSet.Name;
             Type = networkRuleSet.Type;
+            PublicNetworkAccess = networkRuleSet?.PublicNetworkAccess;
         }
 
         /// <summary>
@@ -85,6 +86,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public IList<PSNWRuleSetIpRulesAttributes> IpRules { get; set; }
 
         public bool? TrustedServiceAccessEnabled { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
     }
 }

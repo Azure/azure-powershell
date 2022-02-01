@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
         public double? ThroughputMibps { get; set; }
 
         [Parameter(

@@ -24,8 +24,11 @@ The **Get-AzBatchApplication** cmdlet gets information about an application in a
 ## EXAMPLES
 
 ### Example 1: Display the applications in a Batch account
+```powershell
+Get-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup"
 ```
-PS C:\>Get-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup"
+
+```output
 ApplicationName AllowUpdates DisplayName
 
 ------------- ------------ ----------------------------

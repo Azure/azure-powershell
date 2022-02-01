@@ -42,10 +42,12 @@ The Get-AzBatchPoolNodeCount cmdlet allows customers to get back node counts per
 ## EXAMPLES
 
 ### Example 1
+```powershell
+$batchContext = Get-AzBatchAccountKey -AccountName "contosobatch"
+Get-AzBatchPoolNodeCount -BatchContext $batchContext
 ```
-PS C:\> $batchContext = Get-AzBatchAccountKey -AccountName "contosobatch"
-PS C:\> Get-AzBatchPoolNodeCount -BatchContext $batchContext
 
+```output
 PoolId                         Dedicated                                                    LowPriority
 ------                         ---------                                                    -----------
 contosopool1                   Creating: 1, Idle: 1, Rebooting: 1, Running: 5, Total: 8     Total: 0
@@ -57,14 +59,14 @@ List node counts per node state for pools under current batch account context.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzBatchPoolNodeCount -BatchContext $batchContext -PoolId "contosopool1"
+Get-AzBatchPoolNodeCount -BatchContext $batchContext -PoolId "contosopool1"
 
 PoolId                         Dedicated                                                    LowPriority
 ------                         ---------                                                    -----------
 contosopool1                   Creating: 1, Idle: 1, Rebooting: 1, Running: 5, Total: 8     Total: 0
 
-PS C:\> $poolnodecounts = Get-AzBatchPoolNodeCount -BatchContext $batchContext -PoolId "contosopool1"
-PS C:\> $poolnodecounts.Dedicated
+$poolnodecounts = Get-AzBatchPoolNodeCount -BatchContext $batchContext -PoolId "contosopool1"
+$poolnodecounts.Dedicated
 
 Creating            : 1
 Idle                : 1
@@ -81,7 +83,7 @@ Unknown             : 0
 Unusable            : 0
 WaitingForStartTask : 0
 
-PS C:\> Get-AzBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-AzBatchPoolNodeCount -BatchContext $batchContext
+Get-AzBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-AzBatchPoolNodeCount -BatchContext $batchContext
 
 PoolId                         Dedicated                                                    LowPriority
 ------                         ---------                                                    -----------

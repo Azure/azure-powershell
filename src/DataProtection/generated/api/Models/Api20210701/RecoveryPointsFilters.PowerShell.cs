@@ -100,12 +100,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId = (string) content.GetValueForProperty("RestorePointDataStoreId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible = (bool?) content.GetValueForProperty("IsVisible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate = (string) content.GetValueForProperty("StartDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate = (string) content.GetValueForProperty("EndDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo = (bool?) content.GetValueForProperty("ExtendedInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState = (string) content.GetValueForProperty("RestorePointState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState, global::System.Convert.ToString);
+            if (content.Contains("RestorePointDataStoreId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId = (string) content.GetValueForProperty("RestorePointDataStoreId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsVisible"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible = (bool?) content.GetValueForProperty("IsVisible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate = (string) content.GetValueForProperty("StartDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate = (string) content.GetValueForProperty("EndDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExtendedInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo = (bool?) content.GetValueForProperty("ExtendedInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RestorePointState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState = (string) content.GetValueForProperty("RestorePointState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,12 +141,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId = (string) content.GetValueForProperty("RestorePointDataStoreId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible = (bool?) content.GetValueForProperty("IsVisible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate = (string) content.GetValueForProperty("StartDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate = (string) content.GetValueForProperty("EndDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo = (bool?) content.GetValueForProperty("ExtendedInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState = (string) content.GetValueForProperty("RestorePointState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState, global::System.Convert.ToString);
+            if (content.Contains("RestorePointDataStoreId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId = (string) content.GetValueForProperty("RestorePointDataStoreId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointDataStoreId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsVisible"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible = (bool?) content.GetValueForProperty("IsVisible",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).IsVisible, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate = (string) content.GetValueForProperty("StartDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).StartDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate = (string) content.GetValueForProperty("EndDate",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).EndDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExtendedInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo = (bool?) content.GetValueForProperty("ExtendedInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).ExtendedInfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RestorePointState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState = (string) content.GetValueForProperty("RestorePointState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointsFiltersInternal)this).RestorePointState, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

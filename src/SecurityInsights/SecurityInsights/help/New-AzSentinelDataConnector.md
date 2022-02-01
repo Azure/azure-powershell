@@ -76,7 +76,7 @@ Please note that only the following data connectors have automation support thro
 * **AATPDataConnector**	- Represents AATP (Azure Advanced Threat Protection) data connector
 * **ASCDataConnector** - Represents ASC (Azure Security Center) data connector
 * **AwsCloudTrailDataConnector** - Represents Amazon Web Services CloudTrail data connector
-* **MCASDataConnector**	- Represents MCAS (Microsoft Cloud App Security) data connector
+* **MCASDataConnector**	- Represents Microsoft Defender for Cloud Apps data connector
 * **MDATPDataConnector** - Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector
 * **OfficeDataConnector** - Represents office data connector
 * **TIDataConnector** - Represents threat intelligence data connector
@@ -95,7 +95,7 @@ This example creates a **DataConnector** for *Azure Security Center* in the spec
 PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
 ```
 
-This example creates a **DataConnector** for *Microsoft Cloud App Security* in the specified workspace, and then stores it in the $DataConnector variable.
+This example creates a **DataConnector** for *Microsoft Defender for Cloud Apps* in the specified workspace, and then stores it in the $DataConnector variable.
 
 ### Examples 3
 ```powershell

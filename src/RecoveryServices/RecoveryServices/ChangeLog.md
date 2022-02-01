@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add EdgeZone parameter to Azure Site recovery service cmdlet `New-AzRecoveryServicesAsrRecoveryPlan`
 
 ## Version 5.0.0
 * Azure Backup updated validate sets for supported BackupManagementType in `Get-AzRecoveryServicesBackupItem`, `Get-AzRecoveryServicesBackupContainer`, Get-AzRecoveryServicesBackupJob cmdlets.

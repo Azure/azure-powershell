@@ -14,13 +14,15 @@
 
 using Azure.Analytics.Synapse.AccessControl;
 using Azure.Analytics.Synapse.AccessControl.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         private readonly RoleAssignmentsClient _roleAssignmentsClient;
         private readonly RoleDefinitionsClient _roleDefinitionsClient;
-        private readonly ActiveDirectoryClient _activeDirectoryClient;
+        private readonly MicrosoftGraphClient _graphClient;
 
         public SynapseAnalyticsRoleClient(string workspaceName, IAzureContext context)
         {
@@ -44,7 +46,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
             _roleAssignmentsClient = new RoleAssignmentsClient(uri, new AzureSessionCredential(context));
             _roleDefinitionsClient = new RoleDefinitionsClient(uri, new AzureSessionCredential(context));
-            _activeDirectoryClient = new ActiveDirectoryClient(context);
+            _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
+            _graphClient.TenantID = context.Tenant.Id.ToString();
         }
 
         public IReadOnlyList<RoleAssignmentDetails> ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string scope = null)
@@ -110,14 +113,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 return null;
             }
 
-            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<User>(s => s.UserPrincipalName == signInName);
-            var user = _activeDirectoryClient.GraphClient.Users.List(odataQueryFilter.ToString()).SingleOrDefault();
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphUser>(s => s.UserPrincipalName == signInName);          
+            var user = _graphClient.FilterUsers(odataQueryFilter).SingleOrDefault();
+                
             if (user == null)
             {
                 throw new AzPSInvalidOperationException(String.Format(Resources.UserNameDoesNotExist, signInName));
             }
 
-            return user.ObjectId;
+            return user.Id;
         }
 
         public string GetObjectIdFromServicePrincipalName(string servicePrincipalName)
@@ -127,14 +131,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 return null;
             }
 
-            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(servicePrincipalName));
-            var servicePrincipal = _activeDirectoryClient.GraphClient.ServicePrincipals.List(odataQueryFilter.ToString()).SingleOrDefault();
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<MicrosoftGraphServicePrincipal>(s => s.ServicePrincipalNames.Contains(servicePrincipalName));
+            var servicePrincipal = _graphClient.FilterServicePrincipals(odataQueryFilter).SingleOrDefault();
             if (servicePrincipal == null)
             {
                 throw new AzPSInvalidOperationException(String.Format(Resources.ServicePrincipalNameDoesNotExist, servicePrincipalName));
             }
 
-            return servicePrincipal.ObjectId;
+            return servicePrincipal.Id;
         }
 
         public string GetRoleDefinitionIdFromRoleDefinitionName(string roleDefinitionName)

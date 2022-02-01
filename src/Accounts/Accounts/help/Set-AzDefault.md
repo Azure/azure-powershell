@@ -23,9 +23,11 @@ The Set-AzDefault cmdlet adds or changes the defaults in the current context.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzDefault -ResourceGroupName myResourceGroup
 ```
-PS C:\> Set-AzDefault -ResourceGroupName myResourceGroup
 
+```Output
 Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
 Name       : myResourceGroup
 Properties : Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroupProperties

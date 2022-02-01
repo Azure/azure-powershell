@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConfiguringProtection".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ConfiguringProtection", "ConfiguringProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtection");
+                yield return new global::System.Management.Automation.CompletionResult("'ConfiguringProtection'", "ConfiguringProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtection");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConfiguringProtectionFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ConfiguringProtectionFailed", "ConfiguringProtectionFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtectionFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'ConfiguringProtectionFailed'", "ConfiguringProtectionFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfiguringProtectionFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProtectionConfigured".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProtectionConfigured", "ProtectionConfigured", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionConfigured");
+                yield return new global::System.Management.Automation.CompletionResult("'ProtectionConfigured'", "ProtectionConfigured", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionConfigured");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProtectionStopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProtectionStopped", "ProtectionStopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionStopped");
+                yield return new global::System.Management.Automation.CompletionResult("'ProtectionStopped'", "ProtectionStopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionStopped");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SoftDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SoftDeleted", "SoftDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'SoftDeleted'", "SoftDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SoftDeleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SoftDeleting", "SoftDeleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleting");
+                yield return new global::System.Management.Automation.CompletionResult("'SoftDeleting'", "SoftDeleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleting");
             }
         }
     }

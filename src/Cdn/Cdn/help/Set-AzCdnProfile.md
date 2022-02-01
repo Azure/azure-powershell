@@ -23,6 +23,26 @@ The **Set-AzCdnProfile** cmdlet updates an Azure Content Delivery Network (CDN) 
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+$profileObject = Get-AzCdnProfile -ResourceGroupName myresourcegroup -ProfileName mycdnprofile
+$profileObject.Tags = @{"key"="value"}
+Set-AzCdnProfile -CdnProfile $profileObject
+```
+
+```Output
+Sku               : Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku
+ResourceState     : Active
+ResourceGroupName : myresourcegroup
+Location          : WestUs
+Tags              : {key}
+Id                : /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/myresourcegroup/providers/Microsoft.Cdn
+                    /profiles/mycdnprofile
+Name              : mycdnprofile
+Type              : Microsoft.Cdn/profiles
+ProvisioningState : Succeeded
+```
+
 ## PARAMETERS
 
 ### -CdnProfile

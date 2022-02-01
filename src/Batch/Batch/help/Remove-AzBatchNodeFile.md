@@ -39,23 +39,23 @@ The **Remove-AzBatchNodeFile** cmdlet deletes an Azure Batch node file for a tas
 ## EXAMPLES
 
 ### Example 1: Delete a file associated with a task
-```
-PS C:\>Remove-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile.txt" -BatchContext $Context
+```powershell
+Remove-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile.txt" -BatchContext $Context
 ```
 
 This command deletes the node file that is named wd\testFile.txt.
 That file is associated with the task that has the ID Task26 under the job Job-000001.
 
 ### Example 2: Delete a file from a compute node
-```
-PS C:\>Remove-AzBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Path "startup\testFile.txt" -BatchContext $Context
+```powershell
+Remove-AzBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Path "startup\testFile.txt" -BatchContext $Context
 ```
 
 This command deletes the node file that is named startup\testFile.txt from the specified compute node in the pool that has the ID Pool07.
 
 ### Example 3: Remove a file by using the pipeline
-```
-PS C:\>Get-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile2.txt" -BatchContext $Context | Remove-AzBatchNodeFile -Force -BatchContext $Context
+```powershell
+Get-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile2.txt" -BatchContext $Context | Remove-AzBatchNodeFile -Force -BatchContext $Context
 ```
 
 This command gets the node file by using **Get-AzBatchNodeFile**.
