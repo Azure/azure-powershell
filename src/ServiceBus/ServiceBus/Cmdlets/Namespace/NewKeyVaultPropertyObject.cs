@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.ServiceBus.Commands;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.ServiceBus.Commands;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System;
@@ -8,7 +22,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Cmdlets.Namespace
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServceBusEncryptionConfig", SupportsShouldProcess = false), OutputType(typeof(PSKeyVaultProperties))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusEncryptionConfig", SupportsShouldProcess = false), OutputType(typeof(PSEncryptionConfigAttributes))]
     public class NewKeyVaultPropertyObject : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Key Name")]
@@ -20,7 +34,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Cmdlets.Namespace
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Version")]
         public string KeyVersion { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "User Assigned Identity")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "User Assigned Identity")]
         public string UserAssignedIdentity { get; set; }
 
         public override void ExecuteCmdlet()
@@ -33,8 +47,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Cmdlets.Namespace
                     uaip = new UserAssignedIdentityProperties(UserAssignedIdentity);
                 
                 KeyVaultProperties kvp = new KeyVaultProperties(keyName: KeyName, keyVaultUri: KeyVaultUri, keyVersion: KeyVersion, identity: uaip);
-                
-                PSKeyVaultProperties keyvaultproperty = new PSKeyVaultProperties(kvp);
+
+                PSEncryptionConfigAttributes keyvaultproperty = new PSEncryptionConfigAttributes(kvp);
                 
                 WriteObject(keyvaultproperty);
             }

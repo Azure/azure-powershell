@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using Newtonsoft.Json;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.ServiceBus
 {
@@ -56,10 +57,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
             private set;
         }
 
-        protected const string SystemAssigned = "SystemAssigned";
-        protected const string UserAssigned = "UserAssigned";
-        protected const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
-        protected const string None = "None";
+        public const string SystemAssigned = "SystemAssigned";
+        public const string UserAssigned = "UserAssigned";
+        public const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
+        public const string None = "None";
 
         #region Namespace
         public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
 
         public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, bool isZoneRedundant, bool isDisableLocalAuth, string identityType, 
-            string[] identityIds, PSKeyVaultProperties[] encryptionconfigs, int? skuCapacity = null)
+            string[] identityIds, PSEncryptionConfigAttributes[] encryptionconfigs, int? skuCapacity = null)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -146,14 +147,14 @@ namespace Microsoft.Azure.Commands.ServiceBus
                                                                      .Select(x => {
                                                                          KeyVaultProperties kvp = new KeyVaultProperties();
 
-                                                                         if (x.KeyName != null)
-                                                                             kvp.KeyName = x.KeyName;
+                                                                         if (x.KeyName == null || x.KeyVaultUri == null)
+                                                                             throw new Exception("KeyName and KeyVaultUri cannot be null");
 
-                                                                         if (x.KeyVaultUri != null)
-                                                                             kvp.KeyVaultUri = x.KeyVaultUri;
+                                                                         kvp.KeyName = x.KeyName;
+
+                                                                         kvp.KeyVaultUri = x.KeyVaultUri;
                                                                          
-                                                                         if (x.KeyVersion != null)
-                                                                             kvp.KeyVersion = x.KeyVersion;
+                                                                         kvp.KeyVersion = x?.KeyVersion;
                                                                          
                                                                          if (x.UserAssignedIdentity != null)
                                                                              kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
@@ -168,8 +169,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isDisableLocalAuth, string identityType,
-            string[] identityIds, PSKeyVaultProperties[] encryptionconfigs)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Hashtable tags, bool? isDisableLocalAuth, string identityType,
+            string[] identityIds, PSEncryptionConfigAttributes[] encryptionconfigs)
         {
 
             var parameter = new SBNamespace()
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             if (tags != null)
             {
-                parameter.Tags = new Dictionary<string, string>(tags);
+                parameter.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true); ;
             }
 
             if (skuName != null)
@@ -193,7 +194,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 }
             }
 
-            if (isDisableLocalAuth)
+            if (isDisableLocalAuth != null)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
 
             if (identityType != null)
@@ -231,14 +232,14 @@ namespace Microsoft.Azure.Commands.ServiceBus
                                                                      .Select(x => {
                                                                          KeyVaultProperties kvp = new KeyVaultProperties();
 
-                                                                         if (x.KeyName != null)
-                                                                             kvp.KeyName = x.KeyName;
+                                                                         if (x.KeyName == null || x.KeyVaultUri == null)
+                                                                             throw new Exception("KeyName and KeyVaultUri cannot be null");
 
-                                                                         if (x.KeyVaultUri != null)
-                                                                             kvp.KeyVaultUri = x.KeyVaultUri;
+                                                                         kvp.KeyName = x.KeyName;
 
-                                                                         if (x.KeyVersion != null)
-                                                                             kvp.KeyVersion = x.KeyVersion;
+                                                                         kvp.KeyVaultUri = x.KeyVaultUri;
+
+                                                                         kvp.KeyVersion = x?.KeyVersion;
 
                                                                          if (x.UserAssignedIdentity != null)
                                                                              kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);

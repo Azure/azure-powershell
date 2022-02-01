@@ -19,33 +19,24 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public class PSKeyVaultProperties
+    public class PSEncryptionConfigAttributes
     {
-        public PSKeyVaultProperties()
+        public PSEncryptionConfigAttributes()
         {
 
         }
 
-        public PSKeyVaultProperties(KeyVaultProperties keyVaultProperties)
+        public PSEncryptionConfigAttributes(KeyVaultProperties keyVaultProperties)
         {
             if (keyVaultProperties != null)
             {
-                if (keyVaultProperties.KeyName != null)
-                {
-                    KeyName = keyVaultProperties.KeyName;
-                }
-                if(keyVaultProperties.KeyVaultUri != null)
-                {
-                    KeyVaultUri = keyVaultProperties.KeyVaultUri;
-                }
-                if(keyVaultProperties.KeyVersion != null)
-                {
-                    KeyVersion = keyVaultProperties.KeyVersion;
-                }
-                if(keyVaultProperties.Identity.UserAssignedIdentity != null)
-                {
-                    UserAssignedIdentity = keyVaultProperties.Identity.UserAssignedIdentity;
-                }
+                KeyName = keyVaultProperties?.KeyName;
+                
+                KeyVaultUri = keyVaultProperties?.KeyVaultUri;
+                
+                KeyVersion = keyVaultProperties?.KeyVersion;
+
+                UserAssignedIdentity = keyVaultProperties?.Identity?.UserAssignedIdentity;
             }
         }
 

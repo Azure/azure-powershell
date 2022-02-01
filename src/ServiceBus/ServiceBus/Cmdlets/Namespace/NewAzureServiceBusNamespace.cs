@@ -94,10 +94,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string IdentityType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
-        public string[] IdentityIds { get; set; }
+        public string[] IdentityId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
-        public PSKeyVaultProperties[] EncryptionConfigs { get; set; }
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
         /// <summary>
         /// 
@@ -121,8 +121,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                                                                                            isZoneRedundant: ZoneRedundant.IsPresent,
                                                                                            isDisableLocalAuth: DisableLocalAuth.IsPresent,
                                                                                            identityType: IdentityType, 
-                                                                                           identityIds: IdentityIds, 
-                                                                                           encryptionconfigs: EncryptionConfigs, 
+                                                                                           identityIds: IdentityId, 
+                                                                                           encryptionconfigs: EncryptionConfig, 
                                                                                            skuCapacity: SkuCapacity);
                         WriteObject(createresponse);
                     }

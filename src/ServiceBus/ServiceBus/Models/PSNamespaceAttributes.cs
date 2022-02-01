@@ -62,30 +62,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 if(evResource.Identity != null)
                 {
                     Identity = new PSIdentityAttributes(evResource.Identity);
+
+                    IdentityType = evResource.Identity.Type.ToString();
                     
                     if(evResource.Identity.UserAssignedIdentities != null)
-                        IdentityIds = evResource.Identity.UserAssignedIdentities.Keys.ToArray();
+                        IdentityId = evResource.Identity.UserAssignedIdentities.Keys.ToArray();
                 }
                     
                 
                 if(evResource.Encryption != null)
                 {
 
-                    Encryption = new PSEncryptionAttributes(evResource.Encryption);
-
                     if(evResource.Encryption.KeyVaultProperties != null)
                     {
-                        EncryptionConfigs = evResource.Encryption.KeyVaultProperties.Where(x => x != null).Select(x => {
-                            PSKeyVaultProperties kvproperty = new PSKeyVaultProperties();
+                        EncryptionConfig = evResource.Encryption.KeyVaultProperties.Where(x => x != null).Select(x => {
                             
-                            if (x.KeyName != null)
-                                kvproperty.KeyName = x.KeyName;
-
-                            if (x.KeyVaultUri != null)
-                                kvproperty.KeyVaultUri = x.KeyVaultUri;
-
-                            if (x.KeyVersion != null)
-                                kvproperty.KeyVersion = x.KeyVersion;
+                            PSEncryptionConfigAttributes kvproperty = new PSEncryptionConfigAttributes();
+                            
+                            kvproperty.KeyName = x?.KeyName;
+                                
+                            kvproperty.KeyVaultUri = x?.KeyVaultUri;
+                                
+                            kvproperty.KeyVersion = x?.KeyVersion;
 
                             if (x.Identity != null)
                                 if(x.Identity.UserAssignedIdentity != null)
@@ -96,7 +94,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                     }
                 }
                 
-                
+                if(evResource.Tags != null)
+                {
+                    var tagDictionary = new Dictionary<string, string>(evResource.Tags);
+                    Tag = new Hashtable(tagDictionary);
+                }
                 
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
@@ -159,6 +161,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
 
+        public Hashtable Tag { get; set; }
+
         /// <summary>
         /// Gets or sets enabling this property creates a Premium Service Bus
         /// Namespace in regions supported availability zones.
@@ -173,10 +177,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         public PSIdentityAttributes Identity { get; set; }
 
-        public PSEncryptionAttributes Encryption { get; set; }
+        public string IdentityType { get; set; }
 
-        public string[] IdentityIds { get; set; }
+        public string[] IdentityId { get; set; }
 
-        public PSKeyVaultProperties[] EncryptionConfigs { get; set; }
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
     }
 }

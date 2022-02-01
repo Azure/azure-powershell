@@ -56,16 +56,27 @@
 			 <ListItem>
                 <Label>Identity</Label>
                 <ScriptBlock>
-                  "PrinicipalId : "+ $_.Identity.PrincipalId + ", TenantId: "+ $_.Identity.TenantId + ", Type: " + $_.Identity.Type + ", UserAssignedIdentity: " + $_.Identity.UserAssignedIdentities
+                  "PrinicipalId : "+ $_.Identity.PrincipalId + ", TenantId: "+ $_.Identity.TenantId
                 </ScriptBlock>              
              </ListItem>
+				<ListItem>
+					<Label>IdentityType</Label>
+					<ScriptBlock>
+						$_.Identity.Type
+					</ScriptBlock>
+				</ListItem>
+				<ListItem>
+					<Label>IdentityId</Label>
+					<ScriptBlock>
+						$_.IdentityId -join "`n"
+					</ScriptBlock>
+				</ListItem>
 			 <ListItem>
-                <PropertyName>EncryptionConfigs</PropertyName>
+                <Label>EncryptionConfigs</Label>
+				<ScriptBlock>
+					$_.EncryptionConfig.GetEnumerator() | ForEach-Object{ "{ KeyName: "+$_.KeyName+",`nKeyVaultUri: "+$_.KeyVaultUri+",`nKeyVersion: "+$_.KeyVersion+",`nUserAssignedIdentity: "+$_.UserAssignedIdentity+" }`n" }
+				</ScriptBlock>
              </ListItem>
-			 <ListItem>
-                <Label>IdentityIds</Label>
-				<PropertyName>$_.IdentityIds</PropertyName>             
-             </ListItem> 
             </ListItems>
           </ListEntry>
         </ListEntries>
