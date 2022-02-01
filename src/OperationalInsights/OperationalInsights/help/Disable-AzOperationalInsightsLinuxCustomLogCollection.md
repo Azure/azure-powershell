@@ -42,6 +42,7 @@ ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resource
 Kind              : CustomLogCollection
 Properties        : {"state":"LinuxLogsDisabled"}
 ```
+
 Stops collection of custom logs from connected Linux computers in a workspace.
 
 ## PARAMETERS

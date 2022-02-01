@@ -42,6 +42,7 @@ ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resource
 Kind              : LinuxPerformanceCollection
 Properties        : {"state":"Enabled"}
 ```
+
 Starts collection of performance counters from connected Linux computers in a workspace.
 
 ## PARAMETERS

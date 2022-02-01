@@ -35,6 +35,9 @@ Starts collection of performance counters from Linux computers.
 ### [Enable-AzOperationalInsightsLinuxSyslogCollection](Enable-AzOperationalInsightsLinuxSyslogCollection.md)
 Starts collection of syslog data from Linux computers.
 
+### [Get-AzOperationalInsightsAvailableServiceTier](Get-AzOperationalInsightsAvailableServiceTier.md)
+This command gets all available service tiers for a given worksapce.
+
 ### [Get-AzOperationalInsightsCluster](Get-AzOperationalInsightsCluster.md)
 Get or list clusters
 
@@ -49,6 +52,9 @@ List deleted workspaces.
 
 ### [Get-AzOperationalInsightsIntelligencePack](Get-AzOperationalInsightsIntelligencePack.md)
 Gets the available Intelligence Packs.
+
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Get-AzOperationalInsightsLinkedService](Get-AzOperationalInsightsLinkedService.md)
 Get or list linked service for workspace
@@ -169,6 +175,8 @@ Updates a data source.
 
 ### [Set-AzOperationalInsightsIntelligencePack](Set-AzOperationalInsightsIntelligencePack.md)
 Enables or disables the specified Intelligence Pack.
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Set-AzOperationalInsightsLinkedService](Set-AzOperationalInsightsLinkedService.md)
 link service for workspace
@@ -190,6 +198,9 @@ update cluster
 
 ### [Update-AzOperationalInsightsDataExport](Update-AzOperationalInsightsDataExport.md)
 Update data export.
+
+### [Update-AzOperationalInsightsTable](Update-AzOperationalInsightsTable.md)
+Update an existing table
 
 ### [Update-AzOperationalInsightsWorkspaceSharedKey](Update-AzOperationalInsightsWorkspaceSharedKey.md)
 Regenerates the shared keys for a Log Analytics Workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.
