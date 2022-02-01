@@ -40,6 +40,7 @@ Shared access signature (SAS) URI is supported also. <br/>
 
 For Direct Upload to Managed Disk Parameter set, parameters: ResourceGroupName, DiskName, Location, DiskSku, and Zone will be used to 
 create a new disk, then the virtual hard disk will be uploaded to it. <br/>
+
 More information on [using Add-AzVhd to directly upload to a managed disk](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell#use-add-azvhd).
 
 For VHD files greater than 50 GB, we recommend using [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10?toc=/azure/storage/blobs/toc.json) for faster upload.
