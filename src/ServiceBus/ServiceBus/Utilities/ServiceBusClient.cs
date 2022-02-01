@@ -181,19 +181,21 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 parameter.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true); ;
             }
 
-
             if (skuName != null)
             {
+                parameter.Sku = new SBSku();
                 parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
                 parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
             }
 
             if (skuCapacity != null)
             {
+                if (parameter.Sku == null)
+                {
+                    parameter.Sku = new SBSku();
+                }
                 parameter.Sku.Capacity = skuCapacity;
             }
-
-            parameter.Sku = tempSku;
 
             if (isDisableLocalAuth != null)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
