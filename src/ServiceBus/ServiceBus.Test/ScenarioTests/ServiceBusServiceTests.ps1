@@ -41,6 +41,8 @@ function DebugTest{
         New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
         
         
+        #Create KeyVault1
+        $kv1 = New-AzKeyVault -VaultName $keyvault1 -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection
         #Create User Assigned Identity 1
         $uad1 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userAssignedIdentity1
 
@@ -50,8 +52,6 @@ function DebugTest{
         #Create User Assigned Identity 3
         $uad3 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userAssignedIdentity3
 
-        #Create KeyVault1
-        $kv1 = New-AzKeyVault -VaultName $keyvault1 -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection
         #Create Keys
         Add-AzKeyVaultKey -VaultName $keyvault1 -Name $keyName1 -Destination 'Software'
         Add-AzKeyVaultKey -VaultName $keyvault1 -Name $keyName2 -Destination 'Software'
