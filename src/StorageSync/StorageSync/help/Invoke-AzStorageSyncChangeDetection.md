@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
-Module Name: Microsoft.Azure.PowerShell.Cmdlets.StorageSync
+Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection
 schema: 2.0.0
 ---
