@@ -73,7 +73,24 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll',
                'DataMigration.Autorest\Az.DataMigration.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = @('Get-AzDataMigrationAssessment',
+    'Get-AzDataMigrationSqlService', 
+    'Get-AzDataMigrationSqlServiceAuthKey', 
+    'Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric', 
+    'Get-AzDataMigrationSqlServiceMigration', 
+    'Get-AzDataMigrationToSqlManagedInstance', 
+    'Get-AzDataMigrationToSqlVM', 
+    'Invoke-AzDataMigrationCutoverToSqlManagedInstance', 
+    'Invoke-AzDataMigrationCutoverToSqlVM', 
+    'New-AzDataMigrationSqlService', 
+    'New-AzDataMigrationSqlServiceAuthKey', 
+    'New-AzDataMigrationToSqlManagedInstance', 
+    'New-AzDataMigrationToSqlVM', 
+    'Register-AzDataMigrationIntegrationRuntime', 
+    'Remove-AzDataMigrationSqlService', 
+    'Remove-AzDataMigrationSqlServiceNode', 
+    'Stop-AzDataMigrationToSqlManagedInstance', 
+    'Stop-AzDataMigrationToSqlVM', 'Update-AzDataMigrationSqlService')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzDataMigrationDatabaseInfo', 
@@ -89,24 +106,7 @@ CmdletsToExport = 'New-AzDataMigrationDatabaseInfo',
                'New-AzDataMigrationMongoDbDatabaseSetting', 
                'New-AzDataMigrationMongoDbCollectionSetting', 
                'Invoke-AzDataMigrationCommand', 
-               'New-AzDataMigrationAzureActiveDirectoryApp', 
-               'Get-AzDataMigrationAssessment', 'Get-AzDataMigrationSqlService', 
-               'Get-AzDataMigrationSqlServiceAuthKey', 
-               'Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric', 
-               'Get-AzDataMigrationSqlServiceMigration', 
-               'Get-AzDataMigrationToSqlManagedInstance', 
-               'Get-AzDataMigrationToSqlVM', 
-               'Invoke-AzDataMigrationCutoverToSqlManagedInstance', 
-               'Invoke-AzDataMigrationCutoverToSqlVM', 
-               'New-AzDataMigrationSqlService', 
-               'New-AzDataMigrationSqlServiceAuthKey', 
-               'New-AzDataMigrationToSqlManagedInstance', 
-               'New-AzDataMigrationToSqlVM', 
-               'Register-AzDataMigrationIntegrationRuntime', 
-               'Remove-AzDataMigrationSqlService', 
-               'Remove-AzDataMigrationSqlServiceNode', 
-               'Stop-AzDataMigrationToSqlManagedInstance', 
-               'Stop-AzDataMigrationToSqlVM', 'Update-AzDataMigrationSqlService'
+               'New-AzDataMigrationAzureActiveDirectoryApp'
 
 # Variables to export from this module
 # VariablesToExport = @()
