@@ -333,6 +333,9 @@
   <data name="VpnConnectionNotFound" xml:space="preserve">
     <value>The VpnConnection could not be found.</value>
   </data>
+  <data name="VpnServerConfigurationPolicyGroupNotFound" xml:space="preserve">
+    <value>The VpnServerConfigurationPolicyGroup could not be found.</value>
+  </data>
   <data name="VpnGatewayNotFound" xml:space="preserve">
     <value>The VpnGateway to modify could not be found</value>
   </data>

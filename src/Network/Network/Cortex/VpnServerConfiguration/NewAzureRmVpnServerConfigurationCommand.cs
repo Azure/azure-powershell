@@ -135,6 +135,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of VpnServerConfigurationPolicyGroups that this P2SVpnGateway needs to have.")]
+        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroups { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -171,7 +176,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.AadTenant,
                 this.AadAudience,
                 this.AadIssuer,
-                this.VpnClientIpsecPolicy);
+                this.VpnClientIpsecPolicy,
+                this.ConfigurationPolicyGroups);
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
