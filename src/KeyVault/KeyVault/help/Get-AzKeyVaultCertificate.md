@@ -108,8 +108,8 @@ This command gets the certificate named TestCert01 from the key vault named Cont
 
 ```powershell
 $cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certName
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name -AsPlainText
-$secretByte = [Convert]::FromBase64String($secret)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretByte = [Convert]::FromBase64String(($secret.SecretValue | ConvertFrom-SecureString -AsPlainText))
 # Write to a file
 [System.IO.File]::WriteAllBytes("cert.pfx", $secretByte)
 ```
@@ -307,7 +307,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -319,7 +319,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId

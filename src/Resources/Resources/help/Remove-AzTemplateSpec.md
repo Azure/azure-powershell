@@ -52,7 +52,7 @@ PS C:\> Remove-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'MyTemplateSpec'
 
 Removes the Template Spec named 'MyTemplateSpec' and all of its versions within the resource group 'myRG'.
 
-### Example 3: Removing a Template Spec and all versions by resource id
+### Example 4: Removing a Template Spec and all versions by resource id
 ```powershell
 PS C:\> Remove-AzTemplateSpec -ResourceId '/subscriptions/{subId}/resourceGroups/myRG/providers/Microsoft.Resources/templateSpecs/MyTemplateSpec' -ResourceGroupName 'myRG'
 ```

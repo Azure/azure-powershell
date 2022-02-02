@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime = (global::System.DateTime) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime = (global::System.DateTime) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation = (string) content.GetValueForProperty("ShipmentLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation, global::System.Convert.ToString);
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime = (global::System.DateTime) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("EndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime = (global::System.DateTime) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ShipmentLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation = (string) content.GetValueForProperty("ShipmentLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime = (global::System.DateTime) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime = (global::System.DateTime) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation = (string) content.GetValueForProperty("ShipmentLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation, global::System.Convert.ToString);
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime = (global::System.DateTime) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("EndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime = (global::System.DateTime) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ShipmentLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation = (string) content.GetValueForProperty("ShipmentLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShipmentPickUpRequestInternal)this).ShipmentLocation, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

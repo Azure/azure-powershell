@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:https://docs.microsoft.com/powershell/module/az.synapse/start-azsynapseintegrationruntime
+online version: https://docs.microsoft.com/powershell/module/az.synapse/start-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -66,7 +66,7 @@ This cmdlet starts a managed dedicated integration runtime using ResourceId in w
 ### Example 4
 ```powershell
 PS C:\> $ir = Get-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name test-dedicated-ir -ResourceGroupName Contosorg
-PS C:\> $ir | Start-AzSynapseIntegrationRuntime 
+PS C:\> $ir | Start-AzSynapseIntegrationRuntime
 ```
 
 This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace through pipeline.

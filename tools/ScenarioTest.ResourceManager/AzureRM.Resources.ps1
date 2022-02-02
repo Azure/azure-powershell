@@ -77,7 +77,7 @@ function New-AzureRmResourceGroup
   param(
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $Location,
-    [string] [Parameter(ValueFromPipelineByPropertyName=$true)] $Tags,
+    [hashtable] [Parameter(ValueFromPipelineByPropertyName=$true)] $Tags,
     [switch] $Force)
   BEGIN {
     $context = Get-Context
@@ -86,6 +86,12 @@ function New-AzureRmResourceGroup
   PROCESS {
     $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup
     $createParams.Location = $Location
+    if($Tags)
+    {
+        $tagsDictionary  = New-Object 'System.Collections.Generic.Dictionary[string,string]'
+        $Tags.Keys | ForEach-Object { $tagsDictionary.Add($_,$Tags[$_]) }
+        $createParams.Tags = $tagsDictionary
+    }
     $createTask = $client.ResourceGroups.CreateOrUpdateWithHttpMessagesAsync($Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
     $resourceGroup = Get-ResourceGroup $Name $Location

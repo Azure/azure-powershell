@@ -32,9 +32,11 @@ access.
 ## EXAMPLES
 
 ### Example 1: Get all subscriptions in all tenants
+```powershell
+Get-AzSubscription
 ```
-PS C:\>Get-AzSubscription
 
+```Output
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----
 Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
@@ -46,9 +48,11 @@ This command gets all subscriptions in all tenants that are authorized for
 the current account.
 
 ### Example 2: Get all subscriptions for a specific tenant
+```powershell
+Get-AzSubscription -TenantId "aaaa-aaaa-aaaa-aaaa"
 ```
-PS C:\>Get-AzSubscription -TenantId "aaaa-aaaa-aaaa-aaaa"
 
+```Output
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----
 Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
@@ -59,9 +63,11 @@ List all subscriptions in the given tenant that are authorized for the
 current account.
 
 ### Example 3: Get all subscriptions in the current tenant
+```powershell
+Get-AzSubscription
 ```
-PS C:\>Get-AzSubscription
 
+```Output
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----
 Subscription1                      yyyy-yyyy-yyyy-yyyy     aaaa-aaaa-aaaa-aaaa             Enabled
@@ -72,9 +78,11 @@ This command gets all subscriptions in the current tenant that are
 authorized for the current user.
 
 ### Example 4: Change the current context to use a specific subscription
+```powershell
+Get-AzSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzContext
 ```
-PS C:\>Get-AzSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzContext
 
+```Output
 Name                                     Account             SubscriptionName    Environment         TenantId
 ----                                     -------             ----------------    -----------         --------
 Subscription1 (xxxx-xxxx-xxxx-xxxx)      azureuser@micros... Subscription1       AzureCloud          yyyy-yyyy-yyyy-yyyy

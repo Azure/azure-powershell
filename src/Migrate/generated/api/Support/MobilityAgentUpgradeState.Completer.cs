@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Started".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Started", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
+                yield return new global::System.Management.Automation.CompletionResult("'Started'", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Completed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Completed", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
+                yield return new global::System.Management.Automation.CompletionResult("'Completed'", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Commit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Commit", "Commit", global::System.Management.Automation.CompletionResultType.ParameterValue, "Commit");
+                yield return new global::System.Management.Automation.CompletionResult("'Commit'", "Commit", global::System.Management.Automation.CompletionResultType.ParameterValue, "Commit");
             }
         }
     }

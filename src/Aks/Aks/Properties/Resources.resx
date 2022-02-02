@@ -426,4 +426,31 @@
   <data name="ResetTheCredentialOfAksCluster" xml:space="preserve">
     <value>Do you want to reset the credential of the aks cluster?</value>
   </data>
+  <data name="ConfirmControlPlaneOnly" xml:space="preserve">
+    <value>Since control-plane-only argument is specified, this will upgrade only the control plane to {0}. Node pool will not change. Continue?</value>
+  </data>
+  <data name="ConfirmControlPlaneOnlyInVMASCluster" xml:space="preserve">
+    <value>Legacy clusters do not support control plane only upgrade. All node pools will be upgraded to {0} as well. Continue?</value>
+  </data>
+  <data name="ConfirmNotControlPlaneOnly" xml:space="preserve">
+    <value>Since control-plane-only argument is not specified, this will upgrade the control plane AND all node pools to version {0}. Continue?</value>
+  </data>
+  <data name="ConfirmOnlyUpgradeNodeVersion" xml:space="preserve">
+    <value>This node image upgrade operation will run across every node pool in the cluster and might take a while, do you wish to continue?</value>
+  </data>
+  <data name="NotUsingVirtualMachineScaleSets" xml:space="preserve">
+    <value>This cluster is not using VirtualMachineScaleSets. Node image upgrade only operation can only be applied on VirtualMachineScaleSets cluster.</value>
+  </data>
+  <data name="UpdateKubernetesVersionAndNodeImageOnlyConflict" xml:space="preserve">
+    <value>Conflicting flags. Upgrading the Kubernetes version will also upgrade node image version. If you only want to upgrade the node version please use the "-NodeImageOnly" option only.</value>
+  </data>
+  <data name="NeedSameParentFolder" xml:space="preserve">
+    <value>Cannot attach folder with anothe file or folder at the same time. Please put them in a same parent folder.</value>
+  </data>
+  <data name="DoYouWantToExecuteCommandOnCluster" xml:space="preserve">
+    <value>Do you want to execute the command on cluster {0}?</value>
+  </data>
+  <data name="ExecutingCommandOnCluster" xml:space="preserve">
+    <value>Executing command on cluster {0}.</value>
+  </data>
 </root>

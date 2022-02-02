@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, int? skuCapacity = null)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, bool isZoneRedundant, bool isDisableLocalAuth, int? skuCapacity = null)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -97,41 +97,43 @@ namespace Microsoft.Azure.Commands.ServiceBus
                     parameter.Sku.Capacity = skuCapacity;
                 }
             }
+            if(isDisableLocalAuth)
+                parameter.DisableLocalAuth = isDisableLocalAuth;
+
+            if(isZoneRedundant)
+                parameter.ZoneRedundant = isZoneRedundant;
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isDisableLocalAuth)
         {
 
-            var parameter = new SBNamespace()
-            {
-                Location = location
-            };
+            var parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
+            parameter.Location = location;           
 
             if (tags != null)
             {
                 parameter.Tags = new Dictionary<string, string>(tags);
-            }
-
-            SBSku tempSku = new SBSku();
-
+            }          
 
 
             if (skuName != null)
             {
-                tempSku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
-                tempSku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
+                parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
             }
 
             if (skuCapacity != null)
             {
-                tempSku.Capacity = skuCapacity;
+                parameter.Sku.Capacity = skuCapacity;
             }
 
-            parameter.Sku = tempSku;
+            if (isDisableLocalAuth)
+                parameter.DisableLocalAuth = isDisableLocalAuth;
+            
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
@@ -172,6 +174,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
             networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
 
             networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
+
+            networkRuleSet.PublicNetworkAccess = psNetworkRuleSetAttributes.PublicNetworkAccess;
 
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {

@@ -15,7 +15,17 @@ The same command is used to restore Azure Virtual machines, databases running wi
 
 ## SYNTAX
 
-### AzureVMParameterSet (Default)
+### AzureVMManagedDiskParameterSet (Default)
+```
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String>
+ [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
+ [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
+ [-UserAssignedIdentityId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RehydrateDuration <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureVMParameterSet
 ```
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
@@ -40,16 +50,6 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
  [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-RestoreToSecondaryRegion]
  [-RehydratePriority <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureVMManagedDiskParameterSet
-```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String>
- [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
- [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
- [-UserAssignedIdentityId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-RehydrateDuration <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -278,7 +278,7 @@ The DES ID to encrypt the restored disks.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet, AzureVMManagedDiskParameterSet
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet
 Aliases:
 
 Required: False
@@ -310,7 +310,7 @@ To obtain an **AzureRmRecoveryServicesBackupRecoveryPoint** object, use the **Ge
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase
-Parameter Sets: AzureVMParameterSet, AzureFileShareParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureFileShareParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
 Aliases:
 
 Required: True
@@ -326,9 +326,8 @@ Duration in days for which to keep the archived recovery point rehydrated. Value
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged, AzureWorkloadParameterSet
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged, AzureWorkloadParameterSet
 Aliases:
-Accepted values: 10 to 30 Days
 
 Required: False
 Position: Named
@@ -343,7 +342,7 @@ Rehydration priority for an archived recovery point while triggering the restore
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged, AzureWorkloadParameterSet
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged, AzureWorkloadParameterSet
 Aliases:
 Accepted values: Standard, High
 
@@ -410,7 +409,7 @@ Specify which disks to recover of the backed up VM
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
 Aliases:
 
 Required: False
@@ -425,7 +424,7 @@ Use this switch to restore only OS disks of a backed up VM
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
 Aliases:
 
 Required: False
@@ -495,7 +494,7 @@ As a part of the restore process, this cmdlet stores the disks and the configura
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
 Aliases:
 
 Required: True
@@ -512,7 +511,7 @@ As a part of the restore process, this cmdlet stores the disks and the configura
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMUnManagedDiskParameterSet, AzureVMRestoreUnmanagedAsManaged
 Aliases:
 
 Required: True
@@ -592,7 +591,7 @@ The target availability zone number where the restored disks are pinned.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: AzureVMParameterSet, AzureVMManagedDiskParameterSet
+Parameter Sets: AzureVMManagedDiskParameterSet, AzureVMParameterSet
 Aliases:
 
 Required: False

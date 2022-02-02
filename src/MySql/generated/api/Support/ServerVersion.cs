@@ -12,6 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion Eight0 = @"8.0";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion Eight021 = @"8.0.21";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion Five6 = @"5.6";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion Five7 = @"5.7";

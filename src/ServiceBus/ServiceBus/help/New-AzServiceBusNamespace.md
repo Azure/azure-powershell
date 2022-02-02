@@ -14,8 +14,8 @@ Creates a new Service Bus namespace.
 
 ```
 New-AzServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
- [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-ZoneRedundant] [-DisableLocalAuth]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,10 +32,28 @@ Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-Serv
 ResourceGroupName  : Default-ServiceBus-WestUS
 Location           : West US
 Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
-Sku                : Name : Premium , Tier : Premium
+Sku                : Name : Standard , Tier : Standard
 ProvisioningState  : Succeeded
 CreatedAt          : 1/20/2017 2:07:33 AM
 UpdatedAt          : 1/20/2017 2:07:56 AM
+ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
+```
+
+Creates a new Service Bus namespace within the specified resource group.
+
+### Example 2 - ZoneRedundant and DisableLocalAuth
+```
+PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -Tag @{Tag1="Tag1Value"} -ZoneRedundant - DisableLocalAuth
+
+Name               : SB-Example1
+Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+ResourceGroupName  : Default-ServiceBus-WestUS
+Location           : West US
+Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
+Sku                : Name : Premium , Tier : Premium
+ProvisioningState  : Succeeded
+CreatedAt          : 9/27/2021 2:07:33 AM
+UpdatedAt          : 9/27/2021 2:07:56 AM
 ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 ```
 
@@ -55,6 +73,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+enabling or disabling SAS authentication for the Service Bus namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -140,6 +173,21 @@ Key-value pairs in the form of a hash table set as tags on the server. For examp
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZoneRedundant
+enabling or disabling Zone Redundant for namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -191,6 +191,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string WorkspacePackage = nameof(WorkspacePackage);
 
+        public const string DataFlowDebugSession = nameof(DataFlowDebugSession);
+
+        public const string DataFlowDebugSessionCommand = nameof(DataFlowDebugSessionCommand);
+
+        public const string DataFlowDebugSessionPackage = nameof(DataFlowDebugSessionPackage);
+
+        public const string SqlScript = nameof(SqlScript);
+
+        public const int DefaultResultLimit = 5000;
+        
+        public const string KqlScript = nameof(KqlScript);
+
+        public const string DefaultAutoPauseDelayInMinute = "15";
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {
@@ -277,5 +291,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Add,
             Remove
         }
+
+        public const string SparkConfiguration = nameof(SparkConfiguration);
     }
 }

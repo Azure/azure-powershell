@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayFrontendPortName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to httpListeners.
         /// </summary>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot have more than one state flag set.
+        ///   Looks up a localized string similar to Cannot have both more than one flag set.
         /// </summary>
         internal static string CommissioningStateConflict {
             get {
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace..
+        ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace..
         /// </summary>
         internal static string InvalidWorkspaceResourceId {
             get {
@@ -1654,6 +1654,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found.
+        /// </summary>
+        internal static string VirtualNetworkGatewayNatRuleNotFound {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No revoked certificates found on VirtualNetworkGateway {0}.
         /// </summary>
         internal static string VirtualNetworkGatewayNoRevokedCertificate {
@@ -1726,6 +1735,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The VpnGatewayNatRule could not be found.
+        /// </summary>
+        internal static string VpnGatewayNatRuleNotFound {
+            get {
+                return ResourceManager.GetString("VpnGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The VpnGateway to modify could not be found.
         /// </summary>
         internal static string VpnGatewayNotFound {
@@ -1742,40 +1760,25 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule..
+        ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule.
         /// </summary>
-        internal static string VpnGatewayRequiredToCreateVpnNatRule
-        {
-            get
-            {
+        internal static string VpnGatewayRequiredToCreateVpnNatRule {
+            get {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The VpnGatewayNatRule could not be found..
+        ///   Looks up a localized string similar to One or more port ranges specified the VPN NAT rule does not have a corresponding subnet mapping. The count of supplied port ranges in {0} must match with the count of subnets in {1}. .
         /// </summary>
-        internal static string VpnGatewayNatRuleNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("VpnGatewayNatRuleNotFound", resourceCulture);
+        internal static string VpnNatRuleUnmatchedPortRange {
+            get {
+                return ResourceManager.GetString("VpnNatRuleUnmatchedPortRange", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found..
-        /// </summary>
-        internal static string VirtualNetworkGatewayNatRuleNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
         /// </summary>

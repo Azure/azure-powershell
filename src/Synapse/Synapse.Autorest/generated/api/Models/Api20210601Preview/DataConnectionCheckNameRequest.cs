@@ -24,10 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type= @"Microsoft.Synapse/workspaces/kustoPools/databases/dataConnections";
+        private string _type= @"Microsoft.Synapse/workspaces/kustoPools/Databases/dataConnections";
 
         /// <summary>
-        /// The type of resource, Microsoft.Synapse/workspaces/kustoPools/databases/dataConnections.
+        /// The type of resource, Microsoft.Synapse/workspaces/kustoPools/Databases/dataConnections.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
         /// <summary>
-        /// The type of resource, Microsoft.Synapse/workspaces/kustoPools/databases/dataConnections.
+        /// The type of resource, Microsoft.Synapse/workspaces/kustoPools/Databases/dataConnections.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(
         Required = true,
         ReadOnly = true,
-        Description = @"The type of resource, Microsoft.Synapse/workspaces/kustoPools/databases/dataConnections.",
+        Description = @"The type of resource, Microsoft.Synapse/workspaces/kustoPools/Databases/dataConnections.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>Data Connection name.</summary>
         string Name { get; set; }
         /// <summary>
-        /// The type of resource, Microsoft.Synapse/workspaces/kustoPools/databases/dataConnections.
+        /// The type of resource, Microsoft.Synapse/workspaces/kustoPools/Databases/dataConnections.
         /// </summary>
         string Type { get; set; }
 

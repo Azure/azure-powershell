@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         private const string InfoNotAvailable = "Info Not Available";
         private const int MaxNumVMforStatus = 100;
+        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
 
         [Parameter(
            Mandatory = false,
@@ -96,11 +98,31 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public DisplayHintType DisplayHint { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParamSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ListNextLinkVirtualMachinesParamSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ListLocationVirtualMachinesParamSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter UserData { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            //TODO: Must be removed after Compute team add real logic
-            AzureStorageService servie = new AzureStorageService();
 
             base.ExecuteCmdlet();
 
@@ -130,6 +152,21 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name, InstanceViewExpand);
                         WriteObject(result.ToPSVirtualMachineInstanceView(this.ResourceGroupName, this.Name));
+                    }
+                    else if (this.UserData == true)
+                    {
+                        var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name, UserDataExpand)
+                            .GetAwaiter()
+                            .GetResult();
+
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                        if (result.Body != null)
+                        {
+                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
+                        }
+                        psResult.DisplayHint = this.DisplayHint;
+
+                        WriteObject(psResult);
                     }
                     else
                     {
@@ -226,7 +263,8 @@ namespace Microsoft.Azure.Commands.Compute
                             var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
                             if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
                             {
-                                psItem.PowerState = psstate.Statuses[1].DisplayStatus;
+                                var powerStatus = psstate.Statuses.LastOrDefault(s => s.Code.StartsWith("PowerState"));
+                                psItem.PowerState = powerStatus != null ? powerStatus.DisplayStatus : InfoNotAvailable;
                             }
                             else
                             {

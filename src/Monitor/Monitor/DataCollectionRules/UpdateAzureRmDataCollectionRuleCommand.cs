@@ -109,8 +109,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
             {
                 var dcrRespone = this.MonitorManagementClient.DataCollectionRules.Update(
                     resourceGroupName: ResourceGroupName,
-                    dataCollectionRuleName: RuleName,
-                    body: resourceForUpdate
+                    dataCollectionRuleName: RuleName
                 );
 
                 var output = new PSDataCollectionRuleResource(dcrRespone);

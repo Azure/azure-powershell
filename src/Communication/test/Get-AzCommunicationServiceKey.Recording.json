@@ -1,12 +1,12 @@
 {
-  "Get-AzCommunicationServiceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview+1": {
+  "Get-AzCommunicationServiceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "6e49c599-bcd6-4cdd-acb1-e672b59b7aea" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "324ffd64-62d0-4f23-8edf-f8ecc9c8f358" ],
         "CommandName": [ "Get-AzCommunicationServiceKey" ],
         "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,20 +22,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "8ed09673-3dc0-4a97-a82b-2b7205bcd605" ],
-        "x-ms-correlation-request-id": [ "bed5f644-ad93-4a32-b942-edc41a636078" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "WESTUS:20201110T214600Z:bed5f644-ad93-4a32-b942-edc41a636078" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Nov 2020 21:45:59 GMT" ]
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9ff147ba-d431-434b-b2a6-37eacd1488b1" ],
+        "x-ms-correlation-request-id": [ "9cb3ebfb-d40b-4a65-9d82-26d68b3aa233" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211028T214012Z:9cb3ebfb-d40b-4a65-9d82-26d68b3aa233" ],
+        "Date": [ "Thu, 28 Oct 2021 21:40:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "609" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejsza5y.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejsza5y.communication.azure.com/;accesskey=**************************************************************************************==\"}"
+      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=**************************************************************************************==\"}"
     }
   }
 }

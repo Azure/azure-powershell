@@ -19,20 +19,52 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.14.0
+* Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
+* Added new properties `ApplicationSecurityGroup`, `IpConfiguration` and `CustomNetworkInterfaceName` for Private Endpoint cmdlets
+    - `Get-AzPrivateEndpoint`
+    - `New-AzPrivateEndpoint`
+* Added new cmdlet to create new `IpConfiguration` object for building Private Endpoint
+    - `New-AzPrivateEndpointIpConfiguration`
+* Added OrdinalIgnoreCase for string comparison of `ResourceIdentifier` type for FlowLog cmdlets
+* Fixed typo in error message of `InvalidWorkspaceResourceId`
+
+## Version 4.13.0
+* Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
+* Added optional parameter `-IsSecuritySite` to the following cmdlet:
+    - `New-AzVpnSite`
+* Added support for new Match Variables in WAF Exclusions
+* Onboard Virtual Network Encryption to Virtual Network Cmdlets
+* Added support for NAT port range parameters in VPN NAT rule resources
+    - `New-AzVpnGatewayNatRule.md`
+    - `Update-AzVpnGatewayNatRule.md`
+    - `New-AzVirtualNetworkGatewayNatRule.md`
+    - `Update-AzVirtualNetworkGatewayNatRule.md`
+* Added new cmdlets to support Per Rule Exclusions for Application Gateway WAF
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet`
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup`
+    - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRule`
+    - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
+        - `New-AzApplicationGatewayFirewallPolicyExclusion`
+* Bug Fix in Application Gateway Trusted Client Certificate cmdlets to load the entire cert chain from file.
+
+## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
     - `New-AzBastion`
     - `Set-AzBastion`
 * Onboard Azure Resource Manager to Private Link Common Cmdlets
 * Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
-    - `New-AzVpnGateway'
-    - `Update-AzVpnGateway`	
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`
 * Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
-    - `New-AzP2sVpnGateway'
+    - `New-AzP2sVpnGateway`
 * Added new cmdlets for HubBgpConnection child resource of VirtualHub.
     - `Get-AzVirtualHubBgpConnection`
     - `New-AzVirtualHubBgpConnection`
     - `Update-AzVirtualHubBgpConnection`
     - `Remove-AzVirtualHubBgpConnection`
+* Onboard Azure HDInsight to Private Link Common Cmdlets
 
 ## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.

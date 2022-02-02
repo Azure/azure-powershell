@@ -14,8 +14,8 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
@@ -33,7 +33,7 @@ namespace Commands.Aks.Test.ScenarioTests
         public static TestController NewInstance => new TestController();
 
         public string UserDomain { get; private set; }
-        public GraphRbacManagementClient InternalGraphRbacManagementClient { get; private set; }
+        public MicrosoftGraphClient InternalGraphManagementClient { get; private set; }
 
         public ResourceManagementClient InternalResourceManagementClient { get; private set; }
 
@@ -115,20 +115,20 @@ namespace Commands.Aks.Test.ScenarioTests
             ContainerServiceClient = GetContainerServiceClient(context);
             InternalResourceManagementClient = GetInternalResourceManagementClient(context);
             InternalAuthorizationManagementClient = GetAuthorizationManagementClient(context);
-            InternalGraphRbacManagementClient = GetGraphRbacManagementClient(context);
+            InternalGraphManagementClient = GetGraphManagementClient(context);
             _helper.SetupManagementClients(ContainerServiceClient,
                 InternalResourceManagementClient,
                 InternalAuthorizationManagementClient,
-                InternalGraphRbacManagementClient);
+                InternalGraphManagementClient);
         }
 
         private static ContainerServiceClient GetContainerServiceClient(MockContext context)
         {
             return context.GetServiceClient<ContainerServiceClient>();
         }
-        private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
+        private MicrosoftGraphClient GetGraphManagementClient(MockContext context)
         {
-            return context.GetServiceClient<GraphRbacManagementClient>();
+            return context.GetServiceClient<MicrosoftGraphClient>();
         }
         private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {

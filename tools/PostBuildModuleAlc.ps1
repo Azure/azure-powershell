@@ -27,19 +27,19 @@
 #>
 
 param (
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory = $true)]
     [string]
     $ModuleFolder,
 
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory = $true)]
     [string]
     $AlcEntryAssembly,
 
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory = $true)]
     [string]
     $AlcRefAssembly,
 
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory = $true)]
     [string]
     $Configuration
 )
@@ -49,16 +49,18 @@ if($PSVersionTable.PSEdition -eq 'Core')
 {
     try {
         $assemblyLoadContextFolder = [System.IO.Path]::Combine($PSScriptRoot, "..", "ModuleAlcAssemblies")
+        Write-Debug "Registering module AssemblyLoadContext for path: '$assemblyLoadContextFolder'."
         [Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.AzAssemblyLoadContextInitializer]::RegisterModuleAssemblyLoadContext("%ASSEMBLY_LOAD_CONTEXT_ENTRY_ASSEMBLY%", $assemblyLoadContextFolder)
-      } catch {
-            Write-Warning $_
+        Write-Debug "AssemblyLoadContext registered."
+    } catch {
+        Write-Warning $_
     }
 }
 '@
 
 $alcTemplate = $alcTemplate.Replace("%ASSEMBLY_LOAD_CONTEXT_ENTRY_ASSEMBLY%", $AlcEntryAssembly)
 $scriptPath = [System.IO.Path]::Combine($ModuleFolder, "PostImportScripts", "InitializeAssemblyLoadContext.ps1")
-if (-not (Test-Path $scriptPath)){
+if (-not (Test-Path $scriptPath)) {
     New-Item -ItemType File -Path $scriptPath -Force
 }
 $alcTemplate | Out-File -FilePath $scriptPath -Encoding utf8 -Force
@@ -67,26 +69,22 @@ $isReleaseConfiguration = $Configuration -eq 'Release'
 
 $alcDestinationDir = [System.IO.Path]::Combine($ModuleFolder, "ModuleAlcAssemblies")
 $entryAssemblyPath = [System.IO.Path]::Combine($ModuleFolder, $AlcEntryAssembly + ".dll")
-if(-not (Test-Path $alcDestinationDir))
-{
+if (-not (Test-Path $alcDestinationDir)) {
     New-Item -ItemType Directory -Path $alcDestinationDir -Force
 }
 
-if($isReleaseConfiguration)
-{
+if ($isReleaseConfiguration) {
     Move-Item -Path $entryAssemblyPath -Destination $alcDestinationDir -Force
 }
-else
-{
+else {
     Copy-Item -Path $entryAssemblyPath -Destination $alcDestinationDir -Force #Move-Item cause test project build error: CS0006 metadata file AlcWrapper.dll could not be found
 }
 
-if(-not [System.String]::IsNullOrEmpty($AlcRefAssembly))
-{
+if (-not [System.String]::IsNullOrEmpty($AlcRefAssembly)) {
     $refAssemblies = $AlcRefAssembly.Split(';')
     $refAssemblies | ForEach-Object {
         $refAssemblyPath = [System.IO.Path]::Combine($ModuleFolder, $_ + ".dll")
-        if($isReleaseConfiguration){
+        if ($isReleaseConfiguration) {
             Move-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
         }
         else {

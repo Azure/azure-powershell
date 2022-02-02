@@ -52,12 +52,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
             SyntaxInfos = variantGroup.Variants
                 .Select(v => new MarkdownSyntaxHelpInfo(v, variantGroup.ParameterGroups, v.VariantName == variantGroup.DefaultParameterSetName))
                 .OrderByDescending(v => v.IsDefault).ThenBy(v => v.ParameterSetName).ToArray();
-            Examples = GetExamplesFromMarkdown(examplesFolder).NullIfEmpty() 
+            Examples = GetExamplesFromMarkdown(examplesFolder).NullIfEmpty()
                        ?? helpInfo.Examples.Select(e => e.ToExampleHelpInfo()).ToArray().NullIfEmpty()
                        ?? DefaultExampleHelpInfos;
 
             Parameters = variantGroup.ParameterGroups
-                .Where(pg => !pg.DontShow)
+                .Where(pg => !pg.DontShow && !pg.Parameters.All(p => p.IsHidden()))
                 .Select(pg => new MarkdownParameterHelpInfo(
                     variantGroup.Variants.SelectMany(v => v.HelpInfo.Parameters).Where(phi => phi.Name == pg.ParameterName).ToArray(), pg))
                 .OrderBy(phi => phi.Name).ToArray();
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
             IsDefault = isDefault;
             ParameterSetName = Variant.VariantName;
             Parameters = Variant.Parameters
-                .Where(p => !p.DontShow).OrderByDescending(p => p.IsMandatory)
+                .Where(p => !p.DontShow && !p.IsHidden()).OrderByDescending(p => p.IsMandatory)
                 //https://stackoverflow.com/a/6461526/294804
                 .ThenByDescending(p => p.Position.HasValue).ThenBy(p => p.Position)
                 // Use the OrderCategory of the parameter group because the final order category is the highest of the group, and not the order category of the individual parameters from the variants.
@@ -131,10 +131,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell
             if (Variant.SupportsShouldProcess)
             {
                 parameterStrings = parameterStrings.Append(" [-Confirm]").Append(" [-WhatIf]");
-            }
-            if (Variant.SupportsPaging)
-            {
-                parameterStrings = parameterStrings.Append(" [-First <UInt64>]").Append(" [-IncludeTotalCount]").Append(" [-Skip <UInt64>]");
             }
             parameterStrings = parameterStrings.Append(" [<CommonParameters>]");
 

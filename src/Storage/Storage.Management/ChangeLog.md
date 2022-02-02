@@ -18,6 +18,55 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that output number in console when update/copy blob sometimes [#16783]
+    -  `Set-AzStorageBlobContent` 
+    -  `Copy-AzStorageBlob` 
+
+## Version 4.1.1
+* Fixed the failure of sync copy blob with long destination blob name [#16628]
+    -  `Copy-AzStorageBlob` 
+
+## Version 4.1.0
+* Fixed the failure of `Get-AzStorageContainerStoredAccessPolicy` when permission is null [#15644]
+* Supported create blob service Sas token or account Sas token with permission i
+    -  `New-AzStorageBlobSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageAccountSASToken`
+* Fixed creating container SAS token failed from an access policy without expire time, and set SAS token expire time [#16266]
+    -  `New-AzStorageContainerSASToken` 
+* Removed parameter -Name from Get-AzRmStorageShare ShareResourceIdParameterSet
+    - `Get-AzRmStorageShare`
+* Supported create or migrate container to enable immutable Storage with versioning.
+    -  `New-AzRmStorageContainer`
+    -  `Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration`
+* Supported set/remove immutability policy on a Storage blob.
+    -  `Set-AzStorageBlobImmutabilityPolicy`
+    -  `Remove-AzStorageBlobImmutabilityPolicy`
+* Supported enable/disable legal hold on a Storage blob.
+    -  `Set-AzStorageBlobLegalHold`
+* Supported create storage account with enable account level immutability with versioning, and create/update storage account with account level immutability policy.
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported AAD oauth storage context in storage table cmdlets.
+    - `Get-AzStorageCORSRule`
+    - `Get-AzStorageServiceLoggingProperty`
+    - `Get-AzStorageServiceMetricsProperty`
+    - `Get-AzStorageServiceProperty`
+    - `Get-AzStorageTable`
+    - `Get-AzStorageTableStoredAccessPolicy`
+    - `New-AzStorageTable`
+    - `New-AzStorageTableSASToken`
+    - `New-AzStorageTableStoredAccessPolicy`
+    - `Remove-AzStorageCORSRule`
+    - `Remove-AzStorageTableStoredAccessPolicy`
+    - `Set-AzStorageCORSRule`
+    - `Set-AzStorageServiceLoggingProperty`
+    - `Set-AzStorageServiceMetricsProperty`
+    - `Set-AzStorageServiceProperty`
+    - `Set-AzStorageTable`
+    - `Set-AzStorageTableStoredAccessPolicy`
+
+## Version 3.12.0
 * Upgraded Azure.Storage.Blobs to 12.10.0
 * Upgraded Azure.Storage.Files.Shares to 12.8.0
 * Upgraded Azure.Storage.Files.DataLake to 12.8.0
@@ -25,6 +74,17 @@
 * Supported upgrade storage account to enable HierarchicalNamespace
     -  `Invoke-AzStorageAccountHierarchicalNamespaceUpgrade`
     -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
+* Supported AccessTierInferred, Tags in blob inventory policy schema
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Supported create/update storage account with PublicNetworkAccess enabled/disabled 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage blob container with RootSquash
+    - `New-AzRmStorageContainer`
+    - `Update-AzRmStorageContainer`
+* Supported AllowProtectedAppendWriteAll in set container Immutability Policy, and add container LegalHold
+    - `Set-AzRmStorageContainerImmutabilityPolicy`
+    - `Add-AzRmStorageContainerLegalHold`
 
 ## Version 3.11.0
 * Supported get/set blob tags on a specific blob

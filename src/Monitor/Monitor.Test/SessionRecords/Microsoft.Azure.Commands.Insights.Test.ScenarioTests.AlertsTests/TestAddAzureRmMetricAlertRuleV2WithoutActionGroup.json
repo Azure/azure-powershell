@@ -199,7 +199,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/microsoft.insights/actionGroups/ps7504?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/Microsoft.Insights/actionGroups/ps7504?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFhZWIwZWQtNDU2Yi00Y2EwLThkZjUtYjlmYmRjNjNkMGQzL3Jlc291cmNlR3JvdXBzL3BzMTE4Ny9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczc1MDQ/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"location\": \"Global\"\r\n}",
@@ -264,11 +264,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/microsoft.insights/actionGroups/ps7504\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"ps7504\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"status\": \"Enabled\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/Microsoft.Insights/actionGroups/ps7504\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"ps7504\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"status\": \"Enabled\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/microsoft.insights/actionGroups/ps7504?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/Microsoft.Insights/actionGroups/ps7504?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFhZWIwZWQtNDU2Yi00Y2EwLThkZjUtYjlmYmRjNjNkMGQzL3Jlc291cmNlR3JvdXBzL3BzMTE4Ny9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczc1MDQ/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"location\": \"Global\"\r\n}",
@@ -333,7 +333,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/microsoft.insights/actionGroups/ps7504\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"ps7504\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"status\": \"Enabled\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/Microsoft.Insights/actionGroups/ps7504\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"ps7504\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"status\": \"Enabled\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -631,7 +631,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/microsoft.insights/actionGroups/ps7504?api-version=2019-06-01",
+      "RequestUri": "/subscriptions/11aeb0ed-456b-4ca0-8df5-b9fbdc63d0d3/resourceGroups/ps1187/providers/Microsoft.Insights/actionGroups/ps7504?api-version=2019-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFhZWIwZWQtNDU2Yi00Y2EwLThkZjUtYjlmYmRjNjNkMGQzL3Jlc291cmNlR3JvdXBzL3BzMTE4Ny9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczc1MDQ/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",

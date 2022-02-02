@@ -23,8 +23,8 @@ Removes all AzureRm modules from a machine.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Uninstall-AzureRm
+```powershell
+Uninstall-AzureRm
 ```
 
 Running this command will remove all AzureRm modules from the machine for the version of PowerShell in which the cmdlet is run.

@@ -28,47 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MySql".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MySql", "MySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "MySql");
+                yield return new global::System.Management.Automation.CompletionResult("'MySql'", "MySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "MySql");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SQLServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SQLServer", "SQLServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "SQLServer");
+                yield return new global::System.Management.Automation.CompletionResult("'SQLServer'", "SQLServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "SQLServer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SQLAzure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SQLAzure", "SQLAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "SQLAzure");
+                yield return new global::System.Management.Automation.CompletionResult("'SQLAzure'", "SQLAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "SQLAzure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Custom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Custom", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
+                yield return new global::System.Management.Automation.CompletionResult("'Custom'", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotificationHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotificationHub", "NotificationHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotificationHub");
+                yield return new global::System.Management.Automation.CompletionResult("'NotificationHub'", "NotificationHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotificationHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServiceBus".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ServiceBus", "ServiceBus", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceBus");
+                yield return new global::System.Management.Automation.CompletionResult("'ServiceBus'", "ServiceBus", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceBus");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EventHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EventHub", "EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventHub");
+                yield return new global::System.Management.Automation.CompletionResult("'EventHub'", "EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ApiHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ApiHub", "ApiHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "ApiHub");
+                yield return new global::System.Management.Automation.CompletionResult("'ApiHub'", "ApiHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "ApiHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DocDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DocDb", "DocDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "DocDb");
+                yield return new global::System.Management.Automation.CompletionResult("'DocDb'", "DocDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "DocDb");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RedisCache".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RedisCache", "RedisCache", global::System.Management.Automation.CompletionResultType.ParameterValue, "RedisCache");
+                yield return new global::System.Management.Automation.CompletionResult("'RedisCache'", "RedisCache", global::System.Management.Automation.CompletionResultType.ParameterValue, "RedisCache");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PostgreSQL".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PostgreSQL", "PostgreSQL", global::System.Management.Automation.CompletionResultType.ParameterValue, "PostgreSQL");
+                yield return new global::System.Management.Automation.CompletionResult("'PostgreSQL'", "PostgreSQL", global::System.Management.Automation.CompletionResultType.ParameterValue, "PostgreSQL");
             }
         }
     }

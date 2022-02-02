@@ -103,6 +103,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "The Key Vault URI for encryption")]
         public string KeyId { get; set; }
 
+        /// <summary>
+        /// The Federated Client id use in server for cross tenant cmk
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the Federated client ID of the server when using Cross-Tenant CMK, Do not set this value if you do not intent to use Cross-Tenant CMK")]
+        public Guid? FederatedClientId { get; set; }
+
         // <summary>
         /// List of user assigned identities.
         /// </summary>
@@ -161,6 +168,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin;
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
+            updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
 
             return updateData;
         }

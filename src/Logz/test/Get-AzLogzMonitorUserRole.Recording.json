@@ -1,0 +1,39 @@
+{
+  "Get-AzLogzMonitorUserRole+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/listUserRoles?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/listUserRoles?api-version=2020-10-01-preview",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "fba8c1dd-5168-49a1-a768-b974dadc6617" ],
+        "x-ms-correlation-request-id": [ "6ab50d0d-79d2-45a4-b56a-3d3a36af0741" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T062052Z:6ab50d0d-79d2-45a4-b56a-3d3a36af0741" ],
+        "Date": [ "Fri, 17 Sep 2021 06:20:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "43" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"role\":\"None\"}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  }
+}

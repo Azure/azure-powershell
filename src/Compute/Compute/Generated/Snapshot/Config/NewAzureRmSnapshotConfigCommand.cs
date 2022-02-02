@@ -86,7 +86,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Possible values are: Empty, Attach, FromImage, Import, Copy, Restore, Upload, CopyStart")]
+        //todo: verify help message with API team
         public string CreateOption { get; set; }
 
         [Parameter(
@@ -158,6 +160,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Policy for controlling export on the disk.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
+        public bool? AcceleratedNetwork { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Snapshot", "New"))
@@ -182,6 +197,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             ExtendedLocation vExtendedLocation = null;
+
+            // SupportedCapabilities
+            SupportedCapabilities vSupportedCapabilities = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -309,6 +327,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
+            if (this.IsParameterBound(c => c.AcceleratedNetwork))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
+            }
+
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -325,7 +352,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
                 PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
-                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
+                SupportedCapabilities = vSupportedCapabilities,
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
             };
 
             WriteObject(vSnapshot);

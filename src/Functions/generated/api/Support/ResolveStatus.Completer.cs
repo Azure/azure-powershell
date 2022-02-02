@@ -28,39 +28,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Initialized".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Initialized", "Initialized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initialized");
+                yield return new global::System.Management.Automation.CompletionResult("'Initialized'", "Initialized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initialized");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Resolved".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Resolved", "Resolved", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resolved");
+                yield return new global::System.Management.Automation.CompletionResult("'Resolved'", "Resolved", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resolved");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvalidSyntax".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvalidSyntax", "InvalidSyntax", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidSyntax");
+                yield return new global::System.Management.Automation.CompletionResult("'InvalidSyntax'", "InvalidSyntax", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidSyntax");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MSINotEnabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MSINotEnabled", "MSINotEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "MSINotEnabled");
+                yield return new global::System.Management.Automation.CompletionResult("'MSINotEnabled'", "MSINotEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "MSINotEnabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VaultNotFound".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VaultNotFound", "VaultNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "VaultNotFound");
+                yield return new global::System.Management.Automation.CompletionResult("'VaultNotFound'", "VaultNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "VaultNotFound");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SecretNotFound".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SecretNotFound", "SecretNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "SecretNotFound");
+                yield return new global::System.Management.Automation.CompletionResult("'SecretNotFound'", "SecretNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "SecretNotFound");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SecretVersionNotFound".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SecretVersionNotFound", "SecretVersionNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "SecretVersionNotFound");
+                yield return new global::System.Management.Automation.CompletionResult("'SecretVersionNotFound'", "SecretVersionNotFound", global::System.Management.Automation.CompletionResultType.ParameterValue, "SecretVersionNotFound");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AccessToKeyVaultDenied".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AccessToKeyVaultDenied", "AccessToKeyVaultDenied", global::System.Management.Automation.CompletionResultType.ParameterValue, "AccessToKeyVaultDenied");
+                yield return new global::System.Management.Automation.CompletionResult("'AccessToKeyVaultDenied'", "AccessToKeyVaultDenied", global::System.Management.Automation.CompletionResultType.ParameterValue, "AccessToKeyVaultDenied");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OtherReasons".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OtherReasons", "OtherReasons", global::System.Management.Automation.CompletionResultType.ParameterValue, "OtherReasons");
+                yield return new global::System.Management.Automation.CompletionResult("'OtherReasons'", "OtherReasons", global::System.Management.Automation.CompletionResultType.ParameterValue, "OtherReasons");
             }
         }
     }

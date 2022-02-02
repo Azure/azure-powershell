@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = BlobRuleParameterSet,
             HelpMessage = "Specifies the fields and properties of the Blob object to be included in the inventory. Valid values include: " +
                             "Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder, Owner, " +
-                            "Group, Permissions, Acl, Metadata, LastAccessTime. 'Name' is a required schemafield." +
+                            "Group, Permissions, Acl, Metadata, LastAccessTime, AccessTierInferred, Tags. 'Name' is a required schemafield. " + 
+                            "Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl' are valid only for Hns enabled accounts.'Tags' field is only valid for non Hns accounts." +
                             "If specify '-IncludeSnapshot', will include 'Snapshot'  in the inventory.  If specify '-IncludeBlobVersion', will include 'VersionId, 'IsCurrentVersion' in the inventory.")]
         [ValidateSet(BlobInventoryPolicyBlobSchemaField.Name,
             BlobInventoryPolicyBlobSchemaField.CreationTime,
@@ -84,6 +85,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             BlobInventoryPolicyBlobSchemaField.Acl,
             BlobInventoryPolicyBlobSchemaField.Metadata,
             BlobInventoryPolicyBlobSchemaField.LastAccessTime,
+            BlobInventoryPolicyBlobSchemaField.AccessTierInferred,
+            BlobInventoryPolicyBlobSchemaField.Tags,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string[] BlobSchemaField { get; set; }
@@ -238,6 +241,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             public const string IsCurrentVersion = "IsCurrentVersion";
             public const string Metadata = "Metadata";
             public const string LastAccessTime = "LastAccessTime";
+            public const string AccessTierInferred = "AccessTierInferred";
+            public const string Tags = "Tags";
         }
 
         protected struct BlobInventoryPolicyRuleSchedule

@@ -33,6 +33,16 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
         public string Timezone { get; set; }
         public string Visibility { get; set; }
         public string RecurEvery { get; set; }
+        public HashSet<string> LinuxParameterClassificationToInclude { get; set; }
+        public HashSet<string> LinuxParameterPackageNameMaskToExclude { get; set; }
+        public HashSet<string> LinuxParameterPackageNameMaskToInclude { get; set; }
+        public HashSet<string> WindowParameterKbNumberToInclude { get; set; }
+        public HashSet<string> WindowParameterKbNumberToExclude { get; set; }
+        public HashSet<string> WindowParameterClassificationToInclude { get; set; }
+        public bool? WindowParameterExcludeKbRequiringReboot { get; set; }
+        public string PreTask { get; set; }
+        public string PostTask { get; set; }
+        public string InstallPatchRebootSetting { get; set; }
 
     }
 }

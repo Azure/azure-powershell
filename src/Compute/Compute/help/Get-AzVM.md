@@ -15,24 +15,26 @@ Gets the properties of a virtual machine.
 
 ### DefaultParamSet (Default)
 ```
-Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status]
+Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
 ```
-Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
+Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListLocationVirtualMachinesParamSet
 ```
-Get-AzVM -Location <String> [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
 ```
-Get-AzVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM [-Status] [-NextLink] <Uri> [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,7 +219,31 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
-This command gets all the virtual machines in your subscription that start with "test".
+### Example 7: Get VM with UserData value
+```
+PS C:\> Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;
+
+ResourceGroupName : <>
+Id                : /subscriptions/<Subscription Id>/resourceGroups/<Resource Group Name>/providers/Microsoft
+.Compute/virtualMachines/<VM Name>
+VmId              : <VM Id>
+Name              : <VM Name>
+Type              : Microsoft.Compute/virtualMachines
+Location          : eastus
+Tags              :
+{"azsecpack":"nonprod","platformsettings.host_environment.service.platform_optedin_for_rootcerts":"true"}
+Extensions        : {Microsoft.Azure.Geneva.GenevaMonitoring,
+Microsoft.Azure.Security.AntimalwareSignature.AntimalwareConfiguration}
+HardwareProfile   : {VmSize}
+NetworkProfile    : {NetworkInterfaces}
+OSProfile         : {ComputerName, AdminUsername, WindowsConfiguration, Secrets, AllowExtensionOperations,
+RequireGuestProvisionSignal}
+ProvisioningState : Succeeded
+StorageProfile    : {ImageReference, OsDisk, DataDisks}
+UserData          : bm90IGVuY29kZWQ=
+```
+
+The UserData value must always be Base64 encoded. This command assumes you have already created a VM with a UserData value.
 
 ## PARAMETERS
 
@@ -351,6 +377,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserData
+UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

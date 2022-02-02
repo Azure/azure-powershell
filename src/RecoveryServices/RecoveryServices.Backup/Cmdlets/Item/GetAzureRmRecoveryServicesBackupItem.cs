@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
-    /// </summary>
+    /// </summary>    
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem",DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL, FileFolder, SAPHanaDatabase";
 
         /// <summary>
         /// When this option is specified, only those items which belong to this container will be returned.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes,
             ParameterSetName = GetItemsForVaultParamSet)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("AzureVM", "MAB", "AzureStorage", "AzureWorkload", "AzureSQL")]
         public BackupManagementType BackupManagementType { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = GetItemsForVaultParamSet)]
         [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes,
             ParameterSetName = GetItemsForContainerParamSet)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("AzureVM", "AzureFiles", "MSSQL", "FileFolder", "SAPHanaDatabase", "AzureSQLDatabase")]
         public WorkloadType WorkloadType { get; set; }
 
         /// <summary>
@@ -147,13 +147,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ItemParams.FriendlyName, FriendlyName },
                         { CRRParams.UseSecondaryRegion, UseSecondaryRegion.IsPresent}
                     }, ServiceClientAdapter);
-
+                
                 IPsBackupProvider psBackupProvider = null;
                 List<ItemBase> itemModels = null;
-                if (BackupManagementType == BackupManagementType.MAB)
-                {
+                if (BackupManagementType == BackupManagementType.MAB || 
+                  (this.ParameterSetName == GetItemsForContainerParamSet &&  (Container as ContainerContext).ContainerType == ContainerType.Windows))
+                {   
                     AzureWorkloadProviderHelper provider = new AzureWorkloadProviderHelper(ServiceClientAdapter);
-                    itemModels = provider.GetMABProtectedItems(vaultName, resourceGroupName);
+                    itemModels = provider.GetMABProtectedItems(vaultName, resourceGroupName, Container);
                 }
                 else
                 {

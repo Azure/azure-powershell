@@ -119,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             if (noExpiryTime)
             {
-                signedIdentifier.AccessPolicy.PolicyExpiresOn = DateTimeOffset.MinValue;
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = null;
             }
             else if (ExpiryTime != null)
             {

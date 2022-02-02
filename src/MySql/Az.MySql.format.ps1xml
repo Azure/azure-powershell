@@ -9,6 +9,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>BackupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ConfigurationName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -16,9 +19,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FirewallRuleName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>KeyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LocationName</Label>
@@ -43,6 +43,9 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>BackupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ConfigurationName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -50,9 +53,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FirewallRuleName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>KeyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LocationName</PropertyName>
@@ -71,6 +71,58 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VirtualNetworkRuleName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -309,18 +361,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -344,9 +390,6 @@
             <Label>SizeInKb</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Url</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -361,9 +404,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SizeInKb</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Url</PropertyName>
@@ -417,18 +457,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -504,6 +538,58 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.PerformanceTierProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.PerformanceTierProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxBackupRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxLargeStorageMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxStorageMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinBackupRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinLargeStorageMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinStorageMb</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxBackupRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxLargeStorageMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxStorageMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinBackupRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinLargeStorageMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinStorageMb</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.PerformanceTierServiceLevelObjectives</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.PerformanceTierServiceLevelObjectives</TypeName>
@@ -562,6 +648,80 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.RecoverableServerProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.RecoverableServerProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Edition</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HardwareGeneration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastAvailableBackupDateTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServiceLevelObjective</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VCore</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Edition</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HardwareGeneration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastAvailableBackupDateTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServiceLevelObjective</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VCore</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.RecoverableServerResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.RecoverableServerResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ResourceIdentity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ResourceIdentity</TypeName>
@@ -574,9 +734,6 @@
           <TableColumnHeader>
             <Label>TenantId</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -586,9 +743,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -673,9 +827,6 @@
             <Label>Version</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>StorageProfileStorageMb</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>SkuName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -699,9 +850,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageProfileStorageMb</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
@@ -767,18 +915,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1375,9 +1517,6 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1385,8 +1524,27 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerSecurityAlertPolicyListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerSecurityAlertPolicyListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1557,18 +1715,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1632,28 +1784,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ErrorAdditionalInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ErrorAdditionalInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ErrorResponse</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ErrorResponse</TypeName>
@@ -1688,40 +1818,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.Identity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.Identity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ProxyResource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ProxyResource</TypeName>
@@ -1731,18 +1827,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1759,18 +1849,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1788,9 +1872,6 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1799,9 +1880,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
@@ -1834,9 +1912,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1859,7 +1937,7 @@
             <Label>Version</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>StorageProfileStorageMb</Label>
+            <Label>StorageSizeGb</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1884,7 +1962,7 @@
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>StorageProfileStorageMb</PropertyName>
+                <PropertyName>StorageSizeGb</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1892,9 +1970,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CapabilitiesListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.Backup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CapabilitiesListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.Backup</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EarliestRestoreDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GeoRedundantBackup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RetentionDay</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EarliestRestoreDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GeoRedundantBackup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RetentionDay</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.CapabilitiesListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.CapabilitiesListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1914,12 +2026,18 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CapabilityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.CapabilityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CapabilityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.CapabilityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>SupportedGeoBackupRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SupportedHaMode</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Zone</Label>
           </TableColumnHeader>
@@ -1927,6 +2045,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SupportedGeoBackupRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SupportedHaMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Zone</PropertyName>
               </TableColumnItem>
@@ -1936,9 +2060,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1982,9 +2106,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationForBatchUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Source</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationListResultAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2004,9 +2178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationPropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationPropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ConfigurationPropertiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2074,9 +2248,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DatabaseListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DatabaseAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DatabaseListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DatabaseAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Charset</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Collation</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Charset</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Collation</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DatabaseListResultAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DatabaseListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2096,31 +2304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DelegatedSubnetArguments</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DelegatedSubnetUsage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DelegatedSubnetArguments</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>SubnetArmResourceId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SubnetArmResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DelegatedSubnetUsage</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DelegatedSubnetUsage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DelegatedSubnetUsage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2146,9 +2332,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.FirewallRuleListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.FirewallRuleAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.FirewallRuleListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.FirewallRuleAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartIPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndIPAddress</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartIPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndIPAddress</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.FirewallRuleListResultAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.FirewallRuleListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2168,9 +2388,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.MaintenanceWindow</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.GetPrivateDnsZoneSuffixResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.MaintenanceWindow</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.GetPrivateDnsZoneSuffixResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrivateDnsZoneSuffix</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrivateDnsZoneSuffix</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.HighAvailability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.HighAvailability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StandbyAvailabilityZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StandbyAvailabilityZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.MaintenanceWindow</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.MaintenanceWindow</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2208,15 +2484,46 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.OperationAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.Network</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.OperationAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.Network</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>IsDataAction</Label>
+            <Label>DelegatedSubnetResourceId</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateDnsZoneResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DelegatedSubnetResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateDnsZoneResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.OperationAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.OperationAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -2227,9 +2534,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -2242,9 +2546,49 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.OperationListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.OperationDisplayAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.OperationListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.OperationDisplayAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.OperationListResultAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.OperationListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2264,9 +2608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerEditionCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerEditionCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2286,9 +2630,87 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerForUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerForUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerBackupProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BackupType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CompletedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BackupType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CompletedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerEditionCapability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerEditionCapability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerForUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerForUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2308,43 +2730,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerListResultAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKey</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Kind</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Kind</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKeyListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKeyListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2364,65 +2752,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKeyProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerPropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKeyProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreationDate</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ServerKeyType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Uri</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreationDate</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ServerKeyType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Uri</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerListResultAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerListResultAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerPropertiesAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerPropertiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2433,28 +2765,10 @@
             <Label>AvailabilityZone</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ByokEnforcement</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>CreateMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>EarliestRestoreDate</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>FullyQualifiedDomainName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>HaEnabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>HaState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InfrastructureEncryption</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicNetworkAccess</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ReplicaCapacity</Label>
@@ -2466,13 +2780,7 @@
             <Label>RestorePointInTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SourceServerId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SslEnforcement</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StandbyAvailabilityZone</Label>
+            <Label>SourceServerResourceId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>State</Label>
@@ -2491,28 +2799,10 @@
                 <PropertyName>AvailabilityZone</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ByokEnforcement</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>CreateMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>EarliestRestoreDate</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>FullyQualifiedDomainName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>HaEnabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>HaState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InfrastructureEncryption</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublicNetworkAccess</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ReplicaCapacity</PropertyName>
@@ -2524,13 +2814,7 @@
                 <PropertyName>RestorePointInTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SourceServerId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SslEnforcement</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StandbyAvailabilityZone</PropertyName>
+                <PropertyName>SourceServerResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>State</PropertyName>
@@ -2544,33 +2828,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerPropertiesForUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerPropertiesForUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerPropertiesForUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerPropertiesForUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>HaEnabled</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ReplicationRole</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SslEnforcement</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>HaEnabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ReplicationRole</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SslEnforcement</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2578,21 +2850,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerPropertiesTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerRestartParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerPropertiesTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerRestartParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Item</Label>
+            <Label>MaxFailoverSecond</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RestartWithFailover</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Item</PropertyName>
+                <PropertyName>MaxFailoverSecond</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RestartWithFailover</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2600,9 +2878,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerVersionCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerVersionCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerVersionCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerVersionCapability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2622,9 +2900,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.SkuAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.SkuAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2650,111 +2928,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.StorageEditionCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.StorageEditionCapability</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>MaxBackupRetentionDay</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MinBackupRetentionDay</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>MaxBackupRetentionDay</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MinBackupRetentionDay</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.StorageMbCapability</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.StorageMbCapability</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageSizeMb</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageSizeMb</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.StorageProfileAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.StorageProfileAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BackupRetentionDay</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageAutogrow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageIop</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageMb</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BackupRetentionDay</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageAutogrow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageIop</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageMb</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.VcoreCapability</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.VcoreCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuCapability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2765,7 +2941,7 @@
             <Label>SupportedIop</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SupportedMemoryPerVcoreMb</Label>
+            <Label>SupportedMemoryPerVCoreMb</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VCore</Label>
@@ -2781,7 +2957,7 @@
                 <PropertyName>SupportedIop</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SupportedMemoryPerVcoreMb</PropertyName>
+                <PropertyName>SupportedMemoryPerVCoreMb</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VCore</PropertyName>
@@ -2792,21 +2968,107 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.VirtualNetworkSubnetUsageParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.Storage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.VirtualNetworkSubnetUsageParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.Storage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>VirtualNetworkArmResourceId</Label>
+            <Label>AutoGrow</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Iop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SizeGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>VirtualNetworkArmResourceId</PropertyName>
+                <PropertyName>AutoGrow</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Iop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SizeGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageEditionCapability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageEditionCapability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxBackupRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxStorageSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinBackupRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinStorageSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxBackupRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxStorageSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinBackupRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinStorageSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.VirtualNetworkSubnetUsageParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.VirtualNetworkSubnetUsageParameter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>VirtualNetworkResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>VirtualNetworkResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

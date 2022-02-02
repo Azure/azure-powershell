@@ -24,7 +24,7 @@ function Test-SnapshotCrud
     $resourceGroup = Get-ResourceGroupName
     $accName = Get-ResourceName
     $poolName = Get-ResourceName
-    $volName = Get-ResourceName
+    $volName = Get-ResourceName    
     $snName1 = Get-ResourceName
     $snName2 = Get-ResourceName
     $gibibyte = 1024 * 1024 * 1024
@@ -44,7 +44,7 @@ function Test-SnapshotCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -52,7 +52,7 @@ function Test-SnapshotCrud
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
@@ -133,7 +133,7 @@ function Test-SnapshotPipelines
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -197,7 +197,7 @@ function Test-CreateVolumeFromSnapshot
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -205,7 +205,7 @@ function Test-CreateVolumeFromSnapshot
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
@@ -231,8 +231,9 @@ function Test-CreateVolumeFromSnapshot
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # Create volume from snapshot
-        $restoredVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.SnapshotId
-        Assert-AreEqual $retrievedVolume.Name $restoredVolume.Name
+        $restoredNewVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.SnapshotId
+        Assert-NotNull $restoredNewVolume
+        Assert-AreEqual "$accName/$poolName/$volName2" $restoredNewVolume.Name
     }
     finally
     {
@@ -272,7 +273,7 @@ function Test-RestoreVolumeFromSnapshot
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -280,7 +281,7 @@ function Test-RestoreVolumeFromSnapshot
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
@@ -305,9 +306,8 @@ function Test-RestoreVolumeFromSnapshot
         $retrievedSnapshotById = Get-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshot.Id
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
-        # revert the volume from snapshot
-        Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId
-        
+        # Restore the volume from snapshot
+        $restoredVolume = Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId                
     }
     finally
     {

@@ -18,8 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated ADF .Net SDK version to 5.1.0
+
+## Version 1.16.2
+* Updated ADF .Net SDK version to 5.0.0
+
+## Version 1.16.1
+* Updated ADF .Net SDK version to 4.28.0
+
+## Version 1.16.0
+* Added PublicNetworkAccess to Update_AzDataFactoryV2 Command
+* Updated ADF .Net SDK version to 4.26.0
+
+## Version 1.15.0
+* Added a DataFlowEnableQuickReuse argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to enable quick reuse of clusters in next pipeline activities.
 * Updated ADF .Net SDK version to 4.25.0
-* Added a ProvisionMethod argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support Express Azure-SSIS Integration Runtime provision.
+* Added a VNetInjectionMethod argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support the express virtual network injection of Azure-SSIS Integration Runtime.
 
 ## Version 1.14.0
 * Added a subnetId argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support RBAC checking for VNet injection against the subnet resource ID instead of the VNet resource ID.

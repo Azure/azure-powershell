@@ -151,6 +151,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public Guid? ExternalAdminSID { get; set; }
 
         /// <summary>
+        /// The Federated Client id use in server for cross tenant cmk
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the Federated client ID of the server when using Cross-Tenant CMK, Do not set this value if you do not intent to use Cross-Tenant CMK")]
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -224,6 +231,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId,
+                FederatedClientId = this.FederatedClientId,
                 Administrators = new Management.Sql.Models.ServerExternalAdministrator()
                 {
                     AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,

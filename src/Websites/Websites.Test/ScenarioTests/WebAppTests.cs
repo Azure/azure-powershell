@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppHyperV");
         }
 
-        [Fact]
+        [Fact(Skip = "Needs investigation. Fails pulling container image from public registry.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebAppHyperVCredentials()
         {

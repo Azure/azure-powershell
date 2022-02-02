@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Extensions;
+    using System;
 
     /// <summary>List all Kusto pools</summary>
     /// <remarks>

@@ -1,0 +1,255 @@
+{
+  "Get-AzGalleryApplication+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
+      "Content": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "87" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/CreateUpdateGalleryApplication3Min;149,Microsoft.Compute/CreateUpdateGalleryApplication30Min;748" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "70d5434e-5504-4968-b956-f8d027c07083_132736855405793073,70d5434e-5504-4968-b956-f8d027c07083_132736855405793073" ],
+        "x-ms-request-id": [ "ff6dd253-b01a-4164-8cee-17bcac781b7f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "f7052b1d-d5db-4e4f-bd23-4a427629c937" ],
+        "x-ms-routing-request-id": [ "FRANCECENTRAL:20211101T174812Z:f7052b1d-d5db-4e4f-bd23-4a427629c937" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 17:48:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzGalleryApplication+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "6acefa7b-f14e-420b-bbe9-da36b8e3f6db" ],
+        "CommandName": [ "Az.Compute.internal\\New-AzGalleryApplication" ],
+        "FullCommandName": [ "New-AzGalleryApplication_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.1.5" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetGalleryApplication3Min;298,Microsoft.Compute/GetGalleryApplication30Min;1991" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "70d5434e-5504-4968-b956-f8d027c07083_132736855405793073,70d5434e-5504-4968-b956-f8d027c07083_132736855405793073" ],
+        "x-ms-request-id": [ "c5a58af8-7325-478a-9be0-03417b042389" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "ea877a49-8032-4346-b7da-530e4c03ab39" ],
+        "x-ms-routing-request-id": [ "FRANCECENTRAL:20211101T174843Z:ea877a49-8032-4346-b7da-530e4c03ab39" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 17:48:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzGalleryApplication+[NoContext]+List Get-AzGalleryApplication+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "69e2ad0c-ee66-4fa1-8ac5-c65daa5fcdf4" ],
+        "CommandName": [ "Get-AzGalleryApplication" ],
+        "FullCommandName": [ "Get-AzGalleryApplication_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.1.5" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/ListGalleryApplicationsInGallery3Min;1499,Microsoft.Compute/ListGalleryApplicationsInGallery30Min;9998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "70d5434e-5504-4968-b956-f8d027c07083_132736855405793073,70d5434e-5504-4968-b956-f8d027c07083_132736855405793073" ],
+        "x-ms-request-id": [ "8a78ac2c-7111-45af-9bd9-7950e831f6cc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "d9bc3d8a-3943-4f94-ae2d-1fdac027578c" ],
+        "x-ms-routing-request-id": [ "FRANCECENTRAL:20211101T174843Z:d9bc3d8a-3943-4f94-ae2d-1fdac027578c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 17:48:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "427" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"testgalapp6adgv70k\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n      \"type\": \"Microsoft.Compute/galleries/applications\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"supportedOSType\": \"Windows\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzGalleryApplication+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "76be85a7-69d3-4089-8fc3-349ba495c782" ],
+        "CommandName": [ "Get-AzGalleryApplication" ],
+        "FullCommandName": [ "Get-AzGalleryApplication_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.1.5" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetGalleryApplication3Min;297,Microsoft.Compute/GetGalleryApplication30Min;1990" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "70d5434e-5504-4968-b956-f8d027c07083_132736855405793073,70d5434e-5504-4968-b956-f8d027c07083_132736855405793073" ],
+        "x-ms-request-id": [ "6ad4eb6a-c106-44a6-adf7-845ffedd9f7e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "61b7c4ca-0038-4f18-9994-15434ff50517" ],
+        "x-ms-routing-request-id": [ "FRANCECENTRAL:20211101T174843Z:61b7c4ca-0038-4f18-9994-15434ff50517" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 17:48:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzGalleryApplication+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "734910a1-1f10-4cce-9660-4d4f69f57138" ],
+        "CommandName": [ "Get-AzGalleryApplication" ],
+        "FullCommandName": [ "Get-AzGalleryApplication_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.1.5" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetGalleryApplication3Min;296,Microsoft.Compute/GetGalleryApplication30Min;1989" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "70d5434e-5504-4968-b956-f8d027c07083_132736855405793073,70d5434e-5504-4968-b956-f8d027c07083_132736855405793073" ],
+        "x-ms-request-id": [ "9c72db0b-f59b-4508-9eac-4629e07bf036" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "9fad9899-7178-4ab1-8660-2756651059bc" ],
+        "x-ms-routing-request-id": [ "FRANCECENTRAL:20211101T174843Z:9fad9899-7178-4ab1-8660-2756651059bc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 17:48:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzGalleryApplication+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "8386450d-f263-4e90-a2f8-38f993e0a5ac" ],
+        "CommandName": [ "Get-AzGalleryApplication" ],
+        "FullCommandName": [ "Get-AzGalleryApplication_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.1.5" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetGalleryApplication3Min;295,Microsoft.Compute/GetGalleryApplication30Min;1988" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "70d5434e-5504-4968-b956-f8d027c07083_132736855405793073,70d5434e-5504-4968-b956-f8d027c07083_132736855405793073" ],
+        "x-ms-request-id": [ "7bfc484e-d473-4bd7-ae23-db6cc6c26c11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "4be55042-eaad-4a3e-b425-9770ffeed55c" ],
+        "x-ms-routing-request-id": [ "FRANCECENTRAL:20211101T174844Z:4be55042-eaad-4a3e-b425-9770ffeed55c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 17:48:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

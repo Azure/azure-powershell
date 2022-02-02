@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
-      "value": "workspacev1bh6g"
+      "value": "workspace4lvzne"
     },
     "defaultDataLakeStorageAccountName": {
-      "value": "storagev1bh6g"
+      "value": "storage4lvzne"
     },
     "defaultDataLakeStorageFilesystemName": {
-      "value": "filesystemv1bh6g"
+      "value": "filesystem4lvzne"
     }
   }
 }

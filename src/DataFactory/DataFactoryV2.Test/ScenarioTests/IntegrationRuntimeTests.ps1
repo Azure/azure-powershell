@@ -386,7 +386,7 @@ function Test-Azure-Express-IntegrationRuntime
 
         $irname = "test-Azure-Express-SSIS-IR"
         $description = "Managed SSIS IR"
-        $ProvisionMethod = "Express"
+        $VNetInjectionMethod = "Express"
 
         # Get SubnetId from environment variable.
         $IsSubnetIdSet = Test-Path env:SSIS_IR_SUBNETID
@@ -407,7 +407,7 @@ function Test-Azure-Express-IntegrationRuntime
             -MaxParallelExecutionsPerNode 1 `
             -Edition standard `
             -subnetId $subnetId `
-            -ProvisionMethod $ProvisionMethod `
+            -VNetInjectionMethod $VNetInjectionMethod `
             -Force
 
         $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
@@ -418,7 +418,7 @@ function Test-Azure-Express-IntegrationRuntime
             Assert-AreEqual $subnetId $expected.SubnetId
         }
 
-        Assert-AreEqual $expected.ProvisionMethod $ProvisionMethod
+        Assert-AreEqual $expected.VNetInjectionMethod $VNetInjectionMethod
 
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
     }

@@ -240,7 +240,7 @@ Specifies the account type of replicated managed disk.
 Type: System.String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
-Accepted values: Premium_LRS, Standard_LRS, StandardSSD_LRS
+Accepted values: Premium_LRS, Premium_ZRS, Standard_LRS, StandardSSD_LRS, StandardSSD_ZRS
 
 Required: True
 Position: Named
@@ -271,7 +271,7 @@ Specifies the recovery target disk for replicated managed disk.
 Type: System.String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
-Accepted values: Premium_LRS, Standard_LRS, StandardSSD_LRS
+Accepted values: Premium_LRS, Premium_ZRS, Standard_LRS, StandardSSD_LRS, StandardSSD_ZRS
 
 Required: True
 Position: Named

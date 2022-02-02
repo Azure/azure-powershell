@@ -16,15 +16,17 @@ Gets the recovery points for a backed up item.
 
 ### NoFilterParameterSet (Default)
 ```
-Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-Tier <RecoveryPointTier>] [-IsReadyForMove <bool>]
-[-TargetTier <RecoveryPointTier>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-Tier <RecoveryPointTier>]
+ [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DateTimeFilter
 ```
-Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase> [-UseSecondaryRegion]
-[-Tier <RecoveryPointTier>] [-IsReadyForMove <bool>] [-TargetTier <RecoveryPointTier>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
-[<CommonParameters>]
+Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase>
+ [-UseSecondaryRegion] [-Tier <RecoveryPointTier>] [-IsReadyForMove <Boolean>]
+ [-TargetTier <RecoveryPointTier>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RecoveryPointId
@@ -128,6 +130,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IsReadyForMove
+
+Filters the Recovery Points based on whether RP is Ready to move to target tier. Use this along with target tier parameter.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Item
 
 Specifies the item for which this cmdlet gets recovery points.
@@ -193,13 +211,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
+### -TargetTier
+
+Target tier to check move readiness of recovery point. Currently only valid value is 'VaultArchive'.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointTier
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
 Aliases:
+Accepted values: VaultArchive
 
 Required: False
 Position: Named
@@ -214,7 +234,7 @@ Filter recovery points based on tier value.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointTier
-Parameter Sets: NoFilter, DateTimeFilter
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
 Aliases:
 Accepted values: VaultStandard, Snapshot, VaultArchive, VaultStandardRehydrated, SnapshotAndVaultStandard, SnapshotAndVaultArchive
 
@@ -225,32 +245,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IsReadyForMove
-
-Filters the Recovery Points based on whether RP is Ready to move to target tier. Use this along with target tier parameter.
-
-```yaml
-Type: bool
-Parameter Sets: NoFilter, DateTimeFilter
-Aliases:
-Accepted values: $true, $false
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetTier
-
-Target tier to check move readiness of recovery point. Currently only valid value is 'VaultArchive'.
+### -UseSecondaryRegion
+Filters from Secondary Region for Cross Region Restore
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointTier
-Parameter Sets: NoFilter, DateTimeFilter
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
-Accepted values: VaultArchive
 
 Required: False
 Position: Named

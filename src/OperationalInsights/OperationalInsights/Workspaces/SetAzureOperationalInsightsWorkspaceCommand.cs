@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -41,8 +40,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
-        [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", IgnoreCase = true)]
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", "capacityreservation", "lacluster", IgnoreCase = true)]
         public string Sku { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Sku Capacity, value need to be multiple of 100 and above 0.")]
+        [ValidateNotNullOrEmpty]
+        public int? SkuCapacity { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
@@ -53,15 +56,24 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
 
-        [Parameter(
-            Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
         public string PublicNetworkAccessForIngestion;
 
-        [Parameter(
-            Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
         public string PublicNetworkAccessForQuery;
+
+        [Parameter(Mandatory = false, HelpMessage = "The daily volume cap for ingestion - number")]
+        public int? DailyQuotaGb;
+
+        [Parameter(Position = 9, Mandatory = false,
+            HelpMessage = "Gets or sets indicates whether customer managed storage is mandatory for query management")]
+        public bool? ForceCmkForQuery;
+
+        [Parameter(Position = 10, Mandatory = false,
+            HelpMessage = "Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication")]
+        public bool? DisableLocalAuth;
 
         public override void ExecuteCmdlet()
         {
@@ -75,11 +87,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             {
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
-                Sku = Sku,
+                Sku = string.IsNullOrEmpty(Sku) ? null : new PSWorkspaceSku(Sku, SkuCapacity),
                 Tags = Tag,
                 PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
-                RetentionInDays = RetentionInDays
+                RetentionInDays = RetentionInDays,
+                DailyQuotaGb = DailyQuotaGb,
+                ForceCmkForQuery = ForceCmkForQuery,
+                WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth)
             };
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));

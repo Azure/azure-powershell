@@ -13,8 +13,8 @@ Create a in-memory object for ImageRegistryCredential
 ## SYNTAX
 
 ```
-New-AzContainerGroupImageRegistryCredentialObject -Server <String> -Username <String>
- [-Password <SecureString>] [<CommonParameters>]
+New-AzContainerGroupImageRegistryCredentialObject -Server <String> [-AcrIdentity <String>]
+ [-Password <SecureString>] [-Username <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ Password          Server       Username
 This command sets up an image registry credential to create a container group
 
 ## PARAMETERS
+
+### -AcrIdentity
+The identity with access to the ACR.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Password
 The password for the private registry.
@@ -74,7 +89,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,7 +103,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ImageRegistryCredential
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential
 
 ## NOTES
 

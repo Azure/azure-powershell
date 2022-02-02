@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 schema: 2.0.0
 ---
@@ -9,64 +8,57 @@ schema: 2.0.0
 # Get-AzADGroupMember
 
 ## SYNOPSIS
-Lists members of an AD group in the current tenant.
+Lists members from group. Currently service principals are not listed as group members due to staged roll-out of service principals on Graph V1.0 endpoint. Please see [documentation of the REST API](https://docs.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http).
 
 ## SYNTAX
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADGroupMember [-GroupObjectId <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember -GroupObjectId <String> [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>]
+ [-Search <String>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupObject <IMicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists members of an AD group in the current tenant.
+Lists members from group.
 
 ## EXAMPLES
 
-### Example 1: List members by AD group object id
-
+### Example 1: List members by group display name
 ```powershell
-PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+PS C:\> Get-AzADGroupMember -GroupDisplayName $name
 ```
 
-Lists members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
+List members by group display name
 
-### Example 2: List members by AD group object id using paging
-
+### Example 2: List members by pipeline input
 ```powershell
-PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE -First 100
+PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 ```
 
-Lists the first 100 members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
-
-### Example 3: List members by piping
-
-```powershell
-PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Get-AzADGroupMember
-```
-
-Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Get-AzADGroupMember cmdlet to list all members in that group. 
+List members by pipeline input
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -77,8 +69,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Expand
+Expand related entities
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+Filter items by property values
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupDisplayName
-The display name of the group.
+The display name of target group.
 
 ```yaml
 Type: System.String
@@ -93,10 +115,11 @@ Accept wildcard characters: False
 ```
 
 ### -GroupObject
-The group object that you are listing members from.
+The target group object, could be used as pipeline input.
+To construct, see NOTES section for GROUPOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 Parameter Sets: GroupObjectParameterSet
 Aliases:
 
@@ -108,25 +131,55 @@ Accept wildcard characters: False
 ```
 
 ### -GroupObjectId
-Object Id of the group.
+The object Id of target group.
 
 ```yaml
 Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id, ObjectId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
+### -Orderby
+Order items by property values
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Search
+Search items by search phrases
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Select
+Select properties to be returned
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -Skip
-Ignores the first N objects and then gets the remaining objects.
+Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
@@ -153,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -First
-The maximum number of objects to return.
+Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
@@ -172,19 +225,61 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADObject
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pipeline input.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `[DeletedDateTime <DateTime?>]`: 
+  - `[DisplayName <String>]`: The name displayed in directory
+  - `[AppRoleAssignment <IMicrosoftGraphAppRoleAssignmentAutoGenerated[]>]`: Represents the app roles a group has been granted for an application. Supports $expand.
+    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DisplayName <String>]`: The name displayed in directory
+    - `[AppRoleId <String>]`: The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
+    - `[CreatedDateTime <DateTime?>]`: The time when the app role assignment was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+    - `[PrincipalDisplayName <String>]`: The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
+    - `[PrincipalId <String>]`: The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.
+    - `[PrincipalType <String>]`: The type of the assigned principal. This can either be User, Group or ServicePrincipal. Read-only.
+    - `[ResourceDisplayName <String>]`: The display name of the resource app's service principal to which the assignment is made.
+    - `[ResourceId <String>]`: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
+  - `[Classification <String>]`: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
+  - `[CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]`: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DisplayName <String>]`: The name displayed in directory
+  - `[Description <String>]`: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
+  - `[GroupType <String[]>]`: Specifies the group type and its membership.  If the collection contains Unified, the group is a Microsoft 365 group; otherwise, it's either a security group or distribution group. For details, see groups overview.If the collection includes DynamicMembership, the group has dynamic membership; otherwise, membership is static.  Returned by default. Supports $filter (eq, NOT).
+  - `[HasMembersWithLicenseError <Boolean?>]`: Indicates whether there are members in this group that have license errors from its group-based license assignment. This property is never returned on a GET operation. You can use it as a $filter argument to get groups that have members with license errors (that is, filter for this property being true).  Supports $filter (eq).
+  - `[IsArchived <Boolean?>]`: 
+  - `[IsAssignableToRole <Boolean?>]`: Indicates whether this group can be assigned to an Azure Active Directory role.This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global administrator and Privileged role administrator roles can set this property. The caller must also be assigned the Directory.AccessAsUser.All permission to set this property. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, NOT).
+  - `[MailEnabled <Boolean?>]`: Specifies whether the group is mail-enabled. Returned by default. Supports $filter (eq, ne, NOT).
+  - `[MailNickname <String>]`: The mail alias for the group, unique in the organization. This property must be specified when a group is created. These characters cannot be used in the mailNickName: @()/[]';:.<>,SPACE. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
+  - `[MembershipRule <String>]`: The rule that determines members for this group if the group is a dynamic group (groupTypes contains DynamicMembership). For more information about the syntax of the membership rule, see Membership Rules syntax. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
+  - `[MembershipRuleProcessingState <String>]`: Indicates whether the dynamic membership processing is on or paused. Possible values are On or Paused. Returned by default. Supports $filter (eq, ne, NOT, in).
+  - `[PermissionGrant <IMicrosoftGraphResourceSpecificPermissionGrant[]>]`: The permissions that have been granted for a group to a specific application. Supports $expand.
+    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DisplayName <String>]`: The name displayed in directory
+    - `[ClientAppId <String>]`: ID of the service principal of the Azure AD app that has been granted access. Read-only.
+    - `[ClientId <String>]`: ID of the Azure AD app that has been granted access. Read-only.
+    - `[Permission <String>]`: The name of the resource-specific permission. Read-only.
+    - `[PermissionType <String>]`: The type of permission. Possible values are: Application, Delegated. Read-only.
+    - `[ResourceAppId <String>]`: ID of the Azure AD app that is hosting the resource. Read-only.
+  - `[PreferredDataLocation <String>]`: The preferred data location for the group. For more information, see  OneDrive Online Multi-Geo. Returned by default.
+  - `[PreferredLanguage <String>]`: The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example 'en-US'. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
+  - `[SecurityEnabled <Boolean?>]`: Specifies whether the group is a security group. Returned by default. Supports $filter (eq, ne, NOT, in).
+  - `[SecurityIdentifier <String>]`: Security identifier of the group, used in Windows scenarios. Returned by default.
+  - `[Theme <String>]`: Specifies a Microsoft 365 group's color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.
+  - `[Visibility <String>]`: Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. Hiddenmembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. See group visibility options to learn more. Returned by default.
+
 ## RELATED LINKS
-
-[Get-AzADUser](./Get-AzADUser.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-

@@ -21,7 +21,7 @@ The **Get-AzWebAppTrafficRouting** cmdlet Gets a routing rule configuration from
 
 ## EXAMPLES
 
-### Example 1 Gets the specific routing rule from webapp slot
+### Example 1: Gets the specific routing rule from webapp slot
 ```powershell
 PS C:\> Get-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite"  -RuleName 'Stg'
 ```

@@ -20,12 +20,12 @@ Create a in-memory object for InitContainerDefinition
 Create a in-memory object for InitContainerDefinition
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.InitContainerDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.InitContainerDefinition
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 #>
 function New-AzContainerInstanceInitDefinitionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.InitContainerDefinition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.InitContainerDefinition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -33,7 +33,7 @@ function New-AzContainerInstanceInitDefinitionObject {
         [string[]]
         $Command,
         [Parameter(HelpMessage="The environment variables to set in the init container.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEnvironmentVariable[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IEnvironmentVariable[]]
         $EnvironmentVariable,
         [Parameter(HelpMessage="The image of the init container.")]
         [string]
@@ -42,12 +42,12 @@ function New-AzContainerInstanceInitDefinitionObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The volume mounts available to the init container.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeMount[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeMount[]]
         $VolumeMount
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.InitContainerDefinition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.InitContainerDefinition]::New()
 
         $Object.Command = $Command
         $Object.EnvironmentVariable = $EnvironmentVariable

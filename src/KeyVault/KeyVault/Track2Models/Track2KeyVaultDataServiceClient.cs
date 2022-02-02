@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion)
         {
-           return VaultClient.GetKey(vaultName, keyName, keyVersion);
+            return VaultClient.GetKey(vaultName, keyName, keyVersion);
         }
 
         public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
@@ -115,6 +115,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             throw new NotImplementedException();
         }
+
+        #region Key rotation
+        public PSKeyVaultKey RotateKey(string vaultName, string keyName)
+        {
+            return VaultClient.RotateKey(vaultName, keyName);
+        }
+
+        public PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
+        {
+            return VaultClient.GetKeyRotationPolicy(vaultName, keyName);
+        }
+
+        public PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        {
+            return VaultClient.SetKeyRotationPolicy(psKeyRotationPolicy);
+        }
+        #endregion
 
         public PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
         {
@@ -417,21 +434,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         #region Full backup restore
         public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
         {
-            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken);
+            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken).FolderUri;
         }
 
         public void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder)
         {
-            HsmClient.RestoreHsm(hsmName, backupLocation, sasToken, backupFolder);
+            var backupUri = new Uri(System.IO.Path.Combine(backupLocation.ToString(), backupFolder));
+            HsmClient.RestoreHsm(hsmName, backupUri, sasToken);
         }
 
         public void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder)
         {
-            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupLocation, sasToken, backupFolder);
+            var backupUri = new Uri(System.IO.Path.Combine(backupLocation.ToString(), backupFolder));
+            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupUri, sasToken);
         }
         #endregion
 
         #region RBAC
+        public PSKeyVaultRoleDefinition CreateOrUpdateHsmRoleDefinition(string hsmName, string scope, PSKeyVaultRoleDefinition role)
+        {
+            return HsmClient.CreateOrUpdateHsmRoleDefinition(hsmName, scope, role);
+        }
 
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
         {
@@ -457,7 +480,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             HsmClient.RemoveHsmRoleAssignment(hsmName, scope, roleAssignmentName);
         }
-        # endregion RBAC
+
+        /// <summary>
+        /// Remove a custom role definition from an HSM.
+        /// </summary>
+        /// <param name="name">Name of the role. A GUID.</param>
+        public void RemoveHsmRoleDefinition(string hsmName, string scope, string name)
+        {
+            HsmClient.RemoveHsmRoleDefinition(hsmName, scope, name);
+        }
+        #endregion
 
         #region ManagedHsm key methods
 
@@ -475,24 +507,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             return HsmClient.DeleteKey(managedHsmName, keyName);
         }
-        public PSKeyOperationResult ManagedHsmKeyDecrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        public PSKeyOperationResult ManagedHsmKeyDecrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
-            return HsmClient.Decrypt(vaultName, keyName, version, value, encryptAlgorithm);
+            return HsmClient.Decrypt(managedHsmName, keyName, version, value, encryptAlgorithm);
         }
 
-        public PSKeyOperationResult ManagedHsmKeyEncrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        public PSKeyOperationResult ManagedHsmKeyEncrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
-            return HsmClient.Encrypt(vaultName, keyName, version, value, encryptAlgorithm);
+            return HsmClient.Encrypt(managedHsmName, keyName, version, value, encryptAlgorithm);
         }
 
-        public PSKeyOperationResult ManagedHsmUnwrapKey(string vaultName, string keyName, string version, byte[] value, string wrapAlgorithm)
+        public PSKeyOperationResult ManagedHsmUnwrapKey(string managedHsmName, string keyName, string version, byte[] value, string wrapAlgorithm)
         {
-            return HsmClient.UnwrapKey(vaultName, keyName, version, wrapAlgorithm, value);
+            return HsmClient.UnwrapKey(managedHsmName, keyName, version, wrapAlgorithm, value);
         }
 
-        public PSKeyOperationResult ManagedHsmWrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
+        public PSKeyOperationResult ManagedHsmWrapKey(string managedHsmName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
         {
-            return HsmClient.WrapKey(vaultName, keyName, keyVersion, wrapAlgorithm, wrapKey);
+            return HsmClient.WrapKey(managedHsmName, keyName, keyVersion, wrapAlgorithm, wrapKey);
         }
 
         public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
@@ -543,6 +575,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
         {
             return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
+        }
+        #endregion
+
+        #region Key rotation
+        public PSKeyVaultKey RotateManagedHsmKey(string managedHsmName, string keyName)
+        {
+            return HsmClient.RotateKey(managedHsmName, keyName);
+        }
+
+        public PSKeyRotationPolicy GetManagedHsmKeyRotationPolicy(string managedHsmName, string keyName)
+        {
+            return HsmClient.GetKeyRotationPolicy(managedHsmName, keyName);
+        }
+
+        public PSKeyRotationPolicy SetManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
+        {
+            return HsmClient.SetKeyRotationPolicy(keyRotationPolicy);
         }
         #endregion
 

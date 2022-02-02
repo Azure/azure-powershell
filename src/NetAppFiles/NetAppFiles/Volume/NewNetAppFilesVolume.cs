@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
-        [ValidateNotNullOrEmpty]       
+        [ValidateNotNullOrEmpty]
         public string SnapshotPolicyId { get; set; }
         
         [Parameter(
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
         public double? ThroughputMibps { get; set; }
 
         [Parameter(
@@ -221,6 +221,58 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
         public string UnixPermissions { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose (Enabled, Disabled)")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string AvsDataStore { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies if default quota is enabled for the volume")]
+        public SwitchParameter IsDefaultQuotaEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
+        public long? DefaultUserQuotaInKiB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
+        public long? DefaultGroupQuotaInKiB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Basic network, or Standard features available to the volume (Basic, Standard).")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string NetworkFeature { get; set; }
+
+        [Parameter(            
+            Mandatory = false,
+            HelpMessage = "Pool Resource Id used in case of creating a volume through volume group.")]
+        [ValidateNotNullOrEmpty]
+        public string CapacityPoolResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Proximity placement group associated with the volume.")]
+        [ValidateNotNullOrEmpty]
+        public string ProximityPlacementGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log.")]
+        [ValidateNotNullOrEmpty]
+        public string VolumeSpecName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application specific placement rules for the particular volume.")]
+        [ValidateNotNullOrEmpty]
+        public IList<PSKeyValuePairs> PlacementRule { get; set; }
+
 
         [Parameter(
             Mandatory = false,
@@ -268,7 +320,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     Replication = ReplicationObject,
                     Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
                     Backup = Backup
-                };                
+                };
             }
 
             var volumeBody = new Management.NetApp.Models.Volume()
@@ -283,7 +335,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
                 Tags = tagPairs,
-                SnapshotId = SnapshotId,
+                SnapshotId = SnapshotId,                
                 SnapshotDirectoryVisible = SnapshotDirectoryVisible,
                 SecurityStyle = SecurityStyle,
                 BackupId = BackupId,
@@ -294,7 +346,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 LdapEnabled = LdapEnabled,
                 CoolAccess = CoolAccess,
                 CoolnessPeriod = CoolnessPeriod,
-                UnixPermissions = UnixPermissions
+                UnixPermissions = UnixPermissions,
+                AvsDataStore = AvsDataStore,
+                IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
+                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
+                NetworkFeatures = NetworkFeature,
+                CapacityPoolResourceId = CapacityPoolResourceId,
+                ProximityPlacementGroup = ProximityPlacementGroup,
+                VolumeSpecName = VolumeSpecName,
+                PlacementRules = PlacementRule?.ToPlacementKeyValuePairs()
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

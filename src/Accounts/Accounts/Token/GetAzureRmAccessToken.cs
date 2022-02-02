@@ -45,9 +45,10 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = KnownResourceNameParameterSet,
             Mandatory = false,
-            HelpMessage = "Optional resouce type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.")]
+            HelpMessage = "Optional resource type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.")]
         [PSArgumentCompleter(
             SupportedResourceNames.AadGraph,
+            SupportedResourceNames.MSGraph,
             SupportedResourceNames.AnalysisServices,
             SupportedResourceNames.Arm,
             SupportedResourceNames.Attestation,

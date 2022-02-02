@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     {
         public static void SetSubnetId(
             ManagedIntegrationRuntime integrationRuntime,
-            string provisionMethod,
+            string vNetInjectionMethod,
             string subnetId,
             string subnetName,
             string vnetId)
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             if (string.IsNullOrWhiteSpace(subnetId))
             {
-                if (provisionMethod == Constants.IntegrationRuntimeProvisionExpress)
+                if (vNetInjectionMethod == Constants.IntegrationRuntimeVNectInjectionExpress)
                 {
                     throw new PSArgumentException(
                         string.Format(CultureInfo.InvariantCulture,
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
 
-            if (provisionMethod == Constants.IntegrationRuntimeProvisionExpress)
+            if (vNetInjectionMethod == Constants.IntegrationRuntimeVNectInjectionExpress)
             {
                 if (integrationRuntime.CustomerVirtualNetwork == null)
                 {

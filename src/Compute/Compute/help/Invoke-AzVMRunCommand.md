@@ -38,12 +38,25 @@ Invoke a run command on the VM.
 
 ## EXAMPLES
 
-### Example 1
-```
+### Example 1: Invoke a command on Windows
+```powershell
 PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
 
-Invoke a run command of RunPowerShellScript with overriding the script 'sample.ps1' and the parameters on the VM of 'vmname' in resource group 'rgname'.
+Invoke a run command 'RunPowerShellScript' with overriding the script 'sample.ps1' on a Windows VM named 'vmname' in resource group 'rgname'. Var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed. 
+
+### Example 2: Invoke a command on Linux
+```powershell
+export param1=var1 param2=var2
+set -- var1 var2 var3
+
+Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -Name 'vmname' -CommandId 'RunShellScript' -ScriptPath 'sample.bash' -Parameter @{"param1" = "var1";"param2" = "var2"}
+echo This is a sample bash script
+echo Usage 1: Ordered parameters: $0 $1
+echo Usage 2: Named exports: $var1 $var2
+```
+
+This command invokes a run command 'RunShellScript' with overriding the script 'sample.bash' on a Linux VM named 'vmname'. Var1 and var2 are defined as parameters in the sample.bash.
 
 ## PARAMETERS
 
@@ -93,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-The run command parameters.
+The run command parameters. Specify parameters as key/value pairs to be passed at script execution.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -138,7 +151,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptPath
-Path of the script to be executed.  When this value is given, the given script will override the default script of the command.
+Path of the script to be executed. When this value is given, the given script will override the default script of the command.
+Path should point to a file from a local file system. The command will load it and send it for execution.
 
 ```yaml
 Type: System.String

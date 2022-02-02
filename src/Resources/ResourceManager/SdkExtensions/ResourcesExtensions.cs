@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -219,6 +221,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             return output.ToString();
         }
+        public static string Indent(this string value, int size)
+        {
+            string[] lines = value.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            var sb = new StringBuilder();
+            foreach (var s in lines)
+            {
+                sb.Append(new string(' ', size)).Append(s).Append(Environment.NewLine);
+            }
+            return sb.ToString().TrimEnd();
+        }
 
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)
         {
@@ -244,7 +256,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
                 foreach (KeyValuePair<string, DeploymentVariable> pair in dictionary)
                 {
-                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, pair.Value.Value);
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, 
+                        JsonConvert.SerializeObject(pair.Value.Value).Indent(maxNameLength + maxTypeLength + 4).Trim());
                 }
             }
 
@@ -305,12 +318,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 if (properties.Outputs != null)
                 {
                     Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
+                    // Continue deserialize if the type of Value in DeploymentVariable is array
+                    outputs?.Values.ForEach(dv => {
+                        if ("Array".Equals(dv?.Type))
+                        {
+                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                        }
+                    });
                     deploymentObject.Outputs = outputs;
                 }
 
                 if (properties.Parameters != null)
                 {
                     Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
+                    // Continue deserialize if the type of Value in DeploymentVariable is array
+                    parameters?.Values.ForEach(dv => {
+                        if ("Array".Equals(dv?.Type))
+                        {
+                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                        }
+                    });
                     deploymentObject.Parameters = parameters;
                 }
 
@@ -337,6 +364,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
                 .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
 
+        }
+
+        public static PSSubscriptionFeatureRegistration ToPSSubscriptionFeatureRegistration(this SubscriptionFeatureRegistration feature)
+        {
+            return new PSSubscriptionFeatureRegistration
+            {
+                Id = feature.Id,
+                Name = feature.Name,
+                Properties = feature.Properties
+            };
         }
     }
 }

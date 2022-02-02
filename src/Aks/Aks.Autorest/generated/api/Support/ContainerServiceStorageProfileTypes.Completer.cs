@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StorageAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StorageAccount", "StorageAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "StorageAccount");
+                yield return new global::System.Management.Automation.CompletionResult("'StorageAccount'", "StorageAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "StorageAccount");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ManagedDisks".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ManagedDisks", "ManagedDisks", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagedDisks");
+                yield return new global::System.Management.Automation.CompletionResult("'ManagedDisks'", "ManagedDisks", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagedDisks");
             }
         }
     }

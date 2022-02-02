@@ -38,6 +38,13 @@ particular key vault.
 Note that although specifying the resource group is optional for this cmdlet when you get a single
 key vault, you should do so for better performance.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1: Get all key vaults in your current subscription
@@ -241,7 +248,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -SubscriptionId
@@ -289,7 +296,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -301,7 +308,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

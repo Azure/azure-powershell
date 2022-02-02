@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzurePrefix + "VirtualHubBgpConnection",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByHubVirtualNetworkConnectionObject,
         SupportsShouldProcess = true),
         OutputType(typeof(PSBgpConnection))]
     public class NewAzVirtualHubBgpConnectionCommand : HubBgpConnectionBaseCmdlet

@@ -18,9 +18,10 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
 using System;
-using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 
@@ -254,6 +255,8 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
+
             if (ParameterSetName == ParameterSet.InputFile)
             {
                 string fileName = this.TryResolvePath(InputFile);

@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date = (int?) content.GetValueForProperty("Date",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast = (bool?) content.GetValueForProperty("IsLast",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Date"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date = (int?) content.GetValueForProperty("Date",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("IsLast"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast = (bool?) content.GetValueForProperty("IsLast",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date = (int?) content.GetValueForProperty("Date",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast = (bool?) content.GetValueForProperty("IsLast",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Date"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date = (int?) content.GetValueForProperty("Date",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).Date, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("IsLast"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast = (bool?) content.GetValueForProperty("IsLast",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDayInternal)this).IsLast, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

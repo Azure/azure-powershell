@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string DisableAutoPause = "Indicates whether Auto-pause should be disabled.";
 
-        public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter must be specified when Auto-pause is enabled.";
+        public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter can be specified when Auto-pause is enabled. If it is not specified manually, the default value will be " + SynapseConstants.DefaultAutoPauseDelayInMinute + ".";
 
         public const string SparkVersion = "Apache Spark version. Allowed values: 2.4";
 
@@ -506,5 +506,61 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string WorkspacePackages = "The workspace packages.";
 
         public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
+
+        public const string DataFlowDebugSessionId = "Identifier for Synapse data flow debug session.";
+
+        public const string DebugSessionCommand = "The data flow debug command. Optionals are executePreviewQuery, executeStatisticsQuery and executeExpressionQuery.";
+
+        public const string DebugSessionStreamName = "The stream name of data flow for debugging.";
+
+        public const string DebugSessionRowLimit = "The row limit for data flow data preview.";
+
+        public const string DebugSessionExpression = "The expression for data flow expression preview.";
+
+        public const string DebugSessionColumns = "The columns list for data flow statistics preview.";
+
+        public const string DataFlowDebugSessionFilePath = "File path for Synapse data flow debug session";
+
+        public const string SqlScriptName = "The sql script name.";
+
+        public const string SqlScriptObject = "The sql script object.";
+
+        public const string SqlScriptOutputFolder = "The folder where the sql scripts should be placed.";
+
+        public const string SqlScriptSqlPoolName = "Which sql pool the sql script is going to connect to.";
+
+        public const string SqlScriptDatabaseName = "Which database the sql script is going to use.";
+
+        public const string ResultLimit = "Limit of results, '-1' for no limit.";
+
+        public const string SqlFolderPath = "The folder that this SQL script is in. If specify a multi-level path such as [rootFolder/subFolder], the SqlScript will appear at the bottom level. If not specified, this SQL script will appear at the root level.";
+
+        public const string Description = "The description of the SQL script.";
+
+        public const string DefaultResultLimit = "The default resultLimit is 5000";
+
+        public const string SqlFilePath = "The SQL file path.";
+
+        public const string SparkConfigurationFolderPath = "The folder that this Spark job definition is in. If specify a multi-level path such as [rootFolder/subFolder], the Spark job definition will appear at the bottom level. If not specified, this Spark job definition will appear at the root level.";
+
+        public const string NoteBookFolderPath = "The folder that this notebook is in. If specify a multi-level path such as [rootFolder/subFolder], the notebook will appear at the bottom level. If not specified, this notebook will appear at the root level.";
+
+        public const string SparkConfigurationName = "The Spark Configuration name.";
+
+        public const string SparkConfigurationObject = "The Spark configuration object.";
+        
+        public const string KqlScriptName = "KQL script name.";
+
+        public const string KqlScriptObject = "KQL script object.";
+
+        public const string KqlScriptOutputFolder = "The folder where the KQL script should be placed.";
+
+        public const string KqlFilePath = "The KQL file path.";
+
+        public const string KustoPoolName = "Name of Synapse Kusto pool.";
+
+        public const string KustoPoolDatabaseName = "Name of Synapse Kusto database.";
+
+        public const string StorageAccountType = "The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.";
     }
 }

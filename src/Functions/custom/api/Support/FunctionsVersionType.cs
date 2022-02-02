@@ -20,6 +20,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("4", "4", global::System.Management.Automation.CompletionResultType.ParameterValue, "4");
+            }
+
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("3", "3", global::System.Management.Automation.CompletionResultType.ParameterValue, "3");

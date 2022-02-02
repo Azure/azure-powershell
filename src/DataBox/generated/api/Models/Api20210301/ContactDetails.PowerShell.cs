@@ -66,12 +66,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName = (string) content.GetValueForProperty("ContactName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone = (string) content.GetValueForProperty("Phone",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension = (string) content.GetValueForProperty("PhoneExtension",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile = (string) content.GetValueForProperty("Mobile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList = (string[]) content.GetValueForProperty("EmailList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]) content.GetValueForProperty("NotificationPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.NotificationPreferenceTypeConverter.ConvertFrom));
+            if (content.Contains("ContactName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName = (string) content.GetValueForProperty("ContactName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Phone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone = (string) content.GetValueForProperty("Phone",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhoneExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension = (string) content.GetValueForProperty("PhoneExtension",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension, global::System.Convert.ToString);
+            }
+            if (content.Contains("Mobile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile = (string) content.GetValueForProperty("Mobile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile, global::System.Convert.ToString);
+            }
+            if (content.Contains("EmailList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList = (string[]) content.GetValueForProperty("EmailList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("NotificationPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]) content.GetValueForProperty("NotificationPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.NotificationPreferenceTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,12 +107,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName = (string) content.GetValueForProperty("ContactName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone = (string) content.GetValueForProperty("Phone",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension = (string) content.GetValueForProperty("PhoneExtension",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile = (string) content.GetValueForProperty("Mobile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList = (string[]) content.GetValueForProperty("EmailList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]) content.GetValueForProperty("NotificationPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.NotificationPreferenceTypeConverter.ConvertFrom));
+            if (content.Contains("ContactName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName = (string) content.GetValueForProperty("ContactName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).ContactName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Phone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone = (string) content.GetValueForProperty("Phone",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Phone, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhoneExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension = (string) content.GetValueForProperty("PhoneExtension",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).PhoneExtension, global::System.Convert.ToString);
+            }
+            if (content.Contains("Mobile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile = (string) content.GetValueForProperty("Mobile",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).Mobile, global::System.Convert.ToString);
+            }
+            if (content.Contains("EmailList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList = (string[]) content.GetValueForProperty("EmailList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).EmailList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("NotificationPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]) content.GetValueForProperty("NotificationPreference",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetailsInternal)this).NotificationPreference, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.NotificationPreferenceTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

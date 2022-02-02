@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Initializing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Initializing", "Initializing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initializing");
+                yield return new global::System.Management.Automation.CompletionResult("'Initializing'", "Initializing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initializing");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ready".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ready", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
+                yield return new global::System.Management.Automation.CompletionResult("'Ready'", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleting", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleting'", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

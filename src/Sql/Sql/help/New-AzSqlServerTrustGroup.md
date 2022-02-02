@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlServerTrustGroup
 
 ## SYNOPSIS
-Creates a new Server Trust Group.
+Creates or updates a Server Trust Group.
 
 ## SYNTAX
 

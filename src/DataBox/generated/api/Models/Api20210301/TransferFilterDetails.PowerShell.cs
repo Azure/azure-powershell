@@ -104,16 +104,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IBlobFilterDetails) content.GetValueForProperty("BlobFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.BlobFilterDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetails) content.GetValueForProperty("AzureFileFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AzureFileFilterDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails[]) content.GetValueForProperty("FilterFileDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.FilterFileDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList = (string[]) content.GetValueForProperty("BlobFilterDetailContainerList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("BlobFilterDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IBlobFilterDetails) content.GetValueForProperty("BlobFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.BlobFilterDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureFileFilterDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetails) content.GetValueForProperty("AzureFileFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AzureFileFilterDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("FilterFileDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails[]) content.GetValueForProperty("FilterFileDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.FilterFileDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("BlobFilterDetailContainerList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList = (string[]) content.GetValueForProperty("BlobFilterDetailContainerList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("BlobFilterDetailBlobPrefixList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("BlobFilterDetailBlobPathList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureFileFilterDetailFilePrefixList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureFileFilterDetailFilePathList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureFileFilterDetailFileShareList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,16 +161,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IBlobFilterDetails) content.GetValueForProperty("BlobFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.BlobFilterDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetails) content.GetValueForProperty("AzureFileFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AzureFileFilterDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails[]) content.GetValueForProperty("FilterFileDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.FilterFileDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList = (string[]) content.GetValueForProperty("BlobFilterDetailContainerList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("BlobFilterDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IBlobFilterDetails) content.GetValueForProperty("BlobFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.BlobFilterDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureFileFilterDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAzureFileFilterDetails) content.GetValueForProperty("AzureFileFilterDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AzureFileFilterDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("FilterFileDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails[]) content.GetValueForProperty("FilterFileDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).FilterFileDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IFilterFileDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.FilterFileDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("BlobFilterDetailContainerList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList = (string[]) content.GetValueForProperty("BlobFilterDetailContainerList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailContainerList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("BlobFilterDetailBlobPrefixList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("BlobFilterDetailBlobPathList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList = (string[]) content.GetValueForProperty("BlobFilterDetailBlobPathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).BlobFilterDetailBlobPathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureFileFilterDetailFilePrefixList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePrefixList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePrefixList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureFileFilterDetailFilePathList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFilePathList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFilePathList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AzureFileFilterDetailFileShareList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList = (string[]) content.GetValueForProperty("AzureFileFilterDetailFileShareList",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransferFilterDetailsInternal)this).AzureFileFilterDetailFileShareList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
     }

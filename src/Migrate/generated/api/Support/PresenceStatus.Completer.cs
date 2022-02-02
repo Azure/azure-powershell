@@ -30,15 +30,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Present".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Present", "Present", global::System.Management.Automation.CompletionResultType.ParameterValue, "Present");
+                yield return new global::System.Management.Automation.CompletionResult("'Present'", "Present", global::System.Management.Automation.CompletionResultType.ParameterValue, "Present");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotPresent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotPresent", "NotPresent", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotPresent");
+                yield return new global::System.Management.Automation.CompletionResult("'NotPresent'", "NotPresent", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotPresent");
             }
         }
     }

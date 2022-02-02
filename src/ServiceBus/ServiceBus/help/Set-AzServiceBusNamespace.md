@@ -14,8 +14,8 @@ Updates the description of an existing Service Bus namespace.
 
 ```
 Set-AzServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
- [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DisableLocalAuth]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +26,24 @@ The **Set-AzServiceBusNamespace** cmdlet updates the description of the specifie
 ### Example 1
 ```
 PS C:\> Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 1 -Tag @{Tag2="Tag2Value"}
+
+Name               : SB-Example1
+Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+ResourceGroupName  : Default-ServiceBus-WestUS
+Location           : West US
+Tags               : {Tag2, Tag2Value}
+Sku                : Name : Premium , Tier : Premium, Capacity : 1
+ProvisioningState  : Succeeded
+CreatedAt          :
+UpdatedAt          :
+ServiceBusEndpoint :
+```
+
+Updates the Service Bus namespace with a new description.
+
+### Example 2
+```
+PS C:\> Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 1 -Tag @{Tag2="Tag2Value"} -DisableLocalAuth
 
 Name               : SB-Example1
 Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
@@ -55,6 +73,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+enabling or disabling SAS authentication for the Service Bus namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

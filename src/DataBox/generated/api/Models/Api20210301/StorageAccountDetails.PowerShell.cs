@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId = (string) content.GetValueForProperty("StorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword = (string) content.GetValueForProperty("SharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword, global::System.Convert.ToString);
+            if (content.Contains("StorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId = (string) content.GetValueForProperty("StorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("SharePassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword = (string) content.GetValueForProperty("SharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId = (string) content.GetValueForProperty("StorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword = (string) content.GetValueForProperty("SharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword, global::System.Convert.ToString);
+            if (content.Contains("StorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId = (string) content.GetValueForProperty("StorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IStorageAccountDetailsInternal)this).StorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataAccountType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType) content.GetValueForProperty("DataAccountType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).DataAccountType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType.CreateFrom);
+            }
+            if (content.Contains("SharePassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword = (string) content.GetValueForProperty("SharePassword",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataAccountDetailsInternal)this).SharePassword, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

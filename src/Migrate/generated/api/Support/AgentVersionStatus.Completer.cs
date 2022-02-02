@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Supported".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Supported", "Supported", global::System.Management.Automation.CompletionResultType.ParameterValue, "Supported");
+                yield return new global::System.Management.Automation.CompletionResult("'Supported'", "Supported", global::System.Management.Automation.CompletionResultType.ParameterValue, "Supported");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSupported".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSupported", "NotSupported", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSupported");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSupported'", "NotSupported", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSupported");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deprecated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deprecated", "Deprecated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deprecated");
+                yield return new global::System.Management.Automation.CompletionResult("'Deprecated'", "Deprecated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deprecated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UpdateRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UpdateRequired", "UpdateRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpdateRequired");
+                yield return new global::System.Management.Automation.CompletionResult("'UpdateRequired'", "UpdateRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpdateRequired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SecurityUpdateRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SecurityUpdateRequired", "SecurityUpdateRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "SecurityUpdateRequired");
+                yield return new global::System.Management.Automation.CompletionResult("'SecurityUpdateRequired'", "SecurityUpdateRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "SecurityUpdateRequired");
             }
         }
     }

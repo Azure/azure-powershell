@@ -49,7 +49,7 @@ function Test-SnapshotPolicyCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # try creating an Account -               
         $newTagName = "tag1"
@@ -170,7 +170,7 @@ function Test-SnapshotPolicyPipelines
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 
         # try creating an Account -               

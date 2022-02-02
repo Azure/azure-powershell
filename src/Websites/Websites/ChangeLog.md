@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
+
+## Version 2.9.0
+* Updated the Microsoft.Azure.Management.Websites SDK to 3.1.2
+## Version 2.8.3
+* Updated `Import-AzWebAppKeyVaultCertificate1` to set the default name with combination of keyvault name and cert name 
 
 ## Version 2.8.2
 * Fixed `Set-AzWebApp` to return a valid warning message when fails to add -Hostname #9316

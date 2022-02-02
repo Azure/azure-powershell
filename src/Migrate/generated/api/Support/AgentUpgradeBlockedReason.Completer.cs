@@ -28,59 +28,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AlreadyOnLatestVersion".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AlreadyOnLatestVersion", "AlreadyOnLatestVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlreadyOnLatestVersion");
+                yield return new global::System.Management.Automation.CompletionResult("'AlreadyOnLatestVersion'", "AlreadyOnLatestVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlreadyOnLatestVersion");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RebootRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RebootRequired", "RebootRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "RebootRequired");
+                yield return new global::System.Management.Automation.CompletionResult("'RebootRequired'", "RebootRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "RebootRequired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentNoHeartbeat".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentNoHeartbeat", "AgentNoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentNoHeartbeat");
+                yield return new global::System.Management.Automation.CompletionResult("'AgentNoHeartbeat'", "AgentNoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentNoHeartbeat");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RcmProxyNoHeartbeat".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RcmProxyNoHeartbeat", "RcmProxyNoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "RcmProxyNoHeartbeat");
+                yield return new global::System.Management.Automation.CompletionResult("'RcmProxyNoHeartbeat'", "RcmProxyNoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "RcmProxyNoHeartbeat");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProcessServerNoHeartbeat".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProcessServerNoHeartbeat", "ProcessServerNoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProcessServerNoHeartbeat");
+                yield return new global::System.Management.Automation.CompletionResult("'ProcessServerNoHeartbeat'", "ProcessServerNoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProcessServerNoHeartbeat");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "IncompatibleApplianceVersion".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("IncompatibleApplianceVersion", "IncompatibleApplianceVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "IncompatibleApplianceVersion");
+                yield return new global::System.Management.Automation.CompletionResult("'IncompatibleApplianceVersion'", "IncompatibleApplianceVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "IncompatibleApplianceVersion");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotProtected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotProtected", "NotProtected", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotProtected");
+                yield return new global::System.Management.Automation.CompletionResult("'NotProtected'", "NotProtected", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotProtected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnsupportedProtectionScenario".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnsupportedProtectionScenario", "UnsupportedProtectionScenario", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedProtectionScenario");
+                yield return new global::System.Management.Automation.CompletionResult("'UnsupportedProtectionScenario'", "UnsupportedProtectionScenario", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedProtectionScenario");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DistroIsNotReported".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DistroIsNotReported", "DistroIsNotReported", global::System.Management.Automation.CompletionResultType.ParameterValue, "DistroIsNotReported");
+                yield return new global::System.Management.Automation.CompletionResult("'DistroIsNotReported'", "DistroIsNotReported", global::System.Management.Automation.CompletionResultType.ParameterValue, "DistroIsNotReported");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DistroNotSupportedForUpgrade".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DistroNotSupportedForUpgrade", "DistroNotSupportedForUpgrade", global::System.Management.Automation.CompletionResultType.ParameterValue, "DistroNotSupportedForUpgrade");
+                yield return new global::System.Management.Automation.CompletionResult("'DistroNotSupportedForUpgrade'", "DistroNotSupportedForUpgrade", global::System.Management.Automation.CompletionResultType.ParameterValue, "DistroNotSupportedForUpgrade");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MissingUpgradePath".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MissingUpgradePath", "MissingUpgradePath", global::System.Management.Automation.CompletionResultType.ParameterValue, "MissingUpgradePath");
+                yield return new global::System.Management.Automation.CompletionResult("'MissingUpgradePath'", "MissingUpgradePath", global::System.Management.Automation.CompletionResultType.ParameterValue, "MissingUpgradePath");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvalidAgentVersion".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvalidAgentVersion", "InvalidAgentVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidAgentVersion");
+                yield return new global::System.Management.Automation.CompletionResult("'InvalidAgentVersion'", "InvalidAgentVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidAgentVersion");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvalidDriverVersion".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvalidDriverVersion", "InvalidDriverVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidDriverVersion");
+                yield return new global::System.Management.Automation.CompletionResult("'InvalidDriverVersion'", "InvalidDriverVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidDriverVersion");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

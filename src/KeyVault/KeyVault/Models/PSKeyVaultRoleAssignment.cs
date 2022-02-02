@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.Security.KeyVault.Administration.Models;
+using Azure.Security.KeyVault.Administration;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Id = roleAssignment.Id;
             Name = roleAssignment.Name;
             Type = roleAssignment.Type;
-            Scope = roleAssignment.Properties.Scope;
+            Scope = roleAssignment.Properties.Scope?.ToString();
             RoleDefinitionId = roleAssignment.Properties.RoleDefinitionId;
             PrincipalId = roleAssignment.Properties.PrincipalId;
             HsmName = hsmName;

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 10141D75-B58D-42B0-B0A6-92FF630E534C
@@ -29,6 +29,20 @@ Enable-AzOperationalInsightsLinuxPerformanceCollection [-Workspace] <PSWorkspace
 The **Enable-AzOperationalInsightsLinuxPerformanceCollection** cmdlet starts collection of performance counters from connected Linux computers in a workspace.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName yuzhi-rg -WorkspaceName OperationalInsight
+
+Name              : DataSource_LinuxPerformanceCollection
+ResourceGroupName : yuzhi-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yuzhi-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_LinuxPerformanceCollection
+Kind              : LinuxPerformanceCollection
+Properties        : {"state":"Enabled"}
+```
+Starts collection of performance counters from connected Linux computers in a workspace.
 
 ## PARAMETERS
 
@@ -124,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

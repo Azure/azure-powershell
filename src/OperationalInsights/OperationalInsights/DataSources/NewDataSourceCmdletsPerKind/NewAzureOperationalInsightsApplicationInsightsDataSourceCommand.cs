@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             var expectedTokens = Resources.ApplicationInsightsArmResourceFormat.Trim('/').Split('/').Where((token, idx) => !indicesToRemove.Contains(idx)).ToArray();
             if (actualTokens.Except(expectedTokens).Any())
             {
-                throw new ArgumentException(Resources.DataSourceInvalidApplicationInsightsResourceId);
+                throw new PSArgumentException(Resources.DataSourceInvalidApplicationInsightsResourceId);
             }
         }
     }

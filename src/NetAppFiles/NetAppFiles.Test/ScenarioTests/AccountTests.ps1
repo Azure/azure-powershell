@@ -45,7 +45,9 @@ function Test-AccountActiveDirectory
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        $groupTagName = "owner"
+        $groupTagValue = "b-aubald"
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{$groupTagName = $groupTagValue}
 
         # check multiple ADs are captured
         # currently this is not permitted and throws a message
@@ -121,6 +123,7 @@ Test Account CRUD operations
 #>
 function Test-AccountCrud
 {
+    #$resourceGroup = "somename2"
     $resourceGroup = Get-ResourceGroupName
     $accName1 = Get-ResourceName
     $accName2 = Get-ResourceName
@@ -130,8 +133,10 @@ function Test-AccountCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
+        #New-AzResourceGroup -Name $resourceGroup -Tags @{Owner = 'b-aubald'} -Location $resourceLocation 
+      
         # create and check account 1
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
@@ -197,7 +202,10 @@ function Test-AccountPipelines
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        $groupTagName = "owner"
+        $groupTagValue = "b-aubald"
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tag @{$groupTagName = $groupTagValue}
+
 
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 | Remove-AnfAccount
 

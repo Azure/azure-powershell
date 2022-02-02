@@ -295,6 +295,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        public SwitchParameter DataFlowEnableQuickReuse { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowCoreCount)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -365,13 +379,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
-            HelpMessage = Constants.HelpIntegrationRuntimeProvisionMethod)]
+            HelpMessage = Constants.HelpIntegrationRuntimeVNetInjectionMethod)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            Constants.IntegrationRuntimeProvisionStandard,
-            Constants.IntegrationRuntimeProvisionExpress,
+            Constants.IntegrationRuntimeVNetInjectionStandard,
+            Constants.IntegrationRuntimeVNectInjectionExpress,
             IgnoreCase = true)]
-        public string ProvisionMethod { get; set; }
+        public string VNetInjectionMethod { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -756,10 +770,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
             SetAzureDataFactoryIntegrationRuntimeCommandHelper.SetSubnetId(
-                integrationRuntime, ProvisionMethod, SubnetId, Subnet, VNetId
+                integrationRuntime, VNetInjectionMethod, SubnetId, Subnet, VNetId
                 );
 
-            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
+            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null || DataFlowEnableQuickReuse != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -773,6 +787,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType = DataFlowComputeType ?? integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType;
                 integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount = DataFlowCoreCount ?? integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount;
                 integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
+                if (DataFlowEnableQuickReuse.IsPresent)
+                {
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = false;
+                } 
+                else
+                {
+                    // setting it as null as the default value for the cleanup variable is false, and the backend endpoint treats null value as true.
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
+                }
+
             }
 
             if (PublicIPs != null)

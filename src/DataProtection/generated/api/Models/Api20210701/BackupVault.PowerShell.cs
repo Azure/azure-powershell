@@ -66,15 +66,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceMoveDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState?) content.GetValueForProperty("ResourceMoveState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]) content.GetValueForProperty("StorageSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.StorageSettingTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId = (string) content.GetValueForProperty("ResourceMoveDetailOperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailStartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailCompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailSourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailTargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath, global::System.Convert.ToString);
+            if (content.Contains("ResourceMoveDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceMoveDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("ResourceMoveState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState?) content.GetValueForProperty("ResourceMoveState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState.CreateFrom);
+            }
+            if (content.Contains("StorageSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]) content.GetValueForProperty("StorageSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.StorageSettingTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ResourceMoveDetailOperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId = (string) content.GetValueForProperty("ResourceMoveDetailOperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailStartTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailStartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailCompletionTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailCompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailSourceResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailSourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailTargetResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailTargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -92,15 +119,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceMoveDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState?) content.GetValueForProperty("ResourceMoveState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]) content.GetValueForProperty("StorageSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.StorageSettingTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId = (string) content.GetValueForProperty("ResourceMoveDetailOperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailStartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailCompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailSourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailTargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath, global::System.Convert.ToString);
+            if (content.Contains("ResourceMoveDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ResourceMoveDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("ResourceMoveState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState?) content.GetValueForProperty("ResourceMoveState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveState, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ResourceMoveState.CreateFrom);
+            }
+            if (content.Contains("StorageSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]) content.GetValueForProperty("StorageSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).StorageSetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.StorageSettingTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ResourceMoveDetailOperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId = (string) content.GetValueForProperty("ResourceMoveDetailOperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailOperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailStartTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailStartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailStartTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailCompletionTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc = (string) content.GetValueForProperty("ResourceMoveDetailCompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailCompletionTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailSourceResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailSourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailSourceResourcePath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceMoveDetailTargetResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath = (string) content.GetValueForProperty("ResourceMoveDetailTargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultInternal)this).ResourceMoveDetailTargetResourcePath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

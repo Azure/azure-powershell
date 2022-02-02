@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
                 Tags = new Dictionary<string, string>(evResource.Tags);
+                ZoneRedundant = evResource.ZoneRedundant;
+                DisableLocalAuth = evResource.DisableLocalAuth;
             }
         }
 
@@ -106,6 +108,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public string ServiceBusEndpoint { get; set; }
 
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
-        
+
+        /// <summary>
+        /// Gets or sets enabling this property creates a Premium Service Bus
+        /// Namespace in regions supported availability zones.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets this property disables SAS authentication for the
+        /// Service Bus namespace.
+        /// </summary>
+        public bool? DisableLocalAuth { get; set; }
+
     }
 }

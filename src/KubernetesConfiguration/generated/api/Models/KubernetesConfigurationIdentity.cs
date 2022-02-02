@@ -39,12 +39,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string ClusterRp { get => this._clusterRp; set => this._clusterRp = value; }
 
+        /// <summary>Backing field for <see cref="ExtensionName" /> property.</summary>
+        private string _extensionName;
+
+        /// <summary>Name of the Extension.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string ExtensionName { get => this._extensionName; set => this._extensionName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>operation Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -108,6 +122,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         SerializedName = @"clusterRp",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterRp { get; set; }
+        /// <summary>Name of the Extension.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the Extension.",
+        SerializedName = @"extensionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExtensionName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
@@ -116,6 +138,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>operation Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"operation Id",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>The name of the resource group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
@@ -159,8 +189,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
         /// clusters).
         /// </summary>
         string ClusterRp { get; set; }
+        /// <summary>Name of the Extension.</summary>
+        string ExtensionName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>operation Id</summary>
+        string OperationId { get; set; }
         /// <summary>The name of the resource group.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>Name of the Source Control Configuration.</summary>

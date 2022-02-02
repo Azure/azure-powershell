@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* New-AzFrontDoorRulesEngineActionObject: Allow rule engine action creation without RouteConfigurationOverride 
-* New-AzFrontDoorRulesEngineActionObject: Fix DynamicCompression parameter being ignored issue
+
+## Version 1.9.0
+* Allowed rule engine action creation without RouteConfigurationOverride for `New-AzFrontDoorRulesEngineActionObject`.
+* Fixed DynamicCompression parameter being ignored issue of `New-AzFrontDoorRulesEngineActionObject`.
 
 ## Version 1.8.0
 * Allowed Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation

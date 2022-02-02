@@ -137,8 +137,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 Name = (string)t["Name"],
                                 RegionalReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
-                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
                             };
+                            if (t["Encryption"] != null)
+                            {
+                                var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
+                                var osDiskImageEncryption = new OSDiskImageEncryption(osDiskEncryptionSetId);
+
+                                List<DataDiskImageEncryption> dataDiskImageEncryption = null;
+                                var dataDiskImage = (object[])((Hashtable)t["Encryption"])["dataDiskImages"];
+                                
+                                if (dataDiskImage != null)
+                                {
+                                    dataDiskImageEncryption = new List<DataDiskImageEncryption>();
+                                    foreach (Hashtable dataDiskEncryptionSetId in dataDiskImage)
+                                    {
+                                        DataDiskImageEncryption d = new DataDiskImageEncryption((int)dataDiskEncryptionSetId["Lun"], (string)dataDiskEncryptionSetId["DiskEncryptionSetId"]);
+                                        dataDiskImageEncryption.Add(d);
+                                    }
+                                }
+                                
+                                target.Encryption = new EncryptionImages(osDiskImageEncryption, dataDiskImageEncryption);
+                            }
 
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
@@ -332,8 +351,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 Name = (string)t["Name"],
                                 RegionalReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
-                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
                             };
+                            if (t["Encryption"] != null)
+                            {
+                                var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
+                                var osDiskImageEncryption = new OSDiskImageEncryption(osDiskEncryptionSetId);
+
+                                List<DataDiskImageEncryption> dataDiskImageEncryption = null;
+                                var dataDiskImage = (object[])((Hashtable)t["Encryption"])["dataDiskImages"];
+
+                                if (dataDiskImage != null)
+                                {
+                                    dataDiskImageEncryption = new List<DataDiskImageEncryption>();
+                                    foreach (Hashtable dataDiskEncryptionSetId in dataDiskImage)
+                                    {
+                                        DataDiskImageEncryption d = new DataDiskImageEncryption((int)dataDiskEncryptionSetId["Lun"], (string)dataDiskEncryptionSetId["DiskEncryptionSetId"]);
+                                        dataDiskImageEncryption.Add(d);
+                                    }
+                                }
+
+                                target.Encryption = new EncryptionImages(osDiskImageEncryption, dataDiskImageEncryption);
+                            }
 
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }

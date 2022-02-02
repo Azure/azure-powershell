@@ -8,7 +8,9 @@ schema: 2.0.0
 # Remove-AzDiskPool
 
 ## SYNOPSIS
-Delete a Disk pool.
+Delete a Disk pool; attached disks are not affected.
+This delete operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
@@ -25,7 +27,9 @@ Remove-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] 
 ```
 
 ## DESCRIPTION
-Delete a Disk pool.
+Delete a Disk pool; attached disks are not affected.
+This delete operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 

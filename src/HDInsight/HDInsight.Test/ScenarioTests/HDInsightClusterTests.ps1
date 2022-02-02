@@ -328,8 +328,8 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		$params= Prepare-ClusterCreateParameter -location "South Central US"
 
 		# prepare custom ambari database
-		$databaseUserName="yourdatabaseuser"
-		$databasePassword="xxxxxxxx"
+		$databaseUserName="yourusername"
+		$databasePassword="******"
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
@@ -385,6 +385,114 @@ function Test-CreateClusterWithComputeIsolation{
 
 		Assert-AreEqual $cluster.ComputeIsolationProperties.EnableComputeIsolation $true
 		
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster with availability zones
+#>
+
+function Test-CreateClusterWithAvailabilityZones{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
+
+		# prepare custom ambari database
+		$databaseUserName="yourusername"
+		$databasePassword="******"
+		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
+	
+		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
+		$sqlserver="yoursqlserver.database.windows.net"
+		$ambariDatabase="ambaridb"
+		$hiveDatabase ="hivedb"
+		$oozieDatabase = "ooziedb"
+
+		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$subnetName="default"
+
+		# Create Ambari metastore
+		$config=New-AzHDInsightClusterConfig|Add-AzHDInsightMetastore `
+		-SqlAzureServerName $sqlserver -DatabaseName $ambariDatabase `
+		-Credential $sqlserverCredential -MetastoreType AmbariDatabase
+
+		# Create Hive metastore
+		$config=$config|Add-AzHDInsightMetastore `
+		-SqlAzureServerName $sqlserver -DatabaseName $hiveDatabase `
+		-Credential $sqlserverCredential -MetastoreType HiveMetastore
+
+		# Create Oozie metastore
+		$config=$config|Add-AzHDInsightMetastore `
+		-SqlAzureServerName $sqlserver -DatabaseName $oozieDatabase `
+		-Credential $sqlserverCredential -MetastoreType OozieMetastore
+
+		# create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $vnetId -SubnetName $subnetName `
+		-AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zone "1"
+
+		Assert-NotNull $cluster
+	}
+	finally
+	{
+		# Delete and resource group
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster with private link configuration feature
+#>
+
+function Test-CreateClusterWithPrivateLinkConfiguration{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
+
+		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
+		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$subnetName="default"
+
+		$ipConfigName="ipconfig"
+		$privateIPAllocationMethod="dynamic" # the only supported IP allocation method for private link IP configuration is dynamic
+		$subnetId=$vnetId+"/subnets/"+$subnetName
+		# Create Private IP configuration
+		$ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName -PrivateIPAllocationMethod $privateIPAllocationMethod -SubnetId $subnetId -Primary
+
+		$privateLinkConfigurationName="plconfig"
+		$groupId="headnode"
+		# Create private link configuration
+		$privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
+
+		# create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 3.6 `
+		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration
+
+		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
+		Assert-AreEqual $cluster.NetworkProperties.PrivateLink Enabled
+		Assert-NotNull $cluster.PrivateLinkConfigurations
 	}
 	finally
 	{

@@ -22,7 +22,7 @@ The **Get-AzAvailableServiceDelegation** cmdlet allows you to retrieve all of th
 
 ## EXAMPLES
 
-### 1: Getting all available service delegations
+### Example 1: Getting all available service delegations
 ```powershell
 PS C:\> Get-AzAvailableServiceDelegation -Location "westus"
 

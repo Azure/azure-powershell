@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName);
 
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
         IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
-
-        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
@@ -59,6 +59,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         PSKeyVaultKey RecoverKey(string vaultName, string keyName);
 
         PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
+
+        #region Key rotation
+        PSKeyVaultKey RotateKey(string vaultName, string keyName);
+
+        PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName);
+
+        PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy KeyRotationPolicy);
+        #endregion
+
         #endregion
 
         #region Managed Hsm key actions
@@ -81,13 +90,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, Track2Sdk.JsonWebKey webKey);
 
-        PSKeyOperationResult ManagedHsmKeyDecrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm);
+        PSKeyOperationResult ManagedHsmKeyDecrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm);
 
-        PSKeyOperationResult ManagedHsmKeyEncrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm);
+        PSKeyOperationResult ManagedHsmKeyEncrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm);
 
-        PSKeyOperationResult ManagedHsmUnwrapKey(string vaultName, string keyName, string keyVersion, byte[] value, string wrapAlgorithm);
+        PSKeyOperationResult ManagedHsmUnwrapKey(string managedHsmName, string keyName, string keyVersion, byte[] value, string wrapAlgorithm);
 
-        PSKeyOperationResult ManagedHsmWrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm);
+        PSKeyOperationResult ManagedHsmWrapKey(string managedHsmName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm);
 
         PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
@@ -96,6 +105,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName);
 
         PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
+
+        #region Key rotation
+        PSKeyVaultKey RotateManagedHsmKey(string managedHsmName, string keyName);
+
+        PSKeyRotationPolicy GetManagedHsmKeyRotationPolicy(string managedHsmName, string keyName);
+
+        PSKeyRotationPolicy SetManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy);
+        #endregion
+
         #endregion
 
         #region Secret actions
@@ -132,11 +150,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultCertificate GetCertificate(string vaultName, string certName, string certificateVersion);
 
-        PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName );
+        PSDeletedKeyVaultCertificate GetDeletedCertificate(string vaultName, string certName);
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultCertificateFilterOptions options);
 
-        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultCertificateFilterOptions options );
+        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates(KeyVaultCertificateFilterOptions options);
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
@@ -148,9 +166,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName);
 
-        void PurgeCertificate( string vaultName, string certName );
+        void PurgeCertificate(string vaultName, string certName);
 
-        PSKeyVaultCertificate RecoverCertificate( string vaultName, string certName );
+        PSKeyVaultCertificate RecoverCertificate(string vaultName, string certName);
 
         PSKeyVaultCertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
 
@@ -180,25 +198,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         #endregion
 
         #region Managed Storage actions
-        IEnumerable<PSKeyVaultManagedStorageAccountIdentityItem> GetManagedStorageAccounts( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSKeyVaultManagedStorageAccountIdentityItem> GetManagedStorageAccounts(KeyVaultObjectFilterOptions options);
 
-        PSKeyVaultManagedStorageAccount GetManagedStorageAccount( string vaultName, string managedStorageAccountName );
+        PSKeyVaultManagedStorageAccount GetManagedStorageAccount(string vaultName, string managedStorageAccountName);
 
-        PSKeyVaultManagedStorageAccount SetManagedStorageAccount( string vaultName, string managedStorageAccountName, string storageResourceId, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
+        PSKeyVaultManagedStorageAccount SetManagedStorageAccount(string vaultName, string managedStorageAccountName, string storageResourceId, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags);
 
-        PSKeyVaultManagedStorageAccount UpdateManagedStorageAccount( string vaultName, string managedStorageAccountName, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
+        PSKeyVaultManagedStorageAccount UpdateManagedStorageAccount(string vaultName, string managedStorageAccountName, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags);
 
-        PSDeletedKeyVaultManagedStorageAccount DeleteManagedStorageAccount( string vaultName, string managedStorageAccountName );
+        PSDeletedKeyVaultManagedStorageAccount DeleteManagedStorageAccount(string vaultName, string managedStorageAccountName);
 
-        PSKeyVaultManagedStorageAccount RegenerateManagedStorageAccountKey( string vaultName, string managedStorageAccountName, string keyName );
+        PSKeyVaultManagedStorageAccount RegenerateManagedStorageAccountKey(string vaultName, string managedStorageAccountName, string keyName);
 
-        PSKeyVaultManagedStorageSasDefinition GetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
+        PSKeyVaultManagedStorageSasDefinition GetManagedStorageSasDefinition(string vaultName, string managedStorageAccountName, string sasDefinitionName);
 
-        IEnumerable<PSKeyVaultManagedStorageSasDefinitionIdentityItem> GetManagedStorageSasDefinitions( KeyVaultStorageSasDefinitiontFilterOptions options );
+        IEnumerable<PSKeyVaultManagedStorageSasDefinitionIdentityItem> GetManagedStorageSasDefinitions(KeyVaultStorageSasDefinitiontFilterOptions options);
 
-        PSKeyVaultManagedStorageSasDefinition SetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName, string templateUri, string sasType, string validityPeriod, PSKeyVaultManagedStorageSasDefinitionAttributes sasDefinitionAttributes, Hashtable tags );
+        PSKeyVaultManagedStorageSasDefinition SetManagedStorageSasDefinition(string vaultName, string managedStorageAccountName, string sasDefinitionName, string templateUri, string sasType, string validityPeriod, PSKeyVaultManagedStorageSasDefinitionAttributes sasDefinitionAttributes, Hashtable tags);
 
-        PSDeletedKeyVaultManagedStorageSasDefinition DeleteManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
+        PSDeletedKeyVaultManagedStorageSasDefinition DeleteManagedStorageSasDefinition(string vaultName, string managedStorageAccountName, string sasDefinitionName);
 
         PSDeletedKeyVaultManagedStorageAccount GetDeletedManagedStorageAccount(string vaultName, string managedStorageAccountName);
 
@@ -222,18 +240,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         #region Full backup restore
         Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken);
-        
+
         void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder);
-       
+
         void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder);
         #endregion
 
         #region RBAC
+        PSKeyVaultRoleDefinition CreateOrUpdateHsmRoleDefinition(string hsmName, string scope, PSKeyVaultRoleDefinition role);
         PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope);
         PSKeyVaultRoleAssignment[] GetHsmRoleAssignments(string hsmName, string scope);
         PSKeyVaultRoleAssignment GetHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
         PSKeyVaultRoleAssignment CreateHsmRoleAssignment(string hsmName, string scope, string roleDefinitionId, string principalId);
         void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
+        void RemoveHsmRoleDefinition(string hsmName, string scope, string name);
         #endregion
     }
 }

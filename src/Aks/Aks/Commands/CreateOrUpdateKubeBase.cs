@@ -25,8 +25,6 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -39,7 +37,9 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Aks
     {
         protected const string DefaultParamSet = "defaultParameterSet";
         protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
+        private const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
         [Parameter(
             Position = 0,
@@ -124,6 +125,38 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The desired number of allocated SNAT ports per VM.")]
+        [ValidateRange(0, 64000)]
+        public int LoadBalancerAllocatedOutboundPort { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired managed outbound IPs count for the cluster load balancer.")]
+        public int LoadBalancerManagedOutboundIpCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP Prefix resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIpPrefix { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes.")]
+        [ValidateRange(4, 120)]
+        public int LoadBalancerIdleTimeoutInMinute { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The IP ranges authorized to access the Kubernetes API server.")]
+        public string[] ApiServerAccessAuthorizedIpRange { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create the cluster as a private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateCluster { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The private DNS zone mode for the cluster.")]
+        public string ApiServerAccessPrivateDnsZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create additional public FQDN for private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateClusterPublicFQDN { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The FQDN subdomain of the private cluster with custom private dns zone.")]
+        public string FqdnSubdomain { get; set; }
 
         protected void BeforeBuildNewCluster()
         {
@@ -226,6 +259,21 @@ namespace Microsoft.Azure.Commands.Aks
                     clientSecret = RandomBase64String(16);
                 }
 
+                bool supressWarningOrError = false;
+
+                try
+                {
+                    supressWarningOrError = bool.Parse(Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch (Exception)
+                {
+                    //no action
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteWarning(Constants.MSGraphMigrationMessage);
+                }
+
                 acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
                 WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
                 StoreServicePrincipal(acsServicePrincipal);
@@ -235,26 +283,32 @@ namespace Microsoft.Azure.Commands.Aks
 
         private AcsServicePrincipal BuildServicePrincipal(string name, string clientSecret)
         {
-            var pwCreds = new PasswordCredential(
-                value: clientSecret,
-                startDate: DateTime.UtcNow,
-                endDate: DateTime.UtcNow.AddYears(2));
+            var keyCredentials = new List<MicrosoftGraphKeyCredential> {
+                    new MicrosoftGraphKeyCredential {
+                        EndDateTime = DateTime.UtcNow.AddYears(2),
+                        StartDateTime = DateTime.UtcNow,
+                        Key = clientSecret,
+                        Type = "Symmetric",
+                        Usage = "Verify"
+                    }
+            };
+            var appCreateParameters = new MicrosoftGraphApplication
+            {
+                DisplayName = name,
+                KeyCredentials = keyCredentials
+            };
+            var app = GraphClient.Applications.CreateApplication(appCreateParameters);
 
-            var app = GraphClient.Applications.Create(new ApplicationCreateParameters(
-                false,
-                name,
-                new List<string> { },
-                null,
-                passwordCredentials: new List<PasswordCredential> { pwCreds }));
-
-            ServicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             var success = RetryAction(() =>
             {
-                var spCreateParams = new ServicePrincipalCreateParameters(
-                                app.AppId,
-                                true,
-                                passwordCredentials: new List<PasswordCredential> { pwCreds });
-                sp = GraphClient.ServicePrincipals.Create(spCreateParams);
+                var servicePrincipalCreateParams = new MicrosoftGraphServicePrincipal
+                {
+                    AppId = app.AppId,
+                    AccountEnabled = true,
+                    KeyCredentials = keyCredentials
+                };
+                sp = GraphClient.ServicePrincipals.CreateServicePrincipal(servicePrincipalCreateParams);
             }, Resources.ServicePrincipalCreate);
 
             if (!success)
@@ -264,8 +318,8 @@ namespace Microsoft.Azure.Commands.Aks
                     desensitizedMessage: Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
-            AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
-            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.ObjectId };
+            AddSubscriptionRoleAssignment("Contributor", sp.Id);
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
         protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
@@ -314,10 +368,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
-                    //Please note string.Equals doesn't work here, while == works.
-                    var odataQuery = new ODataQuery<ServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
-                    var servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery).First();
-                    spObjectId = servicePrincipal.ObjectId;
+                    ODataQuery<MicrosoftGraphServicePrincipal> oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
+                    var servicePrincipal = GraphClient.FilterServicePrincipals(oDataQuery).First();
+                    spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
                 {
@@ -447,6 +500,71 @@ namespace Microsoft.Azure.Commands.Aks
 
             var subPart = string.Join("", DefaultContext.Subscription.Id.Take(4));
             return $"{namePart}{subPart}";
+        }
+    
+        protected ManagedClusterLoadBalancerProfile CreateOrUpdateLoadBalancerProfile(ManagedClusterLoadBalancerProfile loadBalancerProfile)
+        {
+            if ((this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
+                this.IsParameterBound(c => c.LoadBalancerOutboundIp) ||
+                this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix) ||
+                this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort) ||
+                this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute)) &&
+                loadBalancerProfile == null)
+            {
+                loadBalancerProfile = new ManagedClusterLoadBalancerProfile();
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount))
+            {
+                loadBalancerProfile.ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs(LoadBalancerManagedOutboundIpCount);
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerOutboundIp))
+            {
+                loadBalancerProfile.OutboundIPs = new ManagedClusterLoadBalancerProfileOutboundIPs(LoadBalancerOutboundIp.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix))
+            {
+                loadBalancerProfile.OutboundIPPrefixes = new ManagedClusterLoadBalancerProfileOutboundIPPrefixes(LoadBalancerOutboundIpPrefix.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort))
+            {
+                loadBalancerProfile.AllocatedOutboundPorts = LoadBalancerAllocatedOutboundPort;
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute))
+            {
+                loadBalancerProfile.IdleTimeoutInMinutes = LoadBalancerIdleTimeoutInMinute;
+            }
+
+            return loadBalancerProfile;
+        }
+
+        protected ManagedClusterAPIServerAccessProfile CreateOrUpdateApiServerAccessProfile(ManagedClusterAPIServerAccessProfile apiServerAccessProfile)
+        {
+            if ((this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange) ||
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster) ||
+                this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone) ||
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN)) &&
+                apiServerAccessProfile == null)
+            {
+                apiServerAccessProfile = new ManagedClusterAPIServerAccessProfile();
+            }
+            if (this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange))
+            {
+                apiServerAccessProfile.AuthorizedIPRanges = ApiServerAccessAuthorizedIpRange;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster))
+            {
+                apiServerAccessProfile.EnablePrivateCluster = EnableApiServerAccessPrivateCluster;
+            }
+            if (this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone))
+            {
+                apiServerAccessProfile.PrivateDNSZone = ApiServerAccessPrivateDnsZone;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN))
+            {
+                apiServerAccessProfile.EnablePrivateClusterPublicFQDN = EnableApiServerAccessPrivateClusterPublicFQDN;
+            }
+
+            return apiServerAccessProfile;
         }
     }
 }

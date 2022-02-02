@@ -8,7 +8,7 @@ This cmdlet removes MySql Firewall Rule by name.
 
 ### Example 2: Remove MySql Firewall Rule by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/firewallRules/firewall-rule-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/firewallRules/firewall-rule-test"
 PS C:\> Remove-AzMySqlFlexibleServerFirewallRule -InputObject $ID
  
 ```

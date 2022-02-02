@@ -223,10 +223,10 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
     $output = $result | Out-String;
 
     $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-    Assert-AreEqual "NotEncrypted" $result[0].DataVolumesEncrypted;
+    Assert-AreEqual "NotEncrypted" (($result[0].DataVolumesEncryptionStatus | ConvertFrom-Json -AsHashtable).Values[0] | Out-String ).Trim();
     $output = $result | Out-String;
 
     $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "4";
-    Assert-AreEqual "NotEncrypted" $result.DataVolumesEncrypted;
+    Assert-AreEqual "NotEncrypted" (($result.DataVolumesEncryptionStatus | ConvertFrom-Json -AsHashtable).Values[0] | Out-String ).Trim();
     $output = $result | Out-String;
 }

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ZeroSessions".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ZeroSessions", "ZeroSessions", global::System.Management.Automation.CompletionResultType.ParameterValue, "ZeroSessions");
+                yield return new global::System.Management.Automation.CompletionResult("'ZeroSessions'", "ZeroSessions", global::System.Management.Automation.CompletionResultType.ParameterValue, "ZeroSessions");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ZeroActiveSessions".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ZeroActiveSessions", "ZeroActiveSessions", global::System.Management.Automation.CompletionResultType.ParameterValue, "ZeroActiveSessions");
+                yield return new global::System.Management.Automation.CompletionResult("'ZeroActiveSessions'", "ZeroActiveSessions", global::System.Management.Automation.CompletionResultType.ParameterValue, "ZeroActiveSessions");
             }
         }
     }

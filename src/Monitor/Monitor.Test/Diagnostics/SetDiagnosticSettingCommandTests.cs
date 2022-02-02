@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InputObjectTest()
         {
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting(id: "nothing/providers/microsoft.insights/diagnosticSettings/");
+            DiagnosticSettingsResource expectedSettings = GetDefaultSetting(id: "nothing/providers/Microsoft.Insights/diagnosticSettings/");
 
             cmdlet.InputObject =new OutputClasses.PSServiceDiagnosticSettings(expectedSettings);
             cmdlet.ResourceId = resourceId;
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             // VerifyCalledOnce();
             VerifySettings(expectedSettings, this.calledSettings);
 
-            expectedSettings = GetDefaultSetting(name: "myName", id: "nothing/providers/microsoft.insights/diagnosticSettings/");
+            expectedSettings = GetDefaultSetting(name: "myName", id: "nothing/providers/Microsoft.Insights/diagnosticSettings/");
             cmdlet.InputObject = new OutputClasses.PSServiceDiagnosticSettings(expectedSettings);
             cmdlet.ResourceId = resourceId;
             cmdlet.Name = "myName";

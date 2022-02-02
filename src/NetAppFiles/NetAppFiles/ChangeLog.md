@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`
+* Added `Get-AzNetAppFilesQuotaLimit` to get the default and current limits for quotas
+* Added `CapacityPoolResourceId`, `ProximityPlacementGroup`, `VolumeSpecName` and `PlacementRules` to `Volume`
+
+Breaking change:
+* The `Administrators` parameter in `New-AzNetAppFilesActiveDirectory` and `Update-AzNetAppFilesActiveDirectory` is changed to singularform `Administrator` to follow Powrshell convetion
+
+## Version 0.8.0
+* Added list NetAppAccounts by subscription
+* Added etags to response PSNetAppFilesVolume, PSNetAppFilesPool, PSNetAppFilesAccount, PSNetAppFilesBackupPolicy, PSNetAppFilesSnapshotPolicy
+* Added EncryptionType to New-AzNetAppFilesPool and PSNetAppFilesPool
+* Added CloneProgress, AvsDataStore,IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs, NetworkFeatures, NetworkSiblingSetId, StorageToNetworkProximity to PSNetAppFilesVolume 
+* Added CloneProgress, AvsDataStore,IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs, NetworkFeatures to New-AzNetAppFilesVolume
+* Added IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs  Update-AzNetAppFilesVolume
+* Service level now supports StandardZRS
+Breaking change:
+         - YearlyBackupsToKeep property is not supported by the service and has been removed from New-AzNetAppFilesBackupPolicy, Set-AzNetAppFilesBackupPolicy and output
 
 ## Version 0.7.0
 * Added Administrators to ActiveDirectory

@@ -82,7 +82,7 @@ Accept wildcard characters: False
 
 ### -HostName
 GitHub Enterprise host name.
-For example: https://github.mydomain.com
+For example: `https://github.mydomain.com`
 
 ```yaml
 Type: System.String

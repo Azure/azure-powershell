@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string BackupIntervalInMinHelpMessage = "The interval(in minutes) with which backup are taken (only for accounts with periodic mode backups)";
         public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
         public const string BackupTypeHelpMessage = "The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous";
+        public const string BackupStorageRedundancyHelpMessage = "The redundancy type of the backup Storage account";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -194,5 +195,35 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string PermissionsHelpMessage = "Permission is a collection of data actions.";
         public const string AssignableScopesHelpMessage = "Set of resource paths below which a Role Assignment can be attached to the Role Definition. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
         public const string RoleDefinitionNameHelpMessage = "Unique display name for the Role Definition.";
+
+        //Cassandra cmdlets help messages        
+        public const string ManagedCassandraTagsHelpMessage = "Managed Cassandra Tags.";
+        public const string ManagedCassandraIdentityHelpMessage = "Identity used to authenticate.";
+        public const string ManagedCassandraRepairEnabledHelpMessage = "Enables automatic repair.";
+        public const string ManagedCassandraLocationHelpMessage = "Azure Location of the Cluster.";
+        public const string ManagedCassandraClusterNameHelpMessage = "Managed Cassandra Cluster Name.";
+        public const string ManagedCassandraClusterObjectHelpMessage = "Managed Cassandra Cluster object";
+        public const string ManagedCassandraDatacenterNameHelpMessage = "Managed Cassandra Datacenter Name.";
+        public const string ManagedCassandraCassandraVersionHelpMessage = "The version of Cassandra chosen.";
+        public const string ManagedCassandraDatacenterObjectHelpMessage = "Managed Cassandra Datacenter object";
+        public const string ManagedCassandraDatacenterLocationHelpMessage = "Azure Location of the DataCenter.";
+        public const string ManagedCassandraHoursBetweenBackupsHelpMessage = "The number of hours between backup attempts.";
+        public const string ManagedCassandraExternalSeedNodesHelpMessage = "A list of ip addresses of the seed nodes of on-premise data centers.";
+        public const string ManagedCassandraClientCertificatesHelpMessage = "If specified, enables client certificate authentication to the Cassandra API.";
+        public const string ManagedCassandraNodeCountHelpMessage = "The number of Cassandra virtual machines in this data center. The minimum value is 3.";
+        public const string ManagedCassandraExternalGossipCertificatesHelpMessage = "A list of certificates that the managed cassandra data center's should accept.";
+        public const string ManagedCassandraInitialCassandraAdminPasswordHelpMessage = "The intial password to be configured when a cluster is created for AuthenticationMethod Cassandra.";
+        public const string ManagedCassandraBase64EncodedCassandraYamlFragment = "This is a Base64 encoded yaml file that is a subset of cassandra.yaml. Supported fields will be honored and others will be ignored.";
+        public const string ManagedCassandraDataCenterDelegatedSubnetIdHelpMessage = "The resource id of a subnet where ip addresses of the Cassandra virtual machines will be allocated. This must be in the same region as datacenter location.";
+        public const string ManagedCassandraAuthenticationMethodHelpMessage = "Authentication mode can be None or Cassandra. If None, no authentication will be required to connect to the Cassandra API. If Cassandra, then passwords will be used.";
+        public const string ManagedCassandraRestoreFromBackupIdHelpMessage = "The resource id of a backup. If provided on create, the backup will be used to prepopulate the cluster.";
+        public const string ManagedCassandraDelegatedSubnetIdHelpMessage = "The resource id of a subnet where the ip address of the cassandra management server will be allocated. This subnet must have connectivity to the DelegatedSubnetId subnet of each data center.";
+        public const string ManagedCassandraClusterNameOverrideHelpMessage = "By default, the Azure resource name is used to populate the clusterName field in cassandra.yaml. If this field is set, its value is used instead of the Azure resource name, for example, if you need a clusterName that is not a valid Azure resource name, or you need multiple clusters with the same clusterName.";
+        public const string ManagedCassandraManagedDiskCustomerKeyUri = "URI to KeyVault key used to encrypt the Cassandra data disks. If not set, will use Azure's own keys. Ensure the system assigned identity of the cluster has been assigned appropriate permissions (key get/wrap/unwrap permissions) on the key.";
+        public const string ManagedCassandraBackupStorageCustomerKeyUri = "URI to KeyVault key that is used to encrypt Cassandra backups. If not set, will use Azure's own keys. Ensure the system assigned identity of the cluster has been assigned appropriate permissions (key get/wrap/unwrap permissions) on the key.";
+        public const string ManagedCassandraSku = "Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2";
+        public const string ManagedCassandraDiskSku = "Disk SKU used for data centers. Default value is P30.";
+        public const string ManagedCassandraDiskCapacity = "Number of disk used for data centers. Default value is 4.";
+        public const string ManagedCassandraUseAvailabilityZone = "Deploy nodes across availability zones if they are available in this location.";
     }
 }

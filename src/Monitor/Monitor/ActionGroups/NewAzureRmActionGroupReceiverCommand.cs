@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
         private const string NewAzureAppPushReceiver = "NewAzureAppPushReceiver";
 
+        private const string NewEventHubReceiver = "NewEventHubReceiver";
         #region
 
         /// <summary>
@@ -74,6 +75,34 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         [Parameter(ParameterSetName = NewEmailReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The address of the email receiver")]
         [ValidateNotNullOrEmpty]
         public string EmailAddress { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets event hub receiver SwitchParameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewEventHubReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Create a event hub receiver")]
+        public SwitchParameter EventHubReceiver { get; set; }
+
+        /// <summary>
+        /// Gets or sets the EventHubNameSpace parameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewEventHubReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name space of the event hub receiver")]
+        [ValidateNotNullOrEmpty]
+        public string EventHubNameSpace { get; set; }
+
+        /// <summary>
+        /// Gets or sets the EventHubName parameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewEventHubReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The EventHubName of the event hub receiver")]
+        [ValidateNotNullOrEmpty]
+        public string EventHubName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SubscriptionId parameter
+        /// </summary>
+        [Parameter(ParameterSetName = NewEventHubReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription id of the event hub receiver")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets sms receiver SwitchParameter
@@ -334,6 +363,17 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                         IdentifierUri = IdentifierUri,
                         TenantId = TenantId
                     };
+            }
+            else if(this.ParameterSetName == NewEventHubReceiver)
+            {
+                receiverBase = new PSEventHubReceiver
+                {
+                    Name = Name,
+                    SubscriptionId = SubscriptionId,
+                    EventHubNameSpace = EventHubNameSpace,
+                    EventHubName = EventHubName,
+                    UseCommonAlertSchema = UseCommonAlertSchema
+                };
             }
             else if(this.ParameterSetName == NewItsmReceiver)
             {

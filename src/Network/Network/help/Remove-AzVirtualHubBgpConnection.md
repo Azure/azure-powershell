@@ -69,24 +69,9 @@ The above will remove a Virtual WAN Hub BGP Connection using the BGP Connection 
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -99,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -114,7 +99,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +114,7 @@ Accept wildcard characters: False
 The virtual hub bgp connection resource.
 
 ```yaml
-Type: PSBgpConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSBgpConnection
 Parameter Sets: ByHubBgpConnectionObject
 Aliases: VirtualHubBgpConnection
 
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubName, ByVirtualHubObject
 Aliases: ResourceName, BgpConnectionName
 
@@ -159,7 +144,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +159,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -189,7 +174,7 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHubBgpConnectionResourceId
 Aliases: BgpConnectionId
 
@@ -219,11 +204,26 @@ Accept wildcard characters: False
 The virtual hub name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases: ParentResourceName, ParentVirtualHubName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -235,7 +235,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

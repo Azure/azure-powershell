@@ -103,5 +103,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// Gets or sets a CMK URI of the key to use for encryption.
         /// </summary>
         public string KeyId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a federated client id to use in xtcmk scenario
+        /// </summary>
+        public Guid? FederatedClientId { get; set; }
     }
 }

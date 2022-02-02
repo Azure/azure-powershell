@@ -35,7 +35,7 @@ The **Add-AzLoadBalancerInboundNatRuleConfig** cmdlet adds an inbound network ad
 ## EXAMPLES
 
 ### Example 1: Add an inbound NAT rule configuration to a load balancer
-```
+```powershell
 PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewNatRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
 PS C:\> $slb | Set-AzLoadBalancer

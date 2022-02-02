@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public object Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets resource etag
+        /// </summary>
+        /// <remarks>
+        /// A unique read-only string that changes whenever the resource is updated.
+        /// </remarks>
+        public string Etag { get; set; }
+
+        /// <summary>
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }

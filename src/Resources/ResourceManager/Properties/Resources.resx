@@ -264,6 +264,12 @@
   <data name="RegisterProviderFeatureMessage" xml:space="preserve">
     <value>Registering provider feature ...</value>
   </data>
+  <data name="NewFeatureRegistrationMessage" xml:space="preserve">
+    <value>Creating feature registration ...</value>
+  </data>
+  <data name="RemoveFeatureRegistrationMessage" xml:space="preserve">
+    <value>Removing feature registration ...</value>
+  </data>
   <data name="RegisterProviderMessage" xml:space="preserve">
     <value>Registering provider ...</value>
   </data>
@@ -502,5 +508,8 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   </data>
   <data name="BicepVersionRequirement" xml:space="preserve">
     <value>Please use bicep '{0}' or higher verison.</value>
+  </data>
+  <data name="BuildBicepFileToJsonFailed" xml:space="preserve">
+    <value>Build bicep file '{0}' to json failed.</value>
   </data>
 </root>

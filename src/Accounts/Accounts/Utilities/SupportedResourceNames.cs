@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Profile
     {
         public const string Arm = "Arm";
         public const string AadGraph = "AadGraph";
+        public const string MSGraph = "MSGraph";
         public const string Batch = "Batch";
         public const string DataLake = "DataLake";
         public const string KeyVault = "KeyVault";
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Profile
             DataPlaneResourceNameMap = new Dictionary<string, string>()
                     {
                         { AadGraph, AzureEnvironment.Endpoint.GraphEndpointResourceId },
+                        { MSGraph, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId },
                         { Batch, AzureEnvironment.Endpoint.BatchEndpointResourceId },
                         { DataLake, AzureEnvironment.Endpoint.DataLakeEndpointResourceId },
                         { KeyVault, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId },

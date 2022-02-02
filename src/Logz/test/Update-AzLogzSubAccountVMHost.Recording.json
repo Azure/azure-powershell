@@ -1,0 +1,39 @@
+{
+  "Update-AzLogzSubAccountVMHost+[NoContext]+Update+$POST+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/accounts/subAccountaov1sl/vmHostUpdate?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/accounts/subAccountaov1sl/vmHostUpdate?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"vmResourceIds\": [\r\n    {\r\n      \"id\": \"/SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1\",\r\n      \"agentVersion\": \"1.0\"\r\n    }\r\n  ],\r\n  \"state\": \"Install\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "242" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b459d8c8-8222-46b3-84a1-4fa1df859805" ],
+        "x-ms-correlation-request-id": [ "a88df99b-160d-484a-a256-9a1f9a19c6ff" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T072555Z:a88df99b-160d-484a-a256-9a1f9a19c6ff" ],
+        "Date": [ "Fri, 17 Sep 2021 07:25:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "186" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1\",\"agentVersion\":\"1.0\"}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  }
+}

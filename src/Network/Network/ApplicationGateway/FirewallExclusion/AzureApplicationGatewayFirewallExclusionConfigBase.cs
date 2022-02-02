@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -39,6 +40,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Selector { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of Exclusion Managed ruleSets.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[] ExclusionManagedRuleSet { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -50,7 +57,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 MatchVariable = this.Variable,
                 SelectorMatchOperator = this.Operator,
-                Selector = this.Selector
+                Selector = this.Selector,
+                ExclusionManagedRuleSets = this.ExclusionManagedRuleSet?.ToList()
             };
         }
     }

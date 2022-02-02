@@ -44,7 +44,7 @@ delete private link scope with name "scope_name" under resource group "rg_name"
 
 ### Example 2
 ```powershell
-Remove-AzInsightsPrivateLinkScope -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/rg_name/providers/microsoft.insights/privateLinkScopes/scope_name"
+Remove-AzInsightsPrivateLinkScope -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/rg_name/providers/Microsoft.Insights/privateLinkScopes/scope_name"
 ```
 
 delete private link scope with resource Id

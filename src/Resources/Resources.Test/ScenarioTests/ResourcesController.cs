@@ -12,6 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.ManagementGroups;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,19 +35,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.ManagementGroups;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
 
-        public GraphRbacManagementClient GraphClient { get; private set; }
+        public MicrosoftGraphClient GraphClient { get; private set; }
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -159,7 +161,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 DeploymentScriptsClient);
         }
 
-        private GraphRbacManagementClient GetGraphClient(MockContext context)
+        private MicrosoftGraphClient GetGraphClient(MockContext context)
         {
             var environment = TestEnvironmentFactory.GetTestEnvironment();
             string tenantId = null;
@@ -188,7 +190,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
             }
 
-            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            var client = context.GetGraphServiceClient<MicrosoftGraphClient>(environment);
             client.TenantID = tenantId;
             if (AzureRmProfileProvider.Instance != null &&
                 AzureRmProfileProvider.Instance.Profile != null &&

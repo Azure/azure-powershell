@@ -25,8 +25,8 @@ This cmdlet prompts you for confirmation before it removes a job, unless you spe
 ## EXAMPLES
 
 ### Example 1: Delete a Batch job
-```
-PS C:\>Remove-AzBatchJob -Id "Job-000001" -BatchContext $Context
+```powershell
+Remove-AzBatchJob -Id "Job-000001" -BatchContext $Context
 ```
 
 This command deletes the job that has the ID Job-000001.
@@ -34,13 +34,32 @@ The command prompts you for confirmation before it deletes the job.
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Delete a Batch job without confirmation by using the pipeline
-```
-PS C:\>Get-AzBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzBatchJob -Force -BatchContext $Context
+```powershell
+Get-AzBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzBatchJob -Force -BatchContext $Context
 ```
 
 This command gets the job that has the ID Job-000002 by using the Get-AzBatchJob cmdlet.
 The command passes that job to the current cmdlet by using the pipeline operator.
 The command deletes that job.
+Because the command includes the *Force* parameter, it does not prompt you for confirmation.
+
+### Example 3: Loop through all jobs and delete
+```powershell
+# Get context
+$accountname = "PUT YOUR AZURE BATCH ACCOUNT NAME HERE"
+$batchcontext = Get-AzBatchAccount -AccountName $accountname
+
+# Get jobs
+$jobs = Get-AzBatchJob -BatchContext $batchcontext
+
+# Loop through jobs
+foreach ($element in $jobs) {
+	Write-Host "Processing "$element.Id
+	Remove-AzBatchJob -Id $element.Id -BatchContext $batchcontext -Force -Confirm:$false
+}
+```
+
+The commands above Remove all of the jobs for a given Azure Batch account.
 Because the command includes the *Force* parameter, it does not prompt you for confirmation.
 
 ## PARAMETERS

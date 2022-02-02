@@ -19,10 +19,12 @@ Tests EventHub Namespace Create List Remove operations.
 #>
 function ServiceBusTests {
     # Setup    
-    $location = Get-Location
+    $location = "East US 2"
     $resourceGroupName = getAssetName "RGName-"
     $namespaceName = getAssetName "Namespace1-"
     $namespaceName2 = getAssetName "Namespace2-"
+    $namespaceName3 = getAssetName "Namespace3-"
+
  
     Write-Debug "Create resource group"    
     New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
@@ -33,7 +35,7 @@ function ServiceBusTests {
 
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName"
-    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard"
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
     # Assert
     Assert-AreEqual $result.Name $namespaceName
     Assert-AreEqual $result.ProvisioningState "Succeeded"
@@ -46,8 +48,13 @@ function ServiceBusTests {
     Assert-AreEqual $getNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
     Assert-AreEqual $getNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
     
-    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2 -Tag @{Tag1="Tag1Value"; Tag2="Tag1Value2"}
     Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
+    Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
+
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard"
+    Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
+    Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
 
     Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2
@@ -60,7 +67,16 @@ function ServiceBusTests {
     $allCreatedNamespace = Get-AzServiceBusNamespace
     Assert-True { $allCreatedNamespace.Count -gt 1 }
 
+    # for ZoneRedundant and DisableLocalAuth 
+    Write-Debug "NamespaceName : $namespaceName3"
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName3 -SkuName "Premium" -ZoneRedundant -DisableLocalAuth
+    # Assert
+    Assert-AreEqual $result.Name $namespaceName3
+    Assert-True {$result.ZoneRedundant}
+    Assert-True {$result.DisableLocalAuth}
+
     Write-Debug " Delete namespaces"
+    Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName3
     Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
     Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 

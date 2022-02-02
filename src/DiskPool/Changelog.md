@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Upgraded API version to 2021-08-01 and added two cmdlets: `Invoke-AzDiskPoolRedeployment` and `Get-AzDiskPoolResourceSku` 
+
 ## Version 0.2.0
 * Added additional info in the output table of New/Update/Remove-Az.DiskPool [#15236]
 * Added cmdlet Get-AzDiskPoolOutboundNetworkDependencyEndpoint and Get-AzDiskPoolZone [#15237]

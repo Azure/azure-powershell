@@ -99,25 +99,82 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfo) content.GetValueForProperty("DeliveryInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDeliveryInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable = (bool?) content.GetValueForProperty("IsCancellable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable = (bool?) content.GetValueForProperty("IsDeletable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable = (bool?) content.GetValueForProperty("IsShippingAddressEditable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled = (bool?) content.GetValueForProperty("IsPrepareToShipEnabled",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetails) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason = (string) content.GetValueForProperty("CancellationReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType?) content.GetValueForProperty("DeliveryType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee = (bool?) content.GetValueForProperty("IsCancellableWithoutFee",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("DeliveryInfoScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeliveryInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfo) content.GetValueForProperty("DeliveryInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDeliveryInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("IsCancellable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable = (bool?) content.GetValueForProperty("IsCancellable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsDeletable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable = (bool?) content.GetValueForProperty("IsDeletable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsShippingAddressEditable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable = (bool?) content.GetValueForProperty("IsShippingAddressEditable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsPrepareToShipEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled = (bool?) content.GetValueForProperty("IsPrepareToShipEnabled",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetails) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CancellationReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason = (string) content.GetValueForProperty("CancellationReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeliveryType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType?) content.GetValueForProperty("DeliveryType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType.CreateFrom);
+            }
+            if (content.Contains("IsCancellableWithoutFee"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee = (bool?) content.GetValueForProperty("IsCancellableWithoutFee",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("ErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeliveryInfoScheduledDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("DeliveryInfoScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -135,25 +192,82 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfo) content.GetValueForProperty("DeliveryInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDeliveryInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable = (bool?) content.GetValueForProperty("IsCancellable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable = (bool?) content.GetValueForProperty("IsDeletable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable = (bool?) content.GetValueForProperty("IsShippingAddressEditable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled = (bool?) content.GetValueForProperty("IsPrepareToShipEnabled",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetails) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason = (string) content.GetValueForProperty("CancellationReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType?) content.GetValueForProperty("DeliveryType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee = (bool?) content.GetValueForProperty("IsCancellableWithoutFee",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("DeliveryInfoScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeliveryInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfo) content.GetValueForProperty("DeliveryInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfo, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDeliveryInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TransferType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) content.GetValueForProperty("TransferType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).TransferType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType.CreateFrom);
+            }
+            if (content.Contains("IsCancellable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable = (bool?) content.GetValueForProperty("IsCancellable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsDeletable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable = (bool?) content.GetValueForProperty("IsDeletable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsDeletable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsShippingAddressEditable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable = (bool?) content.GetValueForProperty("IsShippingAddressEditable",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsShippingAddressEditable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsPrepareToShipEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled = (bool?) content.GetValueForProperty("IsPrepareToShipEnabled",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsPrepareToShipEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName.CreateFrom);
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetails) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Detail, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CancellationReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason = (string) content.GetValueForProperty("CancellationReason",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).CancellationReason, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeliveryType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType?) content.GetValueForProperty("DeliveryType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType.CreateFrom);
+            }
+            if (content.Contains("IsCancellableWithoutFee"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee = (bool?) content.GetValueForProperty("IsCancellableWithoutFee",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).IsCancellableWithoutFee, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("ErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError[]) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).ErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICloudError>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CloudErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IAdditionalErrorInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.AdditionalErrorInfoTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeliveryInfoScheduledDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("DeliveryInfoScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobPropertiesInternal)this).DeliveryInfoScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

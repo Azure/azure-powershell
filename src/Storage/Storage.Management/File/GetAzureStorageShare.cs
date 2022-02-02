@@ -89,7 +89,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Will not allow to input '-ResourceId', '-Name' together in a future release, since name info is already inclouded in ResourceId.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -106,9 +105,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Share Name",
             Mandatory = false,
             ParameterSetName = AccountNameSingleParameterSet)]
-        [Parameter(HelpMessage = "Share Name",
-            Mandatory = false,
-            ParameterSetName = ShareResourceIdParameterSet)]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Share SnapshotTime",

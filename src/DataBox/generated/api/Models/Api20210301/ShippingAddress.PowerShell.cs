@@ -99,16 +99,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1 = (string) content.GetValueForProperty("StreetAddress1",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2 = (string) content.GetValueForProperty("StreetAddress2",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3 = (string) content.GetValueForProperty("StreetAddress3",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince = (string) content.GetValueForProperty("StateOrProvince",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode = (string) content.GetValueForProperty("ZipExtendedCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType?) content.GetValueForProperty("AddressType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType.CreateFrom);
+            if (content.Contains("StreetAddress1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1 = (string) content.GetValueForProperty("StreetAddress1",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1, global::System.Convert.ToString);
+            }
+            if (content.Contains("StreetAddress2"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2 = (string) content.GetValueForProperty("StreetAddress2",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2, global::System.Convert.ToString);
+            }
+            if (content.Contains("StreetAddress3"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3 = (string) content.GetValueForProperty("StreetAddress3",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3, global::System.Convert.ToString);
+            }
+            if (content.Contains("City"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City, global::System.Convert.ToString);
+            }
+            if (content.Contains("StateOrProvince"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince = (string) content.GetValueForProperty("StateOrProvince",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince, global::System.Convert.ToString);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostalCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ZipExtendedCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode = (string) content.GetValueForProperty("ZipExtendedCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType?) content.GetValueForProperty("AddressType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,16 +156,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1 = (string) content.GetValueForProperty("StreetAddress1",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2 = (string) content.GetValueForProperty("StreetAddress2",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3 = (string) content.GetValueForProperty("StreetAddress3",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince = (string) content.GetValueForProperty("StateOrProvince",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode = (string) content.GetValueForProperty("ZipExtendedCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType?) content.GetValueForProperty("AddressType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType.CreateFrom);
+            if (content.Contains("StreetAddress1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1 = (string) content.GetValueForProperty("StreetAddress1",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress1, global::System.Convert.ToString);
+            }
+            if (content.Contains("StreetAddress2"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2 = (string) content.GetValueForProperty("StreetAddress2",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress2, global::System.Convert.ToString);
+            }
+            if (content.Contains("StreetAddress3"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3 = (string) content.GetValueForProperty("StreetAddress3",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StreetAddress3, global::System.Convert.ToString);
+            }
+            if (content.Contains("City"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City = (string) content.GetValueForProperty("City",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).City, global::System.Convert.ToString);
+            }
+            if (content.Contains("StateOrProvince"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince = (string) content.GetValueForProperty("StateOrProvince",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).StateOrProvince, global::System.Convert.ToString);
+            }
+            if (content.Contains("Country"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country = (string) content.GetValueForProperty("Country",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).Country, global::System.Convert.ToString);
+            }
+            if (content.Contains("PostalCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode = (string) content.GetValueForProperty("PostalCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).PostalCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ZipExtendedCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode = (string) content.GetValueForProperty("ZipExtendedCode",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).ZipExtendedCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).CompanyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType?) content.GetValueForProperty("AddressType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddressInternal)this).AddressType, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

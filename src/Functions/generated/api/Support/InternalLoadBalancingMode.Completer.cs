@@ -30,15 +30,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Web".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Web", "Web", global::System.Management.Automation.CompletionResultType.ParameterValue, "Web");
+                yield return new global::System.Management.Automation.CompletionResult("'Web'", "Web", global::System.Management.Automation.CompletionResultType.ParameterValue, "Web");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Publishing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Publishing", "Publishing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Publishing");
+                yield return new global::System.Management.Automation.CompletionResult("'Publishing'", "Publishing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Publishing");
             }
         }
     }

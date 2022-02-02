@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 SecurityOperators = psActiveDirectory.SecurityOperators,
                 LdapOverTLS = psActiveDirectory.LdapOverTLS,
                 AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap,
-                Administrators = psActiveDirectory.Administrators
-
+                Administrators = psActiveDirectory.Administrators,
+                EncryptDCConnections = psActiveDirectory.EncryptDCConnections
             }).ToList();
         }
 
@@ -77,7 +77,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 LdapSigning = activeDirectory.LdapSigning,
                 SecurityOperators = activeDirectory.SecurityOperators,
                 LdapOverTLS = activeDirectory.LdapOverTLS,
-                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap
+                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap,
+                Administrators = activeDirectory.Administrators,
+                EncryptDCConnections = activeDirectory.EncryptDCConnections
             };
             return psActiveDirectory;
         }
@@ -93,6 +95,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = netAppAccount.Name,
                 Type = netAppAccount.Type,
                 Tags = netAppAccount.Tags,
+                Etag = netAppAccount.Etag,
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
                 ProvisioningState = netAppAccount.ProvisioningState
             };
@@ -108,6 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = capacityPool.Name,
                 Type = capacityPool.Type,
                 Tags = capacityPool.Tags,
+                Etag = capacityPool.Etag,
                 PoolId = capacityPool.PoolId,
                 Size = capacityPool.Size,
                 ServiceLevel = capacityPool.ServiceLevel,
@@ -308,6 +312,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = volume.Name,
                 Type = volume.Type,
                 Tags = volume.Tags,
+                Etag = volume.Etag,
                 ProvisioningState = volume.ProvisioningState,
                 FileSystemId = volume.FileSystemId,
                 ServiceLevel = volume.ServiceLevel,
@@ -332,8 +337,30 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 LdapEnabled = volume.LdapEnabled,
                 CoolAccess = volume.CoolAccess,
                 CoolnessPeriod = volume.CoolnessPeriod,
-                UnixPermission = volume.UnixPermissions
+                UnixPermission = volume.UnixPermissions,
+                AvsDataStore = volume.AvsDataStore,
+                CloneProgress = volume.CloneProgress,
+                IsDefaultQuotaEnabled = volume.IsDefaultQuotaEnabled,
+                DefaultUserQuotaInKiBs = volume.DefaultUserQuotaInKiBs,
+                DefaultGroupQuotaInKiBs = volume.DefaultGroupQuotaInKiBs,
+                NetworkFeatures = volume.NetworkFeatures,
+                NetworkSiblingSetId = volume.NetworkSiblingSetId,
+                StorageToNetworkProximity = volume.StorageToNetworkProximity,
+                VolumeGroupName = volume.VolumeGroupName,
+                CapacityPoolResourceId = volume.CapacityPoolResourceId,
+                T2Network = volume.T2Network,
+                ProximityPlacementGroup = volume.ProximityPlacementGroup,
+                PlacementRules = volume.PlacementRules?.ToPPSKeyValuePairs()
             };
+        }
+
+        public static IList<PSKeyValuePairs> ToPPSKeyValuePairs(this IList<PlacementKeyValuePairs> placementKeysValuePair)
+        {
+            return placementKeysValuePair?.Select(e => new PSKeyValuePairs() { Key = e.Key, Value = e.Value } ).ToList();            
+        }
+        public static IList<PlacementKeyValuePairs> ToPlacementKeyValuePairs(this IList<PSKeyValuePairs> psKeysValuePair)
+        {
+            return psKeysValuePair?.Select(e => new PlacementKeyValuePairs() { Key = e.Key, Value = e.Value }).ToList();
         }
 
         public static PSNetAppFilesSnapshot ToPsNetAppFilesSnapshot(this Management.NetApp.Models.Snapshot snapshot)

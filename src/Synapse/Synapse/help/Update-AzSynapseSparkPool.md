@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoPauseDelayInMinute
-Number of minutes idle. This parameter must be specified when Auto-pause is enabled.
+Number of minutes idle. This parameter can be specified when Auto-pause is enabled. The default value will be [15] if it is not specified manually.
 
 ```yaml
 Type: System.Int32
@@ -356,6 +356,7 @@ Package action must be specified when you add or remove a workspace package from
 Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+PackageActionType
 Parameter Sets: (All)
 Aliases:
+Accepted values: Add, Remove
 
 Required: False
 Position: Named

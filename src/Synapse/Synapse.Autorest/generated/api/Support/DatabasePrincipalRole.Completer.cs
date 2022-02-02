@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Admin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Admin", "Admin", global::System.Management.Automation.CompletionResultType.ParameterValue, "Admin");
+                yield return new global::System.Management.Automation.CompletionResult("'Admin'", "Admin", global::System.Management.Automation.CompletionResultType.ParameterValue, "Admin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ingestor".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ingestor", "Ingestor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ingestor");
+                yield return new global::System.Management.Automation.CompletionResult("'Ingestor'", "Ingestor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ingestor");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Monitor".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Monitor", "Monitor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Monitor");
+                yield return new global::System.Management.Automation.CompletionResult("'Monitor'", "Monitor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Monitor");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "User".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("User", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
+                yield return new global::System.Management.Automation.CompletionResult("'User'", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnrestrictedViewer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnrestrictedViewer", "UnrestrictedViewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnrestrictedViewer");
+                yield return new global::System.Management.Automation.CompletionResult("'UnrestrictedViewer'", "UnrestrictedViewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnrestrictedViewer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Viewer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Viewer", "Viewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "Viewer");
+                yield return new global::System.Management.Automation.CompletionResult("'Viewer'", "Viewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "Viewer");
             }
         }
     }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Disable-AzStorageContainerDeleteRetentionPolicy
 
 ## SYNOPSIS
-Disable delete retention policy for Azure Storage blob contatiners.
+Disable delete retention policy for Azure Storage blob containers.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Disable-AzStorageContainerDeleteRetentionPolicy [-ResourceId] <String> [-PassThr
 ```
 
 ## DESCRIPTION
-The **Disable-AzStorageContainerDeleteRetentionPolicy** cmdlet disables delete retention policy for Azure Storage blob Contatiner.
+The **Disable-AzStorageContainerDeleteRetentionPolicy** cmdlet disables delete retention policy for Azure Storage blob containers.
 
 ## EXAMPLES
 

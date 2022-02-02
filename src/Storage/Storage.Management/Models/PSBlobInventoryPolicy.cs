@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         //     Valid values for this field for the blob object type include: Name, Creation-Time, Last-Modified, Content-Length,
         //     Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder,
-        //     Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime. 
+        //     Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, AccessTierInferred, Tags. 
         //     Valid values for container object type include Name, Last-Modified,
         //     Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold.
         public string[] SchemaFields { get; set; }

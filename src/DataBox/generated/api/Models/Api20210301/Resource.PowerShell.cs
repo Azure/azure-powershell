@@ -99,17 +99,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName = (string) content.GetValueForProperty("SkuDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("SkuDisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName = (string) content.GetValueForProperty("SkuDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,17 +160,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName = (string) content.GetValueForProperty("SkuDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.SkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuName, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName.CreateFrom);
+            }
+            if (content.Contains("SkuDisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName = (string) content.GetValueForProperty("SkuDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuDisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ResourceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

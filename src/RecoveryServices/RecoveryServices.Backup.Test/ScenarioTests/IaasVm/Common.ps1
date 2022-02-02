@@ -55,7 +55,7 @@ function Create-VM(
 
 		$UserName='demouser'
 		$PasswordString = $(Get-RandomSuffix 12)
-		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+		$Password=$PasswordString + "Aa." | ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
 		$tags = @{"MabUsed"="Yes"}

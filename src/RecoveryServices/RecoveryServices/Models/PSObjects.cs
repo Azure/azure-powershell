@@ -215,7 +215,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum MSIdentity
     {
         SystemAssigned = 1,
-        None
+        None,
+        UserAssigned
     }
 
     /// <summary>

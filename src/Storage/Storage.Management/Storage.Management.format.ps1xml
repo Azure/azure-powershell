@@ -171,6 +171,10 @@
             <Label>VersionId</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ImmutableStorageWithVersioning</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -195,6 +199,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Version</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ImmutableStorageWithVersioning.Enabled</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -65,12 +65,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName = (string) content.GetValueForProperty("CommunicationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunicationServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName = (string) content.GetValueForProperty("CommunicationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,12 +98,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName = (string) content.GetValueForProperty("CommunicationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunicationServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName = (string) content.GetValueForProperty("CommunicationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).CommunicationServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

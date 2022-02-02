@@ -64,6 +64,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
                 AuthorityHost = new Uri(authority),
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
+                LoginHint = interactiveParameters.UserId,
             };
             var browserCredential = new InteractiveBrowserCredential(options);
 

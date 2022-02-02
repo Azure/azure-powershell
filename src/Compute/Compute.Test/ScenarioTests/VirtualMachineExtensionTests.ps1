@@ -1984,6 +1984,20 @@ function Test-AzureDiskEncryptionExtensionDualPassToSinglePassMigration
         $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
         $keyVaultResourceId = $keyVault.ResourceId;
 
+        #Enable encryption on the VM with malformed keyvault Uri
+        $malformedKeyvaultUri = "https://fakekv/secrets/fakerg/00000000000000000000000000000000"
+        #Enable encryption on the VM with incorrect keyvault Uri
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $malformedKeyvaultUri -DiskEncryptionKeyVaultId $keyVaultResourceId -Force; } `
+        "Operation returned an invalid status code";
+        #Incorrectly migrate VM to single pass and verify whether exception is thrown
+        Write-Verbose "Migrate VM to No AAD with incorrect keyvault uri"
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force; } `
+        "Failure occured while uploading encryption settings to host";
+        #Run Migrate Command again and it should throw the same failure
+        Write-Verbose "Migrate VM to No AAD with incorrect keyvault uri once again"
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force; } `
+        "Failure occured while uploading encryption settings to host";
+
         #Enable encryption on the VM
         Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force;
         # verify encryption state

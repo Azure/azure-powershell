@@ -261,6 +261,49 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
+        public void ProgressCopy(double percentageDone)
+        {
+            using (var ps = System.Management.Automation.PowerShell.Create())
+            {
+                if (percentageDone >= 100.0)
+                {
+
+                    var progressCommand1 = String.Format(@"Write-Progress -Activity 'Making a Copy of the VHD file before resizing' -Status '100% Complete' -Completed");
+                    ps.Runspace = runspace;
+                    ps.AddScript(progressCommand1);
+                    ps.Invoke();
+                    return;
+                }
+
+                var progressCommand = String.Format(@"Write-Progress -Activity 'Making a Copy of the VHD file before resizing' -PercentComplete {0} -Status '{1}% Complete' ", percentageDone, (int)percentageDone);
+                ps.Runspace = runspace;
+                ps.AddScript(progressCommand);
+                ps.Invoke();
+            }
+        }
+
+        public void ProgressHyperV(ushort percentComplete, string message)
+        {
+            int percentCompleteInt = Convert.ToInt32(percentComplete);
+            using (var ps = System.Management.Automation.PowerShell.Create())
+            {
+                if (percentCompleteInt >= 100)
+                {
+
+                    var progressCommand1 = String.Format(@"Write-Progress -Activity '{0}' -Status '100% Complete' -Completed", message);
+                    ps.Runspace = runspace;
+                    ps.AddScript(progressCommand1);
+                    ps.Invoke();
+                    return;
+                }
+
+                var progressCommand = String.Format(@"Write-Progress -Activity '{0}' -PercentComplete {1} -Status '{2}% Complete' ", message, percentCompleteInt, percentCompleteInt);
+                ps.Runspace = runspace;
+                ps.AddScript(progressCommand);
+                ps.Invoke();
+            }
+        }
+
         public void WriteVerboseWithTimestamp(string message, params object[] args)
         {
             var messageWithTimeStamp = string.Format(CultureInfo.CurrentCulture, "{0:T} - {1}", DateTime.Now, string.Format(message, args));

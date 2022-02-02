@@ -104,7 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId, global::System.Convert.ToString);
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,7 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId, global::System.Convert.ToString);
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUserAssignedPropertiesInternal)this).ResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

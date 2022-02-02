@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "user".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("user", "user", global::System.Management.Automation.CompletionResultType.ParameterValue, "user");
+                yield return new global::System.Management.Automation.CompletionResult("'user'", "user", global::System.Management.Automation.CompletionResultType.ParameterValue, "user");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "system".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("system", "system", global::System.Management.Automation.CompletionResultType.ParameterValue, "system");
+                yield return new global::System.Management.Automation.CompletionResult("'system'", "system", global::System.Management.Automation.CompletionResultType.ParameterValue, "system");
             }
         }
     }
