@@ -65,7 +65,7 @@ directive:
             2000,
             5000
           ]
-        }
+        }	
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
@@ -83,7 +83,19 @@ directive:
       parameter-name: SkuName
     set:
       parameter-name: Sku
-
+	  
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: RestoredLogs
+    hide: true 
+	
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: SearchResults
+    hide: true 
+	
   - where: 
       verb: New|Update
       subject: Workspace
