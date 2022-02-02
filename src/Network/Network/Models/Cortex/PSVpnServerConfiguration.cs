@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        public List<PSVpnServerConfigurationPolicyGroup> ConfigurationPolicyGroups { get; set; }
+
         [JsonIgnore]
         public string VpnClientRootCertificatesText
         {

@@ -58,6 +58,10 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByRadiusAuthentication = "ByRadiusAuthentication";
         internal const string ByAadAuthentication = "ByAadAuthentication";
 
+        internal const string ByVpnServerConfigurationPolicyGroupObject = "ByVpnServerConfigurationPolicyGroupObject";
+        internal const string ByVpnServerConfigurationPolicyGroupResourceId = "ByVpnServerConfigurationPolicyGroupResourceId";
+        internal const string ByVpnServerConfigurationPolicyGroupName = "ByVpnServerConfigurationPolicyGroupName";
+
         internal const string ByExpressRouteConnectionObject = "ByExpressRouteConnectionObject";
         internal const string ByExpressRouteConnectionResourceId = "ByExpressRouteConnectionResourceId";
         internal const string ByExpressRouteConnectionName = "ByExpressRouteConnectionName";

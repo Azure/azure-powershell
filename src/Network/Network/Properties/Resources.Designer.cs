@@ -1724,7 +1724,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnConnectionNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnServerConfigurationPolicyGroup could not be found..
+        /// </summary>
+        internal static string VpnServerConfigurationPolicyGroupNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnServerConfigurationPolicyGroupNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead..
         /// </summary>
