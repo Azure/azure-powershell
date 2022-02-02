@@ -1,46 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azactionrule
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
 schema: 2.0.0
 ---
 
-# Update-AzActionRule
+# Remove-AzAlertProcessingRule
 
 ## SYNOPSIS
-Updates action rule properties.
+Deletes an alert processing rule
 
 ## SYNTAX
 
-### ByNameSimplifiedPatch (Default)
+### ByName (Default)
 ```
-Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzActionRule -ResourceId <String> [-Status <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzActionRule -InputObject <PSActionRule> [-Status <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**Update-AzActionRule** cmdlet updates action rule properties - status and tags.
+**Remove-AzAlertProcessingRule** cmdlet deletes an alert processing rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzActionRule -ResourceGroupName "test-rg" -Name "Test-ActionRule" -Status "Disabled"
+PS C:\> Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
 ```
 
-This cmdlet disables the action rule. 
+This cmdlet deletes the alert processing rule with name AlertProcessingRuleName in resource group test-rg
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The action rule resource
+The alert processing rule resource
 
 ```yaml
 Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
@@ -75,11 +75,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Action rule name
+Name of alert processing rule
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameSimplifiedPatch
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -89,12 +89,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+PassThru returns True if the remove alertProcessing rule succeeded. By default, this cmdlet does not generate any output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Action rule name
+Resource Group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameSimplifiedPatch
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -105,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of action rule
+Get Alert Processing rule by resource id.
 
 ```yaml
 Type: System.String
@@ -113,36 +128,6 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Status
-Action rule status
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Action rule tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,13 +170,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+### System.Boolean
 
 ## NOTES
 

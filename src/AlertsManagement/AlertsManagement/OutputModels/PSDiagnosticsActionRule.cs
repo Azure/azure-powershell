@@ -19,9 +19,9 @@ using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSDiagnosticsActionRule : PSActionRule
+    public class PSDiagnosticsActionRule : PSAlertProcessingRule
     {
-        public PSDiagnosticsActionRule(ActionRule rule) : base(rule)
+        public PSDiagnosticsActionRule(AlertProcessingRule rule) : base(rule)
         {
 
         }

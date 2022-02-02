@@ -16,33 +16,17 @@ using System;
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSSuppressionActionRule : PSActionRule
+    public class PSActionGroupAlertProcessingRule : PSAlertProcessingRule
     {
-        public PSSuppressionActionRule(ActionRule rule) : base(rule)
+        public PSActionGroupAlertProcessingRule(AlertProcessingRule rule) : base(rule)
         {
-            Suppression suppression = (Suppression)rule.Properties;
-            RecurrenceType = suppression.SuppressionConfig?.RecurrenceType;
-            StartDate = suppression.SuppressionConfig?.Schedule?.StartDate;
-            EndDate = suppression.SuppressionConfig?.Schedule?.EndDate;
-            StartTime = suppression.SuppressionConfig?.Schedule?.StartTime;
-            EndTime = suppression.SuppressionConfig?.Schedule?.EndTime;
-            RecurrenceValues = suppression.SuppressionConfig?.Schedule?.RecurrenceValues;
+            AddActionGroups actionGroup = (AddActionGroups)rule.Properties.Actions[0];
+            ActionGroupId = actionGroup.ActionGroupIds.ToString();
         }
 
-        public string RecurrenceType { get; }
-
-        public string StartDate { get; set; }
-
-        public string EndDate { get; set; }
-
-        public string StartTime { get; set; }
-
-        public string EndTime { get; set; }
-
-        public IList<int?> RecurrenceValues { get; set; }
+        public string ActionGroupId { get; }
     }
 }

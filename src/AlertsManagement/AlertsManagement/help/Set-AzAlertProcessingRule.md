@@ -5,51 +5,46 @@ online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement
 schema: 2.0.0
 ---
 
-# Set-AzActionRule
+# Set-AzAlertProcessingRule
 
 ## SYNOPSIS
-Create or update an action rule.
+Create or update an alert processing rule.
 
 ## SYNTAX
 
-### BySimplifiedFormatDiagnosticsActionRule (Default)
+### BySimplifiedFormatSuppressionActionRule (Default)
 ```
-Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
- [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
- [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
- -ActionRuleType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
+ -Scopes <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tags <Hashtable>] 
+ [-SeverityCondition <String>] [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>] 
+ [-TargetResourceCondition <String>] [-TargetResourceGroupCondition <String>] [-AlertRuleIdCondition <String>] [-AlertRuleNameCondition <String>]
+ [-DescriptionCondition <String>] [-AlertContextCondition <String>] [-SignalTypeCondition <String>]
+ [-ReccurenceType <String>] [-ReccurenceDaysOfWeek <String>] [-ReccurenceDaysOfMonth <String>] [-ReccurenceStartTime <String>]
+ [-ReccurenceEndTime <String>] [-StartDateTime <String>] [-EndDateTime <String>] [-TimeZone <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BySimplifiedFormatActionGroupActionRule 
+```
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
+ -Scopes <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tags <Hashtable>] 
+ [-SeverityCondition <String>] [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>] 
+ [-TargetResourceCondition <String>] [-TargetResourceGroupCondition <String>] [-AlertRuleIdCondition <String>] [-AlertRuleNameCondition <String>]
+ [-DescriptionCondition <String>] [-AlertContextCondition <String>] [-SignalTypeCondition <String>]
+ [-ReccurenceType <String>] [-ReccurenceDaysOfWeek <String>] [-ReccurenceDaysOfMonth <String>] [-ReccurenceStartTime <String>]
+ [-ReccurenceEndTime <String>] [-StartDateTime <String>] [-EndDateTime <String>] [-TimeZone <String>]
+ -ActionGroupId <String> 
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### BySimplifiedFormatActionGroupActionRule
-```
-Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
- [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
- [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
- -ActionRuleType <String> -ActionGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### BySimplifiedFormatSuppressionActionRule
-```
-Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
- [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
- [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
- -ActionRuleType <String> -ReccurenceType <String> [-SuppressionStartTime <String>]
- [-SuppressionEndTime <String>] [-ReccurentValue <Int32[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-**Set-AzActionRule** creates or updates an action rule.
+**Set-AzAlertProcessingRule** creates or updates an alert processing rule.
 
 ## EXAMPLES
 
@@ -58,7 +53,7 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
 PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
 ```
 
-This cmdlet creates an action rule for supression, with a subscription scope.
+This cmdlet creates an alert processing rule for supression, with a subscription scope.
 
 ### Example 2
 ```powershell
@@ -75,6 +70,36 @@ PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -Scope "/s
 This cmdlet creates an action rule for diagnostics settings, with a resource scope.
 
 ## PARAMETERS
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Alert Processing Rule Name
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActionGroupId
 Action Group Id which is to be notified.
@@ -96,7 +121,7 @@ Action rule Json format
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: True
@@ -184,21 +209,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The action rule resource
-
-```yaml
-Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MonitorCondition
 Expected format - {\<operation\>:\<comma separated list of values\>} For eg.
 NotEquals:Resolved
@@ -231,21 +241,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Action rule Name
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
-Aliases: ResourceId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ReccurenceType
 Specifies the duration when the suppression should be applied.
 
@@ -271,21 +266,6 @@ Parameter Sets: BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -385,6 +365,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The alert processing rule resource
+
+```yaml
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

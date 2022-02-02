@@ -16,17 +16,15 @@ using System;
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSActionGroupActionRule : PSActionRule
+    public class PSSuppressionAlertProcessingRule : PSAlertProcessingRule
     {
-        public PSActionGroupActionRule(ActionRule rule) : base(rule)
+        public PSSuppressionAlertProcessingRule(AlertProcessingRule rule) : base(rule)
         {
-            ActionGroup actionGroup = (ActionGroup)rule.Properties;
-            ActionGroupId = actionGroup.ActionGroupId;
-        }
 
-        public string ActionGroupId { get; }
+        }
     }
 }

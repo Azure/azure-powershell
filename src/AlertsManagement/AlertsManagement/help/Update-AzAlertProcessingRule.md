@@ -1,46 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azactionrule
 schema: 2.0.0
 ---
 
-# Remove-AzActionRule
+# Update-AzAlertProcessingRule
 
 ## SYNOPSIS
-Deletes a action rule
+Updates alert processing rule properties. 
 
 ## SYNTAX
 
-### ByName (Default)
+### ByNameSimplifiedPatch (Default)
 ```
-Remove-AzActionRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-Enabled <String>] [-Tags <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzActionRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzAlertProcessingRule -ResourceId <String> [-Enabled <String>] [-Tags <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-Tags <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**Remove-AzActionRule** cmdlet deletes a action rule.
+**Update-AzAlertProcessingRule** cmdlet updates alert processing rule properties - enabled status and tags.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
+PS C:\> Update-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessingRule" -Enabled "False"
 ```
 
-This cmdlet deletes the action rule with name ActionRuleName in resource group test-rg
+This cmdlet disables the alert processing rule. 
 
 ## PARAMETERS
 
@@ -75,11 +75,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of action rule
+Alert Processing rule name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: ByNameSimplifiedPatch
 Aliases:
 
 Required: True
@@ -89,27 +89,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-PassThru returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-Resource Group name
+Alert Processing rule name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: ByNameSimplifiedPatch
 Aliases:
 
 Required: True
@@ -120,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Get Action rule by resource id.
+The resource id of action rule
 
 ```yaml
 Type: System.String
@@ -128,6 +113,36 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Enabled
+Alert Processing rule status
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tags
+Alert Processing rule tags
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,11 +185,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+### System.String
+
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 
 ## NOTES
 

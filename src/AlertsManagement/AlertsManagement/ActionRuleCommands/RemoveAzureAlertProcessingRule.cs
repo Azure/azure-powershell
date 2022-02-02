@@ -22,10 +22,10 @@ using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = ByNameParameterSet, 
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertProcessingRule", DefaultParameterSetName = ByNameParameterSet, 
         SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureActionRule : AlertsManagementBaseCmdlet
+    public class RemoveAzureAlertProcessingRule : AlertsManagementBaseCmdlet
     {
         private const string ByInputObjectParameterSet = "ByInputObject";
         private const string ByResourceIdParameterSet = "ByResourceId";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ByNameParameterSet,
-                   HelpMessage = "Name of action rule")]
+                   HelpMessage = "Name of alert processing rule")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ByResourceIdParameterSet,
-                   HelpMessage = "Get Action rule by resource id.")]
+                   HelpMessage = "Delete Alert Processing rule by resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(ParameterSetName = ByInputObjectParameterSet, 
                     Mandatory = true, 
                     ValueFromPipeline = true, 
-                    HelpMessage = "The action rule resource")]
-        public PSActionRule InputObject { get; set; }
+                    HelpMessage = "The alert processing rule resource")]
+        public PSAlertProcessingRule InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the PassThru switch parameter to force return an object when removing
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 case ByResourceIdParameterSet:
                     if (ShouldProcess(
                         target: string.Format(Resources.Target, this.ResourceId),
-                        action: Resources.RemoveActionRule_Action))
+                        action: Resources.RemoveAlertProcessingRule_Action))
                     {
                         var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
-                        isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                        isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
                             resourceGroupName: extractedInfo.ResourceGroupName,
-                            actionRuleName: extractedInfo.Resource)
-                            .Result.Body;
+                            alertProcessingRuleName: extractedInfo.Resource)
+                            .Result.Response.IsSuccessStatusCode;
                     }
 
                     if (PassThru.IsPresent)
@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 case ByInputObjectParameterSet:
                     if (ShouldProcess(
                         target: string.Format(Resources.Target, this.InputObject.Id),
-                        action: Resources.RemoveActionRule_Action))
+                        action: Resources.RemoveAlertProcessingRule_Action))
                     {
                         var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
-                        isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                        isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
                             resourceGroupName: extractedInfo.ResourceGroupName,
-                            actionRuleName: extractedInfo.Resource)
-                            .Result.Body;
+                            alertProcessingRuleName: extractedInfo.Resource)
+                            .Result.Response.IsSuccessStatusCode;
                     }
 
                     if (PassThru.IsPresent)
@@ -125,12 +125,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 case ByNameParameterSet:
                     if (ShouldProcess(
                        target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
-                       action: Resources.RemoveActionRule_Action))
+                       action: Resources.RemoveAlertProcessingRule_Action))
                     {
-                        isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                        isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
-                            actionRuleName: Name)
-                            .Result.Body;
+                            alertProcessingRuleName: Name)
+                            .Result.Response.IsSuccessStatusCode;
                     }
 
                     if (PassThru.IsPresent)
