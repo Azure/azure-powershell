@@ -95,7 +95,6 @@ function Get-TestResourcesDeployment([string]$rgn)
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-
         New-AzResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
@@ -512,6 +511,7 @@ function Test-PacketCapture
     $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $pcName1 = Get-NrpResourceName
+    $pcName2 = Get-NrpResourceName
 
     try 
     {
@@ -522,18 +522,14 @@ function Test-PacketCapture
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
-
         # Create Resource group for Network Watcher
         New-AzResourceGroup -Name $nwRgName -Location "$location"
-
         # Get Network Watcher
-		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
-
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
         #Get Vm
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName
-
         #Install networkWatcherAgent on Vm
-        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "AzureNetworkWatcherExtension" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
+        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
 
         #Create filters for packet capture
         $f1 = New-AzPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
@@ -542,12 +538,14 @@ function Test-PacketCapture
         #Create packet capture
         $job = New-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
         $job | Wait-Job
+        New-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -TimeLimitInSeconds 1
         Start-Sleep -s 2
 
         #Get packet capture
         $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
         $job | Wait-Job
         $pc1 = $job | Receive-Job
+        $pc2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
         $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName "*"
 
         #Verification
@@ -582,6 +580,9 @@ function Test-PacketCapture
         #List packet captures
         $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
         Assert-AreEqual $pcList.Count ($currentCount - 1)
+
+        #Remove packet capture
+        Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
 
     }
     finally
