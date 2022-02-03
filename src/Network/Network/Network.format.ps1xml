@@ -4370,6 +4370,10 @@
                 <PropertyName>PreferredRoutingGateway</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>HubRoutingPreference</Label>
+                <PropertyName>HubRoutingPreference</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>

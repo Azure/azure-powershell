@@ -16,24 +16,24 @@ Updates a virtual hub.
 ```
 Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
- [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
- [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
- [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +97,7 @@ This example is similar to Example 1, but also attaches a route table to the vir
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
-PS C:\> Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -PreferredRoutingGateway "VpnGateway"    
+PS C:\> Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -PreferredRoutingGateway "VpnGateway" -HubRoutingPreference "VpnGateway"
 
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
@@ -108,6 +108,7 @@ RouteTable                :
 Location                  : West US
 Sku                  : Standard 
 PreferredRoutingGateway   : VpnGateway
+HubRoutingPreference      : VpnGateway
 VirtualNetworkConnections : {}
 Location                  : West US
 Type                      : Microsoft.Network/virtualHubs
@@ -216,6 +217,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: ExpressRoute, VpnGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubRoutingPreference
+Virtual Hub Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
 
 Required: False
 Position: Named

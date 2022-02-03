@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `HubRoutingPreference` on VirtualHub and set `PreferredRoutingGateway` deprecated .
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)

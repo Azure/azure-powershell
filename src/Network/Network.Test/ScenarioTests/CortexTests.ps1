@@ -68,11 +68,12 @@ function Test-CortexCRUD
 		Assert-NotNull $virtualWansAll
 
 		# Create the Virtual Hub
-		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+		Assert-AreEqual "ASPath" $virtualHub.HubRoutingPreference
 
 		$virtualHubs = Get-AzVirtualHub -ResourceGroupName $rgName
 		Assert-NotNull $virtualHubs
@@ -94,10 +95,11 @@ function Test-CortexCRUD
 		$route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
 		$route2 = New-AzVirtualHubRoute -AddressPrefix @("13.0.0.0/16") -NextHopIpAddress "14.0.0.5"
 		$routeTable = New-AzVirtualHubRouteTable -Route @($route1, $route2)
-		Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable $routeTable
+		Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable $routeTable -HubRoutingPreference "ExpressRoute"
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "ExpressRoute" $virtualHub.HubRoutingPreference
 		$routes = $virtualHub.RouteTable.Routes
 		Assert-AreEqual 2 @($routes).Count
 
