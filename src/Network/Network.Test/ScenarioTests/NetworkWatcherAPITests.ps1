@@ -117,7 +117,7 @@ function Get-TestResourcesDeploymentVMSS([string]$rgn)
             "value": "$virtualMachineScaleSetName"
             },
             "instanceCount": {
-            "value": 2
+            "value": 3
             },
             "singlePlacementGroup": {
             "value": true
@@ -601,7 +601,7 @@ function Test-PacketCaptureV2
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
-    $location = Get-PilotLocation
+    $location = Get-CanaryLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-NrpResourceGroupName
@@ -632,16 +632,22 @@ function Test-PacketCaptureV2
 
         #Install networkWatcherAgent on Vmss and Vmss Instances
         Add-AzVmssExtension -VirtualMachineScaleSet $vmss[0] -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
-        Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $vmss[0].Name -VirtualMachineScaleSet $vmss[0] 
-        Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss[0].Name -InstanceId "0"
-        Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss[0].Name -InstanceId "1"
+        Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $vmss[0].Name -VirtualMachineScaleSet $vmss[0]
+
+        $instances = foreach($item in $vmss[0]){
+            Get-AzVmssVM -ResourceGroupName $item.ResourceGroupName -VMScaleSetName $item.Name
+        }
+
+        foreach($instance in $instances){
+            Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss[0].Name -InstanceId $instance.InstanceID
+        }
 
         #Create filters for packet capture
         $f1 = New-AzPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
         $f2 = New-AzPacketCaptureFilterConfig -LocalIPAddress 127.0.0.1;127.0.0.5
 
         #Create Scope for packet capture
-        $s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
+        $s1 = New-AzPacketCaptureScopeConfig -Include "0"
 
         #Create packet capture
         $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetId $vmss[0].Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -AsJob
