@@ -1,62 +1,62 @@
 {
-			"rgName": {
-			"value": "ps2831"
-			},
-			"location": {
-			"value": "westcentralus"
-			},
-			"virtualMachineName": {
-			"value": "ps3525"
-			},
-			"virtualMachineSize": {
-			"value": "Standard_A4"
-			},
-			"adminUsername": {
-			"value": "netanaytics12"
-			},
-			"storageAccountName": {
-			"value": "ps1144"
-			},
-			"routeTableName": {
-			"value": "ps2655"
-			},
-			"virtualNetworkName": {
-			"value": "ps6845"
-			},
-			"networkInterfaceName": {
-			"value": "ps5909"
-			},
-			"networkSecurityGroupName": {
-			"value": "ps4068"
-			},
-			"adminPassword": {
-			"value": "netanalytics-32ps2831"
-			},
-			"storageAccountType": {
-			"value": "Standard_LRS"
-			},
-			"diagnosticsStorageAccountName": {
-			"value": "ps2738"
-			},
-			"diagnosticsStorageAccountId": {
-			"value": "Microsoft.Storage/storageAccounts/ps2738"
-			},
-			"diagnosticsStorageAccountType": {
-			"value": "Standard_LRS"
-			},
-			"addressPrefix": {
-			"value": "10.17.3.0/24"
-			},
-			"subnetName": {
-			"value": "default"
-			},
-			"subnetPrefix": {
-			"value": "10.17.3.0/24"
-			},
-			"publicIpAddressName": {
-			"value": "ps3525-ip"
-			},
-			"publicIpAddressType": {
-			"value": "Dynamic"
-			}
+            "rgName": {
+            "value": "Piyush-OMS-Test"
+            },
+            "location": {
+            "value": "centraluseuap"
+            },
+            "virtualMachineName": {
+            "value": "PSVM"
+            },
+            "virtualMachineSize": {
+            "value": "Standard_A4"
+            },
+            "adminUsername": {
+            "value": "netanaytics12"
+            },
+            "storageAccountName": {
+            "value": "PSVM"
+            },
+            "routeTableName": {
+            "value": "PSVM"
+            },
+            "virtualNetworkName": {
+            "value": "PSVM"
+            },
+            "networkInterfaceName": {
+            "value": "PSVM"
+            },
+            "networkSecurityGroupName": {
+            "value": "PSVM"
+            },
+            "adminPassword": {
+            "value": "netanalytics-32Piyush-OMS-Test"
+            },
+            "storageAccountType": {
+            "value": "Standard_LRS"
+            },
+            "diagnosticsStorageAccountName": {
+            "value": "PSVM"
+            },
+            "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/PSVM"
+            },
+            "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+            },
+            "addressPrefix": {
+            "value": "10.17.3.0/24"
+            },
+            "subnetName": {
+            "value": "default"
+            },
+            "subnetPrefix": {
+            "value": "10.17.3.0/24"
+            },
+            "publicIpAddressName": {
+            "value": "PSVM-ip"
+            },
+            "publicIpAddressType": {
+            "value": "Dynamic"
+            }
 }

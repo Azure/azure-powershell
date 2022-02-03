@@ -66,6 +66,14 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMSS()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
