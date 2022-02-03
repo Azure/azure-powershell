@@ -18,13 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Output braking change for Managed Instance CRUD commands
+    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy
+
+## Version 3.8.0
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
 * Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
 
 ## Version 3.7.0
 * Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases
-* Output braking change for Managed Instance CRUD commands
-    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy
 
 ## Version 3.6.0
 * Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]
