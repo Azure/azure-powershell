@@ -31,7 +31,7 @@ function Test-UpdateCancelSubscription
 
     $updateSub = Update-AzSubscription -SubscriptionId $subscriptionId -Action "Cancel"
 
-	Assert-NotNull updateSub.SubscriptionId
+	Assert-Throws updateSub.SubscriptionId
 }
 
 function Test-NewSubscriptionAlias
