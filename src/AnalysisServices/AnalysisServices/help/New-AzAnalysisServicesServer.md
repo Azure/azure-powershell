@@ -27,7 +27,7 @@ The New-AzAnalysisServicesServer cmdlet creates a new Analysis Services server
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAnalysisServicesServer -ResourceGroupName "testresourcegroup" -Name "testserver" -Location "West-US" -Sku "S1"
+New-AzAnalysisServicesServer -ResourceGroupName "testresourcegroup" -Name "testserver" -Location "West-US" -Sku "S1"
 ```
 
 Creates a server named testserver in the Azure region West-US and in resource group testresourcegroup. The sku level for the server will be S1.

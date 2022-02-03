@@ -22,10 +22,12 @@ The Get-AzTenant cmdlet gets tenants authorized for the current user.
 ## EXAMPLES
 
 ### Example 1: Getting all tenants
+```powershell
+Connect-AzAccount
+Get-AzTenant
 ```
-PS C:\> Connect-AzAccount
-PS C:\> Get-AzTenant
 
+```Output
 Id                                   Name        Category Domains
 --                                   ----------- -------- -------
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft   Home     {test0.com, test1.com, test2.microsoft.com, test3.microsoft.com...}
@@ -35,10 +37,12 @@ yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy Testhost    Home     testhost.onmicrosoft.c
 This example shows how to get all of the authorized tenants of an Azure account.
 
 ### Example 2: Getting a specific tenant
+```powershell
+Connect-AzAccount
+Get-AzTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
-PS C:\> Connect-AzAccount
-PS C:\> Get-AzTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
+```Output
 Id                                   Name        Category Domains
 --                                   ----------- -------- -------
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft   Home     {test0.com, test1.com, test2.microsoft.com, test3.microsoft.com...}

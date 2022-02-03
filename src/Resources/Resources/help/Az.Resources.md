@@ -52,6 +52,11 @@ Lists Azure RBAC deny assignments at the specified scope.
 By default it lists all deny assignments in the selected Azure subscription.
 Use respective parameters to list deny assignments to a specific user, or to list deny assignments on a specific resource group or resource.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ### [Get-AzDeployment](Get-AzDeployment.md)
 Get deployment
 
@@ -140,6 +145,14 @@ Lists Azure RBAC role assignments at the specified scope.
 By default it lists all role assignments in the selected Azure subscription.
 Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Lists all Azure RBAC roles that are available for assignment.
 
@@ -226,6 +239,13 @@ Creates a resource lock.
 
 ### [New-AzRoleAssignment](New-AzRoleAssignment.md)
 Assigns the specified RBAC role to the specified principal, at the specified scope.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates a custom role in Azure RBAC.
@@ -331,6 +351,14 @@ Removes a resource lock.
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ### [Remove-AzRoleDefinition](Remove-AzRoleDefinition.md)
 Deletes a custom role in Azure RBAC.
 The role to be deleted is specified using the Id property of the role.
@@ -389,6 +417,14 @@ Modifies a resource lock.
 
 ### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
 Update an existing Role Assignment.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
 
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 schema: 2.0.0
@@ -14,38 +14,38 @@ Adds member to group.
 
 ### MemberObjectIdWithGroupObjectIdParameterSet (Default)
 ```
-Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupObjectId <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -TargetGroupObjectId <String> -MemberObjectId <String[]> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### MemberObjectIdWithGroupDisplayNameParameterSet
+### MemberUPNWithGroupObjectIdParameterSet
 ```
-Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -TargetGroupObjectId <String> -MemberUserPrincipalName <String[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupObjectParameterSet
 ```
 Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupObject <MicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupDisplayNameParameterSet
+### MemberObjectIdWithGroupDisplayNameParameterSet
 ```
-Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MemberUPNWithGroupObjectIdParameterSet
-```
-Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObjectId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupObjectParameterSet
 ```
 Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <MicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupDisplayNameParameterSet
+```
+Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +86,7 @@ The object Id of member to add to target group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberObjectIdWithGroupDisplayNameParameterSet, MemberObjectIdWithGroupObjectIdParameterSet, MemberObjectIdWithGroupObjectParameterSet
+Parameter Sets: MemberObjectIdWithGroupObjectIdParameterSet, MemberObjectIdWithGroupObjectParameterSet, MemberObjectIdWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -101,7 +101,7 @@ The user principal name of member to add to target group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectParameterSet
+Parameter Sets: MemberUPNWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -266,4 +266,3 @@ TARGETGROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used 
   - `[DisplayName <String>]`: The name displayed in directory
 
 ## RELATED LINKS
-

@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module());
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.Resources";
+        public string Name => @"Az.MSGraph";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.Resources";
+        public string ResourceId => @"Az.MSGraph";
 
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="pipeline">The HttpPipeline for the request</param>

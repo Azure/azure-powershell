@@ -16,7 +16,7 @@ Modifies a policy assignment.
 ### NameParameterSet (Default)
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Location <String>]
+ [-Description <String>] [-Metadata <String>] [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -25,7 +25,7 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### PolicyParameterNameObjectParameterSet
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] -PolicyParameterObject <Hashtable>
+ [-Description <String>] [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity]
  [-Location <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-IdentityType <ManagedIdentityType>] [-IdentityId <String>]
  [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
@@ -35,7 +35,7 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### PolicyParameterNameStringParameterSet
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-Location <String>]
+ [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -44,7 +44,7 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ### IdParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Location <String>]
+ [-Metadata <String>] [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -53,7 +53,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
 ### PolicyParameterIdObjectParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] -PolicyParameterObject <Hashtable> [-Location <String>]
+ [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -62,7 +62,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
 ### PolicyParameterIdStringParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] -PolicyParameter <String> [-Location <String>]
+ [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -71,7 +71,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
 ### InputObjectParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Location <String>]
+ [-Metadata <String>] [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] -InputObject <PsPolicyAssignment> [-NonComplianceMessage <PsNonComplianceMessage[]>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -184,6 +184,21 @@ If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignIdentity
+Generate and assign a system assigned managed identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

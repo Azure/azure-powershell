@@ -41,6 +41,35 @@ The **Set-AzCdnOrigin** cmdlet updates an Azure Content Delivery Network (CDN) o
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Set-AzCdnOrigin -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint `
+                -OriginName mystorage -HostName mystorage2.blob.core.windows.net
+```
+
+```Output
+HostName                   : mystorage2.blob.core.windows.net
+HttpPort                   :
+HttpsPort                  :
+OriginHostHeader           :
+Priority                   :
+PrivateLinkApprovalMessage :
+PrivateLinkLocation        :
+PrivateLinkResourceId      :
+Weight                     :
+ResourceState              : Active
+ResourceGroupName          : myresourcegroup
+ProfileName                : mycdnprofile
+EndpointName               : myendpoint
+Id                         : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/myresourcegroup/providers/Micr
+                             osoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/origins/mystorage
+Name                       : mystorage
+Type                       : Microsoft.Cdn/profiles/endpoints/origins
+ProvisioningState          : Succeeded
+```
+
+This cmdlet will change the hostname of the specified endpoint.
+
 ## PARAMETERS
 
 ### -CdnOrigin

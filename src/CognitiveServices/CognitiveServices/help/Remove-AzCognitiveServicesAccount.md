@@ -35,8 +35,7 @@ The **Remove-AzCognitiveServicesAccount** cmdlet deletes the specified Cognitive
 This command doesn't return anything.
 
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
-PS C:\>
+Remove-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
 ```
 
 ## PARAMETERS

@@ -10,6 +10,10 @@ schema: 2.0.0
 ## SYNOPSIS
 Create a new managed Kubernetes cluster.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- POST /servicePrincipals
+
 ## SYNTAX
 
 ```

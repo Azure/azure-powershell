@@ -25,8 +25,8 @@ After you enable a job, new tasks can run.
 ## EXAMPLES
 
 ### Example 1: Enable a Batch job
-```
-PS C:\>Enable-AzBatchJob -Id "Job-000001" -BatchContext $Context
+```powershell
+Enable-AzBatchJob -Id "Job-000001" -BatchContext $Context
 ```
 
 This command enables the job that has the ID Job-000001.

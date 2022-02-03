@@ -54,7 +54,10 @@ The Set-AzConsumptionBudget cmdlet updates a budget in either a subscription or 
 
 ### Example 1: Update a budget by a new amount with a budget name at subscription level
 ```powershell
-PS C:\> Set-AzConsumptionBudget -Name PSBudget -Amount 75
+Set-AzConsumptionBudget -Name PSBudget -Amount 75
+```
+
+```output
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -68,7 +71,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Update a budget with a notification when cost or usage reaches a threshold of 90 percent of amount at subscription level
 ```powershell
-PS C:\> Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+```
+
+```output
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -87,7 +93,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 3: Update a budget by a new amount with a budget name at resource group level
 ```powershell
-PS C:\> Set-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
+Set-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
+```
+
+```output
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null

@@ -30,6 +30,17 @@ This URL lets users connect to a supplementary portal and use additional feature
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Get-AzCdnProfileSsoUrl -ResourceGroupName myresourcegroup -ProfileName mycdnprofile
+```
+
+```Output
+SsoUriValue
+-----------
+https://cdn.windowsazure.com/account/loginexternal/?token=IUQ9oj9b0H%2bZTL8gSnaBFbe9hfGEoy%2fBMtkbUQmWOAU%3d&timesta...
+```
+
 ## PARAMETERS
 
 ### -CdnProfile

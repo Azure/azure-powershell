@@ -27,7 +27,10 @@ The **New-AzBatchAccount** cmdlet creates an Azure Batch account for the specifi
 
 ### Example 1: Create a Batch account
 ```powershell
-PS C:\>New-AzBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGroup03" -Location "WestUS"
+New-AzBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGroup03" -Location "WestUS"
+```
+
+```output
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : ResourceGroup03

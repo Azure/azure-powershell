@@ -39,10 +39,12 @@ For query on a single resource, customer data is masked if the user doesn’t ha
 
 ### Example 1: List the changes of a subscription within the specified time range
 ```powershell
-PS C:\> $start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
-PS C:\> $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
-PS C:\> Get-AzChangeAnalysis -StartTime $start -EndTime $end
+$start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
+$end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
+Get-AzChangeAnalysis -StartTime $start -EndTime $end
+```
 
+```Output
 Name                                                                                                                Type
 ----                                                                                                                ----
 ARG_96668df8-baa3-443a-b65e-e473b73a7df0_3671a03a-262c-4470-8abf-0691873f2e20_132709991319090106_132710115679840000 Microsoft.ChangeAnalysis/changes
@@ -82,10 +84,12 @@ This command lists the changes of a subscription within the specified time range
 
 ### Example 2: List the changes of a resource group within the specified time range
 ```powershell
-PS C:\> $start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
-PS C:\> $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
-PS C:\> Get-AzChangeAnalysis -StartTime $start -EndTime $end -ResourceGroupName azpssmokerg1268133cx4
+$start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
+$end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
+Get-AzChangeAnalysis -StartTime $start -EndTime $end -ResourceGroupName azpssmokerg1268133cx4
+```
 
+```Output
 Name                                                                                                                Type
 ----                                                                                                                ----
 ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_132711384626690000_132712151317657566 Microsoft.ChangeAnalysis/changes
@@ -96,10 +100,12 @@ This command lists the changes of a resource group within the specified time ran
 
 ### Example 3: List the changes of a resource within the specified time range
 ```powershell
-PS C:\> $start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
-PS C:\> $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
-PS C:\> Get-AzChangeAnalysis -StartTime $start -EndTime $end -ResourceId '/subscriptions/xxxxxx-xxxxx-xxxx-xxxx-xxxxxxf/resourceGroups/azpssmokerg1268133cx4/providers/Microsoft.Storage/storageAccounts/azpssmokesa1268133cx4'
+$start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
+$end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
+Get-AzChangeAnalysis -StartTime $start -EndTime $end -ResourceId '/subscriptions/xxxxxx-xxxxx-xxxx-xxxx-xxxxxxf/resourceGroups/azpssmokerg1268133cx4/providers/Microsoft.Storage/storageAccounts/azpssmokesa1268133cx4'
+```
 
+```Output
 Name                                                                                                                Type
 ----                                                                                                                ----
 ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_132711384626690000_132712151317657566 Microsoft.ChangeAnalysis/changes

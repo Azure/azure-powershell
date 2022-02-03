@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName = (string) content.GetValueForProperty("TagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName, global::System.Convert.ToString);
+            if (content.Contains("ETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName = (string) content.GetValueForProperty("TagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName = (string) content.GetValueForProperty("TagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName, global::System.Convert.ToString);
+            if (content.Contains("ETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).ETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("TagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName = (string) content.GetValueForProperty("TagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRetentionTagInternal)this).TagName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

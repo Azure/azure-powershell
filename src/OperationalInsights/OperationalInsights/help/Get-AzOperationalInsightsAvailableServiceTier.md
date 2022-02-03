@@ -18,7 +18,7 @@ Get-AzOperationalInsightsAvailableServiceTier [-ResourceGroupName] <String> [-Wo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command gets all available service tiers for a given worksapce.
 
 ## EXAMPLES
 

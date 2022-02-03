@@ -109,11 +109,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl = (string) content.GetValueForProperty("LogoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl = (string) content.GetValueForProperty("MarketingUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl = (string) content.GetValueForProperty("PrivacyStatementUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl = (string) content.GetValueForProperty("SupportUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl = (string) content.GetValueForProperty("TermsOfServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl, global::System.Convert.ToString);
+            if (content.Contains("LogoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl = (string) content.GetValueForProperty("LogoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketingUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl = (string) content.GetValueForProperty("MarketingUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivacyStatementUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl = (string) content.GetValueForProperty("PrivacyStatementUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl = (string) content.GetValueForProperty("SupportUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("TermsOfServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl = (string) content.GetValueForProperty("TermsOfServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl, global::System.Convert.ToString);
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializeDictionary(content);
@@ -133,11 +148,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl = (string) content.GetValueForProperty("LogoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl = (string) content.GetValueForProperty("MarketingUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl = (string) content.GetValueForProperty("PrivacyStatementUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl = (string) content.GetValueForProperty("SupportUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl = (string) content.GetValueForProperty("TermsOfServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl, global::System.Convert.ToString);
+            if (content.Contains("LogoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl = (string) content.GetValueForProperty("LogoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).LogoUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketingUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl = (string) content.GetValueForProperty("MarketingUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).MarketingUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivacyStatementUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl = (string) content.GetValueForProperty("PrivacyStatementUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).PrivacyStatementUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl = (string) content.GetValueForProperty("SupportUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).SupportUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("TermsOfServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl = (string) content.GetValueForProperty("TermsOfServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrlInternal)this).TermsOfServiceUrl, global::System.Convert.ToString);
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializePSObject(content);

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* HealthcareApis cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
 
 ## Version 1.3.1
 * Added support for Acr LoginServers

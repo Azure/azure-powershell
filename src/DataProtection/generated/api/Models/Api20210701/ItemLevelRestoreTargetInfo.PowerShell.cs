@@ -101,13 +101,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria[]) content.GetValueForProperty("RestoreCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ItemLevelRestoreCriteriaTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DatasourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DatasourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption = (string) content.GetValueForProperty("RecoveryOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation = (string) content.GetValueForProperty("RestoreLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation, global::System.Convert.ToString);
+            if (content.Contains("RestoreCriterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria[]) content.GetValueForProperty("RestoreCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ItemLevelRestoreCriteriaTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DatasourceInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DatasourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DatasourceSetInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DatasourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DatasourceAuthCredentials"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption = (string) content.GetValueForProperty("RecoveryOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("RestoreLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation = (string) content.GetValueForProperty("RestoreLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,13 +146,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria[]) content.GetValueForProperty("RestoreCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ItemLevelRestoreCriteriaTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DatasourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DatasourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption = (string) content.GetValueForProperty("RecoveryOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation = (string) content.GetValueForProperty("RestoreLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation, global::System.Convert.ToString);
+            if (content.Contains("RestoreCriterion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria[]) content.GetValueForProperty("RestoreCriterion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).RestoreCriterion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreCriteria>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ItemLevelRestoreCriteriaTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DatasourceInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource) content.GetValueForProperty("DatasourceInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DatasourceSetInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasourceSet) content.GetValueForProperty("DatasourceSetInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceSetInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSetTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DatasourceAuthCredentials"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAuthCredentials) content.GetValueForProperty("DatasourceAuthCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IItemLevelRestoreTargetInfoInternal)this).DatasourceAuthCredentials, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AuthCredentialsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption = (string) content.GetValueForProperty("RecoveryOption",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RecoveryOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("RestoreLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation = (string) content.GetValueForProperty("RestoreLocation",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBaseInternal)this).RestoreLocation, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

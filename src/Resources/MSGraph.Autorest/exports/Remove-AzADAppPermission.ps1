@@ -106,8 +106,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADAppPermission';
-            AppIdParameterSet = 'MSGraph.custom\Remove-AzADAppPermission';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppPermission';
+            AppIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppPermission';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -25,7 +25,7 @@ Create a Deployment for a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "deployment" -Properties $properties
+New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "deployment" -Properties $properties
 ```
 
 Create a Deployment for a Cognitive Services account

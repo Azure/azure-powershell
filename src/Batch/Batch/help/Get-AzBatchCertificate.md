@@ -33,8 +33,11 @@ Specify the *Filter* parameter to get the certificates that match an Open Data P
 ## EXAMPLES
 
 ### Example 1: Get a certificate by thumbprint
+```powershell
+Get-AzBatchCertificate -ThumbprintAlgorithm "sha1" - Thumbprint "C1E494A415149C5F211C4778B52F2E834A07247C" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchCertificate -ThumbprintAlgorithm "sha1" - Thumbprint "C1E494A415149C5F211C4778B52F2E834A07247C" -BatchContext $Context
+
+```output
 Thumbprint                  : c1e494a415149c5f211c4778b52f2e834a07247c
 ThumbprintAlgorithm         : sha1
 Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247
@@ -59,8 +62,11 @@ This command gets a single certificate that has the specified thumbprint.
 The certificate thumbprint algorithm is sha1.
 
 ### Example 2: Get filtered certificates
+```powershell
+Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context
+
+```output
 Thumbprint                  : 025b351b087a084c5067f5e71eff8591970323f9
 ThumbprintAlgorithm         : sha1
 Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9)

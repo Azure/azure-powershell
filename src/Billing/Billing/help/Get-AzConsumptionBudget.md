@@ -24,7 +24,10 @@ The Get-AzConsumptionBudget cmdlet gets a list of budgets in either a subscripti
 
 ### Example 1: Get a list of budgets at subscription level
 ```powershell
-PS C:\> Get-AzConsumptionBudget
+Get-AzConsumptionBudget
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -38,7 +41,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Get a list of budgets at resource group level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -ResourceGroupName RGBudgets
+Get-AzConsumptionBudget -ResourceGroupName RGBudgets
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -52,7 +58,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 3: Get a budget with the budget name at subscription level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -Name PSBudget
+Get-AzConsumptionBudget -Name PSBudget
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -66,7 +75,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 4: Get a budget with the budget name at resource group level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
+Get-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null

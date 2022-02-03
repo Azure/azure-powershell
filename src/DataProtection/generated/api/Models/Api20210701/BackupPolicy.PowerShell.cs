@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule[]) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BasePolicyRuleTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType = (string[]) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("PolicyRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule[]) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BasePolicyRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DatasourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType = (string[]) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule[]) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BasePolicyRuleTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType = (string[]) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("PolicyRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule[]) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicyInternal)this).PolicyRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BasePolicyRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DatasourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType = (string[]) content.GetValueForProperty("DatasourceType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).DatasourceType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBaseBackupPolicyInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
