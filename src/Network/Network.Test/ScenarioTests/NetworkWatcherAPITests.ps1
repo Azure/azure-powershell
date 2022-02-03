@@ -607,9 +607,7 @@ function Test-PacketCaptureV2
     $nwRgName = Get-NrpResourceGroupName
     $securityGroupName = Get-NrpResourceName
     $templateFileVMSS = (Resolve-Path ".\TestData\DeploymentVMSS.json").Path
-    $pcName1 = Get-NrpResourceName
-    $pcName2 = $pcName1 + "1"
-    $pcName3 = $pcName1 + "2"
+    $pcName = Get-NrpResourceName
 
     try 
     {
@@ -647,66 +645,46 @@ function Test-PacketCaptureV2
         $f2 = New-AzPacketCaptureFilterConfig -LocalIPAddress 127.0.0.1;127.0.0.5
 
         #Create Scope for packet capture
-        $s1 = New-AzPacketCaptureScopeConfig -Include "0"
+        $s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
 
         #Create packet capture
-        $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetId $vmss[0].Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -AsJob
-        $job2 | Wait-Job
-        $job3 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName3 -TargetId $vmss[0].Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
-        $job2 | Wait-Job
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName -TargetId $vmss[0].Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
+        $job | Wait-Job
         Start-Sleep -s 2
 
         #Get packet capture
-        $job2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
-        $job2 | Wait-Job
-        $pc2 = $job2 | Receive-Job
-        $job3 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName3 -AsJob
-        $job3 | Wait-Job
-        $pc3 = $job3 | Receive-Job
+        $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
+        $job | Wait-Job
+        $pc = $job | Receive-Job
         $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName "*"
 
         #Verification
-        Assert-AreEqual $pc3.Name $pcName3
-        Assert-AreEqual $pc3.Filters[0].LocalPort 80
-        Assert-AreEqual $pc3.Filters[0].Protocol TCP
-        Assert-AreEqual $pc3.Filters[0].RemoteIPAddress 127.0.0.1-127.0.0.255
-        Assert-AreEqual $pc3.Filters[1].LocalIPAddress 127.0.0.1;127.0.0.5
-        Assert-AreEqual $pc3.StorageLocation.FilePath C:\tmp\Capture.cap
-        Assert-AreEqual $pc2.Name $pcName2
-        Assert-AreEqual "Succeeded" $pc2.ProvisioningState
-        Assert-AreEqual $pc2.TargetType AzureVMSS
-        Assert-AreEqual $pc3.Name $pcName3
-        Assert-AreEqual "Succeeded" $pc3.ProvisioningState
-        Assert-AreEqual $pc3.TargetType AzureVMSS
-        Assert-AreEqual $pc3.Scope.Include[0] $vmIndex
-        Assert-AreEqual $pc3.Scope.Include[1] $vmIndex2
+        Assert-AreEqual $pc.Name $pcName
+        Assert-AreEqual $pc.Filters[0].LocalPort 80
+        Assert-AreEqual $pc.Filters[0].Protocol TCP
+        Assert-AreEqual $pc.Filters[0].RemoteIPAddress 127.0.0.1-127.0.0.255
+        Assert-AreEqual $pc.Filters[1].LocalIPAddress 127.0.0.1;127.0.0.5
+        Assert-AreEqual $pc.StorageLocation.FilePath C:\tmp\Capture.cap
+        Assert-AreEqual "Succeeded" $pc.ProvisioningState
+        Assert-AreEqual $pc.TargetType AzureVMSS
+        Assert-AreEqual $pc.Scope.Include[0] "0"
 
         $currentCount = $pcList.Count;
 
         #Stop packet capture
-        $job2 = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
-        $job2 | Wait-Job
-        $job3 = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName3 -AsJob
-        $job3 | Wait-Job
+        $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
+        $job | Wait-Job
 
         #Get packet capture
-        $pc2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
+        $pc = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName
 
         #Remove packet capture
-        $job2 = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
-        $job2 | Wait-Job
+        $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
+        $job | Wait-Job
 
         #List packet captures
         $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
         Assert-AreEqual $pcList.Count ($currentCount - 1)
-
-        #Remove packet capture
-        $job3 = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName3 -AsJob
-        $job3 | Wait-Job
-
-        #List packet captures
-        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
-        Assert-AreEqual $pcList.Count ($currentCount - 2)
 
     }
     finally
