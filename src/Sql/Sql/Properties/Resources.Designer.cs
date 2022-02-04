@@ -720,6 +720,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Managed instance link with name &apos;{0}&apos; already exists on Azure Sql Managed Instance &apos;{1}&apos;.
+        /// </summary>
+        internal static string ManagedInstanceLinkAlreadyExists {
+            get {
+                return ResourceManager.GetString("ManagedInstanceLinkAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
         /// </summary>
         internal static string MissingExternalAdmin {
@@ -1386,6 +1395,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Certificate with name &apos;{0}&apos; already exists on Azure Sql Managed Instance &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerTrustCertificateAlreadyExists {
+            get {
+                return ResourceManager.GetString("ServerTrustCertificateAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request for upgrade of server &apos;{0}&apos; already exists..
         /// </summary>
         internal static string ServerUpgradeExists {
@@ -1418,15 +1436,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAdvisorAutoExecuteStatusWarning {
             get {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
-        /// </summary>
-        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
-            get {
-                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
             }
         }
         

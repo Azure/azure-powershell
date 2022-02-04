@@ -691,4 +691,10 @@
   <data name="ServerOutboundFirewallRuleFQDNDoesNotExist" xml:space="preserve">
     <value>Allowed FQDN with name '{0}' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
   </data>
+  <data name="ManagedInstanceLinkAlreadyExists" xml:space="preserve">
+    <value>Managed instance link with name '{0}' already exists on Azure Sql Managed Instance '{1}'</value>
+  </data>
+  <data name="ServerTrustCertificateAlreadyExists" xml:space="preserve">
+    <value>Certificate with name '{0}' already exists on Azure Sql Managed Instance '{1}'.</value>
+  </data>
 </root>
