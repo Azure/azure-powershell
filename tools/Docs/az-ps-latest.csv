@@ -35,7 +35,7 @@ pac33,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.Datadog,0
 pac34,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataFactory,1.16.3
 pac35,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataLakeAnalytics,1.0.2
 pac36,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataLakeStore,1.3.0
-pac37,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataMigration,0.7.5
+pac37,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataMigration,0.8.0
 pac38,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataProtection,0.3.1
 pac39,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DataShare,1.0.0
 pac40,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.DedicatedHsm,0.2.0
@@ -76,7 +76,7 @@ pac74,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.ManagedSe
 pac75,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.ManagementPartner,0.7.2
 pac76,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.Maps,0.8.0
 pac77,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.MariaDb,0.2.0
-pac78,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.Marketplace,0.2.0
+pac78,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.Marketplace,0.3.0
 pac79,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.MarketplaceOrdering,1.0.2
 pac80,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.Media,1.1.1
 pac81,[ps=true;customSource=https://www.poshtestgallery.com/api/v2/]Az.Migrate,1.1.2

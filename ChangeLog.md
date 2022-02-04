@@ -77,6 +77,17 @@
 #### Az.Websites
 * Updated 'New-AzAppServicePlan'  to create an app service plan with host environment id #16094
 
+### Thanks to our community contributors
+* @adriancuadrado, Update New-AzADServicePrincipal.md (#16896)
+* Alan (@AlanFlorance), Update Get-AzDataLakeGen2ChildItem.md (#16292)
+* @geologyrocks, Duplicated header (#16876)
+* Hiroshi Yoshioka (@hyoshioka0128), Typo “Azure CosmosDB"→"Azure Cosmos DB” (#16561)
+* Jean-Paul Smit (@jeanpaulsmit), The -Force option is not documented and not accepted as parameter (#16910)
+* Kamil Konderak (@kamilkonderak), Fixed description for NodeOsDiskSize parameter (#16716)
+* Muralidhar Ranganathan (@rmuralidhar), Mitigate Get-AzKeyVaultSecret: Invalid Parameter AsPlainText (#16730)
+* Ørjan Landgraff (@theorjan), better PS example (#16748)
+* @ahbleite, The switch option was not updated to reflect the new ParameterSetName values, therefore the $id is always null. (#16818)
+
 ## 7.1.0 - January 2022
 #### Az.Accounts
 * Copied 'ServicePrincipalSecret' and 'CertificatePassword' from Az.Accounts buildin profile to customer set profile. [#16617]
