@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.1.0
 * Reverted the configure backup per policy limit for VMs from 1000 to 100. This limit was previously relaxed but as Azure portal has a limit of 100 VMs per policy, we are reverting this limit.
 * Added support for multiple backups per day for FileShares.
 * Segregated some of the CRR and non-CRR flows based on the SDK update.
