@@ -339,8 +339,8 @@ function New-AzSentinelAlertRule {
             if ($PSBoundParameters['Kind'] -eq 'Fusion'){
                 $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.FusionAlertRule]::new()
                 
-                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
-                $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
+                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplate']
+                $null = $PSBoundParameters.Remove('AlertRuleTemplate')
                 
                 If($PSBoundParameters['Enabled']){
                     $AlertRule.Enabled = $PSBoundParameters['Enabled']
@@ -398,8 +398,8 @@ function New-AzSentinelAlertRule {
             if ($PSBoundParameters['Kind'] -eq 'MLBehaviorAnalytics'){
                 $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MlBehaviorAnalyticsAlertRule]::new()
                 
-                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
-                $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
+                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplate']
+                $null = $PSBoundParameters.Remove('AlertRuleTemplate')
                 
                 If($PSBoundParameters['Enabled']){
                     $AlertRule.Enabled = $PSBoundParameters['Enabled']
@@ -552,7 +552,7 @@ function New-AzSentinelAlertRule {
                 }
                 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
                 
@@ -672,8 +672,8 @@ function New-AzSentinelAlertRule {
             if ($PSBoundParameters['Kind'] -eq 'ThreatIntelligence'){
                 $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ThreatIntelligenceAlertRule]::new()
                 
-                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
-                $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
+                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplate']
+                $null = $PSBoundParameters.Remove('AlertRuleTemplate')
                 
                 If($PSBoundParameters['Enabled']){
                     $AlertRule.Enabled = $PSBoundParameters['Enabled']

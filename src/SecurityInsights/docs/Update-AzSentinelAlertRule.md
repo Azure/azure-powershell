@@ -34,7 +34,7 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-Fusion] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-FusionMLorTI] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftSecurityIncidentCreation
@@ -66,7 +66,7 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ### UpdateViaIdentityFusionMLTI
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleTemplateName <String>]
- [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-Fusion] [-NoWait] [-Confirm] [-WhatIf]
+ [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-FusionMLorTI] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -363,7 +363,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Fusion
+### -FusionMLorTI
 
 
 ```yaml
