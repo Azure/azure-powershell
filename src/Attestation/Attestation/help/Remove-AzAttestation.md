@@ -37,7 +37,7 @@ The Remove-AzAttestation cmdlet deletes the specified attestation.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAttestation -Name pshtest3 -ResourceGroupName psh-test-rg
+Remove-AzAttestation -Name pshtest3 -ResourceGroupName psh-test-rg
 ```
 
 Delete the Attestation Provider named *pshtest3* in the resource group named *psh-test-rg* from the current subscription.

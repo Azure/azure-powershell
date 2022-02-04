@@ -25,8 +25,8 @@ After you enable a job schedule, jobs can be created according to that schedule.
 ## EXAMPLES
 
 ### Example 1: Enable a job schedule
-```
-PS C:\>Enable-AzBatchJobSchedule -Id "JobSchedule17" -BatchContext $Context
+```powershell
+Enable-AzBatchJobSchedule -Id "JobSchedule17" -BatchContext $Context
 ```
 
 This command enables the job schedule that has the ID JobSchedule17.

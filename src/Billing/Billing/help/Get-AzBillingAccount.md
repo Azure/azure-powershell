@@ -30,43 +30,43 @@ The **Get-AzBillingAccount** cmdlet gets billing accounts, user has access to.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzBillingAccount
+```powershell
+Get-AzBillingAccount
 ```
 
 Get all billing accounts user has access to.
 
 ### Example 2
-```
-PS C:\> Get-AzBillingAccount -Name 00000000-0000-0000-0000-000000000000
+```powershell
+Get-AzBillingAccount -Name 00000000-0000-0000-0000-000000000000
 ```
 
 Get the billing account with the specified name.
 
 ### Example 3
-```
-PS C:\> Get-AzBillingAccount -IncludeAddress
+```powershell
+Get-AzBillingAccount -IncludeAddress
 ```
 
 Get all billing accounts user has access to, and include the address in the result.
 
 ### Example 4
-```
-PS C:\> Get-AzBillingAccount -ExpandBillingProfile
+```powershell
+Get-AzBillingAccount -ExpandBillingProfile
 ```
 
 Get all billing accounts user has access to, and include the billing profiles in the result.
 
 ### Example 5
-```
-PS C:\> Get-AzBillingAccount -ExpandInvoiceSection
+```powershell
+Get-AzBillingAccount -ExpandInvoiceSection
 ```
 
 Get all billing accounts user has access to, and include the billing profiles and invoice sections under them in the result.
 
 ### Example 6
-```
-PS C:\> Get-AzBillingAccount -ExpandInvoiceSection -ExpandAddress -Name 00000000-0000-0000-0000-000000000000
+```powershell
+Get-AzBillingAccount -ExpandInvoiceSection -ExpandAddress -Name 00000000-0000-0000-0000-000000000000
 ```
 
 Get the billing account with the specified name, and include the address, billing profiles and invoice sections under them in the result.

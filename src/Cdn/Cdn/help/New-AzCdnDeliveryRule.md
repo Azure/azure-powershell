@@ -24,8 +24,10 @@ The **New-AzCdnDeliveryRule** cmdlet creates a delivery rule for CDN endpoint cr
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCdnDeliveryRule -Name "rule1" -Order 1 -Condition $cond1 -Action $action1
+New-AzCdnDeliveryRule -Name "rule1" -Order 1 -Condition $cond1 -Action $action1
+```
 
+```output
 Name  Order Actions           Conditions
 ----  ----- -------           ----------
 rule1     1 {Accept-Encoding} {Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition}

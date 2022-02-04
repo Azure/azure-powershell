@@ -26,7 +26,7 @@ This command is to be used with New-AzApiManagement command.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $apimRegion = New-AzApiManagementRegion -Location "Central US" 
 
 $additionalRegions = @($apimRegion)
@@ -35,7 +35,7 @@ New-AzApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name Co
 ```
 
 ### Example 2
-```
+```powershell
 $apimRegionVirtualNetwork = New-AzApiManagementVirtualNetwork -Location "Central US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
 
 $apimRegion = New-AzApiManagementRegion -Location "Central US" -VirtualNetwork $apimRegionVirtualNetwork 

@@ -34,8 +34,8 @@ The **New-AzApiManagementCertificate** cmdlet creates an Azure API Management ce
 
 ### Example 1: Create and upload a certificate
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
 ```
 
 This command uploads a certificate to Api Management. This certificate can be used for mutual authentication with backend using policies.
@@ -51,9 +51,9 @@ New-AzApiManagementCertificate -CertificateId '0123456789' -Context <PsApiManage
 
 ### Example 3 : Create a keyVault Certificate
 ```powershell
-PS C:\>$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
-PS C:\>$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
-PS C:\>$keyVaultcert = New-AzApiManagementCertificate -Context $context -CertificateId $kvcertId -KeyVault $keyvault
+$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
+$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
+$keyVaultcert = New-AzApiManagementCertificate -Context $context -CertificateId $kvcertId -KeyVault $keyvault
 ```
 
 The first command creates a keyvault.
