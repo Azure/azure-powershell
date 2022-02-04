@@ -24,8 +24,8 @@ The **Disable-AzBatchAutoScale** cmdlet disables automatic scaling of the specif
 ## EXAMPLES
 
 ### Example 1: Disable automatic scaling of a pool
-```
-PS C:\>Disable-AzBatchAutoScale -Id "MyPool" -BatchContext $Context
+```powershell
+Disable-AzBatchAutoScale -Id "MyPool" -BatchContext $Context
 ```
 
 This command disables automatic scaling for the pool named MyPool.

@@ -24,9 +24,9 @@ The **Remove-AzApiManagementApiFromProduct** cmdlet removes an Azure API Managem
 ## EXAMPLES
 
 ### Example 1: Remove an API from a product
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementApiFromProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001" -PassThru
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementApiFromProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001" -PassThru
 ```
 
 This command removes the specified API from a product.
