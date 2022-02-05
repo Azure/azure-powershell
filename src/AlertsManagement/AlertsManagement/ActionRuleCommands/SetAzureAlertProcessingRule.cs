@@ -89,12 +89,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Alert Processing rule simplified format : Enabled
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Does Alert Processing Rule Enabled or Not.")]
-        [Parameter(Mandatory = true,
+                HelpMessage = "Indicate if the given alert processing rule is enabled or disabled (default is enabled).Allowed values: False,True.")]
+        [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Does Alert Processing Rule Enabled or Not.")]
+                HelpMessage = "Indicate if the given alert processing rule is enabled or disabled (default is enabled).Allowed values: False,True.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("True", "False")]
         public string Enabled { get; set; }
@@ -104,10 +104,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = true,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Comma separated list of values")]
+                HelpMessage = "List of resource IDs, Comma separated list of values. " +
+                               "The rule will apply to alerts that fired on resources within that scope")]
         [Parameter(Mandatory = true,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Comma separated list of values")]
+                HelpMessage = "List of resource IDs, Comma separated list of values. " +
+                               "The rule will apply to alerts that fired on resources within that scope")]
         [ValidateNotNullOrEmpty]
         public List<string> Scopes { get; set; }
 
@@ -117,10 +119,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false, 
             ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet, 
-            HelpMessage = "Alert Processing rule tags")]
+            HelpMessage = "Alert Processing rule tags" +
+            "For eg.@{<tag1> = <key1>;<tag2>= <key2>} Use {} to clear existing tags. ")]
         [Parameter(Mandatory = false, 
             ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-            HelpMessage = "Alert Processing rule tags")]
+            HelpMessage = "Alert Processing rule tags" +
+            "For eg.@{<tag1> = <key1>;<tag2>= <key2>} Use {} to clear existing tags. ")]
         public Hashtable Tags { get; set; }
 
         /// <summary>
@@ -128,55 +132,65 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Sev0,Sev1")]
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Sev0,Sev1" +
+                              "severity: one of <Sev0, Sev1, Sev2, Sev3, Sev4>.")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Sev0,Sev1")]
-        public string SeverityCondition { get; set; }
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Sev0,Sev1" +
+                              "severity: one of <Sev0, Sev1, Sev2, Sev3, Sev4>.")]
+        public string FilterSeverity { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Monitor Service Condition
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Platform,Log Analytics")]
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Platform,Log Analytics" +
+                              "operation: one of <Equals, NotEquals, Contains, DoesNotContain>")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Platform,Log Analytics")]
-        public string MonitorServiceCondition { get; set; }
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Platform,Log Analytics" +
+                              "operation: one of <Equals, NotEquals, Contains, DoesNotContain>")]
+        public string FilterMonitorService { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Condition for Monitor Condition
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. NotEquals:Resolved")]
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. NotEquals:Resolved" +
+                              "operation: one of < Equals, NotEquals, Contains, DoesNotContain > ")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. NotEquals:Resolved")]
-        public string MonitorCondition { get; set; }
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. NotEquals:Resolved" +
+                              "operation: one of < Equals, NotEquals, Contains, DoesNotContain > ")]
+        public string FilterMonitorCondition { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Target Resource Type Condition
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:mySQLDataBaseName")]
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:mySQLDataBaseName" +
+                              "operation: one of <Equals, NotEquals, Contains, DoesNotContain>")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:mySQLDataBaseName")]
-        public string TargetResourceTypeCondition { get; set; }
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:mySQLDataBaseName" +
+                              "operation: one of <Equals, NotEquals, Contains, DoesNotContain>")]
+        public string FilterTargetResource { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Target Resource Condition
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Virtual Machines,Storage Account")]
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Virtual Machines,Storage Account" +
+                              "operation: one of <Equals, NotEquals, Contains, DoesNotContain>")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Virtual Machines,Storage Account")]
-        public string TargetResourceCondition { get; set; }
+                HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Virtual Machines,Storage Account" +
+                              "operation: one of <Equals, NotEquals, Contains, DoesNotContain>")]
+        public string FilterTargetResourceType { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Target Resource Group Condition
@@ -187,7 +201,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. NotEquals:/subscriptions/<subscriptionID>/resourceGroups/test")]
-        public string TargetResourceGroupCondition { get; set; }
+        public string FilterTargetResourceGroup { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Rule ID Condition
@@ -198,10 +212,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:ARM_ID_1,ARM_ID_2")]
-        public string AlertRuleIdCondition { get; set; }
+        public string FilterAlertRuleId { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Rule ID Condition
+        /// Alert Processing rule simplified format : Rule Name Condition
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
@@ -209,7 +223,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:ARM Name Test1,ARM Name Test2")]
-        public string AlertRuleNameCondition { get; set; }
+        public string FilterAlertRuleName { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Description Condition
@@ -220,7 +234,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Test Alert")]
-        public string DescriptionCondition { get; set; }
+        public string FilterDescription { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Alert Context Condition
@@ -231,7 +245,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:smartgroups")]
-        public string AlertContextCondition { get; set; }
+        public string FilterAlertContext { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Signal Type Condition
@@ -242,17 +256,17 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Metric")]
-        public string SignalTypeCondition { get; set; }
+        public string FilterSignalType { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Action Rule Type
         /// </summary>
         [Parameter(Mandatory = true,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "AlertProcessing Rule Type")]
+                HelpMessage = "Alert Processing rule Type. Allowed values: AddActionGroups, RemoveAllActionGroups.")]
         [Parameter(Mandatory = true,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "AlertProcessing Rule Type")]
+                HelpMessage = "Alert Processing rule Type. Allowed values: AddActionGroups, RemoveAllActionGroups.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("RemoveAllActionGroups", "AddActionGroups")]
         public string AlertProcessingRuleType { get; set; }
@@ -269,7 +283,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "Start Date Time. Format 12/09/2018 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
-        public string StartDateTime { get; set; }
+        public string ScheduleStartDateTime { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : End Date Time
@@ -282,44 +296,42 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "End Date Time. Format 12/09/2018 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
-        public string EndDateTime { get; set; }
+        public string ScheduleEndDateTime { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Time Zone
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "Time Zone. Format 12/09/2018 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.")]
+               HelpMessage = "Schedule time zone.  Default: UTC.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "Time Zone. Format 12/09/2018 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
-        public string TimeZone { get; set; }
+               HelpMessage = "Schedule time zone.  Default: UTC.")]
+        public string ScheduleTimeZone { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Schedule Reccurence Type
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Specifies the duration when the action should be applied, Default to Always")]
+                HelpMessage = "Specifies when the processing rule should be applied, Default to Always")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Specifies the duration when the action should be applied, Default to Always")]
+                HelpMessage = "Specifies when the processing rule should be applied, Default to Always")]
         [PSArgumentCompleter("Always", "Once", "Daily", "Weekly", "Monthly")]
-        public string ReccurenceType { get; set; }
+        public string ScheduleReccurenceType { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Schedule Reccurence Type
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Specifies the duration when the action should be applied.")]
+                HelpMessage = "Specifies when the processing rule should be applied, Default to Always")]
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-                HelpMessage = "Specifies the duration when the action should be applied.")]
+                HelpMessage = "Specifies when the processing rule should be applied, Default to Always")]
         [PSArgumentCompleter("Always", "Once", "Daily", "Weekly", "Monthly")]
-        public string ReccurenceType2 { get; set; }
+        public string ScheduleReccurence2Type { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Reccurence Days Of Week
@@ -330,7 +342,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<comma separated list of values>} For eg. Monday,Saturday")]
-        public string ReccurenceDaysOfWeek { get; set; }
+        public string ScheduleReccurenceDaysOfWeek { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : second reccurence Days Of Week
@@ -341,7 +353,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<comma separated list of values>} For eg. Monday,Saturday")]
-        public string ReccurenceDaysOfWeek2 { get; set; }
+        public string ScheduleReccurence2DaysOfWeek { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Reccurence Days Of Month
@@ -352,7 +364,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<comma separated list of values>} For eg. 1,3,12")]
-        public string ReccurenceDaysOfMonth { get; set; }
+        public string ScheduleReccurenceDaysOfMonth { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Second reccurence Days Of Month
@@ -363,7 +375,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Expected format - {<comma separated list of values>} For eg. 1,3,12")]
-        public string ReccurenceDaysOfMonth2 { get; set; }
+        public string ScheduleReccurence2DaysOfMonth { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Reccurence Start Time
@@ -376,7 +388,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "Reccurence Start Time. Format 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
-        public string ReccurenceStartTime { get; set; }
+        public string ScheduleReccurenceStartTime { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : second reccurence Start Time
@@ -389,7 +401,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "Reccurence Start Time. Format 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
-        public string ReccurenceStartTime2 { get; set; }
+        public string ScheduleReccurence2StartTime { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Reccurence End Time
@@ -402,7 +414,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "Reccurence End Time. Format 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
-        public string ReccurenceEndTime { get; set; }
+        public string ScheduleReccurenceEndTime { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Second reccurence End Time
@@ -415,15 +427,16 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "Reccurence End Time. Format 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
-        public string ReccurenceEndTime2 { get; set; }
+        public string ScheduleReccurence2EndTime { get; set; }
 
         /// <summary>
         /// Alert Processing simplified format : Action Group Id
         /// </summary>
         [Parameter(Mandatory = true,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-                HelpMessage = "Action Group Id which is to be notified.")]
-        public string ActionGroupId { get; set; }
+                HelpMessage = "Action Group Ids which are to be notified, Comma separated list of values.\n" +
+                              "Required only if alert processing rule type is AddActionGroups.")]
+        public string ActionGroupIds { get; set; }
 
         #endregion
 
@@ -452,7 +465,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                 conditions: ParseConditions(),
                                 schedule: ValidateParseSchedule(),                     
                                 description: Description,
-                                enabled: bool.Parse(Enabled)
+                                enabled: Enabled == null ? true : bool.Parse(Enabled)
                             )
                         );
 
@@ -477,7 +490,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                 conditions: ParseConditions(),
                                 schedule: ValidateParseSchedule(),
                                 description: Description,
-                                enabled: bool.Parse(Enabled)
+                                enabled:  Enabled == null ? true : bool.Parse(Enabled)
                             )
                         );
 
@@ -497,9 +510,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                     tags: JsonConvert.DeserializeObject <IDictionary<string, string>> (actionGroupInputObject.Tags),
                                     properties: new AlertProcessingRuleProperties(
                                         scopes: JsonConvert.DeserializeObject<IList<string>>(actionGroupInputObject.Scopes),
-                                        actions: ExtractActions(actionGroupInputObject.ActionGroupId),
+                                        actions: ExtractActions(actionGroupInputObject.ActionGroupIds),
                                         conditions: JsonConvert.DeserializeObject<IList<Condition>>(actionGroupInputObject.Conditions),
-                                        schedule: actionGroupInputObject.Schedule,
+                                        schedule: JsonConvert.DeserializeObject<Schedule>(actionGroupInputObject.Schedule),
                                         description: actionGroupInputObject.Description,
                                         enabled: actionGroupInputObject.Enabled == "True" ? true : false
                                     )
@@ -520,7 +533,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                         scopes: JsonConvert.DeserializeObject<IList<string>>(suppressionInputObject.Scopes),
                                         actions: ParseRemoveAllActionGroupsActions(),
                                         conditions: JsonConvert.DeserializeObject<IList<Condition>>(suppressionInputObject.Conditions),
-                                        schedule: suppressionInputObject.Schedule,
+                                        schedule: JsonConvert.DeserializeObject<Schedule>(suppressionInputObject.Schedule)                                                                                                                           ,
                                         description: suppressionInputObject.Description,
                                         enabled: suppressionInputObject.Enabled == "True" ? true : false
                                     )
@@ -552,7 +565,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private IList<Action> ParseAddActionGroupsActions()
         {
             IList<Action> actions  = new List<Action>();
-            AddActionGroups addActionGroups = new AddActionGroups(ActionGroupId.Split(',').ToList());
+            AddActionGroups addActionGroups = new AddActionGroups(ActionGroupIds.Split(',').ToList());
             actions.Add(addActionGroups);
             return actions;
         }
@@ -573,46 +586,46 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         {
             Schedule schedule = new Schedule();
             
-            if(ReccurenceType == null || ReccurenceType == "Always")
+            if(ScheduleReccurenceType == null || ScheduleReccurenceType == "Always")
             {
                 return null;
             }
 
             ValidateSchedule();          
                
-            if (ReccurenceType == "Once")
+            if (ScheduleReccurenceType == "Once")
             {
                 schedule = new Schedule(
-                effectiveFrom: StartDateTime.Split(' ')[0] + "T" + StartDateTime.Split(' ')[1],
-                effectiveUntil: EndDateTime != null ? EndDateTime.Split(' ')[0] + "T" + EndDateTime.Split(' ')[1] : EndDateTime,
-                timeZone: TimeZone
+                effectiveFrom: ScheduleStartDateTime.Split(' ')[0] + "T" + ScheduleStartDateTime.Split(' ')[1],
+                effectiveUntil: ScheduleEndDateTime != null ? ScheduleEndDateTime.Split(' ')[0] + "T" + ScheduleEndDateTime.Split(' ')[1] : ScheduleEndDateTime,
+                timeZone: ScheduleTimeZone == null ? "UTC" : ScheduleTimeZone
                 );
             }
             else
             {
                 IList<Recurrence> recurrences = new List<Recurrence>();
 
-                if (ReccurenceType == "Daily")
+                if (ScheduleReccurenceType == "Daily")
                 {
-                    recurrences.Add(new DailyRecurrence(ReccurenceStartTime, ReccurenceEndTime));
+                    recurrences.Add(new DailyRecurrence(ScheduleReccurenceStartTime, ScheduleReccurenceEndTime));
                 }
 
-                if (ReccurenceType == "Weekly")
+                if (ScheduleReccurenceType == "Weekly")
                 {
-                    IList<string> daysOfWeek = ReccurenceDaysOfWeek.Split(',');
-                    recurrences.Add(new WeeklyRecurrence(daysOfWeek, ReccurenceStartTime, ReccurenceEndTime));
+                    IList<string> daysOfWeek = ScheduleReccurenceDaysOfWeek.Split(',');
+                    recurrences.Add(new WeeklyRecurrence(daysOfWeek, ScheduleReccurenceStartTime, ScheduleReccurenceEndTime));
                 }
 
-                if (ReccurenceType == "Monthly")
+                if (ScheduleReccurenceType == "Monthly")
                 {
-                    var daysOfMonth = ReccurenceDaysOfMonth.Split(',').Select(i => (int?)int.Parse(i)).ToList();
-                    recurrences.Add(new MonthlyRecurrence(daysOfMonth, ReccurenceStartTime, ReccurenceEndTime));
+                    var daysOfMonth = ScheduleReccurenceDaysOfMonth.Split(',').Select(i => (int?)int.Parse(i)).ToList();
+                    recurrences.Add(new MonthlyRecurrence(daysOfMonth, ScheduleReccurenceStartTime, ScheduleReccurenceEndTime));
                 }
 
                 schedule = new Schedule(
-                    effectiveFrom: StartDateTime.Split(' ')[0] + "T" + StartDateTime.Split(' ')[1],
-                    effectiveUntil: EndDateTime.Split(' ')[0] + "T" + EndDateTime.Split(' ')[1],
-                    timeZone: TimeZone,
+                    effectiveFrom: ScheduleStartDateTime.Split(' ')[0] + "T" + ScheduleStartDateTime.Split(' ')[1],
+                    effectiveUntil: ScheduleEndDateTime.Split(' ')[0] + "T" + ScheduleEndDateTime.Split(' ')[1],
+                    timeZone: ScheduleTimeZone == null ? "UTC" : ScheduleTimeZone,
                     recurrences: recurrences
                     );
             }
@@ -625,52 +638,52 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             string format = "yyyy-MM-dd hh:mm:ss";
             System.DateTime outDateTime;
 
-            if (StartDateTime == null)
+            if (ScheduleStartDateTime == null)
             {
                 throw new PSInvalidOperationException("StartDateTime must be provided");
             }
 
             // check start and end date time Format
-            if (System.DateTime.TryParseExact(StartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+            if (System.DateTime.TryParseExact(ScheduleStartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
             {
                 throw new PSInvalidOperationException("Invalid StartDateTime Format");
             }
-            if (EndDateTime != null)
+            if (ScheduleEndDateTime != null)
             {
-                if (System.DateTime.TryParseExact(StartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+                if (System.DateTime.TryParseExact(ScheduleStartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
                     throw new PSInvalidOperationException("Invalid EndDateTime Format");
                 }
             }
-            if(ReccurenceType != "Once")
+            if(ScheduleReccurenceType != "Once")
             {
-                if (ReccurenceStartTime == null)
+                if (ScheduleReccurenceStartTime == null)
                 {
                     throw new PSInvalidOperationException("ReccurenceStartTime must be provided");
                 }
-                if (ReccurenceEndTime == null)
+                if (ScheduleReccurenceEndTime == null)
                 {
                     throw new PSInvalidOperationException("ReccurenceEndTime must be provided");
                 }
-                if (System.DateTime.TryParseExact("2022-01-12 " + ReccurenceStartTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+                if (System.DateTime.TryParseExact("2022-01-12 " + ScheduleReccurenceStartTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
                     throw new PSInvalidOperationException("Invalid ReccurenceStartTime Format");
                 }
-                if (System.DateTime.TryParseExact("2022-01-12 " + ReccurenceEndTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+                if (System.DateTime.TryParseExact("2022-01-12 " + ScheduleReccurenceEndTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
                     throw new PSInvalidOperationException("Invalid ReccurenceEndTime Format");
                 }
-                if (ReccurenceType == "Weekly")
+                if (ScheduleReccurenceType == "Weekly")
                 {
-                    if(ReccurenceDaysOfWeek == null)
+                    if(ScheduleReccurenceDaysOfWeek == null)
                     {
                         throw new PSInvalidOperationException("ReccurenceDaysOfWeek must be provided");
                     }
                 }
 
-                if (ReccurenceType == "Monthly")
+                if (ScheduleReccurenceType == "Monthly")
                 {
-                    if (ReccurenceDaysOfMonth == null)
+                    if (ScheduleReccurenceDaysOfMonth == null)
                     {
                         throw new PSInvalidOperationException("ReccurenceDaysOfMonth must be provided");
                     }
@@ -694,80 +707,96 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         private IList<Condition> ParseConditions()
         {
+            bool conditionExist = false;
             IList<Condition> conditions = new List<Condition>();
-            if (SeverityCondition != null)
+            if (FilterSeverity != null)
             {
                 conditions.Add(new Condition(
                         field: "severity",
-                        operatorProperty: SeverityCondition.Split(':')[0],
-                        values: SeverityCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterSeverity.Split(':')[0],
+                        values: FilterSeverity.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            if (MonitorServiceCondition != null)
+            if (FilterMonitorService != null)
             {
                 conditions.Add(new Condition(
                         field: "MonitorService",
-                        operatorProperty: MonitorServiceCondition.Split(':')[0],
-                        values: MonitorServiceCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterMonitorService.Split(':')[0],
+                        values: FilterMonitorService.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            if (MonitorCondition != null)
+            if (FilterMonitorCondition != null)
             {
                 conditions.Add(new Condition(
                         field: "MonitorCondition",
-                        operatorProperty: MonitorCondition.Split(':')[0],
-                        values: MonitorCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterMonitorCondition.Split(':')[0],
+                        values: FilterMonitorCondition.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            if (TargetResourceTypeCondition != null)
+            if (FilterTargetResourceType != null)
             {
                 conditions.Add(new Condition(
                         field: "TargetResourceType",
-                        operatorProperty: TargetResourceTypeCondition.Split(':')[0],
-                        values: TargetResourceTypeCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterTargetResourceType.Split(':')[0],
+                        values: FilterTargetResourceType.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            if (DescriptionCondition != null)
+            if (FilterDescription != null)
             {
                 conditions.Add(new Condition(
                         field: "Description",
-                        operatorProperty: DescriptionCondition.Split(':')[0],
-                        values: DescriptionCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterDescription.Split(':')[0],
+                        values: FilterDescription.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-             if (AlertRuleNameCondition != null)
+             if (FilterAlertRuleName != null)
             {
                 conditions.Add(new Condition(
                         field: "AlertRuleName",
-                        operatorProperty: AlertRuleNameCondition.Split(':')[0],
-                        values: AlertRuleNameCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterAlertRuleName.Split(':')[0],
+                        values: FilterAlertRuleName.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            if (AlertRuleIdCondition != null)
+            if (FilterAlertRuleId != null)
             {
                 conditions.Add(new Condition(
                         field: "AlertRuleId",
-                        operatorProperty: AlertRuleIdCondition.Split(':')[0],
-                        values: AlertRuleIdCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterAlertRuleId.Split(':')[0],
+                        values: FilterAlertRuleId.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
             
-            if (AlertContextCondition != null)
+            if (FilterAlertContext != null)
             {
                 conditions.Add(new Condition(
                         field: "AlertContext",
-                        operatorProperty: AlertContextCondition.Split(':')[0],
-                        values: AlertContextCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterAlertContext.Split(':')[0],
+                        values: FilterAlertContext.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            if (SignalTypeCondition != null)
+            if (FilterSignalType != null)
             {
                 conditions.Add(new Condition(
                         field: "SignalType",
-                        operatorProperty: SignalTypeCondition.Split(':')[0],
-                        values: SignalTypeCondition.Split(':')[1].Split(',')));
+                        operatorProperty: FilterSignalType.Split(':')[0],
+                        values: FilterSignalType.Split(':')[1].Split(',')));
+                conditionExist = true;
             }
 
-            return conditions;
+            if(conditionExist == true)
+            {
+                return conditions;
+            }
+
+            return null;
+           
         }
 
         private PSAlertProcessingRule TransformOutput(AlertProcessingRule input)

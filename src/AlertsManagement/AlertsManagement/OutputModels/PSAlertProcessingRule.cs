@@ -44,9 +44,21 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             LastModifiedAt = rule.SystemData.LastModifiedAt;
             LastModifiedBy = rule.SystemData.LastModifiedBy;
             Scopes = JsonConvert.SerializeObject(rule.Properties.Scopes);
-            Tags = JsonConvert.SerializeObject(rule.Tags);
-            Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
-            Schedule = rule.Properties.Schedule;
+            if(rule.Tags != null)
+            {
+                Tags = JsonConvert.SerializeObject(rule.Tags);
+            }
+
+            if (rule.Properties.Conditions != null)
+            {
+                Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
+            }
+
+            if (rule.Properties.Schedule != null)
+            {
+                Schedule = JsonConvert.SerializeObject(rule.Properties.Schedule);
+            }
+           
             if (rule.Properties.Actions[0] is AddActionGroups)
             {
                 AlertProcessingType = "AddActionGroups";
@@ -73,7 +85,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string Conditions { get; }
 
-        public Schedule Schedule { get; }
+        public string Schedule { get; }
 
         public DateTime? CreatedAt { get; }
 

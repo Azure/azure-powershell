@@ -23,10 +23,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
     {
         public PSActionGroupAlertProcessingRule(AlertProcessingRule rule) : base(rule)
         {
-            AddActionGroups actionGroup = (AddActionGroups)rule.Properties.Actions[0];
-            ActionGroupId = actionGroup.ActionGroupIds.ToString();
+            ActionGroupIds = JsonConvert.SerializeObject(rule.Properties.Actions);
         }
 
-        public string ActionGroupId { get; }
+        public string ActionGroupIds { get; }
     }
 }
