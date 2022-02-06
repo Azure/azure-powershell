@@ -27,6 +27,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [GenericBreakingChange("New mandatory parameter 'BillingType' is added")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePort", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSExpressRoutePort))]
     public partial class NewAzureRmExpressRoutePort : NetworkBaseCmdlet
     {
@@ -90,6 +91,16 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            HelpMessage = "The billing type of the Express Route port.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "UnlimitedData",
+            "MeteredData"
+        )]
+        public string BillingType { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
             ValueFromPipelineByPropertyName = true)]
@@ -132,6 +143,7 @@ namespace Microsoft.Azure.Commands.Network
                 Encapsulation = this.Encapsulation,
                 Location = this.Location,
                 Links = this.Link?.ToList(),
+                BillingType = this.BillingType,
             };
 
             if (this.Identity != null)

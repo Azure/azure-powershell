@@ -3288,6 +3288,10 @@
                 <Label>Circuits</Label>
                 <PropertyName>CircuitsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>BillingType</Label>
+                <PropertyName>BillingType</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

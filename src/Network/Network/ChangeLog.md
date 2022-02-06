@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet to add 'BillingType' property for ExpressRoutePort
+    - `New-AzExpressRoutePort`
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)

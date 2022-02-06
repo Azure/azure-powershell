@@ -15,7 +15,7 @@ Creates an Azure ExpressRoutePort.
 ### ResourceNameParameterSet (Default)
 ```
 New-AzExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringLocation <String>
- -BandwidthInGbps <Int32> -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
+ -BandwidthInGbps <Int32> -Encapsulation <String> -Location <String> -BillingType <String> [-Tag <Hashtable>]
  [-Link <PSExpressRouteLink[]>] [-Force] [-AsJob] [-Identity <PSManagedServiceIdentity>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringLocati
 ### ResourceIdParameterSet
 ```
 New-AzExpressRoutePort -ResourceId <String> -PeeringLocation <String> -BandwidthInGbps <Int32>
- -Encapsulation <String> -Location <String> [-Tag <Hashtable>] [-Link <PSExpressRouteLink[]>] [-Force] [-AsJob]
+ -Encapsulation <String> -Location <String> -BillingType <String> [-Tag <Hashtable>] [-Link <PSExpressRouteLink[]>] [-Force] [-AsJob]
  [-Identity <PSManagedServiceIdentity>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -42,6 +42,7 @@ PS C:\> $parameters = @{
     PeeringLocation='Silicon Valley'
     BandwidthInGbps=100
     Encapsulation='QinQ'
+    BillingType='Unlimited'
 }
 PS C:\> New-AzExpressRoutePort @parameters
 ```
@@ -54,6 +55,7 @@ PS C:\> $parameters = @{
     PeeringLocation='Silicon Valley'
     BandwidthInGbps=100
     Encapsulation='QinQ'
+    BillingType='Unlimited'
 }
 PS C:\> New-AzExpressRoutePort @parameters
 ```
@@ -119,6 +121,20 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -BillingType
+Billing type of the port
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 
 ### -Force
 Do not ask for confirmation if you want to overwrite a resource
