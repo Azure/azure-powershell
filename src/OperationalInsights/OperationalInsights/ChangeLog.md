@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.1
 * Added logic to prevent exceptions while using `StorageInsight` cmdlets.
 
 ## Version 3.0.0

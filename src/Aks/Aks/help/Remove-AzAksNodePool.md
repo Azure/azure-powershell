@@ -46,7 +46,7 @@ Delete node pool from managed cluster.
 
 ### Delete specified node pool
 ```powershell
-PS C:\> Remove-AzAksNodePool -ResourceGroupName myResourceGroup -CulsterName myCluster -Name winpool
+Remove-AzAksNodePool -ResourceGroupName myResourceGroup -CulsterName myCluster -Name winpool
 ```
 
 ## PARAMETERS

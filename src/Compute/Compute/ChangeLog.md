@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.23.0
 * Remove ProvisioningDetails property from PSRestorePoint object.
 * Updated `Set-AzVmExtension` cmdlet to properly display `-Name` and `-Location` parameters as mandatory.
 * Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 

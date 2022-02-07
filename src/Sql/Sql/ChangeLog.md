@@ -17,11 +17,13 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
 * Output braking change for Managed Instance CRUD commands
-    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy
+    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy.
+    - `Get-AzSqlDatabaseTransparentDataEncryptionActivity` is now removed.
 
-## Version 3.8.0
+## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
 * Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
 
