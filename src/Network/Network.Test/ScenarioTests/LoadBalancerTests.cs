@@ -100,22 +100,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestLoadBalancerInboundNatRuleV2()
-        {
-            TestRunner.RunTestScript("Test-LoadBalancerInboundNatRuleV2");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestLoadBalancerInboundNatRuleV2InternalLB()
-        {
-            TestRunner.RunTestScript("Test-LoadBalancerInboundNatRuleV2-InternalLB");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerSet()
         {
             TestRunner.RunTestScript("Test-LoadBalancerSet");
