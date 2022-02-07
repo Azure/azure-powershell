@@ -24,9 +24,9 @@ The **Remove-AzVmssVMDataDisk** cmdlet removes a data disk from a VM scale set V
 
 ### Example 1: Remove a data disk from a VM scale set VM
 ```powershell
-PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 
-PS C:\> Remove-AzVmssVMDataDisk -VM $VirtualMachine -Lun 0
-PS C:\> Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
+$VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 
+Remove-AzVmssVMDataDisk -VM $VirtualMachine -Lun 0
+Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
 ```
 
 The first command getsan existing Vmss VM given by the resource group name, the vmss name and the instance ID.

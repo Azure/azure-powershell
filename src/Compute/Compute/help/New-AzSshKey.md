@@ -24,14 +24,14 @@ Create a SSH Public Key resource.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -PublicKey $publicKey
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -PublicKey $publicKey
 ```
 
 Creating a SSH Key resource with provided a public key. 
 
 ### Example 2
 ```powershell
-PS C:\> New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" 
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" 
 ```
 
 Creating a SSH Key resource without providing a public key. A key pair will be generated and saved in ~\.ssh. The public key will also be saved in the SSH Key resource.

@@ -46,9 +46,11 @@ Specify the *Status* parameter to get the instance view of a virtual machine ins
 ## EXAMPLES
 
 ### Example 1: Get model and instance view properties
+```powershell
+Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
-PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 
+```output
 ResourceGroupName        : ResourceGroup11
 Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup11/providers/M
 icrosoft.Compute/virtualMachines/VirtualMachine07
@@ -70,9 +72,11 @@ StorageProfile           : {ImageReference, OsDisk, DataDisks}
 This command gets the model view and instance view properties of the virtual machine named VirtualMachine07.
 
 ### Example 2: Get instance view properties
+```powershell
+Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 ```
-PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 
+```output
 ResourceGroupName       : ResourceGroup11
 Name                    : VirtualMachine07
 Disks[0]                :
@@ -167,9 +171,11 @@ This command specifies the *Status* parameter.
 Therefore, the command gets only the instance view properties.
 
 ### Example 3: Get properties for all virtual machines in a resource group
+```powershell
+Get-AzVM -ResourceGroupName "ResourceGroup11"
 ```
-PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11"
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 ResourceGroup11     test1         eastus Standard_DS1_v2 Windows          test1
@@ -180,9 +186,11 @@ ResourceGroup11     test3         eastus Standard_DS1_v2 Windows          test3
 This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
 
 ### Example 4: Get all virtual machines in your subscription
+```powershell
+Get-AzVM
 ```
-PS C:\> Get-AzVM
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 TEST1               test1         eastus Standard_DS1_v2 Windows          test1
@@ -195,9 +203,11 @@ TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 This command gets all the virtual machines in your subscription.
 
 ### Example 5: Get all virtual machines in the location.
+```powershell
+Get-AzVM -Location "westus"
 ```
-PS C:\> Get-AzVM -Location "westus"
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 TEST1               test2         westus Standard_DS1_v2 Windows          test2
@@ -207,9 +217,11 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 This command gets all the virtual machines in West US region.
 
 ### Example 6: Get all virtual machines using filtering
+```powershell
+Get-AzVM -Name test*
 ```
-PS C:\> Get-AzVM -Name test*
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 TEST1               test1         eastus Standard_DS1_v2 Windows          test1
@@ -220,9 +232,11 @@ TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
 ### Example 7: Get VM with UserData value
+```powershell
+Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;
 ```
-PS C:\> Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;
 
+```output
 ResourceGroupName : <>
 Id                : /subscriptions/<Subscription Id>/resourceGroups/<Resource Group Name>/providers/Microsoft
 .Compute/virtualMachines/<VM Name>

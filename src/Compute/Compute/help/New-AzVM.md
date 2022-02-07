@@ -62,9 +62,11 @@ The `SimpleParameterSet` provides a convenient method to create a VM by making c
 ## EXAMPLES
 
 ### Example 1: Create a virtual machine
+```powershell
+New-AzVM -Name MyVm -Credential (Get-Credential)
 ```
-PS C:\> New-AzVM -Name MyVm -Credential (Get-Credential)
 
+```output
 VERBOSE: Use 'mstsc /v:myvm-222222.eastus.cloudapp.azure.com' to connect to the VM.
 
 ResourceGroupName        : MyVm
@@ -88,8 +90,8 @@ The script will ask a user name and password for the VM.
 This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
-```
-PS C:\> ## VM Account
+```powershell
+## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
@@ -142,7 +144,7 @@ This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 
 ### Example 3: Create a VM from a marketplace image without a Public IP
-```
+```powershell
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
 $LocationName = "westus"
@@ -172,8 +174,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $Virt
 ```
 
 ### Example 4: Create a VM with a UserData value:
-```
-PS C:\> 
+```powershell
 ## VM Account
 $VMLocalAdminUser = "LocalAdminUser";
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
