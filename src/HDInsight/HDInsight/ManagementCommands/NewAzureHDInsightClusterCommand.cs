@@ -14,11 +14,12 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -664,20 +665,20 @@ namespace Microsoft.Azure.Commands.HDInsight
                 return applicationId;
             }
 
-            GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+            MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(
                 DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 
             graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
-            Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             try
             {
-                sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
+                sp = graphClient.ServicePrincipals.GetServicePrincipalWithHttpMessagesAsync(ObjectId.ToString()).Result.Body;//graphClient.ServicePrincipals.Get(ObjectId.ToString());
             }
-            catch (Microsoft.Azure.Graph.RBAC.Version1_6.Models.GraphErrorException e)
+            catch (Exception e)
             {
                 string errorMessage = e.Message + ". Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
-                throw new Microsoft.Azure.Graph.RBAC.Version1_6.Models.GraphErrorException(errorMessage);
+                throw new Exception(errorMessage);
             }
 
             var spApplicationId = Guid.Empty;
