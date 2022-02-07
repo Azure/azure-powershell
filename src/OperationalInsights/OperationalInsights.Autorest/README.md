@@ -87,13 +87,43 @@ directive:
   - where: 
       verb: New|Update
       subject: Table
-      parameter-name: RestoredLogs
+      parameter-name: RestoredLogsStartRestoreTime
     hide: true 
 	
   - where: 
       verb: New|Update
       subject: Table
-      parameter-name: SearchResults
+      parameter-name: RestoredLogsEndRestoreTime
+    hide: true 
+	
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: SearchResultsLimit
+    hide: true 
+
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: SearchResultsDescription
+    hide: true 
+	
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: SearchResultsStartSearchTime
+    hide: true 
+	
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: SearchResultsEndSearchTime
+    hide: true 
+	
+  - where: 
+      verb: New|Update
+      subject: Table
+      parameter-name: SearchResultsQuery
     hide: true 
 	
   - where: 
