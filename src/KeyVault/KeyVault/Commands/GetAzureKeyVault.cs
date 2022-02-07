@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Shared;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -98,6 +99,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
+            WriteDebug(ConfigKeys.HttpRetry);
+
             MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
 
             switch (ParameterSetName)
