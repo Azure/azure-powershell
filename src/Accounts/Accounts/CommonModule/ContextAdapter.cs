@@ -19,6 +19,7 @@ using System.Net.Http;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Utilities;
 using Microsoft.Azure.Commands.Profile.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -26,7 +27,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
-using System.Linq.Expressions;
 using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.Common
@@ -208,6 +208,7 @@ namespace Microsoft.Azure.Commands.Common
                         if (!string.IsNullOrEmpty(claimsChallenge))
                         {
                             await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken).ConfigureAwait(false);
+                            request = request.CloneAndDispose(request.RequestUri, request.Method);
                             response = await next(request, cancelToken, cancelAction, signal);
                         }
                     }
