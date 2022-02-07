@@ -16,7 +16,8 @@ Creates and starts a policy remediation for a policy assignment.
 ```
 Start-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
  [-ResourceGroupName <String>] -PolicyAssignmentId <String> [-PolicyDefinitionReferenceId <String>]
- [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>] [-AsJob]
+ [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>] [-ResourceCount <Int32>]
+ [-ParallelDeploymentCount <Int32>] [-FailureThreshold <Double>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +25,8 @@ Start-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName
 ```
 Start-AzPolicyRemediation -ResourceId <String> -PolicyAssignmentId <String>
  [-PolicyDefinitionReferenceId <String>] [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceCount <Int32>] [-ParallelDeploymentCount <Int32>] [-FailureThreshold <Double>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +79,27 @@ PS C:\> Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name 
 
 This command creates a new policy remediation in subscription 'My Subscription' for the given policy assignment. The compliance state of resources in the subscription will be re-evaluated against the policy assignment and non-compliant resources will be remediated.
 
+### Example 6: Start a remediation that will remediate up to 10,000 non-compliant resources
+```
+PS C:\> $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
+PS C:\> Select-AzSubscription -Subscription "My Subscription"
+PS C:\> Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ResourceCount 10000
+```
+
+### Example 7: Start a remediation that will remediate 30 resources in parallel
+```
+PS C:\> $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
+PS C:\> Select-AzSubscription -Subscription "My Subscription"
+PS C:\> Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ParallelDeployments 30
+```
+
+### Example 8: Start a remediation that will terminate if more than half of the remediation deployments fail
+```
+PS C:\> $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
+PS C:\> Select-AzSubscription -Subscription "My Subscription"
+PS C:\> Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -FailureThreshold 0.5
+```
+
 ## PARAMETERS
 
 ### -AsJob
@@ -106,6 +129,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FailureThreshold
+Number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
+
+```yaml
+Type: System.Nullable`1[System.Double]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -155,6 +193,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ParallelDeploymentCount
+How many resources to remediate at any given time. Can be used to control the pace of the remediation. If not provided, the default parallel deployments value is used.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PolicyAssignmentId
 Policy assignment ID.
 E.g.
@@ -178,6 +231,21 @@ Required when the policy assignment assigns a policy set definition.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceCount
+Maximum number of non-compliant resources that will be remediated. If not provided, the default resource count is used.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

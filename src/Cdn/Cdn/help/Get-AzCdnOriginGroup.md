@@ -30,7 +30,7 @@ The Get-AzCdnOriginGroup cmdlet retrieves a CDN origin group.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName
+Get-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName
 ```
 
 This command will get the origin group within the specified endpoint.

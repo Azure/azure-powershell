@@ -66,7 +66,7 @@ The **Update-AzVmss** cmdlet updates the state of a Virtual Machine Scale Set (V
 
 ### Example 1: Update the state of a VMSS to the state of a local VMSS object.
 ```powershell
-PS C:\> Update-AzVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet $LocalVMSS
+Update-AzVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet $LocalVMSS
 ```
 
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object, $LocalVMSS.

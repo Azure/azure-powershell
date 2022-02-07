@@ -1331,7 +1331,7 @@ components:
         customKeyIdentifier:
           type: string
           description: Custom key identifier
-          format: base64url
+          format: byte
           nullable: true
         displayName:
           type: string
@@ -1377,7 +1377,7 @@ components:
         customKeyIdentifier:
           type: string
           description: Do not use.
-          format: base64url
+          format: byte
           nullable: true
         displayName:
           type: string

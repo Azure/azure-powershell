@@ -24,7 +24,7 @@ Get CommitmentTier of Cognitive Services
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesCommitmentTier -Location 'WestUS'
+Get-AzCognitiveServicesCommitmentTier -Location 'WestUS'
 ```
 
 Get CommitmentTier of Cognitive Services

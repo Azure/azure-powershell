@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -166,6 +167,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 protectedItem.WorkloadType.ToString());
             ContainerName = containerName;
         }
+
+        public ItemContext(CrrModel.ProtectedItem protectedItem,
+            string containerName, ContainerType containerType)
+            : base(containerType, protectedItem.BackupManagementType)
+        {
+            WorkloadType = ConversionUtils.GetPsWorkloadType(
+                protectedItem.WorkloadType.ToString());
+            ContainerName = containerName;
+        }
     }
 
     /// <summary>
@@ -229,6 +239,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base(protectedItemResource.Properties, containerName, containerType)
         {
             ServiceClientModel.ProtectedItem protectedItem = protectedItemResource.Properties;
+            Name = protectedItemResource.Name;
+            Id = protectedItemResource.Id;
+            LatestRecoveryPoint = protectedItem.LastRecoveryPoint;
+            SourceResourceId = protectedItem.SourceResourceId;
+        }
+
+        public ItemBase(CrrModel.ProtectedItemResource protectedItemResource,
+            string containerName, ContainerType containerType)
+            : base(protectedItemResource.Properties, containerName, containerType)
+        {
+            CrrModel.ProtectedItem protectedItem = protectedItemResource.Properties;
             Name = protectedItemResource.Name;
             Id = protectedItemResource.Id;
             LatestRecoveryPoint = protectedItem.LastRecoveryPoint;

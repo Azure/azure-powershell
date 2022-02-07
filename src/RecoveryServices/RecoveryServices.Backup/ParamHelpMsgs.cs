@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Name = "Name of the Policy that is being managed.";
             public const string RetentionPolicy = "Retention Policy object for the policy.";
             public const string SchedulePolicy = "Schedule Policy object for the policy.";
+            public const string ScheduleRunFrequency = "Schedule run frequency for the policy schedule.";
+            public const string ScheduleFrequencyForRetention = "Frequency of the schedule for which base retention policy object is fetched. Acceptable values are Daily and Hourly.";
             public const string ProtectionPolicy = "Protection policy object.";
             public const string FixForInConsistentItems = "Switch Parameter indicating whether or not to retry Policy Update for failed items.";
             public const string EnableProtectionPolicy = "Protection policy object. If policy ID is not present or the backup item is not associated with any" +

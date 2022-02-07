@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.Aks
                 NetworkPlugin = NetworkPlugin,
                 LoadBalancerSku = LoadBalancerSku
             };
-            if (this.IsParameterBound(c => c.NodeMinCount))
+            if (this.IsParameterBound(c => c.NetworkPolicy))
             {
                 networkProfile.NetworkPolicy = NetworkPolicy;
             }
@@ -399,10 +399,6 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.DockerBridgeCidr))
             {
                 networkProfile.DockerBridgeCidr = DockerBridgeCidr;
-            }
-            if (this.IsParameterBound(c => c.NodeVnetSubnetID))
-            {
-
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
 
