@@ -222,15 +222,14 @@ directive:
       parameter-name: Id
     set:
       alias: IncidentCommentId
-  #remove Enrichment
+  #Remove Enrichment
   - where:
       subject: ^Enrichment$
       variant: ^GetViaIdenity$|^GetViaIdenity1$
     remove: true
-  # Remove source control create/update/delete (requires OAUTH tokens)
+  # Remove source control (requires OAUTH tokens)
   - where:
       subject: SourceControl
-      variant: ^Create$|^CreateExpanded$|^Delete$|^DeleteViaIdentity$
     remove: true
   #Custom Built Commands
   - where:
@@ -249,15 +248,24 @@ directive:
   - where:
       parameter-name: Etag
     hide: true
-  # Update TI API not useful
+  # TI API not useful until API changes
   - where:
-      verb: Update
-      subject: ThreatIntelligenceIndicator
+      verb: ^Add$|^New$|^Update$|^Remove$
+      subject: ^ThreatIntelligenceIndicator$|^ThreatIntelligenceIndicatorTag$|
     hide: true
   # CCP
   - where:
       verb: ^Connect$|^Disconnect$
       subject: DataConnector
+    hide: true
+  # Hide Expand
+  - where:
+      verb: Expand
+      subject: ^Bookmark$|^Entity$
+    hide: true
+  - where:
+      verb: ^New$|^Update$|^Remove$
+      subject: Metadata
     hide: true
   # Hide UpdateViaId and Update
   - where:

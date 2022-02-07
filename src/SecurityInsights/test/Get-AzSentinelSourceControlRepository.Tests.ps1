@@ -16,7 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelSourceControlRe
 
 Describe 'Get-AzSentinelSourceControlRepository' {
     It 'List' -skip {
-        $repositories = Get-AzSentinelSourceControlRepository -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceNam
-        $repositories | Should -BeGreaterorEqual 1
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

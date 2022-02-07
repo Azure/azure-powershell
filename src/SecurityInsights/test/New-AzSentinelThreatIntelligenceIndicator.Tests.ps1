@@ -15,10 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelThreatIntellige
 }
 
 Describe 'New-AzSentinelThreatIntelligenceIndicator' {
-    It 'CreateExpanded' {
-        $threatIntelligenceIndicator =  New-AzSentinelThreatIntelligenceIndicator -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Confidence 10 -DisplayName "NewTIPSTest" -Pattern "[ipv4-addr:value = '8.8.8.8']" -PatternType "ipv4-addr" `
-            -ValidFrom ((get-date).ToUniversalTime() | Get-Date -Format "ddd, dd MMM yyyy hh:00:00 'GMT'")  -Source "Azure Sentinel" -ThreatType (@("Unknown"))
-        $threatIntelligenceIndicator | Should -Not -Be $null
+    It 'CreateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'Create1' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'Create' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
