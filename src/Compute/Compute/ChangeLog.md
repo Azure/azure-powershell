@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `New-AzureSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
 
 ## Version 4.23.0
 * Remove ProvisioningDetails property from PSRestorePoint object.
@@ -28,7 +29,6 @@
 * Added `Hibernate` parameter to `Stop-AzVm` cmdlet. 
 * Added `HibernationEnabled` parameter to `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
 * Added `EnableHotpatching` parameter to the `Set-AzVmssOSProfile` cmdlet.
-* Updated `New-AzureSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
 * Added 'ForceDeletion' parameter to Remove-AzVM and Remove-AzVMSS.
 
 ## Version 4.22.0
