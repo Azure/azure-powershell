@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.7.2
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
 
 ## Version 2.7.1
