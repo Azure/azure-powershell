@@ -251,7 +251,11 @@ directive:
   # TI API not useful until API changes
   - where:
       verb: ^Add$|^New$|^Update$|^Remove$
-      subject: ^ThreatIntelligenceIndicator$|^ThreatIntelligenceIndicatorTag$|
+      subject: ThreatIntelligenceIndicator
+    hide: true
+  - where:
+      verb: ^Add$|^New$|^Update$|^Remove$
+      subject: ThreatIntelligenceIndicatorTag
     hide: true
   # CCP
   - where:
