@@ -31,7 +31,7 @@ Remove-AzVpnServerConfiguration -ResourceId <String> [-Force] [-PassThru]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes an existing VpnServerConfiguration.
 
 ## EXAMPLES
 

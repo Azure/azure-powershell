@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
         protected const string ClusterInputObjectParameterSet = "ClusterInputObjectSet";
+        protected const string SchemaGroupInputObjectParameterSet = "SchemaGroupInputObjectParameterSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
         protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
+        protected const string SchemaGroupResourceIdParameterSet = "SchemaGroupResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -103,6 +105,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
         protected const string IdentityUpdateParameterSet = "IdentityUpdateParameterSet";
 
+        //ParameterSets for SchemaGroups
+        protected const string NamespaceSchemaGroupParameterSet = "NamespaceSchemaGroupParameterSet";
+
         //Alias - used in Cmdlets
         protected const string AliasResourceGroup = "ResourceGroup";
         protected const string AliasNamespaceName = "NamespaceName";
@@ -113,11 +118,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasResourceId = "ResourceId";
         protected const string AliasVirtualNetworkRule = "VirtualNteworkRule";
+        protected const string AliasSchemaGroupName = "SchemaGroupName";
 
         //Access Rights 
         protected const string Manage = "Manage";
         protected const string Send = "Send";
         protected const string Listen = "Listen";
+
+        //Schema Group properties
+        protected const string SchemaCompatibilityProperty = "SchemaCompatibility";
+        protected const string SchemaTypeProperty = "SchemaType";
+        protected const string GroupPropertyProperty = "GroupProperty";
 
 
         protected struct SKU
@@ -131,6 +142,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string PrimaryKey = "PrimaryKey";
             internal const string SecondaryKey = "SecondaryKey";
         }
+
+        protected const string NamespaceURL = "Microsoft.EventHub/namespaces";
+        protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
@@ -233,4 +247,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public string ParentResource2 { get; set; }
 
     }
+
 }

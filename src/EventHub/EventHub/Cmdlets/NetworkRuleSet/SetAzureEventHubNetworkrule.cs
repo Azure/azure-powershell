@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [ValidateNotNullOrEmpty]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Public Network Access for NetwrokeuleSet")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        [PSDefaultValue(Value = "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasVirtualNetworkRule)]
@@ -81,7 +86,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                             DefaultAction = DefaultAction,
                             TrustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent,
                             IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
+                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList(),
+                            PublicNetworkAccess = PublicNetworkAccess
                         };
 
                         WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));

@@ -37,7 +37,6 @@ Specify the artifact source by its name and resource group name. Alternately, yo
 ## EXAMPLES
 
 ### Example 1: Delete an artifact source
-### Example 1
 ```powershell
 PS C:\> Remove-AzDeploymentManagerArtifactSource -ResourceGroupName "ContosoResourceGroup" -Name "ContosoArtifactSource"
 ```

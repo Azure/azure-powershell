@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace..
+        ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace..
         /// </summary>
         internal static string InvalidWorkspaceResourceId {
             get {

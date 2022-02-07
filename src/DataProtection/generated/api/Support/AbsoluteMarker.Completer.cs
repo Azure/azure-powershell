@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllBackup".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllBackup", "AllBackup", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllBackup");
+                yield return new global::System.Management.Automation.CompletionResult("'AllBackup'", "AllBackup", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllBackup");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FirstOfDay".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FirstOfDay", "FirstOfDay", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfDay");
+                yield return new global::System.Management.Automation.CompletionResult("'FirstOfDay'", "FirstOfDay", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfDay");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FirstOfMonth".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FirstOfMonth", "FirstOfMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfMonth");
+                yield return new global::System.Management.Automation.CompletionResult("'FirstOfMonth'", "FirstOfMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfMonth");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FirstOfWeek".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FirstOfWeek", "FirstOfWeek", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfWeek");
+                yield return new global::System.Management.Automation.CompletionResult("'FirstOfWeek'", "FirstOfWeek", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfWeek");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FirstOfYear".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FirstOfYear", "FirstOfYear", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfYear");
+                yield return new global::System.Management.Automation.CompletionResult("'FirstOfYear'", "FirstOfYear", global::System.Management.Automation.CompletionResultType.ParameterValue, "FirstOfYear");
             }
         }
     }

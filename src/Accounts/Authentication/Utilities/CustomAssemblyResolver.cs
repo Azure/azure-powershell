@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static IDictionary<string, Version> NetFxPreloadAssemblies =
             new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
             {
-                {"Azure.Core", new Version("1.20.0.0")},
+                {"Azure.Core", new Version("1.21.0.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
                 {"Microsoft.Identity.Client", new Version("4.30.1.0") },
                 {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.18.4.0") },
@@ -37,14 +37,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Memory.Data", new Version("1.0.2.0")},
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
                 {"System.Numerics.Vectors", new Version("4.1.3.0")},
-                {"System.Private.ServiceModel", new Version("4.1.2.1")},
                 {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
                 {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.5.0")},
                 {"System.Security.AccessControl", new Version("4.1.1.0")},
                 {"System.Security.Cryptography.Cng", new Version("4.3.0.0")},
                 {"System.Security.Permissions", new Version("4.0.1.0")},
                 {"System.Security.Principal.Windows", new Version("4.1.1.0")},
-                {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
                 {"System.Text.Encodings.Web", new Version("4.0.5.1")},
                 {"System.Text.Json", new Version("4.0.0.0")},
                 {"System.Threading.Tasks.Extensions", new Version("4.2.0.1")},

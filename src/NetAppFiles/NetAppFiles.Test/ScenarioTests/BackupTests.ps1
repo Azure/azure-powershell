@@ -29,8 +29,8 @@ function Test-BackupCrud
     $backupName2 = Get-ResourceName    
     $backupPolicyName1 = Get-ResourceName
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
-    $backupLocation = "eastus2euap"
-    $backupVNetLocation = "eastus2euap"
+    $backupLocation = "eastus2"
+    $backupVNetLocation = "eastus2"
     #$backupLocation = "southcentralusstage"
     #$backupVNetLocation = "southcentralus"
     #$backupLocation = "centralus"
@@ -59,6 +59,12 @@ function Test-BackupCrud
         Cifs = $false
         Nfsv3 = $true
         Nfsv41 = $false
+        kerberos5ReadOnly = $false
+        kerberos5ReadWrite = $false
+        kerberos5iReadOnly = $false
+        kerberos5iReadWrite = $false
+        kerberos5pReadOnly = $false
+        kerberos5pReadWrite = $false
         AllowedClients = '0.0.0.0/0'
     }
     $exportPolicy = @{
@@ -77,11 +83,16 @@ function Test-BackupCrud
         do
         {
             $sourceVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
-            Start-Sleep -Seconds 10.0
+            if ($env:AZURE_TEST_MODE -eq "Record")
+            {
+               Start-Sleep -Seconds 10.0
+            }
             $i++
         }               
         until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);
-    }    
+    }
+
+
 
     function SleepDuringRecord ($seconds = 30.0)
     {
@@ -95,7 +106,7 @@ function Test-BackupCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation -Tags @{Owner = 'b-aubald'}
+        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation -Tags @{Owner = 'b-aubald';testTag1='psBackupTagValue1'}
 
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupVNetLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -116,7 +127,7 @@ function Test-BackupCrud
         $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
 
         # create  volume and check
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes 
         Assert-AreEqual "$accName1/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
@@ -145,6 +156,7 @@ function Test-BackupCrud
         # create and check Backup
         $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $retrievedBackup.Name
+        WaitForBackupSucceeded $backupName1
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $label $retrievedBackup.Label
         
@@ -166,7 +178,9 @@ function Test-BackupCrud
         
         #create second Backup       
         $secondBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label2
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName2" $secondBackup.Name        
+        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName2" $secondBackup.Name
+        WaitForBackupSucceeded $backupName2
+        
         # service side issue does not return label enable when fixed (ANF-8057)
         # Assert-AreEqual $label $secondBackup.Label2
 
@@ -190,7 +204,8 @@ function Test-BackupCrud
         Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -WhatIf
         $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual 2 $retrievedBackupsList.Length
-                                
+                             
+        SleepDuringRecord 200
         #remove by name
         Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
         $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
@@ -245,8 +260,8 @@ function Test-BackupPipelines
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $backupLocation = "eastus2euap"
-    $backupVNetLocation = "eastus2euap"
+    $backupLocation = "eastus2"
+    $backupVNetLocation = "eastus2"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -304,7 +319,8 @@ function Test-BackupPipelines
         #$retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot -SnapshotName $snName1
         $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 | New-AnfBackup -BackupName $backupName1 -Label $label
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $retrievedBackup.Name
-        SleepDuringRecord 200
+        
+        WaitForBackupSucceeded $backupName1
        # $getRetrievedBackupPolicy = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupName1
 
         $updateRetrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Update-AzNetAppFilesBackup -Name $backupName1 -Label $updateLabel
@@ -318,8 +334,8 @@ function Test-BackupPipelines
         
         #create anoter backup
         $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 | New-AnfBackup -BackupName $backupName2 -Label $label
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName2" $retrievedBackup.Name
-        SleepDuringRecord 200
+        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName2" $retrievedBackup.Name        
+        WaitForBackupSucceeded $backupName2
 
         $retrievedBackups = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual 2 $retrievedBackups.Length
@@ -337,7 +353,7 @@ function Test-BackupPipelines
         Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 
         $retrievedVolumes = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName
         Assert-AreEqual 0 $retrievedVolumes.Length
-
+        SleepDuringRecord 400
         # delete the last backup by piping from AccountBackup get
         Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName2 | Remove-AnfBackup
         SleepDuringRecord 200
@@ -406,6 +422,12 @@ function Test-VolumeBackupStatus
         Cifs = $false
         Nfsv3 = $true
         Nfsv41 = $false
+        kerberos5ReadOnly = $false
+        kerberos5ReadWrite = $false
+        kerberos5iReadOnly = $false
+        kerberos5iReadWrite = $false
+        kerberos5pReadOnly = $false
+        kerberos5pReadWrite = $false
         AllowedClients = '0.0.0.0/0'
     }
 
@@ -499,3 +521,17 @@ function Test-VolumeBackupStatus
         Clean-ResourceGroup $resourceGroup
     }
 }
+    function WaitForBackupSucceeded ($backupName)
+    {
+        $i = 0 
+        do
+        {
+            $sourceBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName
+            if ($env:AZURE_TEST_MODE -eq "Record")
+            {
+                Start-Sleep -Seconds 10.0
+            }
+            $i++
+        }               
+        until ($sourceBackup.ProvisioningState -eq "Succeeded" -or $i -eq 10);
+    }

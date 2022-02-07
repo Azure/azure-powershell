@@ -99,26 +99,86 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorage) content.GetValueForProperty("Storage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackup) content.GetValueForProperty("Backup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.BackupTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IHighAvailability) content.GetValueForProperty("HighAvailability",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.HighAvailabilityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.MaintenanceWindowTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword = (System.Security.SecureString) content.GetValueForProperty("AdministratorLoginPassword",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole?) content.GetValueForProperty("ReplicationRole",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop = (int?) content.GetValueForProperty("StorageIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku = (string) content.GetValueForProperty("StorageSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode?) content.GetValueForProperty("HighAvailabilityMode",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState?) content.GetValueForProperty("HighAvailabilityState",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow = (string) content.GetValueForProperty("MaintenanceWindowCustomWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour = (int?) content.GetValueForProperty("MaintenanceWindowStartHour",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute = (int?) content.GetValueForProperty("MaintenanceWindowStartMinute",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb = (int?) content.GetValueForProperty("StorageSizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("StorageAutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay = (int?) content.GetValueForProperty("BackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("BackupGeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("BackupEarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone = (string) content.GetValueForProperty("HighAvailabilityStandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek = (int?) content.GetValueForProperty("MaintenanceWindowDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Storage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorage) content.GetValueForProperty("Storage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Backup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackup) content.GetValueForProperty("Backup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.BackupTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HighAvailability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IHighAvailability) content.GetValueForProperty("HighAvailability",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.HighAvailabilityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MaintenanceWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.MaintenanceWindowTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdministratorLoginPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword = (System.Security.SecureString) content.GetValueForProperty("AdministratorLoginPassword",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("ReplicationRole"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole?) content.GetValueForProperty("ReplicationRole",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole.CreateFrom);
+            }
+            if (content.Contains("StorageIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop = (int?) content.GetValueForProperty("StorageIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageSku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku = (string) content.GetValueForProperty("StorageSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku, global::System.Convert.ToString);
+            }
+            if (content.Contains("HighAvailabilityMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode?) content.GetValueForProperty("HighAvailabilityMode",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode.CreateFrom);
+            }
+            if (content.Contains("HighAvailabilityState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState?) content.GetValueForProperty("HighAvailabilityState",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState.CreateFrom);
+            }
+            if (content.Contains("MaintenanceWindowCustomWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow = (string) content.GetValueForProperty("MaintenanceWindowCustomWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowStartHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour = (int?) content.GetValueForProperty("MaintenanceWindowStartHour",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaintenanceWindowStartMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute = (int?) content.GetValueForProperty("MaintenanceWindowStartMinute",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageSizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb = (int?) content.GetValueForProperty("StorageSizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageAutoGrow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("StorageAutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("BackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay = (int?) content.GetValueForProperty("BackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BackupGeoRedundantBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("BackupGeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("BackupEarliestRestoreDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("BackupEarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("HighAvailabilityStandbyAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone = (string) content.GetValueForProperty("HighAvailabilityStandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowDayOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek = (int?) content.GetValueForProperty("MaintenanceWindowDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -136,26 +196,86 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorage) content.GetValueForProperty("Storage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackup) content.GetValueForProperty("Backup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.BackupTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IHighAvailability) content.GetValueForProperty("HighAvailability",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.HighAvailabilityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.MaintenanceWindowTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword = (System.Security.SecureString) content.GetValueForProperty("AdministratorLoginPassword",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole?) content.GetValueForProperty("ReplicationRole",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop = (int?) content.GetValueForProperty("StorageIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku = (string) content.GetValueForProperty("StorageSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode?) content.GetValueForProperty("HighAvailabilityMode",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState?) content.GetValueForProperty("HighAvailabilityState",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow = (string) content.GetValueForProperty("MaintenanceWindowCustomWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour = (int?) content.GetValueForProperty("MaintenanceWindowStartHour",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute = (int?) content.GetValueForProperty("MaintenanceWindowStartMinute",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb = (int?) content.GetValueForProperty("StorageSizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("StorageAutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay = (int?) content.GetValueForProperty("BackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("BackupGeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("BackupEarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone = (string) content.GetValueForProperty("HighAvailabilityStandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek = (int?) content.GetValueForProperty("MaintenanceWindowDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Storage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorage) content.GetValueForProperty("Storage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Storage, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Backup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackup) content.GetValueForProperty("Backup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).Backup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.BackupTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HighAvailability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IHighAvailability) content.GetValueForProperty("HighAvailability",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailability, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.HighAvailabilityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MaintenanceWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.MaintenanceWindowTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdministratorLoginPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword = (System.Security.SecureString) content.GetValueForProperty("AdministratorLoginPassword",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).AdministratorLoginPassword, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("ReplicationRole"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole?) content.GetValueForProperty("ReplicationRole",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).ReplicationRole, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ReplicationRole.CreateFrom);
+            }
+            if (content.Contains("StorageIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop = (int?) content.GetValueForProperty("StorageIop",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageSku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku = (string) content.GetValueForProperty("StorageSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSku, global::System.Convert.ToString);
+            }
+            if (content.Contains("HighAvailabilityMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode?) content.GetValueForProperty("HighAvailabilityMode",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityMode, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode.CreateFrom);
+            }
+            if (content.Contains("HighAvailabilityState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState?) content.GetValueForProperty("HighAvailabilityState",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityState, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityState.CreateFrom);
+            }
+            if (content.Contains("MaintenanceWindowCustomWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow = (string) content.GetValueForProperty("MaintenanceWindowCustomWindow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowCustomWindow, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowStartHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour = (int?) content.GetValueForProperty("MaintenanceWindowStartHour",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaintenanceWindowStartMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute = (int?) content.GetValueForProperty("MaintenanceWindowStartMinute",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowStartMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageSizeGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb = (int?) content.GetValueForProperty("StorageSizeGb",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageSizeGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StorageAutoGrow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("StorageAutoGrow",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).StorageAutoGrow, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("BackupRetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay = (int?) content.GetValueForProperty("BackupRetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupRetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BackupGeoRedundantBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("BackupGeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupGeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("BackupEarliestRestoreDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("BackupEarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).BackupEarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("HighAvailabilityStandbyAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone = (string) content.GetValueForProperty("HighAvailabilityStandbyAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).HighAvailabilityStandbyAvailabilityZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowDayOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek = (int?) content.GetValueForProperty("MaintenanceWindowDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerPropertiesForUpdateInternal)this).MaintenanceWindowDayOfWeek, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

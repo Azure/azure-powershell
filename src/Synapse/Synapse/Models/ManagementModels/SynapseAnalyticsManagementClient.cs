@@ -19,8 +19,6 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -30,7 +28,6 @@ using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
-using Microsoft.Rest.Azure.OData;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -51,6 +48,10 @@ using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
 using ErrorResponseException = Microsoft.Azure.Management.Synapse.Models.ErrorResponseException;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
 using Microsoft.DataTransfer.Gateway.Encryption;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly Guid _tenantId;
         private readonly SynapseManagementClient _synapseManagementClient;
         private readonly SynapseSqlV3ManagementClient _synapseSqlV3ManagementClient;
-        private ActiveDirectoryClient _activeDirectoryClient;
+        private MicrosoftGraphClient _graphClient;
         private ResourceManagementClient _resourceManagementClient;
         private StorageManagementClient _storageManagementClient;
         private MonitorManagementClient _monitorManagementClient;
@@ -88,20 +89,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             _monitorManagementClient = SynapseCmdletBase.CreateSynapseClient<MonitorManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
-        }
+        }   
 
-        public ActiveDirectoryClient ActiveDirectoryClient
+        public MicrosoftGraphClient GraphClient
         {
             get
             {
-                if (_activeDirectoryClient == null)
-                {
-                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
+                if (_graphClient == null) {                     
+                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
+                    _graphClient.TenantID = Context.Tenant.Id.ToString();
                 }
-                return this._activeDirectoryClient;
+                return this._graphClient;
             }
-
-            set { this._activeDirectoryClient = value; }
+            
+            set { this._graphClient = value; }
         }
 
         public ResourceManagementClient ResourceManagementClient
@@ -422,10 +423,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Guid tenantId = _tenantId;
 
             // Check for a Azure Active Directory group. Recommended to always use group.
-            IEnumerable<PSADGroup> groupList = null;
-            PSADGroup group = null;
+            IEnumerable<MicrosoftGraphGroup> groupList = null;
 
-            var filter = new ADObjectFilterOptions()
+            MicrosoftGraphGroup group = null;
+
+            var filter = new MicrosoftObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -433,8 +435,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             };
 
             // Get a list of groups from Azure Active Directory
-            groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
-
+            groupList = GraphClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+            
             if (groupList != null && groupList.Count() > 1)
             {
                 // More than one group was found with that display name.
@@ -453,19 +455,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             // Lookup for serviceprincipals
-            ODataQuery<ServicePrincipal> odataQueryFilter;
+            ODataQuery<MicrosoftGraphServicePrincipal> odataQueryFilter;
 
             if ((objectId != null && objectId != Guid.Empty))
             {
                 var applicationIdString = objectId.ToString();
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
+                odataQueryFilter = new ODataQuery<MicrosoftGraphServicePrincipal>(a => a.AppId == applicationIdString);
             }
             else
-            {
-                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
+            { 
+                odataQueryFilter = new ODataQuery<MicrosoftGraphServicePrincipal>(a => a.DisplayName == displayName);
             }
-
-            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
+           
+            var servicePrincipalList = GraphClient.FilterServicePrincipals(odataQueryFilter);
 
             if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
             {
@@ -475,7 +477,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
             {
                 // Only one user was found. Get the user display name and object id
-                PSADServicePrincipal app = servicePrincipalList.First();
+                MicrosoftGraphServicePrincipal app = servicePrincipalList.FirstOrDefault();
 
                 if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
                 {
@@ -490,7 +492,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 return new WorkspaceAadAdminInfo()
                 {
                     Login = displayName,
-                    Sid = app.ApplicationId.ToString(),
+                    Sid = app.AppId.ToString(),
                     TenantId = tenantId.ToString()
                 };
             }
@@ -506,7 +508,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             // No group or service principal was found. Check for a user
-            filter = new ADObjectFilterOptions()
+            filter = new MicrosoftObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -514,34 +516,34 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             };
 
             // Get a list of user from Azure Active Directory
-            var userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
+            var userList = GraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
             // No user was found. Check if the display name is a UPN
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN
-                filter = new ADObjectFilterOptions()
+                filter = new MicrosoftObjectFilterOptions()
                 {
                     Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                     UPN = displayName,
                     Paging = true,
                 };
 
-                userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
+                userList = GraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
             // No user was found. Check if the display name is a guest user. 
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN
-                filter = new ADObjectFilterOptions()
+                filter = new MicrosoftObjectFilterOptions()
                 {
                     Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                     Mail = displayName,
                     Paging = true,
                 };
 
-                userList = ActiveDirectoryClient.FilterUsers(filter);
+                userList = GraphClient.FilterUsers(filter);
             }
 
             // No user was found

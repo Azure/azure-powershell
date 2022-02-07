@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Common
 {
+    [GenericBreakingChange("HealthcareApis cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.")]
     public abstract class HealthcareApisBaseCmdlet : AzureRMCmdlet
     {
         private HealthcareApisManagementClientWrapper _healthcareApisManagementClientWrapper;

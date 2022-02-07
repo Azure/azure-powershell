@@ -192,5 +192,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-ShortTermRetentionPolicy");
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+        }
     }
 }

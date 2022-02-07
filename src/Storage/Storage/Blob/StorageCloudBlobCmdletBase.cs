@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using global::Azure.Storage.Files.DataLake.Models;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
@@ -964,6 +965,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 return true;
             }
             return false;
+        }
+
+        protected void ThrowIfPremium(string exMsgFormat)
+        {
+            AccountProperties accountProperties = Channel.GetAccountProperties();
+            if (accountProperties.SkuName.Contains("Premium"))
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, exMsgFormat, Channel.StorageContext.StorageAccountName));
+            }
         }
     }
 }

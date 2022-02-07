@@ -15,7 +15,7 @@ Adds an AD domain extension to a virtual machine.
 
 ```
 Set-AzVMADDomainExtension -DomainName <String> [-OUPath <String>] [-JoinOption <UInt32>]
- [-Credential <PSCredential>] [-Restart] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+ [-Credential <PSCredential>] [-Restart] [-ResourceGroupName] <String> [-VMName] <String> -Name <String>
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,6 +25,17 @@ The **Set-AzVMADDomainExtension** cmdlet adds an Azure Active Directory (AD) dom
 This extension lets your virtual machine join a domain.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Set-AzVMADDomainExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -DomainName "abc.com"
+```
+
+```Output
+RequestId IsSuccessStatusCode StatusCode ReasonPhrase
+--------- ------------------- ---------- ------------
+                         True         OK OK
+```
 
 ## PARAMETERS
 
@@ -145,7 +156,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

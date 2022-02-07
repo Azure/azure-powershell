@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Added a new cmdlet `Test-AzCommunicationServiceNameAvailability`
 * Updated API version to 2020-08-20
 

@@ -25,9 +25,11 @@ automatically saved, and where saved context and credential information can be f
 ## EXAMPLES
 
 ### Get context save metadata for the current session
+```powershell
+Get-AzContextAutosaveSetting
 ```
-PS C:\> Get-AzContextAutosaveSetting
 
+```Output
 Mode             : Process
 ContextDirectory : None
 ContextFile      : None
@@ -39,9 +41,11 @@ Settings         : {}
 Get details about whether and where the context is saved.  In the above example, the autosave feature has been disabled.
 
 ### Get context save metadata for the current user
+```powershell
+Get-AzContextAutosaveSetting -Scope CurrentUser
 ```
-PS C:\> Get-AzContextAutosaveSetting -Scope CurrentUser
 
+```Output
 Mode             : CurrentUser
 ContextDirectory : C:\Users\contoso\AppData\Roaming\Windows Azure Powershell
 ContextFile      : AzureRmContext.json

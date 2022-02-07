@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, Position = 1, HelpMessage = "EventHub Namespace Name.")]
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "EventHub Namespace Name.")]
-        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, Position = 1, HelpMessage = "EventHub Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, Position = 1, HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }       
@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [PSArgumentCompleter("Allow", "Deny")]
         [PSDefaultValue(Value ="Deny")]
         public string DefaultAction { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Public Network Access for NetwrokeuleSet")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        [PSDefaultValue(Value = "Enabled")]
+        public string PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
@@ -77,7 +82,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                         {
                             DefaultAction = DefaultAction,
                             IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
+                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList(),
+                            PublicNetworkAccess = PublicNetworkAccess
                         };
 
                         WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));

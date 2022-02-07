@@ -267,9 +267,18 @@ function Test-VolumeReplication
     $doubleUsage = 2 * $usageThreshold
     $srcResourceGroupLocation = "westus2"
     $destResourceGroupLocation = "eastus"
-    #$srcResourceLocation = "westus2stage"
+    
+    #$srcResourceGroupLocation = "eastus2euap"
+    #$destResourceGroupLocation = "southcentralus"
     $srcResourceLocation = "westus2"
     $destResourceLocation = "eastus"
+    #for when using stage regions (southcentralusstage then vnet is created in southcentralus)
+    $destVnetLocation = "eastus"
+
+    #$srcResourceLocation = "eastus2euap"
+    #$destResourceLocation = "southcentralusstage"
+    #$destVnetLocation = "southcentralus"
+    
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -311,7 +320,7 @@ function Test-VolumeReplication
             Start-Sleep -Seconds 10.0
             $i++
         }
-        until ($replicationStatus.MirrorState -eq $targetState -or $i -eq 20);
+        until ($replicationStatus.MirrorState -eq $targetState -or $i -eq 40);
 
         $replicationStatus = Get-AnfReplicationStatus -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName                
         Assert-AreEqual $targetState $replicationStatus.MirrorState
@@ -344,7 +353,7 @@ function Test-VolumeReplication
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create virtual network destination
-        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $destResourceGroup -Location $destResourceLocation -Name $destVnetName -AddressPrefix 10.0.0.0/16
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $destResourceGroup -Location $destVnetLocation -Name $destVnetName -AddressPrefix 10.0.0.0/16
         $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.3.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
@@ -436,7 +445,7 @@ function Test-SetVolumePool
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte    
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -543,7 +552,7 @@ function Update-AzNetAppFilesVolumeSnapshotPolicy
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte    
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -658,7 +667,7 @@ function Test-VolumePipelines
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "westcentralus" -UseCanonical
-    $resourceLocation = "westus2"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"

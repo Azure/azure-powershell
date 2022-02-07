@@ -84,6 +84,11 @@ Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefiniti
 The **Get-AzSynapseRoleAssignment** cmdlet gets a Azure Synapse Analytics Role Assignment.
 If you do not specify a role definition or a user principal name, this cmdlet gets all role assignment.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+* GET /users/{id}
+* GET /servicePrincipals/{id}
+
 ## EXAMPLES
 
 ### Example 1
