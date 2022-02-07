@@ -597,28 +597,33 @@ Test PacketCapture API.
 function Test-PacketCaptureV2
 {
     # Setup
-    $resourceGroupName = "PS-INT-Testing-PacketCapture"
-    $virtualMachineScaleSetName = "PS-INT-Testing-PacketCapture"
-    $nwName = "NetworkWatcher_centraluseuap"
+    $resourceGroupName = Get-NrpResourceGroupName
+    $virtualMachineScaleSetName = Get-NrpResourceName
+    #$resourceGroupName = "PS-INT-Testing-PacketCapture"
+    #$virtualMachineScaleSetName = "PS-INT-Testing-PacketCapture"
+    $nwName = Get-NrpResourceName
+    #$nwName = "NetworkWatcher_centraluseuap"
     $location = Get-CanaryLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = "NetworkWatcherRG"
+    $nwRgName = Get-NrpResourceGroupName
+    #$nwRgName = "NetworkWatcherRG"
     $templateFileVMSS = (Resolve-Path ".\TestData\DeploymentVMSS.json").Path
-    $pcName = "PS-INT-Testing-PacketCapture"
+    $pcName = Get-NrpResourceName
+    #$pcName = "PS-INT-Testing-PacketCapture"
 
     try 
     {
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        # New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
-        # Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
+        Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
 
         # Create Resource group for Network Watcher
-        #New-AzResourceGroup -Name $nwRgName -Location "$location"
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
 
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
@@ -627,14 +632,14 @@ function Test-PacketCaptureV2
         $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $virtualMachineScaleSetName
 
         #Install networkWatcherAgent on Vmss and Vmss Instances
-        # Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
-        # Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
+        Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
 
-        # $instances = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $vmss.Name
+        $instances = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $vmss.Name
 
-        # foreach($instance in $instances){
-        #    Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $instance.InstanceID
-        # }
+        foreach($instance in $instances){
+            Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $instance.InstanceID
+        }
 
         #Create filters for packet capture
         $f1 = New-AzPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
@@ -652,7 +657,6 @@ function Test-PacketCaptureV2
         $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
         $pc = $job | Receive-Job
-        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName "*"
 
         #Verification
         Assert-AreEqual $pc.Name $pcName
@@ -668,9 +672,6 @@ function Test-PacketCaptureV2
         $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
 
-        #Get packet capture
-        $pc = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName
-
         #Remove packet capture
         $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
@@ -678,8 +679,8 @@ function Test-PacketCaptureV2
     finally
     {
         # Cleanup
-        #Clean-ResourceGroup $resourceGroupName
-        #Clean-ResourceGroup $nwRgName
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
     }
 }
 
