@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+* Added breaking change warning message due to update API version.
 
 ## Version 1.0.0
 * General availability of `Az.DataShare` module
