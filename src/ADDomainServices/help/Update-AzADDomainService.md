@@ -50,7 +50,9 @@ The update call only supports the properties listed in the PATCH body.
 ```powershell
 PS C:\> $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
 Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySetting $ADDomainSetting
+```
 
+```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
 youriADdomain youriAddomain.com westus   Enterprise
@@ -63,7 +65,9 @@ Update AzADDomainService By ResourceGroupName and Name
 PS C:\> $getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
 $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
 Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySetting $ADDomainSetting
+```
 
+```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
 youriADdomain youriAddomain.com westus   Enterprise

@@ -35,8 +35,8 @@ The **Remove-AzBatchComputeNode** cmdlet removes Azure Batch compute nodes from 
 ## EXAMPLES
 
 ### Example 1: Remove a compute node
-```
-PS C:\>Remove-AzBatchComputeNode -PoolId "Pool07" -Ids "tvm-2316545714_1-20150725t213220z" -DeallocationOption Terminate -ResizeTimeout ([TimeSpan]::FromMinutes(10)) -BatchContext $Context
+```powershell
+Remove-AzBatchComputeNode -PoolId "Pool07" -Ids "tvm-2316545714_1-20150725t213220z" -DeallocationOption Terminate -ResizeTimeout ([TimeSpan]::FromMinutes(10)) -BatchContext $Context
 ```
 
 This command removes compute node that has the specified ID from pool that has the ID Pool07.
@@ -44,8 +44,8 @@ The command specifies the Terminate deallocation option.
 The resize time-out is of 10 minutes.
 
 ### Example 2: Remove a compute node by using the pipeline
-```
-PS C:\>Get-AzBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzBatchComputeNode -Force -BatchContext $Context
+```powershell
+Get-AzBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzBatchComputeNode -Force -BatchContext $Context
 ```
 
 This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzBatchComputeNode cmdlet.
@@ -55,8 +55,8 @@ The command specifies the *Force* parameter.
 Therefore, the command does not prompt you for confirmation.
 
 ### Example 3: Remove multiple nodes
-```
-PS C:\>Remove-AzBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Force -BatchContext $Context
+```powershell
+Remove-AzBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Force -BatchContext $Context
 ```
 
 This command removes two compute nodes from the pool that has the ID Pool07.
