@@ -25,7 +25,7 @@ Disables disk encryption on a VM scale set.
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzVmssDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+Disable-AzVmssDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 Disables disk encryption on the VM scale set named VMSS001 that belongs to the resource group named Group001.

@@ -21,8 +21,8 @@
 * Add missing cmdlet Update-AzOperationalInsightsTable.
 * Add exception content for better understanding failed activation of cmdlets 
 
-## Upcoming Release
-* Bug fix - prevent exceptions while using StorageInsight cmdlets 
+## Version 3.0.1
+* Added logic to prevent exceptions while using `StorageInsight` cmdlets.
 
 ## Version 3.0.0
 * Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets

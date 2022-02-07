@@ -30,8 +30,10 @@ Get or list galleries.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGallery -ResourceGroupName rg1 -GalleryName gallery1
+Get-AzGallery -ResourceGroupName rg1 -GalleryName gallery1
+```
 
+```output
 ResourceGroupName : rg1
 Description       : Gallery created by Powershell.
 Identifier        : 
@@ -48,8 +50,10 @@ Get the gallery "gallery1"
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzGallery -ResourceGroupName rg1
+Get-AzGallery -ResourceGroupName rg1
+```
 
+```output
 ResourceGroupName : rg1
 Description       : Gallery created by Powershell.
 Identifier        : 
@@ -77,8 +81,10 @@ Get all galleries in rg1.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzGallery
+Get-AzGallery
+```
 
+```output
 ResourceGroupName : rg1
 Description       : Gallery created by Powershell.
 Identifier        : 
@@ -117,8 +123,10 @@ Get all galleries in subscription.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzGallery -Name gallery*
+Get-AzGallery -Name gallery*
+```
 
+```output
 ResourceGroupName : rg1
 Description       : Gallery created by Powershell.
 Identifier        : 
