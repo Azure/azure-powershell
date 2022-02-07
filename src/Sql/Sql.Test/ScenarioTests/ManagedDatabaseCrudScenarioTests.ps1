@@ -19,15 +19,9 @@
 function Test-CreateManagedDatabase
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
+	$rg = Create-ResourceGroupForTest
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	try
 	{
@@ -69,15 +63,8 @@ function Test-CreateManagedDatabase
 function Test-GetManagedDatabase
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$rg = Create-ResourceGroupForTest
+	$managedInstance = Create-ManagedInstanceForTest $rg
 	
 	# Create with default values
 	$managedDatabaseName = Get-ManagedDatabaseName
@@ -124,15 +111,8 @@ function Test-GetManagedDatabase
 function Test-RemoveManagedDatabase
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$rg = Create-ResourceGroupForTest
+	$managedInstance = Create-ManagedInstanceForTest $rg
 	
 	# Create with default values
 	$managedDatabaseName = Get-ManagedDatabaseName
@@ -195,16 +175,9 @@ function Test-RestoreManagedDatabase
 	# Setup
 	$sub = (Get-AzContext).Subscription.Id
 	$rg = Create-ResourceGroupForTest
-	$rg2 = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-	$managedInstance2 = Create-ManagedInstanceForTest $rg2 $subnetId
+	$rg2 = Create-ResourceGroupForTest
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	$managedInstance2 = Create-ManagedInstanceForTest $rg2
 
 	try
 	{
@@ -221,7 +194,9 @@ function Test-RestoreManagedDatabase
 		$pointInTime = (Get-date).AddMinutes(5)
 
 		# Once database is created, backup service will automaticly take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
-		Wait-Seconds 450
+		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
+			Wait-Seconds 450
+		}
 
 		# restore managed database to the same instance
 		$restoredDb = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetInstanceDatabaseName $targetManagedDatabaseName
@@ -252,17 +227,10 @@ function Test-RestoreDeletedManagedDatabase
 {
 	# Setup
 	$sub = (Get-AzContext).Subscription.Id
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$rg2 = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-	$managedInstance2 = Create-ManagedInstanceForTest $rg2 $subnetId
+	$rg = Create-ResourceGroupForTest
+	$rg2 = Create-ResourceGroupForTest
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	$managedInstance2 = Create-ManagedInstanceForTest $rg2
 
 	try
 	{
@@ -282,7 +250,9 @@ function Test-RestoreDeletedManagedDatabase
 		$targetManagedDatabaseName5 = Get-ManagedDatabaseName
 
 		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
-		Wait-Seconds 450
+		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
+			Wait-Seconds 450
+		}
 
 		# Test remove using all parameters
 		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
@@ -338,18 +308,16 @@ function Test-RestoreDeletedManagedDatabase
 #>
 function Test-GetManagedDatabaseGeoBackup
 {
-	# Setup
-	$rgName = "restore-rg"	
-	$managedInstanceName = "testbrinstance"
-	$managedDatabaseName = "sourcedb"
+	# Due to long creation of geo backups, use existing MI
+	$default = Get-DefaultManagedInstanceParameters
 
 	# Test Get using all parameters
-	$gdb1 = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
+	$gdb1 = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $default.rg -InstanceName $default.defaultMI -Name $default.defaultMIDB
 	Assert-NotNull $gdb1
-	Assert-AreEqual $managedDatabaseName $gdb1.Name
+	Assert-AreEqual $default.defaultMIDB $gdb1.Name
 
 	# Test Get using ResourceGroupName and InstanceName
-	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name *
+	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $default.rg -InstanceName $default.defaultMI -Name *
 
 	Assert-NotNull $all
 	if($all.Count -le 1)
@@ -364,16 +332,16 @@ function Test-GetManagedDatabaseGeoBackup
 #>
 function Test-GeoRestoreManagedDatabase
 {
-	# Setup
-    $rgName = "restore-rg"	
-	$managedInstanceName = "testbrinstance"
-	$managedDatabaseName = "sourcedb"
+	# Due to long creation of geo backups, use existing MI
+	$default = Get-DefaultManagedInstanceParameters
 
-	$targetRgName = "restore-rg"
-	$targetInstanceName = "testbrinstance"
+	$rg2 = Create-ResourceGroupForTest
+
 	try
 	{
-		$sourceDbGeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
+		$managedInstance2 = Create-ManagedInstanceForTest $rg2
+	
+		$sourceDbGeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $default.rg -InstanceName $default.defaultMI -Name $default.defaultMIDB
 
 		Assert-NotNull $sourceDbGeoBackup
 
@@ -383,39 +351,53 @@ function Test-GeoRestoreManagedDatabase
 		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
 
 		# geo-restore managed database using resourceID
-		$restoredDb1 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceId $sourceDbGeoBackup.RecoverableDatabaseId -TargetInstanceDatabaseName $targetManagedDatabaseName1 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		$restoredDb1 = Restore-AzSqlInstanceDatabase -FromGeoBackup `
+			-ResourceId $sourceDbGeoBackup.RecoverableDatabaseId `
+			-TargetInstanceDatabaseName $targetManagedDatabaseName1 `
+			-TargetInstanceName $managedInstance2.ManagedInstanceName `
+			-TargetResourceGroupName $rg2.ResourceGroupName
+
 		Assert-NotNull $restoredDb1
 		Assert-AreEqual $restoredDb1.Name $targetManagedDatabaseName1
-		Assert-AreEqual $restoredDb1.ResourceGroupName $targetRgName
-		Assert-AreEqual $restoredDb1.ManagedInstanceName $targetInstanceName
+		Assert-AreEqual $restoredDb1.ResourceGroupName $rg2.ResourceGroupName
+		Assert-AreEqual $restoredDb1.ManagedInstanceName $managedInstance2.ManagedInstanceName
 
 		# geo-restore managed database using name, instance and resource group name 
-		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName -TargetInstanceDatabaseName $targetManagedDatabaseName2 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromGeoBackup `
+			-ResourceGroupName $default.rg `
+			-InstanceName $default.defaultMI `
+			-Name $default.defaultMIDB `
+			-TargetInstanceDatabaseName $targetManagedDatabaseName2 `
+			-TargetInstanceName $managedInstance2.ManagedInstanceName `
+			-TargetResourceGroupName $rg2.ResourceGroupName
+
 		Assert-NotNull $restoredDb2
 		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName2
-		Assert-AreEqual $restoredDb2.ResourceGroupName $targetRgName
-		Assert-AreEqual $restoredDb2.ManagedInstanceName $targetInstanceName
+		Assert-AreEqual $restoredDb2.ResourceGroupName $rg2.ResourceGroupName
+		Assert-AreEqual $restoredDb2.ManagedInstanceName $managedInstance2.ManagedInstanceName
 		
 		# geo-restore managed database using GeoBackupObject
-		$restoredDb3 = Restore-AzSqlInstanceDatabase -FromGeoBackup -GeoBackupObject $sourceDbGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName3 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		$restoredDb3 = Restore-AzSqlInstanceDatabase -FromGeoBackup `
+			-GeoBackupObject $sourceDbGeoBackup `
+			-TargetInstanceDatabaseName $targetManagedDatabaseName3 `
+			-TargetInstanceName $managedInstance2.ManagedInstanceName `
+			-TargetResourceGroupName $rg2.ResourceGroupName
+
 		Assert-NotNull $restoredDb3
 		Assert-AreEqual $restoredDb3.Name $targetManagedDatabaseName3
-		Assert-AreEqual $restoredDb3.ResourceGroupName $targetRgName
-		Assert-AreEqual $restoredDb3.ManagedInstanceName $targetInstanceName
+		Assert-AreEqual $restoredDb3.ResourceGroupName $rg2.ResourceGroupName
+		Assert-AreEqual $restoredDb3.ManagedInstanceName $managedInstance2.ManagedInstanceName
 
 		# geo-restore managed database using piping
-		$restoredDb4 = $sourceDbGeoBackup | Restore-AzSqlInstanceDatabase -FromGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName4 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		$restoredDb4 = $sourceDbGeoBackup | Restore-AzSqlInstanceDatabase -FromGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName4 -TargetInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
 		Assert-NotNull $restoredDb4
 		Assert-AreEqual $restoredDb4.Name $targetManagedDatabaseName4
-		Assert-AreEqual $restoredDb4.ResourceGroupName $targetRgName
-	   Assert-AreEqual $restoredDb4.ManagedInstanceName $targetInstanceName	
-
+		Assert-AreEqual $restoredDb4.ResourceGroupName $rg2.ResourceGroupName
+		Assert-AreEqual $restoredDb4.ManagedInstanceName $managedInstance2.ManagedInstanceName	
 	}
 	finally
 	{
-		$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
-		$restoredDb2 | Remove-AzSqlInstanceDatabase -Force
-		$restoredDb3 | Remove-AzSqlInstanceDatabase -Force
-		$restoredDb4 | Remove-AzSqlInstanceDatabase -Force
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rg2
 	}
 }
