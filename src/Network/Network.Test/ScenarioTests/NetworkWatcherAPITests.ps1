@@ -100,8 +100,6 @@ function Get-TestResourcesDeployment([string]$rgn)
 
 function Get-TestResourcesDeploymentVMSS([string]$rgn)
 {
-    $virtualMachineScaleSetName = Get-NrpResourceName
-
         $paramFileVMSS = (Resolve-Path ".\TestData\DeploymentParametersVMSS.json").Path
 
         $paramContentVMSS =
@@ -599,56 +597,54 @@ Test PacketCapture API.
 function Test-PacketCaptureV2
 {
     # Setup
-    $resourceGroupName = Get-NrpResourceGroupName
-    $nwName = Get-NrpResourceName
+    $resourceGroupName = "PS-INT-Testing-PacketCapture"
+    $virtualMachineScaleSetName = "PS-INT-Testing-PacketCapture"
+    $nwName = "NetworkWatcher_centraluseuap"
     $location = Get-CanaryLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-    $nwRgName = Get-NrpResourceGroupName
-    $securityGroupName = Get-NrpResourceName
+    $nwRgName = "NetworkWatcherRG"
     $templateFileVMSS = (Resolve-Path ".\TestData\DeploymentVMSS.json").Path
-    $pcName = Get-NrpResourceName
+    $pcName = "PS-INT-Testing-PacketCapture"
 
     try 
     {
         . ".\AzureRM.Resources.ps1"
 
         # Create Resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+        # New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
-        Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
+        # Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
 
         # Create Resource group for Network Watcher
-        New-AzResourceGroup -Name $nwRgName -Location "$location"
+        #New-AzResourceGroup -Name $nwRgName -Location "$location"
 
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
         #Get Vmss and Instances
-        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName
+        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $virtualMachineScaleSetName
 
         #Install networkWatcherAgent on Vmss and Vmss Instances
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss[0] -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
-        Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $vmss[0].Name -VirtualMachineScaleSet $vmss[0]
+        # Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
+        # Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
 
-        $instances = foreach($item in $vmss[0]){
-            Get-AzVmssVM -ResourceGroupName $item.ResourceGroupName -VMScaleSetName $item.Name
-        }
+        # $instances = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $vmss.Name
 
-        foreach($instance in $instances){
-            Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss[0].Name -InstanceId $instance.InstanceID
-        }
+        # foreach($instance in $instances){
+        #    Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $instance.InstanceID
+        # }
 
         #Create filters for packet capture
         $f1 = New-AzPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
         $f2 = New-AzPacketCaptureFilterConfig -LocalIPAddress 127.0.0.1;127.0.0.5
 
         #Create Scope for packet capture
-        $s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
+        #$s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
 
         #Create packet capture
-        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName -TargetId $vmss[0].Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName -TargetId $vmss.Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
         $job | Wait-Job
         Start-Sleep -s 2
 
@@ -667,9 +663,6 @@ function Test-PacketCaptureV2
         Assert-AreEqual $pc.StorageLocation.FilePath C:\tmp\Capture.cap
         Assert-AreEqual "Succeeded" $pc.ProvisioningState
         Assert-AreEqual $pc.TargetType AzureVMSS
-        Assert-AreEqual $pc.Scope.Include[0] "0"
-
-        $currentCount = $pcList.Count;
 
         #Stop packet capture
         $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
@@ -681,17 +674,12 @@ function Test-PacketCaptureV2
         #Remove packet capture
         $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
-
-        #List packet captures
-        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
-        Assert-AreEqual $pcList.Count ($currentCount - 1)
-
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $resourceGroupName
-        Clean-ResourceGroup $nwRgName
+        #Clean-ResourceGroup $resourceGroupName
+        #Clean-ResourceGroup $nwRgName
     }
 }
 
