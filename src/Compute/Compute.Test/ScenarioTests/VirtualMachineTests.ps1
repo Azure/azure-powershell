@@ -108,7 +108,8 @@ function Test-VirtualMachine
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
+        # $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus2euap" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
@@ -158,7 +159,7 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
-        Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
+        Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled "error message fail assert boot diag"; #adam, here? 
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         Assert-AreEqual "BGInfo" $vm1.Extensions[0].VirtualMachineExtensionType
@@ -202,7 +203,7 @@ function Test-VirtualMachine
         Assert-AreEqual $vm2.HardwareProfile.VmSize $vmsize;
         Assert-NotNull $vm2.Location;
 
-        Assert-AreEqual $true $vm2.DiagnosticsProfile.BootDiagnostics.Enabled;
+        Assert-AreEqual $true $vm2.DiagnosticsProfile.BootDiagnostics.Enabled; # addam , or here? 
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm2.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         $vms = Get-AzVM -ResourceGroupName $rgname;
@@ -5467,6 +5468,7 @@ function Test-VirtualMachineDiffDiskPlacement
 
         # I had to create a VM and Capture an image from it to meet the size requirements for the Resource Disk value.
         # The VM I made with a source image of Ubuntu 18.04 LTS Gen 1, and size Standard_B4ms. 
+        # Choose the 'Capture a managed version' option when capturing the image. 
         $imgRef = Get-AzImage -ResourceGroupName "adsandordiff" -ImageName "vmdiffubunImage";
         $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname2 -Location $loc;
 
