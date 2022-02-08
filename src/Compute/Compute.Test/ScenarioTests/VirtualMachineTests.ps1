@@ -5591,9 +5591,7 @@ function Test-VirtualMachineHibernate
 
 <#
 .SYNOPSIS
-Test Virtual Machine creation process does not create a Public IP Address when it is 
-not provided as a parameter. 
-When using a VM Config object, this problem does not occur. 
+Test the VM vCPU feature in New-AzVm, and Update-AzVm.
 #>
 function Test-VMvCPUFeatures
 {
@@ -5628,6 +5626,50 @@ function Test-VMvCPUFeatures
         $vmGet = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
         Assert-AreEqual $vCPUsAvailable1 $vmGet.HardwareProfile.VmSizeProperties.VCPUsAvailable;
         Assert-AreEqual $vCPUsCore1 $vmGet.HardwareProfile.VmSizeProperties.VCPUsPerCore;
+
+
+        # New-AzVMConfig test
+        $vmname = 'vm2' + $rgname;
+        $vmSize = 'Standard_DS3_v2';
+        $domainNameLabel2 = "d2" + $rgname;
+        $computerName2 = "v2" + $rgname;
+        $identityType = "SystemAssigned";
+
+        # Creating a VM 
+        $vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize -IdentityType $identityType -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+
+        $publisherName = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $sku = "2019-DataCenter";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nicId;
+
+        # OS & Image
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $vmconfig;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $vCPUsAvailable1 $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
+        Assert-AreEqual $vCPUsCore1 $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
     }
     finally 
     {
