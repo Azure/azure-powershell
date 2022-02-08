@@ -62,6 +62,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
+		Assert-AreEqual $managedInstance1.RequestedBackupStorageRedundancy $backupStorageRedundancy
 		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
