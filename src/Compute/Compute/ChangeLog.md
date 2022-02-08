@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Updated `New-AzureSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
+* Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
 
 ## Version 4.23.0
 * Remove ProvisioningDetails property from PSRestorePoint object.
