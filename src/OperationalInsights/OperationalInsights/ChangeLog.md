@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add missing cmdlet Update-AzOperationalInsightsTable.
-* Add exception content for better understanding failed activation of cmdlets 
+* Added cmdlet Update-AzOperationalInsightsTable.
+* Added exception content for better understanding failed activation of cmdlets 
 
 ## Version 3.0.1
 * Added logic to prevent exceptions while using `StorageInsight` cmdlets.
