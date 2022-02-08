@@ -35,10 +35,12 @@ first.
 ### Example 1
 ```powershell
 Get-AzContainerRegistryManifest -RegistryName registry -RepositoryName alpine
+```
 
+```output
 Registry                    ImageName                   ManifestsAttributes
 --------                    ---------                   -------------------
-registry.azurecr.io         alpine         {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.Comm…}
+registry.azurecr.io         alpine         {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.Commâ€¦}
 ```
 
 List manifests for repository alpine under registry.
@@ -46,7 +48,9 @@ List manifests for repository alpine under registry.
 ### Example 2
 ```powershell
 Get-AzContainerRegistryManifest -RegistryName registry -RepositoryName alpine -Name sha256:a5426f084c755f4d6c1d1562a2d456aa574a24a61706f6806415627360c06ac0
+```
 
+```output
 Registry                    ImageName Attributes
 --------                    --------- ----------
 registry.azurecr.io         alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase
