@@ -195,6 +195,7 @@ namespace Microsoft.Azure.Commands.Common
         internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, TokenAudienceConverterDelegate tokenAudienceConverter = null)
         {
             IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
+            var newRequest = await request.CloneWithContentAndDispose(request.RequestUri, request.Method);
             var response = await next(request, cancelToken, cancelAction, signal);
 
             if (response.MatchClaimsChallengePattern())
@@ -207,9 +208,8 @@ namespace Microsoft.Azure.Commands.Common
                         var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
                         if (!string.IsNullOrEmpty(claimsChallenge))
                         {
-                            await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken).ConfigureAwait(false);
-                            request = request.CloneAndDispose(request.RequestUri, request.Method);
-                            response = await next(request, cancelToken, cancelAction, signal);
+                            await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
+                            response = await next(newRequest, cancelToken, cancelAction, signal);
                         }
                     }
                     catch (AuthenticationFailedException e)
