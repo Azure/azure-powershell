@@ -13,9 +13,9 @@ Create or update a addon in a private cloud
 ## SYNTAX
 
 ```
-New-AzVMwareAddon -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,21 +61,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the addon for the private cloud
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: AddonName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

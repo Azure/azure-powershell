@@ -14,7 +14,7 @@ Delete a addon in a private cloud
 
 ### Delete (Default)
 ```
-Remove-AzVMwareAddon -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Remove-AzVMwareAddon -AddonType <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -47,6 +47,21 @@ PS C:\> Get-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -Resou
 Delete an addon in a private cloud
 
 ## PARAMETERS
+
+### -AddonType
+Name of the addon for the private cloud
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: AddonName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -91,21 +106,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the addon for the private cloud
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: AddonName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -34,23 +34,28 @@ Get a virtual machine by id in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMwareVirtualMachine -ClusterName cluster1 -PrivateCloudName cloud1 -ResourceGroupName group1
 
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+vm-209 group1
+vm-128 group1
 ```
 
-{{ Add description here }}
+Get a virtual machine by id in a private cloud cluster
 
-### Example 2: {{ Add title here }}
+### Example 2: Get
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMwareVirtualMachine -Id vm-209 -ClusterName cluster1 -PrivateCloudName cloud1 -ResourceGroupName group1
 
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+vm-209 group1
 ```
 
-{{ Add description here }}
+Get a virtual machine by id in a private cloud cluster
 
 ## PARAMETERS
 

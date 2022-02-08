@@ -80,7 +80,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the addon for the private cloud
-    ${Name},
+    ${AddonType},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]

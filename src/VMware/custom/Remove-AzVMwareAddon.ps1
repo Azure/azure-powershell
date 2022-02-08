@@ -73,7 +73,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the addon for the private cloud
-    ${Name},
+    ${AddonType},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]

@@ -1,7 +1,7 @@
 @{
   GUID = '6ced3ed2-fb86-4a72-aca7-369161b12fea'
   RootModule = './Az.VMware.psm1'
-  ModuleVersion = '0.3.0'
+  ModuleVersion = '0.4.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

@@ -30,23 +30,21 @@ Delete a placement policy in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a placement policy in a private cloud cluster
 
-### Example 2: {{ Add title here }}
+### Example 2: DeleteViaIdentity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 | Remove-AzVMwarePlacementPolicy
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a placement policy in a private cloud cluster
 
 ## PARAMETERS
 

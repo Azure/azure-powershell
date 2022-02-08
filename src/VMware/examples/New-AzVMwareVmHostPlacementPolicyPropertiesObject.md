@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for VmHostPlacementPolicyProperties.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"abc"="123"}  -Type 'VmHost' -VMMember @{"abc"="123"}
 
-{{ Add output here }}
+DisplayName ProvisioningState State AffinityType HostMember                     VMMember
+----------- ----------------- ----- ------------ ----------                     --------
+                                    AntiAffinity {System.Collections.Hashtable} {System.Collections.Hashtable}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for VmHostPlacementPolicyProperties.

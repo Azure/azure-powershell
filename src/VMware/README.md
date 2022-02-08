@@ -53,7 +53,7 @@ require:
 input-file: 
   - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
 
-module-version: 0.3.0
+module-version: 0.4.0
 title: VMware
 subject-prefix: $(service-name)
 

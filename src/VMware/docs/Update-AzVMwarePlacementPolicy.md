@@ -32,23 +32,27 @@ Update a placement policy in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: UpdateExpanded
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -State 'Enabled'
 
-{{ Add output here }}
+Name    ResourceGroupName
+----    -----------------
+policy1 group1
 ```
 
-{{ Add description here }}
+Update a placement policy in a private cloud cluster
 
-### Example 2: {{ Add title here }}
+### Example 2: UpdateViaIdentityExpanded
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 | Update-AzVMwarePlacementPolicy -State 'Enabled'
 
-{{ Add output here }}
+Name    ResourceGroupName
+----    -----------------
+policy1 group1
 ```
 
-{{ Add description here }}
+Update a placement policy in a private cloud cluster
 
 ## PARAMETERS
 

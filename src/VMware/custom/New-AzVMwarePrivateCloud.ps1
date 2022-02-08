@@ -75,51 +75,15 @@ function New-AzVMwarePrivateCloud {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
+        # The block of addresses should be unique across VNet in your subscription as well as on-premise.
+        # Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
+        ${NetworkBlock},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
         # The name of the SKU.
-        ${SkuName},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.Int32]
-        # The secondary availability zone for the private cloud
-        ${AvailabilitySecondaryZone},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy]
-        # The availability strategy for the private cloud
-        ${AvailabilityStrategy},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.Int32]
-        # The primary availability zone for the private cloud
-        ${AvailabilityZone},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState]
-        # Status of customer managed encryption key
-        ${EncryptionStatus},
-
-        [Parameter()]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]]
-        # vCenter Single Sign On Identity Sources
-        # To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
-        ${IdentitySource},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType]
-        # The type of identity used for the private cloud.
-        # The type 'SystemAssigned' refers to an implicitly created identity.
-        # The type 'None' will remove any identities from the Private Cloud.
-        ${IdentityType},
+        ${Sku},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum])]
@@ -128,49 +92,17 @@ function New-AzVMwarePrivateCloud {
         # Connectivity to internet is enabled or disabled
         ${Internet},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.String]
-        # The name of the key.
-        ${KeyVaultPropertyKeyName},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.String]
-        # The URL of the vault.
-        ${KeyVaultPropertyKeyVaultUrl},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.String]
-        # The version of the key.
-        ${KeyVaultPropertyKeyVersion},
-
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
         # Resource location
         ${Location},
 
-        [Parameter()]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.String[]]
-        # The hosts
-        ${ManagementClusterHost},
-
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.Int32]
         # The cluster size
         ${ManagementClusterSize},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [System.String]
-        # The block of addresses should be unique across VNet in your subscription as well as on-premise.
-        # Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
-        ${NetworkBlock},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]

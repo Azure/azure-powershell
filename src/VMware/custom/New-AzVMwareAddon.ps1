@@ -44,13 +44,6 @@ function New-AzVMwareAddon {
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('AddonName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
-    [System.String]
-    # Name of the addon for the private cloud
-    ${Name},
-
-    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the private cloud.
