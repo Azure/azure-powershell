@@ -21,23 +21,16 @@ Create a in-memory object for AzureStackEdgeFormat
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory stored AzureStackEdgeFormat object for creating the device
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId "/subscriptions/xxxxx-00000-xxxxx-00000/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse1"
 
-{{ Add output here }}
+eviceType     ProvisioningState Status
+----------     ----------------- ------
+AzureStackEdge
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a in-memory stored AzureStackEdgeFormat object for creating the device
 
 ## PARAMETERS
 

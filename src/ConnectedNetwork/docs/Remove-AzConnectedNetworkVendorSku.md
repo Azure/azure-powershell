@@ -33,23 +33,23 @@ This is expected service behavior.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove-AzConnectedNetworkVendorSku via Sku name and Vendor name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzConnectedNetworkVendorSku -SkuName MySku -VendorName MyVendor
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deleting the sku MySku with Vendor name MyVendor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove-AzConnectedNetworkVendorSku via Identity
 ```powershell
-PS C:\> {{ Add code here }}
+$sku = Get-AzConnectedNetworkVendorSku -SkuName MySku1 -VendorName MyVendor
+PS C:\> Remove-AzConnectedNetworkVendorSku -InputObject $sku
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Creating an identity with sku name MySku1 and vendor name MyVendor.
+Deleting the sku with the given Identity.
 
 ## PARAMETERS
 

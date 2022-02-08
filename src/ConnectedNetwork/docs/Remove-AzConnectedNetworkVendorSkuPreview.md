@@ -30,23 +30,23 @@ Deletes the preview information of a vendor sku.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove-AzConnectedNetworkVendorSkuPreview via sku name, vendor name and preview subscription
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deleting the preview information of sku mySku with vendor name myVendor for the given preview subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove-AzConnectedNetworkVendorSkuPreview via Identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $sku = Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku1 -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
+PS C:\> Remove-AzConnectedNetworkVendorSkuPreview -InputObject $sku
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Creating an identity with skuname mySku1, vendor name myVendor and preview subscription.
+Deleting the preview information using the given identity.
 
 ## PARAMETERS
 
