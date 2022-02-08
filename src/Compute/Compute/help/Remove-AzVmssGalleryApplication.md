@@ -24,8 +24,8 @@ Removes a VMGalleryApplication object from the PSVirtualMachineScaleSetVMProfile
 
 ### Example 1
 ```powershell
-PS C:\> $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
-PS C:\> Remove-AzVmssGalleryApplication -VM $vmss.VirtualMachineProfile -GalleryApplicationReferenceId $refId
+$vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
+Remove-AzVmssGalleryApplication -VM $vmss.VirtualMachineProfile -GalleryApplicationReferenceId $refId
 ```
 
 ## PARAMETERS

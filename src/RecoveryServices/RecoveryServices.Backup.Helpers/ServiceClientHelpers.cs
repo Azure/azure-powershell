@@ -267,6 +267,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.ScheduleRunType.Weekly:
                     scheduleRunType = ServiceClientModel.ScheduleRunType.Weekly.ToString();
                     break;
+                case CmdletModel.ScheduleRunType.Hourly:
+                    scheduleRunType = ServiceClientModel.ScheduleRunType.Hourly.ToString();
+                    break;
                 default:
                     break;
             }

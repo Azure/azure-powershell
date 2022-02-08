@@ -150,6 +150,46 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         #endregion
 
+
+        #region Get multiple pages of policy states
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagementGroupScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-ManagementGroupScope-Paging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-SubscriptionScope-Paging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PolicyDefinitionScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-PolicyDefinitionScope-Paging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PolicySetDefinitionScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-PolicySetDefinitionScope-Paging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PolicyAssignmentScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-PolicyAssignmentScope-Paging");
+        }
+
+        #endregion
+
         #region Trigger Evaluation
 
         [Fact]

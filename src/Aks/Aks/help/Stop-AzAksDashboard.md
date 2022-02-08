@@ -23,8 +23,8 @@ Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Stop-AzKubernetesDashboard
+```powershell
+Stop-AzKubernetesDashboard
 ```
 
 Stops the existing SSH tunnel setup by executing Start-AzKubernetesDashboard.

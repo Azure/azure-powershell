@@ -36,7 +36,7 @@ Updates the route.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorCdnRoute -Route $routeObject
+Set-AzFrontDoorCdnRoute -Route $routeObject
 ```
 
 Updates the route.

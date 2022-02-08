@@ -47,8 +47,8 @@ The **Update-AzVM** cmdlet updates the state of an Azure virtual machine to the 
 ## EXAMPLES
 
 ### Example 1: Update a virtual machine
-```
-PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+```powershell
+Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 This command updates the virtual machine, $VirtualMachine, in ResourceGroup11.

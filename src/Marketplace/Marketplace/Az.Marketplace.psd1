@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop','Management'
@@ -56,7 +56,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Marketplace.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Marketplace.dll', 
+               'Marketplace.Autorest\bin\Az.Marketplace.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -65,16 +66,35 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Marketplace.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = 'Marketplace.Autorest\Az.Marketplace.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll', 
+               'Marketplace.Autorest\Az.Marketplace.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = @('Copy-AzMarketplacePrivateStoreCollectionOffer', 
+    'Get-AzMarketplaceBillingPrivateStoreAccount', 
+    'Get-AzMarketplaceCollectionToSubscriptionMapping', 
+    'Get-AzMarketplacePrivateStoreCollection', 
+    'Get-AzMarketplacePrivateStoreCollectionOffer', 
+    'Get-AzMarketplacePrivateStoreV1', 
+    'Get-AzMarketplaceQueryPrivateStoreOffer', 
+    'New-AzMarketplacePrivateStore', 
+    'New-AzMarketplacePrivateStoreCollection', 
+    'New-AzMarketplacePrivateStoreCollectionOffer', 
+    'Remove-AzMarketplacePrivateStoreCollection', 
+    'Remove-AzMarketplacePrivateStoreCollectionOffer', 
+    'Set-AzMarketplaceBulkPrivateStoreCollectionAction', 
+    'Set-AzMarketplacePrivateStore', 
+    'Set-AzMarketplacePrivateStoreCollection', 
+    'Set-AzMarketplacePrivateStoreCollectionOffer')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzMarketplacePrivateStore','Get-AzMarketplacePrivateStoreOffer','Remove-AzMarketplacePrivateStoreOffer','Set-AzMarketplacePrivateStoreOffer'
+CmdletsToExport = 'Get-AzMarketplacePrivateStore',
+    'Get-AzMarketplacePrivateStoreOffer',
+    'Remove-AzMarketplacePrivateStoreOffer',
+    'Set-AzMarketplacePrivateStoreOffer'
 
 # Variables to export from this module
 # VariablesToExport = @()

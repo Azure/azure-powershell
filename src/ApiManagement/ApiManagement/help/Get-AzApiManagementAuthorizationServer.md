@@ -32,17 +32,17 @@ ClientSecret will not be included into result details. To get client secret, use
 ## EXAMPLES
 
 ### Example 1: Get all authorization servers
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementAuthorizationServer -Context $ApiMgmtContext
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementAuthorizationServer -Context $ApiMgmtContext
 ```
 
 This command gets all API Management authorization servers.
 
 ### Example 2: Get a specified authorization server
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementAuthorizationServer -Context $ApiMgmtContext -ServerId "0123456789"
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementAuthorizationServer -Context $ApiMgmtContext -ServerId "0123456789"
 ```
 
 This command gets the specified authorization server.

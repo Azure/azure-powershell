@@ -44,45 +44,45 @@ create a new disk, then the virtual hard disk will be uploaded to it.
 ## EXAMPLES
 
 ### Example 1: Add a VHD file to a blob
-```
-PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
+```powershell
+Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
 ```
 
 This command adds a .vhd file to a storage account.
 
 ### Example 2: Add a VHD file to a blob and overwrite the destination
-```
-PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
+```powershell
+Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
 ```
 
 This command adds a .vhd file to a storage account.
 The command overwrites an existing file.
 
 ### Example 3: Add a VHD file to a blob with number of threads specified
-```
-PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfUploaderThreads 32
+```powershell
+Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfUploaderThreads 32
 ```
 
 This command adds a .vhd file to a storage account.
 The command specifies the number of threads to use to upload the file.
 
 ### Example 4: Add a VHD file to a blob and specify the SAS URI
-```
-PS C:\> Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01 -09T22%3A15%3A49Z&amp;se=2013-01-09T23%3A10%3A49Z&amp;sr=b&amp;sp=w&amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveO SIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"
+```powershell
+Add-AzVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01 -09T22%3A15%3A49Z&amp;se=2013-01-09T23%3A10%3A49Z&amp;sr=b&amp;sp=w&amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveO SIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"
 ```
 
 This command adds a .vhd file to a storage account and specifies the SAS URI.
 
 ### Example 5: Add a VHD file directly to a managed disk.
-```
-PS C:\> Add-AzVhd -LocalFilePath C:\data.vhd -ResourceGroupName rgname -Location eastus -DiskName newDisk
+```powershell
+Add-AzVhd -LocalFilePath C:\data.vhd -ResourceGroupName rgname -Location eastus -DiskName newDisk
 ```
 
 This command create a managed disk with given ResourceGroupName, Location, and DiskName; and uploads the VHD file to it.
 
 ### Example 6: Add a VHD file directly to a more configured disk.
-```
-PS C:\> Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS
+```powershell
+Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS
 ```
 
 This command will tried to convert vhdx file to vhd file first using Hyper-V. If Hyper-V is not found, it will return an error asking to use a vhd file. After successful conversion, it will create a managed disk with provided parameters, then upload the vhd file. 

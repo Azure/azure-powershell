@@ -30,29 +30,29 @@ The **Get-AzBillingProfile** cmdlet gets billing profiles under the specified bi
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000
+```powershell
+Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000
 ```
 
 Get all billing profiles under the specified billing account.
 
 ### Example 2
-```
-PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -Name AAAA-0A00-AAA-ZZZ
+```powershell
+Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -Name AAAA-0A00-AAA-ZZZ
 ```
 
 Get the billing profile with the specified name.
 
 ### Example 3
-```
-PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSection
+```powershell
+Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSection
 ```
 
 Get all billing profiles under specified billing account, and include the invoice sections in the result.
 
 ### Example 4
-```
-PS C:\> Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSection -Name <System.Collections.Generic.List`1[System.String]>
+```powershell
+Get-AzBillingProfile -BillingAccountName 00000000-0000-0000-0000-000000000000 -ExpandInvoiceSection -Name <System.Collections.Generic.List`1[System.String]>
 ```
 
 Get the billing profile with the specified name, and include the invoice sections in the result.
