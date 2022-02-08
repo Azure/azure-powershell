@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Change default parameter set of Invoke-AzStorageSyncChangeDetection to use full share detection
+* Changed default parameter set of Invoke-AzStorageSyncChangeDetection to use full share detection
 
 ## Version 1.6.1
 * Fixed a bug where not all properties of PSSyncSessionStatus and PSSyncActivityStatus objects were being populated properly.
