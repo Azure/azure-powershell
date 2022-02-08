@@ -5565,7 +5565,6 @@ function Test-VMvCPUFeatures
     # Setup
     $rgname = Get-ComputeTestResourceName;
     $loc = "eastus";
-    #$loc = "westus2euap";
 
     try
     {
@@ -5574,27 +5573,26 @@ function Test-VMvCPUFeatures
         # VM Profile & Hardware
         $vmname = 'v' + $rgname;
         $domainNameLabel = "d1" + $rgname;
-        # $vmSize = "Standard_F64s_v2";
         $vmSize = 'Standard_DS3_v2';
         $vCPUsCore1 = 1;
         $vCPUsAvailable1 = 1;
-        $vCPUsCore2 = 2;
-        $vCPUsAvailable3 = 3;
+        $vCPUsCoreDefault = 1;
+        $vCPUsAvailableDefault = 4;
 
         # Creating a VM using simple parameter set
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
-        Assert-AreEqual $vCPUsAvailable1 $vm.HardWareProfile.VmSizeProperties.vCPUsAvailable;
-        Assert-AreEqual $vCPUsCore1 $vm.HardWareProfile.VmSizeProperties.$vCPUsCore;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize ;#-vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+        Assert-AreEqual $vCPUsAvailableDefault $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
+        Assert-AreEqual $vCPUsCoreDefault $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
 
-        $vmUp = Update-AzVm -vCPUsAvailable $vCPUsAvailable3 -vCPUsPerCore $vCPUsCore2;
+        $vmUp = Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
 
         $vmGet = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
-        Assert-AreEqual $vCPUsAvailable3 $vmGet.HardwareProfile.VmSizeProperties.vCPUsAvailable;
-        Assert-AreEqual $vCPUsCore2 $vmGet.HardwareProfile.VmSizeProperties.$vCPUsCore;
+        Assert-AreEqual $vCPUsAvailable1 $vmGet.HardwareProfile.VmSizeProperties.VCPUsAvailable;
+        Assert-AreEqual $vCPUsCore1 $vmGet.HardwareProfile.VmSizeProperties.VCPUsPerCore;
     }
     finally 
     {
