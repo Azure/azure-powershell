@@ -27,11 +27,11 @@ function Test-UpdateRenameSubscription
 
 function Test-UpdateCancelSubscription
 {
-    $subscriptionId = "d17ad3ae-320e-42ff-b5a1-705389c6063a"
+    $subscriptionId = "687a7385-011e-4538-8d8d-ab484f19ba00"
 
     $updateSub = Update-AzSubscription -SubscriptionId $subscriptionId -Action "Cancel"
 
-	Assert-Throws updateSub.SubscriptionId
+	Assert-NotNull updateSub.SubscriptionId
 }
 
 function Test-NewSubscriptionAlias
