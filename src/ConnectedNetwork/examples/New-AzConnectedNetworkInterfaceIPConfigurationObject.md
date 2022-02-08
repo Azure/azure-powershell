@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory object for NetworkInterfaceIPConfiguration
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
 
-{{ Add output here }}
+DnsServer Gateway IPAddress IPAllocationMethod IPVersion Subnet
+--------- ------- --------- ------------------ --------- ------
+                            Dynamic            IPv4
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a in-memory object for NetworkInterfaceIPConfiguration

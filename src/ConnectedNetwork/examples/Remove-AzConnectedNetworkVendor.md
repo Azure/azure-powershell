@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove-AzConnectedNetworkVendor via vendor name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzConnectedNetworkVendor -Name MyVendor
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deleting the vendor with name MyVendor
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove-AzConnectedNetworkVendor via InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $vendor = Get-AzConnectedNetworkVendor -Name MyVendor1
+PS C:\> Remove-AzConnectedNetworkVendor -InputObject $vendor
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Deleting the vendor with name MyVendor1

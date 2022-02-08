@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Stop-AzConnectedNetworkVendorFunctionRoleInstance via location, serviceKey, vendor name and role instance name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Stop-AzConnectedNetworkVendorFunctionRoleInstance -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor -Name role1
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Stoping a role instance of a vendor network function with the specified serviceKey, location centraluseuap, vendor name myVendor and role instance name role1.
 
-### Example 2: {{ Add title here }}
+### Example 2: Stop-AzConnectedNetworkVendorFunctionRoleInstance via Identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $role = @{ RoleInstanceName = "role1"; LocationName = "centraluseuap"; SubscriptionId = "xxxx-3333-xxxx-3333"; VendorName = "myVendor"; serviceKey = "1234-abcd-4321-dcba"}
+PS C:\> Stop-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
 ```
 
-{{ Add description here }}
-
+Creating an identity with role instance name role1, location centraluseuap, vendor name myVendor specified subscription, serviceKey. Stopping a role instance with the given identity.

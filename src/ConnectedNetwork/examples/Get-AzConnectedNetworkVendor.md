@@ -1,18 +1,44 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get-AzConnectedNetworkVendor using vendor name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzConnectedNetworkVendor -Name myVendor
 
-{{ Add output here }}
+
+Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor
+Name                         : myVendor
+ProvisioningState            : Succeeded
+ResourceGroupName            :
+Sku                          :
+SystemDataCreatedAt          : 9/7/2021 3:02:02 AM
+SystemDataCreatedBy          : user@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 9/7/2021 3:02:03 AM
+SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.hybridnetwork/vendors
+
 ```
 
-{{ Add description here }}
+Getting information about the vendor with vendor name myVendor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get-AzConnectedNetworkVendor using Identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $vendor = @{ VendorName = "myVendor1"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+PS C:\> Get-AzConnectedNetworkVendor -InputObject $vendor
 
-{{ Add output here }}
+
+Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor1
+Name                         : myVendor1
+ProvisioningState            : Succeeded
+ResourceGroupName            :
+Sku                          :
+SystemDataCreatedAt          : 9/7/2021 3:02:02 AM
+SystemDataCreatedBy          : user@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 9/7/2021 3:02:03 AM
+SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.hybridnetwork/vendors
+
 ```
 
-{{ Add description here }}
-
+Creating an identity with VendorName myVendor1 and the given subscription. Getting information about the vendor using this identity.

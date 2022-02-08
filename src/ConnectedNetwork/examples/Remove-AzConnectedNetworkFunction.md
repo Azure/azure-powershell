@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove-AzConnectedNetworkFunction via Resource Group and Resource name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzConnectedNetworkFunction -ResourceGroupName myResources -Name myVnf
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deleting the Network Function in Resource Group myResources with name myVnf.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove-AzConnectedNetworkFunction via Identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $vnf = Get-AzConnectedNetworkFunction -ResourceGroupName myResources -Name myVnf1
+PS C:\> Remove-AzConnectedNetworkFunction -InputObject $vnf
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Creating an identity with name myVnf1 and resource group name myResources. Deleting the Network Function with the given Identity.

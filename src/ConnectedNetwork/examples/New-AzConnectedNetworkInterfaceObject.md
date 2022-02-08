@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory object for NetworkInterface
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
 
-{{ Add output here }}
+MacAddress Name              VMSwitchType
+---------- ----              ------------
+           mrmmanagementnic1 Management
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a in-memory object for NetworkInterface
