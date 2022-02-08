@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzAlertRule
 
 ## SYNOPSIS
-Gets alert rules.
+Gets classic alert rules.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Get-AzAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-Detaile
 ```
 
 ## DESCRIPTION
-The **Get-AzAlertRule** cmdlet gets an alert rule by its name or URI, or all alert rules from a specified resource group.
+The **Get-AzAlertRule** cmdlet gets a classic alert rule by its name or URI, or all classic alert rules from a specified resource group.
 
 ## EXAMPLES
 

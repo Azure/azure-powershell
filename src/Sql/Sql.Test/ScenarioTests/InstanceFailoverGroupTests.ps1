@@ -12,18 +12,21 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Handle-InstanceFailoverGroupTest($scriptBlock, $rg = "testclrg", $primaryLocation = "southeastasia", $secondaryLocation = "southeastasia", $mi1 = $null, $mi2 = $null, $cleanup = $false)
+function Handle-InstanceFailoverGroupTest($scriptBlock, $rg = "CustomerExperienceTeam_RG", $primaryLocation = "westcentralus", $secondaryLocation = "centralus", $mi1 = $null, $mi2 = $null, $cleanup = $false)
 {
 	try
 	{
-		$rg = if ($rg -eq $null) { "testclrg" } else { $rg }
-		$miName1 = if ($mi1 -eq $null) { "tdstage-haimb-dont-delete-3" } else { "" }
-		$miName2 = if ($mi1 -eq $null) { "threat-detection-test-1" } else { "" }
+		$rg = if ($rg -eq $null) { "CustomerExperienceTeam_RG" } else { $rg }
+		$miName1 = if ($mi1 -eq $null) { "mi-primary-wcus" } else { "" }
+		$miName2 = if ($mi1 -eq $null) { "mi-tooling-cus" } else { "" }
 
 		Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $primaryLocation, $secondaryLocation, $rg, $miName1, $miName2
 	}
-	finally
-	{	
+	catch
+	{
+		Write-Debug "Error in executing ScriptBlock" 
+		Write-Debug $PSItem.Exception.Message
+		throw
 	}
 }
 
@@ -34,7 +37,14 @@ function Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup($scriptBlock,
 
         $fgName = Get-FailoverGroupName
 		$fg = New-AzSqlDatabaseInstanceFailoverGroup -Name $fgName -Location $location -ResourceGroupName $rg -PrimaryManagedInstanceName $managedInstanceName -PartnerRegion $partnerRegion -PartnerResourceGroupName $rg -PartnerManagedInstanceName $partnerManagedInstanceName
-		Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $fg
+		try
+		{
+			Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $fg
+		}
+		catch
+		{
+			$fg | Remove-AzSqlDatabaseInstanceFailoverGroup -Force
+		}
 		
 	}.GetNewClosure()
 }
