@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// Ensures the service principal.
         /// </summary>
         /// <returns>PSADServicePrincipal.</returns>
-        MicrosoftGraphServicePrincipal GetServicePrincipal();
+        MicrosoftGraphServicePrincipal GetServicePrincipalOrNull();
 
         /// <summary>
         /// Ensures the role assignment.

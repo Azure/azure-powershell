@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     }
                 }
 
-                MicrosoftGraphServicePrincipal servicePrincipal = StorageSyncClientWrapper.GetServicePrincipal();
+                MicrosoftGraphServicePrincipal servicePrincipal = StorageSyncClientWrapper.GetServicePrincipalOrNull();
 
                 if (servicePrincipal == null)
                 {

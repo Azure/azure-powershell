@@ -224,7 +224,7 @@ namespace ScenarioTests
                 }
             }
 
-            var client = context.GetGraphServiceClient<MicrosoftGraphClient>(environment);
+            var client = context.GetGraphServiceClient<MicrosoftGraphClient>(environment, true);
             client.TenantID = tenantId;
             if (AzureRmProfileProvider.Instance != null &&
                 AzureRmProfileProvider.Instance.Profile != null &&

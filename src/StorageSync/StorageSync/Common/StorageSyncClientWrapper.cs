@@ -220,11 +220,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Ensures the service principal.
         /// </summary>
         /// <returns>PSADServicePrincipal.</returns>
-        public MicrosoftGraphServicePrincipal GetServicePrincipal()
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull()
         {
             string applicationId = CurrentApplicationId.ToString();
-            var oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == applicationId);
-            return MicrosoftGraphClient.FilterServicePrincipals(oDataQuery).FirstOrDefault();
+            // TODO: Remove this call once Az Powershell supports MSGraphClient in Test framework.
+            MicrosoftGraphServicePrincipal servicePrincipal = this.StorageSyncResourceManager.GetServicePrincipalOrNull();
+
+            if (servicePrincipal == null)
+            {
+                var oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == applicationId);
+                servicePrincipal = MicrosoftGraphClient.FilterServicePrincipals(oDataQuery).FirstOrDefault();
+            }
+            return servicePrincipal;
         }
 
 
