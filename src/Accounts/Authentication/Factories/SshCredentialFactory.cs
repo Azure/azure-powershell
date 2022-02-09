@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var publicClient = tokenCacheProvider.CreatePublicClient();
-            tokenCacheProvider.RegisterCache(publicClient);
             string cloudName = context.Environment.Name.ToLower();
             string scope = CloudToScope.GetValueOrDefault(cloudName, null);
             if (scope == null)
