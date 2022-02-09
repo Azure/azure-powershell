@@ -14,26 +14,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.SSHCertificates;
-using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -77,7 +68,6 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Optional Tenant Id. Use tenant id of default context if not specified.")]
         public string TenantId { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -106,15 +96,6 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 TenantId = context.Tenant?.Id;
             }
-
-            string modulus = "AL9ISNe4ifwXOwngX1Fbtk832tTZidC6Mv4UtBYmlQ5I2iqoxMa0MswrYP5mj5Fe5DdilI9_vdSEeKUIFWwRG9Gq-vaPWFOpH4YpJG9Syk1CRfhjLWqeZ5Ge4NWdr5IfJ1uro4YWjK3Qk9BXqDT6kbOyMfg3jG_5-k8UEgxGiZl4pIErN-ZffIVx0rDhek9wb-d_x2wtdPc7BfbGR187ezRrtvO71ZOrTVbHN6hwONAt6WAxjQwBN_hR2RWwuSUKdUCA6-30OWUHLlp_73x5Bz6FS-WZElKMqfuTGX_Ismfwloci2MiZL6UxUblR2kP85Gv9oJjPUmCqcqmQhu5NnGzAY1I2PuwXK9LYnrW7Es4CcuNImkeD7J9vna08iB04MaLJNlf5jm5ikm9PgTy4p38IjtphJFpYZw-eIKL1KKnWmZzCshCuRFwEYlGWa_cgLrtaqqpfyJLfTR0roVTtImD9OTJ7dow9-IY_WIsyt3fZY00jEqhkI12OyZEjKJWuVQ==";
-            string exp = "AQAB";
-            RSAParameters parameters = new RSAParameters
-            {
-                Exponent = Base64UrlHelper.DecodeToBytes(exp),
-                Modulus = Base64UrlHelper.DecodeToBytes(modulus)
-            };
-            var token = AzureSession.Instance.SshCredentialFactory.GetSshCredential(context, parameters);
 
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                                 context.Account,
