@@ -20,7 +20,7 @@ New-AzDataBoxEdgeOrder [-ResourceGroupName] <String> [-DeviceName] <String> -Con
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeOrder** cmdlet creates a new order for a Data Box Edge device. A Data Box Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.ï¿½
+The **New-AzDataBoxEdgeOrder** cmdlet creates a new order for a Data Box Edge device. A Data Box Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.
 
 ## EXAMPLES
 
