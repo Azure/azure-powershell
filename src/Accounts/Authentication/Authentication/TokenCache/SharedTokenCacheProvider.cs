@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return true;
         }
 
-        public override void RegisterCache(IPublicClientApplication client)
+        protected override void RegisterCache(IPublicClientApplication client)
         {
             if (AdalTokenCache != null && AdalTokenCache.Length > 0)
             {
