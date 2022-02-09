@@ -42,7 +42,7 @@ Invoke-AzCostManagementQuery -Scope "/subscriptions/***********" -Timeframe Mont
 ```output
 Column                Row
 ------                ---
-{UsageDate, Currency} {20201101 USD, 20201102 USD, 20201103 USD, 20201104 USDâ€¦}
+{UsageDate, Currency} {20201101 USD, 20201102 USD, 20201103 USD, 20201104 USD…}
 ```
 
 Invoke AzCostManagementQuery by Scope
