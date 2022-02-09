@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]

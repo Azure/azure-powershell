@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Multipool feature change: Updated cmdlets to add new optional property: `ConfigurationPolicyGroups` object for associating policy groups.
+    - `Update-AzVpnServerConfiguration`
+    - `New-AzVpnServerConfiguration`
+* Multipool feature change: Updated cmdlets to add new optional property:`P2SConnectionConfiguration` object for specifying multiple Connection configurations.
+    - `Update-AzP2sVpnGateway`
+    - `New-AzP2sVpnGateway`
+* Multipool feature change: Added new cmdlets to suppport CRUD of Configuration policy groups for VpnServerConfiguration.
+    - `Get-AzVpnServerConfigurationPolicyGroup`
+    - `New-AzVpnServerConfigurationPolicyGroup`
+    - `Update-AzVpnServerConfigurationPolicyGroup`
+    - `Remove-AzVpnServerConfigurationPolicyGroup`	
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
