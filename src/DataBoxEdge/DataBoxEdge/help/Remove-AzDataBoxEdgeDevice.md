@@ -40,7 +40,7 @@ Refer the documentation on Deleting the resource before using this [cmdlet](http
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeDevice ResourceGroupName resourceGroupName -Name deviceName
+Remove-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName
 ```
 
 ## PARAMETERS
