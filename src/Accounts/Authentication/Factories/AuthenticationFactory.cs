@@ -19,9 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
-
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;

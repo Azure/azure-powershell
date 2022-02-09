@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `SshCredentialFactory` to support get ssh credential of vm from msal.
 
 ## Version 2.7.2
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
