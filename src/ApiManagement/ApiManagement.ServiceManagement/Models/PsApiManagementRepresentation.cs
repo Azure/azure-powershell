@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     {
         public string ContentType { get; set; }
 
+        [CmdletParameterBreakingChange("Sample", ReplaceMentCmdletParameterName = "Example")]
+        [Parameter(Mandatory = false)]
         public string Sample { get; set; }
         
         public PsApiManagementParameter[] FormParameters { get; set; }
