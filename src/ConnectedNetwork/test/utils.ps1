@@ -18,6 +18,42 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $env.Add("Location", "eastus")
+
+    $ResourceGroupName1 = "testgroup-network1"
+    $ResourceGroupName2 = "testgroup-network2"
+    $ResourceGroupName3 = "testgroup-network3"
+    $env.Add("ResourceGroupName1", $ResourceGroupName1)
+    $env.Add("ResourceGroupName2", $ResourceGroupName2)
+    $env.Add("ResourceGroupName3", $ResourceGroupName3)
+
+    New-AzResourceGroup -Name $env.ResourceGroupName1 -Location $env.Location
+    New-AzResourceGroup -Name $env.ResourceGroupName2 -Location $env.Location
+    New-AzResourceGroup -Name $env.ResourceGroupName3 -Location $env.Location
+
+    $DeviceName1 = "testdevice1"
+    $DeviceName2 = "testdevice2"
+    $DeviceName3 = "testdevice3"
+    $env.Add("DeviceName1", $DeviceName1)
+    $env.Add("DeviceName2", $DeviceName2)
+    $env.Add("DeviceName3", $DeviceName3)
+
+    $AzureStackEdgeId = "/subscriptions/${env.SubscriptionId}/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse"
+    $env.Add("AzureStackEdgeId", $AzureStackEdgeId)
+    
+    $ase = New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId $env.AzureStackEdgeId
+    New-AzConnectedNetworkDevice -Name $env.DeviceName3 -ResourceGroupName $env.ResourceGroupName3 -Location $env.Location -Property $ase
+
+    $VendorName1 = "testvendor1"
+    $VendorName2 = "testvendor2"
+    $VendorName3 = "testvendor3"
+    $env.Add("VendorName1", $VendorName1)
+    $env.Add("VendorName2", $VendorName2)
+    $env.Add("VendorName3", $VendorName3)
+
+    New-AzConnectedNetworkVendor -Name $env.VendorName3
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +63,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.ResourceGroupName1
+    Remove-AzResourceGroup -Name $env.ResourceGroupName2
+    Remove-AzResourceGroup -Name $env.ResourceGroupName3
 }
 
