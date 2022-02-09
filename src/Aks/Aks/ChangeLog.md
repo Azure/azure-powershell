@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the breaking change warning messages [#16805]
 
 ## Version 3.1.1
 * Fixed the typo in `New-AzAksCluster` [#16733]
