@@ -210,6 +210,22 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance6.Sku.Family $managedInstance4.Sku.Family
 		Assert-StartsWith ($managedInstance6.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 
+		# Test redundacy change
+		$credentials = Get-ServerCredential
+		$bsr = "Local"
+
+		$managedInstance7 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -BackupStorageRedundancy $bsr -Force
+
+		Assert-AreEqual $managedInstance7.ManagedInstanceName $managedInstance.ManagedInstanceName
+		Assert-AreEqual $managedInstance7.AdministratorLogin $managedInstance4.AdministratorLogin
+		Assert-AreEqual $managedInstance7.VCores $vCore
+		Assert-AreEqual $managedInstance7.StorageSizeInGB $managedInstance4.StorageSizeInGB
+		Assert-AreEqual $managedInstance7.Sku.Tier $edition
+		Assert-AreEqual $managedInstance7.Sku.Family $managedInstance4.Sku.Family
+		Assert-StartsWith ($managedInstance7.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance7.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance7.RequestedBackupStorageRedundancy $bsr
+
 		# Test cross-subnet update SLO. Since the feature is still not rolled-out, the operation should fail.
 		try
 		{
