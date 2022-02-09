@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
         /// Registers a token cache to synchronize with on disk storage.
         /// </summary>
         /// <param name="tokenCache"></param>
-        protected virtual void RegisterCache(ITokenCache tokenCache)
+        public virtual void RegisterCache(ITokenCache tokenCache)
         {
             _helper.RegisterCache(tokenCache);
         }
