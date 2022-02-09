@@ -30,6 +30,20 @@ The **Enable-AzOperationalInsightsLinuxSyslogCollection** cmdlet starts collecti
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+PS C:\> Enable-AzOperationalInsightsLinuxSyslogCollection -ResourceGroupName yuzhi-rg -WorkspaceName OperationalInsight
+
+Name              : DataSource_LinuxSyslogCollection
+ResourceGroupName : yuzhi-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yuzhi-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_LinuxSyslogCollection
+Kind              : LinuxSyslogCollection
+Properties        : {"state":"Enabled"}
+```
+Starts collection of syslog data from connected Linux computers in a workspace.
+
 ## PARAMETERS
 
 ### -DefaultProfile

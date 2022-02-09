@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            if (content.Contains("DelegatedSubnetsUsage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            if (content.Contains("DelegatedSubnetsUsage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage[]) content.GetValueForProperty("DelegatedSubnetsUsage",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageResultInternal)this).DelegatedSubnetsUsage, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.DelegatedSubnetUsageTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

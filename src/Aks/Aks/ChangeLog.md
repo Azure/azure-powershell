@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.1
+* Fixed the typo in `New-AzAksCluster` [#16733]
+
+## Version 3.1.0
+* Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]
+
 ## Version 3.0.0
 * [Breaking Change] Updated parameter alias and output type of `Get-AzAksVersion`
 * Added `Invoke-AzAksRunCommand` to support running a shell command (with kubectl, helm) on aks cluster. [#16104]

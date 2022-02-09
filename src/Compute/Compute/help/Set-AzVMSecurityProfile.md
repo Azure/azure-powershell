@@ -24,8 +24,8 @@ The **Set-AzVmSecurityProfile** cmdlet sets the Security Type of the VM
 
 ### Example 1
 ```powershell
-PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
-PS C:\> $VM = Set-AzVmSecurityProfile -VM $VM -SecurityType "TrustedLaunch"
+$VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+$VM = Set-AzVmSecurityProfile -VM $VM -SecurityType "TrustedLaunch"
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVm**.

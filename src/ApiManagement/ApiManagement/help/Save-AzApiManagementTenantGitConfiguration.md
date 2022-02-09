@@ -24,9 +24,9 @@ The **Save-AzApiManagementTenantGitConfiguration** cmdlet saves the changes by c
 ## EXAMPLES
 
 ### Example 1: Save changes to configuration
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Save-AzApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -PassThru
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Save-AzApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -PassThru
 ```
 
 This command saves the changes by creating a commit with the current configuration snapshot to the specified branch in the repository.

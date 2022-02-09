@@ -35,7 +35,7 @@ function ServiceBusTests {
 
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName"
-    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard"
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
     # Assert
     Assert-AreEqual $result.Name $namespaceName
     Assert-AreEqual $result.ProvisioningState "Succeeded"
@@ -48,8 +48,13 @@ function ServiceBusTests {
     Assert-AreEqual $getNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
     Assert-AreEqual $getNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
     
-    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2 -Tag @{Tag1="Tag1Value"; Tag2="Tag1Value2"}
     Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
+    Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
+
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard"
+    Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
+    Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
 
     Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2

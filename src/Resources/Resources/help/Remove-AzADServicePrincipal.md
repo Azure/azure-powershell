@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
 schema: 2.0.0
@@ -15,37 +15,37 @@ Deletes entity from service principal.
 ### ObjectIdParameterSet (Default)
 ```
 Remove-AzADServicePrincipal -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
 Remove-AzADServicePrincipal -ApplicationId <Guid> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApplicationObjectParameterSet
-```
-Remove-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DisplayNameParameterSet
-```
-Remove-AzADServicePrincipal -DisplayName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Remove-AzADServicePrincipal -InputObject <IMicrosoftGraphServicePrincipal> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
 Remove-AzADServicePrincipal -ServicePrincipalName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Remove-AzADServicePrincipal -DisplayName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzADServicePrincipal -InputObject <IMicrosoftGraphServicePrincipal> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationObjectParameterSet
+```
+Remove-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -508,3 +508,4 @@ INPUTOBJECT <IMicrosoftGraphServicePrincipal>: key: service principal object
 
 ## RELATED LINKS
 
+## RELATED LINKS

@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus?) content.GetValueForProperty("SupportStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature = (string[]) content.GetValueForProperty("ExposureControlledFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("FeatureName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus?) content.GetValueForProperty("SupportStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus.CreateFrom);
+            }
+            if (content.Contains("ExposureControlledFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature = (string[]) content.GetValueForProperty("ExposureControlledFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus?) content.GetValueForProperty("SupportStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature = (string[]) content.GetValueForProperty("ExposureControlledFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("FeatureName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).FeatureName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus?) content.GetValueForProperty("SupportStatus",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).SupportStatus, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureSupportStatus.CreateFrom);
+            }
+            if (content.Contains("ExposureControlledFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature = (string[]) content.GetValueForProperty("ExposureControlledFeature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeatureInternal)this).ExposureControlledFeature, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -1735,6 +1735,7 @@ $someDisplayName = "Some display name"
 
 # exception strings
 $parameterSetError = 'Parameter set cannot be resolved using the specified named parameters.'
+$parameterNullError = '. The argument is null. Provide a valid value for the argument, and then try running the command again.'
 $missingParameters = 'Cannot process command because of one or more missing mandatory parameters:'
 $onlyDefinitionOrSetDefinition = 'Only one of PolicyDefinition or PolicySetDefinition can be specified, not both.'
 $policyAssignmentNotFound = 'PolicyAssignmentNotFound : '
@@ -1877,6 +1878,7 @@ function Test-SetPolicyAssignmentParameters
     $someParameters = '{ "someKindaParameter": { "value": [ "Mmmm", "Doh!" ] } }'
 	$someLocation = 'west us'
 	$someNotScope = 'not scope'
+    $emptyNotScope = @()
 
     # validate with no parameters
     Assert-ThrowsContains { Set-AzPolicyAssignment } $missingParameters
@@ -1885,6 +1887,8 @@ function Test-SetPolicyAssignmentParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $goodScope } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -NotScope $someNotScope } $policyAssignmentNotFound
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -NotScope $emptyNotScope } $policyAssignmentNotFound
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -NotScope $null } $parameterNullError
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Id $someId } $parameterSetError
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -DisplayName $someDisplayName } $policyAssignmentNotFound
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Description $description } $policyAssignmentNotFound

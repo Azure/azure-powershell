@@ -139,6 +139,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
         public string NodePublicIPPrefixID { get; set; }
 
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -294,7 +295,7 @@ namespace Microsoft.Azure.Commands.Aks
                         throw new AzPSInvalidOperationException(errorMessage, ErrorKind.InternalError);
                     }
                 }
-                catch(Win32Exception exception)
+                catch (Win32Exception exception)
                 {
                     var message = string.Format(Resources.FailedToRunSshKeyGen, exception.Message);
                     throw new AzPSInvalidOperationException(message, ErrorKind.InternalError);
@@ -335,6 +336,8 @@ namespace Microsoft.Azure.Commands.Aks
 
             var networkProfile = GetNetworkProfile();
 
+            var apiServerAccessProfile = CreateOrUpdateApiServerAccessProfile(null);
+
             var addonProfiles = CreateAddonsProfiles();
 
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
@@ -351,11 +354,16 @@ namespace Microsoft.Azure.Commands.Aks
                 servicePrincipalProfile: spProfile,
                 aadProfile: aadProfile,
                 addonProfiles: addonProfiles,
-                networkProfile: networkProfile);
+                networkProfile: networkProfile,
+                apiServerAccessProfile: apiServerAccessProfile);
 
             if (EnableRbac.IsPresent)
             {
                 managedCluster.EnableRBAC = EnableRbac;
+            }
+            if (this.IsParameterBound(c => c.FqdnSubdomain))
+            {
+                managedCluster.FqdnSubdomain = FqdnSubdomain;
             }
             //if(EnablePodSecurityPolicy.IsPresent)
             //{
@@ -372,7 +380,7 @@ namespace Microsoft.Azure.Commands.Aks
                 NetworkPlugin = NetworkPlugin,
                 LoadBalancerSku = LoadBalancerSku
             };
-            if (this.IsParameterBound(c => c.NodeMinCount))
+            if (this.IsParameterBound(c => c.NetworkPolicy))
             {
                 networkProfile.NetworkPolicy = NetworkPolicy;
             }
@@ -392,6 +400,8 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.DockerBridgeCidr = DockerBridgeCidr;
             }
+            networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
+
             return networkProfile;
         }
 

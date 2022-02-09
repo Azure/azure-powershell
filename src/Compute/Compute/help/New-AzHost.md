@@ -25,9 +25,11 @@ This cmdlet will create a Host.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Location $location -Sku $skuName
 ```
-PS C:\> New-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Location $location -Sku $skuName
 
+```output
 ResourceGroupName    : myrg01
 PlatformFaultDomain  : 0
 AutoReplaceOnFailure : True

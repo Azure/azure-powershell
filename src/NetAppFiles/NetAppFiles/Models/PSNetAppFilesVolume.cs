@@ -318,5 +318,45 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// T2: Standard T2 storage to network connectivity.
         /// </value>
         public string StorageToNetworkProximity { get; set; }
+
+        /// <summary>
+        /// Gets or sets VolumeGroupName
+        /// </summary>
+        /// <value>
+        /// Volume Group Name
+        /// </value>
+        public string VolumeGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets CapacityPoolResourceId
+        /// </summary>
+        /// <value>
+        /// Pool Resource Id used in case of creating a volume through volume group
+        /// </value>
+        public string CapacityPoolResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets ProximityPlacementGroup
+        /// </summary>
+        /// <value>
+        /// Proximity placement group associated with the volume
+        /// </value>
+        public string ProximityPlacementGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets T2Network
+        /// </summary>
+        /// <value>
+        /// T2 network information
+        /// </value>
+        public string T2Network { get; set; }
+
+        /// <summary>
+        /// Gets or sets PlacementRules
+        /// </summary>
+        /// <value>
+        /// Application specific placement rules for the particular volume.
+        /// </value>
+        public IList<PSKeyValuePairs> PlacementRules { get; set; }
     }
 }

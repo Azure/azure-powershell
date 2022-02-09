@@ -123,18 +123,24 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = ResourceGroupNameParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = IdParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -244,6 +250,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.AdditionalCapabilities = new AdditionalCapabilities();
                         }
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
+                    }
+
+                    if (this.IsParameterBound(c => c.HibernationEnabled))
+                    {
+                        if (parameters.AdditionalCapabilities == null)
+                        {
+                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
+                        }
+                        parameters.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
                     }
 
                     if (this.IsParameterBound(c => c.MaxPrice))

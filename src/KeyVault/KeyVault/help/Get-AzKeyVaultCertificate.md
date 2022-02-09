@@ -108,8 +108,8 @@ This command gets the certificate named TestCert01 from the key vault named Cont
 
 ```powershell
 $cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certName
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name -AsPlainText
-$secretByte = [Convert]::FromBase64String($secret)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretByte = [Convert]::FromBase64String(($secret.SecretValue | ConvertFrom-SecureString -AsPlainText))
 # Write to a file
 [System.IO.File]::WriteAllBytes("cert.pfx", $secretByte)
 ```

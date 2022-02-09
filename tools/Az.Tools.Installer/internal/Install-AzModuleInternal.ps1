@@ -54,7 +54,7 @@ function Install-AzModuleInternal {
     process {
 
         try {
-            Write-Progress -Id $script:FixProgressBarId "Download packagkes from $Repository."
+            Write-Progress -Id $script:FixProgressBarId "Download packages from $Repository."
 
             if ($Force -or !$WhatIfPreference) {
                 [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
@@ -99,7 +99,7 @@ function Install-AzModuleInternal {
                 }
             }
 
-            Write-Progress -Id $script:FixProgressBarId  "Install packagkes from local."
+            Write-Progress -Id $script:FixProgressBarId  "Install packages from local."
 
             $moduleInstalled = @()
 

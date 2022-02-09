@@ -127,9 +127,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return VaultClient.GetKeyRotationPolicy(vaultName, keyName);
         }
 
-        public PSKeyRotationPolicy UpdateKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
+        public PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy psKeyRotationPolicy)
         {
-            return VaultClient.UpdateKeyRotationPolicy(psKeyRotationPolicy);
+            return VaultClient.SetKeyRotationPolicy(psKeyRotationPolicy);
         }
         #endregion
 
@@ -589,9 +589,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.GetKeyRotationPolicy(managedHsmName, keyName);
         }
 
-        public PSKeyRotationPolicy UpdateManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
+        public PSKeyRotationPolicy SetManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
         {
-            return HsmClient.UpdateKeyRotationPolicy(keyRotationPolicy);
+            return HsmClient.SetKeyRotationPolicy(keyRotationPolicy);
         }
         #endregion
 
