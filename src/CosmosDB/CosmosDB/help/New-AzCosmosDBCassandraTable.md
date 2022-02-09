@@ -34,8 +34,7 @@ Creates a new CosmosDB Cassandra Table.
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\>       
+```powershell       
       $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
       $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
       $Column3 = New-AzCosmosDBCassandraColumn -Name "ColumnC" -Type "int"
@@ -47,6 +46,9 @@ PS C:\>
       $schema = New-AzCosmosDBCassandraSchema -Column $Column1,$Column2 -ClusterKey $clusterkey1 -PartitionKey "ColumnA"
 
       New-AzCosmosDBCassandraTable -AccountName myAccountName -ResourceGroupName myRgName -KeyspaceName myKeyspaceName -Name myTableName -Schema $schema
+```
+
+```output
         Name     : myTable
         Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName/t
                 ables/myTableName
