@@ -302,9 +302,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Modify the vpnServerConfigurationPolicyGroups
-            vpnServerConfigurationToUpdate.ConfigurationPolicyGroups = new List<PSVpnServerConfigurationPolicyGroup>();
             if (this.ConfigurationPolicyGroups != null)
             {
+                vpnServerConfigurationToUpdate.ConfigurationPolicyGroups = new List<PSVpnServerConfigurationPolicyGroup>();
                 vpnServerConfigurationToUpdate.ConfigurationPolicyGroups.AddRange(this.ConfigurationPolicyGroups);
             }
 

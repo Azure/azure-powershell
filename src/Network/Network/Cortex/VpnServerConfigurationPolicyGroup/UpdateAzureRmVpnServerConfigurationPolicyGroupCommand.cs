@@ -31,110 +31,72 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfigurationPolicyGroup",
-        DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
         SupportsShouldProcess = true),
-        OutputType(typeof(PSVpnConnection))]
-    public class UpdateAzureRmVpnConnectionCommand : VpnConnectionBaseCmdlet
+        OutputType(typeof(PSVpnServerConfigurationPolicyGroup))]
+    public class UpdateAzureRmVpnServerConfigurationPolicyGroupCommand : VpnServerConfigurationPolicyGroupBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ParentVpnGatewayName", "VpnGatewayName")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
-            HelpMessage = "The parent resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/vpnGateways", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
-
-        [Alias("ResourceName", "VpnConnectionName")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
-            HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/vpnGateways/vpnConnections", "ResourceGroupName", "ParentResourceName")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Alias("VpnConnectionId")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnConnectionResourceId,
-            HelpMessage = "The resource id of the VpnConnection object to delete.")]
-        public string ResourceId { get; set; }
-
-        [Alias("VpnConnection")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnConnectionObject,
-            HelpMessage = "The VpnConnection object to update.")]
-        public PSVpnConnection InputObject { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The shared key required to set this connection up.")]
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            HelpMessage = "The VpnServerConfiguration name this PolicyGroup is linked to.")]
+        [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
+        [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public SecureString SharedKey { get; set; }
+        public string ParentResourceName { get; set; }
+
+        [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration object this PolicyGroup is linked to.")]
+        [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public PSVpnServerConfiguration ParentObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of VpnServerConfiguration object this PolicyGroup is linked to.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
+        [Alias("ParentVpnServerConfigurationId", "VpnServerConfigurationId")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
-        public uint ConnectionBandwidthInMbps { get; set; }
+            HelpMessage = "The Priority of the policy group.",
+            ValueFromPipelineByPropertyName = true)]
+        public int Priority { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
-        public PSIpsecPolicy IpSecPolicy { get; set; }
+            HelpMessage = "True if this is the default Policy group on this VpnServerConfiguration.")]
+        public bool? IsDefault { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable BGP for this connection")]
-        public bool? EnableBgp { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Use local azure ip address as source ip for this connection.")]
-        public bool? UseLocalAzureIpAddress { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Use policy based traffic selectors for this connection.")]
-        public bool? UsePolicyBasedTrafficSelectors { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The list of VpnSiteLinkConnections that this VpnConnection needs to have.")]
-        public PSVpnSiteLinkConnection[] VpnSiteLinkConnection { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Enable internet security for this connection")]
-        public bool? EnableInternetSecurity { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "The routing configuration for this vpn connection")]
-        public PSRoutingConfiguration RoutingConfiguration { get; set; }
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "The connection mode for the link connections.")]
-        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
-        public string VpnLinkConnectionMode { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "A list of traffic selector policies.")]
-        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Policy members.")]
+        public PSVpnServerConfigurationPolicyGroupMember[] PolicyMember { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -144,129 +106,75 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public override void Execute()
         {
             base.Execute();
-            
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionName, StringComparison.OrdinalIgnoreCase))
-            {
-                this.ResourceGroupName = this.ResourceGroupName;
-                this.ParentResourceName = this.ParentResourceName;
-                this.Name = this.Name;
-            }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
-            {
-                this.ResourceId = this.InputObject.Id;
-
-                if (string.IsNullOrWhiteSpace(this.ResourceId))
-                {
-                    throw new PSArgumentException(Properties.Resources.VpnConnectionNotFound);
-                }
-
-                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                this.Name = parsedResourceId.ResourceName;
-            }
-
-            //// Get the vpngateway object - this will throw not found if the object is not found
-            PSVpnGateway parentGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
-
-            if (parentGateway == null || 
-                parentGateway.Connections == null ||
-                !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
-            {
-                throw new PSArgumentException(Properties.Resources.VpnConnectionNotFound);
-            }
-
-            var vpnConnectionToModify = parentGateway.Connections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
-            {
-                vpnConnectionToModify = this.InputObject;
-            }
-
-            if (vpnConnectionToModify.VpnLinkConnections != null && vpnConnectionToModify.VpnLinkConnections.Any())
-            {
-                //// Use only link connection properties instead of vpn connection properties.
-                if (this.SharedKey != null || this.ConnectionBandwidthInMbps > 0 || this.EnableBgp.HasValue || this.UseLocalAzureIpAddress.HasValue || this.UsePolicyBasedTrafficSelectors.HasValue || this.IpSecPolicy != null)
-                {
-                    throw new PSArgumentException(Properties.Resources.VpnConnectionPropertyIsDeprecated);
-                }
-            }
-
-            if (this.SharedKey != null)
-            {
-                vpnConnectionToModify.SharedKey = SecureStringExtensions.ConvertToString(this.SharedKey);
-            }
-
-            if (this.ConnectionBandwidthInMbps > 0)
-            {
-                vpnConnectionToModify.ConnectionBandwidth = Convert.ToInt32(this.ConnectionBandwidthInMbps);
-            }
-
-            if (this.EnableBgp.HasValue)
-            {
-                vpnConnectionToModify.EnableBgp = this.EnableBgp.Value;
-            }
-
-            if (this.UseLocalAzureIpAddress.HasValue)
-            {
-                vpnConnectionToModify.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.Value;
-            }
-
-            if (this.UsePolicyBasedTrafficSelectors.HasValue)
-            {
-                vpnConnectionToModify.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
-            }
-
-            if (this.IpSecPolicy != null)
-            {
-                vpnConnectionToModify.IpsecPolicies = new List<PSIpsecPolicy> { this.IpSecPolicy };
-            }
-
-            //// Modify the linkconnections
-            if (this.VpnSiteLinkConnection != null)
-            {
-                vpnConnectionToModify.VpnLinkConnections = new List<PSVpnSiteLinkConnection>();
-                vpnConnectionToModify.VpnLinkConnections.AddRange(this.VpnSiteLinkConnection);
-            }
-
-            if (this.EnableInternetSecurity.HasValue)
-            {
-                vpnConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
-            }
-
-            if (this.RoutingConfiguration != null)
-            {
-                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
-                {
-                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
-                }
-
-                vpnConnectionToModify.RoutingConfiguration = RoutingConfiguration;
-            }
-
-            if(!String.IsNullOrEmpty(this.VpnLinkConnectionMode))
-            {
-                foreach(var vpnSiteLinkConnection in vpnConnectionToModify.VpnLinkConnections)
-                {
-                    vpnSiteLinkConnection.VpnLinkConnectionMode = this.VpnLinkConnectionMode;
-                }
-            }
-
-            if (this.TrafficSelectorPolicy != null)
-            {
-                vpnConnectionToModify.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
-            }
 
             ConfirmAction(
-                    Properties.Resources.SettingResourceMessage,
-                    this.Name,
-                    () =>
-                    {
-                        WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                        this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.ParentResourceName, parentGateway, parentGateway.Tag);
+                Properties.Resources.SettingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    WriteVerbose(String.Format(Properties.Resources.CreatingChildResourceLongRunningOperationMessage, this.ResourceGroupName, this.ParentResourceName, this.Name));
+                    WriteObject(this.UpdatePolicyGroup());
+                });
+        }
 
-                        var createdOrUpdatedVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
-                        WriteObject(createdOrUpdatedVpnGateway.Connections.Where(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault());
-                    });
+        private PSVpnServerConfigurationPolicyGroup UpdatePolicyGroup()
+        {
+            PSVpnServerConfiguration parentVpnServerConfiguration = null;
+            PSVpnServerConfigurationPolicyGroup policyGroupToUpdate = null;
+
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
+            {
+                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+                this.ParentResourceName = this.ParentObject.Name;
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.ParentResourceName = parsedResourceId.ResourceName;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.ResourceGroupName) || string.IsNullOrWhiteSpace(this.ParentResourceName))
+            {
+                throw new PSArgumentException(Properties.Resources.VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup);
+            }
+
+            parentVpnServerConfiguration = GetVpnServerConfiguration(this.ResourceGroupName, this.ParentResourceName);
+
+            if (parentVpnServerConfiguration == null)
+            {
+                throw new PSArgumentException(Properties.Resources.VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup);
+            }
+
+            policyGroupToUpdate = GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name);
+
+            if (policyGroupToUpdate == null)
+            {
+                throw new PSArgumentException(Properties.Resources.VpnServerConfigurationPolicyGroupNotFound);
+            }
+
+            if (this.Priority > 0)
+            {
+                policyGroupToUpdate.Priority = this.Priority;
+            }
+
+            if (this.IsDefault.HasValue)
+            {
+                policyGroupToUpdate.IsDefault = this.IsDefault.Value;
+            }
+
+            if (this.PolicyMember != null)
+            {
+                policyGroupToUpdate.PolicyMembers = new List<PSVpnServerConfigurationPolicyGroupMember>();
+                policyGroupToUpdate.PolicyMembers.AddRange(this.PolicyMember);
+            }
+
+            var policyGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfigurationPolicy>(policyGroupToUpdate);
+            policyGroupModel.Tags = TagsConversionHelper.CreateTagDictionary(parentVpnServerConfiguration.Tag, validate: true);
+
+            this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name, policyGroupModel);
+
+            return this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name);
         }
     }
 }

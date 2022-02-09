@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Management.Automation;
     using System.Net;
@@ -47,12 +48,12 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVpnServerConfigurationPolicyGroup> ListVpnServerConfigurationPolicyGroups(string resourceGroupName, string parentVpnServerConfigurationName)
         {
-            var vpnServerConfigurationPolicyGroups = this.VpnServerConfigurationPolicyGroupClient.ListByVpnServerConfiguration(resourceGroupName, parentVpnServerConfigurationName);
-
             List<PSVpnServerConfigurationPolicyGroup> vpnServerConfigurationPolicyGroupsToReturn = new List<PSVpnServerConfigurationPolicyGroup>();
-            if (vpnServerConfigurationPolicyGroups != null)
+            var vpnServerConfiguration = this.GetVpnServerConfiguration(resourceGroupName, parentVpnServerConfigurationName);
+
+            if (vpnServerConfiguration != null)
             {
-                foreach (MNM.VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroup in vpnServerConfigurationPolicyGroups)
+                foreach (MNM.VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroup in vpnServerConfiguration.ConfigurationPolicyGroups)
                 {
                     vpnServerConfigurationPolicyGroupsToReturn.Add(ToPsVpnServerConfigurationPolicyGroup(vpnServerConfigurationPolicyGroup));
                 }

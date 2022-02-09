@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfigurationPolicyGroup",
-        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupName,
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
     public class RemoveVpnServerConfigurationPolicyGroupCommand : VpnServerConfigurationPolicyGroupBaseCmdlet
@@ -44,11 +44,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ParentVpnServerConfigurationName", "VpnServerConfigurationName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupName,
-            HelpMessage = "The parent resource name.")]
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            HelpMessage = "The VpnServerConfiguration name this PolicyGroup is linked to.")]
+        [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
@@ -56,27 +57,29 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations/vpnServerConfigurationPolicyGroup", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("VpnServerConfigurationPolicyGroupId")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupResourceId,
-            HelpMessage = "The resource id of the VpnServerConfigurationPolicyGroup object to delete.")]
-        public string ResourceId { get; set; }
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of VpnServerConfiguration object this PolicyGroup is linked to.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
+        [Alias("ParentVpnServerConfigurationId", "VpnServerConfigurationId")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
 
-        [Alias("VpnServerConfigurationPolicyGroup")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupObject,
-            HelpMessage = "The VpnServerConfigurationPolicyGroup object to delete.")]
-        public PSVpnConnection InputObject { get; set; }
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration object this PolicyGroup is linked to.")]
+        [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public PSVpnServerConfiguration ParentObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,26 +93,16 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupName, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ResourceGroupName;
-                this.ParentResourceName = this.ParentResourceName;
-                this.Name = this.Name;
+                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+                this.ParentResourceName = this.ParentObject.Name;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationPolicyGroupObject, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceId = this.InputObject.Id;
-
-                //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
-                if (string.IsNullOrWhiteSpace(this.ResourceId))
-                {
-                    throw new PSArgumentException(Properties.Resources.VpnServerConfigurationPolicyGroupNotFound);
-                }
-
-                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                this.Name = parsedResourceId.ResourceName;
+                this.ParentResourceName = parsedResourceId.ResourceName;
             }
 
             // Get the VpnServerConfigurationPolicyGroup object - this will throw not found if the object is not found
