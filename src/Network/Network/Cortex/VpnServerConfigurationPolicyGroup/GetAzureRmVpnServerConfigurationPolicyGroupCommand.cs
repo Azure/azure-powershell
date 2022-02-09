@@ -52,6 +52,15 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnServerConfiguration
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
 
+        [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations/vpnServerConfigurationPolicyGroups", "ResourceGroupName", "ParentResourceName")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [Parameter(
             Mandatory = true,
@@ -70,15 +79,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnServerConfiguration
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
         public string ParentResourceId { get; set; }
-
-        [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations/vpnServerConfigurationPolicyGroups", "ResourceGroupName", "ParentResourceName")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public string Name { get; set; }
 
         public override void Execute()
         {
