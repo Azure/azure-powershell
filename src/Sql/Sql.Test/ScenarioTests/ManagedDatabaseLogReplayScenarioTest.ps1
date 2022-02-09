@@ -12,12 +12,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$vnetName = "cl_initial"
-$subnetName = "Cool"
-$testStorageContainerUri = "https://mijetest.blob.core.windows.net/pcc-remote-replicas-test";
-#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-$testStorageContainerSasToken = "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2FgjocUpioABFvm5N0BwhKFrukGw41s%3D";
-$lastBackupName = "full.bak";
+$stoname = "backupscxteam";
+$container = "clients";
+$testStorageContainerUri = "https://backupscxteam.blob.core.windows.net/clients";
+$lastBackupName = "full_0.bak";
 
 <#
 .SYNOPSIS
@@ -27,12 +25,11 @@ function Test-ManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
+	$defaultParams = Get-DefaultManagedInstanceParameters
 
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+	$testStorageContainerSasToken = Generate-SasToken $defaultParams.rg
 
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	$rgName = $rg.ResourceGroupName
 	$managedInstance = $managedInstance.ManagedInstanceName
@@ -92,12 +89,7 @@ function Test-CompleteManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	$rgName = $rg.ResourceGroupName
 	$managedInstance = $managedInstance.ManagedInstanceName
@@ -180,12 +172,7 @@ function Test-CancelManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	$rgName = $rg.ResourceGroupName
 	$managedInstance = $managedInstance.ManagedInstanceName
@@ -256,12 +243,7 @@ function Test-ManagedDatabaseLogReplayPiping
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	$rgName = $rg.ResourceGroupName
 	$managedInstance = $managedInstance.ManagedInstanceName
@@ -320,12 +302,7 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	$rgName = $rg.ResourceGroupName
 	$managedInstance = $managedInstance.ManagedInstanceName
@@ -397,3 +374,17 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Generate-SasToken ($rgname)
+{
+	$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+	Assert-NotNull $key;
+
+	$context = New-AzStorageContext -StorageAccountName $stoname -StorageAccountKey $key.Value[0];
+
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$sastoken = Get-AzStorageContainer -Name $container -Context $context | New-AzStorageContainerSASToken -Permission rl -Context $context -StartTime ([System.DateTime]::Now).AddHours(-20) -ExpiryTime ([System.DateTime]::Now).AddHours(48) -FullUri;
+	}
+	return $sastoken;
+}7

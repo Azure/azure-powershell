@@ -33,7 +33,7 @@ Creates the custom domain.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -HostName $hostName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -HostName $hostName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
 Creates the custom domain.

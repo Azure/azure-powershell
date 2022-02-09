@@ -1,0 +1,45 @@
+{
+  "Sync-AzLabServicesLabUser+[NoContext]+Sync-AzLabServicesLabUser+$POST+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/syncGroup?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/syncGroup?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5bb0253e-551e-4a7e-b0e4-0b9d1335ea7a" ],
+        "CommandName": [ "Sync-AzLabServicesLabUser" ],
+        "FullCommandName": [ "Sync-AzLabServicesLabUser_Sync" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCNTDL2N80G:00000003" ],
+        "x-ms-correlation-request-id": [ "e19fb356-8511-4b17-85f4-bb48ca9b8071" ],
+        "traceparent": [ "00-6122f4a2f8ee834cb5075a1164be326a-ea65c92167edda71-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T234739Z:e19fb356-8511-4b17-85f4-bb48ca9b8071" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 23:47:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "175" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"CannotSyncWithoutGroup\",\"message\":\"Cannot perform sync group operation on a lab without Active Directory group specified.\",\"details\":[],\"additionalInfo\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

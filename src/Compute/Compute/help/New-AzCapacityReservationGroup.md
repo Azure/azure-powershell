@@ -25,7 +25,7 @@ The **New-AzCapacityReservationGroup** cmdlet creates a Capacity Reservation Gro
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCapacityReservationGroup -ResourceGroupName "myRG" -Location "eastus" -Name "myCapacityReservationGroup"
+New-AzCapacityReservationGroup -ResourceGroupName "myRG" -Location "eastus" -Name "myCapacityReservationGroup"
 ```
 
 This command will create a Capacity Reservation Group with given properties. 

@@ -24,9 +24,9 @@ The **Get-AzApiManagementTenantSyncState** cmdlet gets the status of the most re
 ## EXAMPLES
 
 ### Example 1: Get the status of the most recent synchronization
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementTenantSyncState -Context $apimContext
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementTenantSyncState -Context $apimContext
 ```
 
 This command gets the status of the most recent synchronization between the configuration database and the Git repository.

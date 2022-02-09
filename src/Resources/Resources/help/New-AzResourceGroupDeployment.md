@@ -519,7 +519,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateParameterUri
-Specifies the URI of a template parameters file.
+Specifies the URI of a template parameters file. When using TemplateParameterUri any dynamic parameters that you use are disregarded. To use dynamic parameters you must instead use the *TemplateParameterFile* parameter
 
 ```yaml
 Type: System.String

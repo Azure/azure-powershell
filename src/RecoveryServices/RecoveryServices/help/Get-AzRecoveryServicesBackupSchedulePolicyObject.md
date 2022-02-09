@@ -16,7 +16,7 @@ Gets a base schedule policy object.
 ```
 Get-AzRecoveryServicesBackupSchedulePolicyObject [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-ScheduleRunFrequency] <ScheduleRunType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,22 @@ The fourth command replaces the scheduled run times with the current time.
 You can only backup AzureVM once per day, so to reset the backup time you must replace the original schedule.
 The last command creates a backup protection policy using the new schedule.
 
+### Example 3: Get hourly schedule for fileshare policy 
+```powershell
+PS C:\> $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+PS C:\> $timeZone = Get-TimeZone
+PS C:\> $schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+PS C:\> $startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
+PS C:\> $schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
+PS C:\> $schedulePolicy.ScheduleInterval = 6
+PS C:\> $schedulePolicy.ScheduleWindowDuration = 14
+```
+
+The first command gets a base hourly **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.
+The second and third command fetches the timezone and updates the timezone in the $schedulePolicy.
+The fourth and fifth command initializes the schedule window start time and updates the $schedulePolicy. Please note the start time must be in UTC even if the timezone is not UTC. 
+The sixth and seventh command updates the interval (in hours) after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run.
+
 ## PARAMETERS
 
 ### -BackupManagementType
@@ -86,6 +102,22 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleRunFrequency
+Schedule run frequency for the policy schedule.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Daily, Hourly
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

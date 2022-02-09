@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Rest.Azure.OData;
 using Newtonsoft.Json;
@@ -130,16 +131,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="azureRegion">Azure region to fetch AAD properties</param>
         /// <returns>vault response object.</returns>
-        public AADPropertiesResource GetAADProperties(string azureRegion, string backupManagementType = null)
+        public CrrModel.AADPropertiesResource GetAADProperties(string azureRegion, string backupManagementType = null)
         {
-            ODataQuery<BMSAADPropertiesQueryObject> queryParams = null;
+            ODataQuery<CrrModel.BMSAADPropertiesQueryObject> queryParams = null;
 
             if(backupManagementType == BackupManagementType.AzureWorkload)
             {
-                queryParams = new ODataQuery<BMSAADPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
+                queryParams = new ODataQuery<CrrModel.BMSAADPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
             }
 
-            AADPropertiesResource aadProperties =  BmsAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
+            CrrModel.AADPropertiesResource aadProperties =  CrrAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
             return aadProperties;
         }
 

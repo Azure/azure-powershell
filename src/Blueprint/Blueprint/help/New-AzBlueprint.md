@@ -31,8 +31,10 @@ Create a new blueprint definition.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzBlueprint -Name MyNewBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -BlueprintFile C:\Blueprint.json
+New-AzBlueprint -Name MyNewBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -BlueprintFile C:\Blueprint.json
+```
 
+```output
 Name              : SimpleBlueprint
 Id                : /providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint
 ManagementGroupId : myManagementGroupId

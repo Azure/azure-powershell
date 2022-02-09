@@ -24,9 +24,9 @@ The **Add-AzApiManagementApiToProduct** cmdlet adds an Azure API Management API 
 ## EXAMPLES
 
 ### Example 1: Add an API to a product
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Add-AzApiManagementApiToProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001"
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Add-AzApiManagementApiToProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001"
 ```
 
 This command adds the specified API to the specified product.

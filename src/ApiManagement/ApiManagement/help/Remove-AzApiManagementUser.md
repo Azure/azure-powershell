@@ -24,9 +24,9 @@ The **Remove-AzApiManagementUser** cmdlet deletes an existing user.
 ## EXAMPLES
 
 ### Example 1: Delete a user
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementUser -Context $apimContext -UserId "0123456789" -Force
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementUser -Context $apimContext -UserId "0123456789" -Force
 ```
 
 This command deletes an existing user.
