@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 5.3.1
+* Fixed `New-AzADServicePrincipal` not working [#17054] [#17040]
+
 ## Version 5.3.0
 * Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]
 * Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]

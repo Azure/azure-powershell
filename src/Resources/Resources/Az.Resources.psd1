@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.3.0'
+ModuleVersion = '5.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -191,9 +191,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup', 
-               'Deployment', 'ActiveDirectory', 'Authorization', 'Management', 
-               'ManagementGroups', 'Tags'
+        Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization','Management','ManagementGroups','Tags'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -205,12 +203,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added proeprties ''onPremisesLastSyncDateTime'', ''onPremisesSyncEnabled'' to ''User'' object [#16892]
-* Added additional properties when creating request for ''New-AzADServicePrincipal'' and ''Update-AzADServicePrincipal'' [#16847] [#16841]
-* Fixed ''DisplayName'' and ''ApplicationId'' for ''New-AzADAppCredential'' [#16764]
-* Enabled password reset for ''Update-AzADUser'' [#16869]
-* Updated parameter name ''EnableAccount'' to ''AccountEnabled'', and added alias ''EnableAccount'' for ''Update-AzADUser'' [#16753] [#16795]
-* Fixed ''Set-AzPolicyAssignment'' does not remove ''notScope'' if empty [#15828]'
+        ReleaseNotes = '* Fixed ''New-AzADServicePrincipal'' not working [#17054] [#17040]'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -223,7 +216,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
