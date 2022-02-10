@@ -24,8 +24,8 @@ The **Set-AzVmssUefi** cmdlet modifies UEFI properties of virtual machines in a 
 
 ### Example 1
 ```powershell
-PS C:\> $VMSS = Get-AzVmss -ResourceGroupName "ResourceGroup11" -VMScaleSetName "ContosoVM07"
-PS C:\> Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $true -EnableSecureBoot $true
+$VMSS = Get-AzVmss -ResourceGroupName "ResourceGroup11" -VMScaleSetName "ContosoVM07"
+Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $true -EnableSecureBoot $true
 ```
 
 The first command gets the virtual machine scale set named ContosoVM07 by using **Get-AzVmss**.

@@ -32,7 +32,7 @@ Updates the security policy.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorCdnSecurityPolicy -DomainId $domainId -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName -WafPolicyId $wafPolicyId
+Set-AzFrontDoorCdnSecurityPolicy -DomainId $domainId -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName -WafPolicyId $wafPolicyId
 ```
 
 Updates the security policy.

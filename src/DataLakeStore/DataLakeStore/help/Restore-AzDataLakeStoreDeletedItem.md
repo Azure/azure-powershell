@@ -37,19 +37,20 @@ If your ADL account is not whitelisted, then using this api will throw Not imple
 ### Example 1: Restore a file from the Data Lake Store using -force option
 ```
 PS > Restore-AzDataLakeStoreDeletedItem -Account ml1ptrashtest -Path 927e8fb1-a287-4353-b50e-3b4a39ae4088 -Destination adl://ml1ptrashtest.azuredatalake.com/test0/file_1230 -Type "file" -Force
-PS >
+```
+This command restores a file from the Data Lake Store using -force option
 
 ### Example 2: Restore a file from Data Lake Store using user confirmation
-
-PS > restore-azdatalakestoredeleteditem -account ml1ptrashtest -path 927e8fb1-a287-4353-b50e-3b4a39ae4088 -destination adl://ml1ptrashtest.azuredatalake.com/test4/file_1115 -type file
+```
+PS > Restore-azdatalakestoredeleteditem -Account ml1ptrashtest -Path 927e8fb1-a287-4353-b50e-3b4a39ae4088 -Destination adl://ml1ptrashtest.azuredatalake.com/test4/file_1115 -Type file
 
 Restore user data ?
 From - 927e8fb1-a287-4353-b50e-3b4a39ae4088
 To   - adl://ml1ptrashtest.azuredatalake.com/test4/file_1115
 Type - file
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-PS >
 ```
+This command restores a file from Data Lake Store using user confirmation
 
 ## PARAMETERS
 

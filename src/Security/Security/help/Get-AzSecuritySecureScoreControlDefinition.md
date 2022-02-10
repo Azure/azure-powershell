@@ -22,11 +22,25 @@ Get-AzSecuritySecureScoreControlDefinition [-DefaultProfile <IAzureContextContai
 Get-AzSecuritySecureScoreControlDefinition -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+## DESCRIPTION
+The Get-AzSecuritySecureScoreControlDefinition comlet gets security secure score control definitions on a subscription.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Get-AzSecuritySecureScoreControlDefinition
+
+Id                    : /providers/Microsoft.Security/secureScoreControlDefinitions/a9909064-42b4-4d34-8143-275477afe18b
+Name                  : a9909064-42b4-4d34-8143-275477afe18b
+Type                  : Microsoft.Security/secureScoreControlDefinitions
+DisplayName           : Protect your applications with Azure advanced networking solutions
+Description           : 
+MaxScore              : 2
+Source                : BuiltIn
+AssessmentDefinitions : {/providers/Microsoft.Security/assessmentMetadata/e3de1cc0-f4dd-3b34-e496-8b5381ba2d70, /providers/Microsoft.Security/assessmentMetadata/08e628db-e2ed-4793-bc91-d13e6
+                        84401c3, /providers/Microsoft.Security/assessmentMetadata/0642d770-b189-42ef-a2ce-9dcc3ec6c169, /providers/Microsoft.Security/assessmentMetadata/405c9ae6-49f9-46c4-88
+                        73-a86690f27818...}
 ```
 
 Gets all the security secure score control definitions in a subscription

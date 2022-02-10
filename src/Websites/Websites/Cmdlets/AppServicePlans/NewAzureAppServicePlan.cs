@@ -47,13 +47,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Name of application service environment")]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Name of App Service Environment")]
         [ValidateNotNullOrEmpty]
         public string AseName { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Name of the application service environment resource group")]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Name of the App Service Environment resource group")]
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
+
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Resource id of App Service Environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
         [ValidateNotNullOrEmpty]
@@ -73,10 +77,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
         public override void ExecuteCmdlet()
         {
-            if (HyperV.IsPresent && 
-                (Tier != "PremiumContainer" && Tier != "PremiumV3"))
+            if (HyperV.IsPresent &&
+                (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2"))
             {
-                throw new Exception("HyperV switch is only allowed for PremiumContainer or PremiumV3 tiers");
+                throw new Exception("HyperV switch is only allowed for PremiumContainer ,  PremiumV3 or IsolatedV2 tiers");
             }
             if (!HyperV.IsPresent && Tier == "PremiumContainer")
             {
@@ -117,11 +121,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
                 IsXenon = HyperV.IsPresent,
-                Tags= (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
+                Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
                 Reserved = Linux.IsPresent
             };
 
-            AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
+            AppServicePlan retPlan = null;
+
+            if (!string.IsNullOrEmpty(AseResourceId))
+            {
+                retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseResourceId);
+            }
+            else
+            {
+                retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
+            }
+
             PSAppServicePlan psPlan = new PSAppServicePlan(retPlan);
 
             WriteObject(psPlan, true);

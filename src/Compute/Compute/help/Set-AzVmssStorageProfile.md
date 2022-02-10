@@ -30,8 +30,8 @@ The **Set-AzVmssStorageProfile** cmdlet sets the storage profile properties for 
 ## EXAMPLES
 
 ### Example 1: Set the storage profile properties for the VMSS
-```
-PS C:\> Set-AzVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
+```powershell
+Set-AzVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
             -ImageReferenceOffer $ImgRef.Offer -ImageReferenceSku $ImgRef.Skus -ImageReferenceVersion $ImgRef.Version `
             -ImageReferencePublisher $ImgRef.PublisherName -VhdContainer $VhdContainer
 ```

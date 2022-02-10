@@ -23,8 +23,8 @@ Shows the disk encryption status of VM scale set.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVmssVMDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001" -InstanceId "1"
+```powershell
+Get-AzVmssVMDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001" -InstanceId "1"
 ```
 
 Shows the disk encryption status of VM instance 1 in the VM scale set named VMSS001 that belongs to the resource group named Group001.

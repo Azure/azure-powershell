@@ -25,10 +25,13 @@ Statistics are aggregated across all pools that have ever existed in the account
 ## EXAMPLES
 
 ### Example 1: Get resource statistics of all pools in an account
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+$PoolStatistics = Get-AzBatchPoolStatistic -BatchContext $Context
+$PoolStatistics.ResourceStatistics
 ```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
-PS C:\> $PoolStatistics = Get-AzBatchPoolStatistic -BatchContext $Context
-PS C:\> $PoolStatistics.ResourceStatistics
+
+```output
 AverageCpuPercentage : 0.351232518750755
 AverageDiskGiB       : 55.2569014701165
 AverageMemoryGiB     : 2.87273772318252

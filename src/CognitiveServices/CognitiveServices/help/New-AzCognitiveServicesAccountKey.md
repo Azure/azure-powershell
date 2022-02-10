@@ -25,8 +25,10 @@ The **New-AzCognitiveServicesAccountKey** cmdlet regenerates an API key for a Co
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis -keyname Key1
+New-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis -keyname Key1
+```
 
+```output
 Key1                             Key2
 ----                             ----
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

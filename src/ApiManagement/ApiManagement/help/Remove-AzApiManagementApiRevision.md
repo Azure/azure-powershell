@@ -31,8 +31,8 @@ The cmdlet **Remove-AzApiManagementApiRevision** removes a particular API revisi
 
 ### Example 1: Remove an API Revision
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzAzureRmApiManagementApiRevision -Context $apimContext -ApiId "echo-api" -ApiRevision "2"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzAzureRmApiManagementApiRevision -Context $apimContext -ApiId "echo-api" -ApiRevision "2"
 ```
 
 This command removes the `2` revision of the API `echo-api` from API Management service.

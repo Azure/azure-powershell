@@ -30,8 +30,8 @@ For more information, see Azure Billing REST API Referencehttps://msdn.microsoft
 ## EXAMPLES
 
 ### Example 1: Retrieve subscription data
-```
-PS C:\>Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
+```powershell
+Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
 ```
 
 This command retrieves the reported usage data for the subscription between 5/2/2015 and 5/5/2015.

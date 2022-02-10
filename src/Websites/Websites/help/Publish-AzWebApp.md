@@ -62,7 +62,7 @@ PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
 PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Force
 ```
 
-Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG.
+Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. If -Force is not specified it will prompt for the confirmation before the contents will be deployed.
 
 ### Example 6
 ```powershell
@@ -70,7 +70,7 @@ PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
 PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Timeout 300000 -Force
 ```
 
-Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. User can Sets the timespan in Milliseconds to wait before the request times out.
+Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. User can Sets the timespan in Milliseconds to wait before the request times out. If -Force is not specified it will prompt for the confirmation before the contents will be deployed.
 
 ## PARAMETERS
 

@@ -26,7 +26,7 @@ Updates the secret.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorCdnSecret -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecretName $secretName -SecretSource $secretSource
+Set-AzFrontDoorCdnSecret -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecretName $secretName -SecretSource $secretSource
 ```
 
 Updates the secret.

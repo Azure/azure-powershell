@@ -241,5 +241,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetDiffDiskPlacement");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetEnableHotPatching()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetEnableHotPatching");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveVmssForceDeletion()
+        {
+            TestRunner.RunTestScript("Test-RemoveVmssForceDeletion");
+        }
+
     }
 }

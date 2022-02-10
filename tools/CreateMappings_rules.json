@@ -5,13 +5,13 @@
   },
   {
     "regex": "MachineLearning",
-    "group": "Machine Learning",
-    "alias": "Machine Learning"
+    "group": "ML Studio (Classic)",
+    "alias": "ML Studio (Classic)"
   },
   {
     "regex": "Ml",
-    "group": "Machine Learning",
-    "alias": "Machine Learning"
+    "group": "ML Studio (Classic)",
+    "alias": "ML Studio (Classic)"
   },
   {
     "regex": "ImageBuilder",
@@ -408,12 +408,12 @@
     "alias": "DevSpaces"
   },
   {
-    "module": "SignalR", 
+    "module": "SignalR",
     "regex": "SignalR",
     "alias": "SignalR"
   },
   {
-    "module": "SignalR", 
+    "module": "SignalR",
     "regex": "WebPubSub",
     "alias": "Web PubSub"
   },
@@ -710,5 +710,9 @@
   {
     "alias": "EdgeOrder",
     "module": "EdgeOrder"
+  },
+  {
+    "alias": "Lab Services",
+    "module": "LabServices"
   }
 ]

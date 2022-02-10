@@ -34,7 +34,7 @@ The New-AzCdnOriginGroup will create a new origin group within the specified end
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName -OriginId $originId
+New-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName -OriginId $originId
 ```
 
 This cmdlet will create a new origin group within the specified endpoint. It will utilize the given origin ids as the set of origins.

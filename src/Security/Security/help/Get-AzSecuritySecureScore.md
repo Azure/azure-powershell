@@ -22,11 +22,23 @@ Get-AzSecuritySecureScore [-DefaultProfile <IAzureContextContainer>] [<CommonPar
 Get-AzSecuritySecureScore -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+## DESCRIPTION
+The Get-AzSecuritySecureScore comlet gets security secure scores and their results on a subscription.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Get-AzSecuritySecureScore
+
+Id : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Security/secureScores/ascScore
+Name : ascScore
+Type : Microsoft.Security/secureScores
+DisplayName : ASC score
+CurrentScore : 18.38
+MaxScore : 56
+Percentage : 0.3282
+Weight : 1161
 ```
 
 Gets all the security secure scores in a subscription

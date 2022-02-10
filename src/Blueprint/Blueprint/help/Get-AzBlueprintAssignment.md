@@ -43,8 +43,10 @@ Get one or more blueprint assignments. Blueprint assignments exist at the subscr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-000000000000"
+Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-000000000000"
+```
 
+```output
 Name              : Assignment-PS-BlueprintDefinition
 Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/Assignment-PS-BlueprintDefinition
 Scope             : /subscriptions/00000000-1111-0000-1111-000000000000
@@ -59,21 +61,21 @@ Get the blueprint assignments within the specified subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myAssignmentName"
+Get-AzBlueprintAssignment -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myAssignmentName"
 ```
 
 Get the blueprint assignment with the given name within the specified subscription.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzBlueprintAssignment -ManagementGroupId "myManagementGroup"
+Get-AzBlueprintAssignment -ManagementGroupId "myManagementGroup"
 ```
 
 Get the blueprint assignments within the specified management group.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzBlueprintAssignment -ManagementGroupId "myManagementGroup" -Name "myAssignmentName"
+Get-AzBlueprintAssignment -ManagementGroupId "myManagementGroup" -Name "myAssignmentName"
 ```
 
 Get the blueprint assignment with the given name within the specified management group.

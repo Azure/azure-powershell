@@ -41,9 +41,9 @@ Reset the ServicePrincipal of an existing AKS cluster.
 
 ### Example 1
 ```powershell
-PS C:\> $SecPasswd = ConvertTo-SecureString $password -AsPlainText -Force
-PS C:\> $Credential = $(New-Object System.Management.Automation.PSCredential ('6f277dd3-e481-4518-8aab-35c31662bad9', $SecPasswd))
-PS C:\> Set-AzAksClusterCredential -ResourceGroupName $ResourceGroupName -Name $Name -ServicePrincipalIdAndSecret $Credential -force
+$SecPasswd = ConvertTo-SecureString $password -AsPlainText -Force
+$Credential = $(New-Object System.Management.Automation.PSCredential ('6f277dd3-e481-4518-8aab-35c31662bad9', $SecPasswd))
+Set-AzAksClusterCredential -ResourceGroupName $ResourceGroupName -Name $Name -ServicePrincipalIdAndSecret $Credential -force
 ```
 
 Set the service principal of a existing kubernetes cluster with resource group name and cluster name.

@@ -31,10 +31,12 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 ## EXAMPLES
 
 ### Example 1: Getting the current context
+```powershell
+Connect-AzAccount
+Get-AzContext
 ```
-PS C:\> Connect-AzAccount
-PS C:\> Get-AzContext
 
+```Output
 Name                                     Account             SubscriptionName    Environment         TenantId
 ----                                     -------             ----------------    -----------         --------
 Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
@@ -43,9 +45,11 @@ Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1      
 In this example we are logging into our account with an Azure subscription using Connect-AzAccount, and then we are getting the context of the current session by calling Get-AzContext.
 
 ### Example 2: Listing all available contexts
+```powershell
+Get-AzContext -ListAvailable
 ```
-PS C:\> Get-AzContext -ListAvailable
 
+```Output
 Name                                     Account             SubscriptionName    Environment         TenantId
 ----                                     -------             ----------------    -----------         --------
 Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
