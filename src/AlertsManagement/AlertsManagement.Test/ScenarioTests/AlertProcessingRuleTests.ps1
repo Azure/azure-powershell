@@ -35,18 +35,18 @@ function Test-CreateUpdateAndDeleteSuppressionRule
 		#Create Resource Group
 		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -Enabled "True" -AlertProcessingRuleType "RemoveAllActionGroups" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
+		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scopes "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -Enabled "True" -AlertProcessingRuleType "RemoveAllActionGroups" -ScheduleReccurenceType "Daily" -ScheduleStartDateTime "2022-03-21 12:30:11" -ScheduleEndDateTime "2022-03-25 14:30:00" -ScheduleReccurenceStartTime "02:30:00" -ScheduleReccurenceEndTime "04:30:00"
 
 		Assert-NotNull $createdAlertProcessingRule 
 
-		# Update Status of Action Rule
-		$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
-		Assert-NotNull $updatedActionRule 
-		Assert-AreEqual "Disabled" $updatedActionRule.Status
+		# Update Enabled Status of Alert Processing Rule
+		$updatedAlertProcessingRule = Update-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Enabled "False"
+		Assert-NotNull $updatedAlertProcessingRule 
+		Assert-AreEqual "False" $updatedAlertProcessingRule.Enabled
 	}
 	finally
 	{
-		CleanUp $resourceGroupName $actionRuleName
+		CleanUp $resourceGroupName $alertProcessingRuleName
 	}
 }
 
@@ -56,22 +56,22 @@ function Test-CreateUpdateAndDeleteActionGroupRule
 	{
 		$resourceGroupName = Get-TestResourceGroupName "actiongroup"
 		$location = Get-ProviderLocation ResourceManagement
-		$actionRuleName = Get-TestActionRuleName "actiongroup"
+		$alertProcessingRuleName = Get-TestAlertProcessingRuleName "actiongroup"
 
 		#Create Resource Group
 		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-		$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scopes "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -AlertPRocessingRuleType "AddActionGroups" -ActionGroupIds "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
 
-		Assert-NotNull $createdActionRule 
+		Assert-NotNull $createdAlertProcessingRule 
 
-		# Update Status of Action Rule
-		$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
-		Assert-NotNull $updatedActionRule 
-		Assert-AreEqual "Disabled" $updatedActionRule.Status
+		# Update Enabled Status of Alert Processing Rule
+		$updatedAlertProcessingRule = Update-AzAlertPRocessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Enabled "False"
+		Assert-NotNull $updatedAlertProcessingRule 
+		Assert-AreEqual "False" $updatedAlertProcessingRule.Enabled
 	}
 	finally
 	{
-		CleanUp $resourceGroupName $actionRuleName
+		CleanUp $resourceGroupName $alertProcessingRuleName
 	}
 }

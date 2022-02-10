@@ -50,14 +50,14 @@ Set-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupToSubscription" -Scopes "/subscriptions/MySubscriptionId" -Description "Add ActionGroup1 to all alerts in the subscription" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupIds "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1" 
+Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupToSubscription" -Scopes "/subscriptions/MySubscriptionId" -Description "Add ActionGroup1 to all alerts in the subscription" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupIds "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1" 
 ```
 
 This cmdlet creates an alert processing rule that adds an action group to all alerts in a resource group.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupsBySeverity" -Scopes "/subscriptions/MySubscriptionId" -Description "Add AGId1 and AGId2 to all Sev0 and Sev1 alerts in these resourceGroups" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupIds "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1,
+Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupsBySeverity" -Scopes "/subscriptions/MySubscriptionId" -Description "Add AGId1 and AGId2 to all Sev0 and Sev1 alerts in these resourceGroups" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupIds "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1,
 /subscriptions/MySubscriptionId/resourceGroups/MyResourceGroup2/providers/microsoft.insights/actionGroups/MyActionGroup2" -MonitorServiceCondition "Equals:Sev0,Sev1"
 ```
 
@@ -474,7 +474,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleReccurenceStartTime
-Reccurence Start Time. Format 06:00:00
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
 Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
 
 ```yaml
@@ -490,7 +490,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleReccurenceEndTime
-Reccurence Start Time. Format 06:00:00
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
 Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
 
 ```yaml
@@ -554,7 +554,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleReccurence2StartTime
-Reccurence Start Time. Format 06:00:00
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
 Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
 
 ```yaml
@@ -570,7 +570,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleReccurence2EndTime
-Reccurence Start Time. Format 06:00:00
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
 Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
 
 ```yaml
