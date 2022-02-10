@@ -15,6 +15,7 @@
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest;
 using System;
@@ -121,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
-            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
+            return new RenewingTokenCredential(Token);
         }
 
 
@@ -133,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
-            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
+            return new RenewingTokenCredential(Token);
         }
 
         public Rest.ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
