@@ -24,6 +24,19 @@ Test-AzConfidentialLedgerNameAvailability -NameAvailabilityRequest <ICheckNameAv
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CheckViaIdentity
+```
+Test-AzConfidentialLedgerNameAvailability -InputObject <IConfidentialLedgerIdentity>
+ -NameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CheckViaIdentityExpanded
+```
+Test-AzConfidentialLedgerNameAvailability -InputObject <IConfidentialLedgerIdentity> [-Name <String>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 To check whether a resource name is available.
 
