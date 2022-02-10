@@ -59,7 +59,7 @@ PS C:\> Update-AzConfidentialLedger `
       }
 
 Location Name
-eastus   pwsh-new-f2a7bdusg
+eastus   test-ledger
 ```
 
 ## PARAMETERS
