@@ -90,7 +90,13 @@ function Get-AzDataMigrationSkuRecommendation
     {
         try 
         {
+            $OSPlatform = Get-OSName
 
+            if(-Not $OSPlatform.Contains("Windows"))
+            {
+                throw "This command cannot be run in non-windows environment"
+                Break;
+            }
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultOutputFolder
 
@@ -123,7 +129,7 @@ function Get-AzDataMigrationSkuRecommendation
                 # The array list $splat contains all the parameters that will be passed to '.\SqlAssessment.exe GetSkuRecommendation'
 
                 $DatabaseAllowList2 = $($DatabaseAllowList -split " ")
-                $DatabaseDenyList2 = $($DatabaseDenyList2 -split " ")
+                $DatabaseDenyList2 = $($DatabaseDenyList -split " ")
                 [System.Collections.ArrayList] $splat = @(
                     '--outputFolder', $OutputFolder
                     '--targetPlatform', $TargetPlatform
@@ -157,6 +163,7 @@ function Get-AzDataMigrationSkuRecommendation
             }
             else
             {   
+                Test-ConfigFile $PSBoundParameters.ConfigFilePath "GetSkuRecommendation"
                 & $ExePath --configFile $PSBoundParameters.ConfigFilePath
             }
 

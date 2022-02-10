@@ -35,7 +35,7 @@ function Get-AzDataMigrationPerformanceDataCollection
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Interval at which to query performance data, in seconds. (Default: 30)')]
         [System.String]
-        ${PerfQueryIntervalInSec},
+        ${PerfQueryInterval},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Interval at which to query and persist static configuration data, in seconds. (Default: 3600)')]
         [System.String]
@@ -61,7 +61,13 @@ function Get-AzDataMigrationPerformanceDataCollection
     {
         try 
         {
+            $OSPlatform = Get-OSName
 
+            if(-Not $OSPlatform.Contains("Windows"))
+            {
+                throw "This command cannot be run in non-windows environment"
+                Break;
+            }
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultOutputFolder
 
@@ -95,7 +101,7 @@ function Get-AzDataMigrationPerformanceDataCollection
                 [System.Collections.ArrayList] $splat = @(
                 '--sqlConnectionStrings', $SqlConnectionStrings
                 '--outputfolder', $OutputFolder
-                '--perfQueryIntervalInSec', $PerfQueryIntervalInSec
+                '--perfQueryInterval', $PerfQueryInterval
                 '--staticQueryIntervalInSec', $StaticQueryIntervalInSec
                 '--numberOfIterations', $NumberOfIterations
                 )
@@ -121,6 +127,7 @@ function Get-AzDataMigrationPerformanceDataCollection
             }
             else
             {   
+                Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
                 & $ExePath --configFile $PSBoundParameters.ConfigFilePath
             }
 
