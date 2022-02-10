@@ -41,23 +41,26 @@ Retrieves the properties of a Confidential Ledger.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Confidential Ledgers
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzConfidentialLedger `
+  -SubscriptionId 00000000-0000-0000-0000-000000000000
 
-{{ Add output here }}
+Location Name               
+eastus   testledger0
+eastus   testledger1
+eastus   testledger2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a Confidential Ledger
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzConfidentialLedger `
+  -Name test-ledger `
+  -ResourceGroupName test-rg
 
-{{ Add output here }}
+Location Name
+eastus   test-ledger
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

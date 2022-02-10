@@ -24,7 +24,7 @@ Creates a  Confidential Ledger with the specified ledger parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Confidential Ledger
 ```powershell
 PS C:\> New-AzConfidentialLedger `
   -Name test-ledger `
