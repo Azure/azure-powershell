@@ -15,10 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedNetworkVendorFunct
 }
 
 Describe 'AzConnectedNetworkVendorFunction' {
-    # Please input the ServiceKey and storage value
-    $ServiceKey = ""
-    $storage = ""
-
     It 'CreateExpanded' {
         {
             $ipconf1 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
@@ -29,7 +25,7 @@ Describe 'AzConnectedNetworkVendorFunction' {
             $keys = @{ }
             $key += $keyData
             $vendorconf = New-AzConnectedNetworkFunctionVendorConfigurationObject -NetworkInterface $ip1,$ip2 -RoleName "hpehss" -OSProfileAdminUsername "MecUser" -OSProfileCustomData $customData -OSProfileCustomDataRequired $True -SshPublicKey $key
-            $config = New-AzConnectedNetworkVendorFunction -LocationName "eastus2euap" -ServiceKey $ServiceKey -SubscriptionId $env.subscriptionId -VendorName $env.VendorName3 -VendorConfiguration $vendorconf -SkuType "EvolvedPacketCore" -VendorProvisioningState "Provisioning"
+            $config = New-AzConnectedNetworkVendorFunction -LocationName "eastus2euap" -ServiceKey $env.ServiceKey -SubscriptionId $env.subscriptionId -VendorName $env.VendorName3 -VendorConfiguration $vendorconf -SkuType "EvolvedPacketCore" -VendorProvisioningState "Provisioning"
             $config.VendorName | Should -Be $env.VendorName3
         } | Should -Not -Throw
     }
@@ -43,7 +39,7 @@ Describe 'AzConnectedNetworkVendorFunction' {
 
     It 'Get' {
         {
-            $config = Get-AzConnectedNetworkVendorFunction -LocationName "eastus2euap" -VendorName $env.VendorName3 -ServiceKey $ServiceKey
+            $config = Get-AzConnectedNetworkVendorFunction -LocationName "eastus2euap" -VendorName $env.VendorName3 -ServiceKey $env.ServiceKey
             $config.Count | Should -Be 1
         } | Should -Not -Throw
     }

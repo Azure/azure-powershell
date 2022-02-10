@@ -19,6 +19,15 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
+    # Please input this value, when you want run it
+    $storage = ""
+    $ServiceKey = ""
+    $PreviewSubscription = ""
+
+    $env.Add("storage", $storage)
+    $env.Add("ServiceKey", $ServiceKey)
+    $env.Add("PreviewSubscription", $PreviewSubscription)
+
     $env.Add("Location", "eastus")
 
     $ResourceGroupName1 = "testgroup-network1"
