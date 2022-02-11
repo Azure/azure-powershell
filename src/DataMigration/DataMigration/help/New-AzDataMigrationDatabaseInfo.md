@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationDatabaseInfo
@@ -23,8 +23,8 @@ The New-AzDataMigrationDatabaseInfo cmdlet creates the DatabaseInfo object that 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzDataMigrationDatabaseInfo -SourceDatabaseName 'AdventureWorks2016'
+```powershell
+New-AzDataMigrationDatabaseInfo -SourceDatabaseName 'AdventureWorks2016'
 ```
 
 The preceding example creates a new DatabaseInfo object for the source database **AdventureWorks2016**.
