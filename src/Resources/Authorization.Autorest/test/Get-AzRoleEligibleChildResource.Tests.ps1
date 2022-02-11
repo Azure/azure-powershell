@@ -15,8 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRoleEligibleChildResour
 }
 
 Describe 'Get-AzRoleEligibleChildResource' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+            $childResources = Get-AzRoleEligibleChildResource -Scope $scope
+        } | Should -Not -Throw
+    }
+
+    It 'Get with filter' {
+        $scope = "/providers/Microsoft.Management/managementGroups/MG-1/"
+        { 
+            $scope = "/providers/Microsoft.Management/managementGroups/MG-1/"
+            $childResources = Get-AzRoleEligibleChildResource -Scope $scope -Filter "resoureType eq 'resourcegroup'"
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

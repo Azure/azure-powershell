@@ -15,12 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRoleManagementPolicyAss
 }
 
 Describe 'Get-AzRoleManagementPolicyAssignment' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+            $policies = Get-AzRoleManagementPolicyAssignment -Scope $scope
+        } | Should -Not -Throw
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+            $policies = Get-AzRoleManagementPolicyAssignment -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e_a6333a3e-0164-44c3-b281-7a577aff287f"
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRoleManagementPolicy
 }
 
 Describe 'Remove-AzRoleManagementPolicyAssignment' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+            Remove-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+        } | Should -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

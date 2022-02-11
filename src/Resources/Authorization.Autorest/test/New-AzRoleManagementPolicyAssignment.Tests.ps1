@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRoleManagementPolicyAss
 }
 
 Describe 'New-AzRoleManagementPolicyAssignment' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"            
+            New-AzRoleManagementPolicyAssignment -Scope $scope -Name "guid"
+        } | Should -Throw
     }
 }

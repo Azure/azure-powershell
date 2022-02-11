@@ -15,12 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRoleAssignmentScheduleI
 }
 
 Describe 'Get-AzRoleAssignmentScheduleInstance' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $scope = "/subscriptions/" + (Get-AzContext).Subscription.Id
+            $assignmentScheduleIntances = Get-AzRoleAssignmentScheduleInstance -Scope $scope 
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List with filter' {
+        { 
+            $assignmentScheduleIntances = Get-AzRoleAssignmentScheduleInstance -Scope / -Filter "asTarget()"
+        } | Should -Not -Throw
+    }
+
+    It 'Get' {
+        { 
+            $scope = "/providers/Microsoft.Management/managementGroups/MG-1/"
+            $assignmentScheduleIntance = Get-AzRoleAssignmentScheduleInstance -Scope $scope -Name "529e4bba-621c-4309-a4b2-73e3364d4dd3"
+            $assignmentScheduleIntance | Should -Not -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

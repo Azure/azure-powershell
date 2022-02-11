@@ -15,14 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRoleEligibilitySchedule
 }
 
 Describe 'Get-AzRoleEligibilitySchedule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $scope = "/subscriptions/" + (Get-AzContext).Subscription.Id
+            $eligibilitySchedules = Get-AzRoleEligibilitySchedule -Scope $scope 
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List with filter' {
+        { 
+            $eligibilitySchedules = Get-AzRoleEligibilitySchedule -Scope / -Filter "asTarget()"
+        } | Should -Not -Throw
     }
 
+    It 'Get' {
+        { 
+            $scope = "subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+            $eligibilitySchedules = Get-AzRoleEligibilitySchedule -Scope $scope -Name "f36571a6-9feb-47c1-9e13-7b0750640bec"
+            $eligibilitySchedules | Should -Not -BeNullOrEmpty
+        } | Should -Not -Throw
+    }
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
