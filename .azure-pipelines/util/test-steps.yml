@@ -3,7 +3,11 @@ parameters:
   testFramework: ''
   testTarget: ''
   configuration: ''
-  autorestModuleList: ''
+  autorestTestSteps:
+    type: stepList
+    default:
+      - script: echo step one
+      - script: echo step two
 
 
 steps:
@@ -63,16 +67,7 @@ steps:
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
-- ${{ each autorestModuleDir in parameters.autorestModuleList }}:
-  - pwsh: |
-      . $_
-      if ($LastExitCode -ne 0)
-      {
-        throw "test fails when executing $_"
-      }
-    workingDirectory: ${{autorestModuleDir}}
-    displayName: 'Test for ${{autorestModuleDir}}'
-    condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+- ${{autorestTestSteps}}
 
 - task: PublishTestResults@2
   inputs:
