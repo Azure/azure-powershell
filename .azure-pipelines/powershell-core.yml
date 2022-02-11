@@ -22,89 +22,95 @@ pr:
     exclude:
       - Azs-tzl
 
-jobs:
-- job: Build
-  displayName: Build
-  condition: succeeded()
-  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
-  pool:
-    vmImage: $(ImageName)
+stages:
+- stage: "Build"
+  jobs:
+  - job: Build
+    displayName: Build
+    condition: succeeded()
+    timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+    strategy:
+      matrix:
+        windows:
+          OSName: ${{ variables.WindowsName }}
+          ImageName: ${{ variables.WindowsImage }}
+        linux:
+          OSName: ${{ variables.LinuxName }}
+          ImageName: ${{ variables.LinuxImage }}
+        macOS:
+          OSName: ${{ variables.MacOSName }}
+          ImageName: ${{ variables.MacOSImage }}
+    pool:
+      vmImage: $(ImageName)
 
-  steps:
-  - template: util/build-steps.yml
-    parameters:
-      osName: $(OSName)
-      testFramework: ${{ variables.TestFramework }}
-      configuration: ${{ variables.Configuration }}
-  # - powershell: |
-  #     $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
-      
-  #     Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
-  #   name: passOutput
+    steps:
+    - template: util/build-steps.yml
+      parameters:
+        osName: $(OSName)
+        testFramework: ${{ variables.TestFramework }}
+        configuration: ${{ variables.Configuration }}
+    - powershell: |
+        $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
+        Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
+      name: passOutput
 
-- job: Analyze
-  displayName: Analyze
+- stage: Analyze
   dependsOn: Build
-  condition: succeeded()
-  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
-  pool:
-    vmImage: $(ImageName)
+  jobs:
+  - job: Analyze
+    displayName: Analyze
+    condition: succeeded()
+    timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+    strategy:
+      matrix:
+        windows:
+          OSName: ${{ variables.WindowsName }}
+          ImageName: ${{ variables.WindowsImage }}
+        linux:
+          OSName: ${{ variables.LinuxName }}
+          ImageName: ${{ variables.LinuxImage }}
+        macOS:
+          OSName: ${{ variables.MacOSName }}
+          ImageName: ${{ variables.MacOSImage }}
+    pool:
+      vmImage: $(ImageName)
 
-  steps:
-  - template: util/analyze-steps.yml
-    parameters:
-      osName: $(OSName)
-      configuration: ${{ variables.Configuration }}
+    steps:
+    - template: util/analyze-steps.yml
+      parameters:
+        osName: $(OSName)
+        configuration: ${{ variables.Configuration }}
 
-- job: Test
-  displayName: Test
+- stage: Test
   dependsOn: Build
-  condition: succeeded()
-  timeoutInMinutes: 180
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
-  pool:
-    vmImage: $(ImageName)
-
-  steps:
-  - powershell: |
-      $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
-      Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
-  - template: util/test-steps.yml
-    parameters:
-      osName: $(OSName)
-      testFramework: ${{ variables.TestFramework }}
-      testTarget: ${{ variables.TestTarget }}
-      configuration: ${{ variables.Configuration }}
-      autorestModuleList: ${autorestModuleList}
+  jobs:
+  - job: Test
+    displayName: Test
+    condition: succeeded()
+    timeoutInMinutes: 180
+    strategy:
+      matrix:
+        windows:
+          OSName: ${{ variables.WindowsName }}
+          ImageName: ${{ variables.WindowsImage }}
+        linux:
+          OSName: ${{ variables.LinuxName }}
+          ImageName: ${{ variables.LinuxImage }}
+        macOS:
+          OSName: ${{ variables.MacOSName }}
+          ImageName: ${{ variables.MacOSImage }}
+    pool:
+      vmImage: $(ImageName)
+    variables:
+      autorestModuleList: $[stageDependencies.Build.Build.outputs['passOutput.autorestModuleList']]
+    steps:
+    - powershell: |
+        $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
+        Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
+    - template: util/test-steps.yml
+      parameters:
+        osName: $(OSName)
+        testFramework: ${{ variables.TestFramework }}
+        testTarget: ${{ variables.TestTarget }}
+        configuration: ${{ variables.Configuration }}
+        autorestModuleList: ${{autorestModuleList}}
