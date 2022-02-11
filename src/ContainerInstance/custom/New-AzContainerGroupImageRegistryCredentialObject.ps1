@@ -48,7 +48,9 @@ function New-AzContainerGroupImageRegistryCredentialObject {
         $Object.Password = $psTxt
         $Object.Server = $Server
         $Object.Username = $Username
-        $Object.Identity = $AcrIdentity
+        if ($PSBoundParameters.ContainsKey('AcrIdentity')) {
+            $Object.Identity = $AcrIdentity
+        }
         return $Object
     }
 }
