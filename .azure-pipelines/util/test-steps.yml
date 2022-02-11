@@ -3,6 +3,7 @@ parameters:
   testFramework: ''
   testTarget: ''
   configuration: ''
+  autorestModuleList: ''
 
 
 steps:
