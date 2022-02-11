@@ -107,4 +107,4 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
-      autorestModuleList: ${{ autorestModuleList }}
+      autorestModuleList: $(autorestModuleList)
