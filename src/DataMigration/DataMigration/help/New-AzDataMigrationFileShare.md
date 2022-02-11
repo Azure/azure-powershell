@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationFileShare
@@ -23,9 +23,11 @@ The New-AzDataMigrationFileShare cmdlet creates the FileShare object that specif
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 ```
-PS C:\> New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 
+```output
 UserName    Password     Path
 --------    --------     ----
 domain\user testadmin123 \\fileshare\folder1

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationTask
@@ -79,8 +79,8 @@ PS C:\> Get -AzDataMigrationTask -TaskName myTestTask -ServiceName myTestService
 The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve the properties associated with an Azure Database Migration Service migration task based on task name passed in as input parameter
 
 ### Example 2
-```
-PS C:\> Get -AzDataMigrationTask -Project $myProject
+```powershell
+Get-AzDataMigrationTask -Project $myProject
 ```
 
 The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve all of the migration tasks associated with PSProject object passed in as input parameter

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationService
@@ -36,8 +36,8 @@ The Remove-AzDataMigrationService cmdlet removes an instance of the Azure Databa
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
+```powershell
+Remove-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
 The above example removes an instance of the Azure Database Migration Service named TestService that is contained in an Azure Resource Group named MyResourceGroup.

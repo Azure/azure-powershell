@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationProject
@@ -36,15 +36,15 @@ The Get-AzDataMigrationProject cmdlet retrieves the properties of an Azure Datab
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroup testResourceGroup
+```powershell
+Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroup testResourceGroup
 ```
 
 The above example retrieves  Azure Database Migration project named TestProject in the resource group called testResourceGroup and under service called testService
 
 ### Example 2
-```
-PS C:\> Get-AzDataMigrationProject -InputObject $myService
+```powershell
+Get-AzDataMigrationProject -InputObject $myService
 ```
 
 The above example retrieves the  Azure Database Migration project based on PSProject object input parameter passed in. 
