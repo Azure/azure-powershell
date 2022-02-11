@@ -1,25 +1,41 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
-using Microsoft.Rest.Azure;
-using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 {
 
     /// <summary>
-    /// Cmdlet to create a new Server Trust certificate
+    /// Cmdlet to remove Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate"), OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
+    [Cmdlet(
+        VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
+        DefaultParameterSetName = RemoveParameterSet,
+        SupportsShouldProcess = true
+        ), OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class RemoveAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
+        private const string RemoveParameterSet = "RemoveParameterSet";
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = RemoveParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = RemoveParameterSet,
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
@@ -31,9 +47,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// Gets or sets the certificate name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = RemoveParameterSet,
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the certificate")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
@@ -48,6 +66,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// Gets the entity to delete
@@ -77,8 +98,30 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <returns>The instance that was deleted</returns>
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> PersistChanges(IEnumerable<AzureSqlInstanceServerTrustCertificateModel> entity)
         {
-            ModelAdapter.RemoveServerTrustCertificate(ResourceGroupName, ManagedInstanceName, CertificateName);
+            var entityToDelete = entity.First();
+            ModelAdapter.RemoveServerTrustCertificate(entityToDelete.ResourceGroupName, entityToDelete.ManagedInstanceName, entityToDelete.CertificateName);
             return entity;
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!Force.IsPresent && !ShouldProcess(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, this.CertificateName, this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, this.CertificateName, this.ManagedInstanceName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

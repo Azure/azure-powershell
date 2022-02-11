@@ -13,16 +13,29 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate"), OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
+    [Cmdlet(
+        VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
+        DefaultParameterSetName = GetByNameParameterSet
+        ), 
+        OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class GetAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 1,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of the Azure SQL Managed Instance")]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, Position = 1, ValueFromPipeline = true, HelpMessage = "The name of the Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ManagedInstanceName { get; set; }
@@ -30,13 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the certificate name
         /// </summary>
-        [Parameter(Mandatory = false,
-            Position = 2,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of the certificate")]
+        [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, Position = 2, ValueFromPipeline = true, HelpMessage = "The name of the certificate.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
-
 
         /// <summary>
         /// Gets the certificate if name is passed, otherwise list all available certificates on the managed instance

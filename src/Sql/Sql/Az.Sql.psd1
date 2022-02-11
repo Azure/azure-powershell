@@ -281,7 +281,13 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Enable-AzSqlDatabaseLedgerDigestUpload', 
                'Disable-AzSqlDatabaseLedgerDigestUpload', 
                'Get-AzSqlDatabaseLedgerDigestUpload',
-               'New-AzSqlInstanceServerTrustCertificate'
+               'New-AzSqlInstanceServerTrustCertificate',
+               'Get-AzSqlInstanceServerTrustCertificate',
+               'Remove-AzSqlInstanceServerTrustCertificate',
+               'New-AzSqlInstanceLink',
+               'Get-AzSqlInstanceLink',
+               'Remove-AzSqlInstanceLink',
+               'Set-AzSqlInstanceLink'
 
 # Variables to export from this module
 # VariablesToExport = @()

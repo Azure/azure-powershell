@@ -13,16 +13,35 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate"), OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
+    [Cmdlet(
+        VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
+        DefaultParameterSetName = CreateParameterSet
+        ),
+        OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class NewAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
+        private const string CreateParameterSet = "CreateParameterSet";
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 1,
             ValueFromPipeline = true,
-            HelpMessage = "The name of the Azure SQL Managed Instance")]
+            HelpMessage = "The name of the Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ManagedInstanceName { get; set; }
@@ -31,9 +50,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// Gets or sets the certificate name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 2,
             ValueFromPipeline = true,
-            HelpMessage = "The name of the certificate")]
+            HelpMessage = "The name of the certificate.")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
@@ -41,12 +61,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// Gets or sets the public key
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 3,
             ValueFromPipeline = true,
-            HelpMessage = "The value of certificate encoded public key")]
+            HelpMessage = "The value of certificate encoded public key.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^0x[0-9a-fA-F]+$")]
         public string PublicKey { get; set; }
-
 
         /// <summary>
         /// Get the entities from the service
@@ -54,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> GetEntity()
         {
-            // We try to get the certificate.  Since this is a create, we don't want the certificate to exist
+            // We try to get the certificate. Since this is a create, we don't want the certificate to exist
             try
             {
                 ModelAdapter.GetServerTrustCertificate(this.ResourceGroupName, this.ManagedInstanceName, this.CertificateName);
@@ -63,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no database with this name.
+                    // This is what we want. We looked and there is no certificate with this name.
                     return null;
                 }
 
@@ -71,12 +92,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                 throw;
             }
 
-            // The database already exists
+            // The certificate already exists
             throw new PSArgumentException(
                 string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerTrustCertificateAlreadyExists, this.CertificateName, this.ManagedInstanceName),
                 "CertificateName");
         }
-
 
         /// <summary>
         /// Create the model from user input
@@ -89,8 +109,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             {
                 new AzureSqlInstanceServerTrustCertificateModel()
                 {
+                    ResourceGroupName = ResourceGroupName,
+                    ManagedInstanceName = ManagedInstanceName,
                     CertificateName = CertificateName,
-                    PublicKey = PublicKey
+                    PublicKey = PublicKey,
                 }
             };
             return newEntity;

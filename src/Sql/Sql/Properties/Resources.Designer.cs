@@ -963,6 +963,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Managed Instance Link &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceLinkDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Managed Instance Link &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceLinkWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Instance Server Trust Certificate &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceServerTrustCertificateDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Server Trust Certificate &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceServerTrustCertificateWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -1384,7 +1420,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerOutboundFirewallRuleFQDNDoesNotExist", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
+        /// </summary>
+        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters
+        {
+            get
+            {
+                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Allowed FQDN with name &apos;{0}&apos; already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server &apos;{1}&apos;..
         /// </summary>

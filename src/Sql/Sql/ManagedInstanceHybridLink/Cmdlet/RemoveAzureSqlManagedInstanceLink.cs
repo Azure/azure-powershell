@@ -2,6 +2,7 @@
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -11,13 +12,31 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink"), OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
+        DefaultParameterSetName = RemoveParameterSet,
+        SupportsShouldProcess = true
+        ),
+        OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class RemoveAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
+        private const string RemoveParameterSet = "RemoveParameterSet";
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = RemoveParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = RemoveParameterSet,
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
@@ -29,6 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the link name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = RemoveParameterSet,
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the MI link")]
@@ -53,6 +73,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter AllowDataLoss { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// Gets the entity to delete
@@ -84,6 +106,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         {
             ModelAdapter.RemoveManagedInstanceLink(ResourceGroupName, InstanceName, LinkName);
             return entity;
+        }
+        
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!Force.IsPresent && !ShouldProcess(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, LinkName, InstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, LinkName, InstanceName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

@@ -12,13 +12,31 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink"), OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
+        DefaultParameterSetName = CreateParameterSet
+        ),
+        OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class NewAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
+        private const string CreateParameterSet = "CreateParameterSet";
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
@@ -30,6 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the link name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the MI link")]
@@ -40,6 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the primary availability group name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 3,
             ValueFromPipeline = true,
             HelpMessage = "The name of the primary availability group")]
@@ -50,6 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the secondary availability group name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 4,
             ValueFromPipeline = true,
             HelpMessage = "The name of the secondary availability group")]
@@ -60,6 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the target database
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 5,
             ValueFromPipeline = true,
             HelpMessage = "The name of the target database")]
@@ -70,11 +92,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the source endpoint
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = CreateParameterSet,
             Position = 6,
             ValueFromPipeline = true,
             HelpMessage = "The adress of the source endpoint")]
         [ValidateNotNullOrEmpty]
         public string SourceEndpoint { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -91,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want. We looked and there is no database with this name.
+                    // This is what we want. We looked and there is no link with this name.
                     return null;
                 }
 

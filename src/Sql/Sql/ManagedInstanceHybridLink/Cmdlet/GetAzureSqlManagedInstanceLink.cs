@@ -11,13 +11,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink"), OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
+        DefaultParameterSetName = GetByNameParameterSet
+        ),
+        OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class GetAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
@@ -29,6 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the link name
         /// </summary>
         [Parameter(Mandatory = false,
+            ParameterSetName = GetByNameParameterSet,
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the MI link")]

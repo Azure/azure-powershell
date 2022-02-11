@@ -697,4 +697,16 @@
   <data name="ServerTrustCertificateAlreadyExists" xml:space="preserve">
     <value>Certificate with name '{0}' already exists on Azure Sql Managed Instance '{1}'.</value>
   </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Instance Server Trust Certificate '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Instance Server Trust Certificate '{0}' on server '{1}'?</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Managed Instance Link '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Instance Managed Instance Link '{0}' on server '{1}'?</value>
+  </data>
 </root>
