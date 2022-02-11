@@ -4,10 +4,8 @@ parameters:
   testTarget: ''
   configuration: ''
 
+
 steps:
-- powershell: |
-    $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % { $_.DirectoryName }
-    Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
 - template: download-build-steps.yml
   parameters:
     osName: ${{ parameters.osName }}
@@ -63,7 +61,6 @@ steps:
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
-
 
 - ${{ each autorestModuleDir in autorestModuleList }}:
   - pwsh: |

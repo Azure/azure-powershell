@@ -47,6 +47,10 @@ jobs:
       osName: $(OSName)
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+  - powershell: |
+      $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % { $_.DirectoryName }
+      Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
+    name: passOutput
 
 - job: Analyze
   displayName: Analyze
@@ -78,6 +82,8 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: 180
+  variables:
+    autorestModuleList: $[ dependencies.Build.outputs['passOutput.autorestModuleList'] ]
   strategy:
     matrix:
       windows:
