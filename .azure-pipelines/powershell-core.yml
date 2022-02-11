@@ -41,7 +41,16 @@ jobs:
   pool:
     vmImage: $(ImageName)
 
+  variables:
+    autorestModuleList: "##vso[task.setvariable variable=autorestModuleList;isOutput=true]Get-ChildItem -File -Recurse -Depth 1 test-module.ps1"
+
   steps:
+  - task: Powershell@2
+    displayName: test
+    inputs:
+      targetType: inline
+      script: |
+        Write-Host ${{variables.autorestModuleList}}
   - template: util/build-steps.yml
     parameters:
       osName: $(OSName)
