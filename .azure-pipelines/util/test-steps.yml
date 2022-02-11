@@ -63,7 +63,7 @@ steps:
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
-- ${{ each autorestModuleDir in autorestModuleList }}:
+- ${{ each autorestModuleDir in parameters.autorestModuleList }}:
   - pwsh: |
       . $_
       if ($LastExitCode -ne 0)
