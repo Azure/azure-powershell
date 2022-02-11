@@ -47,11 +47,11 @@ jobs:
       osName: $(OSName)
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
-  - powershell: |
-      $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
+  # - powershell: |
+  #     $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
       
-      Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
-    name: passOutput
+  #     Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
+  #   name: passOutput
 
 - job: Analyze
   displayName: Analyze
@@ -83,8 +83,6 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: 180
-  variables:
-    autorestModuleList: $[dependencies.Build.outputs['passOutput.autorestModuleList']]
   strategy:
     matrix:
       windows:
@@ -100,10 +98,13 @@ jobs:
     vmImage: $(ImageName)
 
   steps:
+  - powershell: |
+      $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
+      Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
   - template: util/test-steps.yml
     parameters:
       osName: $(OSName)
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
-      autorestModuleList: ${{ variables.autorestModuleList }}
+      autorestModuleList: ${{ autorestModuleList }}
