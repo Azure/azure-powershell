@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a role management policy assignment
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+PS C:\> Remove-AzRoleManagementPolicyAssignment -Scope $scope -Name "588b80cc-f50c-4616-acc9-0003872624db_00493d72-78f6-4148-b6c5-d3ce8e4799dd"
 
-{{ Add output here }}
+Remove-AzRoleManagementPolicyAssignment_Delete: The requested resource does not support http method 'DELETE'.
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This operation is currently not supported
 
