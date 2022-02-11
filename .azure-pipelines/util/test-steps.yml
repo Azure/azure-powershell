@@ -5,6 +5,9 @@ parameters:
   configuration: ''
 
 steps:
+- powershell: |
+    $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % { $_.DirectoryName }
+    Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
 - template: download-build-steps.yml
   parameters:
     osName: ${{ parameters.osName }}
@@ -53,14 +56,25 @@ steps:
   condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
 
 - pwsh: |
-   Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
-   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
-   if ($IsWindows) { $sp = ";" } else { $sp = ":" }
-   $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
+    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
+    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+
+
+- ${{ each autorestModuleDir in autorestModuleList }}:
+  - pwsh: |
+      . $_
+      if ($LastExitCode -ne 0)
+      {
+        throw "test fails when executing $_"
+      }
+    workingDirectory: ${{autorestModuleDir}}
+    displayName: 'Test for ${{autorestModuleDir}}'
+    condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
 - task: PublishTestResults@2
   inputs:
