@@ -50,14 +50,14 @@ jobs:
   - powershell: |
       $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {
         "- pwsh: |
-            . $_
-            if ($LastExitCode -ne 0)
+            ./test-module.ps1
+            if (`$LastExitCode -ne 0)
             {
-              throw `"test fails when executing $_`"
+              throw `"test fails when executing `$_`"
             }
-          workingDirectory: $_.DirectoryName
-          displayName: 'Test for $_.DirectoryName'
-          condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))"
+          workingDirectory: `$_.DirectoryName
+          displayName: 'Test for `$_.DirectoryName'
+          condition: and(succeeded(), eq('`${{ parameters.testTarget }}', 'Test'))"
       }
       
       Write-Host "##vso[task.setvariable variable=autorestTestSteps;isoutput=true]$var"
