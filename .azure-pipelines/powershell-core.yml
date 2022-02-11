@@ -43,9 +43,10 @@ jobs:
 
   steps:
   - powershell: |
-     Write-Host "##vso[task.setvariable variable=autorestModuleList]$(Get-ChildItem -File -Recurse -Depth 1 test-module.ps1)"
+      $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { $_.DirectoryName }
+      Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
   - powershell: |
-     Write-Host $(autorestModuleList)
+      Write-Host $(autorestModuleList)
   - task: Powershell@2
     displayName: test
     inputs:
