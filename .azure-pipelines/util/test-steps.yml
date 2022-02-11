@@ -65,12 +65,12 @@ steps:
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
-- ${{ each module in parameters.autorestModuleList }}:
-  - pwsh: |
-      .\test-module.ps1
-    workingDirectory: $module
-    displayName: 'Test for AutoGen Modules With PowerShell Core'
-    condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+# - ${{ each module in parameters.autorestModuleList }}:
+#   - pwsh: |
+#       .\test-module.ps1
+#     workingDirectory: $module
+#     displayName: 'Test for AutoGen Modules With PowerShell Core'
+#     condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
 
 - task: PublishTestResults@2
