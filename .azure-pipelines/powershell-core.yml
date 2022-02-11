@@ -113,4 +113,4 @@ stages:
         testFramework: ${{ variables.TestFramework }}
         testTarget: ${{ variables.TestTarget }}
         configuration: ${{ variables.Configuration }}
-        autorestModuleList: ${{autorestModuleList}}
+        autorestModuleList: ${{ variables.autorestModuleList }}
