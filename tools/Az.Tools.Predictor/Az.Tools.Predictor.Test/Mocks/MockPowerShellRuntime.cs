@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         /// <inheritdoc />
         public PowerShell ConsoleRuntime => throw new NotImplementedException("It's not implemented yet because there is no test case to set up powershell environment.");
+
+        /// <inheritdoc />
+        public string HostName => AzPredictorConstants.MockPSHostName;
 
         /// <inheritdoc />
         public IList<T> ExecuteScript<T>(string contents) => throw new NotImplementedException("It's not implemented yet because there is no test case to set up powershell environment.");
