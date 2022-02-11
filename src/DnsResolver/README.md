@@ -73,7 +73,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(this-folder)/resources/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
+  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
 
 module-version: 0.1.6
 title: DnsResolver
