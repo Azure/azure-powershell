@@ -15,13 +15,13 @@ Update a cluster in a private cloud
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHosts <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwareCluster -InputObject <IVMwareIdentity> [-ClusterSize <Int32>] [-PropertiesHosts <String[]>]
+Update-AzVMwareCluster -InputObject <IVMwareIdentity> [-ClusterSize <Int32>] [-PropertiesHost <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -160,7 +160,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesHosts
+### -PropertiesHost
 The hosts
 
 ```yaml

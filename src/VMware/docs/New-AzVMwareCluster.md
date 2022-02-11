@@ -14,7 +14,7 @@ Create or update a cluster in a private cloud
 
 ```
 New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String> -SkuName <String>
- [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHosts <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -126,7 +126,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesHosts
+### -PropertiesHost
 The hosts
 
 ```yaml

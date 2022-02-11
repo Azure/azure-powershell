@@ -167,6 +167,11 @@ directive:
     set:
       parameter-name: DnsServiceName
   - where:
+      subject: ^Cluster$
+      parameter-name: PropertiesHosts
+    set:
+      parameter-name: PropertiesHost
+  - where:
       verb: New|Get|Update|Remove
       subject: ^WorkloadNetworkDnsZone$
       parameter-name: DnsZoneId
