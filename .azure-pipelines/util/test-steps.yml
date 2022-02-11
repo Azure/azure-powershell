@@ -3,11 +3,9 @@ parameters:
   testFramework: ''
   testTarget: ''
   configuration: ''
-  autorestTestSteps:
+  autorestModuleList:
     type: stepList
-    default:
-      - script: echo step one
-      - script: echo step two
+    default: []
 
 
 steps:
@@ -67,7 +65,13 @@ steps:
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
-- ${{autorestTestSteps}}
+- ${{ each module in parameters.autorestModuleList }}:
+  - pwsh: |
+      .\test-module.ps1
+    workingDirectory: $module
+    displayName: 'Test for AutoGen Modules With PowerShell Core'
+    condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+
 
 - task: PublishTestResults@2
   inputs:

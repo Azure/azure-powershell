@@ -48,19 +48,9 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
   - powershell: |
-      $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {
-        '- powershell: |
-            ./test-module.ps1
-            if ($LastExitCode -ne 0)
-            {
-              throw "test fails when executing `$_"
-            }
-          workingDirectory: $_.DirectoryName
-          displayName: "Test for $_.DirectoryName"
-          condition: and(succeeded(), eq("${{ parameters.testTarget }}", "Test"))'
-      }
+      $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_}
       
-      Write-Host "##vso[task.setvariable variable=autorestTestSteps;isoutput=true]$var"
+      Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
     name: passOutput
 
 - job: Analyze
@@ -116,4 +106,4 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
-      autorestTestSteps: ${{ variables.autorestTestSteps }}
+      autorestModuleList: ${{ variables.autorestModuleList }}
