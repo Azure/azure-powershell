@@ -22,7 +22,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Cmdlets.Namespace
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusEncryptionConfig", SupportsShouldProcess = false), OutputType(typeof(PSEncryptionConfigAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusEncryptionConfig"), OutputType(typeof(PSEncryptionConfigAttributes))]
     public class NewKeyVaultPropertyObject : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Key Name")]
